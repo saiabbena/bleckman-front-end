@@ -6,6 +6,7 @@ class Consumer extends CI_Controller {
   public function __construct(){
     parent::__construct();
     
+    
     $this->Customerid=$_GET['Customer'];
 
     if(isset($_GET['Lang'])){
