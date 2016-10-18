@@ -1,3 +1,4 @@
+  <!--I just added some commented text for testing-->
   <div class='container-fluid form1'>
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
@@ -14,8 +15,7 @@
                 <label for="f1" class="control-label"><?php echo strtoupper($translations[1]['Translation']);?></label>
                 <input type="text" name='sc1[email]' class="form-control" id="f1">
                 <span class="help-block"><?php echo $translations[28]['Translation']?></span>
-              </div>
-              
+              </div>              
               
               <br>
               <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1'><?php echo strtoupper($translations[7]['Translation']);?></button><br>
