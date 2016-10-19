@@ -30,9 +30,10 @@ $(document).ready(function(){
 	  var selected= $(this).index();
 		var parentdivId = $(this).closest('div').prop('id');		
 		var divid = parentdivId.substring(10);
-		var updivId = '#reason_div'+parseInt(divid-1);				
-		//alert($('#reason_div'+parseInt(divid-1)+' .reason_text').eq(0).val());
+		var updivId = '#reason_div'+parseInt(divid-1);
 		
+		//Switch reason_text
+		//alert($('#reason_div'+parseInt(divid-1)+' .reason_text').eq(0).val());		
 		var updiv_reason_text1 = $(updivId +' .reason_text').eq(0).val();		
 		var updiv_reason_text2 = $(updivId +' .reason_text').eq(1).val();
 		var updiv_reason_text3 = $(updivId +' .reason_text').eq(2).val();		
@@ -48,8 +49,29 @@ $(document).ready(function(){
 		
 		$('#'+parentdivId +' .reason_text').eq(0).val(updiv_reason_text1);
 		$('#'+parentdivId +' .reason_text').eq(1).val(updiv_reason_text2);
-		$('#'+parentdivId +' .reason_text').eq(2).val(updiv_reason_text3);				
+		$('#'+parentdivId +' .reason_text').eq(2).val(updiv_reason_text3);
 		
-		//moveUp($(this));
+		//Swith Uid
+		//console.log($('#'+parentdivId +' .Uid').eq(0).val());
+		//alert($('#'+parentdivId +' .Uid').eq(0).val());
+		$(updivId +' .Uid').eq(0).val($('#'+parentdivId +' .Uid').eq(0).val());
+		$(updivId +' .Uid').eq(1).val($('#'+parentdivId +' .Uid').eq(1).val());
+		$(updivId +' .Uid').eq(2).val($('#'+parentdivId +' .Uid').eq(2).val());
+		
+		$('#'+parentdivId +' .Uid').eq(0).val($(updivId +' .Uid').eq(0).val());
+		$('#'+parentdivId +' .Uid').eq(1).val($(updivId +' .Uid').eq(1).val());
+		$('#'+parentdivId +' .Uid').eq(2).val($(updivId +' .Uid').eq(2).val());
+		
+		//Swith  PKReasonID		
+		/*
+		$(updivId +' .PKReasonID').eq(0).val($('#'+parentdivId +' .PKReasonID').eq(0).val());
+		$(updivId +' .PKReasonID').eq(1).val($('#'+parentdivId +' .PKReasonID').eq(1).val());
+		$(updivId +' .PKReasonID').eq(2).val($('#'+parentdivId +' .PKReasonID').eq(2).val());
+		
+		$('#'+parentdivId +' .PKReasonID').eq(0).val($(updivId +' .PKReasonID').eq(0).val());
+		$('#'+parentdivId +' .PKReasonID').eq(1).val($(updivId +' .PKReasonID').eq(1).val());
+		$('#'+parentdivId +' .PKReasonID').eq(2).val($(updivId +' .PKReasonID').eq(2).val());
+		*/
+		//moveUp($(this));Uid, Pkreasonid
   });
 });

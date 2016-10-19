@@ -50,7 +50,7 @@
         <form method="POST" action="submitReturnReasons">
         <!--<form method="POST" action="debug">-->
         <h3>Edit return reasons 
-
+		<input name="ReturnReasons" class="ReturnReasons" value="1" type="hidden">
         <button type="button" data-toggle="modal" data-target="#myModal" id='add-return' class='btn btn-raised btn-warning pull-right'>Add</button>       
         <button class='btn btn-raised btn-success pull-right save-reasons' type="submit">Save</button>
         </h3>
@@ -74,7 +74,7 @@
 				if(($rkey+1)<=count($customerLanguages)){
 					foreach ($rvalue as $rrkey=>$rrvalue){
 						if($rrkey!='Reason'){
-							echo ' <input type="hidden" name="ReturnReasons['.$key.']['.$rkey.']['.$rrkey.']" value="'.$rrvalue.'">';
+							echo ' <input type="hidden" class="'.$rrkey.'" name="ReturnReasons['.$key.']['.$rkey.']['.$rrkey.']" value="'.$rrvalue.'">';
 						}
 						else{
 							echo' <div class="form-group label-floating ">
@@ -89,7 +89,7 @@
           if(count($customerLanguages)>count($value)){
             for($i=0; $i<(count($customerLanguages)-count($value)); $i++){
               echo '
-              <input type="hidden" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][PKReasonID]" value="-1">';
+              <input type="hidden" class = "PKReasonID" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][PKReasonID]" value="-1">';
               echo '
               <input type="hidden" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][FKCustomerID]" value="'.$_SESSION['Customerid'].'">';
               echo '
@@ -97,7 +97,7 @@
               echo '
               <input type="hidden" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][FkLanguageid]" value="'.$customerLanguages[($rkey+$i+1)]['FkLanguageid'].'">';
               echo '
-              <input type="hidden" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][Uid]" value="'.$returnReasons[$key][$rkey]['Uid'].'">';
+              <input type="hidden" class = "Uid" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][Uid]" value="'.$returnReasons[$key][$rkey]['Uid'].'">';
               echo '
               <input type="hidden" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][LanguageName]" value="'.$customerLanguages[($rkey+$i+1)]['LanguageName'].'">';                  
               
