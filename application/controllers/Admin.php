@@ -36,11 +36,11 @@ class Admin extends CI_Controller {
     $data = array(
       'Customerid'=>$_SESSION['Customerid']
     );
-
+	
     $data_url='?'.http_build_query($data);
-
+	
     $data_string = json_encode($data);
-
+	
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
@@ -55,8 +55,7 @@ class Admin extends CI_Controller {
 
     return $result;
   }
-  public function settings()
-  { 
+  public function settings(){ 
     $data['customerLanguages']=$this->getCustomerLanguages();
 
     $data['returnReasons']=$this->getCustomerReturnReasons();

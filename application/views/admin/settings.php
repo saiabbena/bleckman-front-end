@@ -9,28 +9,28 @@
           <a href='orders'>
           <div class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-1.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Returns</span>
+            <img src='<?php echo base_url();?>img/i-1.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Returns</span>
           </div>
           </a>
           <a href='appearance'>
           <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Appearance</span>
+            <img src='<?php echo base_url();?>img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Appearance</span>
           </div>
           </a>
           <a href='settings'>
           <div style='background-color: #009688; color: #fff;' class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-3.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Settings</span>
+            <img src='<?php echo base_url();?>img/i-3.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Settings</span>
           </div>
           </a>
           <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-4.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Integration</span>
+            <img src='<?php echo base_url();?>img/i-4.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Integration</span>
           </div>
           <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-5.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Other</span>
+            <img src='<?php echo base_url();?>img/i-5.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Other</span>
           </div>
         </div>
       </div>
@@ -45,51 +45,41 @@
               '.$_SESSION['message']['rr'].'
             </div>';
           }
-        ?>
-        
+        ?>       
         
         <form method="POST" action="submitReturnReasons">
         <!--<form method="POST" action="debug">-->
         <h3>Edit return reasons 
 
-        <button type="button" data-toggle="modal" data-target="#myModal" id='add-return' class='btn btn-raised btn-warning pull-right'>Add</button>
-
-        
-
-        
-        
+        <button type="button" data-toggle="modal" data-target="#myModal" id='add-return' class='btn btn-raised btn-warning pull-right'>Add</button>       
         <button class='btn btn-raised btn-success pull-right save-reasons' type="submit">Save</button>
-
         </h3>
+		
         <br>
         <div class="hidden">marker2</div>
-        <br>
-        
+        <br>        
 
         <?php
         $counter=0;
         foreach ($returnReasons as $key=>$value){
-
-          echo '<div style="border: 1px solid #ddd; padding: 20px;"">';
-          if($counter!=0){
-            echo '<span class="order-btn"><span class="rr-counter"> ('.($counter+1).') </span><button type="button" class="btn btn-warning move-up-btn">Move Up <span class="glyphicon glyphicon-arrow-up"></span></button></span>';
-          }
-          else{
-            echo '<span class="order-btn"><span class="rr-counter"> ('.($counter+1).') </span></span>';
-          }
-          foreach ($value as $rkey=>$rvalue) {
-            if(($rkey+1)<=count($customerLanguages)){
-              foreach ($rvalue as $rrkey=>$rrvalue){
-                if($rrkey!='Reason'){
-                  echo '
-                  <input type="hidden" name="ReturnReasons['.$key.']['.$rkey.']['.$rrkey.']" value="'.$rrvalue.'">';
-                }
-                
-                else{
-                  echo'
-                  <div class="form-group label-floating">
-                  <label for="i5" class="control-label">'.$rvalue['LanguageName'].'</label>
-                  <input id="search-admin" type="text" name="ReturnReasons['.$key.']['.$rkey.']['.$rrkey.']" class="form-control" id="i5" value="'.$rrvalue.'">
+			$reason_div = 'reason_div'.$counter;
+			$hdnval = 'hdnval'.$counter;
+			echo '<div id="'.$reason_div.'" style="border: 1px solid #ddd; padding: 20px;"">';
+			if($counter!=0){
+				echo '<span class="order-btn"><span class="rr-counter"> ('.($counter+1).') </span><button type="button" class="btn btn-warning move-up-btn">Move Up <span class="glyphicon glyphicon-arrow-up"></span></button></span>';
+			}else{
+				echo '<span class="order-btn"><span class="rr-counter"> ('.($counter+1).') </span></span>';
+			}
+			foreach ($value as $rkey=>$rvalue) {
+				if(($rkey+1)<=count($customerLanguages)){
+					foreach ($rvalue as $rrkey=>$rrvalue){
+						if($rrkey!='Reason'){
+							echo ' <input type="hidden" name="ReturnReasons['.$key.']['.$rkey.']['.$rrkey.']" value="'.$rrvalue.'">';
+						}
+						else{
+							echo' <div class="form-group label-floating ">
+							<label for="i5" class="control-label">'.$rvalue['LanguageName'].'</label>
+							<input id="search-admin" type="text" name="ReturnReasons['.$key.']['.$rkey.']['.$rrkey.']" class="form-control reason_text" id="i5" value="'.$rrvalue.'">
                   <span class="help-block">Edit the reason</code></span>
                   </div>';
                 }
