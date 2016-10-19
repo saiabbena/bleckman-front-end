@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
     parent::__construct();
     $this->load->library('session');
     $_SESSION['Customerid']=1;
+	$this->load->helper("url");
   }
 
   private function getCustomerLanguages(){
