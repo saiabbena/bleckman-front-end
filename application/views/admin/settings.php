@@ -89,7 +89,7 @@
           if(count($customerLanguages)>count($value)){
             for($i=0; $i<(count($customerLanguages)-count($value)); $i++){
               echo '
-              <input type="hidden" class = "PKReasonID" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][PKReasonID]" value="-1">';
+              <input type="hidden" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][PKReasonID]" value="-1">';
               echo '
               <input type="hidden" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][FKCustomerID]" value="'.$_SESSION['Customerid'].'">';
               echo '
@@ -97,7 +97,7 @@
               echo '
               <input type="hidden" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][FkLanguageid]" value="'.$customerLanguages[($rkey+$i+1)]['FkLanguageid'].'">';
               echo '
-              <input type="hidden" class = "Uid" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][Uid]" value="'.$returnReasons[$key][$rkey]['Uid'].'">';
+              <input type="hidden"  name="ReturnReasons['.$key.']['.($rkey+$i+1).'][Uid]" value="'.$returnReasons[$key][$rkey]['Uid'].'">';
               echo '
               <input type="hidden" name="ReturnReasons['.$key.']['.($rkey+$i+1).'][LanguageName]" value="'.$customerLanguages[($rkey+$i+1)]['LanguageName'].'">';                  
               

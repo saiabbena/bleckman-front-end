@@ -54,24 +54,42 @@ $(document).ready(function(){
 		//Swith Uid
 		//console.log($('#'+parentdivId +' .Uid').eq(0).val());
 		//alert($('#'+parentdivId +' .Uid').eq(0).val());
-		$(updivId +' .Uid').eq(0).val($('#'+parentdivId +' .Uid').eq(0).val());
-		$(updivId +' .Uid').eq(1).val($('#'+parentdivId +' .Uid').eq(1).val());
-		$(updivId +' .Uid').eq(2).val($('#'+parentdivId +' .Uid').eq(2).val());
+		var updivUid1 = $(updivId +' .Uid').eq(0).val();
+		var updivUid2 = $(updivId +' .Uid').eq(1).val();
+		var updivUid3 = $(updivId +' .Uid').eq(2).val();
 		
-		$('#'+parentdivId +' .Uid').eq(0).val($(updivId +' .Uid').eq(0).val());
-		$('#'+parentdivId +' .Uid').eq(1).val($(updivId +' .Uid').eq(1).val());
-		$('#'+parentdivId +' .Uid').eq(2).val($(updivId +' .Uid').eq(2).val());
+		var parentdivUid1 = $('#'+parentdivId +' .Uid').eq(0).val();
+		var parentdivUid2 = $('#'+parentdivId +' .Uid').eq(1).val();
+		var parentdivUid3 = $('#'+parentdivId +' .Uid').eq(2).val();
+		
+		$(updivId +' .Uid').eq(0).val(parentdivUid1);
+		$(updivId +' .Uid').eq(1).val(parentdivUid2);
+		$(updivId +' .Uid').eq(2).val(parentdivUid3);
+		
+		$('#'+parentdivId +' .Uid').eq(0).val(updivUid1);
+		$('#'+parentdivId +' .Uid').eq(1).val(updivUid2);
+		$('#'+parentdivId +' .Uid').eq(2).val(updivUid3);
+		
+		//alert($(updivId +' .PKReasonID').eq(0).val());
+		//console.log($('#'+parentdivId +' .PKReasonID').eq(2).val());
 		
 		//Swith  PKReasonID		
-		/*
-		$(updivId +' .PKReasonID').eq(0).val($('#'+parentdivId +' .PKReasonID').eq(0).val());
-		$(updivId +' .PKReasonID').eq(1).val($('#'+parentdivId +' .PKReasonID').eq(1).val());
-		$(updivId +' .PKReasonID').eq(2).val($('#'+parentdivId +' .PKReasonID').eq(2).val());
+		var updivPKReasonID1 = $(updivId +' .PKReasonID').eq(0).val();
+		var updivPKReasonID2 = $(updivId +' .PKReasonID').eq(1).val();
+		var updivPKReasonID3 = $(updivId +' .PKReasonID').eq(2).val();
 		
-		$('#'+parentdivId +' .PKReasonID').eq(0).val($(updivId +' .PKReasonID').eq(0).val());
-		$('#'+parentdivId +' .PKReasonID').eq(1).val($(updivId +' .PKReasonID').eq(1).val());
-		$('#'+parentdivId +' .PKReasonID').eq(2).val($(updivId +' .PKReasonID').eq(2).val());
-		*/
+		var parentdivPKReasonID1 = $('#'+parentdivId +' .PKReasonID').eq(0).val();
+		var parentdivPKReasonID2 = $('#'+parentdivId +' .PKReasonID').eq(1).val();
+		var parentdivPKReasonID3 = $('#'+parentdivId +' .PKReasonID').eq(2).val();
+		
+		$(updivId +' .PKReasonID').eq(0).val(parentdivPKReasonID1);
+		$(updivId +' .PKReasonID').eq(1).val(parentdivPKReasonID2);
+		$(updivId +' .PKReasonID').eq(2).val(parentdivPKReasonID3);
+		
+		$('#'+parentdivId +' .PKReasonID').eq(0).val(updivPKReasonID1);
+		$('#'+parentdivId +' .PKReasonID').eq(1).val(updivPKReasonID2);
+		$('#'+parentdivId +' .PKReasonID').eq(2).val(updivPKReasonID3);
+		
 		//moveUp($(this));Uid, Pkreasonid
   });
 });
