@@ -62,30 +62,33 @@
         <?php
         $counter=0;
         foreach ($returnReasons as $key=>$value){
-			$reason_div = 'reason_div'.$counter;
+			$reason_div = 'reason_div'.$counter;			
 			$hdnval = 'hdnval'.$counter;
 			echo '<div id="'.$reason_div.'" style="border: 1px solid #ddd; padding: 20px;"">';
 			if($counter!=0){
 				echo '<span class="order-btn"><span class="rr-counter"> ('.($counter+1).') </span><button type="button" class="btn btn-warning move-up-btn">Move Up <span class="glyphicon glyphicon-arrow-up"></span></button></span>';
 			}else{
 				echo '<span class="order-btn"><span class="rr-counter"> ('.($counter+1).') </span></span>';
-			}
+			}echo '<span class="reason_span">';
 			foreach ($value as $rkey=>$rvalue) {
+				
 				if(($rkey+1)<=count($customerLanguages)){
 					foreach ($rvalue as $rrkey=>$rrvalue){
+						
 						if($rrkey!='Reason'){
 							echo ' <input type="hidden" class="'.$rrkey.'" name="ReturnReasons['.$key.']['.$rkey.']['.$rrkey.']" value="'.$rrvalue.'">';
 						}
 						else{
-							echo' <div class="form-group label-floating ">
+							echo'<div class="form-group label-floating language_lbl">
 							<label for="i5" class="control-label">'.$rvalue['LanguageName'].'</label>
-							<input id="search-admin" type="text" name="ReturnReasons['.$key.']['.$rkey.']['.$rrkey.']" class="form-control reason_text" id="i5" value="'.$rrvalue.'">
-                  <span class="help-block">Edit the reason</code></span>
-                  </div>';
-                }
-              }
-            }
-          }
+							<input id="search-admin" type="text" name="ReturnReasons['.$key.']['.$rkey.']['.$rrkey.']" class="form-control reason_text" id="i5" value="'.$rrvalue.'"> <span class="help-block">Edit the reason</code></span>
+							</div>';
+						}
+						
+					}
+				}
+				
+			}//echo '</span>';
           if(count($customerLanguages)>count($value)){
             for($i=0; $i<(count($customerLanguages)-count($value)); $i++){
               echo '
@@ -112,7 +115,7 @@
           if(count($returnReasons)>1){
             echo '<button type="button" data-toggle="modal" data-target="#del-return'.$rvalue['Uid'].'" class="btn btn-raised btn-danger btn-warning pull-right">Delete</button><br><br>';
           }
-          echo '</div><br>';
+          echo '</span></div><br>';
           $counter++;
         }
         ?>
