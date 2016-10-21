@@ -55,14 +55,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <p class="navbar-brand" style='margin-bottom: 0; font-weight: 400;'><?php echo strtoupper($translations[12]['Translation']);?></p>
+          <p class="navbar-brand" style='margin-bottom: 0; font-weight: 400;'><?php echo (isset($translations[12]['Translation'])?strtoupper($translations[12]['Translation']):'');?></p>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
           <ul class="nav navbar-nav">
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
-              <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><img src='/img/<?php echo $LanguageName;?>.png' class='bm-lang-img'> &nbsp;&nbsp;&nbsp;<?php echo $translations[24]['Translation'];?>&nbsp;&nbsp;
+              <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><img src='/img/<?php echo $LanguageName;?>.png' class='bm-lang-img'> &nbsp;&nbsp;&nbsp;<?php echo (isset($translations[24]['Translation'])?$translations[24]['Translation']:'');?>
+			  <?php //echo $translations[24]['Translation'];?>&nbsp;&nbsp;
                 <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <?php
@@ -97,6 +98,7 @@
       <div style='height: 40vh'></div>
       <center><img src='/img/loading-pink.gif' style='height: 10vh'>
       <br>
-      <p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo $translations[23]['Translation']?>...</p>
+      <p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo (isset($translations[23]['Translation'])?$translations[23]['Translation']:'');?>
+	  <?php //echo $translations[23]['Translation']?>...</p>
       </center>
     </div>
