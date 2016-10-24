@@ -423,7 +423,7 @@
             <tr>
               <td>
                 <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Link text</label>
+                  <label for="i5" class="control-label">Link text 1</label>
                   <input id='search-admin' type="text" class="form-control" id="i5" value="Home">
                   <span class="help-block">Edit the link's text</code></span>
                 </div>
