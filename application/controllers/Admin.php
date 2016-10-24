@@ -6,6 +6,7 @@ class Admin extends CI_Controller {
     parent::__construct();
     $this->load->library('session');
     $_SESSION['Customerid']=1;
+	$this->load->helper("url");
   }
 
   private function getCustomerLanguages(){
@@ -35,15 +36,15 @@ class Admin extends CI_Controller {
     $data = array(
       'Customerid'=>$_SESSION['Customerid']
     );
-
+	
     $data_url='?'.http_build_query($data);
-
+	
     $data_string = json_encode($data);
-
+	
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-    curl_setopt($ch, CURLOPT_URL, "http://ws.developer.bleckmann.apoyaretail.com/api/ReturnReason/GetAllReturnReasonsbyCustomerid".$data_url);
+    curl_setopt($ch, CURLOPT_URL, "http://returns.dev.apoyar.eu/api/ReturnReason/GetAllReturnReasonsbyCustomerid".$data_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     // Send the request
@@ -54,8 +55,7 @@ class Admin extends CI_Controller {
 
     return $result;
   }
-  public function settings()
-  { 
+  public function settings(){ 
     $data['customerLanguages']=$this->getCustomerLanguages();
 
     $data['returnReasons']=$this->getCustomerReturnReasons();
@@ -89,7 +89,7 @@ class Admin extends CI_Controller {
 
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL,"http://ws.developer.bleckmann.apoyaretail.com/api/ReturnReason/PostManageReturnReason");
+    curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/ReturnReason/PostManageReturnReason");
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS,
                 http_build_query(['ReturnReasons'=>$_POST['ReturnReasons']]));

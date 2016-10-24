@@ -5,7 +5,7 @@ $(document).ready(function(){
   //TODO: MAKE THIS PASSED FROM PHP
   var customerId=1;
 
-  var url='http://ws.developer.bleckmann.apoyaretail.com/api/';
+  var url='http://returns.dev.apoyar.eu/api/';
   //var url='http://128.0.210.37/Bleckmannapi/api/';
   var apiCall=url+'';
   
@@ -88,7 +88,7 @@ $(document).ready(function(){
       <div class="modal fade" id="rOrderComment'+data[i].PkReturnOrderID+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
         <div class="modal-dialog" role="document">\
           <div class="modal-content">\
-            <form action="http://ws.developer.bleckmann.apoyaretail.com/api/Returnorder/PostUpdateReturnorderComment" method="POST">\
+            <form action="http://returns.dev.apoyar.eu/api/Returnorder/PostUpdateReturnorderComment" method="POST">\
               <div class="modal-header">\
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
                 <h4 class="modal-title" id="myModalLabel">Comment for return order: '+data[i].PkReturnOrderID+'</h4>\

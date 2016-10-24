@@ -5,6 +5,7 @@ class Consumer extends CI_Controller {
   
   public function __construct(){
     parent::__construct();
+    $this->load->helper("url");
     
     $this->Customerid=$_GET['Customer'];
 
@@ -36,7 +37,7 @@ class Consumer extends CI_Controller {
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-    curl_setopt($ch, CURLOPT_URL, "http://ws.developer.bleckmann.apoyaretail.com/api/CustomerLanguage/GetCustomerLanguagebyId".$data_url);
+    curl_setopt($ch, CURLOPT_URL, "http://returns.dev.apoyar.eu/api/CustomerLanguage/GetCustomerLanguagebyId".$data_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     // Send the request
@@ -60,7 +61,7 @@ class Consumer extends CI_Controller {
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-    curl_setopt($ch, CURLOPT_URL, "http://ws.developer.bleckmann.apoyaretail.com/api/Translation/GetAllTranslationsbyCustomerid".$data_url);
+    curl_setopt($ch, CURLOPT_URL, "http://returns.dev.apoyar.eu/api/Translation/GetAllTranslationsbyCustomerid".$data_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     // Send the request
@@ -91,7 +92,7 @@ class Consumer extends CI_Controller {
         }
       }
     }
-
+    
     $data['Customerid']=$this->Customerid;
     $data['LanguageName']=$this->Languagename;
 
