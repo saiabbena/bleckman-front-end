@@ -92,7 +92,7 @@ class Consumer extends CI_Controller {
         }
       }
     }
-
+    
     $data['Customerid']=$this->Customerid;
     $data['LanguageName']=$this->Languagename;
 
