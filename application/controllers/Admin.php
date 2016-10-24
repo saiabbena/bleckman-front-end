@@ -145,6 +145,12 @@ class Admin extends CI_Controller {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#language-panel');
 
   }
+  //login screen for customer view
+  public function login(){
+    $this->load->view('admin/templates/header');
+    $this->load->view('admin/login');
+    $this->load->view('admin/templates/footer');
+  }
   public function debug(){
     header('Content-Type: application/json');
     echo json_encode($_POST);

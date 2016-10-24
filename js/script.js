@@ -303,9 +303,10 @@ $(document).ready(function(){
           Apoyar: result.token
       },
       dataType: 'json',
-      success: function () {
+      success: function (data) {
         $('#screen3-success').show('slow');
         console.log(submition);
+        console.log(data);
       },
       fail: function(){
         $('#screen3-fail').show('slow')
