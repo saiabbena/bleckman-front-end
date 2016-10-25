@@ -55,6 +55,24 @@ class Admin extends CI_Controller {
 
     return $result;
   }
+  private function getCustomerAppearanceSettings(){
+	  $data = array('Customerid'=>$_SESSION['Customerid']);
+	  $data_url='?'.http_build_query($data);
+	  $data_string = json_encode($data);
+	  $ch = curl_init();
+
+	  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+	  curl_setopt($ch, CURLOPT_URL, "http://returns.dev.apoyar.eu/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+	  // Send the request
+	  $result = json_decode(curl_exec($ch), true);
+	  // Free up the resources $curl is using
+	  curl_close($ch);
+
+	  return $result;	  
+	  
+  }
   public function settings(){ 
     $data['customerLanguages']=$this->getCustomerLanguages();
 
@@ -74,16 +92,18 @@ class Admin extends CI_Controller {
     $this->load->view('admin/templates/footer');
   }
   public function appearance(){
-    $this->load->view('admin/templates/appearance_header');
-    $this->load->view('admin/appearance');
-    $this->load->view('admin/templates/footer');
+	  
+	  $data['appearanceSettings'] = $this->getCustomerAppearanceSettings();	  
+	  $this->load->view('admin/templates/appearance_header');
+	  $this->load->view('admin/appearance', $data);
+	  $this->load->view('admin/templates/footer');
   }
   public function submitReturnReasons(){
     header('Content-Type: application/json');
+    //echo json_encode($_POST);exit();
+	//print_r($_POST['ReturnReasons']);exit();
     //echo json_encode($_POST);
-
-    echo json_encode($_POST);
-
+	//echo http_build_query($_POST['ReturnReasons']);exit();
     //
     //
 
@@ -91,10 +111,7 @@ class Admin extends CI_Controller {
 
     curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/ReturnReason/PostManageReturnReason");
     curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS,
-                http_build_query(['ReturnReasons'=>$_POST['ReturnReasons']]));
-
-    
+    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['ReturnReasons'=>$_POST['ReturnReasons']]));    
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     $server_output = curl_exec ($ch);
@@ -106,6 +123,24 @@ class Admin extends CI_Controller {
     $_SESSION['message']['rr']='Saved';
 
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#rr-panel');
+  }
+  public function save_appearance_settings(){
+	  header('Content-Type: application/json');	 
+	  //print_r($_POST['CustomerSetting']);exit();
+	  
+	  $_POST['CustomerSetting'][0]['Colours'] = json_encode($_POST['CustomerSetting'][0]['Colours']);	
+	  
+	  $ch = curl_init();
+	  curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/CustomerSetting/PostManageCustomerSetting");	  
+	  curl_setopt($ch, CURLOPT_POST, 1);
+	  curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['CustomerSetting'=>$_POST['CustomerSetting']]));
+	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	  $server_output = curl_exec ($ch);
+	  curl_close ($ch);
+	  
+	  //echo json_encode($server_output);exit();
+	  $_SESSION['message']['appearance']='Saved';
+	  header('Location: ' . $_SERVER['HTTP_REFERER'].'#ap-panel');
   }
   public function submitLanguages(){
     header('Content-Type: application/json');

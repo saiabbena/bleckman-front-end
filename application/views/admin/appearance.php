@@ -1,4 +1,3 @@
-
 <div class='container-fluid form1'>
   <div class='row'>
     <div class='col-xs-12 col-md-3' height='100%'>
@@ -38,9 +37,33 @@
     </div>
       
     <div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;'>
+      <div class='well' id='ap-panel' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;'>
+	  <?php 
+		//print_r($appearanceSettings);		
+		$Colors = (isset($appearanceSettings['CustomerSetting']['Colours']))?json_decode($appearanceSettings['CustomerSetting']['Colours']):'' ;
+		$main_logo = (isset($appearanceSettings['CustomerSetting']['Logo']))?$appearanceSettings['CustomerSetting']['Logo']:'';
+		$PKSettingID = (isset($appearanceSettings['CustomerSetting']['PKSettingID']))?$appearanceSettings['CustomerSetting']['PKSettingID']:'';
+		$FKCustomerid = (isset($appearanceSettings['CustomerSetting']['FKCustomerid']))?$appearanceSettings['CustomerSetting']['FKCustomerid']:'';
+		if(count($Colors)>0){
+			foreach($Colors as $result){			
+				//stdClass Object ( [Header] => #625454 [Menu] => Array ( [0] => #625454 [1] => #FFFFFF ) [Accent] => Array ( [0] => #CC1543 [1] => #E25176 ) ) #FFFFFF#FFFFFF#FFFFFF
+				$header_color = (isset($Colors->Header))?$Colors->Header:'';
+				$menu_bg = (isset($Colors->Menu[0]))?$Colors->Menu[0]:'';
+				$menu_font = (isset($Colors->Menu[1]))?$Colors->Menu[1]:'';
+				$accent_bg = (isset($Colors->Accent[0]))?$Colors->Accent[0]:'';
+				$accent_font = (isset($Colors->Accent[1]))?$Colors->Accent[1]:'';
+				$dd_bg = (isset($Colors->Dropdown[0]))?$Colors->Dropdown[0]:'';
+				$dd_font = (isset($Colors->Dropdown[1]))?$Colors->Dropdown[1]:'';
+			}
+		}
+		?>
+	   <form method="POST" action="save_appearance_settings">
+	   <input name="CustomerSetting[0][PKSettingID]" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
+	   <input name="CustomerSetting[0][FKCustomerid]" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
+		
         <h3>Appearance<button class='btn btn-raised btn-success pull-right save-reasons'>Save</button></h3>
         <br><br>
+		
         <div class='row'>
           <div class='col-xs-12 col-md-4'>
             <h4>COLORS</h4>
@@ -62,7 +85,7 @@
                     HEADER
                   </td>
                   <td>
-                    <input type='color' name='color2' value='#625454' />
+                    <input type='color' name="CustomerSetting[0][Colours][Header]" value="<?php echo $header_color;?>" />
                   </td>
                 </tr>
                 <tr>
@@ -70,7 +93,8 @@
                     MENU
                   </td>
                   <td>
-                    <input type='color' name='color2' value='#1C1818' /><input type='color' name='color2' value='#FFFFFF' />
+                    <input type='color'  name="CustomerSetting[0][Colours][Menu][]" value="<?php echo $menu_bg;?>" />
+					<input type='color'  name="CustomerSetting[0][Colours][Menu][]" value="<?php echo $menu_font;?>" />
                   </td>
                 </tr>
                 <tr>
@@ -78,7 +102,8 @@
                     DROP DOWN
                   </td>
                   <td>
-                    <input type='color' name='color2' value='#CC1543' /><input type='color' name='color2' value='#FFFFFF' />
+                    <input type='color'  name="CustomerSetting[0][Colours][Dropdown][0]" value="<?php echo $dd_bg;?>" />
+					<input type='color'  name="CustomerSetting[0][Colours][Dropdown][1]" value="<?php echo $dd_font;?>" />
                   </td>
                 </tr>
                 <tr>
@@ -86,11 +111,13 @@
                     ACCENT
                   </td>
                   <td>
-                    <input type='color' name='color2' value='#CC1543' /><input type='color' name='color2' value='#E25176' />
+                    <input type='color'  name="CustomerSetting[0][Colours][Accent][0]" value="<?php echo $accent_bg;?>" />
+					<input type='color'  name="CustomerSetting[0][Colours][Accent][1]" value="<?php echo $accent_font;?>" />
                   </td>
                 </tr>
               </tbody>
             </table>
+			
           </div>
           <div class='col-xs-12 col-md-8' style='border: 0 solid #ddd; border-width: 0 0 0 1px'>
             <h4>IMAGES</h4>
@@ -157,6 +184,17 @@
           </div>
         </div>
       </div>
+	  </form>
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
     </div>
   </div>
 </div>
