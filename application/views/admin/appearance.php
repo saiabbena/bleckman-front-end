@@ -39,15 +39,16 @@
     <div class='col-xs-12 col-md-9' height='100%'>
       <div class='well' id='ap-panel' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;'>
 	  <?php 
-		//print_r($appearanceSettings);		
-		$Colors = (isset($appearanceSettings['CustomerSetting']['Colours']))?json_decode($appearanceSettings['CustomerSetting']['Colours']):'' ;
+		$Colors = json_encode(unserialize($appearanceSettings['CustomerSetting']['Colours']));
+		$Colors = json_decode($Colors);		
 		$main_logo = (isset($appearanceSettings['CustomerSetting']['Logo']))?$appearanceSettings['CustomerSetting']['Logo']:'';
 		$PKSettingID = (isset($appearanceSettings['CustomerSetting']['PKSettingID']))?$appearanceSettings['CustomerSetting']['PKSettingID']:'';
 		$FKCustomerid = (isset($appearanceSettings['CustomerSetting']['FKCustomerid']))?$appearanceSettings['CustomerSetting']['FKCustomerid']:'';
+		
 		if(count($Colors)>0){
 			foreach($Colors as $result){			
 				//stdClass Object ( [Header] => #625454 [Menu] => Array ( [0] => #625454 [1] => #FFFFFF ) [Accent] => Array ( [0] => #CC1543 [1] => #E25176 ) ) #FFFFFF#FFFFFF#FFFFFF
-				$header_color = (isset($Colors->Header))?$Colors->Header:'';
+				$header_color = (isset($Colors->Header))?$Colors->Header:'#FFFFFF';
 				$menu_bg = (isset($Colors->Menu[0]))?$Colors->Menu[0]:'';
 				$menu_font = (isset($Colors->Menu[1]))?$Colors->Menu[1]:'';
 				$accent_bg = (isset($Colors->Accent[0]))?$Colors->Accent[0]:'';
@@ -58,8 +59,8 @@
 		}
 		?>
 	   <form method="POST" action="save_appearance_settings">
-	   <input name="CustomerSetting[0][PKSettingID]" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
-	   <input name="CustomerSetting[0][FKCustomerid]" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
+	   <input name="CustomerSetting[PKSettingID]" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
+	   <input name="CustomerSetting[FKCustomerid]" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
 		
         <h3>Appearance<button class='btn btn-raised btn-success pull-right save-reasons'>Save</button></h3>
         <br><br>
@@ -85,7 +86,7 @@
                     HEADER
                   </td>
                   <td>
-                    <input type='color' name="CustomerSetting[0][Colours][Header]" value="<?php echo $header_color;?>" />
+                    <input type='color' name="CustomerSetting[Colours][Header]" value="<?php echo $header_color;?>" />
                   </td>
                 </tr>
                 <tr>
@@ -93,8 +94,8 @@
                     MENU
                   </td>
                   <td>
-                    <input type='color'  name="CustomerSetting[0][Colours][Menu][]" value="<?php echo $menu_bg;?>" />
-					<input type='color'  name="CustomerSetting[0][Colours][Menu][]" value="<?php echo $menu_font;?>" />
+                    <input type='color'  name="CustomerSetting[Colours][Menu][]" value="<?php echo $menu_bg;?>" />
+					<input type='color'  name="CustomerSetting[Colours][Menu][]" value="<?php echo $menu_font;?>" />
                   </td>
                 </tr>
                 <tr>
@@ -102,8 +103,8 @@
                     DROP DOWN
                   </td>
                   <td>
-                    <input type='color'  name="CustomerSetting[0][Colours][Dropdown][0]" value="<?php echo $dd_bg;?>" />
-					<input type='color'  name="CustomerSetting[0][Colours][Dropdown][1]" value="<?php echo $dd_font;?>" />
+                    <input type='color'  name="CustomerSetting[Colours][Dropdown][0]" value="<?php echo $dd_bg;?>" />
+					<input type='color'  name="CustomerSetting[Colours][Dropdown][1]" value="<?php echo $dd_font;?>" />
                   </td>
                 </tr>
                 <tr>
@@ -111,8 +112,8 @@
                     ACCENT
                   </td>
                   <td>
-                    <input type='color'  name="CustomerSetting[0][Colours][Accent][0]" value="<?php echo $accent_bg;?>" />
-					<input type='color'  name="CustomerSetting[0][Colours][Accent][1]" value="<?php echo $accent_font;?>" />
+                    <input type='color'  name="CustomerSetting[Colours][Accent][0]" value="<?php echo $accent_bg;?>" />
+					<input type='color'  name="CustomerSetting[Colours][Accent][1]" value="<?php echo $accent_font;?>" />
                   </td>
                 </tr>
               </tbody>
@@ -146,7 +147,7 @@
                   </td>
                   <td>
                     <div class="form-group">
-                      <input type="file" id="inputFile2" multiple="">
+                      <input type="file" id="inputFile2" multiple="" data-default-file="<?php echo base_url(); ?>img/icon-logo.gif" class="dropify" />
                       <input type="text" readonly="" class="form-control" placeholder="Upload a file">
                     </div>
                   </td>
@@ -160,7 +161,7 @@
                   </td>
                   <td>
                     <div class="form-group">
-                      <input type="file" id="inputFile2" multiple="">
+                      <input type="file" id="inputFile2" multiple="" data-default-file="<?php echo base_url(); ?>img/icon-logo.gif" class="dropify" />
                       <input type="text" readonly="" class="form-control" placeholder="Upload a file">
                     </div>
                   </td>
@@ -174,7 +175,7 @@
                   </td>
                   <td>
                     <div class="form-group">
-                      <input type="file" id="inputFile2" multiple="">
+                      <input type="file" id="inputFile2" multiple="" data-default-file="<?php echo base_url(); ?>img/icon-logo.gif" class="dropify" />
                       <input type="text" readonly="" class="form-control" placeholder="Upload a file">
                     </div>
                   </td>
@@ -184,17 +185,18 @@
           </div>
         </div>
       </div>
-	  </form>
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
-	  
+	  </form>	  
     </div>
   </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function(){	
+	// Basic
+	$('.dropify').dropify();
+	//$('.dropify-wrapper').addClass("img-circle");
+	//$('.img-circle').css({'height':'100px','width':'100px'});
+	$('.dropify-infos-inner').remove();
+	$('.dropify-wrapper').css({'height':'120px','width':'120px'});
+	$('.dropify-wrapper').css('border', '0px');
+});	
+</script>

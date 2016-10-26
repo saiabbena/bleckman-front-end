@@ -34,7 +34,8 @@
     <!--My assets-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" />
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin3.js"></script>
-    
+    <link rel="stylesheet" href="<?php echo base_url(); ?>css/dropify.css">
+	<script src="<?php echo base_url(); ?>js/dropify.min.js"></script>
   </head>
   <body id='override'>
     <div class="bm-h">

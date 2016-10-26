@@ -295,6 +295,7 @@ $(document).ready(function(){
     submition.FKCarriedID=$('input[name=sample1]:checked').val();
     apiCall=url+'Returnorder/PostReturnorder';
     $('#button3').hide('slow');
+	//console.log(submition);
     $.ajax({
       url: apiCall,
       type: 'post',

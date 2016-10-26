@@ -7,6 +7,7 @@ class Admin extends CI_Controller {
     $this->load->library('session');
     $_SESSION['Customerid']=1;
 	$this->load->helper("url");
+	//$this->load->helper("getAppearanceSettings");	
   }
 
   private function getCustomerLanguages(){
@@ -62,7 +63,8 @@ class Admin extends CI_Controller {
 	  $ch = curl_init();
 
 	  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-	  curl_setopt($ch, CURLOPT_URL, "http://returns.dev.apoyar.eu/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+	  //curl_setopt($ch, CURLOPT_URL, "http://returns.dev.apoyar.eu/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+	  curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
 	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 	  // Send the request
@@ -125,15 +127,17 @@ class Admin extends CI_Controller {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#rr-panel');
   }
   public function save_appearance_settings(){
-	  header('Content-Type: application/json');	 
-	  //print_r($_POST['CustomerSetting']);exit();
-	  
-	  $_POST['CustomerSetting'][0]['Colours'] = json_encode($_POST['CustomerSetting'][0]['Colours']);	
+	  header('Content-Type: application/json');
+	  $post_data = ['PKSettingID'=>$_POST['CustomerSetting']['PKSettingID'],
+	  'FKCustomerid'=>$_POST['CustomerSetting']['FKCustomerid'],
+	  'Colours'=>serialize($_POST['CustomerSetting']['Colours'])];
 	  
 	  $ch = curl_init();
-	  curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/CustomerSetting/PostManageCustomerSetting");	  
+	  //curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/CustomerSetting/PostManageCustomerSetting");	
+	  curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/Api/CustomerSetting/PostManageCustomerSetting");	
+	  
 	  curl_setopt($ch, CURLOPT_POST, 1);
-	  curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['CustomerSetting'=>$_POST['CustomerSetting']]));
+	  curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_data));
 	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	  $server_output = curl_exec ($ch);
 	  curl_close ($ch);
