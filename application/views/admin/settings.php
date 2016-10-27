@@ -367,6 +367,7 @@
               $compiledLangs[$i]=array();
               foreach ($customerLanguages as $key=>$val) {
                 array_push($compiledLangs[$i], ['Value'=>$val['Page'.($i+1).'heading'], 'ArrayPos'=>[$key, 'Page'.($i+1).'heading']]);
+                
                 foreach ($val as $kkey => $vvalue) {
                   if($i==0){
                     if(strpos($kkey, 'heading')){
@@ -385,6 +386,7 @@
               echo'<p>Screen '.($key+1).' headers</p>
               <div style="border: 1px solid #ddd; padding: 20px;">';
               foreach ($value as $kkey=>$vvalue) {
+                
                 echo '
                 <div class="form-group label-floating">
                   <label for="i5" class="control-label">'.$customerLanguages[$vvalue['ArrayPos'][0]]['LanguageName'].'</label>
@@ -403,12 +405,68 @@
 
 
 
-      <div class='well' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;'>
-        <div class="alert alert-dismissible alert-success success-message3">
-          Saved!
-        </div>
-        <h3>Edit links <button id='add-return' class='btn btn-raised btn-warning pull-right'>Add</button><button class='btn btn-raised btn-success pull-right save-reasons'>Save</button></h3>
-        <table data-toggle="table">
+      <div class='well' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;' id="links-panel">
+      <form method="POST" action="submitLinks">
+      <h3>Edit links <button class='btn btn-raised btn-success pull-right save-links'>Save</button></h3>
+      <br>
+        <?php
+          if(isset($_SESSION['message']['links'])){
+            echo'
+            <div class="alert alert-dismissible alert-success">
+              '.$_SESSION['message']['links'].'
+            </div>';
+          }
+        ?>
+        
+        
+        <?php
+          $i=0;
+          $j=0;
+          $array_cnt = count($customerLanguages);
+          $compiledLinks=[];
+           foreach($customerLanguages as $key=>$value) {
+                foreach ($value as $kkey=>$vvalue) {
+                  if ( $kkey == 'Links' ) {
+                    $new_value = json_decode($vvalue);
+                    foreach ($new_value as $k => $v) {
+                      $compiledLinks[$j]=array();
+                      array_push($compiledLinks[$j], ['Value'=>$v, 'LinkText'=>$k,'ArrayPos'=>$i]);
+                      $j++;
+                    }
+                  }
+                }
+            $i++;
+           }
+        ?>
+          <?php
+            for($i=0;$i<count($customerLanguages);$i++) {
+              echo '<div style="border: 1px solid #ddd; padding: 20px;">';
+                echo '
+                <input type="hidden" value="'. $customerLanguages[$i]['PKCustomerLanguageID'] .'" name="link[' .$i . '][PKCustomerLanguageID]">
+                <input type="hidden" value="'. $customerLanguages[$i]['FkLanguageid'] .'" name="link[' .$i . '][FkLanguageid]">
+                <input type="hidden" value="'. $customerLanguages[$i]['Customerid'] .'" name="link[' .$i . '][Customerid]">
+                <div class="form-group label-floating">
+                  <label for="i5" class="control-label">'.$customerLanguages[0]['LanguageName'].'</label>
+                  <input id="search-admin" type="text" name="link[' .$i . '][' . $customerLanguages[0]['LanguageName']. ']" class="form-control" value="'.$compiledLinks[$i][0]['LinkText'].'">
+                  <span class="help-block">Edit Link Text</code></span>
+                </div>';
+                echo '
+                <div class="form-group label-floating">
+                  <label for="i5" class="control-label">'.$customerLanguages[1]['LanguageName'].'</label>
+                  <input id="search-admin" type="text" name="link[' .$i . '][' . $customerLanguages[1]['LanguageName']. ']" class="form-control" value="'.$compiledLinks[$i+count($customerLanguages)][0]['LinkText'].'">
+                  <span class="help-block">Edit Link Text</code></span>
+                </div>';
+                echo '
+                <div class="form-group label-floating">
+                  <label for="i5" class="control-label">Link Value</label>
+                  <input id="search-admin" type="text" class="form-control" name="link[' .$i . '][LinkVal]"  value="'.$compiledLinks[$i][0]['Value'].'">
+                  <span class="help-block">Edit Link Value</code></span>
+                </div>';
+             echo '</div><br>';
+            }
+          ?>
+        </form>
+<!--         <table data-toggle="table">
           <thead>
             <tr>
               <th>
@@ -453,7 +511,7 @@
               </td>
             </tr>
           </tbody>
-        </table>
+        </table> -->
       </div>
     </div>
   </div>

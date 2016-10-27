@@ -20,6 +20,8 @@ class Consumer extends CI_Controller {
         }
         else{
           $this->Languagename='English';
+          $this->Links = $l['Links'];
+          
         }
       }
     }
@@ -77,10 +79,12 @@ class Consumer extends CI_Controller {
     $data['customerLanguages']=$this->getCustomerLanguages();
     $data['all_langs']=$data['customerLanguages'];
 
+    $data['Links'] = [];
     //set customerLanguages to current selected language
     foreach($data['customerLanguages'] as $r){
       if($r['LanguageName']==$this->Languagename){
         $data['customerLanguages']=$r;
+        $data['Links'] = $r['Links'];
       }
     }
     //set translations to current selected language
@@ -92,6 +96,9 @@ class Consumer extends CI_Controller {
         }
       }
     }
+
+
+
     
     $data['Customerid']=$this->Customerid;
     $data['LanguageName']=$this->Languagename;

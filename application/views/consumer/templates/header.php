@@ -83,10 +83,19 @@
                 <li><center><img src='/img/bm-spacer.jpg' class='img-responsive'></center></li>
               </ul>
             </li>
-            <li>&nbsp;&nbsp;&nbsp;</li>
+
+            <?php
+              #echo "Links : " . $Links;
+              $newLinks = json_decode($Links);
+              foreach ($newLinks as $k => $v) {
+                echo '<li>&nbsp;&nbsp;&nbsp;</li>
+            <li><a href="'.$v.'">' . $k . '</a></li>';
+              }
+            ?>
+<!--             <li>&nbsp;&nbsp;&nbsp;</li>
             <li><a href="javascript:void(0)">Home</a></li>
             <li>&nbsp;&nbsp;&nbsp;</li>
-            <li><a href="javascript:void(0)">Support</a></li>
+            <li><a href="javascript:void(0)">Support</a></li> -->
           </ul>
         </div>
       </div>

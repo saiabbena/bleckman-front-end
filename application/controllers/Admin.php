@@ -55,10 +55,13 @@ class Admin extends CI_Controller {
 
     return $result;
   }
+
   public function settings(){ 
     $data['customerLanguages']=$this->getCustomerLanguages();
 
     $data['returnReasons']=$this->getCustomerReturnReasons();
+
+
 
     $this->load->view('admin/templates/settings_header');
     $this->load->view('admin/settings', $data);
@@ -145,8 +148,50 @@ class Admin extends CI_Controller {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#language-panel');
 
   }
-  public function debug(){
+  public function submitLinks() {
     header('Content-Type: application/json');
-    echo json_encode($_POST);
+    
+    #echo json_encode($_POST);
+    $newlinks=[];
+    $post_data = $_POST['link'];
+    for( $i=0;$i<count($post_data);$i++ ) {
+      
+      if ( $i == 0 ) {
+          $str = '{"' . $post_data[$i]['English'] .'":"'. $post_data[$i]['LinkVal'] . '", "'. $post_data[1]['English'] .'":"' .$post_data[1]['LinkVal'].'"}';
+      }
+      if ( $i == 1 ) {
+          $str = '{"' . $post_data[0]['French'] .'":"'. $post_data[0]['LinkVal'] . '", "'. $post_data[$i]['French'] .'":"' .$post_data[$i]['LinkVal'].'"}';
+      }
+      array_push( $newlinks, ["Customerid"=>$post_data[$i]['Customerid'], 
+                            "FkLanguageid" => $post_data[$i]['FkLanguageid'],
+                            "PKCustomerLanguageID"=>$post_data[$i]['PKCustomerLanguageID'] ,
+                            "Links"=> $str]);
+    }
+    echo "newlinks - " . json_encode(array("CustomerLanguages" => $newlinks));
+
+
+    $ch = curl_init();
+
+    #curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/CustomerLanguage/PostManageLinks");
+    curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/CustomerLanguage/PostManageLinks");
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,
+                http_build_query(['CustomerLanguages'=>$newlinks]));
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $server_output = curl_exec ($ch);
+
+    curl_close ($ch);
+
+    echo json_encode($server_output);
+    $_SESSION['message']['links']='Saved';
+
+    echo var_dump($_SESSION['message']);
+
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#links-panel');
+  }
+  public function debug() {
+    header('Content-Type: application/json');
   }
 }
