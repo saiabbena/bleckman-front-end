@@ -1,10 +1,44 @@
+<?php	
+	$header_color = get_appearance_value('header_color');
+	$menu_bg = get_appearance_value('menu_bg');
+	$menu_font = get_appearance_value('menu_font');
+	$accent_1 = get_appearance_value('accent_1');
+	$accent_2 = get_appearance_value('accent_2');
+	$dd_bg = get_appearance_value('dd_bg');
+	$dd_font = get_appearance_value('dd_font');
+	
+	$hdr_css = 'style="color:'.$header_color.'"';
+	$menu_css = 'style="color:'.$menu_font.';background-color:'.$menu_bg.'"';
+	//style="border-bottom: 15px solid #E25176; padding-bottom: 40px;"
+	$border_bottom = 'style="border-bottom: 15px solid '.$accent_2.'; padding-bottom: 40px;"';
+	$btn_bg = 'style="background-color:'.$accent_1.'"';
+	
+/*admin css*/
+
+
+?>
+<style scoped>
+.bm-nav-center{
+  padding: 20px;
+  font-size: 18px;
+  border-bottom: 1px solid #ddd;
+  color: #000;
+}
+.bm-nav-center:hover{
+  background-color: <?php echo $menu_bg?> !important;
+  color: <?php echo $menu_font?> !important;
+  cursor: pointer; 
+  cursor: hand;
+  
+}
+</style>
 <div class='container-fluid form1'>
   <div class='row'>
     <div class='col-xs-12 col-md-3' height='100%'>
-      <div class='well' style='border-bottom: 15px solid #22b8aa; padding-bottom: 40px;'>
+      <div class='well'  <?php echo $border_bottom?>>
         <div class='row'>
           <div class='col-md-12 text-center' >
-            <h3><b>TRUE RELIGION</b></h3><br>
+            <h3 <?php echo $hdr_css?>><b>TRUE RELIGION</b></h3><br>
           </div>
           <a href='orders'>
           <div class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
@@ -19,7 +53,7 @@
           </div>
           </a>
           <a href='settings'>
-          <div style='background-color: #009688; color: #fff;' class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+          <div <?php echo $menu_css?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-3.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Settings</span>
           </div>
@@ -37,7 +71,7 @@
     </div>
       
     <div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well' id='rr-panel' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;'>
+      <div class='well' id='rr-panel'  <?php echo $border_bottom?>>
         <?php
           if(isset($_SESSION['message']['rr'])){
             echo'
@@ -49,7 +83,7 @@
         
         <form method="POST" action="submitReturnReasons">
         <!--<form method="POST" action="debug">-->
-        <h3>Edit return reasons 
+        <h3 <?php echo $hdr_css?>>Edit return reasons 
 		<input name="ReturnReasons" class="ReturnReasons" value="1" type="hidden">
         <button type="button" data-toggle="modal" data-target="#myModal" id='add-return' class='btn btn-raised btn-warning pull-right'>Add</button>       
         <button class='btn btn-raised btn-success pull-right save-reasons' type="submit">Save</button>
@@ -129,7 +163,7 @@
               <form method="POST" action="submitReturnReasons">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Add a return reason</h4>
+                <h4 class="modal-title" id="myModalLabel" <?php echo $hdr_css?>>Add a return reason</h4>
               </div>
               <div class="modal-body">
                 <?php
@@ -226,7 +260,7 @@
 
         
       </div>
-      <div class='well' id='language-panel' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;'>
+      <div class='well' id='language-panel'  <?php echo $border_bottom?>>
         <?php
           if(isset($_SESSION['message']['languages'])){
             echo'
@@ -238,11 +272,11 @@
         <!--<form method="POST" action="http://ws.developer.bleckmann.apoyaretail.com/api/CustomerLanguage/GetCustomerLanguagebyId">-->
         <form method="POST" action="submitLanguages">
         
-        <h3>Edit languages <button class='btn btn-raised btn-success pull-right save-reasons'>Save</button></h3>
+        <h3 <?php echo $hdr_css?>>Edit languages <button class='btn btn-raised btn-success pull-right save-reasons'>Save</button></h3>
         
         <br>
         
-        <h4>Choose a default language</h4>
+        <h4 <?php echo $hdr_css?>>Choose a default language</h4>
         
         <br>
         <div class='form-group'>
@@ -359,7 +393,7 @@
             </tr>
           </tbody>
         </table>-->
-        <h4>Edit Header Translations </h4><br>
+        <h4 <?php echo $hdr_css?>>Edit Header Translations </h4><br>
         <div id='header-translations'>
           <?php
             $compiledLangs=[];
@@ -403,11 +437,11 @@
 
 
 
-      <div class='well' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;'>
+      <div class='well'  <?php echo $border_bottom?>>
         <div class="alert alert-dismissible alert-success success-message3">
           Saved!
         </div>
-        <h3>Edit links <button id='add-return' class='btn btn-raised btn-warning pull-right'>Add</button><button class='btn btn-raised btn-success pull-right save-reasons'>Save</button></h3>
+        <h3 <?php echo $hdr_css?>>Edit links <button id='add-return' class='btn btn-raised btn-warning pull-right'>Add</button><button class='btn btn-raised btn-success pull-right save-reasons'>Save</button></h3>
         <table data-toggle="table">
           <thead>
             <tr>

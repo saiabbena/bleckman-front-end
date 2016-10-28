@@ -1,3 +1,18 @@
+<?php	
+	$header_color = get_appearance_value('header_color', $Customerid);
+	$menu_bg = get_appearance_value('menu_bg', $Customerid);
+	$menu_font = get_appearance_value('menu_font', $Customerid);
+	$accent_1 = get_appearance_value('accent_1', $Customerid);
+	$accent_2 = get_appearance_value('accent_2', $Customerid);
+	$dd_bg = get_appearance_value('dd_bg', $Customerid);
+	$dd_font = get_appearance_value('dd_font', $Customerid);
+	
+	$hdr_css = 'style="color:'.$header_color.'"';
+	$menu_css = 'style="color:'.$menu_font.';background-color:'.$menu_bg.'"';
+	//style="border-bottom: 15px solid #E25176; padding-bottom: 40px;"
+	$border_bottom = 'style="border-bottom: 15px solid '.$accent_2.'; padding-bottom: 40px;"';
+	$btn_bg = 'style="background-color:'.$accent_1.'"';
+?>
   <!--I just added some commented text for testing-->
   <div class='container-fluid form1'>
     <div class='row'>

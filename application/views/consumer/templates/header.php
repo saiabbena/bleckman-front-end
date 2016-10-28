@@ -38,14 +38,11 @@
 
     <!--My assets-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" />
-    <script type="text/javascript" src="<?php echo base_url();?>js/script.js"></script>
-    
-    
-    
+    <script type="text/javascript" src="<?php echo base_url();?>js/script.js"></script>    
   </head>
   <body id='override'>
     <div class="bm-h">
-      <img src="/img/logo.png">
+      <img src="<?php echo ($logo != '')?$logo:'/img/logo.png'?>">
     </div>
     <div class="navbar navbar-inverse">
       <div class="container-fluid">
@@ -80,7 +77,7 @@
                     }
                   }
                 ?>
-                <li><center><img src='/img/bm-spacer.jpg' class='img-responsive'></center></li>
+                <li><center><img src="<?php echo ($spacer != '')?$spacer:'/img/bm-spacer.jpg'?>" class='img-responsive'></center></li>
               </ul>
             </li>
             <li>&nbsp;&nbsp;&nbsp;</li>

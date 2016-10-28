@@ -6,6 +6,7 @@ class Consumer extends CI_Controller {
   public function __construct(){
     parent::__construct();
     $this->load->helper("url");
+	$this->load->helper("get_appearance_settings.php");
     
     $this->Customerid=$_GET['Customer'];
 
@@ -92,9 +93,14 @@ class Consumer extends CI_Controller {
         }
       }
     }
-    
-    $data['Customerid']=$this->Customerid;
+    $customer_id = $this->Customerid;
+    $data['Customerid']= $customer_id;
     $data['LanguageName']=$this->Languagename;
+	//Use in Live
+	  /**/
+	$data['logo'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/logo/logo.png';
+	$data['spacer'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/spacer/spacer.png';
+	$data['loading'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/loading/loading.gif';
 
     $this->load->view('consumer/templates/header', $data);
     $this->load->view('consumer/portal', $data);

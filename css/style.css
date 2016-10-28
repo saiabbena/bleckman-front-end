@@ -139,3 +139,10 @@
 .success-message3{
   display: none;
 }
+.no_margin{
+margin:0px !important;
+}
+.no_padding{
+	margin:0px !important;
+}
+.err_msg{display:none;color:#FF0000;}
