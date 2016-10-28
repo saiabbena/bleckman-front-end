@@ -155,11 +155,22 @@ $(document).ready(function(){
   function updateStats(){
     var from=$('#stat-from').val();
     var to=$('#stat-to').val();
+    var from_array = [];
+    var to_array = [];
+    from_array = from.split("-");
+    to_array = to.split("-");
+    var new_from = from_array[2] + "-" + from_array[1] + "-" + from_array[0];
+    var new_to = to_array[2] + "-" + to_array[1] + "-" + to_array[0];
+
+    // console.log("from : " + from );
+    // console.log("new_from : " + new_from );
+    // console.log("to : " + to );
+    // console.log("new_to : " + new_to );
 
     apiCall=url+'returnorder/GetReturnOrderbydates';
     $('.loading-screen').slideDown('slow');
 
-    $.get(apiCall, {FromDate: from, ToDate: to, Customerid: customerId})
+    $.get(apiCall, {FromDate: new_from, ToDate: new_to, Customerid: customerId})
     .success(function(data){
       $('.loading-screen').slideUp('slow');
 
@@ -171,7 +182,7 @@ $(document).ready(function(){
         sum=sum+data[i].Returnordertotal;
       }
 
-      $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-3 > div.well.hidden-xs.hidden-sm > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody > tr:nth-child(2) > td:nth-child(2)').html('<b> &euro; '+(Math.round(sum * 100) / 100)+'</b>');
+      $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-3 > div.well.hidden-xs.hidden-sm > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody > tr:nth-child(2) > td:nth-child(2)').html('<b> &euro; '+(Math.round(sum * 100) / 100).toFixed(2)+'</b>');
 
       if(data.length==0){
         $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-3 > div.well.hidden-xs.hidden-sm > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody > tr:nth-child(1) > td:nth-child(2)').html('N/A');

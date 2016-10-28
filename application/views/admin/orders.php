@@ -46,13 +46,13 @@
               <th>
                 <b>From</b>
                 <div class="form-group">
-                  <input id='stat-from' type='text' class='form-control' placeholder="yyyy-mm-dd">
+                  <input id='stat-from' type='text' class='form-control' placeholder="dd-mm-yyyy">
                 </div>
               </th>
               <th>
                 <b>To</b>
                 <div class="form-group">
-                  <input id='stat-to' type='text' class='form-control' placeholder="yyyy-mm-dd">
+                  <input id='stat-to' type='text' class='form-control' placeholder="dd-mm-yyyy">
                 </div>
               </th>
               <th>                
