@@ -182,7 +182,7 @@
 
 
         <?php
-          foreach ($returnReasons as $key=>$value){
+          foreach ($returnReasons as $key=>$value) {
             echo'
              <div class="modal fade" id="del-return'.$value[0]['Uid'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
@@ -289,76 +289,6 @@
           </div>
         </div>
         <br><br><br><br>
-        <!--<table data-toggle="table">
-          <thead>
-            <tr>
-              <th>
-              </th>
-              <th>
-              </th>
-              <th>
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class='text-center'>
-                ENGLISH
-              </td>
-              <td>
-                <div class="togglebutton text-center">
-                  <label>
-                    <input type="checkbox" checked="">
-                  </label>
-                </div>
-              </td>
-              <td>
-                <div class="radio text-center">
-                  <label>
-                    <input type="radio" name="sample1" value="option1" checked=""> Default
-                  </label>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td class='text-center'>
-                DUTCH
-              </td>
-              <td>
-                <div class="togglebutton text-center">
-                  <label>
-                    <input type="checkbox" checked="">
-                  </label>
-                </div>
-              </td>
-              <td>
-                <div class="radio text-center">
-                  <label>
-                    <input type="radio" name="sample1" value="option1" checked=""> Default
-                  </label>
-                </div>
-              </td>
-            </tr><tr>
-              <td class='text-center'>
-                FRENCH
-              </td>
-              <td>
-                <div class="togglebutton text-center">
-                  <label>
-                    <input type="checkbox" checked="">
-                  </label>
-                </div>
-              </td>
-              <td>
-                <div class="radio text-center">
-                  <label>
-                    <input type="radio" name="sample1" value="option1" checked=""> Default
-                  </label>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table>-->
         <h4>Edit Header Translations </h4><br>
         <div id='header-translations'>
           <?php
@@ -407,6 +337,7 @@
 
       <div class='well' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;' id="links-panel">
       <form method="POST" action="submitLinks">
+      <button type="button" data-toggle="modal" data-target="#myLinksModal" id='add-link' class='btn btn-raised btn-warning pull-right'>Add</button>
       <h3>Edit links <button class='btn btn-raised btn-success pull-right save-links'>Save</button></h3>
       <br>
         <?php
@@ -417,102 +348,147 @@
             </div>';
           }
         ?>
-        
+
         
         <?php
           $i=0;
           $j=0;
           $array_cnt = count($customerLanguages);
           $compiledLinks=[];
-           foreach($customerLanguages as $key=>$value) {
+          foreach($customerLanguages as $key=>$value) {
                 foreach ($value as $kkey=>$vvalue) {
                   if ( $kkey == 'Links' ) {
                     $new_value = json_decode($vvalue);
+                    #echo "new_value : " . json_encode($new_value) . "<br/>";
+                    
                     foreach ($new_value as $k => $v) {
-                      $compiledLinks[$j]=array();
+                      $compiledLinks[$j] = array();
+                      #echo "v : " . $v . "<br/>";
                       array_push($compiledLinks[$j], ['Value'=>$v, 'LinkText'=>$k,'ArrayPos'=>$i]);
                       $j++;
                     }
                   }
                 }
             $i++;
-           }
+          }
+          #echo "compiledLinks : " . json_encode($compiledLinks);
         ?>
+            
           <?php
-            for($i=0;$i<count($customerLanguages);$i++) {
+             $cmp_cnt = (count($compiledLinks)/count($customerLanguages));
+            for($i=0;$i<$cmp_cnt;$i++) {
               echo '<div style="border: 1px solid #ddd; padding: 20px;">';
+              #echo "compiledLinks : " . json_encode($compiledLinks[$i]);
+              #echo "cnt : " . ($j+$cmp_cnt);
+              for($j=0;$j<count($customerLanguages);$j++) {
                 echo '
-                <input type="hidden" value="'. $customerLanguages[$i]['PKCustomerLanguageID'] .'" name="link[' .$i . '][PKCustomerLanguageID]">
-                <input type="hidden" value="'. $customerLanguages[$i]['FkLanguageid'] .'" name="link[' .$i . '][FkLanguageid]">
-                <input type="hidden" value="'. $customerLanguages[$i]['Customerid'] .'" name="link[' .$i . '][Customerid]">
-                <div class="form-group label-floating">
-                  <label for="i5" class="control-label">'.$customerLanguages[0]['LanguageName'].'</label>
-                  <input id="search-admin" type="text" name="link[' .$i . '][' . $customerLanguages[0]['LanguageName']. ']" class="form-control" value="'.$compiledLinks[$i][0]['LinkText'].'">
-                  <span class="help-block">Edit Link Text</code></span>
-                </div>';
-                echo '
-                <div class="form-group label-floating">
-                  <label for="i5" class="control-label">'.$customerLanguages[1]['LanguageName'].'</label>
-                  <input id="search-admin" type="text" name="link[' .$i . '][' . $customerLanguages[1]['LanguageName']. ']" class="form-control" value="'.$compiledLinks[$i+count($customerLanguages)][0]['LinkText'].'">
-                  <span class="help-block">Edit Link Text</code></span>
-                </div>';
+                  <div class="form-group label-floating">
+                    <label for="i5" class="control-label">'.$customerLanguages[$j]['LanguageName'].'</label>
+                    <input id="search-admin" type="text" name="link[' .$i . '][' . $customerLanguages[$j]['LanguageName']. ']" class="form-control" value="'.$compiledLinks[$i+($cmp_cnt*$j)][0]['LinkText'].'">
+                    <span class="help-block">Edit Link Text</code></span>
+                  </div>';
+              }
                 echo '
                 <div class="form-group label-floating">
                   <label for="i5" class="control-label">Link Value</label>
                   <input id="search-admin" type="text" class="form-control" name="link[' .$i . '][LinkVal]"  value="'.$compiledLinks[$i][0]['Value'].'">
-                  <span class="help-block">Edit Link Value</code></span>
+                  <span class="help-block">Edit link target location</code></span>
                 </div>';
-             echo '</div><br>';
+                echo '<button type="button" data-toggle="modal" data-target="#del-link'.$i.'" class="btn btn-raised btn-danger btn-warning pull-right">Delete</button><br><br>';
+                echo '</div><br>';
             }
           ?>
         </form>
-<!--         <table data-toggle="table">
-          <thead>
-            <tr>
-              <th>
-                Link text
-              </th>
-              <th>
-                Link location
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Link text 1</label>
-                  <input id='search-admin' type="text" class="form-control" id="i5" value="Home">
-                  <span class="help-block">Edit the link's text</code></span>
-                </div>
-              </td>
-              <td>
-                <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Link location</label>
-                  <input id='search-admin' type="text" class="form-control" id="i5" value="http://bleckmann.com">
-                  <span class="help-block">Edit link target location</code></span>
-                </div>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Link text</label>
-                  <input id='search-admin' type="text" class="form-control" id="i5" value="Support">
-                  <span class="help-block">Edit the link's text</code></span>
-                </div>
-              </td>
-              <td>
-                <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Link location</label>
-                  <input id='search-admin' type="text" class="form-control" id="i5" value="http://bleckmann.com/support">
-                  <span class="help-block">Edit link target location</code></span>
-                </div>
-              </td>
-            </tr>
-          </tbody>
-        </table> -->
       </div>
+
+        <!-- Modal - Add Link -->
+        <div class="modal fade" id="myLinksModal" tabindex="-1" role="dialog" aria-labelledby="myLinksModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <form method="POST" action="submitLinks">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Add a Link</h4>
+              </div>
+              <div class="modal-body">
+               <?php
+                  $cmp_cnt = (count($compiledLinks)/count($customerLanguages));
+                  
+                  echo '<div style="border: 1px solid #ddd; padding: 20px;">';
+
+                  for($i=0;$i<$cmp_cnt;$i++) {
+                    
+                    for($j=0;$j<count($customerLanguages);$j++) {
+                      echo '
+                          <input id="search-admin" type="hidden" name="link[' .$i . '][' . $customerLanguages[$j]['LanguageName']. ']" class="form-control" value="'.$compiledLinks[$i+($cmp_cnt*$j)][0]['LinkText'].'">
+                          ';
+                    }
+                      echo '
+                        <input id="search-admin" type="hidden" class="form-control" name="link[' .$i . '][LinkVal]"  value="'.$compiledLinks[$i][0]['Value'].'">';
+                  }
+                  for($j=0;$j<count($customerLanguages);$j++) {
+                    echo '
+                      <div class="form-group label-floating">
+                        <label for="i5" class="control-label">'.$customerLanguages[$j]['LanguageName'].'</label>
+                        <input id="search-admin" type="text" name="link[' .$cmp_cnt . '][' . $customerLanguages[$j]['LanguageName']. ']" class="form-control" value="">
+                        <span class="help-block">Add Link Text</code></span>
+                      </div>';
+                    }
+
+                    echo '
+                    <div class="form-group label-floating">
+                      <label for="i5" class="control-label">Link Value</label>
+                      <input id="search-admin" type="text" name="link['. ($cmp_cnt) .'][LinkVal]" class="form-control" value="">
+                      <span class="help-block">Add link target location</code></span>
+                    </div>';
+                    echo '</div><br>';
+              ?>
+              </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add</button>
+              </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- Modal - Delete Link -->
+        <?php
+            $cmp_cnt = (count($compiledLinks)/count($customerLanguages));
+            for($i=0;$i<$cmp_cnt;$i++) {
+              echo'
+               <div class="modal fade" id="del-link'.$i.'" tabindex="-1" role="dialog" aria-labelledby="myLinksModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <form method="POST" action="deleteLinks">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="myModalLabel">Delete Link?</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p>Are you sure you want to delete this link?</p></div>
+              ';
+                for($j=0;$j<count($customerLanguages);$j++) {
+                      echo '
+                          <input id="search-admin" type="hidden" name="link[' . $customerLanguages[$j]['LanguageName']. ']" class="form-control" value="'.$compiledLinks[$i+($cmp_cnt*$j)][0]['LinkText']. '$&*#' . $compiledLinks[$i][0]['Value'] .'">
+                          ';
+                    }
+                      // echo '
+                      //   <input id="search-admin" type="hidden"  name="link[' .$i . '][LinkVal]"  value="'.$compiledLinks[$i][0]['Value'].'">';
+                echo'
+                    
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-danger">Delete</button>
+                    </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              ';
+          }
+        ?>
     </div>
   </div>
 </div>

@@ -32,7 +32,6 @@
     </div>
   </div>
   
-  
   <div class='container-fluid form2'>
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1'>
