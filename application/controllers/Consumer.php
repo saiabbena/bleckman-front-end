@@ -103,24 +103,25 @@ class Consumer extends CI_Controller {
     
     $data['Customerid']=$this->Customerid;
     $data['LanguageName']=$this->Languagename;
-	//Use in Live
-	/* In header I have put the (style scoped) for specific requirement*/
-	$hdr_bg = get_appearance_value('header_color', $customer_id);
-	$menu_bg = get_appearance_value('menu_bg', $customer_id);	
-	$dd_bg = get_appearance_value('dd_bg', $customer_id);
-	
-	$data['menu_font'] = get_appearance_value('menu_font', $customer_id);
-	$data['accent_1'] = get_appearance_value('accent_1', $customer_id);
-	$data['accent_2'] = get_appearance_value('accent_2', $customer_id);	
-	$data['dd_font'] = get_appearance_value('dd_font', $customer_id);	
-	
-	$data['dd_bg_style'] = 'style="background-color:'.$dd_bg.' !important;"';	
-	$data['menu_bg_style'] = 'style="background-color:'.$menu_bg.' !important;"';
-	$data['hdr_bg_style'] = 'style="background-color:'.$hdr_bg.' !important"';
-	
-	$data['logo'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/logo/logo.png';
-	$data['spacer'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/spacer/spacer.png';
-	$data['loading'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/loading/loading.gif';	
+    $customer_id=$this->Customerid;
+  	//Use in Live
+  	/* In header I have put the (style scoped) for specific requirement*/
+  	$hdr_bg = get_appearance_value('header_color', $customer_id);
+  	$menu_bg = get_appearance_value('menu_bg', $customer_id);	
+  	$dd_bg = get_appearance_value('dd_bg', $customer_id);
+  	
+  	$data['menu_font'] = get_appearance_value('menu_font', $customer_id);
+  	$data['accent_1'] = get_appearance_value('accent_1', $customer_id);
+  	$data['accent_2'] = get_appearance_value('accent_2', $customer_id);	
+  	$data['dd_font'] = get_appearance_value('dd_font', $customer_id);	
+  	
+  	$data['dd_bg_style'] = 'style="background-color:'.$dd_bg.' !important;"';	
+  	$data['menu_bg_style'] = 'style="background-color:'.$menu_bg.' !important;"';
+  	$data['hdr_bg_style'] = 'style="background-color:'.$hdr_bg.' !important"';
+  	
+  	$data['logo'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/logo/logo.png';
+  	$data['spacer'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/spacer/spacer.png';
+  	$data['loading'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/loading/loading.gif';	
 	
 	
 
