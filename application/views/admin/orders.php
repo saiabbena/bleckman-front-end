@@ -45,13 +45,13 @@
               <th>
                 <b>From</b>
                 <div class="form-group">
-                  <input id='stat-from' type='text' class='form-control' placeholder="yyyy-mm-dd">
+                  <input id='stat-from' type='text' class='form-control' placeholder="dd-mm-yyyy">
                 </div>
               </th>
               <th>
                 <b>To</b>
                 <div class="form-group">
-                  <input id='stat-to' type='text' class='form-control' placeholder="yyyy-mm-dd">
+                  <input id='stat-to' type='text' class='form-control' placeholder="dd-mm-yyyy">
                 </div>
               </th>
               <th>                
@@ -87,10 +87,22 @@
     </div>
       
     <div class='col-xs-12 col-md-9' height='100%'>
+<<<<<<< HEAD
       <div class='well'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
+=======
+      <div class='well' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;' id="orders-messages">
+>>>>>>> BugFixes
         <div class="alert alert-dismissible alert-primary">
           Listing the latest 20 returned orders
         </div>
+        <?php
+          if(isset($_SESSION['message']['orders-messages'])){
+            echo'
+            <div class="alert alert-dismissible alert-success">
+              '.$_SESSION['message']['orders-messages'].'
+            </div>';
+          }
+        ?>
         <table data-toggle="table">
           <thead>
             <tr>
