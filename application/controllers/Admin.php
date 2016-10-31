@@ -80,6 +80,8 @@ class Admin extends CI_Controller {
 
     $data['returnReasons']=$this->getCustomerReturnReasons();
 
+
+
     $this->load->view('admin/templates/settings_header');
     $this->load->view('admin/settings', $data);
     $this->load->view('admin/templates/footer');
@@ -198,9 +200,108 @@ class Admin extends CI_Controller {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#language-panel');
 
   }
-  public function debug(){
+  public function submitLinks() {
     header('Content-Type: application/json');
-    echo json_encode($_POST);
+    
+    #echo json_encode($_POST) . "\r\n";
+    $newlinks=[];
+    $post_data = $_POST['link'];
+
+    $customerLanguages=$this->getCustomerLanguages();
+    for( $i=0;$i<count($customerLanguages);$i++ ) {
+      $str = '{"';
+      foreach($post_data as $key => $value) {
+        if ( $value[$customerLanguages[$i]['LanguageName']] && $value['LinkVal'] ) {
+          $str = $str . $value[$customerLanguages[$i]['LanguageName']] . '":"' . $value['LinkVal'] . '","';
+        }
+      }
+
+      $str = $str . '"}';
+      $str = str_replace(',""}', '}', $str);
+      echo "str : " . $str . "\r\n";
+      array_push( $newlinks, ["Customerid"=>$customerLanguages[$i]['Customerid'], 
+                            "FkLanguageid" => $customerLanguages[$i]['FkLanguageid'],
+                            "PKCustomerLanguageID"=>$customerLanguages[$i]['PKCustomerLanguageID'] ,
+                            "Links"=> $str]);
+    }
+    echo "newlinks - " . json_encode(array("CustomerLanguages" => $newlinks));
+    $ch = curl_init();
+
+    #curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/CustomerLanguage/PostManageLinks");
+    curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/CustomerLanguage/PostManageLinks");
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,
+                http_build_query(['CustomerLanguages'=>$newlinks]));
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $server_output = curl_exec ($ch);
+
+    curl_close ($ch);
+
+    echo json_encode($server_output);
+    $_SESSION['message']['links']='Saved';
+
+    echo var_dump($_SESSION['message']);
+
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#links-panel');
+  }
+public function deleteLinks() {
+    header('Content-Type: application/json');
+    
+    $newlinks=[];
+    $post_data = $_POST['link'];
+
+    echo "post_data : " . json_encode($post_data) . "\r\n";
+    echo 'en test :  '. '"' . $post_data['English'] . '"' . "\r\n";
+
+
+    $customerLanguages=$this->getCustomerLanguages();
+    for( $i=0;$i<count($customerLanguages);$i++ ) {
+      $del_str = $post_data[$customerLanguages[$i]['LanguageName']];
+    $del_str = str_replace('$&*#', '":"', $del_str);
+    $del_str = '"' . $del_str . '"';
+      echo "del_str : " . $del_str . "\r\n";
+      $str = $customerLanguages[$i]['Links'];
+
+      echo "str : " . $str . "\r\n";
+      $str = str_replace($del_str, '', $str );
+      $str = str_replace(',,', ',', $str );
+      $str = str_replace('{,', '{', $str );
+      $str = str_replace(',}', '}', $str );
+      echo "new str : " . $str . "\r\n" . "\r\n";
+
+      array_push( $newlinks, ["Customerid"=>$customerLanguages[$i]['Customerid'], 
+                            "FkLanguageid" => $customerLanguages[$i]['FkLanguageid'],
+                            "PKCustomerLanguageID"=>$customerLanguages[$i]['PKCustomerLanguageID'] ,
+                            "Links"=> $str]);
+    }
+    echo "newlinks - " . json_encode(array("CustomerLanguages" => $newlinks));
+
+
+    $ch = curl_init();
+
+    #curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/CustomerLanguage/PostManageLinks");
+    curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/CustomerLanguage/PostManageLinks");
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS,
+                http_build_query(['CustomerLanguages'=>$newlinks]));
+
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    $server_output = curl_exec ($ch);
+
+    curl_close ($ch);
+
+    echo json_encode($server_output);
+    $_SESSION['message']['links']='Saved';
+
+    echo var_dump($_SESSION['message']);
+
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#links-panel');
+  }
+  public function debug() {
+    header('Content-Type: application/json');
   }
   function change_appearance_img($param1='') {
 	  //header('Content-Type: application/json');	  

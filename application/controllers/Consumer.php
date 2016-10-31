@@ -21,6 +21,8 @@ class Consumer extends CI_Controller {
         }
         else{
           $this->Languagename='English';
+          $this->Links = $l['Links'];
+          
         }
       }
     }
@@ -78,10 +80,12 @@ class Consumer extends CI_Controller {
     $data['customerLanguages']=$this->getCustomerLanguages();
     $data['all_langs']=$data['customerLanguages'];
 
+    $data['Links'] = [];
     //set customerLanguages to current selected language
     foreach($data['customerLanguages'] as $r){
       if($r['LanguageName']==$this->Languagename){
         $data['customerLanguages']=$r;
+        $data['Links'] = $r['Links'];
       }
     }
     //set translations to current selected language
@@ -93,8 +97,11 @@ class Consumer extends CI_Controller {
         }
       }
     }
-    $customer_id = $this->Customerid;
-    $data['Customerid']= $customer_id;
+
+
+
+    
+    $data['Customerid']=$this->Customerid;
     $data['LanguageName']=$this->Languagename;
 	//Use in Live
 	/* In header I have put the (style scoped) for specific requirement*/
