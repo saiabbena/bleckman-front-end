@@ -16,33 +16,14 @@
 	//style="border-bottom: 15px solid #E25176; padding-bottom: 40px;"
 	$border_bottom = 'style="border-bottom: 15px solid '.$accent_2.'; padding-bottom: 40px;"';
 	$btn_bg = 'style="background-color:'.$accent_1.'"';
-	
-/*admin css*/
-
-
 ?>
-<style scoped>
-.bm-nav-center{
-  padding: 20px;
-  font-size: 18px;
-  border-bottom: 1px solid #ddd;
-  color: #000;
-}
-.bm-nav-center:hover{
-  background-color: <?php echo $menu_bg?> !important;
-  color: <?php echo $menu_font?> !important;
-  cursor: pointer; 
-  cursor: hand;
-  
-}
-</style>
 <div class='container-fluid form1'>
   <div class='row'>
     <div class='col-xs-12 col-md-3' height='100%'>
-      <div class='well'  <?php echo $border_bottom?>>
+      <div class='well' style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;">
         <div class='row'>
           <div class='col-md-12 text-center' >
-            <h3 <?php echo $hdr_css?>><b>TRUE RELIGION</b></h3><br>
+            <h3><b>TRUE RELIGION</b></h3><br>
           </div>
           <a href='orders'>
           <div class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
@@ -51,7 +32,7 @@
           </div>
           </a>
           <a href='appearance'>
-          <div  <?php echo $menu_css?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+          <div  style='background-color: #009688; color: #fff;' class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Appearance</span>
           </div>
@@ -75,14 +56,14 @@
     </div>
       
     <div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well' id='ap-panel' <?php echo $border_bottom?>>	   
+      <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >	   
 		<form method="POST" action="save_appearance_settings">
-        <h3 <?php echo $hdr_css?>>Appearance<button class='btn btn-raised btn-success pull-right save-reasons' <?php echo $btn_bg?>>Save</button></h3>
+        <h3 >Appearance<button class='btn btn-raised btn-success pull-right save-reasons'>Save</button></h3>
         <br><br>
 		
         <div class='row'>
           <div class='col-xs-12 col-md-4'>
-            <h4 <?php echo $hdr_css?>>COLORS </h4>
+            <h4 >COLORS </h4>
             <hr>
 			
 			<input name="CustomerSetting[PKSettingID]" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
@@ -139,7 +120,7 @@
 			</form>
           </div>
           <div class='col-xs-12 col-md-8' style='border: 0 solid #ddd; border-width: 0 0 0 1px'>
-            <h4 <?php echo $hdr_css?>>IMAGES</h4>
+            <h4 >IMAGES</h4>
             <hr>
             <table data-toggle="table">
               <thead>
@@ -170,7 +151,7 @@
 					<input name="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
 					<input name="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
 					<input name="img_type" value="logo" type="hidden">
-                      <input type="file" class="dropify" name="img_file" id="logo_img"  data-show-remove="true" data-default-file="<?php echo $logo?>"  />				  
+                      <input type="file" class="dropify" name="img_file" id="logo_img"   data-show-remove="false" data-default-file="<?php echo $logo?>"  />				  
                       <input type="text" readonly="" class="form-control" placeholder="Upload a file" />
 					   <div class="col-md-12">
 						<div class="col-md-2" id="btn_logo_div"><button class="btn btn-success no_padding no_margin btn_save_img" id="btn_logo_change">Save</button></div>
@@ -194,7 +175,7 @@
 					  <input name="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
 					  <input name="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
 					  <input name="img_type" value="spacer" type="hidden">
-                      <input type="file" id="spacer_img" name="img_file" multiple="" data-default-file="<?php echo $spacer?>" class="dropify" />
+                      <input type="file" id="spacer_img" name="img_file" multiple=""  data-show-remove="false" data-default-file="<?php echo $spacer?>" class="dropify" />
                       <input type="text" readonly="" class="form-control" placeholder="Upload a file">
 					  <div class="col-md-12">
 					  <div class="col-md-2" id="btn_spacer_div"><button class="btn btn-success no_padding no_margin btn_save_img" id="btn_spacer_change">Save</button></div>
@@ -217,7 +198,7 @@
 					  <input type="hidden" name="textBox" id="textBox" value="0" />
 					  <input name="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
 					  <input name="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
-                      <input type="file" id="loading_img" name="img_file" multiple="" data-default-file="<?php echo $loading?>" class="dropify" />
+                      <input type="file" id="loading_img" name="img_file" multiple="" data-show-remove="false" data-default-file="<?php echo $loading?>" class="dropify" />
                       <input type="text" readonly="" class="form-control" placeholder="Upload a file">
 					  <input name="img_type" value="loading" type="hidden">
 					  <div class="col-md-12">

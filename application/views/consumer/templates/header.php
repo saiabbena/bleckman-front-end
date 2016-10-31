@@ -41,10 +41,10 @@
     <script type="text/javascript" src="<?php echo base_url();?>js/script.js"></script>    
   </head>
   <body id='override'>
-    <div class="bm-h">
+    <div class="bm-h" <?php echo $hdr_bg_style?>>
       <img src="<?php echo ($logo != '')?$logo:'/img/logo.png'?>">
     </div>
-    <div class="navbar navbar-inverse">
+    <div class="navbar navbar-inverse" <?php echo ($menu_bg_style != '')?$menu_bg_style:'';?>">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-inverse-collapse">
@@ -55,14 +55,17 @@
           <p class="navbar-brand" style='margin-bottom: 0; font-weight: 400;'><?php echo (isset($translations[12]['Translation'])?strtoupper($translations[12]['Translation']):'');?></p>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
-          <ul class="nav navbar-nav">
-          </ul>
+		<style scoped>
+			.navbar-nav > li >a{color:<?php echo $menu_font;?>}
+			.dropdown.open > ul > li > a{color:<?php echo $dd_font;?>}
+		</style>
           <ul class="nav navbar-nav navbar-right">
+		    <li>&nbsp;&nbsp;&nbsp;</li>
             <li class="dropdown">
-              <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><img src='/img/<?php echo $LanguageName;?>.png' class='bm-lang-img'> &nbsp;&nbsp;&nbsp;<?php echo (isset($translations[24]['Translation'])?$translations[24]['Translation']:'');?>
+              <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><img src='<?php echo base_url();?>/img/<?php echo $LanguageName;?>.png' class='bm-lang-img'> &nbsp;&nbsp;&nbsp;<?php echo (isset($translations[24]['Translation'])?$translations[24]['Translation']:'');?>
 			  <?php //echo $translations[24]['Translation'];?>&nbsp;&nbsp;
                 <b class="caret"></b></a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" <?php echo $dd_bg_style?>>
                 <?php
                   foreach ($all_langs as $key => $value) {
                     $url_lang_string=['Lang'=>'', 'Customer'=>''];
@@ -77,7 +80,7 @@
                     }
                   }
                 ?>
-                <li><center><img src="<?php echo ($spacer != '')?$spacer:'/img/bm-spacer.jpg'?>" class='img-responsive'></center></li>
+                <li><center><img src="<?php echo $spacer?>" class='img-responsive'></center></li>
               </ul>
             </li>
             <li>&nbsp;&nbsp;&nbsp;</li>
@@ -93,7 +96,7 @@
     </div>
     <div class='loading-screen'>
       <div style='height: 40vh'></div>
-      <center><img src='/img/loading-pink.gif' style='height: 10vh'>
+      <center><img src="<?php echo ($loading != '')?$loading:base_url().'/img/loading-pink.gif'?>" style='height: 10vh'>
       <br>
       <p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo (isset($translations[23]['Translation'])?$translations[23]['Translation']:'');?>
 	  <?php //echo $translations[23]['Translation']?>...</p>

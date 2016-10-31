@@ -1,23 +1,12 @@
-<?php	
-	$header_color = get_appearance_value('header_color', $Customerid);
-	$menu_bg = get_appearance_value('menu_bg', $Customerid);
-	$menu_font = get_appearance_value('menu_font', $Customerid);
-	$accent_1 = get_appearance_value('accent_1', $Customerid);
-	$accent_2 = get_appearance_value('accent_2', $Customerid);
-	$dd_bg = get_appearance_value('dd_bg', $Customerid);
-	$dd_font = get_appearance_value('dd_font', $Customerid);
-	
-	$hdr_css = 'style="color:'.$header_color.'"';
-	$menu_css = 'style="color:'.$menu_font.';background-color:'.$menu_bg.'"';
-	//style="border-bottom: 15px solid #E25176; padding-bottom: 40px;"
-	$border_bottom = 'style="border-bottom: 15px solid '.$accent_2.'; padding-bottom: 40px;"';
-	$btn_bg = 'style="background-color:'.$accent_1.'"';
+<?php			
+	$border_bottom = 'style="border-bottom: 10px solid '.$accent_2.' !important;"';
+	$btn_bg = 'style="background-color:'.$accent_1.' !important"';
 ?>
   <!--I just added some commented text for testing-->
   <div class='container-fluid form1'>
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
-        <div class='well bm-well'>
+        <div class='well bm-well' <?php echo $border_bottom?>>
             <h2><center><?php echo (isset($translations[13]['Translation'])?$translations[13]['Translation']:'');?>
 			<?php //echo $translations[13]['Translation'];?></center></h2>
             <p class='text-center'><?php echo $customerLanguages['Page1heading']?></p>
@@ -36,7 +25,7 @@
               </div>              
               
               <br>
-              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1'><?php echo strtoupper($translations[7]['Translation']);?></button><br>
+              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1' <?php echo $btn_bg?>><?php echo strtoupper($translations[7]['Translation']);?></button><br>
               <div class="alert alert-dismissible alert-danger" id='screen1-error'>
                 <strong><?php echo $translations[16]['Translation']?></strong>
                 <?php echo $translations[15]['Translation']?>
@@ -51,7 +40,7 @@
   <div class='container-fluid form2'>
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1'>
-        <div class='well bm-well'>
+        <div class='well bm-well' <?php echo $border_bottom?>>
             <h2><center><?php echo (isset($translations[17]['Translation'])?$translations[17]['Translation']:'');?>
 			<?php //echo $translations[17]['Translation']?></center></h2>
             <p class='text-center'><?php echo $customerLanguages['Page2heading']?></p>
@@ -160,7 +149,7 @@
               <br>
               <h3><center><?php echo $translations[6]['Translation'];?>: <b style='color: #cc1543;' id='total-price'>&euro; 0.00</b></center></h3>
               <br>
-              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button2'><?php echo strtoupper($translations[7]['Translation']);?></button><br>
+              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button2' <?php echo $btn_bg?>><?php echo strtoupper($translations[7]['Translation']);?></button><br>
               <div class="alert alert-dismissible alert-danger" id='screen2-error'>
                 <strong>Whoops!</strong>
                 Please select at least one item to return.
@@ -174,7 +163,7 @@
   <div class='container-fluid form3'>
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
-        <div class='well bm-well'>
+        <div class='well bm-well' <?php echo $border_bottom?>>
           <h2><center><?php echo $translations[8]['Translation'];?></center></h2>
           <p class='text-center'><?php echo $customerLanguages['Page3heading']?></p>
           <div class="inputs">
@@ -233,7 +222,7 @@
               </tbody>
             </table>
             <br>
-            <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3'><?php echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></button><br>
+            <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3' <?php echo $btn_bg?>><?php echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></button><br>
             <div class="alert alert-dismissible alert-success" id='screen3-success'>
               <strong><?php echo $translations[21]['Translation']?></strong></strong>
               <?php echo $translations[22]['Translation']?>

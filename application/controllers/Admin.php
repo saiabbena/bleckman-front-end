@@ -212,22 +212,7 @@ class Admin extends CI_Controller {
 	  $img_file_type = $_FILES['img_file']['type'];
 	  $img_file_size = $_FILES['img_file']['size'];
 	  
-	  
-	  //print_r($_FILES);exit();
-	  //echo $PKSettingID;
-	  //echo $_FILES['img_file']['name'];
-	  //http://localhost/bleckmannapi/api/customersetting/PostUploadLoading?customerid=1
-	  /*
-	  // Create a CURLFile object
-		$cfile = new CURLFile('cats.jpg','image/jpeg','test_name');
-
-		// Assign POST data
-		$data = array('test_file' => $cfile);
-		curl_setopt($ch, CURLOPT_POST,1);
-		curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-
-	  
-	  */
+	  //print_r($_FILES);exit();	  
 	  $cfile = new CURLFile($img_file_tmp, $img_file_type, $image_type);
 	  $data = array('test_file' => $cfile);
 	  

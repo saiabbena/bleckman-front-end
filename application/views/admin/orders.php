@@ -1,47 +1,10 @@
-<?php	
-	$PKSettingID = (isset($appearanceSettings['CustomerSetting']['PKSettingID']))?$appearanceSettings['CustomerSetting']['PKSettingID']:'';
-	$FKCustomerid = (isset($appearanceSettings['CustomerSetting']['FKCustomerid']))?$appearanceSettings['CustomerSetting']['FKCustomerid']:'';
-	
-	
-	$header_color = get_appearance_value('header_color');
-	$menu_bg = get_appearance_value('menu_bg');
-	$menu_font = get_appearance_value('menu_font');
-	$accent_1 = get_appearance_value('accent_1');
-	$accent_2 = get_appearance_value('accent_2');
-	$dd_bg = get_appearance_value('dd_bg');
-	$dd_font = get_appearance_value('dd_font');
-	
-	$hdr_css = 'style="color:'.$header_color.'"';
-	$menu_css = 'style="color:'.$menu_font.';background-color:'.$menu_bg.'"';
-	//style="border-bottom: 15px solid #E25176; padding-bottom: 40px;"
-	$border_bottom = 'style="border-bottom: 15px solid '.$accent_2.'; padding-bottom: 40px;"';
-	$btn_bg = 'style="background-color:'.$accent_1.'"';
-	
-/*admin css*/
-
-
-?>
-<style scoped>
-.bm-nav-center{
-  padding: 20px;
-  font-size: 18px;
-  border-bottom: 1px solid #ddd;
-  color: #000;
-}
-.bm-nav-center:hover{
-  background-color: <?php echo $menu_bg?> !important;
-  color: <?php echo $menu_font?> !important;
-  cursor: pointer; 
-  cursor: hand;
-  
-}
 <div class='container-fluid form1'>
   <div class='row'>
     <div class='col-xs-12 col-md-3' height='100%'>
-      <div class='well'   <?php echo $border_bottom?>>
+      <div class='well'  style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;">
         <div class='row'>
           <div class='col-md-12 text-center' >
-            <h3 <?php echo $hdr_css?>><b>TRUE RELIGION</b></h3><br>
+            <h3><b>TRUE RELIGION</b></h3><br>
           </div>
           <a href='orders'>
           <div style='background-color: #009688; color: #fff;' class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
@@ -72,9 +35,9 @@
         </div>
       </div>
       <br><br>
-      <div class='well hidden-xs hidden-sm'   <?php echo $border_bottom?>>
+      <div class='well hidden-xs hidden-sm' style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;" >
         <div class='col-md-12 text-center' >
-          <h3 <?php echo $hdr_css?>><b>STATISTICS</b></h3><br>
+          <h3><b>STATISTICS</b></h3><br>
         </div>
         <table data-toggle="table">
           <thead>
@@ -124,7 +87,7 @@
     </div>
       
     <div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well'   <?php echo $border_bottom?>>
+      <div class='well'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
         <div class="alert alert-dismissible alert-primary">
           Listing the latest 20 returned orders
         </div>
