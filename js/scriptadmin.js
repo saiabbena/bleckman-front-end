@@ -88,7 +88,7 @@ $(document).ready(function(){
       <div class="modal fade" id="rOrderComment'+data[i].PkReturnOrderID+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
         <div class="modal-dialog" role="document">\
           <div class="modal-content">\
-            <form action="http://returns.dev.apoyar.eu/api/Returnorder/PostUpdateReturnorderComment" method="POST">\
+            <form action="postComment" method="POST">\
               <div class="modal-header">\
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
                 <h4 class="modal-title" id="myModalLabel">Comment for return order: '+data[i].PkReturnOrderID+'</h4>\
@@ -115,6 +115,7 @@ $(document).ready(function(){
     $('body').append(html3);
     $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody').html(html);
   }
+
   function search(){
     apiCall=url+'returnorder/PostReturnOrderbyKeywords';
     var searchInput={};
