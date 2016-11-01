@@ -110,9 +110,9 @@ class Admin extends CI_Controller {
 	  
 	  //Use in Live
 	  /**/
-	  $data['logo'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/logo/logo.png';
-	  $data['spacer'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/spacer/spacer.png';
-	  $data['loading'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/loading/loading.gif';
+	  $data['logo'] = 'http://api.bleckmann.apoyar.eu/images/'.$customer_id.'/logo/logo.png';
+	  $data['spacer'] = 'http://api.bleckmann.apoyar.eu/images/'.$customer_id.'/spacer/spacer.png';
+	  $data['loading'] = 'http://api.bleckmann.apoyar.eu/images/'.$customer_id.'/loading/loading.gif';
 	  
 	  
 	  $this->load->view('admin/templates/appearance_header');

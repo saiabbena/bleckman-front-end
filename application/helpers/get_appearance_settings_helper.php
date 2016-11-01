@@ -69,15 +69,15 @@
 						break;
 					case 'logo':
 						//echo  'http://128.0.210.62/bleckmannapi/images/'.$customer_id.'/logo/logo.png';
-						return 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/logo/logo.png';//http://returns.dev.apoyar.eu/images/1/logo/logo.png
+						return 'http://api.bleckmann.apoyar.eu/images/'.$customer_id.'/logo/logo.png';//http://api.bleckmann.apoyar.eu/images/1/logo/logo.png
 						break;
 					case 'spacer':
 						//echo  'http://128.0.210.62/bleckmannapi/images/'.$customer_id.'/spacer/spacer.png';
-						echo 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/spacer/spacer.png';
+						echo 'http://api.bleckmann.apoyar.eu/images/'.$customer_id.'/spacer/spacer.png';
 						break;
 					case 'loading':
 						//echo  'http://128.0.210.62/bleckmannapi/images/'.$customer_id.'/loading/loading.gif';
-						echo 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/loading/loading.gif';
+						echo 'http://api.bleckmann.apoyar.eu/images/'.$customer_id.'/loading/loading.gif';
 						break;
 					
 				}

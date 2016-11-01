@@ -25,6 +25,8 @@ function getCustomerSettings(){
       }
     }
     customerSettings.returnReason=tempRes;
+    console.log("debbging below : ");
+    console.log(tempRes);
     console.log(customerSettings.returnReason);
   });
 }
@@ -310,7 +312,7 @@ $(document).ready(function(){
         console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
         console.log(response);
         $('#carrier-label-modal').modal('show');
-        $('#label-iframe').attr('href', 'http://returns.dev.apoyar.eu/RoyalMail/'+response.Id+'.pdf');
+        $('#label-iframe').attr('href', 'http://api.bleckmann.apoyar.eu/RoyalMail/'+response.Id+'.pdf');
         $('.loading-screen').slideUp('slow');
         //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
       },

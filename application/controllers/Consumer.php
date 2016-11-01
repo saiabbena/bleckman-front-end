@@ -119,9 +119,9 @@ class Consumer extends CI_Controller {
   	$data['menu_bg_style'] = 'style="background-color:'.$menu_bg.' !important;"';
   	$data['hdr_bg_style'] = 'style="background-color:'.$hdr_bg.' !important"';
   	
-  	$data['logo'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/logo/logo.png';
-  	$data['spacer'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/spacer/spacer.png';
-  	$data['loading'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/loading/loading.gif';	
+  	$data['logo'] = 'http://api.bleckmann.apoyar.eu/images/'.$customer_id.'/logo/logo.png';
+  	$data['spacer'] = 'http://api.bleckmann.apoyar.eu/images/'.$customer_id.'/spacer/spacer.png';
+  	$data['loading'] = 'http://api.bleckmann.apoyar.eu/images/'.$customer_id.'/loading/loading.gif';	
 	
 	
 
