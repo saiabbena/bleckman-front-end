@@ -105,7 +105,7 @@
     </div>
     <div class='loading-screen'>
       <div style='height: 40vh'></div>
-      <center><img src="<?php echo ($loading != '')?$loading:base_url().'/img/loading-pink.gif'?>" style='height: 10vh'>
+      <center><img src="<?php echo ($loading != '' ? $loading : base_url().'/img/loading-pink.gif')?>" style='height: 10vh'>
       <br>
       <p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo (isset($translations[23]['Translation'])?$translations[23]['Translation']:'');?>
 	  <?php //echo $translations[23]['Translation']?>...</p>

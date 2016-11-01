@@ -231,7 +231,7 @@
           }
         ?>
         <!--<form method="POST" action="http://ws.developer.bleckmann.apoyaretail.com/api/CustomerLanguage/GetCustomerLanguagebyId">-->
-        <form method="POST" action="submitLanguages">
+        <form method="POST" action="debug">
         
         <h3 >Edit languages <button class='btn btn-raised btn-success pull-right save-reasons'>Save</button></h3>
         
@@ -355,7 +355,6 @@
             </tr>
           </tbody>
         </table>-->
-        <h4 >Edit Header Translations </h4><br>
         <div id='header-translations'>
           <?php
             $compiledLangs=[];

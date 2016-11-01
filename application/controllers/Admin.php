@@ -212,11 +212,13 @@ class Admin extends CI_Controller {
     header('Content-Type: application/json');
     //echo json_encode($_POST);
 
-    foreach ($_POST['Languages'] as $key => $value) {
+   foreach ($_POST['Languages'] as $key => $value) {
       $_POST['Languages'][$key]['Isdefault']="false";
       if($_POST['Languages'][$key]['LanguageName']==$_POST['DefaultLanguage']){
         $_POST['Languages'][$key]['Isdefault']="true";
       }
+      
+      unset($_POST['Languages'][$key]['Links']);
     }
     echo json_encode($_POST['Languages']);
 
@@ -242,6 +244,8 @@ class Admin extends CI_Controller {
     $_SESSION['message']['languages']='Saved';
 
     echo var_dump($_SESSION['message']);
+    
+    
 
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#language-panel');
 
@@ -371,7 +375,17 @@ public function deleteLinks() {
 
   }
   public function debug() {
-    header('Content-Type: application/json');
+    foreach ($_POST['Languages'] as $key => $value) {
+      $_POST['Languages'][$key]['Isdefault']="false";
+      if($_POST['Languages'][$key]['LanguageName']==$_POST['DefaultLanguage']){
+        $_POST['Languages'][$key]['Isdefault']="true";
+      }
+      
+      unset($_POST['Languages'][$key]['Links']);
+    }
+    
+    echo var_dump($_POST);
+   
   }
   function change_appearance_img($param1='') {
 	  //header('Content-Type: application/json');	  

@@ -11,7 +11,7 @@ var submition={};
 
 function getCustomerSettings(){
   apiCall=url+'ReturnReason/GetAllReturnReasonsbyCustomerid';
-  $.get(apiCall, {'Customerid': customerId, 'Languageid': 2})
+  $.get(apiCall, {'Customerid': customerId})
   .success(function(data){
     customerSettings.returnReason=data;
     console.log(language);

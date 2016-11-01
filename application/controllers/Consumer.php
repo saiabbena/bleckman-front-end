@@ -169,8 +169,8 @@ class Consumer extends CI_Controller {
 	$data['loading'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/loading/loading.gif';	
   
 
-    $this->load->view('consumer/templates/header', $data);
-    $this->load->view('consumer/portal', $data);
-    $this->load->view('consumer/templates/footer');
+  $this->load->view('consumer/templates/header', $data);
+  $this->load->view('consumer/portal', $data);
+  $this->load->view('consumer/templates/footer');
   }	
 }
