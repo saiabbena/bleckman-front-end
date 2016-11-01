@@ -7,7 +7,7 @@ class Admin extends CI_Controller {
     $this->load->library('session');
     $_SESSION['Customerid']=1;
 	$this->load->helper("url");
-	$this->load->helper("get_appearance_settings.php");	
+	//$this->load->helper("get_appearance_settings.php");	
   }
 
   private function getCustomerLanguages(){
@@ -98,10 +98,53 @@ class Admin extends CI_Controller {
 	  $data['appearanceSettings'] = $this->getCustomerAppearanceSettings();
 	  $customer_id = $_SESSION['Customerid'];
 	  
-	  //Remove in live
-	  //$data['logo'] = 'http://128.0.210.62/bleckmannapi/images/'.$customer_id.'/logo/logo.png';
-	  //$data['spacer'] = 'http://128.0.210.62/bleckmannapi/images/'.$customer_id.'/spacer/spacer.png';
-	  //$data['loading'] = 'http://128.0.210.62/bleckmannapi/images/'.$customer_id.'/loading/loading.gif';
+	  $data2 = array('Customerid'=>$customer_id);
+	  $data_url='?'.http_build_query($data2);
+		  $data_string = json_encode($data2);
+		  $ch = curl_init();
+
+		  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+		  curl_setopt($ch, CURLOPT_URL, "http://returns.dev.apoyar.eu/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+		  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+		  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		  // Send the request
+		  $result = json_decode(curl_exec($ch), true);
+		  // Free up the resources $curl is using
+		  curl_close($ch);
+		  $appearanceSettings = $result;
+		  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
+		  if(!is_array($serialize_appearance)){
+				  $header_color='';
+				  $menu_bg = '';
+				  $menu_font ='';
+				  $dd_bg = '';
+				  $dd_font ='';
+				  $accent_1 = '';
+				  $accent_2 = '';
+		  }else{		  
+			  $Colors = json_encode($serialize_appearance);
+			  $Colors = json_decode($Colors);			
+				if(count($Colors)>0){
+					foreach($Colors as $result){						
+						$header_color = (isset($Colors->Header))?$Colors->Header:'';
+						$menu_bg = (isset($Colors->Menu[0]))?$Colors->Menu[0]:'';
+						$menu_font = (isset($Colors->Menu[1]))?$Colors->Menu[1]:'';					
+						$dd_bg = (isset($Colors->Dropdown[0]))?$Colors->Dropdown[0]:'';
+						$dd_font = (isset($Colors->Dropdown[1]))?$Colors->Dropdown[1]:'';
+						$accent_1 = (isset($Colors->Accent[0]))?$Colors->Accent[0]:'';
+						$accent_2 = (isset($Colors->Accent[1]))?$Colors->Accent[1]:'';
+					}
+				
+				}
+		}
+		$data['header_color'] = $header_color;
+		$data['menu_bg'] = $menu_bg;
+		$data['menu_font'] = $menu_font;
+		$data['accent_1'] = $accent_1;
+		$data['accent_2'] = $accent_2;
+		$data['dd_bg'] = $dd_bg;
+		$data['dd_font'] = $dd_font;	  
 	  
 	  //Use in Live
 	  /**/
