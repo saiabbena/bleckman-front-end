@@ -254,7 +254,7 @@ class Admin extends CI_Controller {
 	  $img_file_name = $_FILES['img_file']['name'];
 	  $img_file_type = $_FILES['img_file']['type'];
 	  $img_file_size = $_FILES['img_file']['size'];
-	  
+	  //echo $customerid;exit();
 	  //print_r($_FILES);exit();	  
 	  $cfile = new CURLFile($img_file_tmp, $img_file_type, $image_type);
 	  $data = array('test_file' => $cfile);

@@ -1,6 +1,6 @@
 <?php	
 	$PKSettingID = (isset($appearanceSettings['CustomerSetting']['PKSettingID']))?$appearanceSettings['CustomerSetting']['PKSettingID']:'';
-	$FKCustomerid = (isset($appearanceSettings['CustomerSetting']['FKCustomerid']))?$appearanceSettings['CustomerSetting']['FKCustomerid']:'';	
+	$FKCustomerid = (isset($appearanceSettings['CustomerSetting']['FKCustomerid']))?$appearanceSettings['CustomerSetting']['FKCustomerid']:'';
 ?>
 <div class='container-fluid form1'>
   <div class='row'>
@@ -112,10 +112,7 @@
                 <tr>
                   <th>
                     Name
-                  </th>
-                  <th>
-                    Image
-                  </th>
+                  </th>                  
                   <th>
                     Change
                   </th>
@@ -125,21 +122,18 @@
                 <tr>
                   <td>
                     MAIN LOGO
-                  </td>
-                  <td>
-                    <img src="<?php echo $logo?>" height='50px' />
-                  </td>
-                  <td>
-                    <div class="form-group col-md-10 pull-right">
+                  </td>                  
+                  <td valign="top">
+                    <div class="col-md-10">
 					<form id="logo_change" method="post" enctype="multipart/form-data">
 					<input type="hidden" name="textBox" id="textBox" value="0" />
 					<input name="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
 					<input name="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
 					<input name="img_type" value="logo" type="hidden">
-                      <input type="file" class="dropify" name="img_file" id="logo_img"   data-show-remove="false" data-default-file="<?php echo $logo?>"  />				  
-                      <input type="text" readonly="" class="form-control" placeholder="Upload a file" />
+                      <input type="file" class="dropify" name="img_file" id="logo_img"   data-show-remove="false" data-default-file="<?php echo $logo?>" />                 
 					   <div class="col-md-12">
-						<div class="col-md-2" id="btn_logo_div"><button class="btn btn-success no_padding no_margin btn_save_img" id="btn_logo_change">Save</button></div>
+						<div class="col-md-2" id="btn_logo_div">
+						<img src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="uploading_logo" style="display:none;" /><button class="btn-raised btn-success no_padding no_margin btn_save_img" id="btn_logo_change">Save</button></div>
 						<div class="col-md-9  pull-right"><span id="invalid_logo" class="err_msg">Use Only JPG, JPEG and PNG images</span></div><!---->
 					  </div>
 					  </form>
@@ -149,21 +143,20 @@
                 <tr>
                   <td>
                     DROPDOWN SPACER
-                  </td>
+                  </td>                  
                   <td>
-                    <img src="<?php echo $spacer?>" />
-                  </td>
-                  <td>
-                    <div class="form-group col-md-10 pull-right">
+                    <div class="col-md-10">
 					<form id="spacer_change" method="post" enctype="multipart/form-data">
 					  <input type="hidden" name="textBox" id="textBox" value="0" />
 					  <input name="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
 					  <input name="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
 					  <input name="img_type" value="spacer" type="hidden">
                       <input type="file" id="spacer_img" name="img_file" multiple=""  data-show-remove="false" data-default-file="<?php echo $spacer?>" class="dropify" />
-                      <input type="text" readonly="" class="form-control" placeholder="Upload a file">
+                      
 					  <div class="col-md-12">
-					  <div class="col-md-2" id="btn_spacer_div"><button class="btn btn-success no_padding no_margin btn_save_img" id="btn_spacer_change">Save</button></div>
+					  <div class="col-md-2" id="btn_spacer_div">
+					  <img src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="uploading_logo" style="display:none;" />
+					  <button class="btn-success no_padding no_margin btn_save_img" id="btn_spacer_change">Save</button></div>
 					  <div class="col-md-9  pull-right"><span id="invalid_spacer" class="err_msg">Use Only JPG, JPEG and PNG images</span></div>
 					  </div>
 					  </form>
@@ -173,21 +166,19 @@
                 <tr>
                   <td>
                     LOADING INDICATOR
-                  </td>
+                  </td>                  
                   <td>
-                    <img src="<?php echo $loading?>" height='50px'>
-                  </td>
-                  <td>
-                    <div class="form-group col-md-10 pull-right">
+                    <div class="col-md-10">
 					  <form id="loading_change" method="post" enctype="multipart/form-data">
 					  <input type="hidden" name="textBox" id="textBox" value="0" />
 					  <input name="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
 					  <input name="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
-                      <input type="file" id="loading_img" name="img_file" multiple="" data-show-remove="false" data-default-file="<?php echo $loading?>" class="dropify" />
-                      <input type="text" readonly="" class="form-control" placeholder="Upload a file">
+                      <input type="file" id="loading_img" name="img_file" multiple="" data-show-remove="false" data-default-file="<?php echo $loading?>" class="dropify" />                      
 					  <input name="img_type" value="loading" type="hidden">
 					  <div class="col-md-12">
-					  <div class="col-md-2" id="btn_loading_div"><button class="btn btn-success no_padding no_margin btn_save_img" id="btn_loading_change">Save</button></div>
+					  <div class="col-md-2" id="btn_loading_div">
+					  <img src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="uploading_logo" style="display:none;" />
+					  <button class="btn-success no_padding no_margin btn_save_img" id="btn_loading_change">Save</button></div>
 					  <div class="col-md-9  pull-right"><span id="invalid_loading" class="err_msg">Use Only GIF image</span></div>
 					  </div>
 					  </form>
@@ -263,7 +254,10 @@ $(document).ready(function(){
 		e.preventDefault();
 		var counter = $('#textBox').val();
 		var form_id = $(this).closest("form").attr('id');
-		console.log(form_id);
+		$('#'+form_id+' .uploading').css({'display':'block'});//Show spin image
+		$('#'+form_id+' .btn_save_img').css({'display':'none'});//Hide save btn
+		//btn_save_img
+		//console.log(form_id);
 		counter++ ;
 		$('#textBox').val(counter);		
 		$.ajax({
@@ -276,12 +270,16 @@ $(document).ready(function(){
 			success: function(data)
 			{
 				console.log(data);					
-				//alert('Helper Image Updated sucessfully');
+				//alert('#'+form_id+' .uploading');
+				$('#'+form_id+' .uploading').css({'display':'none'});//Hide spin image
+				$('#'+form_id+' .btn_save_img').css({'display':'block'});//Hide save btn
 				
 			},
 			error: function() 
 			{
 				console.log(data);
+				$('#'+form_id+' .uploading').css({'display':'none'});//Hide spin image
+				$('#'+form_id+' .btn_save_img').css({'display':'block'});//Hide save btn
 			} 	        
 		});
 		//return false;
