@@ -174,7 +174,11 @@ class Admin extends CI_Controller {
       if($_POST['Languages'][$key]['LanguageName']==$_POST['DefaultLanguage']){
         $_POST['Languages'][$key]['Isdefault']="true";
       }
+      foreach ($key as $k => $v) {
+        unset($v['Links']);
+      }
     }
+
     echo json_encode($_POST['Languages']);
 
     //
@@ -328,6 +332,19 @@ public function deleteLinks() {
 
   }
   public function debug() {
+    foreach ($_POST['Languages'] as $key => $value) {
+      $_POST['Languages'][$key]['Isdefault']="false";
+      if($_POST['Languages'][$key]['LanguageName']==$_POST['DefaultLanguage']){
+        $_POST['Languages'][$key]['Isdefault']="true";
+      }
+      echo "value : " . json_encode($value);
+      // foreach ($key as $k => $v) {
+      //   #unset($v['Links']);
+      //   echo ", string : " $key;
+      // }
+    }
+    echo var_dump($_POST);
+
     header('Content-Type: application/json');
   }
   function change_appearance_img($param1='') {
