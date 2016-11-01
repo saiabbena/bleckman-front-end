@@ -1,5 +1,5 @@
 //var url='http://128.0.210.37/Bleckmannapi/api/';
-var url='http://returns.dev.apoyar.eu/api/';
+var url='http://api.bleckmann.apoyar.eu/api/';
 
 var apiCall=url+'';
 

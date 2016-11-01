@@ -284,7 +284,7 @@
           </div>
         </div>
         <br><br><br><br>
-        <h4>Edit Header Translations </h4><br>
+        
         <!--<table data-toggle="table">
           <thead>
             <tr>

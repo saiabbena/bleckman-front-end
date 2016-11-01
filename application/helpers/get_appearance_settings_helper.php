@@ -14,7 +14,7 @@
 		  $ch = curl_init();
 
 		  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-		  curl_setopt($ch, CURLOPT_URL, "http://returns.dev.apoyar.eu/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+		  curl_setopt($ch, CURLOPT_URL, "http://api.bleckmann.apoyar.eu/api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
 		  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
 		  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
