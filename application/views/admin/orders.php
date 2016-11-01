@@ -1,8 +1,7 @@
-
 <div class='container-fluid form1'>
   <div class='row'>
     <div class='col-xs-12 col-md-3' height='100%'>
-      <div class='well' style='border-bottom: 15px solid #22b8aa; padding-bottom: 40px;'>
+      <div class='well'  style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;">
         <div class='row'>
           <div class='col-md-12 text-center' >
             <h3><b>TRUE RELIGION</b></h3><br>
@@ -10,33 +9,33 @@
           <a href='orders'>
           <div style='background-color: #009688; color: #fff;' class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-1.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Returns</span>
+            <img src='<?php echo base_url();?>img/i-1.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Returns</span>
           </div>
           </a>
           <a href='appearance'>
           <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Appearance</span>
+            <img src='<?php echo base_url();?>img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Appearance</span>
           </div>
           </a>
           <a href='settings'>
           <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-3.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Settings</span>
+            <img src='<?php echo base_url();?>img/i-3.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Settings</span>
           </div>
           </a>
           <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-4.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Integration</span>
+            <img src='<?php echo base_url();?>img/i-4.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Integration</span>
           </div>
           <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-5.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Other</span>
+            <img src='<?php echo base_url();?>img/i-5.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Other</span>
           </div>
         </div>
       </div>
       <br><br>
-      <div class='well hidden-xs hidden-sm' style='border-bottom: 15px solid #22b8aa; padding-bottom: 40px;'>
+      <div class='well hidden-xs hidden-sm' style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;" >
         <div class='col-md-12 text-center' >
           <h3><b>STATISTICS</b></h3><br>
         </div>
@@ -46,13 +45,13 @@
               <th>
                 <b>From</b>
                 <div class="form-group">
-                  <input id='stat-from' type='text' class='form-control' placeholder="yyyy-mm-dd">
+                  <input id='stat-from' type='text' class='form-control' placeholder="dd-mm-yyyy">
                 </div>
               </th>
               <th>
                 <b>To</b>
                 <div class="form-group">
-                  <input id='stat-to' type='text' class='form-control' placeholder="yyyy-mm-dd">
+                  <input id='stat-to' type='text' class='form-control' placeholder="dd-mm-yyyy">
                 </div>
               </th>
               <th>                
@@ -88,10 +87,18 @@
     </div>
       
     <div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;'>
+      <div class='well' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;' id="orders-messages">
         <div class="alert alert-dismissible alert-primary">
           Listing the latest 20 returned orders
         </div>
+        <?php
+          if(isset($_SESSION['message']['orders-messages'])){
+            echo'
+            <div class="alert alert-dismissible alert-success">
+              '.$_SESSION['message']['orders-messages'].'
+            </div>';
+          }
+        ?>
         <table data-toggle="table">
           <thead>
             <tr>
