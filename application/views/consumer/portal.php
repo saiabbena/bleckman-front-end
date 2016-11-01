@@ -145,6 +145,7 @@
                   </tr>
                 </tbody>
               </table>
+              
               <br>
               <h3><center><?php echo $translations[6]['Translation'];?>: <b style='color: #cc1543;' id='total-price'>&euro; 0.00</b></center></h3>
               <br>
@@ -220,6 +221,29 @@
                 </tr>
               </tbody>
             </table>
+            
+            <!--modal for label-->
+            <div class="modal fade" tabindex="-1" role="dialog" id='carrier-label-modal'>
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Print your label</h4>
+                  </div>
+                  <div class="modal-body"> 
+                    <b>Dear Customer</b><br><br>
+                    You can print your label by following this link: <a id='label-iframe' target="_blank" href=''>Print label</a><br><br>
+                    You can read additional instructions for returning your order based on the carrier you chose by following this link: <a href='#'>Go to the carriers web-portal</a><br><br>
+                    Additionally all of this information has been forwarded to your email address.<br><br>
+                    Thank you for using our service.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+            
             <br>
             <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3' <?php echo $btn_bg?>><?php echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></button><br>
             <div class="alert alert-dismissible alert-success" id='screen3-success'>

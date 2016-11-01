@@ -304,12 +304,19 @@ $(document).ready(function(){
           Apoyar: result.token
       },
       dataType: 'json',
-      success: function () {
+      success: function (response) {
         $('#screen3-success').show('slow');
         console.log(submition);
+        console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
+        console.log(response);
+        $('#carrier-label-modal').modal('show');
+        $('#label-iframe').attr('href', 'http://returns.dev.apoyar.eu/RoyalMail/'+response.Id+'.pdf');
+        $('.loading-screen').slideUp('slow');
+        //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
       },
       fail: function(){
-        $('#screen3-fail').show('slow')
+        $('.loading-screen').slideUp('slow');
+        $('#screen3-fail').show('slow');
       }
     });
     /*
