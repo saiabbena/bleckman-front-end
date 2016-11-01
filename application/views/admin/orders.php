@@ -87,11 +87,7 @@
     </div>
       
     <div class='col-xs-12 col-md-9' height='100%'>
-<<<<<<< HEAD
-      <div class='well'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
-=======
       <div class='well' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;' id="orders-messages">
->>>>>>> BugFixes
         <div class="alert alert-dismissible alert-primary">
           Listing the latest 20 returned orders
         </div>
