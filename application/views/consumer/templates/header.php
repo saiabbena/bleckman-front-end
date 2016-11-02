@@ -81,7 +81,7 @@
                     }
                   }
                 ?>
-                <li><center><img src="<?php echo $spacer?>" class='img-responsive'></center></li>
+                <li><center><img src="<?php echo $spacer?>?dummy=<?php echo mt_rand()?>" class='img-responsive'></center></li>
               </ul>
             </li>
 
