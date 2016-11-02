@@ -103,7 +103,7 @@
               </tbody>
             </table>
             <br>
-            <button type='submit' style='border:0;' class='btn-raised btn-success no_padding no_margin'>Save</button>
+            <button type='submit' style='border:0;' class='btn btn-success btn-raised'>Save</button>
 			</form>
           </div>
           <div class='col-xs-12 col-md-8' style='border: 0 solid #ddd; border-width: 0 0 0 1px'>
@@ -135,7 +135,7 @@
                       <input type="file" class="dropify" name="img_file" id="logo_img"   data-show-remove="false" data-default-file="<?php echo $logo?>" />                 
 					   <div class="col-md-12">
 						<div class="col-md-2" id="btn_logo_div">
-						<img src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="uploading_logo" style="display:none;" /><button class="btn-raised btn-success no_padding no_margin btn_save_img" id="btn_logo_change">Save</button></div>
+						<img src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="uploading_logo" style="display:none;" /><button class="btn btn-success btn-raised no_padding no_margin btn_save_img" id="btn_logo_change">Save</button></div>
 						<div class="col-md-9  pull-right"><span id="invalid_logo" class="err_msg">Use Only JPG, JPEG and PNG images</span></div><!---->
 					  </div>
 					  </form>
@@ -158,7 +158,7 @@
 					  <div class="col-md-12">
 					  <div class="col-md-2" id="btn_spacer_div">
 					  <img src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="uploading_logo" style="display:none;" />
-					  <button class="btn-success no_padding no_margin btn_save_img" id="btn_spacer_change">Save</button></div>
+					  <button class="btn btn-success btn-raised no_padding no_margin btn_save_img" id="btn_spacer_change">Save</button></div>
 					  <div class="col-md-9  pull-right"><span id="invalid_spacer" class="err_msg">Use Only JPG, JPEG and PNG images</span></div>
 					  </div>
 					  </form>
@@ -180,7 +180,7 @@
 					  <div class="col-md-12">
 					  <div class="col-md-2" id="btn_loading_div">
 					  <img src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="uploading_logo" style="display:none;" />
-					  <button class="btn-success no_padding no_margin btn_save_img" id="btn_loading_change">Save</button></div>
+					  <button class="btn btn-success btn-raised no_padding no_margin btn_save_img" id="btn_loading_change">Save</button></div>
 					  <div class="col-md-9  pull-right"><span id="invalid_loading" class="err_msg">Use Only GIF image</span></div>
 					  </div>
 					  </form>

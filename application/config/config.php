@@ -23,6 +23,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+//this is for sergey
+//$config['base_url'] = 'http://clone-asergey91.c9users.io/';
 $config['base_url'] = '';
 
 /*

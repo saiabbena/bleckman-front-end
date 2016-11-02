@@ -144,10 +144,10 @@
                 ];*/
                 $rkey=0;
                 $key=0;
+				$sequenceno_max = $rrvalue+1;
                 foreach ($customerLanguages as $lang){
                   
-                  echo '
-                  <input type="hidden" name="ReturnReasons['.$key.']['.$rkey.'][PKReasonID]" value="-1">';
+                  echo '<input type="hidden" name="ReturnReasons['.$key.']['.$rkey.'][PKReasonID]" value="-1">';
                   echo '
                   <input type="hidden" name="ReturnReasons['.$key.']['.$rkey.'][FKCustomerID]" value="'.$_SESSION['Customerid'].'">';
                   echo '
@@ -156,8 +156,8 @@
                   <input type="hidden" name="ReturnReasons['.$key.']['.$rkey.'][FkLanguageid]" value="'.$lang['FkLanguageid'].'">';
                   echo '
                   <input type="hidden" name="ReturnReasons['.$key.']['.$rkey.'][Uid]" value="">';
-                  echo '
-                  <input type="hidden" name="ReturnReasons['.$key.']['.$rkey.'][LanguageName]" value="'.$lang['LanguageName'].'">';                  
+                  echo '<input type="hidden" name="ReturnReasons['.$key.']['.$rkey.'][LanguageName]" value="'.$lang['LanguageName'].'">';
+				  echo '<input type="hidden" name="ReturnReasons['.$key.']['.$rkey.'][Sequenceno]" value="'.$sequenceno_max.'">';
                   
                   echo'
                   <div class="form-group label-floating">
