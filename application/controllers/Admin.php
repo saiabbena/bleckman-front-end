@@ -256,7 +256,6 @@ class Admin extends CI_Controller {
     $this->load->view('admin/login');
     $this->load->view('admin/templates/footer');
   }
-  public function debug(){
   public function submitLinks() {
     header('Content-Type: application/json');
     
