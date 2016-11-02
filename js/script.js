@@ -230,6 +230,31 @@ $(document).ready(function(){
   //get customer settings
   getCustomerSettings();
   
+  /*
+  $(document).keydown(function(e) {
+    
+    if(e.which == 13) {
+      $('#button1').click();
+      
+      $(document).off('keydown');
+      $(document).keydown(function(e) {
+        if(e.which == 13) {
+          $('#button2').click();
+          $(document).off('keydown');
+          $(document).keydown(function(e) {
+            if(e.which == 13) {
+              $('#button3').click();
+              $(document).off('keydown');
+            }
+          });
+        }
+      });
+    }
+  });
+  */
+  $('form').submit(function(){
+    return false 
+  })
   //change load
   $('#button1').click(function(){
     console.log('working');
