@@ -6,7 +6,12 @@ class Consumer extends CI_Controller {
   public function __construct(){
     parent::__construct();
     $this->load->helper("url");
-	//$this->load->helper("get_appearance_settings.php");
+	  //$this->load->helper("get_appearance_settings.php");
+    
+    if(!isset($_GET['Customer'])){
+      echo 'please provide a customer id';
+      exit();
+    }
     
     $this->Customerid=$_GET['Customer'];
 
@@ -76,7 +81,7 @@ class Consumer extends CI_Controller {
     return $result;
   }
   public function portal(){
-
+    
     $data['customerLanguages']=$this->getCustomerLanguages();
     $data['all_langs']=$data['customerLanguages'];
 

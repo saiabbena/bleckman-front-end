@@ -11,30 +11,34 @@
 			<?php //echo $translations[13]['Translation'];?></center></h2>
             <p class='text-center'><?php echo $customerLanguages['Page1heading']?></p>
             <div class="inputs">
-              <div class="form-group label-floating">
-                <label for="f2" class="control-label"><?php echo strtoupper($translations[0]['Translation']);?></label>
-                <input name='sc1[Orderid]' type="text" class="form-control" id="f2">
-                <span class="help-block"><?php echo (isset($translations[14]['Translation'])?$translations[14]['Translation']:'');?>
-				<?php //echo $translations[14]['Translation'];?></span>
-              </div>
-              <div class="form-group label-floating">
-                <label for="f1" class="control-label"><?php echo strtoupper($translations[1]['Translation']);?></label>
-                <input type="text" name='sc1[email]' class="form-control" id="f1">
-                <span class="help-block"><?php echo (isset($translations[28]['Translation'])?$translations[28]['Translation']:'');?>
-				<?php //echo $translations[28]['Translation']?></span>
-              </div>              
-              
-              <br>
-              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1' <?php echo $btn_bg?>><?php echo strtoupper($translations[7]['Translation']);?></button><br>
-              <div class="alert alert-dismissible alert-danger" id='screen1-error'>
-                <strong><?php echo $translations[16]['Translation']?></strong>
-                <?php echo $translations[15]['Translation']?>
-              </div>
+              <form>
+                <div class="form-group label-floating">
+                  <label for="f2" class="control-label"><?php echo mb_strtoupper($translations[0]['Translation'], 'UTF-8');?></label>
+                  <input name='sc1[Orderid]' type="text" class="form-control" id="f2">
+                  <span class="help-block"><?php echo (isset($translations[14]['Translation'])?$translations[14]['Translation']:'');?>
+  				<?php //echo $translations[14]['Translation'];?></span>
+                </div>
+                <div class="form-group label-floating">
+                  <label for="f1" class="control-label"><?php echo mb_strtoupper($translations[1]['Translation'], 'UTF-8');?></label>
+                  <input type="text" name='sc1[email]' class="form-control" id="f1">
+                  <span class="help-block"><?php echo (isset($translations[28]['Translation'])?$translations[28]['Translation']:'');?>
+  				<?php //echo $translations[28]['Translation']?></span>
+                </div>              
+                
+                <br>
+                <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1' <?php echo $btn_bg?>><?php echo strtoupper($translations[7]['Translation']);?></button><br>
+                <div class="alert alert-dismissible alert-danger" id='screen1-error'>
+                  <strong><?php echo $translations[16]['Translation']?></strong>
+                  <?php echo $translations[15]['Translation']?>
+                </div>
+              </form>
             </div>
         </div>
       </div>
     </div>
   </div>
+  
+  
   
   <div class='container-fluid form2'>
     <div class='row'>
@@ -44,6 +48,7 @@
 			<?php //echo $translations[17]['Translation']?></center></h2>
             <p class='text-center'><?php echo $customerLanguages['Page2heading']?></p>
             <br>
+            
             <div class="inputs">
               <table class='table' id='table123'>
                 <thead>
@@ -159,6 +164,7 @@
       </div>
     </div>
   </div>
+  
   
   <div class='container-fluid form3'>
     <div class='row'>
