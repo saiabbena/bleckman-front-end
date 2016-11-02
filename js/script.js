@@ -39,7 +39,7 @@ function getOrderAndAuth(inputData){
   .success(function(data, status, xhr){
     console.log(data);
     //function validate stuff
-    if(data.hasOwnProperty('Order') && data['Order']['ConsumerEmail']==inputData['Email']){
+    if(data.hasOwnProperty('Order') && data['Order']['ConsumerEmail'].toLowerCase()==inputData['Email'].toLowerCase()){
       result={type: 'screen1', status: true, message: 'You have been authenticated', result: data};
       secondScreen(result);
       $('.form2').show();

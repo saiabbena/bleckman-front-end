@@ -119,28 +119,42 @@ $(document).ready(function(){
   function search(){
     apiCall=url+'returnorder/PostReturnOrderbyKeywords';
     var searchInput={};
+    var default_render=true;
+    
     $('tr input[type]').each(function(){
       if($(this).val()){
         searchInput[$(this).attr('name')]=$(this).val();
+        default_render=false;
       }
     });
+    
     if($('tr select').val()!='0'){
       searchInput['Month']=$('tr select').val();
+      default_render=false;
     }
-    $('.loading-screen').slideDown('slow');
-    console.log(searchInput);
-    $.post(apiCall, searchInput)
-    .success(function(data){
-      $('.loading-screen').slideUp('slow');
-      console.log(data);
-      renderReturnOrders(data);
-      updateMessage(searchInput);
-    }).fail(function(data){
-      $('.loading-screen').slideUp('slow');
-      renderReturnOrders({});
-      console.log(data);
-    });
-
+    
+    
+    console.log(default_render);
+    
+    if(default_render){
+      retrieveReturnOrders(customerId);
+      $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.alert.alert-dismissible.alert-primary').html('Listing the latest 20 returned orders')
+    }
+    else{
+      $('.loading-screen').slideDown('slow');
+      console.log(searchInput);
+      $.post(apiCall, searchInput)
+      .success(function(data){
+        $('.loading-screen').slideUp('slow');
+        console.log(data);
+        renderReturnOrders(data);
+        updateMessage(searchInput);
+      }).fail(function(data){
+        $('.loading-screen').slideUp('slow');
+        renderReturnOrders({});
+        console.log(data);
+      });
+    }
 
   }
   //this function is to update the search message
