@@ -22,7 +22,7 @@ class Admin extends CI_Controller {
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-    curl_setopt($ch, CURLOPT_URL, "http://returns.dev.apoyar.eu/api/CustomerLanguage/GetCustomerLanguagebyId".$data_url);
+    curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/CustomerLanguage/GetCustomerLanguagebyId".$data_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     // Send the request
@@ -45,7 +45,7 @@ class Admin extends CI_Controller {
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-    curl_setopt($ch, CURLOPT_URL, "http://returns.dev.apoyar.eu/api/ReturnReason/GetAllReturnReasonsbyCustomerid".$data_url);
+    curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/ReturnReason/GetAllReturnReasonsbyCustomerid".$data_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
     // Send the request
@@ -63,7 +63,7 @@ class Admin extends CI_Controller {
 	  $ch = curl_init();
 
 	  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-	  curl_setopt($ch, CURLOPT_URL, "http://returns.dev.apoyar.eu/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+	  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
 	  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
 	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -109,7 +109,7 @@ class Admin extends CI_Controller {
 		  $ch = curl_init();
 
 		  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-		  curl_setopt($ch, CURLOPT_URL, "http://returns.dev.apoyar.eu/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+		  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
 		  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
 		  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
@@ -153,9 +153,9 @@ class Admin extends CI_Controller {
 	  
 	  //Use in Live
 	  /**/
-	  $data['logo'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/logo/logo.png';
-	  $data['spacer'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/spacer/spacer.png';
-	  $data['loading'] = 'http://returns.dev.apoyar.eu/images/'.$customer_id.'/loading/loading.gif';
+	  $data['logo'] = API_BASE_URL_FE.'images/'.$customer_id.'/logo/logo.png';
+	  $data['spacer'] = API_BASE_URL_FE.'images/'.$customer_id.'/spacer/spacer.png';
+	  $data['loading'] = API_BASE_URL_FE.'images/'.$customer_id.'/loading/loading.gif';
 	  
 	  
 	  $this->load->view('admin/templates/appearance_header');
@@ -173,7 +173,7 @@ class Admin extends CI_Controller {
 
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/ReturnReason/PostManageReturnReason");
+    curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/ReturnReason/PostManageReturnReason");
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['ReturnReasons'=>$_POST['ReturnReasons']]));    
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -195,7 +195,7 @@ class Admin extends CI_Controller {
 	  'Colours'=>serialize($_POST['CustomerSetting']['Colours'])];
 	  
 	  $ch = curl_init();
-	  curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/CustomerSetting/PostManageCustomerSetting");	
+	  curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/CustomerSetting/PostManageCustomerSetting");	
 	  //curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/Api/CustomerSetting/PostManageCustomerSetting");	
 	  
 	  curl_setopt($ch, CURLOPT_POST, 1);
@@ -227,7 +227,7 @@ class Admin extends CI_Controller {
 
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/CustomerLanguage/PostManageCustomerLanguage");
+    curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/CustomerLanguage/PostManageCustomerLanguage");
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS,
                 http_build_query(['CustomerLanguages'=>$_POST['Languages']]));
@@ -278,7 +278,7 @@ class Admin extends CI_Controller {
     $ch = curl_init();
 
     #curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/CustomerLanguage/PostManageLinks");
-    curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/CustomerLanguage/PostManageLinks");
+    curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/CustomerLanguage/PostManageLinks");
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS,
                 http_build_query(['CustomerLanguages'=>$newlinks]));
@@ -332,7 +332,7 @@ public function deleteLinks() {
     $ch = curl_init();
 
     #curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/CustomerLanguage/PostManageLinks");
-    curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/CustomerLanguage/PostManageLinks");
+    curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/CustomerLanguage/PostManageLinks");
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS,
                 http_build_query(['CustomerLanguages'=>$newlinks]));
@@ -356,7 +356,7 @@ public function deleteLinks() {
     echo json_encode($_POST) . "\r\n";
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/Returnorder/PostUpdateReturnorderComment");
+    curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/Returnorder/PostUpdateReturnorderComment");
     curl_setopt($ch, CURLOPT_POST, 1);
     curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($_POST));
 
@@ -403,7 +403,7 @@ public function deleteLinks() {
 	  
 	  $ch = curl_init();	  	
 	  //curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/customersetting/PostUploadLoading?customerid=$customerid");
-	  curl_setopt($ch, CURLOPT_URL,"http://returns.dev.apoyar.eu/api/customersetting/PostUploadLoading?customerid=$customerid");	  
+	  curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/customersetting/PostUploadLoading?customerid=$customerid");	  
 	  
 	  curl_setopt($ch, CURLOPT_POST, 1);
 	  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);

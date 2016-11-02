@@ -1,5 +1,5 @@
 //var url='http://128.0.210.37/Bleckmannapi/api/';
-var url='http://returns.dev.apoyar.eu/api/';
+var url=API_BASE_URL_FE+'api/';
 
 var apiCall=url+'';
 
@@ -290,6 +290,7 @@ $(document).ready(function(){
   
   //logic
   $('#button3').click(function(){
+    $('.loading-screen').slideDown('slow');
     submition.FKCustomerID=result['result']['Order']['FKCustomerID'];
     submition.FKReturnStatusID=1;
     submition.FKCarriedID=$('input[name=sample1]:checked').val();
@@ -310,7 +311,7 @@ $(document).ready(function(){
         console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
         console.log(response);
         $('#carrier-label-modal').modal('show');
-        $('#label-iframe').attr('href', 'http://returns.dev.apoyar.eu/RoyalMail/'+response.Id+'.pdf');
+        $('#label-iframe').attr('href', API_BASE_URL_FE+'RoyalMail/'+response.Id+'.pdf');
         $('.loading-screen').slideUp('slow');
         //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
       },
