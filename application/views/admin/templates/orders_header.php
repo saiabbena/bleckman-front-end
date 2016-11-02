@@ -30,6 +30,9 @@
     <!--My assets-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" />
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin.js"></script>
+    <script>
+      <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
+    </script>
     
   </head>
   <body id='override'>

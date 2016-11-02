@@ -5,7 +5,7 @@ $(document).ready(function(){
   //TODO: MAKE THIS PASSED FROM PHP
   var customerId=1;
 
-  var url='http://returns.dev.apoyar.eu/api/';
+  var url=API_BASE_URL_FE+'api/';
   //var url='http://128.0.210.37/Bleckmannapi/api/';
   var apiCall=url+'';
   

@@ -355,7 +355,6 @@
             </tr>
           </tbody>
         </table>-->
-        <h4 >Edit Header Translations </h4><br>
         <div id='header-translations'>
           <?php
             $compiledLangs=[];
