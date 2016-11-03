@@ -79,7 +79,7 @@
                   </td>
                   <td>
                     <input type='color'  name="CustomerSetting[Colours][Menu][]" value="<?php echo $menu_bg;?>" />
-					<input type='color'  name="CustomerSetting[Colours][Menu][]" value="<?php echo $menu_font;?>" />
+					          <input type='color'  name="CustomerSetting[Colours][Menu][]" value="<?php echo $menu_font;?>" />
                   </td>
                 </tr>
                 <tr>
@@ -88,7 +88,7 @@
                   </td>
                   <td>
                     <input type='color'  name="CustomerSetting[Colours][Dropdown][0]" value="<?php echo $dd_bg;?>" />
-					<input type='color'  name="CustomerSetting[Colours][Dropdown][1]" value="<?php echo $dd_font;?>" />
+					          <input type='color'  name="CustomerSetting[Colours][Dropdown][1]" value="<?php echo $dd_font;?>" />
                   </td>
                 </tr>
                 <tr>
@@ -97,7 +97,7 @@
                   </td>
                   <td>
                     <input type='color'  name="CustomerSetting[Colours][Accent][0]" value="<?php echo $accent_1;?>" />
-					<input type='color'  name="CustomerSetting[Colours][Accent][1]" value="<?php echo $accent_2;?>" />
+					          <input type='color'  name="CustomerSetting[Colours][Accent][1]" value="<?php echo $accent_2;?>" />
                   </td>
                 </tr>
               </tbody>

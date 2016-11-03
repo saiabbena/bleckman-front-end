@@ -13,13 +13,13 @@
             <div class="inputs">
               <form>
                 <div class="form-group label-floating">
-                  <label for="f2" class="control-label"><?php echo mb_strtoupper($translations[0]['Translation'], 'UTF-8');?></label>
+                  <label for="f2" class="control-label"><?php echo strtoupper($translations[0]['Translation']);?></label>
                   <input name='sc1[Orderid]' type="text" class="form-control" id="f2">
                   <span class="help-block"><?php echo (isset($translations[14]['Translation'])?$translations[14]['Translation']:'');?>
   				<?php //echo $translations[14]['Translation'];?></span>
                 </div>
                 <div class="form-group label-floating">
-                  <label for="f1" class="control-label"><?php echo mb_strtoupper($translations[1]['Translation'], 'UTF-8');?></label>
+                  <label for="f1" class="control-label"><?php echo strtoupper($translations[1]['Translation']);?></label>
                   <input type="text" name='sc1[email]' class="form-control" id="f1">
                   <span class="help-block"><?php echo (isset($translations[28]['Translation'])?$translations[28]['Translation']:'');?>
   				<?php //echo $translations[28]['Translation']?></span>

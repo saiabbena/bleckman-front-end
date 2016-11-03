@@ -274,6 +274,12 @@ class Admin extends CI_Controller {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#language-panel');
 
   }
+  //login screen for customer view
+  public function login(){
+    $this->load->view('admin/templates/header');
+    $this->load->view('admin/login');
+    $this->load->view('admin/templates/footer');
+  }
   public function submitLinks() {
     header('Content-Type: application/json');
     
@@ -399,14 +405,7 @@ public function deleteLinks() {
 
   }
   public function debug() {
-    foreach ($_POST['Languages'] as $key => $value) {
-      $_POST['Languages'][$key]['Isdefault']="false";
-      if($_POST['Languages'][$key]['LanguageName']==$_POST['DefaultLanguage']){
-        $_POST['Languages'][$key]['Isdefault']="true";
-      }
-      
-      unset($_POST['Languages'][$key]['Links']);
-    }
+    
     
     echo var_dump($_POST);
    
