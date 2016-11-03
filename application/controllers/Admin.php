@@ -6,10 +6,22 @@ class Admin extends CI_Controller {
     parent::__construct();
     $this->load->library('session');
     $_SESSION['Customerid']=1;
-	$this->load->helper("url");
-	//$this->load->helper("get_appearance_settings.php");	
+  	$this->load->helper("url");
+  	//$this->load->helper("get_appearance_settings.php");	
+    $this->load->model('httpRequests');
   }
-
+  public function loginSubmit() {
+    header('Content-Type: application/json');
+    echo "in php : ". "\r\n";
+    #echo json_encode($_POST) . "\r\n";
+    $post_data = http_build_query(['Username'=>'reebok', 'Password'=>'reebok']);
+    $response = $this->httpRequests->httpPost('Customer/PostLogin', $post_data );
+    echo "response : " . $response . "\r\n";
+    $json_response = json_decode($response);
+    echo " Id ::::";
+    #echo $json_response['Id'] . "\r\n";
+    echo "Apoyar auth token : " . $_SESSION['Apoyar'];
+  }
   private function getCustomerLanguages(){
     $data = array(
       'Customerid'=>$_SESSION['Customerid']
@@ -76,10 +88,15 @@ class Admin extends CI_Controller {
 	  
   }
   public function settings(){ 
-    $data['customerLanguages']=$this->getCustomerLanguages();
+    // $data['customerLanguages']=$this->getCustomerLanguages();
+    // $data['returnReasons']=$this->getCustomerReturnReasons();
+    $data = array(
+      'Customerid'=>$_SESSION['Customerid']
+    );
+    
 
-    $data['returnReasons']=$this->getCustomerReturnReasons();
-
+    $data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $data);
+    $data['returnReasons'] = $this->httpRequests->httpGet('ReturnReason/GetAllReturnReasonsbyCustomerid', $data);
 
 
     $this->load->view('admin/templates/settings_header');
@@ -98,9 +115,16 @@ class Admin extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
+
   public function appearance(){
 	  
-	  $data['appearanceSettings'] = $this->getCustomerAppearanceSettings();
+	  //$data['appearanceSettings'] = $this->getCustomerAppearanceSettings();
+    $data = array(
+      'Customerid'=>$_SESSION['Customerid']
+    );
+
+    $data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $data);
+
 	  $customer_id = $_SESSION['Customerid'];
 	  
 	  $data2 = array('Customerid'=>$customer_id);
