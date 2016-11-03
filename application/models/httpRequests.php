@@ -8,6 +8,7 @@ Class httpRequests extends CI_Model {
 
 	public function httpPost($api_url, $data) {
 	    $ch = curl_init();
+	    $_SESSION['Apoyar'] = '';
 
 	    $url = API_BASE_URL_BE . "api/" . $api_url;
 
@@ -16,20 +17,25 @@ Class httpRequests extends CI_Model {
 	    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 	    curl_setopt($ch, CURLOPT_HEADER, 1);
-	    echo "sending request........" . "\r\n";
+	    // echo "sending request........" . "\r\n";
 	    $response = curl_exec($ch);
 		$header_size = curl_getinfo($ch, CURLINFO_HEADER_SIZE);
+		// echo "header_size : " . $header_size;
 		$body = substr($response, $header_size);
 
 	    $headers = $this->get_headers_from_curl_response($response);
 
-	    echo "body :: " . $body . "\r\n";
+	    $json_body = json_decode($body,true);
 
-	    echo "Apoyar :: " . $headers['Apoyar'] . "\r\n";
-	    $_SESSION['Apoyar']=$headers['Apoyar'];
+	    // echo "body :: " . json_encode($json_body) . "\r\n";
+	    // echo "Messages :: " . $json_body['Messages'] . "\r\n";
 
-	    curl_close ($ch);
-	    return $body;
+	    if ( $json_body['Id'] > 0 ) {
+	    	// echo "Apoyar :: " . $headers['Apoyar'] . "\r\n";
+	    	$_SESSION['Apoyar']=$headers['Apoyar'];
+	    }
+	    curl_close($ch);
+	    return $json_body;
 	}
 	public function httpGet($api_url, $data) {
 	  	$ch = curl_init();

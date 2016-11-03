@@ -12,15 +12,25 @@ class Admin extends CI_Controller {
   }
   public function loginSubmit() {
     header('Content-Type: application/json');
-    echo "in php : ". "\r\n";
-    #echo json_encode($_POST) . "\r\n";
-    $post_data = http_build_query(['Username'=>'reebok', 'Password'=>'reebok']);
+    // echo "in php : ". "\r\n";
+    // echo json_encode($_POST) . "\r\n";
+    $post_data = http_build_query(['Username'=>$_POST['Username'], 'Password'=>$_POST['Password']]);
+    // echo "post_data : " . json_encode($post_data);
     $response = $this->httpRequests->httpPost('Customer/PostLogin', $post_data );
-    echo "response : " . $response . "\r\n";
-    $json_response = json_decode($response);
-    echo " Id ::::";
-    #echo $json_response['Id'] . "\r\n";
-    echo "Apoyar auth token : " . $_SESSION['Apoyar'];
+
+    // echo " Id ::::" . $response['Id'];
+    // #echo $json_response['Id'] . "\r\n";
+    // echo "Apoyar auth token : " . $_SESSION['Apoyar'];
+    if ( $response['Id'] >0 && $_SESSION['Apoyar'] ) {
+
+       redirect(base_url() . 'index.php/admin/orders');
+    } else {
+      $_SESSION['message']['screen1-error']='Please provide valid credentials to login';
+
+      echo var_dump($_SESSION['message']);
+
+      header('Location: ' . $_SERVER['HTTP_REFERER'].'#screen1-error');
+    }
   }
   private function getCustomerLanguages(){
     $data = array(
@@ -279,6 +289,9 @@ class Admin extends CI_Controller {
     $this->load->view('admin/templates/header');
     $this->load->view('admin/login');
     $this->load->view('admin/templates/footer');
+    if(isset($_SESSION['message'])){
+      unset($_SESSION['message']);
+    }
   }
   public function submitLinks() {
     header('Content-Type: application/json');
