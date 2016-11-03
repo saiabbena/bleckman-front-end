@@ -6,7 +6,7 @@ Class httpRequests extends CI_Model {
 	    $this->load->library('session');
 	}
 
-	public function httpPost($api_url, $data) {
+	public function httpPost_Login($api_url, $data) {
 	    $ch = curl_init();
 	    $_SESSION['Apoyar'] = '';
 
@@ -27,11 +27,7 @@ Class httpRequests extends CI_Model {
 
 	    $json_body = json_decode($body,true);
 
-	    // echo "body :: " . json_encode($json_body) . "\r\n";
-	    // echo "Messages :: " . $json_body['Messages'] . "\r\n";
-
 	    if ( $json_body['Id'] > 0 ) {
-	    	// echo "Apoyar :: " . $headers['Apoyar'] . "\r\n";
 	    	$_SESSION['Apoyar']=$headers['Apoyar'];
 	    }
 	    curl_close($ch);
@@ -45,6 +41,7 @@ Class httpRequests extends CI_Model {
 	  	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 	  	curl_setopt($ch, CURLOPT_URL, $url.$data_url);
 	  	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	  	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Apoyar: ' . $_SESSION['Apoyar']));
 	  	// Send the request
 	  	$result = json_decode(curl_exec($ch), true);
 	  	// Free up the resources $curl is using
@@ -52,7 +49,24 @@ Class httpRequests extends CI_Model {
 	    return $result;
 	}
 
+	public function httpPost($api_url, $data) {
+		header('Content-Type: application/json');
+	    $ch = curl_init();
 
+	    $url = API_BASE_URL_BE . "api/" . $api_url;
+
+	    echo "data in httpPost : " . $data . "\r\n";
+
+	    curl_setopt($ch, CURLOPT_URL, $url);
+	    curl_setopt($ch, CURLOPT_HTTPHEADER, array("cache-control: no-cache", "content-type: application/json", 'Apoyar: ' . $_SESSION['Apoyar']));
+	    curl_setopt($ch, CURLOPT_POST, 1);
+	    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+	    $response = curl_exec($ch);
+	    curl_close($ch);
+	    return $response;
+	}
 
 
 	private function get_headers_from_curl_response($response) {

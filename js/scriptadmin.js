@@ -12,18 +12,37 @@ $(document).ready(function(){
   function retrieveReturnOrders(customerId){
     $('.loading-screen').slideDown('slow');
     apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
-    $.get(apiCall, {Customerid: customerId})
-    .success(function(data){
-      $('.loading-screen').slideUp('slow');
-      console.log(data);
-      renderReturnOrders(data);
-    })
-    .fail(function(){
-      $('.loading-screen').slideDown('slow');
-    })
-    .always(function(){
-      
+
+    $.ajax({
+      url: apiCall,
+      type: 'get',
+      data: {Customerid: customerId},
+      headers: {
+          Apoyar: apoyar_token
+      },
+      dataType: 'json',
+      success: function (response) {
+        $('.loading-screen').slideUp('slow');
+        console.log(response);
+        renderReturnOrders(response);
+      },
+      fail: function(){
+        $('.loading-screen').slideDown('slow');
+      }
     });
+
+    // $.get(apiCall, {Customerid: customerId})
+    // .success(function(data){
+    //   $('.loading-screen').slideUp('slow');
+    //   console.log(data);
+    //   renderReturnOrders(data);
+    // })
+    // .fail(function(){
+    //   $('.loading-screen').slideDown('slow');
+    // })
+    // .always(function(){
+      
+    // });
   }
 
   function renderReturnOrders(data){

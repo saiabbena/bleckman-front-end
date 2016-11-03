@@ -32,6 +32,7 @@
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin.js"></script>
     <script>
       <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
+      <?php echo 'var apoyar_token="'. $_SESSION['Apoyar'].'";';?>
     </script>
     
   </head>
