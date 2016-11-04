@@ -30,6 +30,7 @@ Class httpRequests extends CI_Model {
 	    if ( $json_body['Id'] > 0 ) {
 	    	$_SESSION['Apoyar']=$headers['Apoyar'];
 	    	$_SESSION['Customerid']=$json_body['Id'];
+	    	$_SESSION['Customername']=$json_body['Messages']; // TODO : At the moment, messages returning the customer name.
 	    }
 	    curl_close($ch);
 	    return $json_body;
