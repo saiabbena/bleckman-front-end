@@ -1,13 +1,13 @@
 <?php	
 	$PKSettingID = (isset($appearanceSettings['CustomerSetting']['PKSettingID']))?$appearanceSettings['CustomerSetting']['PKSettingID']:'';
 	$FKCustomerid = (isset($appearanceSettings['CustomerSetting']['FKCustomerid']))?$appearanceSettings['CustomerSetting']['FKCustomerid']:'';
-?>      
+?>  
     <div class='col-xs-12 col-md-9' height='100%'>
       <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >	   
 		<form method="POST" action="save_appearance_settings">
-        <h3 >Appearance</h3>
+        <h3 >Appearance</h3>		
         <br><br>
-		
+			
         <div class='row'>
           <div class='col-xs-12 col-md-4'>
             <h4 >COLORS </h4>

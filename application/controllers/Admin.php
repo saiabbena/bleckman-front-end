@@ -410,5 +410,5 @@ public function deleteLinks() {
 	  echo json_encode($server_output);
 	  //echo 'Success';
 	  
-}
+	}	
 }

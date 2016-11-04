@@ -36,17 +36,29 @@
     <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" />
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin3.js"></script>
     <?php if($this->uri->segment(2) == 'orders'){?>
-	<!--For Orders page only-->
+	<!--For Orders page only-->	
+	
+	<!--Datepicker for order statistics page-->
+	<link rel="stylesheet" href="<?php echo base_url();?>css/jquery-ui.css">	
+	<script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.js"></script>	
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$( ".datepicker" ).datepicker({
+			changeMonth: true,
+			changeYear: true,
+			dateFormat: "dd-mm-yy"
+		});		
+	});
+	</script>
+	
 	<script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin.js"></script>
 	<?php }?>
 	<!--Dropify image upload material-->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/dropify.css">
-	<script src="<?php echo base_url(); ?>js/dropify.min.js"></script>
-	
-	
+	<script src="<?php echo base_url(); ?>js/dropify.min.js"></script>	
 	<script>
       <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
-    </script>
+    </script>	
   </head>
   <body id='override'>
     <div class="bm-h">
@@ -116,13 +128,13 @@
               <th>
                 <b>From</b>
                 <div class="form-group">
-                  <input id='stat-from' type='text' class='form-control' placeholder="dd-mm-yyyy">
+                  <input type='text' class='datepicker form-control' placeholder="dd-mm-yyyy">
                 </div>
               </th>
               <th>
                 <b>To</b>
                 <div class="form-group">
-                  <input id='stat-to' type='text' class='form-control' placeholder="dd-mm-yyyy">
+                  <input id='stat-to' type='text' class='datepicker form-control' placeholder="dd-mm-yyyy">
                 </div>
               </th>
               <th>                
