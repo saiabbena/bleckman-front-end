@@ -5,7 +5,7 @@ class Admin extends CI_Controller {
   public function __construct(){
     parent::__construct();
     $this->load->library('session');
-    $_SESSION['Customerid']=1;
+    //$_SESSION['Customerid']=1;
   	$this->load->helper("url");
   	//$this->load->helper("get_appearance_settings.php");	
     $this->load->model('httpRequests');
@@ -30,6 +30,9 @@ class Admin extends CI_Controller {
   public function settings(){ 
     // $data['customerLanguages']=$this->getCustomerLanguages();
     // $data['returnReasons']=$this->getCustomerReturnReasons();
+
+    // echo " id :: " . $_SESSION['Customerid'];
+    // echo ",,,,,,,, Apoyar :: " . $_SESSION['Apoyar']; exit();
     $data = array(
       'Customerid'=>$_SESSION['Customerid']
     );
@@ -161,7 +164,7 @@ class Admin extends CI_Controller {
     header('Content-Type: application/json');
     //echo json_encode($_POST);
 
-   foreach ($_POST['Languages'] as $key => $value) {
+    foreach ($_POST['Languages'] as $key => $value) {
       $_POST['Languages'][$key]['Isdefault']="false";
       if($_POST['Languages'][$key]['LanguageName']==$_POST['DefaultLanguage']){
         $_POST['Languages'][$key]['Isdefault']="true";
@@ -172,7 +175,8 @@ class Admin extends CI_Controller {
     echo json_encode($_POST['Languages']);
 
 
-    $server_output = $this->httpRequests->httpPost('CustomerLanguage/PostManageCustomerLanguage', json_encode(['CustomerLanguages'=>$_POST['Languages']]) );
+    $server_output = $this->httpRequests->httpPost('CustomerLanguage/PostManageCustomerLanguage', 
+                                                    json_encode(['CustomerLanguages'=>$_POST['Languages']]) );
 
     // $ch = curl_init();
 
@@ -293,7 +297,7 @@ public function deleteLinks() {
     echo "in php : ". "\r\n";
     echo json_encode($_POST) . "\r\n";
 
-    $server_output = $this->httpRequests->httpPost('Returnorder/PostUpdateReturnorderComment', json_encode($_POST) );
+    $server_output = $this->httpRequests->httpPost('Returnorder/PostUpdateBMReturnorderComment', json_encode($_POST) );
 
     // $ch = curl_init();
 
@@ -336,7 +340,7 @@ public function deleteLinks() {
 	  $data = array('test_file' => $cfile);
 
 
-    $server_output = $this->httpRequests->httpPost('customersetting/PostUploadLoading?customerid=' . $customerid, $data );
+    $server_output = $this->httpRequests->httpPostUpload('customersetting/PostUploadLoading?customerid=' . $customerid, $data );
 	  
 	  // $ch = curl_init();	  	
 	  // //curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/customersetting/PostUploadLoading?customerid=$customerid");
@@ -348,6 +352,6 @@ public function deleteLinks() {
 	  // $server_output = curl_exec ($ch);
 	  // curl_close ($ch);
 	  echo json_encode($server_output);
-	  //echo 'Success';
+	  echo 'Success';
   }
 }

@@ -29,12 +29,14 @@
     
     <!--My assets-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" />
-    <script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin.js"></script>
+    
     <script>
       <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
-      <?php echo 'var apoyar_token="'. $_SESSION['Apoyar'].'";';?>
+      <?php echo 'var apoyarToken="'.$_SESSION['Apoyar'].'";';?>
+      <?php echo 'var customerId="'.$_SESSION['Customerid'].'";';?>
+      //console.log(" in orders_header, token : " + apoyarToken);
     </script>
-    
+    <script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin.js"></script>
   </head>
   <body id='override'>
     <div class="bm-h">

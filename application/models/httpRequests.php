@@ -29,6 +29,7 @@ Class httpRequests extends CI_Model {
 
 	    if ( $json_body['Id'] > 0 ) {
 	    	$_SESSION['Apoyar']=$headers['Apoyar'];
+	    	$_SESSION['Customerid']=$json_body['Id'];
 	    }
 	    curl_close($ch);
 	    return $json_body;
@@ -67,7 +68,24 @@ Class httpRequests extends CI_Model {
 	    curl_close($ch);
 	    return $response;
 	}
+	public function httpPostUpload($api_url, $data) {
+		//to be used for file uploads
+	    $ch = curl_init();
 
+	    $url = API_BASE_URL_BE . "api/" . $api_url;
+
+	    echo "data in httpPost : " . $data . "\r\n";
+
+	    curl_setopt($ch, CURLOPT_URL, $url);
+	    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Apoyar: ' . $_SESSION['Apoyar']));
+	    curl_setopt($ch, CURLOPT_POST, 1);
+	    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+	    $response = curl_exec($ch);
+	    curl_close($ch);
+	    return $response;
+	}
 
 	private function get_headers_from_curl_response($response) {
 	    $headers = array();

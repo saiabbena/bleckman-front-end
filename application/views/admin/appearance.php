@@ -277,7 +277,7 @@ $(document).ready(function(){
 				$('#'+form_id+' .btn_save_img').css({'display':'block'});//Hide save btn
 				
 			},
-			error: function() 
+			error: function(data) 
 			{
 				console.log(data);
 				$('#'+form_id+' .uploading').css({'display':'none'});//Hide spin image

@@ -157,7 +157,7 @@
               <th>
                 <div class="form-group label-floating">
                   <label for="i5" class="control-label">Search by return order-id</label>
-                  <input name='PKReturnOrderid' type="text" class="form-control" id="i5">
+                  <input name='ReturnId' type="text" class="form-control" id="i5">
                   <span class="help-block"></span>
                 </div>
               </th>
@@ -177,7 +177,7 @@
               <th>
                 <div class="form-group label-floating">
                   <label for="i5" class="control-label">Search by status</label>
-                  <input name='ReturnStatus' type="text" class="form-control" id="i5">
+                  <input name='StatusName' type="text" class="form-control" id="i5">
                   <span class="help-block"></span>
                 </div>
               </th>
