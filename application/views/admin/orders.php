@@ -16,7 +16,8 @@
             <tr>
               <th>
                 <div class='form-group'>
-                  <select name='Month' class='form-control'>
+                  <!--<input type='text' name="ReturnOrderDate" class='datepicker form-control' placeholder="dd-mm-yyyy">-->
+				  <select name='Month' class='form-control'>
                     <option value='0' selected>
                       Month
                     </option>
@@ -56,7 +57,7 @@
                     <option value='12'>
                       Dec
                     </option>
-                  </select>
+                  </select>				  
                 </div>
               </th>
               <th>
@@ -96,6 +97,9 @@
               <th>
                 <button class='btn btn-success btn-raised' id='search-button'>
                   SEARCH
+                </button>
+				<button class='btn btn-success btn-raised' id='btn_clear' onclick="javascript:window.location.reload()">
+                  CLEAR
                 </button>
               </th>
             </tr>

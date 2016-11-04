@@ -88,6 +88,8 @@ class Admin extends CI_Controller {
     }
   }
   public function orders(){
+	$customer_id = $_SESSION['Customerid'];	  
+	$data = array('customer_id'=>$customer_id);
     $this->load->view('admin/templates/adm_header');
     $this->load->view('admin/orders');
     $this->load->view('admin/templates/footer');
