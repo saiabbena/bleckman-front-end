@@ -9,6 +9,19 @@ class Admin extends CI_Controller {
   	$this->load->helper("url");
   	//$this->load->helper("get_appearance_settings.php");	
     $this->load->model('httpRequests');
+
+    if ( $this->uri->segment(2) != 'login' && $this->uri->segment(2) != 'loginSubmit') {
+
+      if(!isset($_SESSION['Apoyar'])) {
+        redirect('admin/login');
+      }
+    }
+  }
+  public function logout() {
+    print_r($_SESSION);
+    $_SESSION = Array();
+    print_r($_SESSION);
+    redirect('admin/login');
   }
   public function loginSubmit() {
     header('Content-Type: application/json');
