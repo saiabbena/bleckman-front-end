@@ -1,41 +1,4 @@
-<div class='container-fluid form1'>
-  <div class='row'>
-    <div class='col-xs-12 col-md-3' height='100%'>
-      <div class='well' style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;">
-        <div class='row'>
-          <div class='col-md-12 text-center' >
-            <h3 ><b><?php echo $_SESSION['Customername'] ?></b></h3><br>
-          </div>
-          <a href='orders'>
-          <div class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='<?php echo base_url();?>img/i-1.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Returns</span>
-          </div>
-          </a>
-          <a href='appearance'>
-          <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='<?php echo base_url();?>img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Appearance</span>
-          </div>
-          </a>
-          <a href='settings'>
-          <div  style='background-color: #009688; color: #fff;' class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='<?php echo base_url();?>img/i-3.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Settings</span>
-          </div>
-          </a>
-          <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='<?php echo base_url();?>img/i-4.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Integration</span>
-          </div>
-          <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='<?php echo base_url();?>img/i-5.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Other</span>
-          </div>
-        </div>
-      </div>
-    </div>
-      
+
     <div class='col-xs-12 col-md-9' height='100%'>
       <div class='well' id='rr-panel' style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
         <?php

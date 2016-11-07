@@ -53,8 +53,7 @@ class Admin extends CI_Controller {
     $data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
     $data['returnReasons'] = $this->httpRequests->httpGet('ReturnReason/GetAllReturnReasonsbyCustomerid', $req);
 
-
-    $this->load->view('admin/templates/settings_header');
+    $this->load->view('admin/templates/adm_header');
     $this->load->view('admin/settings', $data);
     $this->load->view('admin/templates/footer');
 
@@ -63,7 +62,9 @@ class Admin extends CI_Controller {
     }
   }
   public function orders(){
-    $this->load->view('admin/templates/orders_header');
+	$customer_id = $_SESSION['Customerid'];	  
+	$data = array('customer_id'=>$customer_id);
+    $this->load->view('admin/templates/adm_header');
     $this->load->view('admin/orders');
     $this->load->view('admin/templates/footer');
     if(isset($_SESSION['message'])){
@@ -82,22 +83,22 @@ class Admin extends CI_Controller {
 
 	  $customer_id = $_SESSION['Customerid'];
 	  
-	  //$data2 = array('Customerid'=>$customer_id);
-	  // $data_url='?'.http_build_query($data2);
-		 //  $data_string = json_encode($data2);
-		 //  $ch = curl_init();
+	  $data2 = array('Customerid'=>$customer_id);
+	  $data_url='?'.http_build_query($data2);
+	  $data_string = json_encode($data2);
+	  $ch = curl_init();
 
-		 //  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-		 //  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
-		 //  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
-		 //  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+	  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+	  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-		 //  // Send the request
-		 //  $result = json_decode(curl_exec($ch), true);
-		 //  // Free up the resources $curl is using
-		 //  curl_close($ch);
-		  $appearanceSettings = $data['appearanceSettings'];
-		  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
+	  // Send the request
+	  $result = json_decode(curl_exec($ch), true);
+	  // Free up the resources $curl is using
+	  curl_close($ch);
+	  $appearanceSettings = $result;
+	  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
 		  if(!is_array($serialize_appearance)){
 				  $header_color='';
 				  $menu_bg = '';
@@ -137,7 +138,7 @@ class Admin extends CI_Controller {
 	  $data['loading'] = API_BASE_URL_FE.'images/'.$customer_id.'/loading/loading.gif';
 	  
 	  
-	  $this->load->view('admin/templates/appearance_header');
+	  $this->load->view('admin/templates/adm_header');
 	  $this->load->view('admin/appearance', $data);
 	  $this->load->view('admin/templates/footer');	  
   }
@@ -365,6 +366,7 @@ public function deleteLinks() {
 	  // $server_output = curl_exec ($ch);
 	  // curl_close ($ch);
 	  echo json_encode($server_output);
-	  echo 'Success';
-  }
+	  //echo 'Success';
+	  
+	}	
 }
