@@ -121,7 +121,7 @@ function secondScreen(result){
 \
           <td>\
             <br style="font-size: 21px;">\
-            <b>&euro; '+(result['result']['BMOrderLine'][i]['Price']).toFixed(2)+'</b>\
+            <b>'+result.result.BMOrderLine[i].ProductCurrency+' '+(result['result']['BMOrderLine'][i]['Price']).toFixed(2)+'</b>\
           </td>\
 \
           <td>\
@@ -147,6 +147,8 @@ function secondScreen(result){
 \
         </tr>\
     '}
+    
+    $('#total-price').html(result.result.BMOrderLine[0].ProductCurrency+' '+'0.00');
     if(disabled==0){
       //$('#button2').attr('disabled','disabled');
     }
@@ -173,7 +175,7 @@ function print_total(){
   });
   submition.ReturnOrderTotalRefundAmount=sum.toFixed(2);
   
-  $('#total-price').html('&euro; '+(sum).toFixed(2));
+  $('#total-price').html(result.result.BMOrderLine[0].ProductCurrency+' '+(sum).toFixed(2));
 }
 
 function getCouriers(){
@@ -204,7 +206,7 @@ function thirdScreen(){
 \
           <td>\
             <br style="font-size: 21px;">\
-            '+customerSettings.carriers[i]['CarrierName']+'\
+            <span class="carrierName">'+customerSettings.carriers[i]['CarrierName']+'</span>\
           </td>\
 \
           <td>\
@@ -294,16 +296,16 @@ $(document).ready(function(){
       submition.Returnorderline[counter]={
         "Status": 1,
         "ShipmentId": '',
-        "LineId": '',
+        "LineId": 1,
         "OrderId": JSON.parse($(this).val())['OrderId'],
         "SKU": JSON.parse($(this).val())['SKU'],
-        "EanBarcode": '',
+        "EanBarcode": JSON.parse($(this).val())['EANBARCODE'],
         "Price": (JSON.parse($(this).val())['Price']).toFixed(2),
         "ReturnReason": '',
-        "QtyReturned": quantity,
+        "QtyReturned": parseInt(quantity, 10),
         "ProductCurrency": JSON.parse($(this).val())['ProductCurrency'],
         "TotalLineAmount": '',
-        "ReturnReasonId": reason,
+        "ReturnReasonId": parseInt(reason, 10),
         "StatusName": "In Transit"
       }
       counter++;
@@ -323,10 +325,12 @@ $(document).ready(function(){
   $('#button3').click(function(){
     $('.loading-screen').slideDown('slow');
     
+    parent=$('input[name=sample1]:checked').parent().parent().parent().parent().parent();
+    var carName=$('.carrierName', parent).html();
     
     submition.FKCustomerId=customerId;
     submition.StatusName='In transit';
-    submition.CarriedId=$('input[name=sample1]:checked').val();
+    submition.CarriedId=parseInt($('input[name=sample1]:checked').val(), 10);
     submition.Status=result.result.Status;
     submition.Shipfromwarehouseid=result.result.ShipFromWarehouseId;
     submition.Source=result.result.Source;
@@ -350,11 +354,11 @@ $(document).ready(function(){
     submition.ReturnsOrderCarrier='';
     submition.ReturnsOrderCarrierService='';
     submition.ReturnsOrderParcelBarcode='';
-    submition.ReturnOrderTotalRefundAmount='';
-    submition.CarrierId='';
-    submition.FKCustomerId='';
-    submition.CarrierName='';
-    submition.StatusName='';
+    //submition.ReturnOrderTotalRefundAmount=sum;
+    //submition.CarrierId=2;
+    submition.FKCustomerId=1;
+    submition.CarrierName=carName;
+    submition.StatusName='In Transit';
     
     
     apiCall=url+'returnorder/PostBMReturnorder';
