@@ -53,12 +53,22 @@
 	</script>
 	
 	<script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin.js"></script>
-	<?php }?>
+	<?php }
+	if($this->uri->segment(2) == 'appearance'){
+	?>
 	<!--Dropify image upload material-->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/dropify.css">
 	<script src="<?php echo base_url(); ?>js/dropify.min.js"></script>	
+	<?php }
+	if($this->uri->segment(2) == 'settings'){
+	?>
+	<script type="text/javascript" src="<?php echo base_url();?>js/scriptsettings.js"></script>
+	<?php }?>
 	<script>
       <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
+      <?php echo 'var apoyarToken="'.$_SESSION['Apoyar'].'";';?>
+      <?php echo 'var customerId="'.$_SESSION['Customerid'].'";';?>
+      //console.log(" in orders_header, token : " + apoyarToken);
     </script>	
   </head>
   <body id='override'>

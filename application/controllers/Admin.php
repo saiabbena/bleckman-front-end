@@ -41,14 +41,10 @@ class Admin extends CI_Controller {
     }
   }
   public function settings(){
-    $data['customerLanguages']=$this->getCustomerLanguages();
-    $data['returnReasons']=$this->getCustomerReturnReasons();
-
-    $this->load->view('admin/templates/adm_header');
-
+    //$data['customerLanguages']=$this->getCustomerLanguages();
+    //$data['returnReasons']=$this->getCustomerReturnReasons();
     // $data['customerLanguages']=$this->getCustomerLanguages();
     // $data['returnReasons']=$this->getCustomerReturnReasons();
-
     // echo " id :: " . $_SESSION['Customerid'];
     // echo ",,,,,,,, Apoyar :: " . $_SESSION['Apoyar']; exit();
     $req = array(
@@ -57,7 +53,7 @@ class Admin extends CI_Controller {
     
     $data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
     $data['returnReasons'] = $this->httpRequests->httpGet('ReturnReason/GetAllReturnReasonsbyCustomerid', $req);
-    $this->load->view('admin/templates/settings_header');
+    $this->load->view('admin/templates/adm_header');
     $this->load->view('admin/settings', $data);
     $this->load->view('admin/templates/footer');
 
@@ -68,7 +64,7 @@ class Admin extends CI_Controller {
   public function orders(){
 	$customer_id = $_SESSION['Customerid'];	  
 	$data = array('customer_id'=>$customer_id);
-    $this->load->view('admin/templates/adm_header');
+    $this->load->view('admin/templates/adm_header');	
     $this->load->view('admin/orders');
     $this->load->view('admin/templates/footer');
     if(isset($_SESSION['message'])){
@@ -165,10 +161,11 @@ class Admin extends CI_Controller {
   }
   public function submitReturnReasons(){
     header('Content-Type: application/json');
-    
+    //print(json_encode(array("ReturnReasons" => $_POST['ReturnReasons'] )));exit();
     $server_output = $this->httpRequests->httpPost('ReturnReason/PostManageReturnReason', 
                                                   json_encode(array("ReturnReasons" => $_POST['ReturnReasons'] )) );
     $_SESSION['message']['rr']='Saved';
+	//echo json_encode($server_output);exit();
 
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#rr-panel');
   }
