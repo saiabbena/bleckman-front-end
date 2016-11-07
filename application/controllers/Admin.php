@@ -5,81 +5,59 @@ class Admin extends CI_Controller {
   public function __construct(){
     parent::__construct();
     $this->load->library('session');
-    $_SESSION['Customerid']=1;
-	$this->load->helper("url");
-	//$this->load->helper("get_appearance_settings.php");	
+    //$_SESSION['Customerid']=1;
+  	$this->load->helper("url");
+  	//$this->load->helper("get_appearance_settings.php");	
+    $this->load->model('httpRequests');
+
+    if ( $this->uri->segment(2) != 'login' && $this->uri->segment(2) != 'loginSubmit') {
+
+      if(!isset($_SESSION['Apoyar'])) {
+        redirect('admin/login');
+      }
+    }
   }
-
-  private function getCustomerLanguages(){
-    $data = array(
-      'Customerid'=>$_SESSION['Customerid']
-    );
-
-    $data_url='?'.http_build_query($data);
-
-    $data_string = json_encode($data);
-
-    $ch = curl_init();
-
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-    curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/CustomerLanguage/GetCustomerLanguagebyId".$data_url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-    // Send the request
-    $result = json_decode(curl_exec($ch), true);
-
-    // Free up the resources $curl is using
-    curl_close($ch);
-
-    return $result;
+  public function logout() {
+    print_r($_SESSION);
+    $_SESSION = Array();
+    print_r($_SESSION);
+    redirect('admin/login');
   }
-  private function getCustomerReturnReasons(){
-    $data = array(
-      'Customerid'=>$_SESSION['Customerid']
-    );
-	
-    $data_url='?'.http_build_query($data);
-	
-    $data_string = json_encode($data);
-	
-    $ch = curl_init();
+  public function loginSubmit() {
+    header('Content-Type: application/json');
 
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-    curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/ReturnReason/GetAllReturnReasonsbyCustomerid".$data_url);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $post_data = http_build_query(['Username'=>$_POST['Username'], 'Password'=>$_POST['Password']]);
+    // echo "post_data : " . json_encode($post_data);
+    $response = $this->httpRequests->httpPost_Login('Customer/PostLogin', $post_data );
 
-    // Send the request
-    $result = json_decode(curl_exec($ch), true);
+    if ( $response['Id'] >0 && $_SESSION['Apoyar'] ) {
+       redirect(base_url() . 'index.php/admin/orders');
+    } else {
+      $_SESSION['message']['screen1-error']='Please provide valid credentials to login';
 
-    // Free up the resources $curl is using
-    curl_close($ch);
+      echo var_dump($_SESSION['message']);
 
-    return $result;
+      header('Location: ' . $_SERVER['HTTP_REFERER'].'#screen1-error');
+    }
   }
-  private function getCustomerAppearanceSettings(){
-	  $data = array('Customerid'=>$_SESSION['Customerid']);
-	  $data_url='?'.http_build_query($data);
-	  $data_string = json_encode($data);
-	  $ch = curl_init();
-
-	  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-	  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
-	  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
-	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-	  // Send the request
-	  $result = json_decode(curl_exec($ch), true);
-	  // Free up the resources $curl is using
-	  curl_close($ch);
-
-	  return $result;	  
-	  
-  }
-  public function settings(){ 
+  public function settings(){
     $data['customerLanguages']=$this->getCustomerLanguages();
     $data['returnReasons']=$this->getCustomerReturnReasons();
 
     $this->load->view('admin/templates/adm_header');
+
+    // $data['customerLanguages']=$this->getCustomerLanguages();
+    // $data['returnReasons']=$this->getCustomerReturnReasons();
+
+    // echo " id :: " . $_SESSION['Customerid'];
+    // echo ",,,,,,,, Apoyar :: " . $_SESSION['Apoyar']; exit();
+    $req = array(
+      'Customerid'=>$_SESSION['Customerid']
+    );
+    
+    $data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
+    $data['returnReasons'] = $this->httpRequests->httpGet('ReturnReason/GetAllReturnReasonsbyCustomerid', $req);
+    $this->load->view('admin/templates/settings_header');
     $this->load->view('admin/settings', $data);
     $this->load->view('admin/templates/footer');
 
@@ -97,11 +75,17 @@ class Admin extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
+
   public function appearance(){
 	  
-	  $data['appearanceSettings'] = $this->getCustomerAppearanceSettings();
+	  //$data['appearanceSettings'] = $this->getCustomerAppearanceSettings();
+    $req = array(
+      'Customerid'=>$_SESSION['Customerid']
+    );
+
+    $data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $req);
+
 	  $customer_id = $_SESSION['Customerid'];
-	  
 	  $data2 = array('Customerid'=>$customer_id);
 	  $data_url='?'.http_build_query($data2);
 	  $data_string = json_encode($data2);
@@ -118,6 +102,24 @@ class Admin extends CI_Controller {
 	  curl_close($ch);
 	  $appearanceSettings = $result;
 	  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
+
+	  //$data2 = array('Customerid'=>$customer_id);
+	  // $data_url='?'.http_build_query($data2);
+		 //  $data_string = json_encode($data2);
+		 //  $ch = curl_init();
+
+		 //  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+		 //  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+		 //  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+		 //  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		 //  // Send the request
+		 //  $result = json_decode(curl_exec($ch), true);
+		 //  // Free up the resources $curl is using
+		 //  curl_close($ch);
+		  $appearanceSettings = $data['appearanceSettings'];
+		  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
+
 		  if(!is_array($serialize_appearance)){
 				  $header_color='';
 				  $menu_bg = '';
@@ -163,26 +165,9 @@ class Admin extends CI_Controller {
   }
   public function submitReturnReasons(){
     header('Content-Type: application/json');
-    //echo json_encode($_POST);exit();
-	//print_r($_POST['ReturnReasons']);exit();
-    //echo json_encode($_POST);
-	//echo http_build_query($_POST['ReturnReasons']);exit();
-    //
-    //
-
-    $ch = curl_init();
-
-    curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/ReturnReason/PostManageReturnReason");
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(['ReturnReasons'=>$_POST['ReturnReasons']]));    
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-    $server_output = curl_exec ($ch);
-
-    curl_close ($ch);
-
-    echo json_encode($server_output);
-
+    
+    $server_output = $this->httpRequests->httpPost('ReturnReason/PostManageReturnReason', 
+                                                  json_encode(array("ReturnReasons" => $_POST['ReturnReasons'] )) );
     $_SESSION['message']['rr']='Saved';
 
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#rr-panel');
@@ -193,15 +178,18 @@ class Admin extends CI_Controller {
 	  'FKCustomerid'=>$_POST['CustomerSetting']['FKCustomerid'],
 	  'Colours'=>serialize($_POST['CustomerSetting']['Colours'])];
 	  
-	  $ch = curl_init();
-	  curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/CustomerSetting/PostManageCustomerSetting");	
-	  //curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/Api/CustomerSetting/PostManageCustomerSetting");	
+
+    $server_output = $this->httpRequests->httpPost('CustomerSetting/PostManageCustomerSetting', json_encode($post_data) );
+
+	  // $ch = curl_init();
+	  // curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/CustomerSetting/PostManageCustomerSetting");	
+	  // //curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/Api/CustomerSetting/PostManageCustomerSetting");	
 	  
-	  curl_setopt($ch, CURLOPT_POST, 1);
-	  curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_data));
-	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	  $server_output = curl_exec ($ch);
-	  curl_close ($ch);
+	  // curl_setopt($ch, CURLOPT_POST, 1);
+	  // curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_data));
+	  // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	  // $server_output = curl_exec ($ch);
+	  // curl_close ($ch);
 	  
 	  //echo json_encode($server_output);exit();
 	  $_SESSION['message']['appearance']='Saved';
@@ -211,7 +199,7 @@ class Admin extends CI_Controller {
     header('Content-Type: application/json');
     //echo json_encode($_POST);
 
-   foreach ($_POST['Languages'] as $key => $value) {
+    foreach ($_POST['Languages'] as $key => $value) {
       $_POST['Languages'][$key]['Isdefault']="false";
       if($_POST['Languages'][$key]['LanguageName']==$_POST['DefaultLanguage']){
         $_POST['Languages'][$key]['Isdefault']="true";
@@ -221,33 +209,41 @@ class Admin extends CI_Controller {
     }
     echo json_encode($_POST['Languages']);
 
-    //
-    //
 
-    $ch = curl_init();
+    $server_output = $this->httpRequests->httpPost('CustomerLanguage/PostManageCustomerLanguage', 
+                                                    json_encode(['CustomerLanguages'=>$_POST['Languages']]) );
 
-    curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/CustomerLanguage/PostManageCustomerLanguage");
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS,
-                http_build_query(['CustomerLanguages'=>$_POST['Languages']]));
+    // $ch = curl_init();
+
+    // curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/CustomerLanguage/PostManageCustomerLanguage");
+    // curl_setopt($ch, CURLOPT_POST, 1);
+    // curl_setopt($ch, CURLOPT_POSTFIELDS,
+    //             http_build_query(['CustomerLanguages'=>$_POST['Languages']]));
 
     
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    $server_output = curl_exec ($ch);
+    // $server_output = curl_exec ($ch);
 
-    curl_close ($ch);
+    // curl_close ($ch);
 
-    echo json_encode($server_output);
+    // echo json_encode($server_output);
 
     $_SESSION['message']['languages']='Saved';
 
     echo var_dump($_SESSION['message']);
-    
-    
 
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#language-panel');
 
+  }
+  //login screen for customer view
+  public function login(){
+    $this->load->view('admin/templates/header');
+    $this->load->view('admin/login');
+    $this->load->view('admin/templates/footer');
+    if(isset($_SESSION['message'])){
+      unset($_SESSION['message']);
+    }
   }
   public function submitLinks() {
     header('Content-Type: application/json');
@@ -255,8 +251,11 @@ class Admin extends CI_Controller {
     #echo json_encode($_POST) . "\r\n";
     $newlinks=[];
     $post_data = $_POST['link'];
-
-    $customerLanguages=$this->getCustomerLanguages();
+    $input_data = array(
+      'Customerid'=>$_SESSION['Customerid']
+    );
+    //$customerLanguages=$this->getCustomerLanguages();
+    $customerLanguages=$this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $input_data);
     for( $i=0;$i<count($customerLanguages);$i++ ) {
       $str = '{"';
       foreach($post_data as $key => $value) {
@@ -273,20 +272,8 @@ class Admin extends CI_Controller {
                             "PKCustomerLanguageID"=>$customerLanguages[$i]['PKCustomerLanguageID'] ,
                             "Links"=> $str]);
     }
-    echo "newlinks - " . json_encode(array("CustomerLanguages" => $newlinks));
-    $ch = curl_init();
 
-    #curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/CustomerLanguage/PostManageLinks");
-    curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/CustomerLanguage/PostManageLinks");
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS,
-                http_build_query(['CustomerLanguages'=>$newlinks]));
-
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-    $server_output = curl_exec ($ch);
-
-    curl_close ($ch);
+    $server_output = $this->httpRequests->httpPost('CustomerLanguage/PostManageLinks', json_encode(array("CustomerLanguages" => $newlinks)) );
 
     echo json_encode($server_output);
     $_SESSION['message']['links']='Saved';
@@ -305,11 +292,17 @@ public function deleteLinks() {
     echo 'en test :  '. '"' . $post_data['English'] . '"' . "\r\n";
 
 
-    $customerLanguages=$this->getCustomerLanguages();
+    #$customerLanguages=$this->getCustomerLanguages();
+    $input_data = array(
+      'Customerid'=>$_SESSION['Customerid']
+    );
+    //$customerLanguages=$this->getCustomerLanguages();
+    $customerLanguages=$this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $input_data);
+
     for( $i=0;$i<count($customerLanguages);$i++ ) {
       $del_str = $post_data[$customerLanguages[$i]['LanguageName']];
-    $del_str = str_replace('$&*#', '":"', $del_str);
-    $del_str = '"' . $del_str . '"';
+      $del_str = str_replace('$&*#', '":"', $del_str);
+      $del_str = '"' . $del_str . '"';
       echo "del_str : " . $del_str . "\r\n";
       $str = $customerLanguages[$i]['Links'];
 
@@ -326,23 +319,8 @@ public function deleteLinks() {
                             "Links"=> $str]);
     }
     echo "newlinks - " . json_encode(array("CustomerLanguages" => $newlinks));
+    $server_output = $this->httpRequests->httpPost('CustomerLanguage/PostManageLinks', json_encode(array("CustomerLanguages" => $newlinks)) );
 
-
-    $ch = curl_init();
-
-    #curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/CustomerLanguage/PostManageLinks");
-    curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/CustomerLanguage/PostManageLinks");
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS,
-                http_build_query(['CustomerLanguages'=>$newlinks]));
-
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-    $server_output = curl_exec ($ch);
-
-    curl_close ($ch);
-
-    echo json_encode($server_output);
     $_SESSION['message']['links']='Saved';
 
     echo var_dump($_SESSION['message']);
@@ -353,19 +331,22 @@ public function deleteLinks() {
     header('Content-Type: application/json');
     echo "in php : ". "\r\n";
     echo json_encode($_POST) . "\r\n";
-    $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/Returnorder/PostUpdateReturnorderComment");
-    curl_setopt($ch, CURLOPT_POST, 1);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($_POST));
+    $server_output = $this->httpRequests->httpPost('Returnorder/PostUpdateBMReturnorderComment', json_encode($_POST) );
 
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // $ch = curl_init();
 
-    $server_output = curl_exec ($ch);
+    // curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/Returnorder/PostUpdateReturnorderComment");
+    // curl_setopt($ch, CURLOPT_POST, 1);
+    // curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($_POST));
 
-    curl_close ($ch);
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    echo json_encode($server_output);
+    // $server_output = curl_exec ($ch);
+
+    // curl_close ($ch);
+
+    // echo json_encode($server_output);
     $_SESSION['message']['orders-messages']='Comment Saved';
 
     echo var_dump($_SESSION['message']);
@@ -374,14 +355,7 @@ public function deleteLinks() {
 
   }
   public function debug() {
-    foreach ($_POST['Languages'] as $key => $value) {
-      $_POST['Languages'][$key]['Isdefault']="false";
-      if($_POST['Languages'][$key]['LanguageName']==$_POST['DefaultLanguage']){
-        $_POST['Languages'][$key]['Isdefault']="true";
-      }
-      
-      unset($_POST['Languages'][$key]['Links']);
-    }
+    
     
     echo var_dump($_POST);
    
@@ -399,18 +373,23 @@ public function deleteLinks() {
 	  //print_r($_FILES);exit();	  
 	  $cfile = new CURLFile($img_file_tmp, $img_file_type, $image_type);
 	  $data = array('test_file' => $cfile);
+
+
+    $server_output = $this->httpRequests->httpPostUpload('customersetting/PostUploadLoading?customerid=' . $customerid, $data );
 	  
-	  $ch = curl_init();	  	
-	  //curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/customersetting/PostUploadLoading?customerid=$customerid");
-	  curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/customersetting/PostUploadLoading?customerid=$customerid");	  
+	  // $ch = curl_init();	  	
+	  // //curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/customersetting/PostUploadLoading?customerid=$customerid");
+	  // curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/customersetting/PostUploadLoading?customerid=$customerid");	  
 	  
-	  curl_setopt($ch, CURLOPT_POST, 1);
-	  curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	  $server_output = curl_exec ($ch);
-	  curl_close ($ch);
+	  // curl_setopt($ch, CURLOPT_POST, 1);
+	  // curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+	  // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	  // $server_output = curl_exec ($ch);
+	  // curl_close ($ch);
 	  echo json_encode($server_output);
+
 	  //echo 'Success';
 	  
-	}	
+	}	  
+
 }

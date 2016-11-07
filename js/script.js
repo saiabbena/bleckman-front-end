@@ -30,7 +30,7 @@ function getCustomerSettings(){
 }
 function getOrderAndAuth(inputData){
   
-  apiCall=url+'Order/GetAllOrdersbyid';
+  apiCall=url+'order/GetBMAllOrdersbyid';
   
   $.get(apiCall, inputData)
   .always(function(data){
@@ -39,7 +39,7 @@ function getOrderAndAuth(inputData){
   .success(function(data, status, xhr){
     console.log(data);
     //function validate stuff
-    if(data.hasOwnProperty('Order') && data['Order']['ConsumerEmail'].toLowerCase()==inputData['Email'].toLowerCase()){
+    if(data && data['ConsumerEmail'].toLowerCase()==inputData['Email'].toLowerCase()){
       result={type: 'screen1', status: true, message: 'You have been authenticated', result: data};
       secondScreen(result);
       $('.form2').show();
@@ -64,13 +64,13 @@ function getOrderAndAuth(inputData){
 }
 function secondScreen(result){
   var html='';
-  for (i=0; i<result['result']['Orderlines'].length; i++){
-    result['result']['Orderlines'][i]['Price']=(result['result']['Orderlines'][i]['Price']/result['result']['Orderlines'][i]['Quantity']);
+  for (i=0; i<result['result']['BMOrderLine'].length; i++){
+    result['result']['BMOrderLine'][i]['Price'];
   }
-  for(i=0; i<result['result']['Orderlines'].length; i++){
+  for(i=0; i<result['result']['BMOrderLine'].length; i++){
     var disabled=0;
-    disabled=disabled+result['result']['Orderlines'][i]['Quantity'];
-    if(result['result']['Orderlines'][i]['Quantity']==0){
+    disabled=disabled+result['result']['BMOrderLine'][i]['QtyShipped'];
+    if(result['result']['BMOrderLine'][i]['QtyShipped']==0){
       html=html+'\
         <tr id="disabled-orderline">\
           <td>\
@@ -78,7 +78,7 @@ function secondScreen(result){
 \
           <td>\
             <br style="font-size: 21px;">\
-            <b style="color: #999;">'+result['result']['Orderlines'][i]['ProductName']+'</b>\
+            <b style="color: #999;">'+result['result']['BMOrderLine'][i]['StyleDescription']+'</b>\
             <br><br style="font-size: 15px;">\
           </td>\
 \
@@ -108,7 +108,7 @@ function secondScreen(result){
             <div class="form-group">\
               <div class="checkbox">\
                 <label>\
-                  <input type="checkbox" value=\''+JSON.stringify(result['result']['Orderlines'][i])+'\'>\
+                  <input type="checkbox" value=\''+JSON.stringify(result['result']['BMOrderLine'][i])+'\'>\
                 </label>\
               </div>\
             </div>\
@@ -116,12 +116,12 @@ function secondScreen(result){
 \
           <td>\
             <br style="font-size: 21px;">\
-            <a href="#">'+result['result']['Orderlines'][i]['ProductName']+'</a>\
+            <a href="#">'+result['result']['BMOrderLine'][i]['StyleDescription']+'</a>\
           </td>\
 \
           <td>\
             <br style="font-size: 21px;">\
-            <b>&euro; '+(result['result']['Orderlines'][i]['Price']).toFixed(2)+'</b>\
+            <b>'+result.result.BMOrderLine[i].ProductCurrency+' '+(result['result']['BMOrderLine'][i]['Price']).toFixed(2)+'</b>\
           </td>\
 \
           <td>\
@@ -137,7 +137,7 @@ function secondScreen(result){
           <td>\
             <div class="form-group" style="margin-top: 18px">\
               <select id="s2" class="form-control s2-dd">';
-      for (a=1; a<=result.result.Orderlines[i]['Quantity']; a++){
+      for (a=1; a<=result.result.BMOrderLine[i]['QtyShipped']; a++){
         html=html+'<option value="'+a+'">'+a+'</option>'
       }
       html=html+'\
@@ -147,6 +147,8 @@ function secondScreen(result){
 \
         </tr>\
     '}
+    
+    $('#total-price').html(result.result.BMOrderLine[0].ProductCurrency+' '+'0.00');
     if(disabled==0){
       //$('#button2').attr('disabled','disabled');
     }
@@ -171,9 +173,9 @@ function print_total(){
     var quantity=$('#s2', $(this).parent().parent().parent().parent().parent()).val();
     sum=sum+price*quantity;
   });
-  submition.Returnordertotal=sum.toFixed(2);
+  submition.ReturnOrderTotalRefundAmount=sum.toFixed(2);
   
-  $('#total-price').html('&euro; '+(sum).toFixed(2));
+  $('#total-price').html(result.result.BMOrderLine[0].ProductCurrency+' '+(sum).toFixed(2));
 }
 
 function getCouriers(){
@@ -204,7 +206,7 @@ function thirdScreen(){
 \
           <td>\
             <br style="font-size: 21px;">\
-            '+customerSettings.carriers[i]['CarrierName']+'\
+            <span class="carrierName">'+customerSettings.carriers[i]['CarrierName']+'</span>\
           </td>\
 \
           <td>\
@@ -264,7 +266,7 @@ $(document).ready(function(){
       var inputData={'Orderid': $('#f2').val(), 'Email': $('#f1').val(), Customerid: customerId};
       getOrderAndAuth(inputData);
     }, 500);
-    submition.OrderID=($('#f2').val()).toString();
+    submition.OrderId=($('#f2').val()).toString();
     submition.ConsumerEmail=$('#f1').val();
     
   });
@@ -292,13 +294,19 @@ $(document).ready(function(){
       var quantity=$('#s2', parent).val();
       
       submition.Returnorderline[counter]={
-        "ProductName": JSON.parse($(this).val())['ProductName'], 
-        "ProductInfo": JSON.parse($(this).val())['ProductInfo'], 
-        "Quantity": quantity, 
-        "Price": (JSON.parse($(this).val())['Price']*quantity).toFixed(2), 
-        "FKReasonID": reason, 
-        "FKReturnStatusID": 1, 
-        "ProductSKU": (JSON.parse($(this).val())['ProductSKU']).toString()
+        "Status": 1,
+        "ShipmentId": '',
+        "LineId": 1,
+        "OrderId": JSON.parse($(this).val())['OrderId'],
+        "SKU": JSON.parse($(this).val())['SKU'],
+        "EanBarcode": JSON.parse($(this).val())['EANBARCODE'],
+        "Price": (JSON.parse($(this).val())['Price']).toFixed(2),
+        "ReturnReason": '',
+        "QtyReturned": parseInt(quantity, 10),
+        "ProductCurrency": JSON.parse($(this).val())['ProductCurrency'],
+        "TotalLineAmount": '',
+        "ReturnReasonId": parseInt(reason, 10),
+        "StatusName": "In Transit"
       }
       counter++;
     });
@@ -307,8 +315,8 @@ $(document).ready(function(){
       $('.form2').hide();
       $('.form3').show();
     }, 500);
-    for (i=0; i<result['result']['Orderlines'].length; i++){
-      result['result']['Orderlines'][i]['Price']=(result['result']['Orderlines'][i]['Price']*result['result']['Orderlines'][i]['Quantity']);
+    for (i=0; i<result['result']['BMOrderLine'].length; i++){
+      result['result']['BMOrderLine'][i]['Price']=(result['result']['BMOrderLine'][i]['Price']*result['result']['BMOrderLine'][i]['Quantity']);
     }
     
   });
@@ -316,10 +324,44 @@ $(document).ready(function(){
   //logic
   $('#button3').click(function(){
     $('.loading-screen').slideDown('slow');
-    submition.FKCustomerID=result['result']['Order']['FKCustomerID'];
-    submition.FKReturnStatusID=1;
-    submition.FKCarriedID=$('input[name=sample1]:checked').val();
-    apiCall=url+'Returnorder/PostReturnorder';
+    
+    parent=$('input[name=sample1]:checked').parent().parent().parent().parent().parent();
+    var carName=$('.carrierName', parent).html();
+    
+    submition.FKCustomerId=customerId;
+    submition.StatusName='In transit';
+    submition.CarriedId=parseInt($('input[name=sample1]:checked').val(), 10);
+    submition.Status=result.result.Status;
+    submition.Shipfromwarehouseid=result.result.ShipFromWarehouseId;
+    submition.Source=result.result.Source;
+    submition.Ordertype=result.result.OrderType;
+    submition.ShipmentId=result.result.ShipmentId;
+    submition.OrderId=result.result.OrderId;
+    submition.ConsumerId='';
+    submition.ConsumerEmail=result.result.ConsumerEmail;
+    submition.Consumerphonenumber=result.result.ConsumerPhoneNumber;
+    submition.ConsumerName1=result.result.ConsumerName1;
+    submition.Consumername2=result.result.ConsumerName2;
+    submition.ConsumerShipStreet1='';
+    submition.Consumershipstreet2='';
+    submition.Consumershipstreet3='';
+    submition.ConsumerFromShipHouseNumber='';
+    submition.ConsumerFromShipPostalCode='';
+    submition.ConsumerFromShipCity='';
+    submition.Consumershipstate=result.result.ConsumerShipState;
+    submition.ConsumerFromShipCountry='';
+    submition.ReturnsOrderTrackingCode='';
+    submition.ReturnsOrderCarrier='';
+    submition.ReturnsOrderCarrierService='';
+    submition.ReturnsOrderParcelBarcode='';
+    //submition.ReturnOrderTotalRefundAmount=sum;
+    //submition.CarrierId=2;
+    submition.FKCustomerId=1;
+    submition.CarrierName=carName;
+    submition.StatusName='In Transit';
+    
+    
+    apiCall=url+'returnorder/PostBMReturnorder';
     $('#button3').hide('slow');
 	//console.log(submition);
     $.ajax({
@@ -340,10 +382,11 @@ $(document).ready(function(){
         $('.loading-screen').slideUp('slow');
         //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
       },
-      fail: function(){
+    }).fail(function(response){
+        console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
+        console.log(response);
         $('.loading-screen').slideUp('slow');
         $('#screen3-fail').show('slow');
-      }
     });
     /*
     $.post(apiCall, submition)
