@@ -4,7 +4,7 @@
       <div class='well'  style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;">
         <div class='row'>
           <div class='col-md-12 text-center' >
-            <h3><b>TRUE RELIGION</b></h3><br>
+            <h3><b><?php echo $_SESSION['Customername'] ?></b></h3><br>
           </div>
           <a href='orders'>
           <div style='background-color: #009688; color: #fff;' class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
@@ -157,7 +157,7 @@
               <th>
                 <div class="form-group label-floating">
                   <label for="i5" class="control-label">Search by return order-id</label>
-                  <input name='PKReturnOrderid' type="text" class="form-control" id="i5">
+                  <input name='ReturnId' type="text" class="form-control" id="i5">
                   <span class="help-block"></span>
                 </div>
               </th>
@@ -177,7 +177,7 @@
               <th>
                 <div class="form-group label-floating">
                   <label for="i5" class="control-label">Search by status</label>
-                  <input name='ReturnStatus' type="text" class="form-control" id="i5">
+                  <input name='StatusName' type="text" class="form-control" id="i5">
                   <span class="help-block"></span>
                 </div>
               </th>
