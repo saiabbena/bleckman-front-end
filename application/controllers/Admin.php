@@ -46,12 +46,12 @@ class Admin extends CI_Controller {
 
     // echo " id :: " . $_SESSION['Customerid'];
     // echo ",,,,,,,, Apoyar :: " . $_SESSION['Apoyar']; exit();
-    $data = array(
+    $req = array(
       'Customerid'=>$_SESSION['Customerid']
     );
     
-    $data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $data);
-    $data['returnReasons'] = $this->httpRequests->httpGet('ReturnReason/GetAllReturnReasonsbyCustomerid', $data);
+    $data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
+    $data['returnReasons'] = $this->httpRequests->httpGet('ReturnReason/GetAllReturnReasonsbyCustomerid', $req);
 
 
     $this->load->view('admin/templates/settings_header');
@@ -74,11 +74,11 @@ class Admin extends CI_Controller {
   public function appearance(){
 	  
 	  //$data['appearanceSettings'] = $this->getCustomerAppearanceSettings();
-    $data = array(
+    $req = array(
       'Customerid'=>$_SESSION['Customerid']
     );
 
-    $data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $data);
+    $data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $req);
 
 	  $customer_id = $_SESSION['Customerid'];
 	  
