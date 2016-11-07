@@ -33,6 +33,13 @@
             <img src='<?php echo base_url();?>img/i-5.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Other</span>
           </div>
         </div>
+        <div class="row">
+          <div class='col-md-offset-0 col-md-12 col-xs-2'>
+            <div class='hidden-lg hidden-md'></div>
+              <br>
+            <a type='button' class='btn btn-raised btn-block btn-warning ' id='logout-btn' href="<?php echo base_url()?>index.php/admin/logout"><span class='glyphicon glyphicon-log-out'></span> LOGOUT</a><br>
+          </div>
+        </div>
       </div>
     </div>
       

@@ -41,6 +41,8 @@ function getOrderAndAuth(inputData){
     //function validate stuff
     if(data && data['ConsumerEmail'].toLowerCase()==inputData['Email'].toLowerCase()){
       result={type: 'screen1', status: true, message: 'You have been authenticated', result: data};
+      console.log("data is : ");
+      console.log(data);
       secondScreen(result);
       $('.form2').show();
       $('.loading-screen').slideUp('slow');
@@ -64,6 +66,7 @@ function getOrderAndAuth(inputData){
 }
 function secondScreen(result){
   var html='';
+  var html2='';
   for (i=0; i<result['result']['BMOrderLine'].length; i++){
     result['result']['BMOrderLine'][i]['Price'];
   }
@@ -116,7 +119,7 @@ function secondScreen(result){
 \
           <td>\
             <br style="font-size: 21px;">\
-            <a href="#">'+result['result']['BMOrderLine'][i]['StyleDescription']+'</a>\
+            <a data-toggle="modal" href="#moreInfo'+result['result']['BMOrderLine'][i].OrderlineID+'">'+result['result']['BMOrderLine'][i]['StyleDescription']+'</a>\
           </td>\
 \
           <td>\
@@ -146,8 +149,38 @@ function secondScreen(result){
           </td>\
 \
         </tr>\
-    '}
-    
+    ';
+      html2=html2+'\
+      <div class="modal fade" id="moreInfo'+result['result']['BMOrderLine'][i].OrderlineID+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
+        <div class="modal-dialog" role="document">\
+          <div class="modal-content">\
+            <div class="modal-header">\
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+              <h4 class="modal-title" id="myModalLabel">Full info on OrderlineID: '+result['result']['BMOrderLine'][i].OrderlineID+'</h4>\
+            </div>\
+            <div class="modal-body">\
+              <b>Shipment date/time:</b> '+result['result'].ShippedDate+', <b>ShipmentId:</b> '+result['result'].ShipmentId+' \
+              <h4>Order Details</h4>\
+              <b>SKU:</b> '+result['result']['BMOrderLine'][i].SKU+'<br>\
+              <b>Colour Description: </b>'+ result['result']['BMOrderLine'][i].ColourDescription+ '\
+              <br><b>Style Description: </b>'+ result['result']['BMOrderLine'][i].StyleDescription+'\
+              <br><b>Quantity Shipped: </b>'+ result['result']['BMOrderLine'][i].QtyShipped +'\
+              <br><b>Price: </b>'+ result['result']['BMOrderLine'][i].Price +'\
+              <br><h4>Consumer Details</h4>\
+              <b>Customer Email:</b> '+result['result'].ConsumerEmail+'<br>\
+              <b>Customer Phone:</b> '+result['result'].ConsumerPhoneNumber+'<br><br>\
+              <hr>';
+
+            html2=html2+'</div>\
+            <div class="modal-footer">\
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+            </div>\
+          </div>\
+        </div>\
+      </div>\
+      ';
+  }
+    $('body').append(html2);
     $('#total-price').html(result.result.BMOrderLine[0].ProductCurrency+' '+'0.00');
     if(disabled==0){
       //$('#button2').attr('disabled','disabled');
@@ -362,8 +395,9 @@ $(document).ready(function(){
     
     
     apiCall=url+'returnorder/PostBMReturnorder';
+    console.log("token : " + result.token );
     $('#button3').hide('slow');
-	//console.log(submition);
+	  console.log(submition);
     $.ajax({
       url: apiCall,
       type: 'post',
