@@ -435,4 +435,12 @@ $(document).ready(function(){
       $('#screen3-fail').show('slow')
     });*/
   });
+  //btn_career_back
+  $('#btn_career_back').click(function(){	  
+	  setTimeout(function(){		
+      $('.form3').hide();	  	  
+      $('.form2').show('slow');	  
+    }, 500);
+	  
+  });
 });
