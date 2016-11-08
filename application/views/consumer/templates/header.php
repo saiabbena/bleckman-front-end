@@ -57,7 +57,16 @@
         <div class="navbar-collapse collapse navbar-inverse-collapse">
 		<style scoped>
 			.navbar-nav > li >a{color:<?php echo $menu_font;?>}
-			.dropdown.open > ul > li > a{color:<?php echo $dd_font;?>}
+			.dropdown.open > ul > li > a{color:<?php echo $dd_font;?>}			
+			.dropdown.open > ul > li:hover{color:<?php echo $dd_font;?>}
+			
+			.dropdown.open > ul > li a:hover{
+			  background-color: <?php echo ($accent_2 != '')?$accent_2:'#aa0321';?> !important;
+			}
+			.dropdown.open > ul > li a::focus{
+			  background-color: <?php echo ($accent_2 != '')?$accent_2:'#aa0321';?> !important;
+			}
+			.hover_bg{background-color: <?php echo ($accent_2 != '')?$accent_2:'#aa0321';?> !important;}
 		</style>
           <ul class="nav navbar-nav navbar-right">
 		    <li>&nbsp;&nbsp;&nbsp;</li>
@@ -73,7 +82,7 @@
                     $url_lang_string['Customer']=$Customerid;
                     $url_lang_string=http_build_query($url_lang_string);
                     if($LanguageName==$value['LanguageName']){
-                      echo '<li><a href="?'.$url_lang_string.'"><b>&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;'.strtoupper($value['LanguageName']).'</b></a></li>';
+                      echo '<li><a class="hover_bg" href="?'.$url_lang_string.'"><b>&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;'.strtoupper($value['LanguageName']).'</b></a></li>';
                     }
                     else{
                       echo '<li><a href="?'.$url_lang_string.'">'.$value['LanguageName'].'</a></li>';
@@ -107,7 +116,7 @@
       <div style='height: 40vh'></div>
       <center><img src="<?php echo ($loading != '' ? $loading : base_url().'/img/loading-pink.gif')?>" style='height: 10vh'>
       <br>
-      <p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;<?php echo (isset($translations[23]['Translation'])?$translations[23]['Translation']:'');?>
+      <p style="color: <?php echo ($accent_2 != '')?$accent_2:'#CC1543';?>;">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo (isset($translations[23]['Translation'])?$translations[23]['Translation']:'');?>
 	  <?php //echo $translations[23]['Translation']?>...</p>
       </center>
     </div>
