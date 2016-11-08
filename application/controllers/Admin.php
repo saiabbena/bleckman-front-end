@@ -161,12 +161,13 @@ class Admin extends CI_Controller {
   }
   public function submitReturnReasons(){
     header('Content-Type: application/json');
-    //print(json_encode($_POST['ReturnReasons'] ));exit();
-    $server_output = $this->httpRequests->httpPost('ReturnReason/PostManageReturnReason', 
-                                                  json_encode(array("ReturnReasons" => $_POST['ReturnReasons'] )) );
+    //print_r(array_values($_POST['ReturnReasons']));exit();
+	$sort_ReturnReasons = array_values($_POST['ReturnReasons']);//array_values : This function has been used to order the index of POST array to avoid the conflict while changing postion and save
+	
+	$server_output = $this->httpRequests->httpPost('ReturnReason/PostManageReturnReason',json_encode(array("ReturnReasons" => $sort_ReturnReasons)));
+
     $_SESSION['message']['rr']='Saved';
 	//echo json_encode($server_output);exit();
-
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#rr-panel');
   }
   public function save_appearance_settings(){

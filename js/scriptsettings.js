@@ -28,15 +28,17 @@ $(document).ready(function(){
 
   $('.move-up-btn').click(function(){
 	  var selected= $(this).index();
-		var parentdivId = $(this).closest('div').prop('id');		
+		var parentdivId = $(this).closest('div').prop('id');
+				
 		var divid = parentdivId.substring(10);
 		var updivId = '#reason_div'+parseInt(divid-1);
 		/**/
+		//console.log(updivId);
 		var parentdiv_html = $('#'+parentdivId+' .reason_span').html();
 		var updiv_html = $(updivId+' .reason_span').html();
 		//console.log(parentdiv_html);		
-		$('#'+parentdivId+' .reason_span').html(updiv_html);
-		$(updivId+' .reason_span').html(parentdiv_html);		
+		$('#'+parentdivId+' .reason_span').empty().html(updiv_html);		
+		$(updivId+' .reason_span').empty().html(parentdiv_html);		
 		
 		//Change the sequence number to reorder Sequenceno
 		
@@ -49,4 +51,5 @@ $(document).ready(function(){
 				
 		
   });
+  
 });
