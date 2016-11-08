@@ -412,7 +412,7 @@ $(document).ready(function(){
         console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
         console.log(response);
         $('#carrier-label-modal').modal('show');
-        $('#label-iframe').attr('href', API_BASE_URL_FE+'RoyalMail/'+response.Id+'.pdf');
+        $('#label-iframe').attr('href', API_BASE_URL_FE+'Labels/TrueReligion/RoyalMail/'+response.Id+'.pdf');
         $('.loading-screen').slideUp('slow');
         //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
       },
