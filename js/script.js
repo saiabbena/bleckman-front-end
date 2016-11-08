@@ -337,7 +337,7 @@ $(document).ready(function(){
         "ReturnReason": '',
         "QtyReturned": parseInt(quantity, 10),
         "ProductCurrency": JSON.parse($(this).val())['ProductCurrency'],
-        "TotalLineAmount": '',
+        "TotalLineAmount": (JSON.parse($(this).val())['Price']).toFixed(2)*parseInt(quantity, 10),
         "ReturnReasonId": parseInt(reason, 10),
         "StatusName": "In Transit"
       }
@@ -362,7 +362,7 @@ $(document).ready(function(){
     var carName=$('.carrierName', parent).html();
     
     submition.FKCustomerId=customerId;
-    submition.StatusName='In transit';
+    submition.StatusName='Label printed';
     submition.CarriedId=parseInt($('input[name=sample1]:checked').val(), 10);
     submition.Status=result.result.Status;
     submition.Shipfromwarehouseid=result.result.ShipFromWarehouseId;
@@ -370,7 +370,7 @@ $(document).ready(function(){
     submition.Ordertype=result.result.OrderType;
     submition.ShipmentId=result.result.ShipmentId;
     submition.OrderId=result.result.OrderId;
-    submition.ConsumerId='';
+    submition.ConsumerId=101;
     submition.ConsumerEmail=result.result.ConsumerEmail;
     submition.Consumerphonenumber=result.result.ConsumerPhoneNumber;
     submition.ConsumerName1=result.result.ConsumerName1;
@@ -389,7 +389,7 @@ $(document).ready(function(){
     submition.ReturnsOrderParcelBarcode='';
     //submition.ReturnOrderTotalRefundAmount=sum;
     //submition.CarrierId=2;
-    submition.FKCustomerId=1;
+    submition.FKCustomerId=customerId;
     submition.CarrierName=carName;
     submition.StatusName='In Transit';
     

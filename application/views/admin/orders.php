@@ -1,5 +1,4 @@
-
-    <div class='col-xs-12 col-md-9' height='100%'>
+	<div class='col-xs-12 col-md-9' height='100%'>
       <div class='well' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;' id="orders-messages">
         <div class="alert alert-dismissible alert-primary">
           Listing the latest 20 returned orders

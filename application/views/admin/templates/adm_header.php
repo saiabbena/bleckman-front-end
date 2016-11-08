@@ -94,7 +94,7 @@
       <div class='well' style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;">
         <div class='row'>
           <div class='col-md-12 text-center' >
-            <h3><b>TRUE RELIGION</b></h3><br>
+            <h3><b><?php echo(strtoupper($_SESSION['Customername']))?></b></h3><br>
           </div>
           <a href='orders'>
           <div  <?php if($this->uri->segment(2) == 'orders'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
@@ -141,13 +141,13 @@
               <th>
                 <b>From</b>
                 <div class="form-group">
-                  <input type='text' class='datepicker form-control' placeholder="dd-mm-yyyy">
+                  <input id="stat-from" type='text' class='datepicker form-control' placeholder="dd-mm-yyyy" />
                 </div>
               </th>
               <th>
                 <b>To</b>
                 <div class="form-group">
-                  <input id='stat-to' type='text' class='datepicker form-control' placeholder="dd-mm-yyyy">
+                  <input id="stat-to" type='text' class='datepicker form-control' placeholder="dd-mm-yyyy" />
                 </div>
               </th>
               <th>                

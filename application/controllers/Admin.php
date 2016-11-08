@@ -40,10 +40,11 @@ class Admin extends CI_Controller {
       header('Location: ' . $_SERVER['HTTP_REFERER'].'#screen1-error');
     }
   }
-  public function settings(){ 
+  public function settings(){
+    //$data['customerLanguages']=$this->getCustomerLanguages();
+    //$data['returnReasons']=$this->getCustomerReturnReasons();
     // $data['customerLanguages']=$this->getCustomerLanguages();
     // $data['returnReasons']=$this->getCustomerReturnReasons();
-
     // echo " id :: " . $_SESSION['Customerid'];
     // echo ",,,,,,,, Apoyar :: " . $_SESSION['Apoyar']; exit();
     $req = array(
@@ -64,7 +65,7 @@ class Admin extends CI_Controller {
   public function orders(){
 	$customer_id = $_SESSION['Customerid'];	  
 	$data = array('customer_id'=>$customer_id);
-    $this->load->view('admin/templates/adm_header');
+    $this->load->view('admin/templates/adm_header');	
     $this->load->view('admin/orders');
     $this->load->view('admin/templates/footer');
     if(isset($_SESSION['message'])){
@@ -82,7 +83,7 @@ class Admin extends CI_Controller {
     $data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $req);
 
 	  $customer_id = $_SESSION['Customerid'];
-	  
+
 	  $data2 = array('Customerid'=>$customer_id);
 	  $data_url='?'.http_build_query($data2);
 	  $data_string = json_encode($data2);
@@ -99,6 +100,24 @@ class Admin extends CI_Controller {
 	  curl_close($ch);
 	  $appearanceSettings = $result;
 	  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
+
+	  //$data2 = array('Customerid'=>$customer_id);
+	  // $data_url='?'.http_build_query($data2);
+		 //  $data_string = json_encode($data2);
+		 //  $ch = curl_init();
+
+		 //  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+		 //  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+		 //  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+		 //  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		 //  // Send the request
+		 //  $result = json_decode(curl_exec($ch), true);
+		 //  // Free up the resources $curl is using
+		 //  curl_close($ch);
+		  $appearanceSettings = $data['appearanceSettings'];
+		  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
+
 		  if(!is_array($serialize_appearance)){
 				  $header_color='';
 				  $menu_bg = '';
@@ -144,11 +163,13 @@ class Admin extends CI_Controller {
   }
   public function submitReturnReasons(){
     header('Content-Type: application/json');
-    
-    $server_output = $this->httpRequests->httpPost('ReturnReason/PostManageReturnReason', 
-                                                  json_encode(array("ReturnReasons" => $_POST['ReturnReasons'] )) );
-    $_SESSION['message']['rr']='Saved';
+    //print_r(array_values($_POST['ReturnReasons']));exit();
+	$sort_ReturnReasons = array_values($_POST['ReturnReasons']);//array_values : This function has been used to order the index of POST array to avoid the conflict while changing postion and save
+	
+	$server_output = $this->httpRequests->httpPost('ReturnReason/PostManageReturnReason',json_encode(array("ReturnReasons" => $sort_ReturnReasons)));
 
+    $_SESSION['message']['rr']='Saved';
+	//echo json_encode($server_output);exit();
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#rr-panel');
   }
   public function save_appearance_settings(){
@@ -366,7 +387,9 @@ public function deleteLinks() {
 	  // $server_output = curl_exec ($ch);
 	  // curl_close ($ch);
 	  echo json_encode($server_output);
+
 	  //echo 'Success';
 	  
-	}	
+	}	  
+
 }
