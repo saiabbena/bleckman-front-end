@@ -363,7 +363,7 @@ $(document).ready(function(){
     
     submition.FKCustomerId=customerId;
     submition.StatusName='Label printed';
-    submition.CarriedId=parseInt($('input[name=sample1]:checked').val(), 10);
+    submition.CarrierId=parseInt($('input[name=sample1]:checked').val(), 10);
     submition.Status=result.result.Status;
     submition.Shipfromwarehouseid=result.result.ShipFromWarehouseId;
     submition.Source=result.result.Source;
