@@ -37,11 +37,9 @@ Class HttpRequests extends CI_Model {
 	}
 	public function httpGet($api_url, $data) {
 	  	$ch = curl_init();
-	  	$data_url = '';
+
 	  	$url = API_BASE_URL_BE . "api/" . $api_url;
-	  	if ( $data ) {
-			$data_url='?'.http_build_query($data);
-		}
+		$data_url='?'.http_build_query($data);
 	  	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 	  	curl_setopt($ch, CURLOPT_URL, $url.$data_url);
 	  	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
