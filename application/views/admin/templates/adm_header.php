@@ -123,6 +123,8 @@
             <img src='<?php echo base_url();?>img/i-5.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Other</span>
           </div>
         </div>
+        <br><br>
+        <a class='btn btn-warning btn-raised btn-block' href='logout'><span class='glyphicon glyphicon-log-out'></span> LOGOUT</a>
       </div>
 	  <?php 
 	  //This portion is only for orders page
