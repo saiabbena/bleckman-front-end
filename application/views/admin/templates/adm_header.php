@@ -139,13 +139,13 @@
               <th>
                 <b>From</b>
                 <div class="form-group">
-                  <input type='text' class='datepicker form-control' placeholder="dd-mm-yyyy">
+                  <input id="stat-from" type='text' class='datepicker form-control' placeholder="dd-mm-yyyy" />
                 </div>
               </th>
               <th>
                 <b>To</b>
                 <div class="form-group">
-                  <input id='stat-to' type='text' class='datepicker form-control' placeholder="dd-mm-yyyy">
+                  <input id="stat-to" type='text' class='datepicker form-control' placeholder="dd-mm-yyyy" />
                 </div>
               </th>
               <th>                

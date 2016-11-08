@@ -161,7 +161,7 @@ class Admin extends CI_Controller {
   }
   public function submitReturnReasons(){
     header('Content-Type: application/json');
-    //print(json_encode(array("ReturnReasons" => $_POST['ReturnReasons'] )));exit();
+    //print(json_encode($_POST['ReturnReasons'] ));exit();
     $server_output = $this->httpRequests->httpPost('ReturnReason/PostManageReturnReason', 
                                                   json_encode(array("ReturnReasons" => $_POST['ReturnReasons'] )) );
     $_SESSION['message']['rr']='Saved';
