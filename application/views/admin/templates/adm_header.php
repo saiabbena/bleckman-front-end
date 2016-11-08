@@ -94,7 +94,7 @@
       <div class='well' style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;">
         <div class='row'>
           <div class='col-md-12 text-center' >
-            <h3><b>TRUE RELIGION</b></h3><br>
+            <h3><b><?php echo(strtoupper($_SESSION['Customername']))?></b></h3><br>
           </div>
           <a href='orders'>
           <div  <?php if($this->uri->segment(2) == 'orders'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
@@ -123,6 +123,8 @@
             <img src='<?php echo base_url();?>img/i-5.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Other</span>
           </div>
         </div>
+        <br><br>
+        <a class='btn btn-warning btn-raised btn-block' href='logout'><span class='glyphicon glyphicon-log-out'></span> LOGOUT</a>
       </div>
 	  <?php 
 	  //This portion is only for orders page

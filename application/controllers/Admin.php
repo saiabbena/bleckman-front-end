@@ -53,6 +53,7 @@ class Admin extends CI_Controller {
     
     $data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
     $data['returnReasons'] = $this->httpRequests->httpGet('ReturnReason/GetAllReturnReasonsbyCustomerid', $req);
+
     $this->load->view('admin/templates/adm_header');
     $this->load->view('admin/settings', $data);
     $this->load->view('admin/templates/footer');
@@ -82,6 +83,7 @@ class Admin extends CI_Controller {
     $data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $req);
 
 	  $customer_id = $_SESSION['Customerid'];
+
 	  $data2 = array('Customerid'=>$customer_id);
 	  $data_url='?'.http_build_query($data2);
 	  $data_string = json_encode($data2);
