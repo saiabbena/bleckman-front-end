@@ -32,7 +32,12 @@
     <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" />
   	<link rel="stylesheet" href="<?php echo base_url();?>css/jquery-ui.css">	
 	  <script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.js"></script>	
-
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+      $.material.init();
+      <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
+    </script>
+    <script type="text/javascript" src="<?php echo base_url();?>js/scriptBleckmann.js"></script>
   </head>
   <body id='override'>
     <div class="bm-h">
