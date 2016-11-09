@@ -11,8 +11,9 @@
             </div>';
           }
         ?>
-        <table data-toggle="table">
-          <thead>
+		
+        <table data-toggle="table" id="orders_data">		
+          <thead>		  
             <tr>
               <th>
                 <div class='form-group'>
@@ -95,7 +96,7 @@
                 </div>
               </th>
               <th>
-                <button class='btn btn-success btn-raised' id='search-button'>
+                <button type="button" id="search-button" class='btn btn-success btn-raised'>
                   SEARCH
                 </button>
 				<button class='btn btn-success btn-raised' id='btn_clear' onclick="javascript:window.location.reload()">
@@ -117,7 +118,7 @@
           <tbody>
             
           </tbody>
-        </table>
+        </table>		
         
       </div>
     </div>

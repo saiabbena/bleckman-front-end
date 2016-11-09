@@ -135,6 +135,7 @@ $(document).ready(function(){
     $('body').append(html2);
     $('body').append(html3);
     $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody').html(html);
+	//$('#override #orders_data tbody').html(html);
   }
 
   function search(){
@@ -306,6 +307,12 @@ $(document).ready(function(){
   $('#search-button').click(function(){
     search();
   });
+  //Added this code for submit button, so that user can enter submit for search
+  $("#orders_data .form-control").keyup(function(event){
+		if(event.keyCode == 13){
+			$("#search-button").trigger('click');
+		}
+	});
   //console.log(" here ");
   retrieveReturnOrders(customerId);
   

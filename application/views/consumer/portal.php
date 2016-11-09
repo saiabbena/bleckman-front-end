@@ -159,6 +159,10 @@
                 <strong>Whoops!</strong>
                 Please select at least one item to return.
               </div>
+			  <div class="alert alert-dismissible alert-danger" id='reason_error'>
+                <strong>Whoops!</strong>
+                Please select the return reason.
+              </div>
             </div>
         </div>
       </div>
