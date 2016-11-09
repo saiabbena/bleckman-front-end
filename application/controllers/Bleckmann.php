@@ -16,10 +16,24 @@ class Bleckmann extends CI_Controller {
   }
   public function customers() {
   	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
+
   	//print_r($data['allCustomers']);
     $this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/customers', $data);
     $this->load->view('Bleckmann/templates/footer');
+    
+    if(isset($_SESSION['message'])){
+      unset($_SESSION['message']);
+    }
+  }
+  public function users() {
+  	$data['allUsers'] = $this->httpRequests->httpGet('User/GetAllActiveUsers', '');
+  	$data['allRoles'] = $this->httpRequests->httpGet('Role/GetAllActiveRoles', '');
+
+    $this->load->view('Bleckmann/templates/header');
+    $this->load->view('Bleckmann/users', $data);
+    $this->load->view('Bleckmann/templates/footer');
+
     if(isset($_SESSION['message'])){
       unset($_SESSION['message']);
     }
