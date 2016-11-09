@@ -118,10 +118,7 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
-	
 
-</script>
         <!-- Add Customer Modal -->
         <div class="modal fade" id="add-customer-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
