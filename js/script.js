@@ -363,7 +363,7 @@ $(document).ready(function(){
     
     submition.FKCustomerId=customerId;
     submition.StatusName='Label printed';
-    submition.CarriedId=parseInt($('input[name=sample1]:checked').val(), 10);
+    submition.CarrierId=parseInt($('input[name=sample1]:checked').val(), 10);
     submition.Status=result.result.Status;
     submition.Shipfromwarehouseid=result.result.ShipFromWarehouseId;
     submition.Source=result.result.Source;
@@ -391,7 +391,7 @@ $(document).ready(function(){
     //submition.CarrierId=2;
     submition.FKCustomerId=customerId;
     submition.CarrierName=carName;
-    submition.StatusName='In Transit';
+    submition.StatusName='Label Printed';
     
     
     apiCall=url+'returnorder/PostBMReturnorder';
@@ -412,7 +412,7 @@ $(document).ready(function(){
         console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
         console.log(response);
         $('#carrier-label-modal').modal('show');
-        $('#label-iframe').attr('href', API_BASE_URL_FE+'RoyalMail/'+response.Id+'.pdf');
+        $('#label-iframe').attr('href', API_BASE_URL_FE+'Labels/TrueReligion/RoyalMail/'+response.Id+'.pdf');
         $('.loading-screen').slideUp('slow');
         //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
       },
