@@ -38,6 +38,30 @@ class Bleckmann extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
+  public function submitUserInfo() {
+  	//print_r($_POST);
+  	$server_output = $this->httpRequests->httpPost('User/PostManageUser', json_encode($_POST) );
+
+    echo json_encode($server_output);
+    $_SESSION['message']['user_panel']='User Information Saved';
+
+    echo var_dump($_SESSION['message']);
+
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#user_panel');
+  }
+  public function deleteUser() {
+  	
+  	$_POST['IsActive'] = 'false';
+	//print_r($_POST);
+  	$server_output = $this->httpRequests->httpPost('User/PostIsActiveUser', json_encode($_POST) );
+
+    echo json_encode($server_output);
+    $_SESSION['message']['user_panel']='User Deleted';
+
+    echo var_dump($_SESSION['message']);
+
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#user_panel');
+  }
   public function submitCustomerInfo() {
   	//print_r($_POST);
   	$server_output = $this->httpRequests->httpPost('Customer/PostManageCustomer', json_encode($_POST) );

@@ -1,47 +1,59 @@
 <div class='col-xs-12 col-md-9' height='100%'>
 	<div class='container-fluid'>
-	<div class='row'>
-		<div class="col-xs-12 col-md-12">
-			<button type="button" data-toggle="modal" data-target="#add-user-modal" id='add-user' class='add-pop btn btn-raised btn-warning pull-right'>Add</button>
+		<div class="row well" style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
+		<div class='row'>
+			<div class="col-xs-12 col-md-12">
+				<button type="button" data-toggle="modal" data-target="#view-roles-modal" id='view-roles' class='btn btn-raised btn-info pull-right'>View All Roles</button>
+				<button type="button" data-toggle="modal" data-target="#add-role-modal" id='add-role' class='btn btn-raised btn-success pull-right'>Add Role</button>
+				<button type="button" data-toggle="modal" data-target="#add-user-modal" id='add-user' class='add-user-pop btn btn-raised btn-warning pull-right'>Add User</button>
+			</div>
 		</div>
-	</div>
 	<br>
-	  	<div class='row'>
-        <?php
-          if(isset($_SESSION['message']['user_panel'])){
-            echo'
-            <div class="alert alert-dismissible alert-success">
-              '.$_SESSION['message']['user_panel'].'
-            </div>';
-          }
-        ?>
+
+	<div class="row col-xs-12">
+		<div>
+			<div class="list-group">
+	        <?php
+	          if(isset($_SESSION['message']['user_panel'])){
+	            echo'
+	            <div class="alert alert-dismissible alert-success">
+	              '.$_SESSION['message']['user_panel'].'
+	            </div>';
+	          }
+	        ?>
 
 	  		<?php 
 	  			for($i=0; $i<count($allUsers); $i++) {
-	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
-	  				echo '<div class="col-xs-12 col-md-3" height="100%"">
-							<div class="well" style="border-bottom: 5px solid #22B8AA; padding-bottom: 40px;">
-								<h3>'. $allUsers[$i]['FirstName'] .' ' . $allUsers[$i]['LastName'] . '</h3>
-								<p>'. $allUsers[$i]['Country'] .'</p>
-								<p>'. $allUsers[$i]['Phone'] .'</p>
-								<p>'. $allUsers[$i]['EmailAddress'] .'</p>
-								<p><a href="#" data-toggle="modal" data-target="#moreInfo-' . $allUsers[$i]['PKUserID'] .'">More Info</a></p>
-								<div class="row">
-									<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allUsers[$i]['PKUserID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
-									<button type="button" data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allUsers[$i]['PKUserID'] .'" class="btn btn-raised btn-success pull-right edit-pop">Edit</button>
-								</div>
-							</div>
+					echo '
+						<div class="well" style="background-color:#f2f2f2;border-bottom: 5px solid #22B8AA; padding-bottom: 40px;">
+						  <div class="list-group-item">
+						    <div class="row-action-primary">
+						      <img class="img-circle" style="line-height:104px;height:72px;width:72px;" src="' .base_url(). 'img/user.png">
+						    </div>
+						    <div class="row-content">
+						      <div class="least-content hide-xs">
+						      		<p>'. $allUsers[$i]['RoleName'] . '</p>
+										<a data-toggle="modal" style="color:#f44336;" data-target="#delete-user-modal'. $allUsers[$i]['PKUserID'] .'" id="delete-user" class=" pull-right"><i class="material-icons">delete</i></a>
+										<a type="button" style="padding-right:12px;color:#4caf50;" data-toggle="modal" data-target="#add-user-modal" id="edit-user-'. $allUsers[$i]['PKUserID'] .'" class="pull-right edit-user-pop"><i class="material-icons">mode_edit</i></a>
+						      </div>
+						      <h3 class="list-group-item-heading"><b>'. $allUsers[$i]['FirstName'] .' ' . $allUsers[$i]['LastName'] .'</b></h3>
+						      <p class="list-group-item-text" style="padding-bottom:8px;"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">phone</i>'. $allUsers[$i]['Phone'] . '</p>
+						      <p class="list-group-item-text" style="padding-bottom:8px;"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">email</i>'. $allUsers[$i]['EmailAddress'] .'</p>
+						      <p class="list-group-item-text"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">location_on</i>'. $allUsers[$i]['City'] . ', ' . $allUsers[$i]['State'] . ', ' . $allUsers[$i]['Country'] . ', ' . $allUsers[$i]['PostalCode'] .'</p>
+						    </div>
+						  </div>
 						</div>';
-					echo '<div class="modal fade" id="delete-customer-modal'.$allUsers[$i]['PKUserID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					//delete user modal
+					echo '<div class="modal fade" id="delete-user-modal'.$allUsers[$i]['PKUserID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				              <div class="modal-dialog" role="document">
 				                <div class="modal-content">
-				                  <form method="POST" action="deleteCustomer">
+				                  <form method="POST" action="deleteUser">
 				                  <div class="modal-header">
 				                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				                    <h4 class="modal-title" id="myModalLabel">Delete Customer - '. $allUsers[$i]['UserName'].'?</h4>
+				                    <h4 class="modal-title" id="myModalLabel">Delete User - '. $allUsers[$i]['FirstName'].'?</h4>
 				                  </div>
 				                  <div class="modal-body">
-				                    <p>Are you sure you want to delete this Customer?</p>';
+				                    <p>Are you sure you want to delete this User?</p>';
 				    echo '<input type="hidden" name="PKUserID" value="'. $allUsers[$i]['PKUserID'].'">';
 
 		            echo'
@@ -55,61 +67,19 @@
 		              </div>
 		            </div>
 		            ';
-		            //modal for More Info
-		            echo '<div class="modal fade" id="moreInfo-'.$allUsers[$i]['PKUserID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				              <div class="modal-dialog" role="document">
-				                <div class="modal-content">
-				                  <div class="modal-header">
-				                  	Customer Information
-				                  </div>
-				                  <div class="modal-body">
-				                  	<div class="col-md-12">
-				                  		<div class="col-md-6">First Name
-				                  		</div>
-				                  		<div class="col-md-6">' . $allUsers[$i]['FirstName'] . '
-				                  		</div>
-				                  		<div class="col-md-6">First Name
-				                  		</div>
-				                  		<div class="col-md-6">' . $allUsers[$i]['LastName'] . '
-				                  		</div>
-				                  		<div class="col-md-6">Email Address
-				                  		</div>
-				                  		<div class="col-md-6">' . $allUsers[$i]['EmailAddress'] . '
-				                  		</div>
-				                  		<div class="col-md-6">Phone Number
-				                  		</div>
-				                  		<div class="col-md-6">' . $allUsers[$i]['Phone'] . '
-				                  		</div>
-				                  		<div class="col-md-6">City
-				                  		</div>
-				                  		<div class="col-md-6">' . $allUsers[$i]['City'] . '
-				                  		</div>
-				                  		<div class="col-md-6">State
-				                  		</div>
-				                  		<div class="col-md-6">' . $allUsers[$i]['State'] . '
-				                  		</div>
-				                  		<div class="col-md-6">Country
-				                  		</div>
-				                  		<div class="col-md-6">' . $allUsers[$i]['Country'] . '
-				                  		</div>
-				                  		<div class="col-md-6">Postal Code
-				                  		</div>
-				                  		<div class="col-md-6">' . $allUsers[$i]['PostalCode'] . '
-				                  		</div>
-				                  	</div>
-				                  </div>
-				                  <div class="modal-footer">
-				                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				                  </div>
-				                </div>
-				              </div>
-				              </div>
-				        ';
-	  			}
+				}
 			?>
+			</div>
 		</div>
 	</div>
+	
+	</div>
+	</div>
 </div>
+
+
+
+
 
         <!-- Add Customer Modal -->
         <div class="modal fade" id="add-user-modal" tabindex="-1" role="dialog" aria-labelledby="myUserLabel">
@@ -156,21 +126,16 @@
 		                <div class="row">
 		                	<div class="col-md-6">
 				              	<div class="form-group label-floating">
-<!-- 				                  <label class="control-label">Role Name</label>
-				                  <input id="RoleName" type="text" name="RoleName" class="form-control" value="">
-				                  <span class="help-block">Enter Role Name</span> -->
+				              		<label class="control-label">Role Name</label>
 				                  <?php
 				                  	echo '<select class="form-control" id="FKRoleID" name="FKRoleID">';
-				                  	echo '<option value="-1">Select a Role</option>';
+				                  	echo '<option value="-1">Select a Role &darr;</option>';
 				                  	for ($i=0; $i<count($allRoles); $i++) { 
 				                  		echo '<option value="' . $allRoles[$i]['PKRoleID'].'">' . $allRoles[$i]['RoleName'] . '</option>';
 				                  	}
 				                  	
 				                  	echo '</select>';
 				                  ?>
-				                  
-				                  	
-				                  
 				                </div>
 		                	</div>
 		                	<div class="col-md-6">
@@ -199,7 +164,7 @@
 			                <div class="col-md-3">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">Country</label>
-				                  <input id="URL" type="text" name="Country" class="form-control" value="">
+				                  <input id="Country" type="text" name="Country" class="form-control" value="">
 				                  <span class="help-block">Enter Country</span>
 				                </div>
 			                </div>
@@ -239,3 +204,67 @@
             </div>
           </div>
         </div>
+
+
+        <!-- Add RolesModal -->
+        <div class="modal fade" id="add-role-modal" tabindex="-1" role="dialog" aria-labelledby="myUserLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+	              <div class="modal-header">
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                <h4 class="modal-title" id="myUserLabel" >Add a Role</h4>
+	              </div>
+	              <form method="POST" action="addRole">
+	              <div class="modal-body">
+		                <div class="row">
+		                	<div class="col-md-12">
+				              	<div class="form-group label-floating">
+				                  <label class="control-label">Role Name</label>
+				                  <input id="RoleName" type="text" name="RoleName" class="form-control" value="">
+				                  <span class="help-block">Enter Role Name</span>
+				                </div>
+				            </div>
+		          		</div>
+		          </div>
+	              <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	                <button type="submit" class="btn btn-success">save</button>
+	              </div>
+              	</form>
+            </div>
+          </div>
+        </div>
+
+        <!-- View Roles modal -->
+        <div class="modal fade" id="view-roles-modal" tabindex="-1" role="dialog" aria-labelledby="myUserLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+	              <div class="modal-header">
+	                <h4 class="modal-title" id="myUserLabel" >All Roles</h4>
+	              </div>
+	              <div class="modal-body">
+	              		<?php
+	              			for ($i=0; $i<count($allRoles); $i++) { 
+			              		echo '
+					                <div class="row">
+					                	<div class="col-md-12">
+							              	<div class="form-group label-floating">
+							                  <label class="control-label">Role Name</label>
+							                  <input id="RoleName" type="text" name="RoleName" class="form-control" value="'. $allRoles[$i]['RoleName'] .'">
+							                  <input type="hidden" id="PKRoleID" name="PKRoleID" value="'.$allRoles[$i]['PKRoleID'].'">
+							                  <span class="help-block">Enter Role Name</span>
+							                </div>
+							            </div>
+					          		</div>';
+				          	}
+		          		?>
+		          </div>
+	              <div class="modal-footer">
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	              </div>
+              	
+            </div>
+          </div>
+        </div>
+
+        
