@@ -391,7 +391,7 @@ $(document).ready(function(){
     //submition.CarrierId=2;
     submition.FKCustomerId=customerId;
     submition.CarrierName=carName;
-    submition.StatusName='In Transit';
+    submition.StatusName='Label Printed';
     
     
     apiCall=url+'returnorder/PostBMReturnorder';
