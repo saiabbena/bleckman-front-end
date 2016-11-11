@@ -17,8 +17,8 @@
             <tr>
               <th>
                 <div class='form-group'>
-                  <!--<input type='text' name="ReturnOrderDate" class='datepicker form-control' placeholder="dd-mm-yyyy">-->
-				  <select name='Month' class='form-control'>
+                  <input type='text' name="ReturnOrderDate" class='datepicker form-control' placeholder="dd-mm-yyyy">
+				  <!--<select name='Month' class='form-control'>
                     <option value='0' selected>
                       Month
                     </option>
@@ -58,7 +58,7 @@
                     <option value='12'>
                       Dec
                     </option>
-                  </select>				  
+                  </select>-->				  
                 </div>
               </th>
               <th>

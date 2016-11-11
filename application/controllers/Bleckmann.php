@@ -77,10 +77,42 @@ class Bleckmann extends CI_Controller {
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
   }
-  public function carriers() {	  
+  public function carriers($param1='', $param2='') {	  
   	//print_r($_SESSION);exit();
-	$data['all_carriers'] = $this->httpRequests->httpGet('Carrier/GetAllActiveCarriers', '');;
-    $this->load->view('Bleckmann/templates/header');
+	//echo $param1;exit();
+	if($param1 == 'searchbyCID'){			
+		$req = array(
+			'Customerid'=>$param2
+		);
+		//http://returns.dev.apoyar.eu/api/Carrier/GetAllCarriersbyCustomerid?Customerid=1
+		$data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllCarriersbyCustomerid', $req);
+		$data['Customerid'] = $param2;
+	}
+	if($param1 == 'submitCarrierInfo'){
+		//print_r($_POST);exit();
+		if(count($_POST)){
+			 //print_r($_POST);exit();
+			 header('Content-Type: application/json');
+			 //Array ( [0] => Array ( [PKCarrierID] => 1 [CarrierName] => Royal Mail [APIUserName] => dtdc [APIPassword] => ap0yar [APIKey] => dtdc [APIURL] => dtdc.com [FKCustomerID] => 1 [ConsumerCountryName] => Belgium [Isactive] => 1 [LabelAPI] => [AnnounceAPI] => [TrackTraceURL] => ) )
+			$server_output = $this->httpRequests->httpPost('Carrier/PostManageCarrier', json_encode($_POST));	  
+			//echo json_encode($server_output);exit();
+			$_SESSION['message']['carrier_panel']='Carrier Information Saved';
+			redirect(base_url() . 'index.php/Bleckmann/carriers/searchbyCID/'.$_POST['FKCustomerID']);
+					 
+		}
+	}
+	if($param1 == 'deleteCarrier'){
+		//print_r($_POST);exit();
+		$server_output = $this->httpRequests->httpPost('Carrier/PostIsActiveCarrier', json_encode($_POST) );
+
+		//echo json_encode($server_output);exit();
+		$_SESSION['message']['carrier_panel']='Carrier Deleted Successfully';
+		redirect(base_url() . 'index.php/Bleckmann/carriers/searchbyCID/'.$_POST['FKCustomerID']);
+		
+	}
+	//$data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllActiveCarriers', '');
+	//$data['Customerid'] = '';	   
+	$this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/carriers', $data);
     $this->load->view('Bleckmann/templates/footer');
 
@@ -88,26 +120,7 @@ class Bleckmann extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
-  public function submitCarrierInfo(){
-	 if(count($_POST)){
-		 //print_r($_POST);exit();
-		 header('Content-Type: application/json');
-		 //Array ( [0] => Array ( [PKCarrierID] => 1 [CarrierName] => Royal Mail [APIUserName] => dtdc [APIPassword] => ap0yar [APIKey] => dtdc [APIURL] => dtdc.com [FKCustomerID] => 1 [ConsumerCountryName] => Belgium [Isactive] => 1 [LabelAPI] => [AnnounceAPI] => [TrackTraceURL] => ) )
-		$server_output = $this->httpRequests->httpPost('Carrier/PostManageCarrier', json_encode($_POST));	  
-	    //echo json_encode($server_output);exit();
-	    $_SESSION['message']['carrier_panel']='Carrier Information Saved';
-	    header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');		 
-	 }
-	  
-  }
-   public function deleteCarrier(){
-  	//print_r($_POST);exit();
-  	$server_output = $this->httpRequests->httpPost('Carrier/PostIsActiveCarrier', json_encode($_POST) );
-
-    //echo json_encode($server_output);exit();
-    $_SESSION['message']['carrier_panel']='Carrier Deleted';
-    //echo var_dump($_SESSION['message']);
-    header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
-  }  
+  
+   
 }
 ?>

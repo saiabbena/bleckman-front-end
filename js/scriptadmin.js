@@ -152,11 +152,11 @@ $(document).ready(function(){
         default_render=false;
       }
     });
-    
+    /*
     if($('tr select').val()!='0'){
       searchInput['Month']=$('tr select').val();
       default_render=false;
-    }
+    }*/
     
     console.log(default_render);
     

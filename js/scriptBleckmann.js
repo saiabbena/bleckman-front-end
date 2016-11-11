@@ -254,5 +254,21 @@ $(function() {
 				  $('#loadingspin').css({'display':'block'});//Hide spin image
 		        }
 		      });
-		});		
+		});
+		
+		$("#ConsumerCountryName").blur(function(){			
+			var existing_country_list = $('#existing_country_list').val();
+			var countryArray = existing_country_list.split(',');
+			var ConsumerCountryName = $('#ConsumerCountryName').val();
+			if ($.inArray(ConsumerCountryName, countryArray)!='-1') {
+				//alert(ConsumerCountryName + ' is duplicate!');
+				$('#ConsumerCountryName').val('');
+				$('#ConsumerCountryName').focus();
+				$('#duplicate_country').css({'display':'block'});				
+				console.log(ConsumerCountryName);
+			} else {				
+				$('#duplicate_country').css({'display':'none'});
+			}			
+		});
+		
 	});

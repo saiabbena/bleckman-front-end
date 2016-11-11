@@ -17,65 +17,70 @@
         ?>
 
 	  		<?php
-				//print_r($all_carriers);			
-	  			for($i=0; $i<count($all_carriers); $i++) {
-	  				//Array ( [0] => Array ( [PKCarrierID] => 1 [CarrierName] => Royal Mail [APIUserName] => dtdc [APIPassword] => ap0yar [APIKey] => dtdc [APIURL] => dtdc.com [FKCustomerID] => 1 [ConsumerCountryName] => Belgium [Isactive] => 1 [LabelAPI] => [AnnounceAPI] => [TrackTraceURL] => ) )
-					
-	  				echo '<div class="col-xs-12 col-md-3" height="100%"">
-							<div class="well" style="border-bottom: 5px solid #22B8AA; padding-bottom: 40px;">
-								<h3>'. $all_carriers[$i]['CarrierName'] . '</h3>
-								<p>User Name: '. $all_carriers[$i]['APIUserName'] .'</p>
-								<p>Key : '. $all_carriers[$i]['APIKey'] .'</p>
-								<p>URL: '. $all_carriers[$i]['APIURL'] .'</p>
-								<p>Country: '. $all_carriers[$i]['ConsumerCountryName'] .'</p>
-								<p>Label: '. $all_carriers[$i]['LabelAPI'] .'</p>
-								<p>Announce API: '. $all_carriers[$i]['AnnounceAPI'] .'</p>
-								<p>TraceURL: '. $all_carriers[$i]['TrackTraceURL'] .'</p>
-								<p><a href="#" data-toggle="modal" data-target="#moreInfo-' . $all_carriers[$i]['PKCarrierID'] .'">More Info</a></p>
-								<div class="row">
-									<button type="button" data-toggle="modal" data-target="#delete_carrier_modal'. $all_carriers[$i]['PKCarrierID'] .'" id="delete_carrier" class="btn btn-raised btn-danger pull-right">Delete</button>
-									<button type="button" data-toggle="modal" data-target="#add_carrier_modal" id="editcarrrier_'. $all_carriers[$i]['PKCarrierID'] .'" class="btn btn-raised btn-success pull-right edit_carrier">Edit</button>
-								</div>
-							</div>
-						</div>';
-					echo '<div class="modal fade" id="delete_carrier_modal'.$all_carriers[$i]['PKCarrierID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				              <div class="modal-dialog" role="document">
-				                <div class="modal-content">
-				                  <form method="POST" action="deleteCarrier">
-				                  <div class="modal-header">
-				                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				                    <h4 class="modal-title" id="myModalLabel">Delete Carrier - '. $all_carriers[$i]['CarrierName'].'?</h4>
-				                  </div>
-				                  <div class="modal-body">
-				                    <p>Are you sure you want to delete this Carrier?</p>';
-									echo '<input type="hidden" name="PKCarrierID" value="'. $all_carriers[$i]['PKCarrierID'].'">';
-									echo '<input type="hidden" name="IsActive" value="false">';
-									
-									echo'</div>
-									  <div class="modal-footer">
-										<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-										<button type="submit" class="btn btn-danger">Delete</button>
-									  </div>
-									  </form>
+				//print_r($all_carriers_data['Carriers']);
+				$all_carriers_data = $carriers['Carriers'];
+				//echo count($all_carriers_data);
+				$existing_country_list = array();
+				if(count($all_carriers_data)>0){
+					for($i=0; $i<count($all_carriers_data); $i++) {
+						$existing_country_list[] = $all_carriers_data[$i]['ConsumerCountryName'];
+						echo '<div class="col-xs-12 col-md-3" height="100%"">
+								<div class="well" style="border-bottom: 5px solid #22B8AA; padding-bottom: 40px;">
+									<h3>'. $all_carriers_data[$i]['CarrierName'] . '</h3>
+									<p>User Name: '. $all_carriers_data[$i]['APIUserName'] .'</p>
+									<p>Key : '. $all_carriers_data[$i]['APIKey'] .'</p>
+									<p>URL: '. $all_carriers_data[$i]['APIURL'] .'</p>
+									<p>Country: '. $all_carriers_data[$i]['ConsumerCountryName'] .'</p>
+									<p>Label: '. $all_carriers_data[$i]['LabelAPI'] .'</p>
+									<p>Announce API: '. $all_carriers_data[$i]['AnnounceAPI'] .'</p>
+									<p>TraceURL: '. $all_carriers_data[$i]['TrackTraceURL'] .'</p>
+									<p><a href="#" data-toggle="modal" data-target="#moreInfo-' . $all_carriers_data[$i]['PKCarrierID'] .'">More Info</a></p>
+									<div class="row">
+										<button type="button" data-toggle="modal" data-target="#delete_carrier_modal'. $all_carriers_data[$i]['PKCarrierID'] .'" id="delete_carrier" class="btn btn-raised btn-danger pull-right">Delete</button>
+										<button type="button" data-toggle="modal" data-target="#add_carrier_modal" id="editcarrrier_'. $all_carriers_data[$i]['PKCarrierID'] .'" class="btn btn-raised btn-success pull-right edit_carrier">Edit</button>
 									</div>
-								  </div>
 								</div>
-								';
-		            
-	  			}
+							</div>';
+						echo '<div class="modal fade" id="delete_carrier_modal'.$all_carriers_data[$i]['PKCarrierID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+								  <div class="modal-dialog" role="document">
+									<div class="modal-content">
+									  <form method="POST" action="'. base_url().'index.php/Bleckmann/carriers/deleteCarrier">
+									  <div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+										<h4 class="modal-title" id="myModalLabel">Delete Carrier - '. $all_carriers_data[$i]['CarrierName'].'?</h4>
+									  </div>
+									  <div class="modal-body">
+										<p>Are you sure you want to delete this Carrier?</p>';
+										echo '<input type="hidden" name="PKCarrierID" value="'. $all_carriers_data[$i]['PKCarrierID'].'">';
+										echo '<input type="hidden" name="IsActive" value="false">';
+										echo '<input type="hidden" name="FKCustomerID" value="'. $all_carriers_data[$i]['FKCustomerID'].'">';
+										
+										echo'</div>
+										  <div class="modal-footer">
+											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+											<button type="submit" class="btn btn-danger">Delete</button>
+										  </div>
+										  </form>
+										</div>
+									  </div>
+									</div>';
+						
+					}
+				}else{
+					echo '<div class=" col-md-10" height="100%"><h4 style="text-align: center;">No Carrier has been added.</h4></div>';					
+				}
 			?>
-		</div>
+		</div>		
 		
-		<!-- Add Carriers Modal 
-		//Array ( [0] => Array ( [PKCarrierID] => 1 [CarrierName] => Royal Mail [APIUserName] => dtdc [APIPassword] => ap0yar [APIKey] => dtdc [APIURL] => dtdc.com [FKCustomerID] => 1 [ConsumerCountryName] => Belgium [Isactive] => 1 [LabelAPI] => [AnnounceAPI] => [TrackTraceURL] => ) )
-		-->
         <div class="modal fade" id="add_carrier_modal" tabindex="-1" role="dialog" aria-labelledby="carrierLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
 			
-              	<form method="POST" action="submitCarrierInfo" id="carrier_info_form">
-				<input type="hidden" name="FKCustomerID" value="1" />
+              	<form method="POST" action="<?php echo base_url()?>index.php/Bleckmann/carriers/submitCarrierInfo" id="carrier_info_form">
+				<input type="hidden" name="FKCustomerID" value="<?php echo $Customerid;?>" />
 				<input id="PKCarrierID" type="hidden" name="PKCarrierID" value="">
+				<input id="existing_country_list" type="hidden" name="existing_country_list" value="<?php echo implode(',', $existing_country_list);?>">
+				
 	              <div class="modal-header">
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	                <h4 class="modal-title" id="carrierLabel" >Add a Carrier</h4>
@@ -126,9 +131,10 @@
 						<div class="row">
 		                	<div class="col-md-6">
 				              	<div class="form-group label-floating">
-				                  <label for="i5" class="control-label">Consumer Country Name</label>
-				                  <input id="ConsumerCountryName" type="text" name="ConsumerCountryName" class="form-control" value="" required />
-				                  <span class="help-block">Enter Consumer Country Name</span>
+				                  <label for="i5" class="control-label">Customer Country Name</label>
+				                  <input id="ConsumerCountryName" type="text" name="ConsumerCountryName" class="form-control" value="" required />				                  
+								  <span id="duplicate_country" style="display:none;color:#FF0000;">Duplicate Country Name</span>
+								  <span class="help-block">Enter Customer Country Name</span>
 				                </div>
 				            </div>
 				        

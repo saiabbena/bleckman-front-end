@@ -20,7 +20,7 @@
 	  			for($i=0; $i<count($allCustomers); $i++) {
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
 	  				echo '<div class="col-xs-12 col-md-3" height="100%"">
-							<div class="well" style="border-bottom: 5px solid #22B8AA; padding-bottom: 40px;">
+							<div class="well" style="border-bottom: 5px solid #22B8AA;">
 								<h3>'. $allCustomers[$i]['CustomerName'] .'</h3>
 								<p>'. $allCustomers[$i]['Country'] .'</p>
 								<p>'. $allCustomers[$i]['PhoneNumber'] .'</p>
@@ -30,6 +30,7 @@
 									<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
 									<button type="button" data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" class="btn btn-raised btn-success pull-right edit-customer-pop">Edit</button>
 								</div>
+								<p><a href="carriers/searchbyCID/'.$allCustomers[$i]['PKCustomerID'].'">Carriers</a></p>
 							</div>
 						</div>';
 					echo '<div class="modal fade" id="delete-customer-modal'.$allCustomers[$i]['PKCustomerID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -49,7 +50,7 @@
 		                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		                    <button type="submit" class="btn btn-danger">Delete</button>
 		                  </div>
-		                  </form>
+		                  </form>						  
 		                </div>
 		              </div>
 		            </div>
