@@ -159,6 +159,10 @@
                 <strong>Whoops!</strong>
                 Please select at least one item to return.
               </div>
+			  <div class="alert alert-dismissible alert-danger" id='reason_error'>
+                <strong>Whoops!</strong>
+                Please select the return reason.
+              </div>
             </div>
         </div>
       </div>
@@ -252,6 +256,7 @@
             
             <br>
             <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3' <?php echo $btn_bg?>><?php echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></button><br>
+			<p style="text-align:right;"><a href="javascript:void(0)" id="btn_career_back">&laquo; Back</a></p>
             <div class="alert alert-dismissible alert-success" id='screen3-success'>
               <strong><?php echo $translations[21]['Translation']?></strong></strong>
               <?php echo $translations[22]['Translation']?>

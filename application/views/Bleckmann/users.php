@@ -54,7 +54,6 @@
 				                  <div class="modal-body">
 				                    <p>Are you sure you want to delete this User?</p>';
 				    echo '<input type="hidden" name="PKUserID" value="'. $allUsers[$i]['PKUserID'].'">';
-
 		            echo'
 		                  </div>
 		                  <div class="modal-footer">
@@ -203,8 +202,3 @@
             </div>
           </div>
         </div>
-
-
-
-
-        

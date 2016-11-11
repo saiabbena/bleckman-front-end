@@ -119,6 +119,9 @@
 #screen2-error{
   display: none;
 }
+#reason_error{
+  display: none;
+}
 #screen3-success{
   display: none;
 }

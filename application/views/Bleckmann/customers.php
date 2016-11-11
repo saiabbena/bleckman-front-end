@@ -43,7 +43,6 @@
 				                  <div class="modal-body">
 				                    <p>Are you sure you want to delete this Customer?</p>';
 				    echo '<input type="hidden" name="PKCustomerID" value="'. $allCustomers[$i]['PKCustomerID'].'">';
-
 		            echo'
 		                  </div>
 		                  <div class="modal-footer">

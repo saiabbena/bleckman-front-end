@@ -1,4 +1,4 @@
-	$(function() {
+$(function() {
 		var url=API_BASE_URL_FE+'api/';
 		$(".add-customer-pop").click(function(){
 		    $('h4#myModalLabel').text('Add a Customer');
@@ -204,4 +204,55 @@
 		            form.submit();
 		        }
 		});
+		$("#add_carrier").click(function(){
+		    $('h4#carrierLabel').text('Add a Carrier');
+		    $('input#PKCarrierID').val('');
+		    $('input#CarrierName').val('');
+		    $('input#APIUserName').val('');
+		    $('input#APIPassword').val('');
+		    $('input#APIKey').val('');
+		    $('input#APIURL').val('');
+		    $('input#FKCustomerID').val('');
+		    $('input#ConsumerCountryName').val('');
+		    $('input#AnnounceAPI').val('');
+		    $('input#TrackTraceURL').val('');
+			$('#loadingspin').css({'display':'none'});//Hide spin image
+		});
+		$(".edit_carrier").click(function(){
+			//alert("hi");
+			var url=API_BASE_URL_FE+'api/';
+			carrier_array = $(this).attr("id").split("_");
+			var selCarrierId = carrier_array[1];
+			//alert(selCustId);
+			var apiCall=url+'Carrier/GetCarrierbyId?CarrierId=' + selCarrierId;
+			console.log("apiCall : " + apiCall);
+			$('#loadingspin').css({'display':'block'});//Hide spin image
+			$.ajax({
+		        url: apiCall,
+		        type: 'GET',
+				//data: input_data,
+		        dataType: 'json',
+		        success: function(data) {
+		        	console.log("response data : ");
+		        	console.log(data);
+		        	$('h4#carrierLabel').text('Edit Career Information');
+		        	$('input#CarrierName').val(data.CarrierName);
+		        	$('input#APIUserName').val(data.APIUserName);
+		        	$('input#APIPassword').val(data.APIPassword);
+		        	$('input#APIKey').val(data.APIKey);
+		        	$('input#APIURL').val(data.APIURL);
+		        	$('input#FKCustomerID').val(data.FKCustomerID);
+		        	$('input#ConsumerCountryName').val(data.ConsumerCountryName);
+		        	$('input#AnnounceAPI').val(data.AnnounceAPI);
+		        	$('input#TrackTraceURL').val(data.TrackTraceURL);
+					$('input#LabelAPI').val(data.LabelAPI);		        	
+		        	$('input#PKCarrierID').val(data.PKCarrierID);
+					$('#loadingspin').css({'display':'none'});//Hide spin image	        	
+		        },
+		        fail: function(data){
+		          console.log(data);
+				  $('#loadingspin').css({'display':'block'});//Hide spin image
+		        }
+		      });
+		});		
 	});

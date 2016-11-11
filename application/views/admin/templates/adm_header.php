@@ -113,7 +113,7 @@
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-3.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Settings</span>
           </div>
-          </a>
+          </a><!--
           <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-4.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Integration</span>
@@ -121,7 +121,7 @@
           <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-5.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Other</span>
-          </div>
+          </div>-->
         </div>
         <br><br>
         <a class='btn btn-warning btn-raised btn-block' href='logout'><span class='glyphicon glyphicon-log-out'></span> LOGOUT</a>

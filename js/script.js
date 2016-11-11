@@ -129,7 +129,7 @@ function secondScreen(result){
 \
           <td>\
             <div class="form-group" style="margin-top: 18px">\
-              <select id="s1" class="form-control">';
+              <select id="s1" class="form-control"><option value="0"> Pick a return reason &darr;</option>';
       for(a=0; a<customerSettings.returnReason.length; a++){
         html=html+'<option value="'+customerSettings.returnReason[a]['PKReasonID']+'">'+customerSettings.returnReason[a]['Reason']+'</option>'
       }
@@ -325,22 +325,36 @@ $(document).ready(function(){
       var parent=$(this).parent().parent().parent().parent().parent()
       var reason=$('#s1', parent).val();
       var quantity=$('#s2', parent).val();
+	  //console.log(reason);
+	  //Check the select reason 
+      if(reason == '0'){
+		  setTimeout(function(){
+			$('#s1', parent).focus();			
+			$('#reason_error').show();
+			}, 500);
+			$('.loading-screen').slideUp('slow');
+			throw new Error("whoops");
+			$( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again
+			$( ".checkbox .checkbox-material" ).eq(1).remove();			
+		  
+	  }else{
+			  submition.Returnorderline[counter]={
+			"Status": 1,
+			"ShipmentId": '',
+			"LineId": 1,
+			"OrderId": JSON.parse($(this).val())['OrderId'],
+			"SKU": JSON.parse($(this).val())['SKU'],
+			"EanBarcode": JSON.parse($(this).val())['EANBARCODE'],
+			"Price": (JSON.parse($(this).val())['Price']).toFixed(2),
+			"ReturnReason": '',
+			"QtyReturned": parseInt(quantity, 10),
+			"ProductCurrency": JSON.parse($(this).val())['ProductCurrency'],
+			"TotalLineAmount": (JSON.parse($(this).val())['Price']).toFixed(2)*parseInt(quantity, 10),
+			"ReturnReasonId": parseInt(reason, 10),
+			"StatusName": "In Transit"
+		  }
+	  }
       
-      submition.Returnorderline[counter]={
-        "Status": 1,
-        "ShipmentId": '',
-        "LineId": 1,
-        "OrderId": JSON.parse($(this).val())['OrderId'],
-        "SKU": JSON.parse($(this).val())['SKU'],
-        "EanBarcode": JSON.parse($(this).val())['EANBARCODE'],
-        "Price": (JSON.parse($(this).val())['Price']).toFixed(2),
-        "ReturnReason": '',
-        "QtyReturned": parseInt(quantity, 10),
-        "ProductCurrency": JSON.parse($(this).val())['ProductCurrency'],
-        "TotalLineAmount": (JSON.parse($(this).val())['Price']).toFixed(2)*parseInt(quantity, 10),
-        "ReturnReasonId": parseInt(reason, 10),
-        "StatusName": "In Transit"
-      }
       counter++;
     });
     
@@ -434,5 +448,15 @@ $(document).ready(function(){
     .fail(function(){
       $('#screen3-fail').show('slow')
     });*/
+  });
+  //btn_career_back
+  $('#btn_career_back').click(function(){	  
+	  setTimeout(function(){		
+      $('.form3').hide();	  	  
+      $('.form2').show('slow');
+		//$('.checkbox span').eq(0).remove();	
+		$( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again	
+    }, 500);
+	  
   });
 });
