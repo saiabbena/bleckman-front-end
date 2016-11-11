@@ -63,15 +63,13 @@ class Bleckmann extends CI_Controller {
 	 }
 	  
   }
-   public function deleteCarrier() {
+   public function deleteCarrier(){
   	//print_r($_POST);exit();
   	$server_output = $this->httpRequests->httpPost('Carrier/PostIsActiveCarrier', json_encode($_POST) );
 
     //echo json_encode($server_output);exit();
     $_SESSION['message']['carrier_panel']='Carrier Deleted';
-
-    echo var_dump($_SESSION['message']);
-
+    //echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
   }
   public function submitCustomerInfo() {

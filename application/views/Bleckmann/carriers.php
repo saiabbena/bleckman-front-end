@@ -161,8 +161,7 @@
 		          </div>
 		          
 	              <div class="modal-footer">
-					<img style="margin-left:50px;" src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="loadingspin" 
-					style="display:none;" />
+					<img style="margin-left:250px;margin-top:10px;float:left;" src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="loadingspin"	style="display:none;" />
 	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	                <button type="submit" class="btn btn-primary">save</button>
 	              </div>
