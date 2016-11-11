@@ -99,8 +99,7 @@
 		            form.submit();
 		        }
 		});
-	//manage Carrier 
-	//Array ( [0] => Array ( [PKCarrierID] => 1 [CarrierName] => Royal Mail [APIUserName] => dtdc [APIPassword] => ap0yar [APIKey] => dtdc [APIURL] => dtdc.com [FKCustomerID] => 1 [ConsumerCountryName] => Belgium [Isactive] => 1 [LabelAPI] => [AnnounceAPI] => [TrackTraceURL] => ) )
+	//manage Carrier	
 	$("#add_carrier").click(function(){
 		    $('h4#carrierLabel').text('Add a Carrier');
 		    $('input#PKCarrierID').val('');
