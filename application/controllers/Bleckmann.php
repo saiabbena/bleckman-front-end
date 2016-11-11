@@ -49,6 +49,26 @@ class Bleckmann extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
+  public function submitRoles() {
+  	//echo "submitRoles : ";
+  	//echo json_encode($_POST);
+  	for($i=0;$i<count($_POST['Roles']);$i++) {
+  		if ($_POST['Roles'][$i]['IsActive'] == 1) {
+  			$_POST['Roles'][$i]['IsActive'] = "true";
+  		}
+  	}
+  	//echo json_encode($_POST);exit();
+
+  	$server_output = $this->httpRequests->httpPost('Role/PostManageRole', json_encode($_POST) );
+
+    echo json_encode($server_output);
+    $_SESSION['message']['roles_panel']='Roles Information Saved';
+
+    echo var_dump($_SESSION['message']);
+
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#roles_panel');
+
+  }
   public function submitUserInfo() {
   	//print_r($_POST);
   	$server_output = $this->httpRequests->httpPost('User/PostManageUser', json_encode($_POST) );
