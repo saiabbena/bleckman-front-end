@@ -2,7 +2,7 @@
 	<div class='container-fluid'>
 	<div class='row'>
 		<div class="col-xs-12 col-md-12">
-			<button type="button" data-toggle="modal" data-target="#add-customer-modal" id='add-customer' class='add-pop btn btn-raised btn-warning pull-right'>Add</button>
+			<button type="button" data-toggle="modal" data-target="#add-customer-modal" id='add-customer' class='add-customer-pop btn btn-raised btn-warning pull-right'>Add</button>
 		</div>
 	</div>
 	<br>
@@ -28,7 +28,7 @@
 								<p><a href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a></p>
 								<div class="row">
 									<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
-									<button type="button" data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" class="btn btn-raised btn-success pull-right edit-pop">Edit</button>
+									<button type="button" data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" class="btn btn-raised btn-success pull-right edit-customer-pop">Edit</button>
 								</div>
 							</div>
 						</div>';
@@ -43,7 +43,6 @@
 				                  <div class="modal-body">
 				                    <p>Are you sure you want to delete this Customer?</p>';
 				    echo '<input type="hidden" name="PKCustomerID" value="'. $allCustomers[$i]['PKCustomerID'].'">';
-
 		            echo'
 		                  </div>
 		                  <div class="modal-footer">
@@ -195,7 +194,7 @@
 			                <div class="col-md-3">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">Country</label>
-				                  <input id="URL" type="text" name="Country" class="form-control" value="">
+				                  <input id="Country" type="text" name="Country" class="form-control" value="">
 				                  <span class="help-block">Enter Country</span>
 				                </div>
 			                </div>

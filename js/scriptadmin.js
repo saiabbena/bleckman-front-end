@@ -62,9 +62,9 @@ $(document).ready(function(){
               \
               <td style="white-space: nowrap;">'+data[i].ReturnId+'</td>\
               \
-              <td style="white-space: nowrap;"><a href="#">Link</a></td>\
+              <td style="white-space: nowrap;"><a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'">Link</a></td>\
               \
-              <td style="white-space: nowrap;"><b>&euro; '+data[i].ReturnOrderTotalRefundAmount.toFixed(2)+'</b></td>\
+              <td style="white-space: nowrap;"><b>'+data[i].Returnorderline[0].ProductCurrency+' '+data[i].ReturnOrderTotalRefundAmount.toFixed(2)+'</b></td>\
               \
               <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
               \
