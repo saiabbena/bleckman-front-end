@@ -204,7 +204,7 @@
         <!--<form method="POST" action="http://ws.developer.bleckmann.apoyaretail.com/api/CustomerLanguage/GetCustomerLanguagebyId">-->
         <form method="POST" action="submitLanguages">
         
-        <h3 >Edit languages 
+        <h3>Edit languages 
                 <?php
                   if ( count($customerLanguages) > 0 ) {
                     echo '<button class="btn btn-raised btn-success pull-right save-reasons">Save</button>';

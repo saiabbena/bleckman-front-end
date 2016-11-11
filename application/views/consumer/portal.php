@@ -9,7 +9,7 @@
         <div class='well bm-well' <?php echo $border_bottom?>>
             <h2><center><?php echo (isset($translations[13]['Translation'])?$translations[13]['Translation']:'');?>
 			<?php //echo $translations[13]['Translation'];?></center></h2>
-            <p class='text-center'><?php echo $customerLanguages['Page1heading']?></p>
+            <p class='text-center'><?php echo ($customerLanguages['Page1heading'])?></p>
             <div class="inputs">
               <form>
                 <div class="form-group label-floating">
@@ -180,7 +180,7 @@
             <table class='table' id='table1234'>
               <thead>
                 <tr>
-                  <th data-field="0" tabindex="0"></th><th data-field="1" tabindex="0"><?php echo $translations[9]['Translation'];?></th><th data-field="2" tabindex="0"><?php echo $translations[10]['Translation'];?></th>
+                  <th data-field="0" tabindex="0"></th><th data-field="1" tabindex="0"><?php echo isset($translations[9]['Translation']);?></th><th data-field="2" tabindex="0"><?php echo $translations[10]['Translation'];?></th>
                 </tr>
               </thead>
               <tbody>
