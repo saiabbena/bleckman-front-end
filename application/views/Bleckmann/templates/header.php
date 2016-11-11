@@ -65,16 +65,22 @@
             
           </div>
           <a href='customers'>
-          <div  <?php if($this->uri->segment(2) == 'customers'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='<?php echo base_url();?>img/i-1.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Customers</span>
-          </div>
+            <div  <?php if($this->uri->segment(2) == 'customers'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
+              <div class='hidden-lg hidden-md'></div>
+              <img src='<?php echo base_url();?>img/i-1.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Customers</span>
+            </div>
           </a>
           <a href='users'>
-          <div  <?php if($this->uri->segment(2) == 'users'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='<?php echo base_url();?>img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Users</span>
-          </div>
+            <div  <?php if($this->uri->segment(2) == 'users'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+              <div class='hidden-lg hidden-md'></div>
+              <img src='<?php echo base_url();?>img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Users</span>
+            </div>
+          </a>
+          <a href='roles'>
+            <div  <?php if($this->uri->segment(2) == 'roles'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+              <div class='hidden-lg hidden-md'></div>
+              <img src='<?php echo base_url();?>img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Roles</span>
+            </div>
           </a>
         </div>
       </div>

@@ -38,6 +38,17 @@ class Bleckmann extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
+  public function roles() {
+  	$data['allRoles'] = $this->httpRequests->httpGet('Role/GetAllActiveRoles', '');
+
+    $this->load->view('Bleckmann/templates/header');
+    $this->load->view('Bleckmann/roles', $data);
+    $this->load->view('Bleckmann/templates/footer');
+
+    if(isset($_SESSION['message'])){
+      unset($_SESSION['message']);
+    }
+  }
   public function submitUserInfo() {
   	//print_r($_POST);
   	$server_output = $this->httpRequests->httpPost('User/PostManageUser', json_encode($_POST) );
