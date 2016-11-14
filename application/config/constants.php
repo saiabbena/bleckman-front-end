@@ -85,5 +85,5 @@ defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automat
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
 
 //PROJECT CONSTANTS
-define('API_BASE_URL_BE', 'http://returns.dev.apoyar.eu/');
-define('API_BASE_URL_FE', 'http://returns.dev.apoyar.eu/');
+define('API_BASE_URL_BE', 'http://api.bleckmann/');
+define('API_BASE_URL_FE', 'http://api.bleckmann.apoyar.eu/');
