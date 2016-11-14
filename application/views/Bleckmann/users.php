@@ -129,7 +129,9 @@
 				                  	echo '<select class="form-control" id="FKRoleID" name="FKRoleID">';
 				                  	echo '<option value="-1">Select a Role &darr;</option>';
 				                  	for ($i=0; $i<count($allRoles); $i++) { 
-				                  		echo '<option value="' . $allRoles[$i]['PKRoleID'].'">' . $allRoles[$i]['RoleName'] . '</option>';
+				                  		if ( $allRoles[$i]['IsActive'] ) {
+				                  			echo '<option value="' . $allRoles[$i]['PKRoleID'].'">' . $allRoles[$i]['RoleName'] . '</option>';
+				                  		}
 				                  	}
 				                  	
 				                  	echo '</select>';

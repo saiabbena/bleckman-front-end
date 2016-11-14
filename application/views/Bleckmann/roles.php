@@ -38,11 +38,10 @@
 		              								<div class="">
 		                								<label class="class="control-label"">
 										                </label>
-										                <input type="hidden" name="Roles[' . $i .'][IsActive]" value="false">
-										                <input type="checkbox" name="Roles[' . $i .'][IsActive]" value="'.$allRoles[$i]['IsActive'].'" '.
-										                (($allRoles[$i]['IsActive']) ? " checked='checked'" : "")
+										                <input type="hidden" name="Roles[' . $i .'][IsActive]" value="0">
+										                <input type="checkbox" name="Roles[' . $i .'][IsActive]" value="1" '.
+										                ((int)($allRoles[$i]['IsActive'] > 0 ) ? " checked='checked'" : "")
 										                .' >
-										                
 										              </div>
 										        </div>
 									        </div>
@@ -68,7 +67,6 @@
 		</div>
 	</div>
 </div>
-
         <!-- Add RolesModal -->
         <div class="modal fade" id="add-role-modal" tabindex="-1" role="dialog" aria-labelledby="myUserLabel">
           <div class="modal-dialog" role="document">
