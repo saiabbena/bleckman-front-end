@@ -214,6 +214,7 @@ $(function() {
 		    $('input#APIURL').val('');
 		    $('input#FKCustomerID').val('');
 		    $('input#ConsumerCountryName').val('');
+			$('input#ConsumerCountryName').prop("readonly",false);
 		    $('input#AnnounceAPI').val('');
 		    $('input#TrackTraceURL').val('');
 			$('#loadingspin').css({'display':'none'});//Hide spin image
@@ -243,6 +244,7 @@ $(function() {
 		        	$('input#APIURL').val(data.APIURL);
 		        	$('input#FKCustomerID').val(data.FKCustomerID);
 		        	$('input#ConsumerCountryName').val(data.ConsumerCountryName);
+					$('input#ConsumerCountryName').prop("readonly",true);
 		        	$('input#AnnounceAPI').val(data.AnnounceAPI);
 		        	$('input#TrackTraceURL').val(data.TrackTraceURL);
 					$('input#LabelAPI').val(data.LabelAPI);		        	
@@ -260,7 +262,9 @@ $(function() {
 			var existing_country_list = $('#existing_country_list').val();
 			var countryArray = existing_country_list.split(',');
 			var ConsumerCountryName = $('#ConsumerCountryName').val();
-			if ($.inArray(ConsumerCountryName, countryArray)!='-1') {
+			var PKCarrierID = $('#PKCarrierID').val();
+			
+			if ($.inArray(ConsumerCountryName, countryArray)!='-1' && PKCarrierID == '') {
 				//alert(ConsumerCountryName + ' is duplicate!');
 				$('#ConsumerCountryName').val('');
 				$('#ConsumerCountryName').focus();
