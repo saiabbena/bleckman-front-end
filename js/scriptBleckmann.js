@@ -1,5 +1,6 @@
 $(function() {
 		var url=API_BASE_URL_FE+'api/';
+		
 		$(".add-customer-pop").click(function(){
 		    $('h4#myModalLabel').text('Add a Customer');
 		    $('input#AddressLine1').val('');
@@ -204,6 +205,25 @@ $(function() {
 		            form.submit();
 		        }
 		});
+		$("#add-warehouse-form").validate({
+		        rules: {
+		            "Warehouses[0][Name]": "required",
+		            "Warehouses[0][PostalCode]": "required",
+		            "Warehouses[0][HouseNumber]" : "required",
+		            "Warehouses[0][Country]": "required",
+		        },
+		        messages: {
+		            "Warehouses[0][Name]": "Please enter Warehouse Name",
+		            "Warehouses[0][PostalCode]": "Please enter Postal Code",
+		            "Warehouses[0][HouseNumber]": "Please enter House Number",
+		            "Warehouses[0][Country]": "Please enter Country Name"
+		        },
+		        submitHandler: function(form) {
+		        	alert("submit");
+		            form.submit();
+		        }
+		});
+
 		$("#add_carrier").click(function(){
 		    $('h4#carrierLabel').text('Add a Carrier');
 		    $('input#PKCarrierID').val('');

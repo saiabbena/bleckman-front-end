@@ -71,6 +71,12 @@
             <img src='<?php echo base_url();?>img/i-8.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Customers</span>
           </div>
           </a>
+          <a href='<?php echo base_url()?>index.php/Bleckmann/warehouses'>
+            <div  <?php if($this->uri->segment(2) == 'warehouses'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+              <div class='hidden-lg hidden-md'></div>
+              <img src='<?php echo base_url();?>img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Warehouses</span>
+            </div>
+          </a>
           <a href='<?php echo base_url()?>index.php/Bleckmann/users'>
           <div  <?php if($this->uri->segment(2) == 'users'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
@@ -88,7 +94,6 @@
               <div class='hidden-lg hidden-md'></div>
               <img src='<?php echo base_url();?>img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Roles</span>
             </div>
-
           </a>
         </div>
       </div>

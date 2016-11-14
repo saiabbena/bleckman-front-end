@@ -44,6 +44,33 @@ class Bleckmann extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
+  public function warehouses() {
+  	$data['allWarehouses'] = $this->httpRequests->httpGet('Location/GetAllActiveLocations', '');
+
+    $this->load->view('Bleckmann/templates/header');
+    $this->load->view('Bleckmann/warehouses', $data);
+    $this->load->view('Bleckmann/templates/footer');
+    if(isset($_SESSION['message'])){
+      unset($_SESSION['message']);
+    }
+  }
+  public function submitWarehouses() {
+  	print_r($_POST);exit();
+  	$server_output = $this->httpRequests->httpPost('Location/PostManageLocation', json_encode($_POST) );
+    echo json_encode($server_output);
+    $_SESSION['message']['warehouse_panel']='Warehouse Information Saved';
+    echo var_dump($_SESSION['message']);
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#warehouse_panel');
+  }
+  public function deleteWarehouse() {
+  	$_POST['IsActive'] = 'false';
+	//print_r($_POST);
+  	$server_output = $this->httpRequests->httpPost('Location/PostIsActiveLocation', json_encode($_POST) );
+    echo json_encode($server_output);
+    $_SESSION['message']['warehouse_panel']='Warehouse Deleted';
+    echo var_dump($_SESSION['message']);
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#warehouse_panel');
+  }
   public function submitRoles() {
   	//echo "submitRoles : ";
   	//echo json_encode($_POST);
