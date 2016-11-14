@@ -99,21 +99,18 @@ class Admin extends CI_Controller {
 	  // Free up the resources $curl is using
 	  curl_close($ch);
 	  $appearanceSettings = $result;
-	  //echo $appearanceSettings['CustomerSetting']['Colours'];exit();
-	  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
-
 	  
 		  $appearanceSettings = $data['appearanceSettings'];
 		  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
-
+		  //print_r($serialize_appearance) ;exit();
 		  if(!is_array($serialize_appearance)){
-				  $header_color='';
-				  $menu_bg = '';
-				  $menu_font ='';
-				  $dd_bg = '';
-				  $dd_font ='';
-				  $accent_1 = '';
-				  $accent_2 = '';
+				  $header_color='#625454';
+				  $menu_bg = '#1C1818';
+				  $menu_font ='#FFFFFF';
+				  $dd_bg = '#CC1543';
+				  $dd_font ='#ffffff';
+				  $accent_1 = '#CC1543';
+				  $accent_2 = '#E25176';
 		  }else{		  
 			  $Colors = json_encode($serialize_appearance);
 			  $Colors = json_decode($Colors);			
@@ -147,8 +144,8 @@ class Admin extends CI_Controller {
 	  //@fopen($logo,'r');  
 	  
 	  $data['logo'] =  (@fopen($logo, 'r'))?$logo:base_url().'/img/logo.png';
-	  $data['spacer'] = (@fopen($spacer, 'r'))?$spacer:'/img/bm-spacer.jpg';
-	  $data['loading'] = (@fopen($loading, 'r'))?$loading:'/img/loading-pink.gif';	  
+	  $data['spacer'] = (@fopen($spacer, 'r'))?$spacer:base_url().'/img/bm-spacer.jpg';
+	  $data['loading'] = (@fopen($loading, 'r'))?$loading:base_url().'/img/loading-pink.gif';	  
 	  
 	  $this->load->view('admin/templates/adm_header');
 	  $this->load->view('admin/appearance', $data);

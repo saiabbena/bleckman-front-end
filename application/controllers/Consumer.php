@@ -120,8 +120,7 @@ class Consumer extends CI_Controller {
 	  $ch = curl_init();
 
 	  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-	  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
-	  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapiapi/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
+	  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);	  
 	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 	  // Send the request
@@ -131,13 +130,13 @@ class Consumer extends CI_Controller {
 	  $appearanceSettings = $result;
 	  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
 	  if(!is_array($serialize_appearance)){
-			  $header_color='';
-			  $menu_bg = '';
-			  $menu_font ='';
-			  $dd_bg = '';
-			  $dd_font ='';
-			  $accent_1 = '';
-			  $accent_2 = '';
+			  $header_color='#625454';
+			  $menu_bg = '#1C1818';
+			  $menu_font ='#FFFFFF';
+			  $dd_bg = '#CC1543';
+			  $dd_font ='#ffffff';
+			  $accent_1 = '#CC1543';
+			  $accent_2 = '#E25176';
 	  }else{		  
 		  $Colors = json_encode($serialize_appearance);
 		  $Colors = json_decode($Colors);		
@@ -146,8 +145,7 @@ class Consumer extends CI_Controller {
 		  $FKCustomerid = (isset($appearanceSettings['CustomerSetting']['FKCustomerid']))?$appearanceSettings['CustomerSetting']['FKCustomerid']:'';
 		
 			if(count($Colors)>0){
-				foreach($Colors as $result){			
-					//stdClass Object ( [Header] => #625454 [Menu] => Array ( [0] => #625454 [1] => #FFFFFF ) [Accent] => Array ( [0] => #CC1543 [1] => #E25176 ) ) #FFFFFF#FFFFFF#FFFFFF
+				foreach($Colors as $result){					
 					$header_color = (isset($Colors->Header))?$Colors->Header:'';
 					$menu_bg = (isset($Colors->Menu[0]))?$Colors->Menu[0]:'';
 					$menu_font = (isset($Colors->Menu[1]))?$Colors->Menu[1]:'';					
