@@ -42,7 +42,7 @@
   </head>
   <body id='override'>
     <div class="bm-h" <?php echo $hdr_bg_style?>>
-      <img style='height: 70px;' src="<?php echo ($logo != '')?$logo:'/img/logo.png'?>?dummy=<?php echo mt_rand()?>">
+      <img style='height: 70px;' src="<?php echo $logo?>?dummy=<?php echo mt_rand()?>">
     </div>
     <div class="navbar navbar-inverse" <?php echo ($menu_bg_style != '')?$menu_bg_style:'';?>">
       <div class="container-fluid">

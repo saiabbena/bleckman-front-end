@@ -81,7 +81,7 @@ class Admin extends CI_Controller {
     );
 
     $data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $req);
-
+	
 	  $customer_id = $_SESSION['Customerid'];
 
 	  $data2 = array('Customerid'=>$customer_id);
@@ -99,33 +99,18 @@ class Admin extends CI_Controller {
 	  // Free up the resources $curl is using
 	  curl_close($ch);
 	  $appearanceSettings = $result;
-	  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
-
-	  //$data2 = array('Customerid'=>$customer_id);
-	  // $data_url='?'.http_build_query($data2);
-		 //  $data_string = json_encode($data2);
-		 //  $ch = curl_init();
-
-		 //  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-		 //  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
-		 //  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
-		 //  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-		 //  // Send the request
-		 //  $result = json_decode(curl_exec($ch), true);
-		 //  // Free up the resources $curl is using
-		 //  curl_close($ch);
+	  
 		  $appearanceSettings = $data['appearanceSettings'];
 		  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
-
+		  //print_r($serialize_appearance) ;exit();
 		  if(!is_array($serialize_appearance)){
-				  $header_color='';
-				  $menu_bg = '';
-				  $menu_font ='';
-				  $dd_bg = '';
-				  $dd_font ='';
-				  $accent_1 = '';
-				  $accent_2 = '';
+				  $header_color='#625454';
+				  $menu_bg = '#1C1818';
+				  $menu_font ='#FFFFFF';
+				  $dd_bg = '#CC1543';
+				  $dd_font ='#ffffff';
+				  $accent_1 = '#CC1543';
+				  $accent_2 = '#E25176';
 		  }else{		  
 			  $Colors = json_encode($serialize_appearance);
 			  $Colors = json_decode($Colors);			
@@ -152,10 +137,15 @@ class Admin extends CI_Controller {
 	  
 	  //Use in Live
 	  /**/
-	  $data['logo'] = API_BASE_URL_FE.'images/'.$customer_id.'/logo/logo.png';
-	  $data['spacer'] = API_BASE_URL_FE.'images/'.$customer_id.'/spacer/spacer.png';
-	  $data['loading'] = API_BASE_URL_FE.'images/'.$customer_id.'/loading/loading.gif';
+	  //file_exists($filename)
+	  $logo = API_BASE_URL_FE.'images/'.$customer_id.'/logo/logo.png';
+	  $spacer = API_BASE_URL_FE.'images/'.$customer_id.'/spacer/spacer.png';
+	  $loading = API_BASE_URL_FE.'images/'.$customer_id.'/loading/loading.gif';
+	  //@fopen($logo,'r');  
 	  
+	  $data['logo'] =  (@fopen($logo, 'r'))?$logo:base_url().'/img/logo.png';
+	  $data['spacer'] = (@fopen($spacer, 'r'))?$spacer:base_url().'/img/bm-spacer.jpg';
+	  $data['loading'] = (@fopen($loading, 'r'))?$loading:base_url().'/img/loading-pink.gif';	  
 	  
 	  $this->load->view('admin/templates/adm_header');
 	  $this->load->view('admin/appearance', $data);
