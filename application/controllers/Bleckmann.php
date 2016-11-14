@@ -36,6 +36,7 @@ class Bleckmann extends CI_Controller {
   }
   public function roles() {
   	$data['allRoles'] = $this->httpRequests->httpGet('Role/GetAllActiveRoles', '');
+
     $this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/roles', $data);
     $this->load->view('Bleckmann/templates/footer');
@@ -47,8 +48,11 @@ class Bleckmann extends CI_Controller {
   	//echo "submitRoles : ";
   	//echo json_encode($_POST);
   	for($i=0;$i<count($_POST['Roles']);$i++) {
+  		echo "asdasdasd : " . $_POST['Roles'][$i]['IsActive'];
   		if ($_POST['Roles'][$i]['IsActive'] == 1) {
   			$_POST['Roles'][$i]['IsActive'] = "true";
+  		} else {
+  			$_POST['Roles'][$i]['IsActive'] = "false";
   		}
   	}
   	//echo json_encode($_POST);exit();
