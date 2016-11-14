@@ -76,13 +76,13 @@
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-7.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Users</span>
           </div>
-          </a>
+          </a><!--
 		  <a href='<?php echo base_url()?>index.php/Bleckmann/carriers'>
           <div  <?php if($this->uri->segment(2) == 'carriers'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-6.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Carriers</span>
           </div>           
-          </a>          
+          </a>-->          
           <a href='<?php echo base_url()?>index.php/Bleckmann/roles'>
             <div  <?php if($this->uri->segment(2) == 'roles'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
               <div class='hidden-lg hidden-md'></div>

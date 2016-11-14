@@ -80,6 +80,7 @@ class Bleckmann extends CI_Controller {
   public function carriers($param1='', $param2='') {	  
   	//print_r($_SESSION);exit();
 	//echo $param1;exit();
+	$data = array();
 	if($param1 == 'searchbyCID'){			
 		$req = array(
 			'Customerid'=>$param2
