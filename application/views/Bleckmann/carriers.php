@@ -34,7 +34,7 @@
 									<p>Label: '. $all_carriers_data[$i]['LabelAPI'] .'</p>
 									<p>Announce API: '. $all_carriers_data[$i]['AnnounceAPI'] .'</p>
 									<p>TraceURL: '. $all_carriers_data[$i]['TrackTraceURL'] .'</p>
-									<p><a href="#" data-toggle="modal" data-target="#moreInfo-' . $all_carriers_data[$i]['PKCarrierID'] .'">More Info</a></p>
+									
 									<div class="row">
 										<button type="button" data-toggle="modal" data-target="#delete_carrier_modal'. $all_carriers_data[$i]['PKCarrierID'] .'" id="delete_carrier" class="btn btn-raised btn-danger pull-right">Delete</button>
 										<button type="button" data-toggle="modal" data-target="#add_carrier_modal" id="editcarrrier_'. $all_carriers_data[$i]['PKCarrierID'] .'" class="btn btn-raised btn-success pull-right edit_carrier">Edit</button>

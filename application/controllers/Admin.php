@@ -81,7 +81,7 @@ class Admin extends CI_Controller {
     );
 
     $data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $req);
-
+	
 	  $customer_id = $_SESSION['Customerid'];
 
 	  $data2 = array('Customerid'=>$customer_id);
@@ -99,22 +99,10 @@ class Admin extends CI_Controller {
 	  // Free up the resources $curl is using
 	  curl_close($ch);
 	  $appearanceSettings = $result;
+	  //echo $appearanceSettings['CustomerSetting']['Colours'];exit();
 	  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
 
-	  //$data2 = array('Customerid'=>$customer_id);
-	  // $data_url='?'.http_build_query($data2);
-		 //  $data_string = json_encode($data2);
-		 //  $ch = curl_init();
-
-		 //  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
-		 //  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
-		 //  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
-		 //  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-		 //  // Send the request
-		 //  $result = json_decode(curl_exec($ch), true);
-		 //  // Free up the resources $curl is using
-		 //  curl_close($ch);
+	  
 		  $appearanceSettings = $data['appearanceSettings'];
 		  $serialize_appearance = @unserialize($appearanceSettings['CustomerSetting']['Colours']);
 
@@ -152,10 +140,15 @@ class Admin extends CI_Controller {
 	  
 	  //Use in Live
 	  /**/
-	  $data['logo'] = API_BASE_URL_FE.'images/'.$customer_id.'/logo/logo.png';
-	  $data['spacer'] = API_BASE_URL_FE.'images/'.$customer_id.'/spacer/spacer.png';
-	  $data['loading'] = API_BASE_URL_FE.'images/'.$customer_id.'/loading/loading.gif';
+	  //file_exists($filename)
+	  $logo = API_BASE_URL_FE.'images/'.$customer_id.'/logo/logo.png';
+	  $spacer = API_BASE_URL_FE.'images/'.$customer_id.'/spacer/spacer.png';
+	  $loading = API_BASE_URL_FE.'images/'.$customer_id.'/loading/loading.gif';
+	  //@fopen($logo,'r');  
 	  
+	  $data['logo'] =  (@fopen($logo, 'r'))?$logo:base_url().'/img/logo.png';
+	  $data['spacer'] = (@fopen($spacer, 'r'))?$spacer:'/img/bm-spacer.jpg';
+	  $data['loading'] = (@fopen($loading, 'r'))?$loading:'/img/loading-pink.gif';	  
 	  
 	  $this->load->view('admin/templates/adm_header');
 	  $this->load->view('admin/appearance', $data);

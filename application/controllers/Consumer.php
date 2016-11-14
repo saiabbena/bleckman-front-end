@@ -173,13 +173,17 @@ class Consumer extends CI_Controller {
 	$data['menu_bg_style'] = 'style="background-color:'.$menu_bg.' !important;"';
 	$data['hdr_bg_style'] = 'style="background-color:'.$hdr_bg.' !important"';
 	
-	$data['logo'] = API_BASE_URL_FE.'images/'.$customer_id.'/logo/logo.png';
-	$data['spacer'] = API_BASE_URL_FE.'images/'.$customer_id.'/spacer/spacer.png';
-	$data['loading'] = API_BASE_URL_FE.'images/'.$customer_id.'/loading/loading.gif';	
+	//file_exists($filename)
+    $logo = API_BASE_URL_FE.'images/'.$customer_id.'/logo/logo.png';
+    $spacer = API_BASE_URL_FE.'images/'.$customer_id.'/spacer/spacer.png';
+    $loading = API_BASE_URL_FE.'images/'.$customer_id.'/loading/loading.gif';      
   
+    $data['logo'] =  (@fopen($logo, 'r'))?$logo:base_url().'/img/logo.png';
+    $data['spacer'] = (@fopen($spacer, 'r'))?$spacer:base_url().'/img/bm-spacer.jpg';
+    $data['loading'] = (@fopen($loading, 'r'))?$loading:base_url().'/img/loading-pink.gif';  
 
-  $this->load->view('consumer/templates/header', $data);
-  $this->load->view('consumer/portal', $data);
-  $this->load->view('consumer/templates/footer');
+    $this->load->view('consumer/templates/header', $data);
+    $this->load->view('consumer/portal', $data);
+    $this->load->view('consumer/templates/footer');
   }	
 }

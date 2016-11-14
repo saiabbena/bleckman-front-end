@@ -152,13 +152,11 @@ $(document).ready(function(){
         default_render=false;
       }
     });
-    /*
-    if($('tr select').val()!='0'){
-      searchInput['Month']=$('tr select').val();
-      default_render=false;
-    }*/
-    
-    console.log(default_render);
+	//Change the date format to YYYY-DD-MM
+    var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
+	var date_array = [];    
+    date_array = ReturnsOrderCreationDate.split("-");    
+    var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];	
     
     if(default_render){
       console.log(" in default_render");
@@ -166,9 +164,9 @@ $(document).ready(function(){
       $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.alert.alert-dismissible.alert-primary').html('Listing the latest 20 returned orders')
     }
     else{
-      $('.loading-screen').slideDown('slow');
-      console.log(searchInput);
-
+      $('.loading-screen').slideDown('slow');      
+	  searchInput['ReturnsOrderCreationDate']= newDateFormat;
+	  console.log(searchInput);
       $.ajax({
         url: apiCall,
         type: 'post',
@@ -186,7 +184,7 @@ $(document).ready(function(){
         fail: function(){
           $('.loading-screen').slideUp('slow');
           renderReturnOrders({});
-          console.log(data);
+          //console.log(data);
         }
       });
 

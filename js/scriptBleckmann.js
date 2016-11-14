@@ -204,6 +204,53 @@ $(function() {
 		            form.submit();
 		        }
 		});
+		$("#carrier_info_form").validate({
+			rules: {				
+				CarrierName: "required",
+				APIKey: "required",				
+				APIURL : "required",
+				ConsumerCountryName: "required",
+				AnnounceAPI: "required",
+				TrackTraceURL: "required",				
+				APIUserName : {
+					required: function(element) {
+						//alert("customerid : " + $('#PKCustomerID').val());
+						if ( $('#PKCarrierID').val() ) {
+							return false;
+						} else {
+							return true;
+						}
+					}
+				},
+				APIPassword : {
+					required: function(element) {
+						//alert("customerid : " + $('#PKCustomerID').val());
+						if ( $('#PKCarrierID').val() ) {
+							return false;
+						} else {
+							return true;
+						}
+					}
+				}
+			},
+			messages: {
+				CarrierName: "Please enter Carrier Name",
+				APIKey: "Please enter API Key",
+				APIURL: "Please enter a valid API URL",
+				AnnounceAPI: "Please enter Announce API",
+				TrackTraceURL: "Please enter Track Trace URL",
+				ConsumerCountryName: "Please Unique Country Name",
+				APIUserName: "Please enter Username",
+				APIPassword: "Please enter Password"
+			},
+			submitHandler: function(form) {
+				//alert("submit");
+				form.submit();
+			}
+	});		
+		
+		
+		
 		$("#add_carrier").click(function(){
 		    $('h4#carrierLabel').text('Add a Carrier');
 		    $('input#PKCarrierID').val('');
@@ -226,7 +273,7 @@ $(function() {
 			var selCarrierId = carrier_array[1];
 			//alert(selCustId);
 			var apiCall=url+'Carrier/GetCarrierbyId?CarrierId=' + selCarrierId;
-			console.log("apiCall : " + apiCall);
+			//console.log("apiCall : " + apiCall);
 			$('#loadingspin').css({'display':'block'});//Hide spin image
 			$.ajax({
 		        url: apiCall,
