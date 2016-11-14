@@ -19,16 +19,19 @@ class Consumer extends CI_Controller {
       $this->Languagename=$_GET['Lang'];
     }
     else{
-      foreach($this->getCustomerLanguages() as $l){
-        if($l['Isdefault']==true){
-          $this->Languagename=$l['LanguageName'];
-          break;
+      if ( count( $this->getCustomerLanguages() ) > 0 ) {
+        foreach($this->getCustomerLanguages() as $l) {
+          if($l['Isdefault']==true){
+            $this->Languagename=$l['LanguageName'];
+            break;
+          }
+          else{
+            $this->Languagename='English';
+            $this->Links = $l['Links'];
+          }
         }
-        else{
-          $this->Languagename='English';
-          $this->Links = $l['Links'];
-          
-        }
+      } else {
+        $this->Languagename='English';
       }
     }
   }
@@ -87,22 +90,23 @@ class Consumer extends CI_Controller {
 
     $data['Links'] = [];
     //set customerLanguages to current selected language
-    foreach($data['customerLanguages'] as $r){
-      if($r['LanguageName']==$this->Languagename){
-        $data['customerLanguages']=$r;
-        $data['Links'] = $r['Links'];
-      }
-    }
-    //set translations to current selected language
-    $data['translations']=[];
-    foreach ($this->getTranslations() as $key => $value) {
-      foreach ($value as $kkey => $vvalue) {
-        if($vvalue['Languagename']==$this->Languagename){
-          array_push($data['translations'], $vvalue);
+    if ( count($data['customerLanguages']) > 0 ) {
+        foreach($data['customerLanguages'] as $r) {
+          if($r['LanguageName']==$this->Languagename){
+            $data['customerLanguages']=$r;
+            $data['Links'] = $r['Links'];
+          }
         }
-      }
+        //set translations to current selected language
+        $data['translations']=[];
+        foreach ($this->getTranslations() as $key => $value) {
+          foreach ($value as $kkey => $vvalue) {
+            if($vvalue['Languagename']==$this->Languagename){
+              array_push($data['translations'], $vvalue);
+            }
+          }
+        }
     }
-
 
 
     

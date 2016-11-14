@@ -94,11 +94,13 @@
             </li>
 
             <?php
-              #echo "Links : " . $Links;
-              $newLinks = json_decode($Links);
-              foreach ($newLinks as $k => $v) {
-                echo '<li>&nbsp;&nbsp;&nbsp;</li>
-            <li><a href="'.$v.'">' . $k . '</a></li>';
+              
+              if ( count($Links) > 0 ) {
+                $newLinks = json_decode($Links);
+                foreach ($newLinks as $k => $v) {
+                  echo '<li>&nbsp;&nbsp;&nbsp;</li>
+              <li><a href="'.$v.'">' . $k . '</a></li>';
+                }
               }
             ?>
 <!--             <li>&nbsp;&nbsp;&nbsp;</li>
