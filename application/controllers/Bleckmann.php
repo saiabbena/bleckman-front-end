@@ -13,7 +13,6 @@ class Bleckmann extends CI_Controller {
     }
   }
   public function customers() {
-  	echo "token : " . $_SESSION['Apoyar'];
   	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
   	//print_r($data['allCustomers']);
     $this->load->view('Bleckmann/templates/header');

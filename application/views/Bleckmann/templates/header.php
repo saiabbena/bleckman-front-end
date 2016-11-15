@@ -62,7 +62,7 @@
       <div class='well' style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;">
         <div class='row'>
           <div class='col-md-12 text-center' >
-            
+            <h3><b><?php echo(strtoupper($_SESSION['Customername']))?></b></h3><br>
           </div>
           <a href='<?php echo base_url()?>index.php/Bleckmann/customers'>
 
