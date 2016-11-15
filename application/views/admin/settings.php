@@ -13,8 +13,8 @@
         <form method="POST" action="submitReturnReasons">
         <!--<form method="POST" action="debug">-->
         <h3>Edit return reasons 
-		<input name="ReturnReasons" class="ReturnReasons" value="1" type="hidden">
-        <button type="button" data-toggle="modal" data-target="#myModal" id='add-return' class='btn btn-raised btn-warning pull-right'>Add</button>    <?php
+		      <input name="ReturnReasons" class="ReturnReasons" value="1" type="hidden">
+          <button type="button" data-toggle="modal" data-target="#myModal" id='add-return' class='btn btn-raised btn-warning pull-right'>Add</button>    <?php
               if ( isset($returnReasons[0]) ) {
                 echo '<button class="btn btn-raised btn-success pull-right save-reasons" type="submit">Save</button>';
               }

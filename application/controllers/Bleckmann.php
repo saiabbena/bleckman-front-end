@@ -58,7 +58,14 @@ class Bleckmann extends CI_Controller {
   	//print_r($_POST);exit();
   	$server_output = $this->httpRequests->httpPost('Location/PostManageLocation', json_encode($_POST) );
     echo json_encode($server_output);
-    $_SESSION['message']['warehouse_panel']='Warehouse Information Saved';
+    //$_SESSION['message']['warehouse_panel']='Warehouse Information Saved';
+    if ( $server_output['Status'] == 1) { 
+    	$_SESSION['message']['warehouse_panel']='Warehouse Information Saved';
+    	$_SESSION['message']['alert_status']='success';
+	} else {
+		$_SESSION['message']['warehouse_panel']='Error : ' . $server_output['Messages'];
+		$_SESSION['message']['alert_status']='warning';
+	}
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#warehouse_panel');
   }
@@ -67,7 +74,15 @@ class Bleckmann extends CI_Controller {
 	//print_r($_POST);
   	$server_output = $this->httpRequests->httpPost('Location/PostIsActiveLocation', json_encode($_POST) );
     echo json_encode($server_output);
-    $_SESSION['message']['warehouse_panel']='Warehouse Deleted';
+    //$_SESSION['message']['warehouse_panel']='Warehouse Deleted';
+    if ( $server_output['Status'] == 1 ) { 
+    	$_SESSION['message']['warehouse_panel']='Warehouse Deleted';
+    	$_SESSION['message']['alert_status']='success';
+	} else {
+		$_SESSION['message']['warehouse_panel']='Error : ' . $server_output['Messages'];
+		$_SESSION['message']['alert_status']='warning';
+	}
+
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#warehouse_panel');
   }
@@ -83,48 +98,76 @@ class Bleckmann extends CI_Controller {
   		}
   	}
   	//echo json_encode($_POST);exit();
-
   	$server_output = $this->httpRequests->httpPost('Role/PostManageRole', json_encode($_POST) );
-
     echo json_encode($server_output);
-    $_SESSION['message']['roles_panel']='Roles Information Saved';
+
+    if ( $server_output['Status'] == 1 ) { 
+    	$_SESSION['message']['roles_panel']='Roles Information Saved';
+    	$_SESSION['message']['alert_status']='success';
+	} else {
+		$_SESSION['message']['roles_panel']='Error : ' . $server_output['Messages'];
+		$_SESSION['message']['alert_status']='warning';
+	}
 
     echo var_dump($_SESSION['message']);
-
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#roles_panel');
-
   }
   public function submitUserInfo() {
   	//print_r($_POST);
   	$server_output = $this->httpRequests->httpPost('User/PostManageUser', json_encode($_POST) );
     echo json_encode($server_output);
-    $_SESSION['message']['user_panel']='User Information Saved';
+    //$_SESSION['message']['user_panel']='User Information Saved';
+
+    if ( $server_output['Id'] ) { 
+    	$_SESSION['message']['user_panel']='User Information Saved';
+    	$_SESSION['message']['alert_status']='success';
+	} else {
+		$_SESSION['message']['user_panel']='Error : ' . $server_output['Status'];
+		$_SESSION['message']['alert_status']='warning';
+	}
+
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#user_panel');
   }
   public function deleteUser() {
-  	
   	$_POST['IsActive'] = 'false';
 	//print_r($_POST);
   	$server_output = $this->httpRequests->httpPost('User/PostIsActiveUser', json_encode($_POST) );
     echo json_encode($server_output);
-    $_SESSION['message']['user_panel']='User Deleted';
+    if ( $server_output['Status'] == 1 ) { 
+    	$_SESSION['message']['user_panel']='User Deleted';
+    	$_SESSION['message']['alert_status']='success';
+    } else {
+		$_SESSION['message']['user_panel']='Error : ' . $server_output['Messages'];
+		$_SESSION['message']['alert_status']='warning';
+    }
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#user_panel');
   }
   public function submitCustomerInfo() {
   	//print_r($_POST);
   	$server_output = $this->httpRequests->httpPost('Customer/PostManageCustomer', json_encode($_POST) );
-    echo json_encode($server_output);
-    $_SESSION['message']['customer_panel']='Customer Information Saved';
+    if ( $server_output['Id'] ) { 
+    	$_SESSION['message']['customer_panel']='Customer Information Saved';
+    	$_SESSION['message']['alert_status']='success';
+	} else {
+		$_SESSION['message']['customer_panel']='Error : ' . $server_output['Status'];
+		$_SESSION['message']['alert_status']='warning';
+	}
     echo var_dump($_SESSION['message']);
-    header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
+	header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
   }
   public function deleteCustomer() {
   	//print_r($_POST);
   	$server_output = $this->httpRequests->httpPost('Customer/PostDeleteCustomer', json_encode($_POST) );
     echo json_encode($server_output);
-    $_SESSION['message']['customer_panel']='Customer Deleted';
+    if ( $server_output['Status'] == 1 ) { 
+    	$_SESSION['message']['customer_panel']='Customer Deleted';
+    	$_SESSION['message']['alert_status']='success';
+    } else {
+		$_SESSION['message']['customer_panel']='Error : ' . $server_output['Messages'];
+		$_SESSION['message']['alert_status']='warning';
+    }
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
   }

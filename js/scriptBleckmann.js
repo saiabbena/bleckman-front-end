@@ -220,7 +220,7 @@ $(function() {
 		            "Warehouses[0][Country]": "Please enter Country Name"
 		        },
 		        submitHandler: function(form) {
-		        	alert("submit");
+		        	//alert("submit");
 		            form.submit();
 		        }
 		});

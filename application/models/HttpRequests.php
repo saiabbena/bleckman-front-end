@@ -69,7 +69,11 @@ Class HttpRequests extends CI_Model {
 
 	    $response = curl_exec($ch);
 	    curl_close($ch);
-	    return $response;
+	    $json_body = json_decode($response,true);
+	    // echo " response : " . $response;
+	    // echo " json_body : " . json_encode($json_body);
+	    // echo " Status in HttpRequests : " . $json_body['Status'];
+	    return $json_body;
 	}
 	public function httpPostUpload($api_url, $data) {
 		//to be used for file uploads

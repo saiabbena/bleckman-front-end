@@ -5,7 +5,7 @@
 				<?php
 		          if(isset($_SESSION['message']['roles_panel'])){
 		            echo'
-		            <div class="alert alert-dismissible alert-success">
+		            <div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">
 		              '.$_SESSION['message']['roles_panel'].'
 		            </div>';
 		          }
