@@ -27,10 +27,10 @@ Class HttpRequests extends CI_Model {
 
 	    $json_body = json_decode($body,true);
 
-	    if ( $json_body['Id'] > 0 ) {
+	    if ( ($json_body['Status'] == 1) && ($json_body['Userid'] > 0) ) {
 	    	$_SESSION['Apoyar']=$headers['Apoyar'];
-	    	$_SESSION['Customerid']=$json_body['Id'];
-	    	$_SESSION['Customername']=$json_body['Messages']; // TODO : At the moment, messages returning the customer name.
+	    	$_SESSION['Customerid']=$json_body['Userid'];
+	    	$_SESSION['Customername']=$json_body['Name']; // TODO : At the moment, messages returning the customer name.
 	    }
 	    curl_close($ch);
 	    return $json_body;
@@ -64,12 +64,18 @@ Class HttpRequests extends CI_Model {
 	    curl_setopt($ch, CURLOPT_URL, $url);
 	    curl_setopt($ch, CURLOPT_HTTPHEADER, array("cache-control: no-cache", "content-type: application/json", 'Apoyar: ' . $_SESSION['Apoyar']));
 	    curl_setopt($ch, CURLOPT_POST, 1);
+	    
 	    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+	    
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
 	    $response = curl_exec($ch);
 	    curl_close($ch);
-	    return $response;
+	    $json_body = json_decode($response,true);
+	    echo " httpPost response : " . $response;
+	    // echo " json_body : " . json_encode($json_body);
+	    // echo " Status in HttpRequests : " . $json_body['Status'];
+	    return $json_body;
 	}
 	public function httpPostUpload($api_url, $data) {
 		//to be used for file uploads

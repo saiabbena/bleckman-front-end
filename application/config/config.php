@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 //this is for sergey
 //$config['base_url'] = 'http://clone-asergey91.c9users.io/';
-$config['base_url'] = '';
+$config['base_url'] = 'http://127.0.0.1/';
 
 /*
 |--------------------------------------------------------------------------

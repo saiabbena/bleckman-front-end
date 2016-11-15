@@ -9,37 +9,17 @@ class Admin extends CI_Controller {
   	$this->load->helper("url");
   	//$this->load->helper("get_appearance_settings.php");	
     $this->load->model('httpRequests');
+    if ( $this->uri->segment(2) == 'login' ) {
+      redirect('/login');
+    }
 
     if ( $this->uri->segment(2) != 'login' && $this->uri->segment(2) != 'loginSubmit') {
-
-      if(!isset($_SESSION['Apoyar'])) {
-        redirect('admin/login');
+      if( (!isset($_SESSION['Apoyar'])) || ($_SESSION['Apoyar'] == '')) {
+        redirect('/login');
       }
     }
   }
-  public function logout() {
-    print_r($_SESSION);
-    $_SESSION = Array();
-    print_r($_SESSION);
-    redirect('admin/login');
-  }
-  public function loginSubmit() {
-    header('Content-Type: application/json');
 
-    $post_data = http_build_query(['Username'=>$_POST['Username'], 'Password'=>$_POST['Password']]);
-    // echo "post_data : " . json_encode($post_data);
-    $response = $this->httpRequests->httpPost_Login('Customer/PostLogin', $post_data );
-
-    if ( $response['Id'] >0 && $_SESSION['Apoyar'] ) {
-       redirect(base_url() . 'index.php/admin/orders');
-    } else {
-      $_SESSION['message']['screen1-error']='Please provide valid credentials to login';
-
-      echo var_dump($_SESSION['message']);
-
-      header('Location: ' . $_SERVER['HTTP_REFERER'].'#screen1-error');
-    }
-  }
   public function settings(){
     //$data['customerLanguages']=$this->getCustomerLanguages();
     //$data['returnReasons']=$this->getCustomerReturnReasons();
@@ -63,8 +43,8 @@ class Admin extends CI_Controller {
     }
   }
   public function orders(){
-	$customer_id = $_SESSION['Customerid'];	  
-	$data = array('customer_id'=>$customer_id);
+	  $customer_id = $_SESSION['Customerid'];	  
+	  $data = array('customer_id'=>$customer_id);
     $this->load->view('admin/templates/adm_header');	
     $this->load->view('admin/orders');
     $this->load->view('admin/templates/footer');

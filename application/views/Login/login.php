@@ -7,10 +7,10 @@
             
         </div>
         <div class='well bm-well'>
-            <h2><center>Bleckmann Customer Login<br><br></center></h2>
+            <h2><center>Bleckmann Login<br><br></center></h2>
             <p class='text-center'></p>
             <div class="inputs">
-              <form action="loginSubmit" method="POST">
+              <form action="Login/Submit" method="POST">
                 <div class="form-group label-floating">
                   <label for="f2" class="control-label">Username</label>
                   <input name='Username' type="text" class="form-control" id="f2">

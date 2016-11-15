@@ -124,7 +124,7 @@
           </div>-->
         </div>
         <br><br>
-        <a class='btn btn-warning btn-raised btn-block' href='logout'><span class='glyphicon glyphicon-log-out'></span> LOGOUT</a>
+        <a class='btn btn-warning btn-raised btn-block' href='<?php echo base_url();?>index.php/Login/logout'><span class='glyphicon glyphicon-log-out'></span> LOGOUT</a>
       </div>
 	  <?php 
 	  //This portion is only for orders page

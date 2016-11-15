@@ -10,7 +10,7 @@
         <?php
           if(isset($_SESSION['message']['customer_panel'])){
             echo'
-            <div class="alert alert-dismissible alert-success">
+            <div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">
               '.$_SESSION['message']['customer_panel'].'
             </div>';
           }
