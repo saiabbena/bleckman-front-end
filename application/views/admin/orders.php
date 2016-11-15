@@ -17,7 +17,8 @@
             <tr>
               <th>
                 <div class='form-group'>
-                  <input type='text' id="ReturnsOrderCreationDate" name="ReturnsOrderCreationDate" class='datepicker form-control' placeholder="dd-mm-yyyy">				  			  
+                  <input type='text' id="ReturnsOrderCreationDate" name="ReturnsOrderCreationDate" class='datepicker form-control' placeholder="dd-mm-yyyy" 
+				  style="font-size:0.9em !important;" />				  			  
                 </div>
               </th>
               <th>
