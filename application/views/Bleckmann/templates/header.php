@@ -95,7 +95,10 @@
               <img src='<?php echo base_url();?>img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Roles</span>
             </div>
           </a>
+
         </div>
+                <br><br>
+        <a class='btn btn-warning btn-raised btn-block' href='<?php echo base_url();?>index.php/Login/logout'><span class='glyphicon glyphicon-log-out'></span> LOGOUT</a>
       </div>
 
     </div>	

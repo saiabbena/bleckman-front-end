@@ -4,16 +4,16 @@ class Bleckmann extends CI_Controller {
   public function __construct(){
     parent::__construct();
     $this->load->library('session');
-    $_SESSION['Apoyar'] = 123;
   	$this->load->helper("url");
     $this->load->model('httpRequests');
     if ( $this->uri->segment(2) != 'login' && $this->uri->segment(2) != 'loginSubmit') {
       if(!isset($_SESSION['Apoyar'])) {
-        redirect('admin/login');
+        redirect('/login');
       }
     }
   }
   public function customers() {
+  	echo "token : " . $_SESSION['Apoyar'];
   	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
   	//print_r($data['allCustomers']);
     $this->load->view('Bleckmann/templates/header');
