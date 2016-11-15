@@ -186,14 +186,12 @@ class Bleckmann extends CI_Controller {
 	if($param1 == 'submitCarrierInfo'){
 		//print_r($_POST);exit();
 		if(count($_POST)){
-			 //print_r($_POST);exit();
-			 header('Content-Type: application/json');
-			 //Array ( [0] => Array ( [PKCarrierID] => 1 [CarrierName] => Royal Mail [APIUserName] => dtdc [APIPassword] => ap0yar [APIKey] => dtdc [APIURL] => dtdc.com [FKCustomerID] => 1 [ConsumerCountryName] => Belgium [Isactive] => 1 [LabelAPI] => [AnnounceAPI] => [TrackTraceURL] => ) )
+			//print_r($_POST);exit();
+			header('Content-Type: application/json');			 
 			$server_output = $this->httpRequests->httpPost('Carrier/PostManageCarrier', json_encode($_POST));	  
-			//echo json_encode($server_output);exit();
-			$_SESSION['message']['carrier_panel']='Carrier Information Saved';
-			redirect(base_url() . 'index.php/Bleckmann/carriers/searchbyCID/'.$_POST['FKCustomerID']);
-					 
+			//echo json_encode($server_output);exit();			 
+			//$_SESSION['message']['carrier_panel']='Carrier Information Saved';
+			redirect(base_url() . 'index.php/Bleckmann/carriers/searchbyCID/'.$_POST['FKCustomerID']);					 
 		}
 	}
 	if($param1 == 'deleteCarrier'){
