@@ -36,6 +36,7 @@
     <script type="text/javascript">
       $.material.init();
       <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
+      <?php echo 'var apoyarToken="'.$_SESSION['Apoyar'].'";';?>
     </script>
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptBleckmann.js"></script>
   </head>

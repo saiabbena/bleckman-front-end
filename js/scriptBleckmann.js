@@ -28,7 +28,9 @@ $(function() {
 			$.ajax({
 		        url: apiCall,
 		        type: 'GET',
-				//data: input_data,
+			    headers: {
+			        Apoyar: apoyarToken
+			    },
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
@@ -131,7 +133,9 @@ $(function() {
 			$.ajax({
 		        url: apiCall,
 		        type: 'GET',
-				//data: input_data,
+			    headers: {
+			        Apoyar: apoyarToken
+			    },
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
