@@ -80,7 +80,7 @@
                     </div>';
                   } 
                 }
-                if(count($returnReasons)>1){
+                if(count($returnReasons)>0){
                   echo '<button type="button" data-toggle="modal" data-target="#del-return'.$rvalue['Uid'].'" class="btn btn-raised btn-danger btn-warning pull-right">Delete</button><br><br>';
                 }
                 echo '</span></div><br>';
@@ -113,7 +113,11 @@
                 ];*/
                 $rkey=0;
                 $key=0;
-				        $sequenceno_max = $rrvalue+1;
+                $sequenceno_max =1;
+                
+                if(isset($rrvalue)){
+				          $sequenceno_max = $rrvalue+1;
+                }
                 foreach ($customerLanguages as $lang){
                   
                   echo '<input type="hidden" name="ReturnReasons['.$key.']['.$rkey.'][PKReasonID]" value="-1">';
