@@ -455,7 +455,7 @@ $(document).ready(function(){
       $('.form3').hide();	  	  
       $('.form2').show('slow');
 		//$('.checkbox span').eq(0).remove();	
-		//$( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again	
+		$( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again	
     }, 500);
 	  
   });

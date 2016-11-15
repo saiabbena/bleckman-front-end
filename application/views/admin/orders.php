@@ -5,10 +5,7 @@
         </div>
         <?php
           if(isset($_SESSION['message']['orders-messages'])){
-            echo'
-            <div class="alert alert-dismissible alert-success">
-              '.$_SESSION['message']['orders-messages'].'
-            </div>';
+            echo'<div class="alert alert-dismissible alert-success">'.$_SESSION['message']['orders-messages'].'</div>';
           }
         ?>
 		

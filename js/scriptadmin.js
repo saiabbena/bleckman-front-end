@@ -156,7 +156,8 @@ $(document).ready(function(){
     var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
 	var date_array = [];    
     date_array = ReturnsOrderCreationDate.split("-");    
-    var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];	
+    var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+	var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];
     
     if(default_render){
       console.log(" in default_render");
@@ -176,6 +177,7 @@ $(document).ready(function(){
         },
         dataType: 'json',
         success: function (data) {
+		  searchInput['ReturnsOrderCreationDate']= newDateFormatToShow;
           $('.loading-screen').slideUp('slow');
           console.log(data);
           renderReturnOrders(data);
