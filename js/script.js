@@ -317,7 +317,7 @@ $(document).ready(function(){
       throw new Error("whoops");
     }
     
-    getCouriers();
+    
     submition.Returnorderline=[];
     var counter=0;
     $('#override > div.container-fluid.form2 input[type="checkbox"]:checked').each(function(){
@@ -327,37 +327,37 @@ $(document).ready(function(){
       var quantity=$('#s2', parent).val();
 	  //console.log(reason);
 	  //Check the select reason 
-      if(reason == '0'){
-		  setTimeout(function(){
-			$('#s1', parent).focus();			
-			$('#reason_error').show();
-			}, 500);
-			$('.loading-screen').slideUp('slow');
-			throw new Error("whoops");
-			$( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again
-			$( ".checkbox .checkbox-material" ).eq(1).remove();			
+      if ( reason == '0' ) {
+  		  setTimeout(function(){
+    			$('#s1', parent).focus();			
+    			$('#reason_error').show();
+  			}, 500);
+  			$('.loading-screen').slideUp('slow');
+  			throw new Error("whoops");
+  			$( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again
+  			$( ".checkbox .checkbox-material" ).eq(1).remove();			
 		  
-	  }else{
-			  submition.Returnorderline[counter]={
-			"Status": 1,
-			"ShipmentId": '',
-			"LineId": 1,
-			"OrderId": JSON.parse($(this).val())['OrderId'],
-			"SKU": JSON.parse($(this).val())['SKU'],
-			"EanBarcode": JSON.parse($(this).val())['EANBARCODE'],
-			"Price": (JSON.parse($(this).val())['Price']).toFixed(2),
-			"ReturnReason": '',
-			"QtyReturned": parseInt(quantity, 10),
-			"ProductCurrency": JSON.parse($(this).val())['ProductCurrency'],
-			"TotalLineAmount": (JSON.parse($(this).val())['Price']).toFixed(2)*parseInt(quantity, 10),
-			"ReturnReasonId": parseInt(reason, 10),
-			"StatusName": "In Transit"
-		  }
-	  }
+	     } else {
+  			  submition.Returnorderline[counter]={
+      			"Status": 1,
+      			"ShipmentId": '',
+      			"LineId": 1,
+      			"OrderId": JSON.parse($(this).val())['OrderId'],
+      			"SKU": JSON.parse($(this).val())['SKU'],
+      			"EanBarcode": JSON.parse($(this).val())['EANBARCODE'],
+      			"Price": (JSON.parse($(this).val())['Price']).toFixed(2),
+      			"ReturnReason": '',
+      			"QtyReturned": parseInt(quantity, 10),
+      			"ProductCurrency": JSON.parse($(this).val())['ProductCurrency'],
+      			"TotalLineAmount": (JSON.parse($(this).val())['Price']).toFixed(2)*parseInt(quantity, 10),
+      			"ReturnReasonId": parseInt(reason, 10),
+      			"StatusName": "In Transit"
+  		    }
+	     }
       
       counter++;
     });
-    
+    getCouriers();
     setTimeout(function(){ 
       $('.form2').hide();
       $('.form3').show();
