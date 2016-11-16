@@ -59,8 +59,8 @@
 		            echo '<div class="modal fade" id="moreInfo-'.$allCustomers[$i]['PKCustomerID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				              <div class="modal-dialog" role="document">
 				                <div class="modal-content">
-				                  <div class="modal-header">
-				                  	Customer Information
+				                  <div class="modal-header" >
+				                  	<h3>Customer Information</h3>
 				                  </div>
 				                  <div class="modal-body">
 				                  	<div class="col-md-12">
@@ -68,38 +68,56 @@
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['CustomerName'] . '
 				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">Email Address
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['EmailAddress'] . '
 				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">URL
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['URL'] . '
 				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">Phone Number
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['PhoneNumber'] . '
 				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">Address Line1
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['AddressLine1'] . '
 				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">Address Line2
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['AddressLine2'] . '
 				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">City
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['City'] . '
 				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">State
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['State'] . '
 				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">Country
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['Country'] . '
 				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">Postal Code
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['PostalCode'] . '

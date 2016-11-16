@@ -56,7 +56,7 @@ class Bleckmann extends CI_Controller {
   public function submitWarehouses() {
   	//print_r($_POST);exit();
   	$server_output = $this->httpRequests->httpPost('Location/PostManageLocation', json_encode($_POST) );
-    echo json_encode($server_output);
+    echo json_encode($server_output);exit();
     //$_SESSION['message']['warehouse_panel']='Warehouse Information Saved';
     if ( $server_output['Status'] == 1) { 
     	$_SESSION['message']['warehouse_panel']='Warehouse Information Saved';
