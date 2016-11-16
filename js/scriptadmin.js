@@ -68,7 +68,7 @@ $(document).ready(function(){
               \
               <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
               \
-              <td style="white-space: nowrap;">'+data[i].StatusName+'</td>\
+              <td style="white-space: normal !important;">'+data[i].StatusName+'</td>\
               \
               <td style="white-space: nowrap;">\
               <button data-toggle="modal" data-target="#moreInfo'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-primary btn-raised">More info</button>\
