@@ -147,11 +147,12 @@
 	                <h4 class="modal-title" id="myModalLabel" >Add a Customer</h4>
 	              </div>
 	              <div class="modal-body">
-				    <div class='loading'>
-				      <div style='height: 40vh'></div>
+				    <div class='loading' style="display:none;">
+				      <div style='height: 15vh'></div>
 				      <center><img src='<?php echo base_url();?>img/loading-pink.gif' style='height: 10vh'>
-				      <br>
+					  <br>
 				      <p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;Loading...</p>
+					  <div style='height: 15vh'></div>				      
 				      </center>
 				    </div>
     				<div class="customer-modal">

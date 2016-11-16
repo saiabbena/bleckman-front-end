@@ -23,7 +23,8 @@ $(function() {
 		});
 		$(".edit-customer-pop").click(function(){
 			//alert("hi");
-			$('.customer-modal').hide();
+			$('.loading').css({'display':'block'});
+			$('.customer-modal').css({'display':'none'});
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
 			cust_array = $(this).attr("id").split("-");
@@ -41,8 +42,8 @@ $(function() {
 		        success: function(data) {
 		        	console.log("response data : ");
 		        	console.log(data);
-		        	$('.loading').hide();
-		        	$('.customer-modal').show();
+		        	$('.loading').css({'display':'none'});
+					$('.customer-modal').css({'display':'block'});
 		        	$('h4#myModalLabel').text('Edit Customer Information');
 		        	$('input#AddressLine1').val(data.AddressLine1);
 		        	$('input#AddressLine2').val(data.AddressLine2);
@@ -136,7 +137,8 @@ $(function() {
 		    $('div.login-info').show();
 		});
 		$(".edit-user-pop").click(function(){
-			//alert("hi");
+			$('.loading').css({'display':'block'});
+			$('.user_div').css({'display':'none'});
 			var validator1 = $( "#user-info-form" ).validate();
 			validator1.resetForm();
 			user_array = $(this).attr("id").split("-");
@@ -152,8 +154,10 @@ $(function() {
 			    },
 		        dataType: 'json',
 		        success: function(data) {
-		        	console.log("response data : ");
-		        	console.log(data);
+		        	//console.log("response data : ");
+		        	//console.log(data);
+					$('.loading').css({'display':'none'});
+					$('.user_div').css({'display':'block'});
 		        	$('h4#myModalLabel').text('Edit User Information');
 		        	$('input#FirstName').val(data.FirstName);
 		        	$('input#LastName').val(data.LastName);
@@ -314,11 +318,11 @@ $(function() {
 		    $('input#ConsumerCountryName').val('');
 			$('input#ConsumerCountryName').prop("readonly",false);
 		    $('input#AnnounceAPI').val('');
-		    $('input#TrackTraceURL').val('');
-			$('#loadingspin').css({'display':'none'});//Hide spin image
+		    $('input#TrackTraceURL').val('');			
 		});
 		$(".edit_carrier").click(function(){
-			//alert("hi");
+			$('.loading').css({'display':'block'});
+			$('.carrier_div').css({'display':'none'});
 			var url=API_BASE_URL_FE+'api/';
 			carrier_array = $(this).attr("id").split("_");
 			var selCarrierId = carrier_array[1];
@@ -332,8 +336,10 @@ $(function() {
 				//data: input_data,
 		        dataType: 'json',
 		        success: function(data) {
-		        	console.log("response data : ");
-		        	console.log(data);
+		        	//console.log("response data : ");
+		        	//console.log(data);
+					$('.loading').css({'display':'none'});
+					$('.carrier_div').css({'display':'block'});
 		        	$('h4#carrierLabel').text('Edit Career Information');
 		        	$('input#CarrierName').val(data.CarrierName);
 		        	$('input#APIUserName').val(data.APIUserName);
@@ -352,6 +358,7 @@ $(function() {
 		        fail: function(data){
 		          console.log(data);
 				  $('#loadingspin').css({'display':'block'});//Hide spin image
+				  $('.loading').css({'display':'block'});			
 		        }
 		      });
 		});

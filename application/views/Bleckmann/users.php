@@ -32,8 +32,8 @@
 						    <div class="row-content">
 						      <div class="least-content hide-xs">
 						      		<p>'. $allUsers[$i]['RoleName'] . '</p>
-										<a data-toggle="modal" style="color:#f44336;" data-target="#delete-user-modal'. $allUsers[$i]['PKUserID'] .'" id="delete-user" class=" pull-right"><i class="material-icons">delete</i></a>
-										<a type="button" style="padding-right:12px;color:#4caf50;" data-toggle="modal" data-target="#add-user-modal" id="edit-user-'. $allUsers[$i]['PKUserID'] .'" class="pull-right edit-user-pop"><i class="material-icons">mode_edit</i></a>
+										<a data-toggle="modal" style="color:#f44336;cursor:pointer;" data-target="#delete-user-modal'. $allUsers[$i]['PKUserID'] .'" id="delete-user" class=" pull-right"><i class="material-icons">delete</i></a>
+										<a type="button" style="padding-right:12px;color:#4caf50;cursor:pointer;" data-toggle="modal" data-target="#add-user-modal" id="edit-user-'. $allUsers[$i]['PKUserID'] .'" class="pull-right edit-user-pop"><i class="material-icons">mode_edit</i></a>
 						      </div>
 						      <h3 class="list-group-item-heading"><b>'. $allUsers[$i]['FirstName'] .' ' . $allUsers[$i]['LastName'] .'</b></h3>
 						      <p class="list-group-item-text" style="padding-bottom:8px;"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">phone</i>'. $allUsers[$i]['Phone'] . '</p>
@@ -89,6 +89,15 @@
 	                <h4 class="modal-title" id="myUserLabel" >Add a User</h4>
 	              </div>
 	              <div class="modal-body">
+						<div class='loading' style="display:none;">
+						  <div style='height: 15vh'></div>
+						  <center><img src='<?php echo base_url();?>img/loading-pink.gif' style='height: 10vh'>
+						  <br>
+						  <p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;Loading...</p>
+						  <div style='height: 15vh'></div>				      
+						  </center>
+						</div>
+					<div class="user_div">
 		                <div class="row">
 		                	<div class="col-md-6">
 				              	<div class="form-group label-floating">
@@ -194,13 +203,15 @@
 				                </div>
 				            </div>
 		            	</div>
+						<input id="PKUserID" type="hidden" name="PKUserID" value="">
+						  <div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">save</button>
+						  </div>
+						</form>
+						</div>
 		          </div>
-		          <input id="PKUserID" type="hidden" name="PKUserID" value="">
-	              <div class="modal-footer">
-	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	                <button type="submit" class="btn btn-primary">save</button>
-	              </div>
-              	</form>
+		          
             </div>
           </div>
         </div>

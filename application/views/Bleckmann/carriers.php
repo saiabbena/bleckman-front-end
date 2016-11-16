@@ -86,6 +86,15 @@
 	                <h4 class="modal-title" id="carrierLabel" >Add a Carrier</h4>
 	              </div>
 	              <div class="modal-body">
+						<div class='loading' style="display:none;">
+						  <div style='height: 15vh'></div>
+						  <center><img src='<?php echo base_url();?>img/loading-pink.gif' style='height: 10vh'>
+						  <br>
+						  <p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;Loading...</p>
+						  <div style='height: 15vh'></div>				      
+						  </center>
+						</div>
+						<div class="carrier_div">
 		                <div class="row">
 		                	<div class="col-md-10">
 				              	<div class="form-group label-floating">
@@ -163,15 +172,15 @@
 				                </div>
 				            </div>
 				        </div>						
-		               	
+		               	<div class="modal-footer">					
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							<button type="submit" class="btn btn-primary">save</button>
+						  </div>
+						</form>
+						</div>
 		          </div>
 		          
-	              <div class="modal-footer">
-					<img style="margin-left:250px;margin-top:10px;float:left;" src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="loadingspin"	style="display:none;" />
-	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	                <button type="submit" class="btn btn-primary">save</button>
-	              </div>
-              	</form>
+	              
             </div>
           </div>
         </div>
