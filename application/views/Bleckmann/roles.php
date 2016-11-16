@@ -75,7 +75,7 @@
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	                <h4 class="modal-title" id="myUserLabel" >Add a Role</h4>
 	              </div>
-	              <form method="POST" action="submitRoles">
+	              <form method="POST" action="submitRoles" id="add-role-form">
 		              <div class="modal-body">
 			                <div class="row">
 			                	<input type="hidden" name="Roles[0][IsActive]" value="true">

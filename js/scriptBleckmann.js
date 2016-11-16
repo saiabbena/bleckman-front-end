@@ -2,6 +2,9 @@ $(function() {
 		var url=API_BASE_URL_FE+'api/';
 		
 		$(".add-customer-pop").click(function(){
+			var validator1 = $( "#customer-info-form" ).validate();
+			validator1.resetForm();
+
 		    $('h4#myModalLabel').text('Add a Customer');
 		    $('input#AddressLine1').val('');
 		    $('input#AddressLine2').val('');
@@ -20,6 +23,8 @@ $(function() {
 		});
 		$(".edit-customer-pop").click(function(){
 			//alert("hi");
+			var validator1 = $( "#customer-info-form" ).validate();
+			validator1.resetForm();
 			cust_array = $(this).attr("id").split("-");
 			var selCustId = cust_array[2];
 			//alert(selCustId);
@@ -58,6 +63,7 @@ $(function() {
 		      });
 		});
 		$("#customer-info-form").validate({
+				focusCleanup: true,
 		        rules: {
 		            CustomerName: "required",
 		            PostalCode: "required",
@@ -107,6 +113,8 @@ $(function() {
 		}, "Value must not equal arg.");
 
 		$(".add-user-pop").click(function(){
+			var validator1 = $( "#user-info-form" ).validate();
+			validator1.resetForm();
 		    $('h4#myModalLabel').text('Add a User');
 		    $('input#Address').val('');
 		    $('input#City').val('');
@@ -125,6 +133,8 @@ $(function() {
 		});
 		$(".edit-user-pop").click(function(){
 			//alert("hi");
+			var validator1 = $( "#user-info-form" ).validate();
+			validator1.resetForm();
 			user_array = $(this).attr("id").split("-");
 			var selUserId = user_array[2];
 			//alert(selCustId);
@@ -161,6 +171,7 @@ $(function() {
 		      });
 		});
 		$("#user-info-form").validate({
+				focusCleanup: true,
 		        rules: {
 		            FirstName: "required",
 		            PostalCode: "required",
@@ -228,7 +239,19 @@ $(function() {
 		            form.submit();
 		        }
 		});
-
+		
+		$("#add-role-form").validate({
+			rules:{
+				"Roles[0][RoleName]" : "required",
+			},
+			messages:{
+				"Roles[0][RoleName]" : "Please enter a Role Name"
+			},
+		    submitHandler: function(form) {
+		      	//alert("submit");
+		        form.submit();
+		    }
+		});
 		$("#carrier_info_form").validate({
 			rules: {				
 				CarrierName: "required",
