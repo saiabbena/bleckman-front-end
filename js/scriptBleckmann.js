@@ -23,6 +23,7 @@ $(function() {
 		});
 		$(".edit-customer-pop").click(function(){
 			//alert("hi");
+			$('.customer-modal').hide();
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
 			cust_array = $(this).attr("id").split("-");
@@ -40,6 +41,8 @@ $(function() {
 		        success: function(data) {
 		        	console.log("response data : ");
 		        	console.log(data);
+		        	$('.loading').hide();
+		        	$('.customer-modal').show();
 		        	$('h4#myModalLabel').text('Edit Customer Information');
 		        	$('input#AddressLine1').val(data.AddressLine1);
 		        	$('input#AddressLine2').val(data.AddressLine2);
@@ -56,6 +59,7 @@ $(function() {
 		        	// $('input#Password').val(data.Password);
 		        	$('input#PKCustomerID').val(data.PKCustomerID);
 		        	$('div.login-info').hide();
+
 		        },
 		        fail: function(data){
 		          console.log(data);

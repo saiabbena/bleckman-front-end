@@ -147,6 +147,14 @@
 	                <h4 class="modal-title" id="myModalLabel" >Add a Customer</h4>
 	              </div>
 	              <div class="modal-body">
+				    <div class='loading'>
+				      <div style='height: 40vh'></div>
+				      <center><img src='<?php echo base_url();?>img/loading-pink.gif' style='height: 10vh'>
+				      <br>
+				      <p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;Loading...</p>
+				      </center>
+				    </div>
+    				<div class="customer-modal">
 		                <div class="row">
 		                	<div class="col-md-6">
 				              	<div class="form-group label-floating">
@@ -243,6 +251,7 @@
 				                </div>
 				            </div>
 		            	</div>
+		            </div>
 		          </div>
 		          <input id="PKCustomerID" type="hidden" name="PKCustomerID" value="">
 	              <div class="modal-footer">
