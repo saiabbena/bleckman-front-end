@@ -18,17 +18,17 @@
 				  style="font-size:0.9em !important;" />				  			  
                 </div>
               </th>
-              <th>
+              <th style="width:10% !important;">
                 <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Search by order-id</label>
+                  <label for="i5" class="control-label">Order-id</label>
                   <input name='OrderID' type="text" class="form-control" id="i5">
                   <span class="help-block"></span>
                 </div>
               </th>
               <th>
                 <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Search by return order-id</label>
-                  <input name='ReturnId' type="text" class="form-control" id="i5">
+                  <label for="i5" class="control-label">Return order-id</label>
+                  <input name='ReturnId' type="text" class="form-control" id="i5" />
                   <span class="help-block"></span>
                 </div>
               </th>
@@ -40,14 +40,14 @@
               </th>
               <th>
                 <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Search by carrier</label>
+                  <label for="i5" class="control-label">Carrier</label>
                   <input name='CarrierName' type="text" class="form-control" id="i5">
                   <span class="help-block"></span>
                 </div>
               </th>
               <th>
                 <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Search by status</label>
+                  <label for="i5" class="control-label">Status</label>
                   <input name='StatusName' type="text" class="form-control" id="i5">
                   <span class="help-block"></span>
                 </div>
