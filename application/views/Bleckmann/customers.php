@@ -21,10 +21,10 @@
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
 	  				echo '<div class="col-xs-12 col-md-3" height="100%"">
 							<div class="well" style="border-bottom: 5px solid #22B8AA;">
-								<h3>'. $allCustomers[$i]['CustomerName'] .'</h3>
-								<p>'. $allCustomers[$i]['Country'] .'</p>
-								<p>'. $allCustomers[$i]['PhoneNumber'] .'</p>
-								<p>'. $allCustomers[$i]['URL'] .'</p>
+								<h3>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</h3>
+								<p>'. $allCustomers[$i]['Country'] .'&nbsp;</p>
+								<p>'. $allCustomers[$i]['PhoneNumber'] .'&nbsp;</p>
+								<p>'. $allCustomers[$i]['URL'] .'&nbsp;</p>
 								<p><a href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a></p>
 								<div class="row">
 									<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
