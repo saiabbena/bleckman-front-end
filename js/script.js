@@ -306,6 +306,7 @@ $(document).ready(function(){
   
   //change load
   $('#button2').click(function(){
+    $('#emailConfirm').attr('value', submition.ConsumerEmail);
     console.log('working');
     $('.loading-screen').slideDown('slow');
     
@@ -406,6 +407,7 @@ $(document).ready(function(){
     submition.FKCustomerId=customerId;
     submition.CarrierName=carName;
     submition.StatusName='Label Printed';
+    submition.ConsumerEmail2=$('#emailConfirm').val();
     
     
     apiCall=url+'returnorder/PostBMReturnorder';
@@ -425,7 +427,12 @@ $(document).ready(function(){
         console.log(submition);
         console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
         console.log(response);
-        $('#carrier-label-modal').modal('show');
+        //$('#carrier-label-modal').modal('show');
+        
+        $('.form3').hide();
+        $('.form4').show();
+        
+        
         $('#label-iframe').attr('href', API_BASE_URL_FE+'Labels/TrueReligion/RoyalMail/'+response.Id+'.pdf');
         $('.loading-screen').slideUp('slow');
         //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
@@ -433,6 +440,7 @@ $(document).ready(function(){
     }).fail(function(response){
         console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
         console.log(response);
+        $('#btn_career_back').hide();
         $('.loading-screen').slideUp('slow');
         $('#screen3-fail').show('slow');
     });
