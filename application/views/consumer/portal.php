@@ -180,7 +180,7 @@
             <table class='table' id='table1234'>
               <thead>
                 <tr>
-                  <th data-field="0" tabindex="0"></th><th data-field="1" tabindex="0"><?php echo isset($translations[9]['Translation']);?></th><th data-field="2" tabindex="0"><?php echo $translations[10]['Translation'];?></th>
+                  <th data-field="0" tabindex="0"></th><th data-field="1" tabindex="0"><?php echo $translations[9]['Translation'];?></th><th data-field="2" tabindex="0"><?php echo $translations[10]['Translation'];?></th>
                 </tr>
               </thead>
               <tbody>
@@ -254,7 +254,12 @@
               </div><!-- /.modal-dialog -->
             </div><!-- /.modal -->
             
-            <br>
+            <div class="form-group">
+              <label for="f1" class="control-label">Email</label>
+              <input type="text" id='emailConfirm' value='' class="form-control" id="f1">
+              <span class="help-block">Select at email where you would like to recieve your label
+            </div>
+            
             <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3' <?php echo $btn_bg?>><?php echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></button><br>
 			<p style="text-align:right;"><a href="javascript:void(0)" id="btn_career_back">&laquo; Back</a></p>
             <div class="alert alert-dismissible alert-success" id='screen3-success'>
@@ -270,3 +275,21 @@
       </div>
     </div>
   </div>
+  
+  <div class='container-fluid form4'>
+    <div class='row'>
+      <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
+        <div class='well bm-well' <?php echo $border_bottom?>>
+          <h2><center>Thank You!</center></h2>
+          <p class='text-center'><?php echo $customerLanguages['Page4heading']?></p>
+          <b>Dear Customer</b><br><br>
+          You can print your label by following this link: <a id='label-iframe2' target="_blank" href=''>Print label</a><br><br>
+          You can read additional instructions for returning your order based on the carrier you chose by following this link: <a href='#'>Go to the carriers web-portal</a><br><br>
+          Additionally all of this information has been forwarded to your email address.<br><br>
+          Thank you for using our service.
+          <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  
