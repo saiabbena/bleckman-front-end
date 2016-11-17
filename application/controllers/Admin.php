@@ -12,6 +12,9 @@ class Admin extends CI_Controller {
     if ( $this->uri->segment(2) == 'login' ) {
       redirect('/login');
     }
+    if ( isset($_SESSION['Apoyar']) && $_SESSION['Roleid'] == 99 ) {
+      redirect('bleckmann/customers');
+    }
 
     if ( $this->uri->segment(2) != 'login' && $this->uri->segment(2) != 'loginSubmit') {
       if( (!isset($_SESSION['Apoyar'])) || ($_SESSION['Apoyar'] == '')) {
