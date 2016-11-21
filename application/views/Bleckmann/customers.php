@@ -16,7 +16,10 @@
           }
         ?>
 
-	  		<?php 
+	  		<?php				
+				//print_r($this->unit->result());
+				//print_r($this->unit->report());
+				//exit();
 	  			for($i=0; $i<count($allCustomers); $i++) {
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
 	  				echo '<div class="col-xs-12 col-md-3" height="100%"">

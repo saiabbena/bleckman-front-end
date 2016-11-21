@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Bleckmann extends CI_Controller {
   public function __construct(){
     parent::__construct();
+	$this->load->library('unit_test');
     $this->load->library('session');
   	$this->load->helper("url");
     $this->load->model('httpRequests');
@@ -15,9 +16,13 @@ class Bleckmann extends CI_Controller {
       }
     }
   }
+  public function sum($a,$b){
+	  return $a+$b;
+  }
   public function customers() {
   	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
   	//print_r($data['allCustomers']);
+	//$this->unit->run($this->sum(5,5),12,'Testing Sum function');
     $this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/customers', $data);
     $this->load->view('Bleckmann/templates/footer');
@@ -180,9 +185,9 @@ class Bleckmann extends CI_Controller {
 	if($param1 == 'searchbyCID'){			
 		$req = array(
 			'Customerid'=>$param2
-		);
+		);		
 		//http://returns.dev.apoyar.eu/api/Carrier/GetAllCarriersbyCustomerid?Customerid=1
-		$data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllCarriersbyCustomerid', $req);
+		$data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllCarriersbyCustomerid', $req);		
 		$data['Customerid'] = $param2;
 	}
 	if($param1 == 'submitCarrierInfo'){

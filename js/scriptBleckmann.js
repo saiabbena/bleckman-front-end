@@ -283,7 +283,8 @@ $(function() {
 				APIURL : "required",
 				ConsumerCountryName: "required",
 				AnnounceAPI: "required",
-				TrackTraceURL: "required",				
+				TrackTraceURL: "required",
+				ApplicationID:"required",
 				APIUserName : {
 					required: function(element) {
 						//alert("customerid : " + $('#PKCustomerID').val());
@@ -334,7 +335,8 @@ $(function() {
 		    $('input#ConsumerCountryName').val('');
 			$('input#ConsumerCountryName').prop("readonly",false);
 		    $('input#AnnounceAPI').val('');
-		    $('input#TrackTraceURL').val('');			
+		    $('input#TrackTraceURL').val('');
+			$('input#ApplicationID').val('');			
 		});
 		$(".edit_carrier").click(function(){
 			$('.loading').css({'display':'block'});
@@ -367,6 +369,7 @@ $(function() {
 					$('input#ConsumerCountryName').prop("readonly",true);
 		        	$('input#AnnounceAPI').val(data.AnnounceAPI);
 		        	$('input#TrackTraceURL').val(data.TrackTraceURL);
+					$('input#ApplicationID').val(data.ApplicationID);
 					$('input#LabelAPI').val(data.LabelAPI);		        	
 		        	$('input#PKCarrierID').val(data.PKCarrierID);
 					$('#loadingspin').css({'display':'none'});//Hide spin image	        	
