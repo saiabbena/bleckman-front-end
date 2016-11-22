@@ -15,10 +15,7 @@ class Bleckmann extends CI_Controller {
         redirect('/login');
       }
     }	
-  }
-  public function sum($a,$b){
-	  return $a+$b;
-  }
+  }  
   public function customers() {
   	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
   	//print_r($data['allCustomers']);	
