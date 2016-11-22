@@ -379,5 +379,58 @@ $(function() {
 				$('#duplicate_country').css({'display':'none'});
 			}			
 		});
-		
+
+
+		$('#showcustomerSelect').click(function() {
+		    //alert(this.checked);
+		    if ( this.checked == true ) {
+		    	$('#select-customer-div').show();
+		    } else {
+		    	$('#select-customer-div').hide();
+		    }
+		});
+
+		$('.AssignedtoCustomer').click(function() {
+			if ( this.checked == true ) {
+				var res = $(this).attr("id").split("-");
+				if(!($('#languageActive' + res[1]).is(":checked"))) {
+					//alert("test : " + res[0] + ", " + res[1] );
+					$('#languageActive' + res[1] ).prop("checked", true);
+				}
+			}
+		});
+
+		$("#select-customer").on('change', function(){
+			//alert("change" + $(this).val());
+			if ( $(this).val() > -1 ) {
+				$('.customer-assign').show();
+			}
+			console.log('allLanguages');
+			console.log(allLanguages);
+			apiCall=url+'CustomerLanguage/GetCustomerLanguagebyId';
+		    $.ajax({
+		      url: apiCall,
+		      type: 'get',
+		      data: { Customerid: $(this).val() },
+		      dataType: 'json',
+		      success: function (response) {
+		        console.log(response);
+		        for( j=0;j<allLanguages.length;j++ ) {
+		        	$('#AssignedtoCustomer-' + j ).prop("checked", false);
+		        	//console.log('j : ' + j );
+		        	//console.log("PKLanguageID : " + allLanguages[j]['PKLanguageID'] );
+			        for(i=0; i<response.length; i++) {
+			        	
+			        	if ( allLanguages[j]['PKLanguageID'] == response[i]['FkLanguageid'] ) {
+			        		console.log("FkLanguageid : " + response[i]['FkLanguageid']);
+			        		$('#AssignedtoCustomer-' + j ).prop("checked", true);
+			        	}
+			        }
+			    }
+		      },
+		      fail: function(){
+		      }
+		    });
+		});
+	$.material.init();	
 	});
