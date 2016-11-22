@@ -1,7 +1,7 @@
 $(function() {
 	$.validator.addMethod("regex", function(value, element, regexpr) {          
-     	return regexpr.test(value);
-   	}, "Please enter a valid pasword.");
+     return regexpr.test(value);
+   }, "Please enter a valid pasword.");
    
 		var url=API_BASE_URL_FE+'api/';
 		
@@ -404,8 +404,7 @@ $(function() {
 				$('#duplicate_country').css({'display':'none'});
 			}			
 		});
-
-
+		
 		$('#showcustomerSelect').click(function() {
 		    //alert(this.checked);
 		    if ( this.checked == true ) {
@@ -479,5 +478,5 @@ $(function() {
 		      }
 		    });
 		}
-	$.material.init();	
+		//$.material.init();	
 	});
