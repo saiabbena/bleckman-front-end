@@ -429,7 +429,12 @@ $(function() {
 			
 		});
 		//console.log("customerid : " + customerId);
-		if ( customerId != '' || typeof customerId != 'undefined' ) {
+		if (customerId == ''){
+			$('#showcustomerSelect').prop("checked", false);
+			$('#select-customer-div').hide();
+			$('.customer-assign').hide();
+		} else {
+		//if ( customerId ) {
 			$('.loading-screen').show();
 			$('#showcustomerSelect').prop("checked", true);
 			$('#select-customer-div').show();
@@ -437,6 +442,7 @@ $(function() {
 			$('.customer-assign').show();
 			getCustomerLanguages(customerId);
 		}
+
 		function getCustomerLanguages(custid) {
 			// console.log('allLanguages');
 			// console.log(allLanguages);
