@@ -62,12 +62,13 @@ class Bleckmann extends CI_Controller {
     }
   }
   public function languages() {
-  	$req = array(
-      'Customerid'=>$_SESSION['Customerid']
-    );
+  	// $req = array(
+   //    'Customerid'=>$_SESSION['Customerid']
+   //  );
+  	$data['customerId'] = $this->input->get('Customerid');
     $data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
   	$data['allLanguages'] = $this->httpRequests->httpGet('Language/getLanguages', '');
-  	$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
+  	//$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
   	//$data['allLanguages'] = "";
     $this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/languages', $data);
@@ -211,8 +212,9 @@ class Bleckmann extends CI_Controller {
   			$_POST['Languages'][$i]['IsModified'] = "false";
   		}
   	}
-  	//print_r(json_encode($_POST));
+  	print_r(json_encode($_POST));
   	$server_output = $this->httpRequests->httpPost('Language/PostMapCustomerLanguage', json_encode($_POST) );
+  	//echo $server_output;exit();
   	if ( $server_output['Status'] ) { 
     	$_SESSION['message']['languages_panel']='Saved';
     	$_SESSION['message']['alert_status']='success';
@@ -221,7 +223,8 @@ class Bleckmann extends CI_Controller {
 		$_SESSION['message']['alert_status']='warning';
 	}
     echo var_dump($_SESSION['message']);
-	header('Location: ' . $_SERVER['HTTP_REFERER'].'#languages_panel');
+    redirect(base_url() . 'index.php/Bleckmann/languages?Customerid='.$_POST['Customerid']);
+	//header('Location: ' . $_SERVER['HTTP_REFERER'].'#languages_panel');
   }
   public function deleteCustomer() {
   	//print_r($_POST);

@@ -1,7 +1,7 @@
 $(function() {
-	 $.validator.addMethod("regex", function(value, element, regexpr) {          
-     return regexpr.test(value);
-   }, "Please enter a valid pasword.");
+	$.validator.addMethod("regex", function(value, element, regexpr) {          
+     	return regexpr.test(value);
+   	}, "Please enter a valid pasword.");
    
 		var url=API_BASE_URL_FE+'api/';
 		
@@ -35,7 +35,7 @@ $(function() {
 			var selCustId = cust_array[2];
 			//alert(selCustId);
 			var apiCall=url+'Customer/GetActiveCustomerbyId?Customerid=' + selCustId;
-			console.log("apiCall : " + apiCall);
+			//console.log("apiCall : " + apiCall);
 			$.ajax({
 		        url: apiCall,
 		        type: 'GET',
@@ -44,8 +44,8 @@ $(function() {
 			    },
 		        dataType: 'json',
 		        success: function(data) {
-		        	console.log("response data : ");
-		        	console.log(data);
+		        	//console.log("response data : ");
+		        	//console.log(data);
 		        	$('.loading').css({'display':'none'});
 					$('.customer-modal').css({'display':'block'});
 		        	$('h4#myModalLabel').text('Edit Customer Information');
@@ -156,7 +156,7 @@ $(function() {
 			var selUserId = user_array[2];
 			//alert(selCustId);
 			var apiCall=url+'User/GetActiveUserbyId?Userid=' + selUserId;
-			console.log("apiCall : " + apiCall);
+			//console.log("apiCall : " + apiCall);
 			$.ajax({
 		        url: apiCall,
 		        type: 'GET',
@@ -393,7 +393,7 @@ $(function() {
 				$('#ConsumerCountryName').val('');
 				$('#ConsumerCountryName').focus();
 				$('#duplicate_country').css({'display':'block'});				
-				console.log(ConsumerCountryName);
+				//console.log(ConsumerCountryName);
 			} else {				
 				$('#duplicate_country').css({'display':'none'});
 			}			
@@ -421,19 +421,33 @@ $(function() {
 
 		$("#select-customer").on('change', function(){
 			//alert("change" + $(this).val());
+			$('.loading-screen').show();
 			if ( $(this).val() > -1 ) {
 				$('.customer-assign').show();
+				getCustomerLanguages($(this).val());
 			}
-			console.log('allLanguages');
-			console.log(allLanguages);
+			
+		});
+		//console.log("customerid : " + customerId);
+		if ( customerId != '' || typeof customerId != 'undefined' ) {
+			$('.loading-screen').show();
+			$('#showcustomerSelect').prop("checked", true);
+			$('#select-customer-div').show();
+			$("#select-customer").val(customerId);
+			$('.customer-assign').show();
+			getCustomerLanguages(customerId);
+		}
+		function getCustomerLanguages(custid) {
+			// console.log('allLanguages');
+			// console.log(allLanguages);
 			apiCall=url+'CustomerLanguage/GetCustomerLanguagebyId';
 		    $.ajax({
 		      url: apiCall,
 		      type: 'get',
-		      data: { Customerid: $(this).val() },
+		      data: { Customerid: custid },
 		      dataType: 'json',
 		      success: function (response) {
-		        console.log(response);
+		        //console.log(response);
 		        for( j=0;j<allLanguages.length;j++ ) {
 		        	$('#AssignedtoCustomer-' + j ).prop("checked", false);
 		        	//console.log('j : ' + j );
@@ -441,15 +455,17 @@ $(function() {
 			        for(i=0; i<response.length; i++) {
 			        	
 			        	if ( allLanguages[j]['PKLanguageID'] == response[i]['FkLanguageid'] ) {
-			        		console.log("FkLanguageid : " + response[i]['FkLanguageid']);
+			        		//console.log("FkLanguageid : " + response[i]['FkLanguageid']);
 			        		$('#AssignedtoCustomer-' + j ).prop("checked", true);
 			        	}
 			        }
 			    }
+			    $('.loading-screen').hide();
 		      },
 		      fail: function(){
+		      	$('.loading-screen').hide();
 		      }
 		    });
-		});
+		}
 	$.material.init();	
 	});

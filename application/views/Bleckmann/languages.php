@@ -12,9 +12,10 @@
 	        	?>
 	        	    <?php echo'
     					<script>
-	        				var allLanguages = '. json_encode($allLanguages) .'
+	        				allLanguages = '. json_encode($allLanguages) .'
 	        			</script>';
 	        	?>
+	        	<?php echo '<script> customerId="' . $customerId.'";</script>';?>
 
 				<form method="POST" action="submitLanguages">
 					<div style="border: 1px solid #ddd; padding: 20px;">
