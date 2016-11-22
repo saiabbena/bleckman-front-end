@@ -1,6 +1,6 @@
     <div class='col-xs-12 col-md-9' height='100%'>
       <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
-        <h3>Manage Carriers</h3>		
+        <h3>Manage Carriers, <?php echo($carriers['Customer']['CustomerName']);?></h3>		
         <div class='row'>
 			<div class="col-xs-12 col-md-12">
 				<button type="button" data-toggle="modal" data-target="#add_carrier_modal" id='add_carrier' class='add-pop btn btn-raised btn-warning pull-right'>Add</button>
@@ -16,14 +16,13 @@
           }
         ?>
 
-	  		<?php
-				//print_r($all_carriers_data['Carriers']);
+	  		<?php				
 				$all_carriers_data = $carriers['Carriers'];
 				//echo count($all_carriers_data);
 				$existing_country_list = array();
 				if(count($all_carriers_data)>0){
 					for($i=0; $i<count($all_carriers_data); $i++) {
-						$existing_country_list[] = $all_carriers_data[$i]['ConsumerCountryName'];
+						$existing_country_list[] = $all_carriers_data[$i]['ConsumerCountryName'];						
 						echo '<div class="col-xs-12 col-md-3" height="100%"">
 								<div class="well" style="border-bottom: 5px solid #22B8AA; padding-bottom: 40px;">
 									<h3>'. $all_carriers_data[$i]['CarrierName'] . '</h3>
@@ -34,6 +33,7 @@
 									<p>Label: '. $all_carriers_data[$i]['LabelAPI'] .'</p>
 									<p>Announce API: '. $all_carriers_data[$i]['AnnounceAPI'] .'</p>
 									<p>TraceURL: '. $all_carriers_data[$i]['TrackTraceURL'] .'</p>
+									<p>ApplicationID: '. $all_carriers_data[$i]['ApplicationID'] .'</p>									
 									
 									<div class="row">
 										<button type="button" data-toggle="modal" data-target="#delete_carrier_modal'. $all_carriers_data[$i]['PKCarrierID'] .'" id="delete_carrier" class="btn btn-raised btn-danger pull-right">Delete</button>
@@ -171,10 +171,20 @@
 				                  <span class="help-block">Enter Track Trace URL</span>
 				                </div>
 				            </div>
-				        </div>						
-		               	<div class="modal-footer">					
+				        </div>
+												
+		               	<div class="row">
+							<div class="col-md-8">
+				              	<div class="form-group label-floating">
+				                  <label for="i5" class="control-label">Application ID</label>
+				                  <input id="ApplicationID" type="text" name="ApplicationID" class="form-control" value="" required />
+				                  <span class="help-block">Enter ApplicationID</span>
+				                </div>
+				            </div>							
+						  </div>
+						  <div class="modal-footer">							
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">save</button>
+							<button type="submit" class="btn btn-primary">save</button>							
 						  </div>
 						</form>
 						</div>

@@ -4,7 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller {
   public function __construct(){
     parent::__construct();
-    $this->load->library('session');
+    //$this->load->library('unit_test');
+	$this->load->library('session');
     //$_SESSION['Customerid']=1;
   	$this->load->helper("url");
   	//$this->load->helper("get_appearance_settings.php");	

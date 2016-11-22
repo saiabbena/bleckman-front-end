@@ -1,4 +1,8 @@
 $(function() {
+	 $.validator.addMethod("regex", function(value, element, regexpr) {          
+     return regexpr.test(value);
+   }, "Please enter a valid pasword.");
+   
 		var url=API_BASE_URL_FE+'api/';
 		
 		$(".add-customer-pop").click(function(){
@@ -88,7 +92,7 @@ $(function() {
 		            		}
 		            	}
 		            },
-		            Password : {
+					Password : {
 		            	required: function(element) {
 		            		//alert("customerid : " + $('#PKCustomerID').val());
 		            		if ( $('#PKCustomerID').val() ) {
@@ -97,6 +101,12 @@ $(function() {
 		            			return true;
 		            		}
 		            	}
+		            },
+		            Password : {
+						 required: true,						 
+						 //New Contain at least 6 characters.contain at least 1 number.,contain at least 1 lowercase character (a-z),contain at least 1 uppercase character (A-Z),contains only 0-9a-zA-Z.
+						 regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/     	
+						
 		            }
 		        },
 		        messages: {
@@ -106,13 +116,14 @@ $(function() {
 		            AddressLine1: "Please enter Address",
 		            Country: "Please enter Country Name",
 		            Username: "Please enter Username",
-		            Password: "Please enter Password"
+		            Password: "Enter Password must contain minimum 6 chars with one number, and one UPPERCASE and lowercase letter"
 		        },
 		        submitHandler: function(form) {
 		        	//alert("submit");
 		            form.submit();
 		        }
 		});
+					
 		$.validator.addMethod("valueNotEquals", function(value, element, arg){
 			return arg != value;
 		}, "Value must not equal arg.");
@@ -211,7 +222,12 @@ $(function() {
 		            			return true;
 		            		}
 		            	}
-		            }
+		            },
+					Password : {
+						required: true,						 
+						 //New Contain at least 6 characters.contain at least 1 number.,contain at least 1 lowercase character (a-z),contain at least 1 uppercase character (A-Z),contains only 0-9a-zA-Z.
+						 regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
+					}
 		        },
 		        messages: {
 		            FirstName: "Please enter First Name",
@@ -221,7 +237,7 @@ $(function() {
 		            Country: "Please enter Country Name",
 		            FKRoleID:"Please select a role",
 		            Username: "Please enter Username",
-		            Password: "Please enter Password"
+		            Password: "Enter Password must contain minimum 6 chars with one number, and one UPPERCASE and lowercase letter"
 		        },
 		        submitHandler: function(form) {
 		        	//alert("submit");
@@ -267,7 +283,8 @@ $(function() {
 				APIURL : "required",
 				ConsumerCountryName: "required",
 				AnnounceAPI: "required",
-				TrackTraceURL: "required",				
+				TrackTraceURL: "required",
+				ApplicationID:"required",
 				APIUserName : {
 					required: function(element) {
 						//alert("customerid : " + $('#PKCustomerID').val());
@@ -318,7 +335,8 @@ $(function() {
 		    $('input#ConsumerCountryName').val('');
 			$('input#ConsumerCountryName').prop("readonly",false);
 		    $('input#AnnounceAPI').val('');
-		    $('input#TrackTraceURL').val('');			
+		    $('input#TrackTraceURL').val('');
+			$('input#ApplicationID').val('');			
 		});
 		$(".edit_carrier").click(function(){
 			$('.loading').css({'display':'block'});
@@ -351,6 +369,7 @@ $(function() {
 					$('input#ConsumerCountryName').prop("readonly",true);
 		        	$('input#AnnounceAPI').val(data.AnnounceAPI);
 		        	$('input#TrackTraceURL').val(data.TrackTraceURL);
+					$('input#ApplicationID').val(data.ApplicationID);
 					$('input#LabelAPI').val(data.LabelAPI);		        	
 		        	$('input#PKCarrierID').val(data.PKCarrierID);
 					$('#loadingspin').css({'display':'none'});//Hide spin image	        	

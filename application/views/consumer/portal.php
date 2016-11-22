@@ -180,7 +180,7 @@
             <table class='table' id='table1234'>
               <thead>
                 <tr>
-                  <th data-field="0" tabindex="0"></th><th data-field="1" tabindex="0"><?php echo isset($translations[9]['Translation']);?></th><th data-field="2" tabindex="0"><?php echo $translations[10]['Translation'];?></th>
+                  <th data-field="0" tabindex="0"></th><th data-field="1" tabindex="0"><?php echo $translations[9]['Translation'];?></th><th data-field="2" tabindex="0"><?php echo $translations[10]['Translation'];?></th>
                 </tr>
               </thead>
               <tbody>
@@ -283,7 +283,7 @@
           <h2><center>Thank You!</center></h2>
           <p class='text-center'><?php echo $customerLanguages['Page4heading']?></p>
           <b>Dear Customer</b><br><br>
-          You can print your label by following this link: <a id='label-iframe' target="_blank" href=''>Print label</a><br><br>
+          You can print your label by following this link: <a id='label-iframe2' target="_blank" href=''>Print label</a><br><br>
           You can read additional instructions for returning your order based on the carrier you chose by following this link: <a href='#'>Go to the carriers web-portal</a><br><br>
           Additionally all of this information has been forwarded to your email address.<br><br>
           Thank you for using our service.

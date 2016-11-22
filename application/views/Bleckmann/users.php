@@ -199,7 +199,7 @@
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">Password</label>
 				                  <input id="Password" type="password" name="Password" class="form-control" value="">
-				                  <span class="help-block">Enter Password</span>
+				                  <span class="help-block">Enter Password(e.g. Abcde5)</span>
 				                </div>
 				            </div>
 		            	</div>
