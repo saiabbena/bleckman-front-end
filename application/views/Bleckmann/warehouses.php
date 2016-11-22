@@ -27,12 +27,20 @@
 		              				echo '<div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">';
 		              				echo '<input type="hidden" id="PKWarehouseID" name="Warehouses[' . $i .'][PKWarehouseID]" value="'.$allWarehouses[$i]['PKWarehouseID'].'">';
 				              		echo '<div class="row">
-							                	<div class="col-md-12">
+							                	<div class="col-md-6">
 									              	<div class="form-group label-floating">
 									                  <label class="control-label">Name</label>
 									                  <input type="text" name="Warehouses[' . $i .'][Name]" class="form-control" value="'. $allWarehouses[$i]['Name'] .'">
 
 									                  <span class="help-block">Edit Warehouse Name</span>
+									                </div>
+									            </div>
+												<div class="col-md-6">
+									              	<div class="form-group label-floating">
+									                  <label class="control-label">Warehouse ID</label>
+									                  <input type="text" name="Warehouses[' . $i .'][WarehouseID]" class="form-control" value="'. $allWarehouses[$i]['WarehouseID'] .'">
+
+									                  <span class="help-block">Edit Warehouse ID</span>
 									                </div>
 									            </div>
 							          		</div>';
@@ -122,11 +130,18 @@
 	              <form method="POST" action="submitWarehouses" id="add-warehouse-form">
 		              <div class="modal-body">
 			                <div class="row">
-			                	<div class="col-md-12">
+			                	<div class="col-md-6">
 					              	<div class="form-group label-floating">
 					                  <label class="control-label">Name</label>
 					                  <input id="Name" type="text" name="Warehouses[0][Name]" class="form-control" value="">
 					                  <span class="help-block">Enter Warehouse Name</span>
+					                </div>
+					            </div>
+								<div class="col-md-6">
+					              	<div class="form-group label-floating">
+					                  <label class="control-label">Warehouse ID</label>
+					                  <input id="Name" type="text" name="Warehouses[0][WarehouseID]" class="form-control" value="">
+					                  <span class="help-block">Enter Warehouse ID</span>
 					                </div>
 					            </div>
 			          		</div>

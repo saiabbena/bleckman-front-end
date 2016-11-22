@@ -14,15 +14,14 @@ class Bleckmann extends CI_Controller {
       if(!isset($_SESSION['Apoyar'])) {
         redirect('/login');
       }
-    }
+    }	
   }
   public function sum($a,$b){
 	  return $a+$b;
   }
   public function customers() {
   	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
-  	//print_r($data['allCustomers']);
-	//$this->unit->run($this->sum(5,5),12,'Testing Sum function');
+  	//print_r($data['allCustomers']);	
     $this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/customers', $data);
     $this->load->view('Bleckmann/templates/footer');

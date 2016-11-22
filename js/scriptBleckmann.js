@@ -8,7 +8,8 @@ $(function() {
 		$(".add-customer-pop").click(function(){
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
-
+			$('#view_url').css({'display':'none'});
+			$('#lbl_url').css({'display':'none'});	
 		    $('h4#myModalLabel').text('Add a Customer');
 		    $('input#AddressLine1').val('');
 		    $('input#AddressLine2').val('');
@@ -26,9 +27,12 @@ $(function() {
 		    $('div.login-info').show();
 		});
 		$(".edit-customer-pop").click(function(){
-			//alert("hi");
+			//alert("hi");			
 			$('.loading').css({'display':'block'});
 			$('.customer-modal').css({'display':'none'});
+			$('#view_url').css({'display':'block'});
+			$('#lbl_url').css({'display':'block'});	
+			
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
 			cust_array = $(this).attr("id").split("-");
@@ -57,8 +61,10 @@ $(function() {
 		        	$('input#EmailAddress').val(data.EmailAddress);
 		        	$('input#PhoneNumber').val(data.PhoneNumber);
 		        	$('input#PostalCode').val(data.PostalCode);
-		        	$('input#URL').val(data.URL);
+		        	
 		        	$('input#State').val(data.State);
+					$('#view_url #customer_id').text(data.PKCustomerID);
+					$('input#URL').val($('#view_url').text());
 
 		        	// $('input#Username').val(data.Username);
 		        	// $('input#Password').val(data.Password);
