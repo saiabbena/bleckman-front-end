@@ -209,6 +209,13 @@
 		                	</div>
 		                </div>
 		                <div class="row">
+			                <div class="col-md-3">
+				              	<div class="form-group label-floating">
+				                  <label for="i5" class="control-label">Postal Code</label>
+				                  <input id="PostalCode" type="text" name="PostalCode" class="form-control" value="">
+				                  <span class="help-block">Enter Postal Code</span>
+				                </div>
+			                </div>
 		                	<div class="col-md-3">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">City</label>
@@ -228,13 +235,6 @@
 				                  <label for="i5" class="control-label">Country</label>
 				                  <input id="Country" type="text" name="Country" class="form-control" value="">
 				                  <span class="help-block">Enter Country</span>
-				                </div>
-			                </div>
-			                <div class="col-md-3">
-				              	<div class="form-group label-floating">
-				                  <label for="i5" class="control-label">Postal Code</label>
-				                  <input id="PostalCode" type="text" name="PostalCode" class="form-control" value="">
-				                  <span class="help-block">Enter Postal Code</span>
 				                </div>
 			                </div>
 		                </div>
