@@ -312,6 +312,7 @@ $(document).ready(function(){
     
     if($('#override > div.container-fluid.form2 input[type="checkbox"]:checked').length==0){
       setTimeout(function(){
+		  $('#screen2-error').html('<strong>Whoops!</strong>  Please select at least one item to return.');
         $('#screen2-error').show();
       }, 500);
       $('.loading-screen').slideUp('slow');
@@ -331,7 +332,10 @@ $(document).ready(function(){
       if ( reason == '0' ) {
   		  setTimeout(function(){
     			$('#s1', parent).focus();			
-    			$('#reason_error').show();
+    			//$('#reason_error').show();
+				$('#screen2-error').html('<strong>Whoops!</strong>  Please select the return reason.');
+				$('#screen2-error').show();
+				
   			}, 500);
   			$('.loading-screen').slideUp('slow');
   			throw new Error("whoops");
