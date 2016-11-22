@@ -17,9 +17,6 @@
         ?>
 
 	  		<?php				
-				//print_r($this->unit->result());
-				//print_r($this->unit->report());
-				//exit();
 	  			for($i=0; $i<count($allCustomers); $i++) {
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
 	  				echo '<div class="col-xs-12 col-md-3" height="100%"">
@@ -27,7 +24,7 @@
 								<h3>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</h3>
 								<p>'. $allCustomers[$i]['Country'] .'&nbsp;</p>
 								<p>'. $allCustomers[$i]['PhoneNumber'] .'&nbsp;</p>
-								<p>'. $allCustomers[$i]['URL'] .'&nbsp;</p>
+								<p><a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'" target="_blank">View Consumer URL</a>&nbsp;</p>
 								<p><a href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a></p>
 								<div class="row">
 									<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
@@ -169,9 +166,10 @@
 				            </div>
 				            <div class="col-md-6">
 				               	<div class="form-group label-floating">
-				                  <label class="control-label">URL</label>
-				                  <input id="URL" type="text" name="URL" class="form-control" value="">
-				                  <span class="help-block">Enter URL value</span>
+				                  <label id="lbl_url" class="control-label">URL</label>
+				                  <input id="URL" type="hidden" name="URL" class="form-control" value="">
+								  <p id="view_url" style="display:none"><?php echo base_url().'?Customer='?><span id="customer_id"></span></p>
+				                  
 				                </div>
 				            </div>
 				        </div>
