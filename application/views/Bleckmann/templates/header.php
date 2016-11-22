@@ -34,9 +34,13 @@
 	  <script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.js"></script>	
     <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
     <script type="text/javascript">
-      $.material.init();
+      // $.material.init();
+      // $.material.checkbox();
+      //console.log("loaded");
       <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
       <?php echo 'var apoyarToken="'.$_SESSION['Apoyar'].'";';?>
+      <?php echo 'var customerId="";';?>
+      <?php echo 'var allLanguages=[];';?>
     </script>
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptBleckmann.js"></script>
   </head>
@@ -96,7 +100,12 @@
               <img src='<?php echo base_url();?>img/i-14.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Roles</span>
             </div>
           </a>
-
+          <a href='<?php echo base_url()?>index.php/Bleckmann/languages'>
+            <div  <?php if($this->uri->segment(2) == 'languages'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+              <div class='hidden-lg hidden-md'></div>
+              <img src='<?php echo base_url();?>img/i-15.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Languages</span>
+            </div>
+          </a>
         </div>
                 <br><br>
         <a class='btn btn-warning btn-raised btn-block' href='<?php echo base_url();?>index.php/Login/logout'><span class='glyphicon glyphicon-log-out'></span> LOGOUT</a>

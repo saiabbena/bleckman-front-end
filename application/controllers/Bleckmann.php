@@ -57,6 +57,22 @@ class Bleckmann extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
+  public function languages() {
+  	// $req = array(
+   //    'Customerid'=>$_SESSION['Customerid']
+   //  );
+  	$data['customerId'] = $this->input->get('Customerid');
+    $data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
+  	$data['allLanguages'] = $this->httpRequests->httpGet('Language/getLanguages', '');
+  	//$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
+  	//$data['allLanguages'] = "";
+    $this->load->view('Bleckmann/templates/header');
+    $this->load->view('Bleckmann/languages', $data);
+    $this->load->view('Bleckmann/templates/footer');
+    if(isset($_SESSION['message'])){
+      unset($_SESSION['message']);
+    }
+  }
   public function submitWarehouses() {
   	//print_r($_POST);exit();
   	$server_output = $this->httpRequests->httpPost('Location/PostManageLocation', json_encode($_POST) );
@@ -159,6 +175,52 @@ class Bleckmann extends CI_Controller {
 	}
     echo var_dump($_SESSION['message']);
 	header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
+  }
+  public function addLanguage() {
+  	print_r($_POST);
+  	$server_output = $this->httpRequests->httpPost('Language/PostManageLanguage', json_encode($_POST) );
+  	//echo $server_output; exit();
+  	if ( $server_output['Status'] ) { 
+    	$_SESSION['message']['languages_panel']='Language Saved';
+    	$_SESSION['message']['alert_status']='success';
+	} else {
+		$_SESSION['message']['languages_panel']='Error : ' . $server_output['Messages'];
+		$_SESSION['message']['alert_status']='warning';
+	}
+    echo var_dump($_SESSION['message']);
+	header('Location: ' . $_SERVER['HTTP_REFERER'].'#languages_panel');
+  }
+  public function submitLanguages() {
+  	for($i=0;$i<count($_POST['Languages']);$i++) {
+  		if ($_POST['Languages'][$i]['IsActive'] == 1) {
+  			$_POST['Languages'][$i]['IsActive'] = "true";
+  		} else {
+  			$_POST['Languages'][$i]['IsActive'] = "false";
+  		}
+  		if ($_POST['Languages'][$i]['AssignedtoCustomer'] == 1) {
+  			$_POST['Languages'][$i]['AssignedtoCustomer'] = "true";
+  		} else {
+  			$_POST['Languages'][$i]['AssignedtoCustomer'] = "false";
+  		}
+  		if ($_POST['Languages'][$i]['IsModified'] == 1) {
+  			$_POST['Languages'][$i]['IsModified'] = "true";
+  		} else {
+  			$_POST['Languages'][$i]['IsModified'] = "false";
+  		}
+  	}
+  	print_r(json_encode($_POST));
+  	$server_output = $this->httpRequests->httpPost('Language/PostMapCustomerLanguage', json_encode($_POST) );
+  	//echo $server_output;exit();
+  	if ( $server_output['Status'] ) { 
+    	$_SESSION['message']['languages_panel']='Saved';
+    	$_SESSION['message']['alert_status']='success';
+	} else {
+		$_SESSION['message']['languages_panel']='Error : ' . $server_output['Status'];
+		$_SESSION['message']['alert_status']='warning';
+	}
+    echo var_dump($_SESSION['message']);
+    redirect(base_url() . 'index.php/Bleckmann/languages?Customerid='.$_POST['Customerid']);
+	//header('Location: ' . $_SERVER['HTTP_REFERER'].'#languages_panel');
   }
   public function deleteCustomer() {
   	//print_r($_POST);

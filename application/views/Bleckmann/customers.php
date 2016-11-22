@@ -30,7 +30,8 @@
 									<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
 									<button type="button" data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" class="btn btn-raised btn-success pull-right edit-customer-pop">Edit</button>
 								</div>
-								<p><a href="carriers/searchbyCID/'.$allCustomers[$i]['PKCustomerID'].'">Carriers</a></p>
+								<p><a href="carriers/searchbyCID/'.$allCustomers[$i]['PKCustomerID'].'">Carriers</a>
+								<a class="pull-right" href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a></p>
 							</div>
 						</div>';
 					echo '<div class="modal fade" id="delete-customer-modal'.$allCustomers[$i]['PKCustomerID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -206,6 +207,13 @@
 		                	</div>
 		                </div>
 		                <div class="row">
+			                <div class="col-md-3">
+				              	<div class="form-group label-floating">
+				                  <label for="i5" class="control-label">Postal Code</label>
+				                  <input id="PostalCode" type="text" name="PostalCode" class="form-control" value="">
+				                  <span class="help-block">Enter Postal Code</span>
+				                </div>
+			                </div>
 		                	<div class="col-md-3">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">City</label>
@@ -225,13 +233,6 @@
 				                  <label for="i5" class="control-label">Country</label>
 				                  <input id="Country" type="text" name="Country" class="form-control" value="">
 				                  <span class="help-block">Enter Country</span>
-				                </div>
-			                </div>
-			                <div class="col-md-3">
-				              	<div class="form-group label-floating">
-				                  <label for="i5" class="control-label">Postal Code</label>
-				                  <input id="PostalCode" type="text" name="PostalCode" class="form-control" value="">
-				                  <span class="help-block">Enter Postal Code</span>
 				                </div>
 			                </div>
 		                </div>

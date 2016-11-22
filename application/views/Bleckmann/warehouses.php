@@ -47,20 +47,27 @@
 				              		echo '<div class="row">
 							                	<div class="col-md-6">
 									              	<div class="form-group label-floating">
-									                  <label class="control-label">House Number</label>
-									                  <input type="text" name="Warehouses[' . $i .'][HouseNumber]" class="form-control" value="'. $allWarehouses[$i]['HouseNumber'] .'">
-									                  <span class="help-block">Edit House Number</span>
-									                </div>
-									            </div>
-							                	<div class="col-md-6">
-									              	<div class="form-group label-floating">
 									                  <label class="control-label">Street</label>
 									                  <input type="text" name="Warehouses[' . $i .'][Street]" class="form-control" value="'. $allWarehouses[$i]['Street'] .'">
 									                  <span class="help-block">Edit Street</span>
 									                </div>
 									            </div>
+							                	<div class="col-md-6">
+									              	<div class="form-group label-floating">
+									                  <label class="control-label">House Number</label>
+									                  <input type="text" name="Warehouses[' . $i .'][HouseNumber]" class="form-control" value="'. $allWarehouses[$i]['HouseNumber'] .'">
+									                  <span class="help-block">Edit House Number</span>
+									                </div>
+									            </div>
 							          		</div>';
 				              		echo '<div class="row">
+							                	<div class="col-md-4">
+									              	<div class="form-group label-floating">
+									                  <label class="control-label">PostalCode</label>
+									                  <input type="text" name="Warehouses[' . $i .'][PostalCode]" class="form-control" value="'. $allWarehouses[$i]['PostalCode'] .'">
+									                  <span class="help-block">Edit PostalCode</span>
+									                </div>
+									            </div>
 							                	<div class="col-md-4">
 									              	<div class="form-group label-floating">
 									                  <label class="control-label">City</label>
@@ -75,13 +82,7 @@
 									                  <span class="help-block">Edit Country</span>
 									                </div>
 									            </div>
-							                	<div class="col-md-4">
-									              	<div class="form-group label-floating">
-									                  <label class="control-label">PostalCode</label>
-									                  <input type="text" name="Warehouses[' . $i .'][PostalCode]" class="form-control" value="'. $allWarehouses[$i]['PostalCode'] .'">
-									                  <span class="help-block">Edit PostalCode</span>
-									                </div>
-									            </div>
+
 							          		</div>';
 							        echo '<button type="button" data-toggle="modal" data-target="#delete-warehouse-modal'.$allWarehouses[$i]['PKWarehouseID'].'" class="btn btn-raised btn-danger btn-warning pull-right">Delete</button><br><br>';
 							        echo '</div>';
@@ -145,13 +146,6 @@
 					            </div>
 			          		</div>
 							<div class="row">
-							    <div class="col-md-6">
-								   	<div class="form-group label-floating">
-									    <label class="control-label">House Number</label>
-									    <input type="text" name="Warehouses[0][HouseNumber]" class="form-control" value="">
-									    <span class="help-block">Edit House Number</span>
-									</div>
-								</div>
 				            	<div class="col-md-6">
 					              	<div class="form-group label-floating">
 									    <label class="control-label">Street</label>
@@ -159,8 +153,22 @@
 				   	                    <span class="help-block">Edit Street</span>
 									</div>
 					            </div>
+							    <div class="col-md-6">
+								   	<div class="form-group label-floating">
+									    <label class="control-label">House Number</label>
+									    <input type="text" name="Warehouses[0][HouseNumber]" class="form-control" value="">
+									    <span class="help-block">Edit House Number</span>
+									</div>
+								</div>
 			          		</div>
 							<div class="row">
+			                	<div class="col-md-4">
+									<div class="form-group label-floating">
+									    <label class="control-label">PostalCode</label>
+									    <input type="text" name="Warehouses[0][PostalCode]" class="form-control" value="">
+									    <span class="help-block">Edit PostalCode</span>
+									</div>
+								</div>
 							    <div class="col-md-4">
 									<div class="form-group label-floating">
 									    <label class="control-label">City</label>
@@ -175,13 +183,6 @@
 									    <span class="help-block">Edit Country</span>
 									</div>
 					            </div>
-			                	<div class="col-md-4">
-									<div class="form-group label-floating">
-									    <label class="control-label">PostalCode</label>
-									    <input type="text" name="Warehouses[0][PostalCode]" class="form-control" value="">
-									    <span class="help-block">Edit PostalCode</span>
-									</div>
-								</div>
 							</div>
 			          </div>
 		              <div class="modal-footer">

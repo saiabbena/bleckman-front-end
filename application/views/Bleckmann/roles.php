@@ -30,18 +30,19 @@
 	              			for ($i=0; $i<count($allRoles); $i++) {
 			              		echo '
 			              			<tr>
-
 						                <div class="row">
 						                	<td style="text-align:center;vertical-align:middle;">
 						                	<div class="">
 							                	<div class="form-group">
-		              								<div class="">
-		                								<label class="class="control-label"">
-										                </label>
-										                <input type="hidden" name="Roles[' . $i .'][IsActive]" value="0">
-										                <input type="checkbox" name="Roles[' . $i .'][IsActive]" value="1" '.
+		              								<div class="checkbox">
+		                								<label >
+		                								<input type="hidden" name="Roles[' . $i .'][IsActive]" value="0">
+		                								<input type="checkbox" name="Roles[' . $i .'][IsActive]" value="1" '.
 										                ((int)($allRoles[$i]['IsActive'] > 0 ) ? " checked='checked'" : "")
 										                .' >
+										                </label>
+										                
+
 										              </div>
 										        </div>
 									        </div>
