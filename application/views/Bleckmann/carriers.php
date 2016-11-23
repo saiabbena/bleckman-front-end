@@ -1,6 +1,6 @@
     <div class='col-xs-12 col-md-9' height='100%'>
       <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
-        <h3>Manage Carriers, <?php echo($carriers['Customer']['CustomerName']);?></h3>		
+        <h3>Manage Carriers, <?php echo $customer_name;//($carriers['Customer']['CustomerName']);?></h3>		
         <div class='row'>
 			<div class="col-xs-12 col-md-12">
 				<button type="button" data-toggle="modal" data-target="#add_carrier_modal" id='add_carrier' class='add-pop btn btn-raised btn-warning pull-right'>Add</button>
@@ -177,7 +177,7 @@
 							<div class="col-md-8">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">Application ID</label>
-				                  <input id="ApplicationID" type="text" name="ApplicationID" class="form-control" value="" required />
+				                  <input id="ApplicationID" type="text" name="ApplicationID" class="form-control" value="" />
 				                  <span class="help-block">Enter ApplicationID</span>
 				                </div>
 				            </div>							

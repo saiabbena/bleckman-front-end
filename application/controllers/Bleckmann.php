@@ -18,8 +18,9 @@ class Bleckmann extends CI_Controller {
   }  
   public function customers() {
   	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
-  	//print_r($data['allCustomers']);	
+  	
     $this->load->view('Bleckmann/templates/header');
+	//print_r($data['allCustomers']);exit();
     $this->load->view('Bleckmann/customers', $data);
     $this->load->view('Bleckmann/templates/footer');
     
@@ -62,7 +63,7 @@ class Bleckmann extends CI_Controller {
    //    'Customerid'=>$_SESSION['Customerid']
    //  );
   	$data['customerId'] = $this->input->get('Customerid');
-    $data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
+    //$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
   	$data['allLanguages'] = $this->httpRequests->httpGet('Language/getLanguages', '');
   	//$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
   	//$data['allLanguages'] = "";
@@ -245,8 +246,11 @@ class Bleckmann extends CI_Controller {
 			'Customerid'=>$param2
 		);		
 		//http://returns.dev.apoyar.eu/api/Carrier/GetAllCarriersbyCustomerid?Customerid=1
-		$data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllCarriersbyCustomerid', $req);		
+		$data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllCarriersbyCustomerid', $req);
+		//var apiCall=url+'Customer/GetActiveCustomerbyId?Customerid=' + selCustId
+		$customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req);		
 		$data['Customerid'] = $param2;
+		$data['customer_name'] = $customer_details['CustomerName'];		
 	}
 	if($param1 == 'submitCarrierInfo'){
 		//print_r($_POST);exit();

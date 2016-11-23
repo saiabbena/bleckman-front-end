@@ -112,7 +112,9 @@ $(function() {
 		            Password : {
 						 required: true,						 
 						 //New Contain at least 6 characters.contain at least 1 number.,contain at least 1 lowercase character (a-z),contain at least 1 uppercase character (A-Z),contains only 0-9a-zA-Z.
-						 regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/     	
+						 //With Special Chars // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/ 
+						 //Without Special Chars /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
+						 regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/     	
 						
 		            }
 		        },
@@ -123,7 +125,7 @@ $(function() {
 		            AddressLine1: "Please enter Address",
 		            Country: "Please enter Country Name",
 		            Username: "Please enter Username",
-		            Password: "Enter Password must contain minimum 6 chars with one number, and one UPPERCASE and lowercase letter"
+		            Password: "Enter Password must contain minimum 6 chars with at least one number, and one UPPERCASE and lowercase letter, and one special charaters like $,@,$,!,%,*,#,?,& "
 		        },
 		        submitHandler: function(form) {
 		        	//alert("submit");
@@ -232,8 +234,10 @@ $(function() {
 		            },
 					Password : {
 						required: true,						 
-						 //New Contain at least 6 characters.contain at least 1 number.,contain at least 1 lowercase character (a-z),contain at least 1 uppercase character (A-Z),contains only 0-9a-zA-Z.
-						 regex: /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
+						 //New Contain at least 6 characters.contain at least 1 number.,contain at least 1 lowercase character (a-z),contain at least 1 uppercase character (A-Z),contains only 0-9a-zA-Z.						 
+						 //With Special Chars // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/ 
+						 //Without Special Chars /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
+						 regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/
 					}
 		        },
 		        messages: {
@@ -244,7 +248,7 @@ $(function() {
 		            Country: "Please enter Country Name",
 		            FKRoleID:"Please select a role",
 		            Username: "Please enter Username",
-		            Password: "Enter Password must contain minimum 6 chars with one number, and one UPPERCASE and lowercase letter"
+		            Password: "Enter Password must contain minimum 6 chars with at least one number, and one UPPERCASE and lowercase letter, and one special charaters like $,@,$,!,%,*,#,?,&"
 		        },
 		        submitHandler: function(form) {
 		        	//alert("submit");
@@ -290,8 +294,7 @@ $(function() {
 				APIURL : "required",
 				ConsumerCountryName: "required",
 				AnnounceAPI: "required",
-				TrackTraceURL: "required",
-				ApplicationID:"required",
+				TrackTraceURL: "required",				
 				APIUserName : {
 					required: function(element) {
 						//alert("customerid : " + $('#PKCustomerID').val());
