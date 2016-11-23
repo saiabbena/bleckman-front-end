@@ -125,7 +125,7 @@ $(function() {
 		            AddressLine1: "Please enter Address",
 		            Country: "Please enter Country Name",
 		            Username: "Please enter Username",
-		            Password: "Enter Password must contain minimum 6 chars with at least one number, and one UPPERCASE and lowercase letter, and one special charaters like $,@,$,!,%,*,#,?,& "
+		            Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& "
 		        },
 		        submitHandler: function(form) {
 		        	//alert("submit");
@@ -248,7 +248,7 @@ $(function() {
 		            Country: "Please enter Country Name",
 		            FKRoleID:"Please select a role",
 		            Username: "Please enter Username",
-		            Password: "Enter Password must contain minimum 6 chars with at least one number, and one UPPERCASE and lowercase letter, and one special charaters like $,@,$,!,%,*,#,?,&"
+		            Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& "
 		        },
 		        submitHandler: function(form) {
 		        	//alert("submit");
