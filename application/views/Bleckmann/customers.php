@@ -100,6 +100,12 @@
 				                  		</div>
 				                  	</div>
 				                  	<div class="col-md-12">
+				                  		<div class="col-md-6">Postal Code
+				                  		</div>
+				                  		<div class="col-md-6">' . $allCustomers[$i]['PostalCode'] . '
+				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">City
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['City'] . '
@@ -117,12 +123,7 @@
 				                  		<div class="col-md-6">' . $allCustomers[$i]['Country'] . '
 				                  		</div>
 				                  	</div>
-				                  	<div class="col-md-12">
-				                  		<div class="col-md-6">Postal Code
-				                  		</div>
-				                  		<div class="col-md-6">' . $allCustomers[$i]['PostalCode'] . '
-				                  		</div>
-				                  	</div>
+
 				                  </div>
 				                  <div class="modal-footer">
 				                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -157,7 +158,7 @@
 				    </div>
     				<div class="customer-modal">
 		                <div class="row">
-		                	<div class="col-md-9">
+		                	<div class="col-md-12">
 				              	<div class="form-group label-floating">
 				                  <label class="control-label">Customer Name</label>
 				                  <input id="CustomerName" type="text" name="CustomerName" class="form-control" value="">

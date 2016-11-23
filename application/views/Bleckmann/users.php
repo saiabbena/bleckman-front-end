@@ -38,7 +38,7 @@
 						      <h3 class="list-group-item-heading"><b>'. $allUsers[$i]['FirstName'] .' ' . $allUsers[$i]['LastName'] .'</b></h3>
 						      <p class="list-group-item-text" style="padding-bottom:8px;"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">phone</i>'. $allUsers[$i]['Phone'] . '</p>
 						      <p class="list-group-item-text" style="padding-bottom:8px;"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">email</i>'. $allUsers[$i]['EmailAddress'] .'</p>
-						      <p class="list-group-item-text"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">location_on</i>'. $allUsers[$i]['City'] . ', ' . $allUsers[$i]['State'] . ', ' . $allUsers[$i]['Country'] . ', ' . $allUsers[$i]['PostalCode'] .'</p>
+						      <p class="list-group-item-text"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">location_on</i>'. $allUsers[$i]['PostalCode']. ', ' . $allUsers[$i]['City'] . ', ' . $allUsers[$i]['State'] . ', ' . $allUsers[$i]['Country']  .'</p>
 						    </div>
 						  </div>
 						</div>';
