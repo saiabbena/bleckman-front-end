@@ -26,6 +26,7 @@ $(function() {
 		    $('input#PKCustomerID').val('');
 		    $('div.login-info').show();
 		});
+
 		$(".edit-customer-pop").click(function(){
 			//alert("hi");			
 			$('.loading').css({'display':'block'});
@@ -478,5 +479,6 @@ $(function() {
 		      }
 		    });
 		}
-		//$.material.init();	
+		$.material.options.autofill = true;
+		$.material.init();
 	});

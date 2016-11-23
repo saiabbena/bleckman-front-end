@@ -43,6 +43,7 @@
       <?php echo 'var allLanguages=[];';?>
     </script>
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptBleckmann.js"></script>
+    
   </head>
   <body id='override'>
     <div class="bm-h">
