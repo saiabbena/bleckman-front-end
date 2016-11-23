@@ -79,8 +79,7 @@
 				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">URL
 				                  		</div>
-				                  		<div class="col-md-6">' . $allCustomers[$i]['URL'] . '
-				                  		</div>
+				                  		<div class="col-md-6"><a href="'.base_url().'?Customer='. $allCustomers[$i]['PKCustomerID'].'" target="_blank">' .base_url().'?Customer='. $allCustomers[$i]['PKCustomerID'] . '</a></div>
 				                  	</div>
 				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">Phone Number
@@ -158,21 +157,21 @@
 				    </div>
     				<div class="customer-modal">
 		                <div class="row">
-		                	<div class="col-md-6">
+		                	<div class="col-md-9">
 				              	<div class="form-group label-floating">
 				                  <label class="control-label">Customer Name</label>
 				                  <input id="CustomerName" type="text" name="CustomerName" class="form-control" value="">
 				                  <span class="help-block">Enter Customer Name</span>
 				                </div>
 				            </div>
-				            <div class="col-md-6">
+				            <!--<div class="col-md-6">
 				               	<div class="form-group label-floating">
 				                  <label id="lbl_url" class="control-label">URL</label>
 				                  <input id="URL" type="hidden" name="URL" class="form-control" value="">
 								  <p id="view_url" style="display:none"><?php echo base_url().'?Customer='?><span id="customer_id"></span></p>
 				                  
 				                </div>
-				            </div>
+				            </div>-->
 				        </div>
 		                <div class="row">
 		                	<div class="col-md-6">

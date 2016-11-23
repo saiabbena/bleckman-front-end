@@ -8,8 +8,8 @@ $(function() {
 		$(".add-customer-pop").click(function(){
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
-			$('#view_url').css({'display':'none'});
-			$('#lbl_url').css({'display':'none'});	
+			//$('#view_url').css({'display':'none'});
+			//$('#lbl_url').css({'display':'none'});	
 		    $('h4#myModalLabel').text('Add a Customer');
 		    $('input#AddressLine1').val('');
 		    $('input#AddressLine2').val('');
@@ -30,8 +30,8 @@ $(function() {
 			//alert("hi");			
 			$('.loading').css({'display':'block'});
 			$('.customer-modal').css({'display':'none'});
-			$('#view_url').css({'display':'block'});
-			$('#lbl_url').css({'display':'block'});	
+			//$('#view_url').css({'display':'block'});
+			//$('#lbl_url').css({'display':'block'});	
 			
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
@@ -478,5 +478,5 @@ $(function() {
 		      }
 		    });
 		}
-		//$.material.init();	
+		$.material.init();	
 	});
