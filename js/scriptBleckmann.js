@@ -368,7 +368,7 @@ $(function() {
 		        	//console.log(data);
 					$('.loading').css({'display':'none'});
 					$('.carrier_div').css({'display':'block'});
-		        	$('h4#carrierLabel').text('Edit Career Information');
+		        	$('h4#carrierLabel').text('Edit Carrier Information');
 		        	$('input#CarrierName').val(data.CarrierName);
 		        	$('input#APIUserName').val(data.APIUserName);
 		        	$('input#APIPassword').val(data.APIPassword);
