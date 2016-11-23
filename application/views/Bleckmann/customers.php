@@ -157,7 +157,7 @@
 				    </div>
     				<div class="customer-modal">
 		                <div class="row">
-		                	<div class="col-md-9">
+		                	<div class="col-md-12">
 				              	<div class="form-group label-floating">
 				                  <label class="control-label">Customer Name</label>
 				                  <input id="CustomerName" type="text" name="CustomerName" class="form-control" value="">
