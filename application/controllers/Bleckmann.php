@@ -63,7 +63,7 @@ class Bleckmann extends CI_Controller {
    //    'Customerid'=>$_SESSION['Customerid']
    //  );
   	$data['customerId'] = $this->input->get('Customerid');
-    //$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
+    $data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
   	$data['allLanguages'] = $this->httpRequests->httpGet('Language/getLanguages', '');
   	//$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
   	//$data['allLanguages'] = "";
