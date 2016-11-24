@@ -31,8 +31,9 @@ class Login extends CI_Controller {
   public function Submit() {
     header('Content-Type: application/json');
 
-    $post_data = http_build_query(['Username'=>$_POST['Username'], 'Password'=>$_POST['Password']]);
+    $post_data = http_build_query(['Username'=>$_POST['Username'], 'Password'=>$_POST['Password'], 'Address'=>$_SERVER['SERVER_ADDR'] ]);
     echo "post_data : " . json_encode($post_data);
+    //echo $_SERVER['SERVER_ADDR'];exit();
     $response = $this->httpRequests->httpPost_Login('User/PostLogin', $post_data );
 
 //    echo " response : " . $response;exit();

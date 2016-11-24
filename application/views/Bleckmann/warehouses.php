@@ -18,12 +18,10 @@
 						</div>
 						<div class="row">
 							<h4>Edit Warehouse Details</h4>
-						
-
-
 		              		<?php
-
+		              			//echo json_encode($allWarehouses);
 		              			for ($i=0; $i<count($allWarehouses); $i++) {
+
 		              				echo '<div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">';
 		              				echo '<input type="hidden" id="PKWarehouseID" name="Warehouses[' . $i .'][PKWarehouseID]" value="'.$allWarehouses[$i]['PKWarehouseID'].'">';
 				              		echo '<div class="row">
@@ -76,11 +74,26 @@
 									                </div>
 									            </div>
 							                	<div class="col-md-4">
+
+
 									              	<div class="form-group label-floating">
-									                  <label class="control-label">Country</label>
-									                  <input type="text" name="Warehouses[' . $i .'][Country]" class="form-control" value="'. $allWarehouses[$i]['Country'] .'">
-									                  <span class="help-block">Edit Country</span>
+									              		<label class="control-label">Country</label>
+									                  	<select class="form-control" name="Warehouses[' . $i .'][Country]">
+									                  	<option value="-1">Select a Country &darr;</option>';
+									                  	for ($j=0; $j<count($allCountries); $j++) { 
+									                  		if ( $allCountries[$j]['IsActive'] ) {
+									                  			if ( $allWarehouses[$i]['Country'] == $allCountries[$j]['PKCountryId']) {
+									                  				echo '<option selected="selected" value="' . $allCountries[$j]['PKCountryId'].'">' . $allCountries[$j]['CountryName'] . '</option>';
+									                  			} else {
+									                  				echo '<option value="' . $allCountries[$j]['PKCountryId'].'">' . $allCountries[$j]['CountryName'] . '</option>';
+									                  			}
+									                  		}
+									                  	}
+									                  	
+									            echo '</select>
+									                 
 									                </div>
+
 									            </div>
 
 							          		</div>';
@@ -178,10 +191,19 @@
 					            </div>
 							    <div class="col-md-4">
 					              	<div class="form-group label-floating">
-						                <label class="control-label">Country</label>
-						                <input type="text" name="Warehouses[0][Country]" class="form-control" value="">
-									    <span class="help-block">Edit Country</span>
-									</div>
+					              		<label class="control-label">Country</label>
+					                  <?php
+					                  	//echo json_encode($allCountries);
+					                  	echo '<select class="form-control" name="Warehouses[0][Country]">';
+					                  	echo '<option value="-1">Select a Country &darr;</option>';
+					                  	for ($i=0; $i<count($allCountries); $i++) { 
+					                  		if ( $allCountries[$i]['IsActive'] ) {
+					                  			echo '<option value="' . $allCountries[$i]['PKCountryId'].'">' . $allCountries[$i]['CountryName'] . '</option>';
+					                  		}
+					                  	}
+					                  	echo '</select>';
+					                  ?>
+					                </div>
 					            </div>
 							</div>
 			          </div>

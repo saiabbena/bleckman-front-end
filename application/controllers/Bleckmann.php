@@ -14,10 +14,11 @@ class Bleckmann extends CI_Controller {
       if(!isset($_SESSION['Apoyar'])) {
         redirect('/login');
       }
-    }	
+    }
   }  
   public function customers() {
   	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
+  	$data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
   	
     $this->load->view('Bleckmann/templates/header');
 	//print_r($data['allCustomers']);exit();
@@ -31,6 +32,8 @@ class Bleckmann extends CI_Controller {
   public function users() {
   	$data['allUsers'] = $this->httpRequests->httpGet('User/GetAllActiveUsers', '');
   	$data['allRoles'] = $this->httpRequests->httpGet('Role/GetAllActiveRoles', '');
+  	$data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
+
     $this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/users', $data);
     $this->load->view('Bleckmann/templates/footer');
@@ -50,6 +53,7 @@ class Bleckmann extends CI_Controller {
   }
   public function warehouses() {
   	$data['allWarehouses'] = $this->httpRequests->httpGet('Location/GetAllActiveLocations', '');
+  	$data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
 
     $this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/warehouses', $data);
@@ -133,7 +137,7 @@ class Bleckmann extends CI_Controller {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#roles_panel');
   }
   public function submitUserInfo() {
-  	//print_r($_POST);
+  	//print_r(json_encode($_POST));exit();
   	$server_output = $this->httpRequests->httpPost('User/PostManageUser', json_encode($_POST) );
     echo json_encode($server_output);
     //$_SESSION['message']['user_panel']='User Information Saved';
@@ -142,7 +146,7 @@ class Bleckmann extends CI_Controller {
     	$_SESSION['message']['user_panel']='User Information Saved';
     	$_SESSION['message']['alert_status']='success';
 	} else {
-		$_SESSION['message']['user_panel']='Error : ' . $server_output['Status'];
+		$_SESSION['message']['user_panel']='Error : ' . $server_output['Messages'];
 		$_SESSION['message']['alert_status']='warning';
 	}
 
@@ -165,7 +169,7 @@ class Bleckmann extends CI_Controller {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#user_panel');
   }
   public function submitCustomerInfo() {
-  	//print_r($_POST);
+  	//print_r($_POST);exit();
   	$server_output = $this->httpRequests->httpPost('Customer/PostManageCustomer', json_encode($_POST) );
     if ( $server_output['Id'] ) { 
     	$_SESSION['message']['customer_panel']='Customer Information Saved';
@@ -220,8 +224,11 @@ class Bleckmann extends CI_Controller {
 		$_SESSION['message']['alert_status']='warning';
 	}
     echo var_dump($_SESSION['message']);
-    redirect(base_url() . 'index.php/Bleckmann/languages?Customerid='.$_POST['Customerid']);
-	//header('Location: ' . $_SERVER['HTTP_REFERER'].'#languages_panel');
+    if ( $_POST['Customerid'] ) {
+    	redirect(base_url() . 'index.php/Bleckmann/languages?Customerid='.$_POST['Customerid']);
+    } else {
+		header('Location: ' . $_SERVER['HTTP_REFERER'].'#languages_panel');
+	}
   }
   public function deleteCustomer() {
   	//print_r($_POST);
@@ -246,6 +253,7 @@ class Bleckmann extends CI_Controller {
 			'Customerid'=>$param2
 		);		
 		//http://returns.dev.apoyar.eu/api/Carrier/GetAllCarriersbyCustomerid?Customerid=1
+		$data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
 		$data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllCarriersbyCustomerid', $req);
 		//var apiCall=url+'Customer/GetActiveCustomerbyId?Customerid=' + selCustId
 		$customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req);		

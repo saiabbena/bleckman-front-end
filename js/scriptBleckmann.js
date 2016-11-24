@@ -14,7 +14,7 @@ $(function() {
 		    $('input#AddressLine1').val('');
 		    $('input#AddressLine2').val('');
 		    $('input#City').val('');
-		    $('input#Country').val('');
+		    $('select#Country').val(-1);
 		    $('input#CustomerName').val('');
 		    $('input#EmailAddress').val('');
 		    $('input#PhoneNumber').val('');
@@ -33,7 +33,7 @@ $(function() {
 			$('.customer-modal').css({'display':'none'});
 			//$('#view_url').css({'display':'block'});
 			//$('#lbl_url').css({'display':'block'});	
-			
+			$.material.options.autofill = true;
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
 			cust_array = $(this).attr("id").split("-");
@@ -49,15 +49,15 @@ $(function() {
 			    },
 		        dataType: 'json',
 		        success: function(data) {
-		        	//console.log("response data : ");
-		        	//console.log(data);
+		        	console.log("response data : ");
+		        	console.log(data);
 		        	$('.loading').css({'display':'none'});
 					$('.customer-modal').css({'display':'block'});
 		        	$('h4#myModalLabel').text('Edit Customer Information');
 		        	$('input#AddressLine1').val(data.AddressLine1);
 		        	$('input#AddressLine2').val(data.AddressLine2);
 		        	$('input#City').val(data.City);
-		        	$('input#Country').val(data.Country);
+		        	$('select#Country').val(data.Country);
 		        	$('input#CustomerName').val(data.CustomerName);
 		        	$('input#EmailAddress').val(data.EmailAddress);
 		        	$('input#PhoneNumber').val(data.PhoneNumber);
@@ -140,10 +140,10 @@ $(function() {
 		$(".add-user-pop").click(function(){
 			var validator1 = $( "#user-info-form" ).validate();
 			validator1.resetForm();
-		    $('h4#myModalLabel').text('Add a User');
+		    $('h4#myUserLabel').text('Add a User');
 		    $('input#Address').val('');
 		    $('input#City').val('');
-		    $('input#Country').val('');
+		    $('select#Country').val(-1);
 		    $('input#FirstName').val('');
 		    $('input#LastName').val('');
 		    $('input#EmailAddress').val('');
@@ -163,6 +163,7 @@ $(function() {
 			validator1.resetForm();
 			user_array = $(this).attr("id").split("-");
 			var selUserId = user_array[2];
+			$.material.options.autofill = true;
 			//alert(selCustId);
 			var apiCall=url+'User/GetActiveUserbyId?Userid=' + selUserId;
 			//console.log("apiCall : " + apiCall);
@@ -178,7 +179,7 @@ $(function() {
 		        	//console.log(data);
 					$('.loading').css({'display':'none'});
 					$('.user_div').css({'display':'block'});
-		        	$('h4#myModalLabel').text('Edit User Information');
+		        	$('h4#myUserLabel').text('Edit User Information');
 		        	$('input#FirstName').val(data.FirstName);
 		        	$('input#LastName').val(data.LastName);
 		        	$('input#EmailAddress').val(data.EmailAddress);
@@ -186,7 +187,7 @@ $(function() {
 		        	$('input#Address').val(data.Address);
 		        	$('input#City').val(data.City);
 		        	$('input#State').val(data.State);
-		        	$('input#Country').val(data.Country);
+		        	$('select#Country').val(data.Country);
 		        	$('input#PostalCode').val(data.PostalCode);
 		        	$('select#FKRoleID').val(data.FKRoleID);
 		        	
@@ -202,13 +203,13 @@ $(function() {
 				focusCleanup: true,
 		        rules: {
 		            FirstName: "required",
-		            PostalCode: "required",
+		            LastName : "required",
+		            //PostalCode: "required",
 		            EmailAddress: {
 		                required: true,
 		                email: true
 		            },
-		            Address : "required",
-		            Country: "required",
+		            //Country: "required",
 		            FKRoleID: {
 		            	valueNotEquals: -1
 		            },
@@ -242,10 +243,10 @@ $(function() {
 		        },
 		        messages: {
 		            FirstName: "Please enter First Name",
-		            PostalCode: "Please enter Postal Code",
+		            LastName: "Please enter Last Name",
+		            //PostalCode: "Please enter Postal Code",
 		            EmailAddress: "Please enter a valid email address",
-		            Address: "Please enter Address",
-		            Country: "Please enter Country Name",
+		            //Country: "Please enter Country Name",
 		            FKRoleID:"Please select a role",
 		            Username: "Please enter Username",
 		            Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& "
@@ -342,8 +343,8 @@ $(function() {
 		    $('input#APIKey').val('');
 		    $('input#APIURL').val('');
 		    $('input#FKCustomerID').val('');
-		    $('input#ConsumerCountryName').val('');
-			$('input#ConsumerCountryName').prop("readonly",false);
+		    $('select#ConsumerCountryName').val(-1);
+			$('select#ConsumerCountryName').prop("readonly",false);
 		    $('input#AnnounceAPI').val('');
 		    $('input#TrackTraceURL').val('');
 			$('input#ApplicationID').val('');			
@@ -355,6 +356,7 @@ $(function() {
 			carrier_array = $(this).attr("id").split("_");
 			var selCarrierId = carrier_array[1];
 			//alert(selCustId);
+			$.material.options.autofill = true;
 			var apiCall=url+'Carrier/GetCarrierbyId?CarrierId=' + selCarrierId;
 			//console.log("apiCall : " + apiCall);
 			$('#loadingspin').css({'display':'block'});//Hide spin image
@@ -375,8 +377,8 @@ $(function() {
 		        	$('input#APIKey').val(data.APIKey);
 		        	$('input#APIURL').val(data.APIURL);
 		        	$('input#FKCustomerID').val(data.FKCustomerID);
-		        	$('input#ConsumerCountryName').val(data.ConsumerCountryName);
-					$('input#ConsumerCountryName').prop("readonly",true);
+		        	$('select#ConsumerCountryName').val(data.ConsumerCountryName);
+					$('select#ConsumerCountryName').attr("disabled", true);
 		        	$('input#AnnounceAPI').val(data.AnnounceAPI);
 		        	$('input#TrackTraceURL').val(data.TrackTraceURL);
 					$('input#ApplicationID').val(data.ApplicationID);

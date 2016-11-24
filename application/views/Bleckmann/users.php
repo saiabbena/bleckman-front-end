@@ -22,7 +22,15 @@
 	        ?>
 
 	  		<?php 
+	  			//echo json_encode($allUsers);
 	  			for($i=0; $i<count($allUsers); $i++) {
+	  				$selCountry = '';
+	  				for($j=0;$j<count($allCountries);$j++) {
+				    	if ( $allUsers[$i]['Country'] == $allCountries[$j]['PKCountryId']) {
+				    		$selCountry = $allCountries[$j]['CountryName'];
+				        	break;
+						}
+				    }
 					echo '
 						<div class="well" style="background-color:#f2f2f2;border-bottom: 5px solid #22B8AA; padding-bottom: 40px;">
 						  <div class="list-group-item">
@@ -38,7 +46,7 @@
 						      <h3 class="list-group-item-heading"><b>'. $allUsers[$i]['FirstName'] .' ' . $allUsers[$i]['LastName'] .'</b></h3>
 						      <p class="list-group-item-text" style="padding-bottom:8px;"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">phone</i>'. $allUsers[$i]['Phone'] . '</p>
 						      <p class="list-group-item-text" style="padding-bottom:8px;"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">email</i>'. $allUsers[$i]['EmailAddress'] .'</p>
-						      <p class="list-group-item-text"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">location_on</i>'. $allUsers[$i]['PostalCode']. ', ' . $allUsers[$i]['City'] . ', ' . $allUsers[$i]['State'] . ', ' . $allUsers[$i]['Country']  .'</p>
+						      <p class="list-group-item-text"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">location_on</i>'. $allUsers[$i]['PostalCode']. ', ' . $allUsers[$i]['City'] . ', ' . $allUsers[$i]['State'] . ', ' . $selCountry  .'</p>
 						    </div>
 						  </div>
 						</div>';
@@ -86,7 +94,7 @@
               	<form method="POST" action="submitUserInfo" id="user-info-form">
 	              <div class="modal-header">
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                <h4 class="modal-title" id="myUserLabel" >Add a User</h4>
+	                <h4 class="modal-title" id="myUserLabel" ></h4>
 	              </div>
 	              <div class="modal-body">
 						<div class='loading' style="display:none;">
@@ -142,7 +150,6 @@
 				                  			echo '<option value="' . $allRoles[$i]['PKRoleID'].'">' . $allRoles[$i]['RoleName'] . '</option>';
 				                  		}
 				                  	}
-				                  	
 				                  	echo '</select>';
 				                  ?>
 				                </div>
@@ -178,13 +185,21 @@
 				                </div>
 			                </div>
 			                <div class="col-md-3">
-				              	<div class="form-group label-floating">
-				                  <label for="i5" class="control-label">Country</label>
-				                  <input id="Country" type="text" name="Country" class="form-control" value="">
-				                  <span class="help-block">Enter Country</span>
-				                </div>
+					            <div class="form-group label-floating">
+					              	<label class="control-label">Country</label>
+					                  <?php
+					                  	//echo json_encode($allCountries);
+					                  	echo '<select class="form-control" id="Country" name="Country">';
+					                  	echo '<option value="-1">Select a Country &darr;</option>';
+					                  	for ($i=0; $i<count($allCountries); $i++) { 
+					                  		if ( $allCountries[$i]['IsActive'] ) {
+					                  			echo '<option value="' . $allCountries[$i]['PKCountryId'].'">' . $allCountries[$i]['CountryName'] . '</option>';
+					                  		}
+					                  	}
+					                  	echo '</select>';
+					                  ?>
+					            </div>
 			                </div>
-
 		                </div>
 		                
 		               	<div class="row login-info">
