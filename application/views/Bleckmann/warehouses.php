@@ -45,11 +45,21 @@
 				              		echo '<div class="row">
 							                	<div class="col-md-6">
 									              	<div class="form-group label-floating">
-									                  <label class="control-label">Street</label>
+									                  <label class="control-label">Street1</label>
 									                  <input type="text" name="Warehouses[' . $i .'][Street]" class="form-control" value="'. $allWarehouses[$i]['Street'] .'">
-									                  <span class="help-block">Edit Street</span>
+									                  <span class="help-block">Edit Street1</span>
 									                </div>
 									            </div>
+							                	<div class="col-md-6">
+									              	<div class="form-group label-floating">
+									                  <label class="control-label">Street2</label>
+									                  <input type="text" name="Warehouses[' . $i .'][Street2]" class="form-control" value="'. $allWarehouses[$i]['Street2'] .'">
+									                  <span class="help-block">Edit Street2</span>
+									                </div>
+									            </div>
+
+							          		</div>';
+							        echo '<div class="row">
 							                	<div class="col-md-6">
 									              	<div class="form-group label-floating">
 									                  <label class="control-label">House Number</label>
@@ -57,25 +67,23 @@
 									                  <span class="help-block">Edit House Number</span>
 									                </div>
 									            </div>
-							          		</div>';
-				              		echo '<div class="row">
-							                	<div class="col-md-4">
+							                	<div class="col-md-6">
 									              	<div class="form-group label-floating">
 									                  <label class="control-label">PostalCode</label>
 									                  <input type="text" name="Warehouses[' . $i .'][PostalCode]" class="form-control" value="'. $allWarehouses[$i]['PostalCode'] .'">
 									                  <span class="help-block">Edit PostalCode</span>
 									                </div>
 									            </div>
-							                	<div class="col-md-4">
+							        		</div>';
+				              		echo '<div class="row">
+							                	<div class="col-md-6">
 									              	<div class="form-group label-floating">
 									                  <label class="control-label">City</label>
 									                  <input type="text" name="Warehouses[' . $i .'][City]" class="form-control" value="'. $allWarehouses[$i]['City'] .'">
 									                  <span class="help-block">Edit City</span>
 									                </div>
 									            </div>
-							                	<div class="col-md-4">
-
-
+							                	<div class="col-md-6">
 									              	<div class="form-group label-floating">
 									              		<label class="control-label">Country</label>
 									                  	<select class="form-control" name="Warehouses[' . $i .'][Country]">
@@ -161,35 +169,44 @@
 							<div class="row">
 				            	<div class="col-md-6">
 					              	<div class="form-group label-floating">
-									    <label class="control-label">Street</label>
+									    <label class="control-label">Street1</label>
 							            <input type="text" name="Warehouses[0][Street]" class="form-control" value="">
-				   	                    <span class="help-block">Edit Street</span>
+				   	                    <span class="help-block">Enter Street1</span>
 									</div>
 					            </div>
+				            	<div class="col-md-6">
+					              	<div class="form-group label-floating">
+									    <label class="control-label">Street2</label>
+							            <input type="text" name="Warehouses[0][Street2]" class="form-control" value="">
+				   	                    <span class="help-block">Enter Street2</span>
+									</div>
+					            </div>
+			          		</div>
+			          		<div class="row">
 							    <div class="col-md-6">
 								   	<div class="form-group label-floating">
 									    <label class="control-label">House Number</label>
 									    <input type="text" name="Warehouses[0][HouseNumber]" class="form-control" value="">
-									    <span class="help-block">Edit House Number</span>
+									    <span class="help-block">Enter House Number</span>
+									</div>
+								</div>
+			                	<div class="col-md-6">
+									<div class="form-group label-floating">
+									    <label class="control-label">PostalCode</label>
+									    <input type="text" name="Warehouses[0][PostalCode]" class="form-control" value="">
+									    <span class="help-block">Enter PostalCode</span>
 									</div>
 								</div>
 			          		</div>
 							<div class="row">
-			                	<div class="col-md-4">
-									<div class="form-group label-floating">
-									    <label class="control-label">PostalCode</label>
-									    <input type="text" name="Warehouses[0][PostalCode]" class="form-control" value="">
-									    <span class="help-block">Edit PostalCode</span>
-									</div>
-								</div>
-							    <div class="col-md-4">
+							    <div class="col-md-6">
 									<div class="form-group label-floating">
 									    <label class="control-label">City</label>
 							            <input type="text" name="Warehouses[0][City]" class="form-control" value="">
-				  	                    <span class="help-block">Edit City</span>
+				  	                    <span class="help-block">Enter City</span>
 						            </div>
 					            </div>
-							    <div class="col-md-4">
+							    <div class="col-md-6">
 					              	<div class="form-group label-floating">
 					              		<label class="control-label">Country</label>
 					                  <?php
