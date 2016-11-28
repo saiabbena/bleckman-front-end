@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Admin extends CI_Controller {
   public function __construct(){
     parent::__construct();
-    //$this->load->library('unit_test');
+    $this->load->library('unit_test');
 	$this->load->library('session');
     //$_SESSION['Customerid']=1;
   	$this->load->helper("url");
@@ -21,8 +21,8 @@ class Admin extends CI_Controller {
       if( (!isset($_SESSION['Apoyar'])) || ($_SESSION['Apoyar'] == '')) {
         redirect('/login');
       }
-    }
-  }
+    }	
+  } 
 
   public function settings(){
     //$data['customerLanguages']=$this->getCustomerLanguages();
@@ -31,7 +31,8 @@ class Admin extends CI_Controller {
     // $data['returnReasons']=$this->getCustomerReturnReasons();
     // echo " id :: " . $_SESSION['Customerid'];
     // echo ",,,,,,,, Apoyar :: " . $_SESSION['Apoyar']; exit();
-    $req = array(
+    
+	$req = array(
       'Customerid'=>$_SESSION['Customerid']
     );
     

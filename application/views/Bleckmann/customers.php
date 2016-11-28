@@ -7,7 +7,7 @@
 	</div>
 	<br>
 	  	<div class='row'>
-        <?php
+        <?php			
           if(isset($_SESSION['message']['customer_panel'])){
             echo'
             <div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">
@@ -30,8 +30,9 @@
 									<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
 									<button type="button" data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" class="btn btn-raised btn-success pull-right edit-customer-pop">Edit</button>
 								</div>
-								<p><a href="carriers/searchbyCID/'.$allCustomers[$i]['PKCustomerID'].'">Carriers</a>
-								<a class="pull-right" href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a></p>
+								<p class="pull-left"><a href="carriers/searchbyCID/'.$allCustomers[$i]['PKCustomerID'].'">Carriers</a> | 
+								<a href="orders/Customerid/'.$allCustomers[$i]['PKCustomerID'].'">Orders</a> |
+								<a href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a></p><p></p>
 							</div>
 						</div>';
 					echo '<div class="modal fade" id="delete-customer-modal'.$allCustomers[$i]['PKCustomerID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
