@@ -1,6 +1,6 @@
 	<div class='col-xs-12 col-md-9' height='100%'>
       <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
-        <h3>Manage Orders </h3>			
+        <h3>Manage Return Orders </h3>			
         <div class="row">			
 			<div class="col-md-6">
 				<?php
@@ -84,7 +84,7 @@
 				  <th>Return Order ID</th>
 				  <th>Tracking</th>
 				  <th>Refund</th>
-				  <th>Carier</th>
+				  <th>Carrier</th>
 				  <th>Status</th>
 				  <th>Action</th>
 				</tr>
