@@ -772,4 +772,11 @@ $(function() {
 		  $.material.options.autofill = true;
 		  $.material.init();
 
+		//hover effect for settings button
+		$('.settings-btn-link').hover(function(){
+			$(this).attr('src', '/img/settings-btn-hover.png');
+			console.log('work');
+		}, function(){
+			$(this).attr('src', '/img/settings-btn.png');
+		});
 	});

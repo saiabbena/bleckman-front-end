@@ -32,7 +32,7 @@
 							<div class="well" style="border-bottom: 5px solid #22B8AA;">
 								<h2><center>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</center></h2>
 								
-								<center><a data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" href="#" class="settings-btn-link"><img src="/img/settings-btn.png" class="img-responsive"></a></center>
+								<center><a data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" href="#" class="edit-customer-pop"><img src="/img/settings-btn.png" class="settings-btn-link img-responsive"></a></center>
 								
 								<div class="row">
 								
