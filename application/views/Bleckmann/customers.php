@@ -18,11 +18,18 @@
 
 	  		<?php				
 	  			for($i=0; $i<count($allCustomers); $i++) {
+	  				$selCountry = '';
+	  				for($j=0;$j<count($allCountries);$j++) {
+				    	if ( $allCustomers[$i]['Country'] == $allCountries[$j]['PKCountryId']) {
+				    		$selCountry = $allCountries[$j]['CountryName'];
+				        	break;
+						}
+				    }
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
 	  				echo '<div class="col-xs-12 col-md-3" height="100%"">
 							<div class="well" style="border-bottom: 5px solid #22B8AA;">
 								<h3>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</h3>
-								<p>'. $allCustomers[$i]['Country'] .'&nbsp;</p>
+								<p>'. $selCountry .'&nbsp;</p>
 								<p>'. $allCustomers[$i]['PhoneNumber'] .'&nbsp;</p>
 								<p><a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'" target="_blank">View Consumer URL</a>&nbsp;</p>
 								<p><a href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a></p>
@@ -30,9 +37,13 @@
 									<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
 									<button type="button" data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" class="btn btn-raised btn-success pull-right edit-customer-pop">Edit</button>
 								</div>
-								<p class="pull-left"><a href="carriers/searchbyCID/'.$allCustomers[$i]['PKCustomerID'].'">Carriers</a> | 
-								<a href="orders/Customerid/'.$allCustomers[$i]['PKCustomerID'].'">Orders</a> |
-								<a href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a></p><p></p>
+								<p>
+									<a href="carriers/searchbyCID/'.$allCustomers[$i]['PKCustomerID'].'">Carriers</a>
+									<a class="pull-right" href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a>
+								</p>
+								<p><a class="pull-right" href="users?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Users</a>
+								<a href="orders/Customerid/'.$allCustomers[$i]['PKCustomerID'].'">Orders</a>
+								</p>
 							</div>
 						</div>';
 					echo '<div class="modal fade" id="delete-customer-modal'.$allCustomers[$i]['PKCustomerID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -121,7 +132,7 @@
 				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">Country
 				                  		</div>
-				                  		<div class="col-md-6">' . $allCustomers[$i]['Country'] . '
+				                  		<div class="col-md-6">' . $selCountry . '
 				                  		</div>
 				                  	</div>
 
@@ -230,14 +241,34 @@
 				                </div>
 			                </div>
 			                <div class="col-md-3">
-				              	<div class="form-group label-floating">
+<!-- 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">Country</label>
 				                  <input id="Country" type="text" name="Country" class="form-control" value="">
 				                  <span class="help-block">Enter Country</span>
+				                </div> -->
+				              	<div class="form-group label-floating">
+				              		<label class="control-label">Country</label>
+				                  <?php
+				                  	//echo json_encode($allCountries);
+				                  	echo '<select class="form-control" id="Country" name="Country">';
+				                  	echo '<option value="-1">Select a Country &darr;</option>';
+				                  	for ($i=0; $i<count($allCountries); $i++) { 
+				                  		if ( $allCountries[$i]['IsActive'] ) {
+				                  			echo '<option value="' . $allCountries[$i]['PKCountryId'].'">' . $allCountries[$i]['CountryName'] . '</option>';
+				                  		}
+				                  	}
+				                  	
+				                  	echo '</select>';
+				                  ?>
 				                </div>
+
+
+
 			                </div>
+
 		                </div>
-		                
+
+
 		               	<div class="row login-info">
 		               		<h4>Login Details</h4>
 		                	<div class="col-md-6">

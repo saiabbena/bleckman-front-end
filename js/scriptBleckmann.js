@@ -14,7 +14,7 @@ $(function() {
 		    $('input#AddressLine1').val('');
 		    $('input#AddressLine2').val('');
 		    $('input#City').val('');
-		    $('input#Country').val('');
+		    $('select#Country').val(-1);
 		    $('input#CustomerName').val('');
 		    $('input#EmailAddress').val('');
 		    $('input#PhoneNumber').val('');
@@ -49,29 +49,37 @@ $(function() {
 			    },
 		        dataType: 'json',
 		        success: function(data) {
-		        	//console.log("response data : ");
-		        	//console.log(data);
+		        	console.log("response data : ");
+		        	console.log(data);
 		        	$('.loading').css({'display':'none'});
 					$('.customer-modal').css({'display':'block'});
 		        	$('h4#myModalLabel').text('Edit Customer Information');
+
+		        	$('input#AddressLine1').removeClass("empty");
+		        	$('input#AddressLine2').removeClass("empty");
+		        	$('input#City').removeClass("empty");
+		        	$('select#Country').removeClass("empty");
+		        	$('input#CustomerName').removeClass("empty");
+		        	$('input#EmailAddress').removeClass("empty");
+		        	$('input#PhoneNumber').removeClass("empty");
+		        	$('input#PostalCode').removeClass("empty");
+		        	$('input#State').removeClass("empty");
+					$('input#URL').removeClass("empty");
+		        	
 		        	$('input#AddressLine1').val(data.AddressLine1);
 		        	$('input#AddressLine2').val(data.AddressLine2);
 		        	$('input#City').val(data.City);
-		        	$('input#Country').val(data.Country);
+		        	$('select#Country').val(data.Country);
 		        	$('input#CustomerName').val(data.CustomerName);
 		        	$('input#EmailAddress').val(data.EmailAddress);
 		        	$('input#PhoneNumber').val(data.PhoneNumber);
 		        	$('input#PostalCode').val(data.PostalCode);
-		        	
 		        	$('input#State').val(data.State);
 					$('#view_url #customer_id').text(data.PKCustomerID);
 					$('input#URL').val($('#view_url').text());
-
-		        	// $('input#Username').val(data.Username);
-		        	// $('input#Password').val(data.Password);
 		        	$('input#PKCustomerID').val(data.PKCustomerID);
 		        	$('div.login-info').hide();
-
+		        	$.material.init();
 		        },
 		        fail: function(data){
 		          console.log(data);
@@ -140,10 +148,10 @@ $(function() {
 		$(".add-user-pop").click(function(){
 			var validator1 = $( "#user-info-form" ).validate();
 			validator1.resetForm();
-		    $('h4#myModalLabel').text('Add a User');
+		    $('h4#myUserLabel').text('Add a User');
 		    $('input#Address').val('');
 		    $('input#City').val('');
-		    $('input#Country').val('');
+		    $('select#Country').val(-1);
 		    $('input#FirstName').val('');
 		    $('input#LastName').val('');
 		    $('input#EmailAddress').val('');
@@ -156,59 +164,18 @@ $(function() {
 		    $('select#FKRoleID').val('-1');
 		    $('div.login-info').show();
 		});
-		$(".edit-user-pop").click(function(){
-			$('.loading').css({'display':'block'});
-			$('.user_div').css({'display':'none'});
-			var validator1 = $( "#user-info-form" ).validate();
-			validator1.resetForm();
-			user_array = $(this).attr("id").split("-");
-			var selUserId = user_array[2];
-			//alert(selCustId);
-			var apiCall=url+'User/GetActiveUserbyId?Userid=' + selUserId;
-			//console.log("apiCall : " + apiCall);
-			$.ajax({
-		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
-		        dataType: 'json',
-		        success: function(data) {
-		        	//console.log("response data : ");
-		        	//console.log(data);
-					$('.loading').css({'display':'none'});
-					$('.user_div').css({'display':'block'});
-		        	$('h4#myModalLabel').text('Edit User Information');
-		        	$('input#FirstName').val(data.FirstName);
-		        	$('input#LastName').val(data.LastName);
-		        	$('input#EmailAddress').val(data.EmailAddress);
-		        	$('input#Phone').val(data.Phone);
-		        	$('input#Address').val(data.Address);
-		        	$('input#City').val(data.City);
-		        	$('input#State').val(data.State);
-		        	$('input#Country').val(data.Country);
-		        	$('input#PostalCode').val(data.PostalCode);
-		        	$('select#FKRoleID').val(data.FKRoleID);
-		        	
-		        	$('input#PKUserID').val(data.PKUserID);
-		        	$('div.login-info').hide();
-		        },
-		        fail: function(data){
-		          console.log(data);
-		        }
-		      });
-		});
+
 		$("#user-info-form").validate({
 				focusCleanup: true,
 		        rules: {
 		            FirstName: "required",
-		            PostalCode: "required",
+		            LastName : "required",
+		            //PostalCode: "required",
 		            EmailAddress: {
 		                required: true,
 		                email: true
 		            },
-		            Address : "required",
-		            Country: "required",
+		            //Country: "required",
 		            FKRoleID: {
 		            	valueNotEquals: -1
 		            },
@@ -242,10 +209,10 @@ $(function() {
 		        },
 		        messages: {
 		            FirstName: "Please enter First Name",
-		            PostalCode: "Please enter Postal Code",
+		            LastName: "Please enter Last Name",
+		            //PostalCode: "Please enter Postal Code",
 		            EmailAddress: "Please enter a valid email address",
-		            Address: "Please enter Address",
-		            Country: "Please enter Country Name",
+		            //Country: "Please enter Country Name",
 		            FKRoleID:"Please select a role",
 		            Username: "Please enter Username",
 		            Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& "
@@ -342,8 +309,8 @@ $(function() {
 		    $('input#APIKey').val('');
 		    $('input#APIURL').val('');
 		    $('input#FKCustomerID').val('');
-		    $('input#ConsumerCountryName').val('');
-			$('input#ConsumerCountryName').prop("readonly",false);
+		    $('select#ConsumerCountryName').val(-1);
+			$('select#ConsumerCountryName').prop("readonly",false);
 		    $('input#AnnounceAPI').val('');
 		    $('input#TrackTraceURL').val('');
 			$('input#ApplicationID').val('');			
@@ -355,6 +322,7 @@ $(function() {
 			carrier_array = $(this).attr("id").split("_");
 			var selCarrierId = carrier_array[1];
 			//alert(selCustId);
+			$.material.options.autofill = true;
 			var apiCall=url+'Carrier/GetCarrierbyId?CarrierId=' + selCarrierId;
 			//console.log("apiCall : " + apiCall);
 			$('#loadingspin').css({'display':'block'});//Hide spin image
@@ -375,14 +343,15 @@ $(function() {
 		        	$('input#APIKey').val(data.APIKey);
 		        	$('input#APIURL').val(data.APIURL);
 		        	$('input#FKCustomerID').val(data.FKCustomerID);
-		        	$('input#ConsumerCountryName').val(data.ConsumerCountryName);
-					$('input#ConsumerCountryName').prop("readonly",true);
+		        	$('select#ConsumerCountryName').val(data.ConsumerCountryName);
+					$('select#ConsumerCountryName').attr("disabled", true);
 		        	$('input#AnnounceAPI').val(data.AnnounceAPI);
 		        	$('input#TrackTraceURL').val(data.TrackTraceURL);
 					$('input#ApplicationID').val(data.ApplicationID);
 					$('input#LabelAPI').val(data.LabelAPI);		        	
 		        	$('input#PKCarrierID').val(data.PKCarrierID);
-					$('#loadingspin').css({'display':'none'});//Hide spin image	        	
+					$('#loadingspin').css({'display':'none'});//Hide spin image	   
+					$.material.init();     	
 		        },
 		        fail: function(data){
 		          console.log(data);
@@ -438,20 +407,151 @@ $(function() {
 			
 		});
 		//console.log("customerid : " + customerId);
-		if (customerId == ''){
-			$('#showcustomerSelect').prop("checked", false);
-			$('#select-customer-div').hide();
-			$('.customer-assign').hide();
-		} else {
-		//if ( customerId ) {
-			$('.loading-screen').show();
-			$('#showcustomerSelect').prop("checked", true);
-			$('#select-customer-div').show();
-			$("#select-customer").val(customerId);
-			$('.customer-assign').show();
-			getCustomerLanguages(customerId);
+		var url_val = window.location.href.split('?')[0];
+		var url_val1 = url_val.split('#')[0];
+		var loc = url_val1.substr(window.location.href.lastIndexOf('/') + 1);
+		console.log(loc);
+		if ( loc == 'languages') {
+			if (customerId == '') {
+				$('#showcustomerSelect').prop("checked", false);
+				$('#select-customer-div').hide();
+				$('.customer-assign').hide();
+			} else {
+			//if ( customerId ) {
+				$('.loading-screen').show();
+				$('#showcustomerSelect').prop("checked", true);
+				$('#select-customer-div').show();
+				$("#select-customer").val(customerId);
+				$('.customer-assign').show();
+				getCustomerLanguages(customerId);
+			}
+		} else if ( loc == 'users') {
+			if (customerId == ''){
+				//console.log("allUsers : ");
+				//console.log(allUsers);
+				formatUsersData(allUsers);
+				$('#showcustomerSelect-Users').prop("checked", false);
+				$("#select-customer").val(customerId);
+				$('.customer-assign').hide();
+
+			} else {
+				//alert('customerId : ' + customerId );
+				$('.loading-screen').show();
+				$('#showcustomerSelect-Users').prop("checked", true);
+				$('#select-customer-div-users').show();
+				$("#select-customer-user").val(customerId);
+				$('.customer-assign').show();
+				getCustomerUsers(customerId);
+			}
 		}
 
+		$('#showcustomerSelect-Users').click(function() {
+		    //alert(this.checked);
+		    if ( this.checked == true ) {
+		    	$('#select-customer-div-users').show();
+		    	
+		    } else {
+		    	$('#select-customer-div-users').hide();
+		    	$('.customer-assign').hide();
+		    }
+		});
+		$("#select-customer-user").on('change', function(){
+			//alert("change" + $(this).val());
+			$('.loading-screen').show();
+			if ( $(this).val() > -1 ) {
+				getCustomerUsers($(this).val());
+			}
+		});
+		function getCustomerUsers(custid) {
+			apiCall=url+'user/GetUsersbyCustomeridandUnassigned';
+		    $.ajax({
+		      url: apiCall,
+		      type: 'get',
+			  headers: {
+				Apoyar: apoyarToken
+			  },
+		      data: { customerid: custid },
+		      dataType: 'json',
+		      success: function (response) {
+		      	$('.customer-assign').show();
+		      	formatUsersData(response);
+		      	$('.loading-screen').hide();
+		      },
+		      fail: function() {
+		      	$('.loading-screen').hide();
+		      }
+		    });
+		}
+		function formatUsersData(response) {
+		      	var tableData = '';
+		        console.log(response);
+		        for(i=0; i<response.length; i++) {
+		        	var selCountry = '';
+			  		for(j=0;j<allCountries.length;j++) {
+						if ( response[i]['Country'] == allCountries[j]['PKCountryId']) {
+							selCountry = allCountries[j]['CountryName'];
+							break;
+						}
+					}
+			        tableData += '<tr>\
+										<td class="customer-assign" style="text-align:center;vertical-align:middle;">\
+									    	<input type="hidden" name="Users[' + i +'][Isactive]" value="0" />\
+											<div class="form-group">\
+												<div class="checkbox">\
+													<label>\
+														<input type="checkbox" id="userAssigned' + i + '" name="Users[' + i +'][Isactive]" value="1"'
+															+ ((response[i]['Fkcustomerid'] > 0 ) ? " checked='checked'" : "") + '>\
+													</label>\
+												</div>\
+											</div>\
+										</td>\
+								<td >\
+								<input type="hidden" name="Users[' + i +'][PKUserID]" value="' + response[i]['PKUserID'] + '">\
+								<div style="background-color:#f2f2f2;border-bottom: 1px solid #22B8AA; padding-bottom: 18px;margin-bottom:6px;padding:10px;">\
+								  <div class="list-group-item">\
+								    <div class="row-action-primary">\
+								      <img class="img-circle" style="line-height:104px;height:72px;width:72px;" src="http://127.0.0.1/img/user.png">\
+								    </div>\
+								    <div class="row-content">\
+								      <div class="least-content hide-xs">\
+								      		<p>'+ response[i]['RoleName'] + '</p>\
+												<a data-toggle="modal" style="color:#f44336;cursor:pointer;" data-target="#delete-user-modal'+ response[i]['PKUserID'] +'" id="delete-user" class=" pull-right"><i class="material-icons">delete</i></a>\
+												<a type="button" class="pull-right edit-user-pop" style="padding-right:12px;color:#4caf50;cursor:pointer;" data-toggle="modal" data-target="#add-user-modal" id="edit-user-'+ response[i]['PKUserID'] +'"><i class="material-icons">mode_edit</i></a>\
+								      </div>\
+								      <h3 class="list-group-item-heading"><b>'+ response[i]['FirstName'] +' ' + response[i]['LastName'] +'</b></h3>\
+								      <p class="list-group-item-text" style="padding-bottom:8px;"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">phone</i>'+ response[i]['Phone'] + '</p>\
+								      <p class="list-group-item-text" style="padding-bottom:8px;"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">email</i>'+ response[i]['EmailAddress'] + '</p>\
+								      <p class="list-group-item-text"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">location_on</i>'+ response[i]['PostalCode']+ ', ' + response[i]['City'] + ', ' + response[i]['State'] + ', ' + selCountry  +'</p>\
+								    </div>\
+								  </div>\
+								</div>\
+							';
+					tableData += '<div class="modal fade" id="delete-user-modal' + response[i]['PKUserID'] + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
+						              <div class="modal-dialog" role="document">\
+						                <div class="modal-content">\
+						                  <form method="POST" action="deleteUser">\
+						                  <div class="modal-header">\
+						                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+						                    <h4 class="modal-title" id="myModalLabel">Delete User - '+ response[i]['FirstName'] + '?</h4>\
+						                  </div>\
+						                  <div class="modal-body">\
+						                    <p>Are you sure you want to delete this User?</p>\
+						    	<input type="hidden" name="PKUserID" value="'+ response[i]['PKUserID'] + '">\
+				                  </div>\
+				                  <div class="modal-footer">\
+				                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+				                    <button type="submit" class="btn btn-danger">Delete</button>\
+				                  </div>\
+				                  </form>\
+				                </div>\
+				              </div>\
+				            </div>\
+				            </td></tr>';
+				}
+		        $('#CustomerUsers').html(tableData);
+		        $.material.init();
+			    
+		}
 		function getCustomerLanguages(custid) {
 			// console.log('allLanguages');
 			// console.log(allLanguages);
@@ -468,7 +568,6 @@ $(function() {
 		        	//console.log('j : ' + j );
 		        	//console.log("PKLanguageID : " + allLanguages[j]['PKLanguageID'] );
 			        for(i=0; i<response.length; i++) {
-			        	
 			        	if ( allLanguages[j]['PKLanguageID'] == response[i]['FkLanguageid'] ) {
 			        		//console.log("FkLanguageid : " + response[i]['FkLanguageid']);
 			        		$('#AssignedtoCustomer-' + j ).prop("checked", true);
@@ -482,6 +581,52 @@ $(function() {
 		      }
 		    });
 		}
+
+		$("#CustomerUsers").on('click', 'a.edit-user-pop', function(){
+			$('.loading').css({'display':'block'});
+			$('.user_div').css({'display':'none'});
+			var validator1 = $( "#user-info-form" ).validate();
+			validator1.resetForm();
+			user_array = $(this).attr("id").split("-");
+			var selUserId = user_array[2];
+			
+			//alert(selUserId);
+			var apiCall=url+'User/GetActiveUserbyId?Userid=' + selUserId;
+			//console.log("apiCall : " + apiCall);
+			$.ajax({
+		        url: apiCall,
+		        type: 'GET',
+			    headers: {
+			        Apoyar: apoyarToken
+			    },
+		        dataType: 'json',
+		        success: function(data) {
+		        	console.log("response data : ");
+		        	console.log(data);
+					$('.loading').css({'display':'none'});
+					$('.user_div').css({'display':'block'});
+		        	$('h4#myUserLabel').text('Edit User Information');
+		        	$('input#FirstName').val(data.FirstName);
+		        	$('input#LastName').val(data.LastName);
+		        	$('input#EmailAddress').val(data.EmailAddress);
+		        	$('input#Phone').val(data.Phone);
+		        	$('input#Address').val(data.Address);
+		        	$('input#City').val(data.City);
+		        	$('input#State').val(data.State);
+		        	$('select#Country').val(data.Country);
+		        	$('input#PostalCode').val(data.PostalCode);
+		        	$('select#FKRoleID').val(data.FKRoleID);
+		        	$('select#Fkcustomerid').val(data.Fkcustomerid);
+		        	$('input#PKUserID').val(data.PKUserID);
+		        	$('div.login-info').hide();
+		        	$.material.init();
+		        },
+		        fail: function(data){
+		          console.log(data);
+		        }
+		      });
+		});
+
 		//Filter all Orders according to the Customer Id
 		$("#orders_by_customer_id").on('change', function(){
 			//alert("change" + $(this).val());
@@ -613,4 +758,5 @@ $(function() {
 		  }
 		  $.material.options.autofill = true;
 		  $.material.init();
+
 	});

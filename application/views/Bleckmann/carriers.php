@@ -22,6 +22,13 @@
 				$existing_country_list = array();
 				if(count($all_carriers_data)>0){
 					for($i=0; $i<count($all_carriers_data); $i++) {
+						$selCountry = '';
+		  				for($j=0;$j<count($allCountries);$j++) {
+					    	if ( $all_carriers_data[$i]['ConsumerCountryName'] == $allCountries[$j]['PKCountryId']) {
+					    		$selCountry = $allCountries[$j]['CountryName'];
+					        	break;
+							}
+					    }
 						$existing_country_list[] = $all_carriers_data[$i]['ConsumerCountryName'];						
 						echo '<div class="col-xs-12 col-md-3" height="100%"">
 								<div class="well" style="border-bottom: 5px solid #22B8AA; padding-bottom: 40px;">
@@ -29,7 +36,7 @@
 									<p>User Name: '. $all_carriers_data[$i]['APIUserName'] .'</p>
 									<p>Key : '. $all_carriers_data[$i]['APIKey'] .'</p>
 									<p>URL: '. $all_carriers_data[$i]['APIURL'] .'</p>
-									<p>Country: '. $all_carriers_data[$i]['ConsumerCountryName'] .'</p>
+									<p>Country: '. $selCountry .'</p>
 									<p>Label: '. $all_carriers_data[$i]['LabelAPI'] .'</p>
 									<p>Announce API: '. $all_carriers_data[$i]['AnnounceAPI'] .'</p>
 									<p>TraceURL: '. $all_carriers_data[$i]['TrackTraceURL'] .'</p>
@@ -139,11 +146,27 @@
 				        </div>
 						<div class="row">
 		                	<div class="col-md-6">
-				              	<div class="form-group label-floating">
+<!-- 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">Customer Country Name</label>
 				                  <input id="ConsumerCountryName" type="text" name="ConsumerCountryName" class="form-control" value="" required />				                  
 								  <span id="duplicate_country" style="display:none;color:#FF0000;">Duplicate Country Name</span>
 								  <span class="help-block">Enter Customer Country Name</span>
+				                </div> -->
+				              	<div class="form-group label-floating">
+				              		<label class="control-label">Customer Country Name</label>
+				                  <?php
+				                  	//echo json_encode($allCountries);
+				                  	echo '<select class="form-control" id="ConsumerCountryName" name="ConsumerCountryName">';
+				                  	echo '<option value="-1">Select Customer Country Name &darr;</option>';
+				                  	for ($i=0; $i<count($allCountries); $i++) { 
+				                  		if ( $allCountries[$i]['IsActive'] ) {
+				                  			echo '<option value="' . $allCountries[$i]['PKCountryId'].'">' . $allCountries[$i]['CountryName'] . '</option>';
+				                  		}
+				                  	}
+				                  	
+				                  	echo '</select>';
+				                  ?>
+									<span id="duplicate_country" style="display:none;color:#FF0000;">Duplicate Country Name</span>
 				                </div>
 				            </div>
 				        

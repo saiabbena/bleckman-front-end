@@ -1,84 +1,80 @@
 <div class='col-xs-12 col-md-9' height='100%'>
+				        	<?php echo'
+	    					<script>
+		        				allUsers = '. json_encode($allUsers) .'
+		        			</script>';
+	        			?>
+	        			<?php echo '<script> customerId="' . $customerId.'";</script>';?>
 	<div class='container-fluid'>
 		<div class="row well" style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
-		<div class='row'>
-			<div class="col-xs-12 col-md-12">
-
-				<button type="button" data-toggle="modal" data-target="#add-user-modal" id='add-user' class='add-user-pop btn btn-raised btn-warning pull-right'>Add User</button>
+		<form method="POST" action="assignUsers">
+			<div class='row'>
+				<div class="col-xs-12 col-md-12">
+					<button type="button" data-toggle="modal" data-target="#add-user-modal" id='add-user' class='add-user-pop btn btn-raised btn-warning pull-right'>Add User</button>
+					<button type="submit" id='save-users' class='btn btn-raised btn-success pull-right'>Save</button>
+				</div>
 			</div>
-		</div>
-	<br>
-
-	<div class="row col-xs-12">
-		<div>
-			<div class="list-group">
-	        <?php
-	          if(isset($_SESSION['message']['user_panel'])){
-	            echo'
-	            <div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">
-	              '.$_SESSION['message']['user_panel'].'
-	            </div>';
-	          }
-	        ?>
-
-	  		<?php 
-	  			for($i=0; $i<count($allUsers); $i++) {
-					echo '
-						<div class="well" style="background-color:#f2f2f2;border-bottom: 5px solid #22B8AA; padding-bottom: 40px;">
-						  <div class="list-group-item">
-						    <div class="row-action-primary">
-						      <img class="img-circle" style="line-height:104px;height:72px;width:72px;" src="' .base_url(). 'img/user.png">
-						    </div>
-						    <div class="row-content">
-						      <div class="least-content hide-xs">
-						      		<p>'. $allUsers[$i]['RoleName'] . '</p>
-										<a data-toggle="modal" style="color:#f44336;cursor:pointer;" data-target="#delete-user-modal'. $allUsers[$i]['PKUserID'] .'" id="delete-user" class=" pull-right"><i class="material-icons">delete</i></a>
-										<a type="button" style="padding-right:12px;color:#4caf50;cursor:pointer;" data-toggle="modal" data-target="#add-user-modal" id="edit-user-'. $allUsers[$i]['PKUserID'] .'" class="pull-right edit-user-pop"><i class="material-icons">mode_edit</i></a>
-						      </div>
-						      <h3 class="list-group-item-heading"><b>'. $allUsers[$i]['FirstName'] .' ' . $allUsers[$i]['LastName'] .'</b></h3>
-						      <p class="list-group-item-text" style="padding-bottom:8px;"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">phone</i>'. $allUsers[$i]['Phone'] . '</p>
-						      <p class="list-group-item-text" style="padding-bottom:8px;"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">email</i>'. $allUsers[$i]['EmailAddress'] .'</p>
-						      <p class="list-group-item-text"><i style="font-size:18px;vertical-align:middle;color:gray;padding-right:4px;" class="material-icons">location_on</i>'. $allUsers[$i]['PostalCode']. ', ' . $allUsers[$i]['City'] . ', ' . $allUsers[$i]['State'] . ', ' . $allUsers[$i]['Country']  .'</p>
-						    </div>
-						  </div>
-						</div>';
-					//delete user modal
-					echo '<div class="modal fade" id="delete-user-modal'.$allUsers[$i]['PKUserID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				              <div class="modal-dialog" role="document">
-				                <div class="modal-content">
-				                  <form method="POST" action="deleteUser">
-				                  <div class="modal-header">
-				                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				                    <h4 class="modal-title" id="myModalLabel">Delete User - '. $allUsers[$i]['FirstName'].'?</h4>
-				                  </div>
-				                  <div class="modal-body">
-				                    <p>Are you sure you want to delete this User?</p>';
-				    echo '<input type="hidden" name="PKUserID" value="'. $allUsers[$i]['PKUserID'].'">';
-		            echo'
-		                  </div>
-		                  <div class="modal-footer">
-		                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		                    <button type="submit" class="btn btn-danger">Delete</button>
-		                  </div>
-		                  </form>
-		                </div>
-		              </div>
-		            </div>
-		            ';
-				}
-			?>
+			<br>
+			<div class="row">
+				<div class="col-md-6">
+					<h4>Manage Users for a specific customer ?</h4>
+				</div>
+				<div class="col-md-6">
+					<div class="form-group" style="text-align: left;vertical-align: middle;padding-bottom: 12px;margin:9px 0 0 0;" >
+						<div class="togglebutton">
+							<label>
+								<input type="checkbox" id="showcustomerSelect-Users" value="0">
+							</label>
+						</div>
+					</div>
+				</div>
+			
+				<div class="col-md-offset-1 col-md-8">
+					<?php
+						//echo "allCustomers : " . json_encode($allCustomers);
+						echo '<div class="form-group" id="select-customer-div-users" style="display:none;"><label>Select a Customer</label><select id="select-customer-user" name="Fkcustomerid" class="form-control">';
+						echo '<option value="-1">Select a Customer</option>';
+						for($i=0;$i<count($allCustomers);$i++) {
+							echo '<option value="'. $allCustomers[$i]['PKCustomerID'] . '">' . $allCustomers[$i]['CustomerName'] . '</option>';
+						}
+						echo '</select></div>';
+					?>
+				</div>
 			</div>
+	        	    <?php echo'
+    					<script>
+	        				allCountries = '. json_encode($allCountries) .'
+	        			</script>';
+	        	?>
+			<div class="row col-xs-12">
+				<div>
+					<div class="list-group">
+			        <?php
+			          if(isset($_SESSION['message']['user_panel'])){
+			            echo'
+			            <div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">
+			              '.$_SESSION['message']['user_panel'].'
+			            </div>';
+			          }
+			        ?>
+			        <table class="table">
+			        	<thead>
+			        		<tr>
+			        			<th class="customer-assign">Assigned to Customer?</th>
+			        			<th>User Details</th>
+			        		</tr>
+			        	</thead>
+			        	<tbody id="CustomerUsers">
+			        		<!-- Loaded from formatUsersData function-->
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</div>
+		</form>
 		</div>
-	</div>
-	
-	</div>
 	</div>
 </div>
-
-
-
-
-
         <!-- Add Customer Modal -->
         <div class="modal fade" id="add-user-modal" tabindex="-1" role="dialog" aria-labelledby="myUserLabel">
           <div class="modal-dialog" role="document">
@@ -86,7 +82,7 @@
               	<form method="POST" action="submitUserInfo" id="user-info-form">
 	              <div class="modal-header">
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                <h4 class="modal-title" id="myUserLabel" >Add a User</h4>
+	                <h4 class="modal-title" id="myUserLabel" ></h4>
 	              </div>
 	              <div class="modal-body">
 						<div class='loading' style="display:none;">
@@ -98,6 +94,17 @@
 						  </center>
 						</div>
 					<div class="user_div">
+		                <div class="row">
+					<?php
+						//echo "allCustomers : " . json_encode($allCustomers);
+						echo '<div class="form-group"><label>Select a Customer</label><select id="Fkcustomerid" name="Fkcustomerid" class="form-control">';
+						echo '<option value="-1">Select a Customer</option>';
+						for($i=0;$i<count($allCustomers);$i++) {
+							echo '<option value="'. $allCustomers[$i]['PKCustomerID'] . '">' . $allCustomers[$i]['CustomerName'] . '</option>';
+						}
+						echo '</select></div>';
+					?>
+		                </div>
 		                <div class="row">
 		                	<div class="col-md-6">
 				              	<div class="form-group label-floating">
@@ -142,7 +149,6 @@
 				                  			echo '<option value="' . $allRoles[$i]['PKRoleID'].'">' . $allRoles[$i]['RoleName'] . '</option>';
 				                  		}
 				                  	}
-				                  	
 				                  	echo '</select>';
 				                  ?>
 				                </div>
@@ -178,16 +184,24 @@
 				                </div>
 			                </div>
 			                <div class="col-md-3">
-				              	<div class="form-group label-floating">
-				                  <label for="i5" class="control-label">Country</label>
-				                  <input id="Country" type="text" name="Country" class="form-control" value="">
-				                  <span class="help-block">Enter Country</span>
-				                </div>
+					            <div class="form-group label-floating">
+					              	<label class="control-label">Country</label>
+					                  <?php
+					                  	//echo json_encode($allCountries);
+					                  	echo '<select class="form-control" id="Country" name="Country">';
+					                  	echo '<option value="-1">Select a Country &darr;</option>';
+					                  	for ($i=0; $i<count($allCountries); $i++) { 
+					                  		if ( $allCountries[$i]['IsActive'] ) {
+					                  			echo '<option value="' . $allCountries[$i]['PKCountryId'].'">' . $allCountries[$i]['CountryName'] . '</option>';
+					                  		}
+					                  	}
+					                  	echo '</select>';
+					                  ?>
+					            </div>
 			                </div>
-
 		                </div>
-		                
-		               	<div class="row login-info">
+
+ 		               	<div class="row login-info">
 		               		<h4>Login Details</h4>
 		                	<div class="col-md-6">
 				              	<div class="form-group label-floating">

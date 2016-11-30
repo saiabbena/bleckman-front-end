@@ -293,3 +293,17 @@
     </div>
   </div>
   
+  <div class='container-fluid form5'>
+    <div class='row'>
+      <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
+        <div class='well bm-well' <?php echo $border_bottom?>>
+          <h2><center>Thank You!</center></h2>
+          <p class='text-center'><?php echo $customerLanguages['Page4heading']?></p>
+          <b>Dear Customer</b><br><br>
+          At this moment our servers are too busy to proccess your request. As soon as we are able, we will send you and email confirmation with the label and further instructions on what to do.
+          <br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  

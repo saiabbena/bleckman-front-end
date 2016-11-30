@@ -433,12 +433,20 @@ $(document).ready(function(){
         //$('#carrier-label-modal').modal('show');
         
         $('.form3').hide();
-        $('.form4').show();
         
-        
-        $('#label-iframe2').attr('href', API_BASE_URL_FE+'Labels/TrueReligion/RoyalMail/'+response.Id+'.pdf');
-        $('.loading-screen').slideUp('slow');
-        //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
+        if(response.Status='2000'){
+          $('.form4').show();
+          
+          
+          $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
+          $('.loading-screen').slideUp('slow');
+          //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
+        }
+        else{
+          $('.form5').show();
+          $('.loading-screen').slideUp('slow');
+        }
+          
       },
     }).fail(function(response){
         console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
