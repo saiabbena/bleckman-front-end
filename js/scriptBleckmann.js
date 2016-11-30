@@ -21,8 +21,8 @@ $(function() {
 		    $('input#PostalCode').val('');
 		    $('input#URL').val('');
 		    $('input#State').val('');
-		    $('input#Username').val('');
-		    $('input#Password').val('');
+		    // $('input#Username').val('');
+		    // $('input#Password').val('');
 		    $('input#PKCustomerID').val('');
 		    $('div.login-info').show();
 		});
@@ -97,34 +97,34 @@ $(function() {
 		            },
 		            AddressLine1 : "required",
 		            Country: "required",
-		            Username : {
-		            	required: function(element) {
-		            		//alert("customerid : " + $('#PKCustomerID').val());
-		            		if ( $('#PKCustomerID').val() ) {
-		            			return false;
-		            		} else {
-		            			return true;
-		            		}
-		            	}
-		            },
-					Password : {
-		            	required: function(element) {
-		            		//alert("customerid : " + $('#PKCustomerID').val());
-		            		if ( $('#PKCustomerID').val() ) {
-		            			return false;
-		            		} else {
-		            			return true;
-		            		}
-		            	}
-		            },
-		            Password : {
-						 required: true,						 
-						 //New Contain at least 6 characters.contain at least 1 number.,contain at least 1 lowercase character (a-z),contain at least 1 uppercase character (A-Z),contains only 0-9a-zA-Z.
-						 //With Special Chars // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/ 
-						 //Without Special Chars /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
-						 regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/     	
+		   //          Username : {
+		   //          	required: function(element) {
+		   //          		//alert("customerid : " + $('#PKCustomerID').val());
+		   //          		if ( $('#PKCustomerID').val() ) {
+		   //          			return false;
+		   //          		} else {
+		   //          			return true;
+		   //          		}
+		   //          	}
+		   //          },
+					// Password : {
+		   //          	required: function(element) {
+		   //          		//alert("customerid : " + $('#PKCustomerID').val());
+		   //          		if ( $('#PKCustomerID').val() ) {
+		   //          			return false;
+		   //          		} else {
+		   //          			return true;
+		   //          		}
+		   //          	}
+		   //          },
+		   //          Password : {
+					// 	 required: true,						 
+					// 	 //New Contain at least 6 characters.contain at least 1 number.,contain at least 1 lowercase character (a-z),contain at least 1 uppercase character (A-Z),contains only 0-9a-zA-Z.
+					// 	 //With Special Chars // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/ 
+					// 	 //Without Special Chars /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
+					// 	 regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/     	
 						
-		            }
+		   //          }
 		        },
 		        messages: {
 		            CustomerName: "Please enter Customer Name",
@@ -132,8 +132,8 @@ $(function() {
 		            EmailAddress: "Please enter a valid email address",
 		            AddressLine1: "Please enter Address",
 		            Country: "Please enter Country Name",
-		            Username: "Please enter Username",
-		            Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& "
+		            //Username: "Please enter Username",
+		            //Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& "
 		        },
 		        submitHandler: function(form) {
 		        	//alert("submit");

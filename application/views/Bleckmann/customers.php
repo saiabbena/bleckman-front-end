@@ -269,7 +269,7 @@
 		                </div>
 
 
-		               	<div class="row login-info">
+<!-- 		               	<div class="row login-info">
 		               		<h4>Login Details</h4>
 		                	<div class="col-md-6">
 				              	<div class="form-group label-floating">
@@ -285,7 +285,7 @@
 				                  <span class="help-block">Enter Password(e.g. Abcde5#)</span>
 				                </div>
 				            </div>
-		            	</div>
+		            	</div> -->
 		            </div>
 		          </div>
 		          <input id="PKCustomerID" type="hidden" name="PKCustomerID" value="">

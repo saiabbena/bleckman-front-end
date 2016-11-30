@@ -36,12 +36,16 @@ class Login extends CI_Controller {
     //echo $_SERVER['SERVER_ADDR'];exit();
     $response = $this->httpRequests->httpPost_Login('User/PostLogin', $post_data );
 
-//    echo " response : " . $response;exit();
+    //echo " response : " . json_encode($response);exit();
     if ( $response['Userid'] > 0 && $_SESSION['Apoyar'] ) {
       if ( $response['Roleid'] == 100 ) { // Customer
         redirect(base_url() . 'index.php/admin/orders');
       } else if ( $response['Roleid'] == 99  ) { // Bleckmann User
-        redirect(base_url() . 'index.php/Bleckmann/customers');
+        if ( $response['BMRoleid'] == 1 ) { //admin role
+          redirect(base_url() . 'index.php/Bleckmann/customers');
+        } else { //Customer Service role
+          redirect(base_url() . 'index.php/admin/orders');
+        }
       }
     } else {
       $_SESSION['message']['screen1-error']='Please provide valid credentials to login';
