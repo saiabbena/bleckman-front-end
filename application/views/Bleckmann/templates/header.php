@@ -13,8 +13,8 @@
     
     <!--Bootstrap-->
     <link rel="stylesheet" href="<?php echo base_url();?>vendor/bootstrap/css/bootstrap.min.css" type="text/css" />
-    <script type="text/javascript" src="<?php echo base_url();?>vendor/bootstrap/js/bootstrap.min.js"></script>
-    
+    <script type="text/javascript" src="<?php echo base_url();?>vendor/bootstrap/js/bootstrap.min.js"></script>	
+	
     <!--Bootstrap material-->
     <link rel="stylesheet" href="<?php echo base_url();?>vendor/bootstrap-material/css/bootstrap-material-design.min.css" type="text/css" />
     <link rel="stylesheet" href="<?php echo base_url();?>vendor/bootstrap-material/css/ripples.min.css" type="text/css" />
@@ -43,6 +43,8 @@
       <?php echo 'var allLanguages=[];';?>
     </script>
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptBleckmann.js"></script>
+	<!--<script type="text/javascript" src="<?php echo base_url();?>js/jquery-1.12.3.js"></script>-->
+	<script type="text/javascript" src="<?php echo base_url();?>js/jquery.dataTables.min.js"></script>
     
   </head>
   <body id='override'>
@@ -105,6 +107,12 @@
             <div  <?php if($this->uri->segment(2) == 'languages'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
               <div class='hidden-lg hidden-md'></div>
               <img src='<?php echo base_url();?>img/i-15.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Languages</span>
+            </div>
+          </a>
+		  <a href='<?php echo base_url()?>index.php/Bleckmann/orders'>
+            <div  <?php if($this->uri->segment(2) == 'orders'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+              <div class='hidden-lg hidden-md'></div>
+              <img src='<?php echo base_url();?>img/i-16.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Orders</span>
             </div>
           </a>
         </div>

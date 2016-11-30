@@ -28,6 +28,7 @@ class Bleckmann extends CI_Controller {
     if(isset($_SESSION['message'])){
       unset($_SESSION['message']);
     }
+	
   }
   public function users() {
     $data['customerId'] = $this->input->get('Customerid');
@@ -80,6 +81,45 @@ class Bleckmann extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
+  public function orders($param1='',$param2='') {
+	$param2 = ($param2 != '')?$param2:'-1';
+	$data['Customerid'] = $param2;
+	$data['customer_name'] = '';
+	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', ''); 
+    $this->load->view('Bleckmann/templates/header');
+    $this->load->view('Bleckmann/orders', $data);
+    $this->load->view('Bleckmann/templates/footer');
+    if(isset($_SESSION['message'])){
+      unset($_SESSION['message']);
+    }
+  } 
+	public function postComment() {
+		header('Content-Type: application/json');
+		echo "in php : ". "\r\n";
+		echo json_encode($_POST) . "\r\n";
+
+		$server_output = $this->httpRequests->httpPost('Returnorder/PostUpdateBMReturnorderComment', json_encode($_POST) );
+
+		// $ch = curl_init();
+
+		// curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/Returnorder/PostUpdateReturnorderComment");
+		// curl_setopt($ch, CURLOPT_POST, 1);
+		// curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($_POST));
+
+		// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+		// $server_output = curl_exec ($ch);
+
+		// curl_close ($ch);
+
+		// echo json_encode($server_output);
+		$_SESSION['message']['orders-messages']='Comment Saved';
+
+		echo var_dump($_SESSION['message']);
+
+		 redirect(base_url() . 'index.php/Bleckmann/orders');
+
+  }  
   public function submitWarehouses() {
   	//print_r($_POST);exit();
   	$server_output = $this->httpRequests->httpPost('Location/PostManageLocation', json_encode($_POST) );
@@ -134,7 +174,6 @@ class Bleckmann extends CI_Controller {
 		$_SESSION['message']['roles_panel']='Error : ' . $server_output['Messages'];
 		$_SESSION['message']['alert_status']='warning';
 	}
-
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#roles_panel');
   }
@@ -190,7 +229,7 @@ class Bleckmann extends CI_Controller {
   }
   public function deleteUser() {
   	$_POST['IsActive'] = 'false';
-	//print_r($_POST);
+	//print_r($_POST);exit();
   	$server_output = $this->httpRequests->httpPost('User/PostIsActiveUser', json_encode($_POST) );
     echo json_encode($server_output);
     if ( $server_output['Status'] == 1 ) { 
