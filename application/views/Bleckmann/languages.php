@@ -49,7 +49,7 @@
 									echo '</select></div>';
 								?>
 						</div>
-						</div>
+					</div>
 					
 					<div class="row">
 							<table style="width: 100%" class='table'>

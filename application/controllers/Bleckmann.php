@@ -30,8 +30,10 @@ class Bleckmann extends CI_Controller {
     }
   }
   public function users() {
+    $data['customerId'] = $this->input->get('Customerid');
   	$data['allUsers'] = $this->httpRequests->httpGet('User/GetAllActiveUsers', '');
   	$data['allRoles'] = $this->httpRequests->httpGet('Role/GetAllActiveRoles', '');
+    $data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
   	$data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
 
     $this->load->view('Bleckmann/templates/header');
@@ -141,17 +143,50 @@ class Bleckmann extends CI_Controller {
   	$server_output = $this->httpRequests->httpPost('User/PostManageUser', json_encode($_POST) );
     echo json_encode($server_output);
     //$_SESSION['message']['user_panel']='User Information Saved';
-
     if ( $server_output['Id'] ) { 
     	$_SESSION['message']['user_panel']='User Information Saved';
     	$_SESSION['message']['alert_status']='success';
-	} else {
-		$_SESSION['message']['user_panel']='Error : ' . $server_output['Messages'];
-		$_SESSION['message']['alert_status']='warning';
-	}
+	  } else {
+		  $_SESSION['message']['user_panel']='Error : ' . $server_output['Messages'];
+		  $_SESSION['message']['alert_status']='warning';
+	  }
 
     echo var_dump($_SESSION['message']);
+    // header('Location: ' . $_SERVER['HTTP_REFERER'].'#user_panel');
+    //     echo var_dump($_SESSION['message']);
+    if ( $_POST['Fkcustomerid'] ) {
+      redirect(base_url() . 'index.php/Bleckmann/users?Customerid='.$_POST['Fkcustomerid']);
+    } else {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#user_panel');
+    }
+  }
+  public function assignUsers() {
+    //print_r(json_encode($_POST));
+    for($i=0;$i<count($_POST['Users']);$i++) {
+      if ($_POST['Users'][$i]['Isactive'] == 1) {
+        //array_splice($_POST['Users'], $i);
+        $_POST['Users'][$i]['Isactive'] = true;
+      } else {
+        $_POST['Users'][$i]['Isactive'] = false;
+      }
+    }
+    //print_r(json_encode($_POST));exit();
+    $server_output = $this->httpRequests->httpPost('user/PostAssigntoCustomer', json_encode($_POST) );
+    //echo json_encode($server_output);exit();
+    //$_SESSION['message']['user_panel']='User Information Saved';
+    if ( $server_output['Status'] ) { 
+      $_SESSION['message']['user_panel']='Saved';
+      $_SESSION['message']['alert_status']='success';
+    } else {
+      $_SESSION['message']['user_panel']='Error : ' . $server_output['Messages'];
+      $_SESSION['message']['alert_status']='warning';
+    }
+    echo var_dump($_SESSION['message']);
+    if ( $_POST['Fkcustomerid'] ) {
+      redirect(base_url() . 'index.php/Bleckmann/users?Customerid='.$_POST['Fkcustomerid']);
+    } else {
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#user_panel');
+    }
   }
   public function deleteUser() {
   	$_POST['IsActive'] = 'false';
