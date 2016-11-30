@@ -33,19 +33,19 @@ function getOrderAndAuth(inputData){
   
   $.get(apiCall, inputData)
   .always(function(data){
-    console.log(data)
+    //console.log(data)
   })
   .success(function(data, status, xhr){
-    console.log(data);
+    //console.log(data);
     //function validate stuff
     if(data && data['ConsumerEmail'].toLowerCase()==inputData['Email'].toLowerCase()){
       result={type: 'screen1', status: true, message: 'You have been authenticated', result: data};
-      console.log("data is : ");
-      console.log(data);
+      //console.log("data is : ");
+      //console.log(data);
       secondScreen(result);
       $('.form2').show();
       $('.loading-screen').slideUp('slow');
-      console.log('success')
+      //console.log('success')
       result.token=xhr.getResponseHeader("Apoyar");
     }
     else{
@@ -66,6 +66,7 @@ function getOrderAndAuth(inputData){
 function secondScreen(result){
   var html='';
   var html2='';
+  //console.log(result);
   for (i=0; i<result['result']['BMOrderLine'].length; i++){
     result['result']['BMOrderLine'][i]['Price'];
   }
@@ -149,6 +150,7 @@ function secondScreen(result){
 \
         </tr>\
     ';
+	 console.log(html);
       html2=html2+'\
       <div class="modal fade" id="moreInfo'+result['result']['BMOrderLine'][i].OrderlineID+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
         <div class="modal-dialog" role="document">\
@@ -296,6 +298,7 @@ $(document).ready(function(){
     setTimeout(function(){
       $('.form1').hide();
       var inputData={'Orderid': $('#f2').val(), 'Email': $('#f1').val(), Customerid: customerId};
+	  //console.log(inputData);
       getOrderAndAuth(inputData);
     }, 500);
     submition.OrderId=($('#f2').val()).toString();

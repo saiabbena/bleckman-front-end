@@ -4,29 +4,29 @@
         <br><br>
 		<div class='container-fluid form1'>
 			<div class='row'>
-			  <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
-				<div class='well bm-well'>
+			  <div class='col-xs-12 col-sm-12'>
+				<div class='well bm-well' style="min-height: 185px !important;">
 					<h2><center>Return Order</center></h2>					
 					<div class="inputs">
 					  <form method="post" >
 						<input type="hidden" name="hdn_ro_customerid" id="hdn_ro_customerid" value="<?php echo $_SESSION['Customerid'];?>" />
-						<div class="form-group label-floating">
+						<div class="form-group label-floating col-sm-5">
 						  <label for="f2" class="control-label">ORDER ID</label>
 						  <input name='Orderid' type="text" class="form-control" id="f2">
 						  <span class="help-block">	</span>
 						</div>
-						<div class="form-group label-floating">
+						<div class="form-group label-floating col-sm-5">
 						  <label for="f1" class="control-label">EMAIL/PHONE</label>
 						  <input type="text" name='email' class="form-control" id="f1">
 						  <span class="help-block"></span>
-						</div>       
-						
-						<br>
-						<button type='submit' class='btn btn-raised btn-block btn-success btn-bm'>Submit</button><br>
-						<div class="alert alert-dismissible alert-danger" id='screen1-error'>
+						</div>
+						<div class="form-group col-sm-2">
+							<button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id="button1">Submit</button><br>
+						</div><br>
+						<div class="col-sm-10 alert alert-dismissible alert-danger" id='screen1-error'>
 						  <strong>Whoops! You entered something incorrectly or something went wrong... please try again.</strong>
 						  <?php //echo $translations[15]['Translation']?>
-						</div>
+						</div><br>
 					  </form>
 					</div>
 				</div>
@@ -40,14 +40,14 @@
         <div class='well bm-well' >
             <h2><center><?php echo (isset($translations[17]['Translation'])?$translations[17]['Translation']:'');?>
 			<?php //echo $translations[17]['Translation']?></center></h2>
-            <p class='text-center'><?php echo $customerLanguages['Page2heading']?></p>
+            <p class='text-center'><?php //echo $customerLanguages['Page2heading']?></p>
             <br>
             
             <div class="inputs">
               <table class='table' id='table123'>
                 <thead>
                   <tr>
-                    <th data-field="0" tabindex="0"></th> <th data-field="1" tabindex="0"><?php echo $translations[2]['Translation'];?></th> <th data-field="2" tabindex="0"><?php echo $translations[3]['Translation'];?></th> <th data-field="3" tabindex="0"><?php echo $translations[4]['Translation'];?></th><th data-field="4" tabindex="0"><?php echo $translations[5]['Translation'];?></th>
+                    <th data-field="0" tabindex="0"></th> <th data-field="1" tabindex="0"><?php //echo $translations[2]['Translation'];?></th> <th data-field="2" tabindex="0"><?php //echo $translations[3]['Translation'];?></th> <th data-field="3" tabindex="0"><?php //echo $translations[4]['Translation'];?></th><th data-field="4" tabindex="0"><?php //echo $translations[5]['Translation'];?></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -146,9 +146,9 @@
               </table>
               
               <br>
-              <h3><center><?php echo $translations[6]['Translation'];?>: <b style='color: #cc1543;' id='total-price'>&euro; 0.00</b></center></h3>
+              <h3><center><?php //echo $translations[6]['Translation'];?>: <b style='color: #cc1543;' id='total-price'>&euro; 0.00</b></center></h3>
               <br>
-              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button2'><?php echo strtoupper($translations[7]['Translation']);?></button><br>
+              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button2'><?php //echo strtoupper($translations[7]['Translation']);?></button><br>
               <div class="alert alert-dismissible alert-danger" id='screen2-error'>
                 <strong>Whoops!</strong>
                 Please select at least one item to return.

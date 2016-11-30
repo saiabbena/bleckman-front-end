@@ -413,7 +413,9 @@ public function deleteLinks() {
 	  
 	}
 	function ro_option($param1=''){
-		$data['customerLanguages']=$this->getCustomerLanguages();
+		$req = array('Customerid'=>$_SESSION['Customerid'] );
+    
+		$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);		
 		$data['all_langs']=$data['customerLanguages'];
 
 		$data['Links'] = [];
