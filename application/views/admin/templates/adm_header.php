@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head>	
+	<?php echo'
+    <script>
+      var customerId='.$_SESSION['Customerid'].';
+	  var apoyarToken="'.$_SESSION['Apoyar'].'";
+      var language="English";
+      var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
+    </script>';
+    ?>	
     <!--Meta tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     
@@ -35,7 +43,8 @@
     <!--My assets-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" />
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin3.js"></script>
-    <?php if($this->uri->segment(2) == 'orders'){?>
+    
+	<?php if($this->uri->segment(2) == 'orders'){?>
 	<!--For Orders page only-->	
 	
 	<!--Datepicker for order statistics page-->
@@ -50,8 +59,7 @@
 			dateFormat: "dd-mm-yy"
 		});		
 	});
-	</script>
-	
+	</script>	
 	<script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin.js"></script>
 	<?php }
 	if($this->uri->segment(2) == 'appearance'){
@@ -64,12 +72,13 @@
 	?>
 	<script type="text/javascript" src="<?php echo base_url();?>js/scriptsettings.js"></script>
 	<?php }?>
-	<script>
-      <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
-      <?php echo 'var apoyarToken="'.$_SESSION['Apoyar'].'";';?>
-      <?php echo 'var customerId="'.$_SESSION['Customerid'].'";';?>
-      //console.log(" in orders_header, token : " + apoyarToken);
-    </script>	
+	
+	<?php
+	if($this->uri->segment(2) == 'ro_option'){
+	?>
+	<script type="text/javascript" src="<?php echo base_url();?>js/script.js"></script>
+	<?php }?>
+	
   </head>
   <body id='override'>
     <div class="bm-h">
@@ -113,7 +122,14 @@
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-3.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Settings</span>
           </div>
-          </a><!--
+          </a>
+		  <a href='ro_option'>		  
+          <div  <?php if($this->uri->segment(2) == 'ro_option4'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+            <div class='hidden-lg hidden-md'></div>
+            <img src='<?php echo base_url();?>img/i-17.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Return Order Option</span>
+          </div>
+          </a>
+		  <!--
           <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-4.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Integration</span>
