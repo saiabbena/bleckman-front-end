@@ -1,14 +1,15 @@
 $(document).ready(function(){
-  //init material design skin
-  $.material.init();
-
-  //TODO: MAKE THIS PASSED FROM PHP
-  //var customerId=1;
-
-  var url=API_BASE_URL_FE+'api/';
-  //var url='http://128.0.210.37/Bleckmannapi/api/';
-  var apiCall=url+'';
-  
+	//init material design skin  
+	$.material.init();
+	//TODO: MAKE THIS PASSED FROM PHP
+	//var customerId=1;
+	var url=API_BASE_URL_FE+'api/';
+	//var url='http://128.0.210.37/Bleckmannapi/api/';
+	var apiCall=url+'';
+	var result=false;
+	var customerSettings={};
+	var submition={};
+	
   function retrieveReturnOrders(customerId){
     $('.loading-screen').slideDown('slow');
     // apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
@@ -24,7 +25,7 @@ $(document).ready(function(){
       dataType: 'json',
       success: function (response) {
         $('.loading-screen').slideUp('slow');
-        console.log(response);
+        //console.log(response);
         renderReturnOrders(response);
       },
       fail: function(){
@@ -179,7 +180,7 @@ $(document).ready(function(){
         success: function (data) {
 		  searchInput['ReturnsOrderCreationDate']= newDateFormatToShow;
           $('.loading-screen').slideUp('slow');
-          console.log(data);
+          //console.log(data);
           renderReturnOrders(data);
           updateMessage(searchInput);
         },
@@ -243,7 +244,7 @@ $(document).ready(function(){
       },
       dataType: 'json',
       success: function (data) {
-        console.log(data);
+        //console.log(data);
         $('.loading-screen').slideUp('slow');
 
         $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-3 > div.well.hidden-xs.hidden-sm > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody > tr:nth-child(1) > td:nth-child(2)').html(data.length);
@@ -312,8 +313,8 @@ $(document).ready(function(){
 		if(event.keyCode == 13){
 			$("#search-button").trigger('click');
 		}
-	});
-  //console.log(" here ");
+	});	
+  
   retrieveReturnOrders(customerId);
   
 });

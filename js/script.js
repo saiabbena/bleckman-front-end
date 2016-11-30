@@ -28,8 +28,7 @@ function getCustomerSettings(){
     console.log(customerSettings.returnReason);
   });
 }
-function getOrderAndAuth(inputData){
-  
+function getOrderAndAuth(inputData){  
   apiCall=url+'order/GetBMAllOrdersbyid';
   
   $.get(apiCall, inputData)

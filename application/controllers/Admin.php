@@ -23,7 +23,53 @@ class Admin extends CI_Controller {
       }
     }	
   } 
+  private function getCustomerLanguages(){
+    $data = array(
+      'Customerid'=>$_SESSION['Customerid']
+    );
 
+    $data_url='?'.http_build_query($data);
+
+    $data_string = json_encode($data);
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+    curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/CustomerLanguage/GetCustomerLanguagebyId".$data_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // Send the request
+    $result = json_decode(curl_exec($ch), true);
+
+    // Free up the resources $curl is using
+    curl_close($ch);
+
+    return $result;
+  }
+  private function getTranslations(){
+
+    $data = array(
+      'Customerid'=>$_SESSION['Customerid']
+    );
+
+    $data_url='?'.http_build_query($data);
+
+    $data_string = json_encode($data);
+
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+    curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/Translation/GetAllTranslationsbyCustomerid".$data_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // Send the request
+    $result = json_decode(curl_exec($ch), true);
+
+    // Free up the resources $curl is using
+    curl_close($ch);
+    
+    return $result;
+  }
   public function settings(){
     //$data['customerLanguages']=$this->getCustomerLanguages();
     //$data['returnReasons']=$this->getCustomerReturnReasons();
@@ -365,6 +411,40 @@ public function deleteLinks() {
 
 	  //echo 'Success';
 	  
-	}	  
+	}
+	function ro_option($param1=''){
+		$data['customerLanguages']=$this->getCustomerLanguages();
+		$data['all_langs']=$data['customerLanguages'];
+
+		$data['Links'] = [];
+		//set customerLanguages to current selected language
+		$this->Languagename='English';
+		if ( count($data['customerLanguages']) > 0 ) {
+			foreach($data['customerLanguages'] as $r) {
+			  if($r['LanguageName']==$this->Languagename){
+				$data['customerLanguages']=$r;
+				$data['Links'] = $r['Links'];
+			  }
+			}
+			//set translations to current selected language
+			$data['translations']=[];
+			foreach ($this->getTranslations() as $key => $value) {
+			  foreach ($value as $kkey => $vvalue) {
+				if($vvalue['Languagename']==$this->Languagename){
+				  array_push($data['translations'], $vvalue);
+				}
+			  }
+			}
+		}
+		$customer_id = $_SESSION['Customerid'];
+		//echo API_BASE_URL_FE;exit();
+		$data = array('customer_id'=>$customer_id,'api_base_url_fe'=>API_BASE_URL_FE);
+		$this->load->view('admin/templates/adm_header');
+		$this->load->view('admin/ro_option', $data);
+		$this->load->view('admin/templates/footer');
+		if(isset($_SESSION['message'])){
+			unset($_SESSION['message']);
+		}		
+	}
 
 }
