@@ -7,7 +7,7 @@ class Bleckmann extends CI_Controller {
     $this->load->library('session');
   	$this->load->helper("url");
     $this->load->model('httpRequests');
-    if ( isset($_SESSION['Apoyar']) && $_SESSION['Roleid'] == 100 ) {
+    if ( (isset($_SESSION['Apoyar'])) && ($_SESSION['Roleid'] == 100 || ($_SESSION['Roleid'] == 99 && $_SESSION['BMRoleid'] == 2))) {
       redirect('admin/orders');
     }
     if ( $this->uri->segment(2) != 'login' && $this->uri->segment(2) != 'loginSubmit') {

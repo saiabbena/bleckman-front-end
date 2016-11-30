@@ -97,7 +97,7 @@
 		                <div class="row">
 					<?php
 						//echo "allCustomers : " . json_encode($allCustomers);
-						echo '<div class="form-group"><label>Select a Customer</label><select id="Fkcustomerid" name="Fkcustomerid" class="form-control">';
+						echo '<div class="form-group col-md-12" id="Fkcustomerid-div"><label>Select a Customer</label><select id="Fkcustomerid" name="Fkcustomerid" class="form-control">';
 						echo '<option value="-1">Select a Customer</option>';
 						for($i=0;$i<count($allCustomers);$i++) {
 							echo '<option value="'. $allCustomers[$i]['PKCustomerID'] . '">' . $allCustomers[$i]['CustomerName'] . '</option>';

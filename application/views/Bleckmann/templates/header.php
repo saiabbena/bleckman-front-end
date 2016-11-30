@@ -39,8 +39,10 @@
       //console.log("loaded");
       <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
       <?php echo 'var apoyarToken="'.$_SESSION['Apoyar'].'";';?>
+      <?php echo 'var baseurl="'. base_url() .'";';?>
       <?php echo 'var customerId="";';?>
       <?php echo 'var allLanguages=[];';?>
+
     </script>
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptBleckmann.js"></script>
 	<!--<script type="text/javascript" src="<?php echo base_url();?>js/jquery-1.12.3.js"></script>-->
@@ -112,7 +114,7 @@
 		  <a href='<?php echo base_url()?>index.php/Bleckmann/orders'>
             <div  <?php if($this->uri->segment(2) == 'orders'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
               <div class='hidden-lg hidden-md'></div>
-              <img src='<?php echo base_url();?>img/i-16.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Orders</span>
+              <img src='<?php echo base_url();?>img/i-16.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Return Orders</span>
             </div>
           </a>
         </div>
