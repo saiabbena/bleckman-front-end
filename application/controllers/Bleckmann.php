@@ -14,15 +14,7 @@ class Bleckmann extends CI_Controller {
       if(!isset($_SESSION['Apoyar'])) {
         redirect('/login');
       }
-    }
-	
-	//$this->unit->use_strict(TRUE);
-	//$this->unit->run($test, $expected_result, $test_name);
-	//$this->unit->run($this->sum(5,5),12,'Testing Sum function');
-	//$this->unit->run($this->customers(),'','Testing customers function');
-	//print_r($this->unit->result());	
-	//print_r($this->unit->report());	
-	//exit();
+    }	
   }  
   public function customers() {
   	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
