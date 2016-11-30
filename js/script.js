@@ -150,7 +150,7 @@ function secondScreen(result){
 \
         </tr>\
     ';
-	 console.log(html);
+	 //console.log(html);
       html2=html2+'\
       <div class="modal fade" id="moreInfo'+result['result']['BMOrderLine'][i].OrderlineID+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
         <div class="modal-dialog" role="document">\
@@ -187,7 +187,9 @@ function secondScreen(result){
       //$('#button2').attr('disabled','disabled');
     }
   }
-  $('#override > div.container-fluid.form2 > div > div > div > div > table > tbody').html(html);
+  $('.form_ro').show();
+  $('.form_ro').css({'display':'block !important'});
+  $('#table123 > tbody').html(html);
   $.material.init();
   $('#table123').bootstrapTable();
   //count refund price
@@ -296,7 +298,7 @@ $(document).ready(function(){
     console.log('working');
     $('.loading-screen').slideDown('slow');
     setTimeout(function(){
-      $('.form1').hide();
+      $('.form_con_login').hide();
       var inputData={'Orderid': $('#f2').val(), 'Email': $('#f1').val(), Customerid: customerId};
 	  //console.log(inputData);
       getOrderAndAuth(inputData);
@@ -312,7 +314,7 @@ $(document).ready(function(){
     console.log('working');
     $('.loading-screen').slideDown('slow');
     
-    if($('#override > div.container-fluid.form2 input[type="checkbox"]:checked').length==0){
+    if($('div.container-fluid.form2 input[type="checkbox"]:checked').length==0){
       setTimeout(function(){
 		  $('#screen2-error').html('<strong>Whoops!</strong>  Please select at least one item to return.');
         $('#screen2-error').show();
@@ -324,7 +326,7 @@ $(document).ready(function(){
     
     submition.Returnorderline=[];
     var counter=0;
-    $('#override > div.container-fluid.form2 input[type="checkbox"]:checked').each(function(){
+    $('div.container-fluid.form2 input[type="checkbox"]:checked').each(function(){
       
       var parent=$(this).parent().parent().parent().parent().parent()
       var reason=$('#s1', parent).val();

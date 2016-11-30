@@ -21,12 +21,24 @@ class Admin extends CI_Controller {
       if( (!isset($_SESSION['Apoyar'])) || ($_SESSION['Apoyar'] == '')) {
         redirect('/login');
       }
-    }	
+    }
+	
+	//$this->unit->use_strict(TRUE);
+	//$this->unit->run($test, $expected_result, $test_name);
+	//$this->unit->run($this->sum(5,5),12,'Testing Sum function');
+	//$this->unit->run($this->getTranslations(),'is_string','Testing');
+	//$this->unit->run($this->settings(),'is_string','Testing');
+	//$this->unit->run($this->orders(),'is_null','Testing');
+	//$this->unit->run($this->appearance(),'is_string','Testing');
+	//$this->unit->run($this->submitReturnReasons(),'is_string','Testing');
+	//$this->unit->run($this->getCustomerLanguages(),'is_array','Testing customers function');		
+	//print_r($this->unit->report());	
+	
+	//print_r($this->unit->result());
+	//exit();
   } 
   private function getCustomerLanguages(){
-    $data = array(
-      'Customerid'=>$_SESSION['Customerid']
-    );
+    $data = array( 'Customerid'=>$_SESSION['Customerid']);
 
     $data_url='?'.http_build_query($data);
 

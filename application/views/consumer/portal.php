@@ -3,7 +3,7 @@
 	$btn_bg = 'style="background-color:'.$accent_1.' !important"';
 ?>
   <!--I just added some commented text for testing-->
-  <div class='container-fluid form1'>
+  <div class='container-fluid form1 form_con_login'>
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
         <div class='well bm-well' <?php echo $border_bottom?>>

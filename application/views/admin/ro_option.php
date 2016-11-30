@@ -2,11 +2,11 @@
       <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
         <h3>Return Order Option</h3>	
         <br><br>
-		<div class='container-fluid form1'>
+		<div class='container-fluid form1 form_ro'>
 			<div class='row'>
 			  <div class='col-xs-12 col-sm-12'>
-				<div class='well bm-well' style="min-height: 185px !important;">
-					<h2><center>Return Order</center></h2>					
+				<div class='well bm-well' style="min-height: 185px !important;border-bottom-width:3px  !important;">
+					<h3>Return Order</h3>					
 					<div class="inputs">
 					  <form method="post" >
 						<input type="hidden" name="hdn_ro_customerid" id="hdn_ro_customerid" value="<?php echo $_SESSION['Customerid'];?>" />
@@ -146,9 +146,9 @@
               </table>
               
               <br>
-              <h3><center><?php //echo $translations[6]['Translation'];?>: <b style='color: #cc1543;' id='total-price'>&euro; 0.00</b></center></h3>
+              <h3><center>Total Refund<?php //echo $translations[6]['Translation'];?>: <b style='color: #cc1543;' id='total-price'>&euro; 0.00</b></center></h3>
               <br>
-              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button2'><?php //echo strtoupper($translations[7]['Translation']);?></button><br>
+              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button2'>Submit<?php //echo strtoupper($translations[7]['Translation']);?></button><br>
               <div class="alert alert-dismissible alert-danger" id='screen2-error'>
                 <strong>Whoops!</strong>
                 Please select at least one item to return.
@@ -168,13 +168,13 @@
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
         <div class='well bm-well'>
-          <h2><center><?php echo $translations[8]['Translation'];?></center></h2>
-          <p class='text-center'><?php echo $customerLanguages['Page3heading']?></p>
+          <h2><center>Select a Carrier<?php //echo $translations[8]['Translation'];?></center></h2>
+          <p class='text-center'>Please choose a Carrier<?php //echo $customerLanguages['Page3heading']?></p>
           <div class="inputs">
             <table class='table' id='table1234'>
               <thead>
                 <tr>
-                  <th data-field="0" tabindex="0"></th><th data-field="1" tabindex="0"><?php echo $translations[9]['Translation'];?></th><th data-field="2" tabindex="0"><?php echo $translations[10]['Translation'];?></th>
+                  <th data-field="0" tabindex="0"></th><th data-field="1" tabindex="0">Carrier<?php //echo $translations[9]['Translation'];?></th><th data-field="2" tabindex="0">Instructions<?php //echo $translations[10]['Translation'];?></th>
                 </tr>
               </thead>
               <tbody>
@@ -254,11 +254,11 @@
               <span class="help-block">Select at email where you would like to recieve your label
             </div>
             
-            <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3'><?php echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></button><br>
+            <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3'>CONFIRM AND PRINT POSTAGE LABEL<?php //echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></button><br>
 			<p style="text-align:right;"><a href="javascript:void(0)" id="btn_career_back">&laquo; Back</a></p>
             <div class="alert alert-dismissible alert-success" id='screen3-success'>
-              <strong><?php echo $translations[21]['Translation']?></strong></strong>
-              <?php echo $translations[22]['Translation']?>
+              <strong><?php //echo $translations[21]['Translation']?></strong></strong>
+              <?php //echo $translations[22]['Translation']?>
             </div>
             <div class="alert alert-dismissible alert-danger" id='screen3-fail'>
               <strong>Whoops!</strong></strong>
@@ -275,7 +275,7 @@
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
         <div class='well bm-well'>
           <h2><center>Thank You!</center></h2>
-          <p class='text-center'><?php echo $customerLanguages['Page4heading']?></p>
+          <p class='text-center'><?php //echo $customerLanguages['Page4heading']?></p>
           <b>Dear Customer</b><br><br>
           You can print your label by following this link: <a id='label-iframe2' target="_blank" href=''>Print label</a><br><br>
           You can read additional instructions for returning your order based on the carrier you chose by following this link: <a href='#'>Go to the carriers web-portal</a><br><br>
