@@ -619,12 +619,25 @@ $(function() {
 		        	$('select#Fkcustomerid').val(data.Fkcustomerid);
 		        	$('input#PKUserID').val(data.PKUserID);
 		        	$('div.login-info').hide();
+					if ( data.FKRoleID == 1 ) {
+						$('#Fkcustomerid-div').hide();
+					} else {
+						$('#Fkcustomerid-div').show();
+					}
 		        	$.material.init();
 		        },
 		        fail: function(data){
 		          console.log(data);
 		        }
 		      });
+		});
+		$('select#FKRoleID').on('change', function(){
+			console.log("FKRoleID : " + $(this).val());
+			if ( $(this).val() == 1 ) {
+				$('#Fkcustomerid-div').hide();
+			} else {
+				$('#Fkcustomerid-div').show();
+			}
 		});
 
 		//Filter all Orders according to the Customer Id
