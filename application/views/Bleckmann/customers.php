@@ -15,7 +15,9 @@
             </div>';
           }
         ?>
-
+			<style>
+				
+			</style>
 	  		<?php				
 	  			for($i=0; $i<count($allCustomers); $i++) {
 	  				$selCountry = '';
@@ -26,23 +28,29 @@
 						}
 				    }
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
-	  				echo '<div class="col-xs-12 col-md-3" height="100%"">
+	  				echo '<div class="col-xs-12 col-sm-4 col-md-3" height="100%"">
 							<div class="well" style="border-bottom: 5px solid #22B8AA;">
-								<h3>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</h3>
-								<p>'. $selCountry .'&nbsp;</p>
-								<p>'. $allCustomers[$i]['PhoneNumber'] .'&nbsp;</p>
-								<p><a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'" target="_blank">View Consumer URL</a>&nbsp;</p>
-								<p><a href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a></p>
+								<h2><center>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</center></h2>
+								
+								<center><a data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" href="#" class="settings-btn-link"><img src="/img/settings-btn.png" class="img-responsive"></a></center>
+								
 								<div class="row">
-									<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
-									<button type="button" data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" class="btn btn-raised btn-success pull-right edit-customer-pop">Edit</button>
+								
+								<br>
+								
 								</div>
-								<p>
-									<a href="carriers/searchbyCID/'.$allCustomers[$i]['PKCustomerID'].'">Carriers</a>
-									<a class="pull-right" href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a>
-								</p>
-								<p><a class="pull-right" href="users?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Users</a>
+								
+								<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'" target="_blank">View Consumer URL</a>&nbsp; | 
+								<a href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a> | 
+								<a href="carriers/searchbyCID/'.$allCustomers[$i]['PKCustomerID'].'">Carriers</a> | 
+								<a href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a> | 
+								<a href="users?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Users</a> | 
 								<a href="orders/Customerid/'.$allCustomers[$i]['PKCustomerID'].'">Orders</a>
+								
+								<br>
+								<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
+								<br>
+								<br>
 								</p>
 							</div>
 						</div>';
