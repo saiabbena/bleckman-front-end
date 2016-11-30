@@ -510,7 +510,7 @@ $(function() {
 								<div style="background-color:#f2f2f2;border-bottom: 1px solid #22B8AA; padding-bottom: 18px;margin-bottom:6px;padding:10px;">\
 								  <div class="list-group-item">\
 								    <div class="row-action-primary">\
-								      <img class="img-circle" style="line-height:104px;height:72px;width:72px;" src="' + API_BASE_URL_FE + 'img/user.png">\
+								      <img class="img-circle" style="line-height:104px;height:72px;width:72px;" src="' + baseurl + 'img/user.png">\
 								    </div>\
 								    <div class="row-content">\
 								      <div class="least-content hide-xs">\
