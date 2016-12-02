@@ -645,7 +645,7 @@ $(function() {
 			//alert("change" + $(this).val());
 			$('.loading-screen').show();
 			if ( $(this).val() != '') {				
-				retrieveReturnOrders($(this).val());
+				retrieveReturnOrders($(this).val());				
 			}
 			
 		});
@@ -662,9 +662,7 @@ $(function() {
 			for(i=0; i<data.length; i++){
 			  date=new Date(data[i].ReturnsOrderCreationDate);
 			  resultDate=date.getDate()+'/'+(date.getMonth()+1)+'/'+(date.getYear()+1900);
-			  html=html+'\
-				<tr>\
-				  <tr>\
+			  html=html+'\<tr>\
 					  <td style="white-space: nowrap;">'+resultDate+'</td>\
 					  \
 					  <td style="white-space: nowrap;">'+data[i].OrderId+'</td>\
@@ -681,9 +679,8 @@ $(function() {
 					  \
 					  <td style="white-space: nowrap;">\
 					  <button data-toggle="modal" data-target="#moreInfo'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-primary btn-raised">More info</button>\
-					  <button data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-warning btn-raised">Comment</button>\
-				</tr>\
-			  ';
+					  <button data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-warning btn-raised">Comment</button></td>\	</tr>\ ';
+					  
 			  html2=html2+'\
 			  <div class="modal fade" id="moreInfo'+data[i].ReturnId+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
 				<div class="modal-dialog" role="document">\
@@ -739,12 +736,21 @@ $(function() {
 				</div>\
 			  </div>\
 			  ';
-
 			}
 			$('body').append(html2);
 			$('body').append(html3);
 			$('#orders_data > tbody').html(html);
-			//$('#override #orders_data tbody').html(html);
+				/**/
+				if($("#orders_data").html() !== ""){
+					$("#orders_data").DataTable().fnDestroy();//destroying the table
+				}
+				//$('#orders_data').html(data);
+				$('#orders_data').DataTable({
+				 //"bDestroy" : false,
+				 "ordering": false,	 
+					
+				});
+			
 		  }
 		  function retrieveReturnOrders(customerId){
 			$('.loading-screen').slideDown('slow');
@@ -763,6 +769,7 @@ $(function() {
 				$('.loading-screen').slideUp('slow');
 				console.log(response);
 				renderReturnOrders(response);
+				
 			  },
 			  fail: function(){
 				$('.loading-screen').slideDown('slow');
@@ -774,9 +781,48 @@ $(function() {
 
 		//hover effect for settings button
 		$('.settings-btn-link').hover(function(){
-			$(this).attr('src', '/img/settings-btn-hover.png');
+			$(this).attr('src', '../../img/settings-btn-hover.png');
 			console.log('work');
 		}, function(){
-			$(this).attr('src', '/img/settings-btn.png');
+			$(this).attr('src', '../../img/settings-btn.png');
 		});
 	});
+
+//Jquery Smart searh for Super Admin Customer search
+(function ($) {
+  $.expr[':'].Contains = function(a,i,m){
+      return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
+  };
+  
+  function listFilter(header, list) {
+    var form = $("<form>").attr({"class":"filterform","action":"#"}),
+        input = $("<input>").attr({"class":"search_input","type":"text","placeholder":"Search Customer "});
+    $(form).append(input).appendTo(header);
+ 
+    $(input)
+      .change( function () {
+        var filter = $(this).val();
+        if(filter) {
+          //$(list).find(".customer_name:not(:Contains(" + filter + "))").parent().slideUp();
+          //$(list).find(".customer_name:Contains(" + filter + ")").parent().slideDown();  
+		  
+		  $(list).find(".customer_name:not(:Contains(" + filter + "))").parent().parent().closest('div').hide('slow');
+		  //$(list).find(".customer_name:not(:Contains(" + filter + "))").parent().parent().closest('div').css({'display':'none'});		  
+		  //$(list).find(".customer_name:Contains(" + filter + ")").parent().parent().closest('div').css({'display':'block'});
+		  $(list).find(".customer_name:Contains(" + filter + ")").parent().parent().closest('div').show('slow');
+        } else {
+          //$(list).find(".entry").slideDown();		  
+		  //$(list).find(".customer_name:Contains(" + filter + ")").parent().parent().closest('div').css({'display':'block'});
+		  $(list).find(".customer_name:Contains(" + filter + ")").parent().parent().closest('div').show('slow');
+        }
+        return false;
+      })
+    .keyup( function () {
+        $(this).change();
+    });
+  }
+ 
+  $(function () {
+    listFilter($("#header"), $("#list"));
+  });
+}($)); 	

@@ -45,9 +45,15 @@
 
     </script>
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptBleckmann.js"></script>
-	<!--<script type="text/javascript" src="<?php echo base_url();?>js/jquery-1.12.3.js"></script>-->
-	<script type="text/javascript" src="<?php echo base_url();?>js/jquery.dataTables.min.js"></script>
-    
+	<?php
+	//Put condition to use data table plugin in Orders page
+	if($this->uri->segment(2) == 'orders'){
+	?>
+	<link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.min_2.css">
+	<link rel="stylesheet" href="<?php echo base_url();?>css/dataTables.bootstrap.min.css">
+	<script src="<?php echo base_url();?>js/jquery.dataTables.min.js"></script>
+	<script src="<?php echo base_url();?>js/dataTables.bootstrap.min.js"></script>
+	<?php }?>
   </head>
   <body id='override'>
     <div class="bm-h">

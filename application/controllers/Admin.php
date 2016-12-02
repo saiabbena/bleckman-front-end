@@ -21,7 +21,14 @@ class Admin extends CI_Controller {
       if( (!isset($_SESSION['Apoyar'])) || ($_SESSION['Apoyar'] == '')) {
         redirect('/login');
       }
-    }	
+    }
+	//$this->unit->run($test, $expected_result, $test_name);
+	//$this->unit->run($this->sum(5,5),12,'Testing Sum function');
+	//$this->unit->run($this->customers(),'','Testing customers function');
+	//print_r($this->unit->result());
+	//$this->unit->use_strict(TRUE);	
+	//print_r($this->unit->report());	
+	//exit();
   } 
   private function getCustomerLanguages(){
     $data = array( 'Customerid'=>$_SESSION['Customerid']);
@@ -445,6 +452,17 @@ public function deleteLinks() {
 		if(isset($_SESSION['message'])){
 			unset($_SESSION['message']);
 		}		
+	}
+	function operation_mode(){
+		$customer_id = $_SESSION['Customerid'];
+		//echo API_BASE_URL_FE;exit();
+		$data = array('customer_id'=>$customer_id,'api_base_url_fe'=>API_BASE_URL_FE);
+		$this->load->view('admin/templates/adm_header');
+		$this->load->view('admin/operation_mode', $data);
+		$this->load->view('admin/templates/footer');
+		if(isset($_SESSION['message'])){
+			unset($_SESSION['message']);
+		}	
 	}
 
 }

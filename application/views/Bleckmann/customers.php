@@ -1,12 +1,13 @@
 <div class='col-xs-12 col-md-9' height='100%'>
-	<div class='container-fluid'>
-	<div class='row'>
-		<div class="col-xs-12 col-md-12">
-			<button type="button" data-toggle="modal" data-target="#add-customer-modal" id='add-customer' class='add-customer-pop btn btn-raised btn-warning pull-right'>Add</button>
-		</div>
-	</div>
+	<div class='container-fluid'>	
 	<br>
-	  	<div class='row'>
+	  	<div class='row' id="list">
+		 <div class="col-sm-12">
+			<div class="col-md-11"><h4 id="header" class="pull-right"></h4>
+			</div>
+			<div class="col-md-1"><button type="button" data-toggle="modal" data-target="#add-customer-modal" id='add-customer' class='add-customer-pop btn btn-raised btn-warning pull-right'>Add</button>
+			</div>			
+		 </div>
         <?php			
           if(isset($_SESSION['message']['customer_panel'])){
             echo'
@@ -28,11 +29,11 @@
 						}
 				    }
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
-	  				echo '<div class="col-xs-12 col-sm-4 col-md-3" height="100%"">
+	  				echo '<div class="col-xs-12 col-sm-4 col-md-3 entry" height="100%"">
 							<div class="well" style="border-bottom: 5px solid #22B8AA;">
-								<h2><center>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</center></h2>
+								<div class="customer_name"><h2><center>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</center></h2></div>
 								
-								<center><a data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" href="#" class="edit-customer-pop"><img src="/img/settings-btn.png" class="settings-btn-link img-responsive"></a></center>
+								<center><a data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" href="#" class="edit-customer-pop"><img src="'.base_url().'/img/settings-btn.png" class="settings-btn-link img-responsive"></a></center>
 								
 								<div class="row">
 								
@@ -304,4 +305,4 @@
               	</form>
             </div>
           </div>
-        </div>
+        </div>	

@@ -124,11 +124,17 @@
           </div>
           </a>
 		  <a href='ro_option'>
-          <div  <?php if($this->uri->segment(2) == 'ro_option4'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+          <div  <?php if($this->uri->segment(2) == 'ro_option'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-17.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Return Order Option</span>
           </div>
-          </a> -->
+          </a>
+		  <a href='operation_mode'>
+          <div  <?php if($this->uri->segment(2) == 'operation_mode'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+            <div class='hidden-lg hidden-md'></div>
+            <img src='<?php echo base_url();?>img/i-18.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Operation Mode</span>
+          </div>
+          </a>
 		  <!--
           <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>

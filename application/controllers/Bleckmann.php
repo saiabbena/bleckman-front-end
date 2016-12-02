@@ -85,7 +85,7 @@ class Bleckmann extends CI_Controller {
 	$param2 = ($param2 != '')?$param2:'-1';
 	$data['Customerid'] = $param2;
 	$data['customer_name'] = '';
-	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', ''); 
+	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');	
     $this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/orders', $data);
     $this->load->view('Bleckmann/templates/footer');
