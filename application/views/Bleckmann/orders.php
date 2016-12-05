@@ -14,6 +14,17 @@
 					echo '</select></div>';
 				?>
 			</div>
+			<!----><div class="col-md-6">
+				<?php					
+					echo '<div class="form-group" id="orders_by_page_div"><label>Fetch Orders</label><select id="orders_by_pageno" name="pageno" class="form-control">';
+					echo '<option value="1">0 - 100</option>';
+					for($i=2;$i<10;$i++) {
+						$selected = '';
+						echo '<option '.$selected.' value="'. $i . '">' .($i*100). '-'.($i*100+100). '</option>';
+						}
+					echo '</select></div>';
+				?>
+			</div>
 			
 		</div>
 		<div class='row'>
@@ -34,6 +45,7 @@
 				  <th>Return Order ID</th>
 				  <th class="nosort">Tracking</th>
 				  <th>Refund</th>
+				  <th>Customer</th>
 				  <th>Carrier</th>
 				  <th>Status</th>
 				  <th class="nosort">Action</th>

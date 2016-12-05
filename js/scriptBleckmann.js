@@ -645,7 +645,17 @@ $(function() {
 			//alert("change" + $(this).val());
 			$('.loading-screen').show();
 			if ( $(this).val() != '') {				
-				retrieveReturnOrders($(this).val());				
+				retrieveReturnOrders($(this).val());
+				
+				if($("#orders_data").html() !== ""){
+					$('.paginate_button a').eq(1).trigger('click');
+					//alert($('.paginate_button > li a').eq(1).text());
+					//$("#orders_data").DataTable().fnDestroy();//destroying the table
+				}				
+				//$('#orders_data').DataTable({				 
+				// "ordering": false,
+				 //"pagingType": "numbers",
+				//});
 			}
 			
 		});
@@ -655,14 +665,18 @@ $(function() {
 		   retrieveReturnOrders(hdn_customer_id_ord);		
 		}
 		
-		function renderReturnOrders(data){
+		function renderReturnOrders(raw_data){
 			html='';
 			html2='';
 			html3='';
-			for(i=0; i<data.length; i++){
-			  date=new Date(data[i].ReturnsOrderCreationDate);
-			  resultDate=date.getDate()+'/'+(date.getMonth()+1)+'/'+(date.getYear()+1900);
-			  html=html+'\<tr>\
+			//console.log(data['ReturnOrders'][0].CarrierName);
+			//console.log(data['ReturnOrders'].[0].ReturnId);
+			//return true;
+			for(i=0; i<raw_data['ReturnOrders'].length; i++){
+				var data = raw_data['ReturnOrders'];
+				date=new Date(data[i].ReturnsOrderCreationDate);
+				resultDate=date.getDate()+'/'+(date.getMonth()+1)+'/'+(date.getYear()+1900);
+				html=html+'\<tr>\
 					  <td style="white-space: nowrap;">'+resultDate+'</td>\
 					  \
 					  <td style="white-space: nowrap;">'+data[i].OrderId+'</td>\
@@ -672,6 +686,8 @@ $(function() {
 					  <td style="white-space: nowrap;"><a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'">Link</a></td>\
 					  \
 					  <td style="white-space: nowrap;"><b>'+data[i].Returnorderline[0].ProductCurrency+' '+data[i].ReturnOrderTotalRefundAmount.toFixed(2)+'</b></td>\
+					  \
+					   <td style="white-space: nowrap;">'+data[i].CustomerName+'</td>\
 					  \
 					  <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
 					  \
@@ -747,9 +763,8 @@ $(function() {
 				//$('#orders_data').html(data);
 				$('#orders_data').DataTable({
 				 //"bDestroy" : false,
-				 "ordering": false,	 
-					
-				});
+				 "ordering": false,					
+				});			
 			
 		  }
 		  function retrieveReturnOrders(customerId){
@@ -760,7 +775,7 @@ $(function() {
 			$.ajax({
 			  url: apiCall,
 			  type: 'get',
-			  data: {Customerid: customerId, pageno:1, pagesize:20},
+			  data: {Customerid: customerId, pageno:1, pagesize:'100'},
 			  headers: {
 				  Apoyar: apoyarToken
 			  },
@@ -769,6 +784,7 @@ $(function() {
 				$('.loading-screen').slideUp('slow');
 				console.log(response);
 				renderReturnOrders(response);
+				
 				
 			  },
 			  fail: function(){
