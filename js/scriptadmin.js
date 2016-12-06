@@ -180,7 +180,7 @@ $(document).ready(function(){
         success: function (data) {
 		  searchInput['ReturnsOrderCreationDate']= newDateFormatToShow;
           $('.loading-screen').slideUp('slow');
-          //console.log(data);
+          console.log(data);
           renderReturnOrders(data);
           updateMessage(searchInput);
         },

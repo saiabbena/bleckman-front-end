@@ -669,9 +669,19 @@ $(function() {
 			html='';
 			html2='';
 			html3='';
-			//console.log(data['ReturnOrders'][0].CarrierName);
+			var pagination_html = '';
+			var page_count = raw_data['Count'];
+			console.log(raw_data['ReturnOrders']);
+			//console.log(raw_data['Count']);
 			//console.log(data['ReturnOrders'].[0].ReturnId);
 			//return true;
+			if(page_count > 1){
+				pagination_html = '<b>Pages : </b> ';
+				for(i=1;i<=page_count;i++){
+					pagination_html = pagination_html+'<button onclick="javascript:paginate_req('+i+')" style="color:#FFF !important;" type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
+				}
+			}
+			
 			for(i=0; i<raw_data['ReturnOrders'].length; i++){
 				var data = raw_data['ReturnOrders'];
 				date=new Date(data[i].ReturnsOrderCreationDate);
@@ -756,26 +766,30 @@ $(function() {
 			$('body').append(html2);
 			$('body').append(html3);
 			$('#orders_data > tbody').html(html);
-				/**/
+			$('#btm_pagination').html(pagination_html);
+				/*
 				if($("#orders_data").html() !== ""){
-					$("#orders_data").DataTable().fnDestroy();//destroying the table
+					//$("#orders_data").DataTable().fnDestroy();//destroying the table
 				}
 				//$('#orders_data').html(data);
 				$('#orders_data').DataTable({
-				 //"bDestroy" : false,
-				 "ordering": false,					
-				});			
+					"bDestroy" : false,				 
+					"oLanguage": {
+						"sSearch": "<span>QUICK SEARCH:</span> _INPUT_"
+					},
+				});*/			
 			
 		  }
-		  function retrieveReturnOrders(customerId){
+		  function retrieveReturnOrders(customerId, pageno){
 			$('.loading-screen').slideDown('slow');
 			// apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
 			apiCall=url+'returnorder/GetBMReturnOrderbyCustomerId';
 			//console.log("apoyarToken : " + apoyarToken );
+			if(typeof(pageno)==='undefined') pageno = 1;//Check the pageno defined or not
 			$.ajax({
 			  url: apiCall,
 			  type: 'get',
-			  data: {Customerid: customerId, pageno:1, pagesize:'100'},
+			  data: {Customerid: customerId, pageno:pageno, pagesize:'10'},
 			  headers: {
 				  Apoyar: apoyarToken
 			  },
@@ -791,7 +805,7 @@ $(function() {
 				$('.loading-screen').slideDown('slow');
 			  }
 			});			
-		  }
+		  }		  
 		  $.material.options.autofill = true;
 		  $.material.init();
 
@@ -802,6 +816,96 @@ $(function() {
 		}, function(){
 			$(this).attr('src', '../../img/settings-btn.png');
 		});
+		//Back-end search 
+		$('#order_search_btn').click(function(){
+			search();			
+		});
+	    //Added this code for submit button, so that user can enter submit for search
+	    $("#order_search .form-control").keyup(function(event){
+			if(event.keyCode == 13){
+				$("#search-button").trigger('click');
+			}
+		});
+		function search(){			
+			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
+			var customerId = $('orders_by_customer_id').val();
+			var searchInput={};
+			var default_render=true;
+			searchInput['FKCustomerId'] = customerId;
+			
+			$('tr input[type]').each(function(){
+			  if($(this).val()){
+				searchInput[$(this).attr('name')]=$(this).val();
+				default_render=false;
+			  }
+			});
+			//Change the date format to YYYY-DD-MM
+			var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
+			var date_array = [];    
+			date_array = ReturnsOrderCreationDate.split("-");    
+			var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+			var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];
+			/**/
+			if(default_render){
+			  //console.log(" in default_render");
+			  retrieveReturnOrders(customerId);
+			  //$('#orders_data >').html('Listing the latest 20 returned orders')
+			}
+			else{
+			  $('.loading-screen').slideDown('slow');      
+			  searchInput['ReturnsOrderCreationDate']= newDateFormat;
+			  console.log(searchInput);
+			  $.ajax({
+				url: apiCall,
+				type: 'post',
+				data: searchInput,
+				headers: {
+					Apoyar: apoyarToken
+				},
+				dataType: 'json',
+				success: function (data) {
+				  searchInput['ReturnsOrderCreationDate']= newDateFormatToShow;
+				  $('.loading-screen').slideUp('slow');
+				  console.log(data);
+				  renderReturnOrders(data);
+				  //updateMessage(searchInput);
+				},
+				fail: function(){
+				  $('.loading-screen').slideUp('slow');
+				  //renderReturnOrders({});
+				  //console.log(data);
+				}
+			  });      
+			}
+		}		
+		function retrieveReturnOrders(customerId){
+			$('.loading-screen').slideDown('slow');
+			// apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
+			apiCall=url+'returnorder/GetBMReturnOrderbyCustomerId';
+			//console.log("apoyarToken : " + apoyarToken );
+			$.ajax({
+			  url: apiCall,
+			  type: 'get',
+			  data: {Customerid: customerId, pageno:1, pagesize:20},
+			  headers: {
+				  Apoyar: apoyarToken
+			  },
+			  dataType: 'json',
+			  success: function (response) {
+				$('.loading-screen').slideUp('slow');
+				//console.log(response);
+				renderReturnOrders(response);
+			  },
+			  fail: function(){
+				$('.loading-screen').slideDown('slow');
+			  }
+			});			
+		}		
+		function paginate_req(pageno){
+		  var customerId = $('#orders_by_customer_id').val();			  
+		  retrieveReturnOrders(customerId, pageno);  
+	  }
+		
 	});
 
 //Jquery Smart searh for Super Admin Customer search
@@ -841,4 +945,5 @@ $(function() {
   $(function () {
     listFilter($("#header"), $("#list"));
   });
-}($)); 	
+  
+}($));

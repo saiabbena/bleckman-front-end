@@ -20,6 +20,7 @@
 							<h4>Edit Warehouse Details</h4>
 		              		<?php
 		              			//echo json_encode($allWarehouses);
+								//echo count($allWarehouses);
 		              			for ($i=0; $i<count($allWarehouses); $i++) {
 
 		              				echo '<div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">';
