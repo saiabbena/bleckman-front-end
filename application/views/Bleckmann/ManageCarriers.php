@@ -15,8 +15,11 @@
 			        ?>
 			        </div>
 			    </div>
+			    
 			    <div class="row">
+
 			    	<form method="POST" id="setCustomerCarrierMap" action="setCustomerCarrier">
+			    		
 			    		<input type="hidden" name="FkCustomerid" id="FkCustomerid" value="<?php echo $customerId; ?>">
 			    		<input type="hidden" name="CountryCode" id="CountryCode" value="">
 			    		
@@ -61,8 +64,11 @@
 								<br>
 							</div>
 						</div>
+						
 					</form>
+					
 			    </div>
+			    <hr/>
 			    <br>
 			    <br>
 			    <br>
