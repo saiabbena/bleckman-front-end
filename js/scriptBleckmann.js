@@ -7,24 +7,7 @@ $(function() {
 		}, "Please select a value");
 
 		var url=API_BASE_URL_FE+'api/';
-		$("#setCustomerCarrierMap").validate({
-		        rules: {
-		            FKCarrierId: { valueNotEquals : -1 },
-		            FkCustomerid: "required",
-		            country : { valueNotEquals : -1 },
-		            Warehouseid:  { valueNotEquals : -1 },
-		        },
-		        messages: {
-		            FKCarrierId: "Please select a Carrier",
-		            FkCustomerid: "Please select a Customer",
-		            country: "Please select a Country",
-		            Warehouseid: "Please select a Warehouse"
-		        },
-		        submitHandler: function(form) {
-		        	alert("submit");
-		            form.submit();
-		        }
-		});
+
 		$(".add-customer-pop").click(function(){
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
@@ -1058,6 +1041,22 @@ $(function() {
 		        }
 		      });
 		});
-		
-
+		$("#setCustomerCarrierMap").validate({
+		        rules: {
+		            FKCarrierId: { valueNotEquals : -1 },
+		            FkCustomerid: "required",
+		            country : { valueNotEquals : -1 },
+		            Warehouseid:  { valueNotEquals : -1 },
+		        },
+		        messages: {
+		            FKCarrierId: "Please select a Carrier",
+		            FkCustomerid: "Please select a Customer",
+		            country: "Please select a Country",
+		            Warehouseid: "Please select a Warehouse"
+		        },
+		        submitHandler: function(form) {
+		        	alert("submit");
+		            form.submit();
+		        }
+		});
 });

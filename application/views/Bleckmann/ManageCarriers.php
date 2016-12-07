@@ -15,7 +15,7 @@
 			        ?>
 			        </div>
 			    </div>
-			    
+
 			    <div class="row">
 
 			    	<form method="POST" id="setCustomerCarrierMap" action="setCustomerCarrier">
@@ -99,7 +99,7 @@
 					echo '<div class="modal fade" id="remove-setting-modal'. $allSettings[$i]['PKCCWId'] .'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				              <div class="modal-dialog" role="document">
 				                <div class="modal-content">
-				                  <form method="POST" action="">
+				                  <form method="POST" action="deleteCustomerCarrier">
 				                  <div class="modal-header">
 				                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				                    <h4 class="modal-title" id="myModalLabel">Delete Setting?</h4>
@@ -107,9 +107,7 @@
 				                  <div class="modal-body">
 				                  	<h4>'. $customerName .' - '. $allSettings[$i]['CarrierName']. ' - ' . $allSettings[$i]['CountryName'] .'</h4>
 				                    <p>Are you sure you want to delete this Setting?</p>';
-				    echo '<input type="hidden" name="FkCustomerid" value="'. $allSettings[$i]['FkCustomerid'].'">';
-				    echo '<input type="hidden" name="FKCarrierId" value="'. $allSettings[$i]['FKCarrierId'].'">';
-				    echo '<input type="hidden" name="FKCountryID" value="'. $allSettings[$i]['FKCountryID'].'">';
+				    echo '<input type="hidden" name="PKCCWId" value="'. $allSettings[$i]['PKCCWId'].'">';
 		            echo'
 		                  </div>
 		                  <div class="modal-footer">

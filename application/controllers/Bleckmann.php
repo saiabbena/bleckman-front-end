@@ -181,6 +181,20 @@ class Bleckmann extends CI_Controller {
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
   }
+  public function deleteCustomerCarrier() {
+    print_r(json_encode($_POST));
+    $server_output = $this->httpRequests->httpPost('carrier/PostDeleteCustomerCarrier', json_encode($_POST) );
+    echo json_encode($server_output);
+    if ( $server_output['Status'] == 1) { 
+      $_SESSION['message']['carrier_panel']='Saved';
+      $_SESSION['message']['alert_status']='success';
+    } else {
+      $_SESSION['message']['carrier_panel']='Error : ' . $server_output['Messages'];
+      $_SESSION['message']['alert_status']='warning';
+    }
+    echo var_dump($_SESSION['message']);
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
+  }
   public function submitCarrier() {
 //    array_walk($_POST['CarrierCountry'], 'intval');
     if (isset($_POST['Countries'])) {

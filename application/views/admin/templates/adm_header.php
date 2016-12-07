@@ -118,17 +118,17 @@
           </div>
           </a>
           <a href='settings'>
-          <div  <?php if($this->uri->segment(2) == 'settings'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='<?php echo base_url();?>img/i-3.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Settings</span>
-          </div>
+            <div  <?php if($this->uri->segment(2) == 'settings'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+              <div class='hidden-lg hidden-md'></div>
+              <img src='<?php echo base_url();?>img/i-3.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Settings</span>
+            </div>
           </a>
-		  <a href='ro_option'>
-          <div  <?php if($this->uri->segment(2) == 'ro_option4'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='<?php echo base_url();?>img/i-17.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Return Order Option</span>
-          </div>
-          </a> -->
+		      <a href='ro_option'>
+            <div  <?php if($this->uri->segment(2) == 'ro_option4'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+              <div class='hidden-lg hidden-md'></div>
+              <img src='<?php echo base_url();?>img/i-17.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Return Order Option</span>
+            </div>
+          </a>
 		  <!--
           <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
