@@ -64,9 +64,7 @@
 								<br>
 							</div>
 						</div>
-						
 					</form>
-					
 			    </div>
 			    <hr/>
 			    <br>
@@ -96,29 +94,29 @@
 					    						<button type="button" class="btn btn-raised btn-danger" data-toggle="modal" data-target="#remove-setting-modal'. $allSettings[$i]['PKCCWId'] .'" >Remove</button>
 					    					</td>';
 					    				echo '</tr>';
-					echo '<div class="modal fade" id="remove-setting-modal'. $allSettings[$i]['PKCCWId'] .'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-				              <div class="modal-dialog" role="document">
-				                <div class="modal-content">
-				                  <form method="POST" action="deleteCustomerCarrier">
-				                  <div class="modal-header">
-				                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-				                    <h4 class="modal-title" id="myModalLabel">Delete Setting?</h4>
-				                  </div>
-				                  <div class="modal-body">
-				                  	<h4>'. $customerName .' - '. $allSettings[$i]['CarrierName']. ' - ' . $allSettings[$i]['CountryName'] .'</h4>
-				                    <p>Are you sure you want to delete this Setting?</p>';
-				    echo '<input type="hidden" name="PKCCWId" value="'. $allSettings[$i]['PKCCWId'].'">';
-		            echo'
-		                  </div>
-		                  <div class="modal-footer">
-		                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		                    <button type="submit" class="btn btn-danger">Delete</button>
-		                  </div>
-		                  </form>						  
-		                </div>
-		              </div>
-		            </div>
-		            ';
+										echo '<div class="modal fade" id="remove-setting-modal'. $allSettings[$i]['PKCCWId'] .'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									              <div class="modal-dialog" role="document">
+									                <div class="modal-content">
+									                  <form method="POST" action="deleteCustomerCarrier">
+									                  <div class="modal-header">
+									                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									                    <h4 class="modal-title" id="myModalLabel">Delete Setting?</h4>
+									                  </div>
+									                  <div class="modal-body">
+									                  	<h4>'. $customerName .' - '. $allSettings[$i]['CarrierName']. ' - ' . $allSettings[$i]['CountryName'] .'</h4>
+									                    <p>Are you sure you want to delete this Setting?</p>';
+									    echo '<input type="hidden" name="PKCCWId" value="'. $allSettings[$i]['PKCCWId'].'">';
+							            echo'
+							                  </div>
+							                  <div class="modal-footer">
+							                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							                    <button type="submit" class="btn btn-danger">Delete</button>
+							                  </div>
+							                  </form>						  
+							                </div>
+							              </div>
+							            </div>
+							            ';
 					    			}
 					    		?>
 				    		</tbody>

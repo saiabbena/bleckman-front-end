@@ -834,9 +834,11 @@ $(function() {
 			$('#Countries').multiselect({enableFiltering: true, maxHeight: 200, buttonWidth: 250, nonSelectedText: 'Select a Country', nSelectedText: 'Countries Selected',});
 			$("#Countries").multiselect("refresh");
 		});
-		$("#carriers-table").on('click', 'a.edit-carrier-pop', function(){
+		$("#carriers-table").on('click', '.edit-carrier-pop', function(){
 			$('.loading').css({'display':'block'});
 			$('.carrier_div').css({'display':'none'});
+			var validator1 = $( "#add-carrier-form" ).validate();
+			validator1.resetForm();
 			$('#Countries').multiselect({enableFiltering: true, maxHeight: 200, buttonWidth: 250, nonSelectedText: 'Select a Country', nSelectedText: 'Countries Selected',});
 			carrier_array = $(this).attr("id").split("-");
 			var selCarrierId = carrier_array[2];
@@ -1053,6 +1055,21 @@ $(function() {
 		            FkCustomerid: "Please select a Customer",
 		            country: "Please select a Country",
 		            Warehouseid: "Please select a Warehouse"
+		        },
+		        submitHandler: function(form) {
+		        	//alert("submit");
+		            form.submit();
+		        }
+		});
+		$("#add-carrier-form").validate({
+		        rules: {
+		            CarrierName: "required",
+		            "Countries[]" : "required",
+		        },
+		        messages: {
+		            CarrierName: "Please enter a Carrier Name",
+		            "Countries[]": "Please select a Country",
+
 		        },
 		        submitHandler: function(form) {
 		        	alert("submit");

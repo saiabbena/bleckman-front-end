@@ -196,15 +196,12 @@ class Bleckmann extends CI_Controller {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
   }
   public function submitCarrier() {
-//    array_walk($_POST['CarrierCountry'], 'intval');
     if (isset($_POST['Countries'])) {
       foreach ($_POST['Countries'] AS $index => $value)
         $_POST['Countries'][$index] = (int)$value;
     }
-    //print_r(json_encode($_POST));
-    //exit();
     $server_output = $this->httpRequests->httpPost('Carrier/PostManageBMCarrier', json_encode($_POST) );
-    //echo json_encode($server_output);exit();
+    //echo json_encode($server_output);
     if ( $server_output['Status'] == 1) { 
       $_SESSION['message']['carrier_panel']='Saved';
       $_SESSION['message']['alert_status']='success';
@@ -212,7 +209,8 @@ class Bleckmann extends CI_Controller {
       $_SESSION['message']['carrier_panel']='Error : ' . $server_output['Messages'];
       $_SESSION['message']['alert_status']='warning';
     }
-
+    echo var_dump($_SESSION['message']);
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
   }
   public function submitWarehouses() {
   	//print_r($_POST);exit();

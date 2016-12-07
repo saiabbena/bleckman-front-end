@@ -18,13 +18,15 @@
 				</div>
 				<br>
 				<div class="row">
-					<?php
-			          if(isset($_SESSION['message']['carrier_panel'])){
-			            echo'
-			            <div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">
-			              '.$_SESSION['message']['carrier_panel'].'</div>';
-			          }
-			        ?>
+					<div class="col-md-12">
+						<?php
+				          if(isset($_SESSION['message']['carrier_panel'])){
+				            echo'
+				            <div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">
+				              '.$_SESSION['message']['carrier_panel'].'</div>';
+				          }
+				        ?>
+			        </div>
 			    </div>
 			    <div class="row">
 			    	<div class="col-md-offset-1 col-md-10">
@@ -116,7 +118,7 @@
 						            	<div class="form-group label-floating">
 						                  	<?php
 						                  	//echo json_encode($allCountries);
-						                  	echo '<select class="form-control" id="Countries" name="Countries[]" multiple>';
+						                  	echo '<label class="control-label" style="top:-30px;">Select a Country</label><select class="form-control" id="Countries" name="Countries[]" multiple>';
 							                  	//echo '<option value="-1">Select a Country</option>';
 							                  	for ($i=0; $i<count($allCountries); $i++) {
 							                  		if ( $allCountries[$i]['IsActive'] ) {
@@ -127,27 +129,6 @@
 						                  	?>
 					                  	</div>
 						            </div>
-<!-- 									<div class='col-md-6' style="height: 80px;overflow-y: auto;">
-									    Select a Country
-									    <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#countryCollapse" aria-expanded="false" aria-controls="countryCollapse">
-									      <span class='glyphicon glyphicon-arrow-down'></span>
-									    </button>
-									    <input type="hidden" name="countrylist" value="">
-									    <div class="collapse" id="countryCollapse" style="height: 180px;">
-									    	<?php
-												for($i=0;$i<count($allCountries);$i++) {
-													echo '<div class="">
-													        <div class="checkbox">
-													          <label>
-													            <input name="countryid" type="checkbox" value="'. $allCountries[$i]['PKCountryId'] . '"> '. $allCountries[$i]['CountryName'] .'
-													          </label>
-													        </div>
-													        <p class="help-block"></p>
-													      </div>';
-												}
-									      	?>
-									    </div>
-									</div> -->
 				          		</div>
 				          		<br/>
 				          		<div class="row">
