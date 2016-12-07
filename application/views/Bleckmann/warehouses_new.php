@@ -37,16 +37,18 @@
 		              			//echo json_encode($allWarehouses);
 								//echo count($allWarehouses);								
 								//print_r($allWarehouses);
-		              			for ($i=0; $i<count($allWarehouses); $i++) {		              				
+								//print_r($allCountries);
+		              			for ($i=0; $i<count($allWarehouses); $i++) {
+									$CountryName = '';
 									echo '<tr>
-									  <td class="nosort">Name</td>
-									  <td>Warehouse ID</td>
-									  <td>Street1</td>
-									  <td>Street2</td>
-									  <td>HouseNumber</td>
-									  <td>PostalCode</td>
-									  <td>City</td>
-									  <td>Country</td>
+									  <td class="nosort">'.$allWarehouses[$i]['Name'].'</td>
+									  <td>'.$allWarehouses[$i]['WarehouseID'].'</td>
+									  <td>'.$allWarehouses[$i]['Street'].'</td>
+									  <td>'.$allWarehouses[$i]['Street2'].'</td>
+									  <td>'.$allWarehouses[$i]['HouseNumber'].'</td>
+									  <td>'.$allWarehouses[$i]['PostalCode'].'</td>
+									  <td>'.$allWarehouses[$i]['City'].'</td>
+									  <td>'.$CountryName.'</td>
 									  <td class="nosort"><button type="button" data-toggle="modal" data-target="#edit-warehouse-modal'.$allWarehouses[$i]['PKWarehouseID'].'" class="btn btn-raised btn-info btn-warning pull-right">Edit</button><button type="button" data-toggle="modal" data-target="#delete-warehouse-modal'.$allWarehouses[$i]['PKWarehouseID'].'" class="btn btn-raised btn-danger btn-warning pull-right">Delete</button></td>
 									</tr>';
 									//delete warehouse modal

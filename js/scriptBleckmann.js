@@ -1,4 +1,4 @@
-$(function() {
+$(document).ready(function() {
 	$.validator.addMethod("regex", function(value, element, regexpr) {          
      return regexpr.test(value);
    }, "Please enter a valid pasword.");
@@ -50,7 +50,7 @@ $(function() {
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
-		        	console.log(data);
+		        	//console.log(data);
 		        	$('.loading').css({'display':'none'});
 					$('.customer-modal').css({'display':'block'});
 		        	$('h4#myModalLabel').text('Edit Customer Information');
@@ -602,7 +602,7 @@ $(function() {
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
-		        	console.log(data);
+		        	//console.log(data);
 					$('.loading').css({'display':'none'});
 					$('.user_div').css({'display':'block'});
 		        	$('h4#myUserLabel').text('Edit User Information');
@@ -639,7 +639,7 @@ $(function() {
 				$('#Fkcustomerid-div').show();
 			}
 		});
-
+		/**/
 		//Filter all Orders according to the Customer Id
 		$("#orders_by_customer_id").on('change', function(){
 			//alert("change" + $(this).val());
@@ -657,7 +657,6 @@ $(function() {
 				 //"pagingType": "numbers",
 				//});
 			}
-			
 		});
 		//Direct Order page link from Customer page			
 	    if ($('#hdn_customer_id_ord').length) {
@@ -671,19 +670,20 @@ $(function() {
 			html3='';
 			var pagination_html = '';
 			var page_count = raw_data['Count'];
-			console.log(raw_data['ReturnOrders']);
-			//console.log(raw_data['Count']);
+			//console.log(raw_data['ReturnOrders']);
+			//console.log(raw_data['ReturnOrders'].length);
 			//console.log(data['ReturnOrders'].[0].ReturnId);
-			//return true;
+			//console.log(raw_data['Pageno']);
 			if(page_count > 1){
 				pagination_html = '<b>Pages : </b> ';
 				for(i=1;i<=page_count;i++){
-					pagination_html = pagination_html+'<button onclick="javascript:paginate_req('+i+')" style="color:#FFF !important;" type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
+					pagination_html = pagination_html+'<button style="color:#FFF !important;" type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
 				}
 			}
 			
 			for(i=0; i<raw_data['ReturnOrders'].length; i++){
 				var data = raw_data['ReturnOrders'];
+				//console.log(data);
 				date=new Date(data[i].ReturnsOrderCreationDate);
 				resultDate=date.getDate()+'/'+(date.getMonth()+1)+'/'+(date.getYear()+1900);
 				html=html+'\<tr>\
@@ -695,7 +695,7 @@ $(function() {
 					  \
 					  <td style="white-space: nowrap;"><a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'">Link</a></td>\
 					  \
-					  <td style="white-space: nowrap;"><b>'+data[i].Returnorderline[0].ProductCurrency+' '+data[i].ReturnOrderTotalRefundAmount.toFixed(2)+'</b></td>\
+					  <td style="white-space: nowrap;"><b>'+' '+data[i].ReturnOrderTotalRefundAmount.toFixed(2)+'</b></td>\
 					  \
 					   <td style="white-space: nowrap;">'+data[i].CustomerName+'</td>\
 					  \
@@ -704,38 +704,10 @@ $(function() {
 					  <td style="white-space: normal !important;">'+data[i].StatusName+'</td>\
 					  \
 					  <td style="white-space: nowrap;">\
-					  <button data-toggle="modal" data-target="#moreInfo'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-primary btn-raised">More info</button>\
+					  <button data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-primary btn-raised btn_more_info">More info</button>\
 					  <button data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-warning btn-raised">Comment</button></td>\	</tr>\ ';
 					  
-			  html2=html2+'\
-			  <div class="modal fade" id="moreInfo'+data[i].ReturnId+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
-				<div class="modal-dialog" role="document">\
-				  <div class="modal-content">\
-					<div class="modal-header">\
-					  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
-					  <h4 class="modal-title" id="myModalLabel">Full info on return order: '+data[i].ReturnId+'</h4>\
-					</div>\
-					<div class="modal-body">\
-					  <b>Full date/time:</b> '+data[i].ReturnsOrderCreationDate+', <b>Orderid:</b> '+data[i].OrderId+', <b>Return status:</b> '+data[i].StatusName+'<br><br>\
-					  <b>Customer Email:</b> '+data[i].ConsumerEmail+'<br><br>\
-					  <b>Customer Phone:</b> '+data[i].Consumerphonenumber+'<br><br>\
-					  <b>Comment:</b><br>\
-					  '+(data[i].Comment?data[i].Comment:'No comment has been made yet')+'<br><br>\
-					  <b>Items returned ('+data[i].Returnorderline.length+'):</b><hr>';
-			  for(a=0; a<data[i].Returnorderline.length; a++){
-				r=data[i].Returnorderline[a];
-				html2=html2+'\
-				<b>Item name:</b> '+r.ProductName+'<br> <b>Product SKU:</b> '+r.SKU+'<br> <b>Product info:</b> '+r.ProductInfo+'<br> <b>Return reason:</b> '+r.ReturnReason+'<br> <b>Quantity:</b> '+r.QtyReturned+'<br> <b>Price:</b> '+r.Price+' <hr>\
-				'
-			  }
-					html2=html2+'</div>\
-					<div class="modal-footer">\
-					  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
-					</div>\
-				  </div>\
-				</div>\
-			  </div>\
-			  ';
+			  
 
 			  html3=html3+'\
 			  <div class="modal fade" id="rOrderComment'+data[i].ReturnId+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
@@ -783,31 +755,108 @@ $(function() {
 		  function retrieveReturnOrders(customerId, pageno){
 			$('.loading-screen').slideDown('slow');
 			// apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
-			apiCall=url+'returnorder/GetBMReturnOrderbyCustomerId';
+			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
 			//console.log("apoyarToken : " + apoyarToken );
-			if(typeof(pageno)==='undefined') pageno = 1;//Check the pageno defined or not
+			var searchInput={};
+			
+			searchInput['FKCustomerId'] = customerId;
+			$('tr input[type]').each(function(){
+			  if($(this).val()){
+				searchInput[$(this).attr('name')]=$(this).val();
+				default_render=false;
+			  }
+			});
+			//Change the date format to YYYY-DD-MM
+			var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
+			console.log(ReturnsOrderCreationDate);
+			if(ReturnsOrderCreationDate !== ''){			
+				var date_array = [];    
+				date_array = ReturnsOrderCreationDate.split("-");    
+				var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+				var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];			
+				searchInput['ReturnsOrderCreationDate']= newDateFormat;
+			}
+			
+			if(typeof(pageno)==='undefined'){				
+				searchInput['pageno'] = 1;
+			}else{
+				searchInput['pageno'] = pageno;
+			} 
+			searchInput['pagesize'] = 15;
+			
+			
+			//Check the pageno defined or not
+			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
+			console.log(searchInput);
 			$.ajax({
 			  url: apiCall,
-			  type: 'get',
-			  data: {Customerid: customerId, pageno:pageno, pagesize:'10'},
+			  type: 'post',
+			  data: searchInput,
 			  headers: {
 				  Apoyar: apoyarToken
 			  },
 			  dataType: 'json',
 			  success: function (response) {
 				$('.loading-screen').slideUp('slow');
-				console.log(response);
-				renderReturnOrders(response);
-				
-				
+				//console.log(response);
+				renderReturnOrders(response);				
 			  },
 			  fail: function(){
 				$('.loading-screen').slideDown('slow');
 			  }
 			});			
-		  }		  
-		  $.material.options.autofill = true;
-		  $.material.init();
+		  }
+		
+		$(document).on('click', '.btn_paginate', function() {
+			//alert($(this).text());
+			var pageno = $(this).text();
+			var customerId = $('#orders_by_customer_id').val();
+			retrieveReturnOrders(customerId, pageno);			
+		});
+		
+		$(document).on('click', '.btn_more_info', function() {
+			//alert($(this).attr('id')); //ReturnId
+			var ReturnId = $(this).attr('id');
+			var moreinfo_html = '';			
+			//var customerId = $('#orders_by_customer_id').val();
+			$('#moreInfo').html('');
+			var apiCall=url+'returnorder/GetBMReturnOrderlinesbyReturnOrderid?ReturnId=' + ReturnId;
+			$.ajax({
+		        url: apiCall,
+		        type: 'GET',
+			    headers: {
+			        Apoyar: apoyarToken
+			    },
+		        dataType: 'json',
+		        success: function(data) {
+		        	//console.log("response data : ");
+		        	//console.log(data);
+					//data[i].OrderId
+					//console.log(data.OrderId);
+					//console.log(data['Returnorderline'][0].EanBarcode);
+					/**/
+					moreinfo_html = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel">Full info on return order: '+data.ReturnId+'</h4></div><div class="modal-body"><b>Full date/time:</b>'+data.ReturnsOrderCreationDate+',<b>Orderid:</b>'+data.OrderId+',	<b>Return status:</b>'+data.StatusName+'<br><br><b>Customer Email:</b> '+data.ConsumerEmail+'<br><br><b>Customer Phone:</b>'+data.Consumerphonenumber+' <br><br>	<b>Comment:</b><br>'+(data.Comment?data.Comment:'No comment has been made yet')+'<br><br><b>Items returned ('+data.Returnorderline.length+'):</b><hr>';
+					for(a=0; a<data.Returnorderline.length; a++){
+						var r=data.Returnorderline[a];
+						moreinfo_html=moreinfo_html+'\
+						<b>Item name:</b> '+r.ProductName+'<br> <b>Product SKU:</b> '+r.SKU+'<br> <b>Product info:</b> '+r.ProductInfo+'<br> <b>Return reason:</b> '+r.ReturnReason+'<br> <b>Quantity:</b> '+r.QtyReturned+'<br> <b>Price:</b> '+r.Price+' <hr>\
+						'
+					}
+					moreinfo_html=moreinfo_html+'<hr></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div>';
+					$('#moreInfo').html(moreinfo_html);
+					
+					$.material.init();
+		        },
+		        fail: function(data){
+		          console.log(data);
+		        }
+		      });
+			
+						
+		});
+		
+		$.material.options.autofill = true;
+		$.material.init();
 
 		//hover effect for settings button
 		$('.settings-btn-link').hover(function(){
@@ -818,98 +867,16 @@ $(function() {
 		});
 		//Back-end search 
 		$('#order_search_btn').click(function(){
-			search();			
+			var customerId = $('orders_by_customer_id').val();
+			retrieveReturnOrders(customerId);			
 		});
 	    //Added this code for submit button, so that user can enter submit for search
 	    $("#order_search .form-control").keyup(function(event){
 			if(event.keyCode == 13){
-				$("#search-button").trigger('click');
+				$("#order_search_btn").trigger('click');
 			}
 		});
-		function search(){			
-			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
-			var customerId = $('orders_by_customer_id').val();
-			var searchInput={};
-			var default_render=true;
-			searchInput['FKCustomerId'] = customerId;
 			
-			$('tr input[type]').each(function(){
-			  if($(this).val()){
-				searchInput[$(this).attr('name')]=$(this).val();
-				default_render=false;
-			  }
-			});
-			//Change the date format to YYYY-DD-MM
-			var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
-			var date_array = [];    
-			date_array = ReturnsOrderCreationDate.split("-");    
-			var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
-			var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];
-			/**/
-			if(default_render){
-			  //console.log(" in default_render");
-			  retrieveReturnOrders(customerId);
-			  //$('#orders_data >').html('Listing the latest 20 returned orders')
-			}
-			else{
-			  $('.loading-screen').slideDown('slow');      
-			  searchInput['ReturnsOrderCreationDate']= newDateFormat;
-			  console.log(searchInput);
-			  $.ajax({
-				url: apiCall,
-				type: 'post',
-				data: searchInput,
-				headers: {
-					Apoyar: apoyarToken
-				},
-				dataType: 'json',
-				success: function (data) {
-				  searchInput['ReturnsOrderCreationDate']= newDateFormatToShow;
-				  $('.loading-screen').slideUp('slow');
-				  console.log(data);
-				  renderReturnOrders(data);
-				  //updateMessage(searchInput);
-				},
-				fail: function(){
-				  $('.loading-screen').slideUp('slow');
-				  //renderReturnOrders({});
-				  //console.log(data);
-				}
-			  });      
-			}
-		}		
-		function retrieveReturnOrders(customerId){
-			$('.loading-screen').slideDown('slow');
-			// apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
-			apiCall=url+'returnorder/GetBMReturnOrderbyCustomerId';
-			//console.log("apoyarToken : " + apoyarToken );
-			$.ajax({
-			  url: apiCall,
-			  type: 'get',
-			  data: {Customerid: customerId, pageno:1, pagesize:20},
-			  headers: {
-				  Apoyar: apoyarToken
-			  },
-			  dataType: 'json',
-			  success: function (response) {
-				$('.loading-screen').slideUp('slow');
-				//console.log(response);
-				renderReturnOrders(response);
-			  },
-			  fail: function(){
-				$('.loading-screen').slideDown('slow');
-			  }
-			});			
-		}		
-		function paginate_req(pageno){
-		  var customerId = $('#orders_by_customer_id').val();			  
-		  retrieveReturnOrders(customerId, pageno);  
-	  }
-		
-	});
-
-//Jquery Smart searh for Super Admin Customer search
-(function ($) {
   $.expr[':'].Contains = function(a,i,m){
       return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
   };
@@ -944,6 +911,5 @@ $(function() {
  
   $(function () {
     listFilter($("#header"), $("#list"));
-  });
-  
-}($));
+  });		
+});
