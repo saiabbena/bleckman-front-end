@@ -60,6 +60,7 @@
 										<th class="customer-assign" style="display: none;">Assigned to Customer?</th>
 									</tr>
 								</thead>
+								<tbody>
 	              		<?php
 	              			//echo "all languages : " . json_encode($allLanguages);
 
@@ -100,6 +101,7 @@
 					          		</tr>';
 				          	}
 		          		?>
+		          			</tbody>
 			          		</table>
 			          	
 		          	</div>

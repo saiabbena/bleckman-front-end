@@ -1,10 +1,30 @@
 $(function() {
-	$.validator.addMethod("regex", function(value, element, regexpr) {          
-     return regexpr.test(value);
-   }, "Please enter a valid pasword.");
-   
+		$.validator.addMethod("regex", function(value, element, regexpr) {          
+     		return regexpr.test(value);
+   		}, "Please enter a valid pasword.");
+		$.validator.addMethod("valueNotEquals", function(value, element, arg){
+			return arg != value;
+		}, "Please select a value");
+
 		var url=API_BASE_URL_FE+'api/';
-		
+		$("#setCustomerCarrierMap").validate({
+		        rules: {
+		            FKCarrierId: { valueNotEquals : -1 },
+		            FkCustomerid: "required",
+		            country : { valueNotEquals : -1 },
+		            Warehouseid:  { valueNotEquals : -1 },
+		        },
+		        messages: {
+		            FKCarrierId: "Please select a Carrier",
+		            FkCustomerid: "Please select a Customer",
+		            country: "Please select a Country",
+		            Warehouseid: "Please select a Warehouse"
+		        },
+		        submitHandler: function(form) {
+		        	alert("submit");
+		            form.submit();
+		        }
+		});
 		$(".add-customer-pop").click(function(){
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
@@ -140,10 +160,6 @@ $(function() {
 		            form.submit();
 		        }
 		});
-					
-		$.validator.addMethod("valueNotEquals", function(value, element, arg){
-			return arg != value;
-		}, "Value must not equal arg.");
 
 		$(".add-user-pop").click(function(){
 			var validator1 = $( "#user-info-form" ).validate();
@@ -241,7 +257,7 @@ $(function() {
 		            form.submit();
 		        }
 		});
-		
+
 		$("#add-role-form").validate({
 			rules:{
 				"Roles[0][RoleName]" : "required",
@@ -779,4 +795,269 @@ $(function() {
 		}, function(){
 			$(this).attr('src', '/img/settings-btn.png');
 		});
-	});
+		var settings_global_cnt=0;
+		var settings_local_cnt=0;
+		$('#add-carrier-global-setting').click(function() {
+			var html1 = '<div class="row">\
+				                	<div class="col-md-12">\
+				                		<div class="col-md-6">\
+							              	<div class="form-group label-floating">\
+							                  <label class="control-label">Settings Name</label>\
+							                  <input id="SettingsName" type="text" name="GlobalSetting[' + settings_global_cnt +'][SettingName]" class="form-control" value="">\
+							                  <span class="help-block">Enter Settings Name</span>\
+							                </div>\
+				                		</div>\
+				                		<div class="col-md-6">\
+							              	<div class="form-group label-floating">\
+							                  <label class="control-label">Settings Value</label>\
+							                  <input id="SettingsValue" type="text" name="GlobalSetting[' + settings_global_cnt +'][SettingValue]" class="form-control" value="">\
+							                  <span class="help-block">Enter Settings Value</span>\
+							                </div>\
+				                		</div>\
+				                	</div>\
+				        </div>';
+			$('div#global-setting').append(html1);
+			settings_global_cnt++;
+		});
+		$('#add-carrier-local-setting').click(function() {
+			var html1 = '<div class="row">\
+				                	<div class="col-md-12">\
+				                		<div class="col-md-6">\
+							              	<div class="form-group label-floating">\
+							                  <label class="control-label">Settings Name</label>\
+							                  <input id="SettingsName" type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingName]" class="form-control" value="">\
+							                  <span class="help-block">Enter Settings Name</span>\
+							                </div>\
+				                		</div>\
+				                		<div class="col-md-6">\
+							              	<div class="form-group label-floating">\
+							                  <label class="control-label">Settings Value</label>\
+							                  <input id="SettingsValue" disabled type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
+							                  <span class="help-block">Enter Settings Value</span>\
+							                </div>\
+				                		</div>\
+				                	</div>\
+				        </div>';
+			$('div#carrier-setting').append(html1);
+			settings_local_cnt++;
+		});
+		$(".add-carrier-pop").click(function(){
+			$('h4#myCarrierLabel').text('Add a Carrier');
+		   	$('input#CarrierName').val('');
+			$('input#PKCarrierId').val('');
+			settings_global_cnt=0;
+			$('div#global-setting').html('');
+			$('select#Countries').val(-1);
+			$('#Countries').multiselect({enableFiltering: true, maxHeight: 200, buttonWidth: 250, nonSelectedText: 'Select a Country', nSelectedText: 'Countries Selected',});
+			$("#Countries").multiselect("refresh");
+		});
+		$("#carriers-table").on('click', 'a.edit-carrier-pop', function(){
+			$('.loading').css({'display':'block'});
+			$('.carrier_div').css({'display':'none'});
+			$('#Countries').multiselect({enableFiltering: true, maxHeight: 200, buttonWidth: 250, nonSelectedText: 'Select a Country', nSelectedText: 'Countries Selected',});
+			carrier_array = $(this).attr("id").split("-");
+			var selCarrierId = carrier_array[2];
+			
+			console.log(selCarrierId);
+			var apiCall=url+'Carrier/GetActiveCarrierbyid?CarrierId=' + selCarrierId;
+			console.log("apiCall : " + apiCall);
+			$.ajax({
+		        url: apiCall,
+		        type: 'GET',
+			    headers: {
+			        Apoyar: apoyarToken
+			    },
+		        dataType: 'json',
+		        success: function(data) {
+		        	console.log("response data : ");
+		        	console.log(data);
+					$('.loading').css({'display':'none'});
+					$('.carrier_div').css({'display':'block'});
+		   			$('h4#myCarrierLabel').text('Edit Carrier Information');
+		   			$('input#CarrierName').val(data.CarrierName);
+		   			$('input#PKCarrierId').val(data.PKCarrierID);
+
+		   			$('select#Countries').val(data.Countries);
+		   			//$('select#Countries').val(["2","5"]);
+		   			$("#Countries").multiselect("refresh");
+		   			console.log(data.Countries.toString());
+		   			
+		   			console.log(data['GlobalSetting'].length);
+		   			for(i=0;i<data['GlobalSetting'].length;i++) {
+						var html1 = '<div class="row">\
+				                	<div class="col-md-12">\
+				                		<input type="hidden" name="GlobalSetting[' + i +'][PKGlobalCarrierId]" value="'+ data['GlobalSetting'][i]['PKGlobalCarrierId'] +'">\
+				                		<div class="col-md-6">\
+							              	<div class="form-group label-floating">\
+							                  <label class="control-label">Settings Name</label>\
+							                  <input id="SettingsName" type="text" name="GlobalSetting[' + i +'][SettingName]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingName'] +'">\
+							                  <span class="help-block">Enter Settings Name</span>\
+							                </div>\
+				                		</div>\
+				                		<div class="col-md-6">\
+							              	<div class="form-group label-floating">\
+							                  <label class="control-label">Settings Value</label>\
+							                  <input id="SettingsValue" type="text" name="GlobalSetting[' + i +'][SettingValue]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingValue'] +'">\
+							                  <span class="help-block">Enter Settings Value</span>\
+							                </div>\
+				                		</div>\
+				                	</div>\
+				       		</div>';
+						$('div#global-setting').append(html1);
+					}
+					for(i=0;i<data['CarrierSetting'].length;i++) {
+						var html2 = '<div class="row">\
+							                	<div class="col-md-12">\
+							                	<input type="hidden" name="CarrierSetting[' + i +'][PKGlobalCarrierId]" value="'+ data['CarrierSetting'][i]['PKGlobalCarrierId'] +'">\
+							                		<div class="col-md-6">\
+										              	<div class="form-group label-floating">\
+										                  <label class="control-label">Settings Name</label>\
+										                  <input id="SettingsName" type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingName]" class="form-control" value="'+ data['CarrierSetting'][i]['SettingName'] +'">\
+										                  <span class="help-block">Enter Settings Name</span>\
+										                </div>\
+							                		</div>\
+							                		<div class="col-md-6">\
+										              	<div class="form-group label-floating">\
+										                  <label class="control-label">Settings Value</label>\
+										                  <input id="SettingsValue" disabled type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
+										                  <span class="help-block">Enter Settings Value</span>\
+										                </div>\
+							                		</div>\
+							                	</div>\
+							        </div>';
+						$('div#carrier-setting').append(html2);
+						settings_local_cnt++;
+		   			}
+		   			settings_global_cnt = data['GlobalSetting'].length;
+		   			settings_local_cnt = data['CarrierSetting'].length;
+		        	$.material.init();
+		        },
+		        fail: function(data){
+		          console.log(data);
+		        }
+		      });
+		});
+		$("#FKCarrierId").on('change', function() {
+			console.log($(this).val());
+			$("div#carrierCountry *").prop('disabled',true);
+			var apiCall=url+'carrier/GetCountriesbyCarrierid?CarrierId=' + $(this).val();
+			console.log("apiCall : " + apiCall);
+			$.ajax({
+		        url: apiCall,
+		        type: 'GET',
+			    headers: {
+			        Apoyar: apoyarToken
+			    },
+		        dataType: 'json',
+		        success: function(data) {
+		        	console.log("response data : ");
+		        	console.log(data);
+		        	var html1 = '<div class="form-group" id="select-country-div"><label>Select a Country</label>\
+		        					<select id="country" class="form-control">\
+										<option value="-1">Select a Country</option>';
+										for(i=0;i<data.length;i++) {
+											html1+= '<option value="'+ data[i]['PKCountryId'] + '-' + data[i]['CountryCode'] + '">' + data[i]['CountryName'] + '</option>';
+										}
+					html1 += '</select></div>';
+					$('div#carrierCountry').html(html1);
+					$("div#carrierCountry *").prop('disabled',false);
+		        	$.material.init();
+		        	$("#setCustomerCarrierMap").validate(); //sets up the validator
+					$("select#country").rules("add", { valueNotEquals : -1 });
+		        },
+		        fail: function(data){
+		          console.log(data);
+		        }
+		      });
+		});
+		$("#carrierCountry").on('change', '#select-country',function() {
+			console.log($(this).val());
+			country_array = $(this).val().split("-");
+			//var countryId = country_array[0];
+			$('#CountryCode').val(country_array[1]);
+			$('#FKCountryID').val(country_array[0]);
+		});
+
+		$(".manage-carrier-pop").click(function() {
+			$('.loading').css({'display':'block'});
+			$('.carrier-modal').css({'display':'none'});
+
+			array = $(this).attr("id").split("-");
+			//var selId = array[2];
+			var apiCall=url+'Carrier/GetCarrierSettingbyCCWid?CCWid=' + array[2] + '&Carrierid=' + array[3];
+			console.log(apiCall);
+			console.log(apoyarToken);
+			$.ajax({
+		        url: apiCall,
+		        type: 'GET',
+			    headers: {
+			        Apoyar: apoyarToken
+			    },
+		        dataType: 'json',
+		        success: function(data) {
+		        	console.log("response data : ");
+		        	console.log(data);
+		        	var html2 = '';
+		        	$('.loading').css({'display':'none'});
+					$('.carrier-modal').css({'display':'block'});
+					
+					if (data['Global']) {
+						console.log('gs length : ' + data['GlobalSetting'].length);
+						for(i=0;i<data['GlobalSetting'].length;i++) {
+							html2 += '<div class="row">\
+							            <div class="col-md-12">\
+							                <input type="hidden" name="CarrierSetting[' + i +'][FKCCWId]" value="'+ array[2] +'">\
+							                		<div class="col-md-6">\
+										              	<div class="form-group label-floating">\
+										                  <label class="control-label">Settings Name</label>\
+										                  <input id="SettingsName" type="text" name="CarrierSetting[' + i +'][SettingName]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingName'] +'">\
+										                  <span class="help-block">Enter Settings Name</span>\
+										                </div>\
+							                		</div>\
+							                		<div class="col-md-6">\
+										              	<div class="form-group label-floating">\
+										                  <label class="control-label">Settings Value</label>\
+										                  <input id="SettingsValue" type="text" name="CarrierSetting[' + i +'][SettingValue]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingValue'] +'">\
+										                  <span class="help-block">Enter Settings Value</span>\
+										                </div>\
+							                		</div>\
+							                	</div>\
+							        </div>';
+		   				}
+		   				$('div.carrier-modal').html(html2);
+		   			} else {
+		   				console.log('cs length : ' + data['CarrierSetting'].length);
+						for(i=0;i<data['CarrierSetting'].length;i++) {
+							html2 += '<div class="row">\
+							            <div class="col-md-12">\
+							            	<input type="hidden" name="CarrierSetting[' + i +'][PKCarrierSettingId]" value="'+ data['CarrierSetting'][i]['PKCarrierSettingId'] +'">\
+							            	<input type="hidden" name="CarrierSetting[' + i +'][FKCCWId]" value="'+ data['CarrierSetting'][i]['FKCCWId'] +'">\
+							                		<div class="col-md-6">\
+										              	<div class="form-group label-floating">\
+										                  <label class="control-label">Settings Name</label>\
+										                  <input id="SettingsName" type="text" name="CarrierSetting[' + i +'][SettingName]" class="form-control" value="'+ data['CarrierSetting'][i]['SettingName'] +'">\
+										                  <span class="help-block">Enter Settings Name</span>\
+										                </div>\
+							                		</div>\
+							                		<div class="col-md-6">\
+										              	<div class="form-group label-floating">\
+										                  <label class="control-label">Settings Value</label>\
+										                  <input id="SettingsValue" type="text" name="CarrierSetting[' + i +'][SettingValue]" class="form-control" value="'+ data['CarrierSetting'][i]['SettingValue'] +'">\
+										                  <span class="help-block">Enter Settings Value</span>\
+										                </div>\
+							                		</div>\
+							                	</div>\
+							        </div>';
+		   				}
+		   				$('div.carrier-modal').html(html2);
+		   			}
+		        	$.material.init();
+		        },
+		        fail: function(data){
+		          console.log(data);
+		        }
+		      });
+		});
+		
+
+});
