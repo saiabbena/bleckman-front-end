@@ -135,7 +135,9 @@
 				          			<div class="col-md-12">
 						                <div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">
 						                	<h4>Global Settings <a class="pull-right" id="add-carrier-global-setting" href="#">Add New</a></h4>
+						                	<div id="global-settings-error" style="color:red;font-size:13px;display: none;">Please enter Global Settings</div>
 						                	<div id="global-setting">
+
 
 						                	</div>
 						                </div>
@@ -146,7 +148,9 @@
 				                	<div class="col-md-12">
 						                <div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">
 						                	<h4>Carrier Settings <a class="pull-right" id="add-carrier-local-setting" href="#">Add New</a></h4>
+						                	<div id="local-settings-error" style="color:red;font-size:13px;display: none;">Please enter Carrier Settings</div>
 						                	<div id="carrier-setting">
+
 						                	</div>
 						                </div>
 					                </div>

@@ -801,6 +801,7 @@ $(function() {
 				        </div>';
 			$('div#global-setting').append(html1);
 			settings_global_cnt++;
+			$('#global-settings-error').hide();
 		});
 		$('#add-carrier-local-setting').click(function() {
 			var html1 = '<div class="row">\
@@ -823,9 +824,12 @@ $(function() {
 				        </div>';
 			$('div#carrier-setting').append(html1);
 			settings_local_cnt++;
+			$('#local-settings-error').hide();
 		});
 		$(".add-carrier-pop").click(function(){
 			$('h4#myCarrierLabel').text('Add a Carrier');
+			var validator1 = $( "#add-carrier-form" ).validate();
+			validator1.resetForm();
 		   	$('input#CarrierName').val('');
 			$('input#PKCarrierId').val('');
 			settings_global_cnt=0;
@@ -833,6 +837,9 @@ $(function() {
 			$('select#Countries').val(-1);
 			$('#Countries').multiselect({enableFiltering: true, maxHeight: 200, buttonWidth: 250, nonSelectedText: 'Select a Country', nSelectedText: 'Countries Selected',});
 			$("#Countries").multiselect("refresh");
+		   //      	$("#add-carrier-form").validate(); //sets up the validator
+					// $("GlobalSetting[]").rules("add", { required : true });
+					// console.log("set");
 		});
 		$("#carriers-table").on('click', '.edit-carrier-pop', function(){
 			$('.loading').css({'display':'block'});
@@ -1069,11 +1076,17 @@ $(function() {
 		        messages: {
 		            CarrierName: "Please enter a Carrier Name",
 		            "Countries[]": "Please select a Country",
-
 		        },
 		        submitHandler: function(form) {
-		        	alert("submit");
-		            form.submit();
+		        	if ( settings_global_cnt > 0) {
+		        		if (settings_local_cnt > 0) {
+		            		form.submit();
+		            	} else {
+		            		$('#local-settings-error').show();
+		            	}
+		            } else {
+		            	$('#global-settings-error').show();
+		            }
 		        }
 		});
 });
