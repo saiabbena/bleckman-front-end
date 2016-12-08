@@ -638,8 +638,7 @@ $(document).ready(function() {
 			} else {
 				$('#Fkcustomerid-div').show();
 			}
-		});
-		/**/
+		});		
 		//Filter all Orders according to the Customer Id
 		$("#orders_by_customer_id").on('change', function(){
 			//alert("change" + $(this).val());
@@ -662,8 +661,7 @@ $(document).ready(function() {
 	    if ($('#hdn_customer_id_ord').length) {
 		   var hdn_customer_id_ord = $('#hdn_customer_id_ord').val();
 		   retrieveReturnOrders(hdn_customer_id_ord);		
-		}
-		
+		}		
 		function renderReturnOrders(raw_data){
 			html='';
 			html2='';
@@ -679,8 +677,7 @@ $(document).ready(function() {
 				for(i=1;i<=page_count;i++){
 					pagination_html = pagination_html+'<button style="color:#FFF !important;" type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
 				}
-			}
-			
+			}			
 			for(i=0; i<raw_data['ReturnOrders'].length; i++){
 				var data = raw_data['ReturnOrders'];
 				//console.log(data);
@@ -705,9 +702,7 @@ $(document).ready(function() {
 					  \
 					  <td style="white-space: nowrap;">\
 					  <button data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-primary btn-raised btn_more_info">More info</button>\
-					  <button data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-warning btn-raised">Comment</button></td>\	</tr>\ ';
-					  
-			  
+					  <button data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-warning btn-raised">Comment</button></td>\	</tr>\ ';			  
 
 			  html3=html3+'\
 			  <div class="modal fade" id="rOrderComment'+data[i].ReturnId+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
