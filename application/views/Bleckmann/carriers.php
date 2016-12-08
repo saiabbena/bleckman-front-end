@@ -5,6 +5,11 @@
 		max-width: 250px;
 		overflow-x: auto;
 	}
+	.multiselect-native-select .error {
+		position: absolute;
+		top:24px;
+		left:42px;
+	}
 </style>
 
 <div class='col-xs-12 col-md-9' height='100%'>
@@ -118,7 +123,7 @@
 						            	<div class="form-group label-floating">
 						                  	<?php
 						                  	//echo json_encode($allCountries);
-						                  	echo '<label class="control-label" style="top:-30px;">Select a Country</label><select class="form-control" id="Countries" name="Countries[]" multiple>';
+						                  	echo '<label class="control-label" style="top:-30px;left:42px;font-size:12px;">Select a Country</label><select class="form-control" id="Countries" name="Countries[]" multiple>';
 							                  	//echo '<option value="-1">Select a Country</option>';
 							                  	for ($i=0; $i<count($allCountries); $i++) {
 							                  		if ( $allCountries[$i]['IsActive'] ) {
