@@ -882,7 +882,7 @@ $(document).ready(function() {
 			retrieveReturnOrders(customerId);			
 		});
 	    //Added this code for submit button, so that user can enter submit for search
-	    $("#order_search .form-control").keyup(function(event){
+	    $("#orders_data .form-control").keyup(function(event){
 			if(event.keyCode == 13){
 				$("#order_search_btn").trigger('click');
 			}
