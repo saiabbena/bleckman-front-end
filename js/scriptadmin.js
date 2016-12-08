@@ -18,7 +18,7 @@ $(document).ready(function(){
 	apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
     //console.log("apoyarToken : " + apoyarToken );	
 	console.log(customerId);	
-	searchInput['pagesize'] = 15;
+	searchInput['pagesize'] = 20;
 	searchInput['FKCustomerId'] = customerId;
 	
 	if(typeof(pageno)==='undefined'){				
@@ -59,7 +59,7 @@ $(document).ready(function(){
 			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
 			var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';
 	if(page_count > 1){				
-		pagination_html = '<b>Pages : </b> ';
+		var pagination_html = '<b>Pages : </b> ';
 		for(i=1;i<=page_count;i++){
 			pagination_html = pagination_html+'<button ';
 			if(pageno === i){
@@ -198,7 +198,7 @@ $(document).ready(function(){
 	}else{
 		searchInput['pageno'] = pageno;
 	} 
-	searchInput['pagesize'] = 15;
+	searchInput['pagesize'] = 20;
     
     if(default_render){
       console.log(" in default_render");
@@ -229,19 +229,7 @@ $(document).ready(function(){
           renderReturnOrders({});
           //console.log(data);
         }
-      });
-
-      // $.post(apiCall, searchInput)
-      // .success(function(data){
-      //   $('.loading-screen').slideUp('slow');
-      //   console.log(data);
-      //   renderReturnOrders(data);
-      //   updateMessage(searchInput);
-      // }).fail(function(data){
-      //   $('.loading-screen').slideUp('slow');
-      //   renderReturnOrders({});
-      //   console.log(data);
-      // });
+      });     
     }
 
   }
