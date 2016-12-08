@@ -1043,7 +1043,7 @@ $(document).ready(function() {
 				                		</div>\
 				                	</div>\
 				       		</div>';
-						$('div#global-setting').append(html1);
+						$('div#global-setting').html(html1);
 					}
 					for(i=0;i<data['CarrierSetting'].length;i++) {
 						var html2 = '<div class="row">\
@@ -1065,7 +1065,7 @@ $(document).ready(function() {
 							                		</div>\
 							                	</div>\
 							        </div>';
-						$('div#carrier-setting').append(html2);
+						$('div#carrier-setting').html(html2);
 						settings_local_cnt++;
 		   			}
 		   			settings_global_cnt = data['GlobalSetting'].length;
@@ -1121,7 +1121,7 @@ $(document).ready(function() {
 		$(".manage-carrier-pop").click(function() {
 			$('.loading').css({'display':'block'});
 			$('.carrier-modal').css({'display':'none'});
-
+			var html2 = '';
 			array = $(this).attr("id").split("-");
 			//var selId = array[2];
 			var apiCall=url+'Carrier/GetCarrierSettingbyCCWid?CCWid=' + array[2] + '&Carrierid=' + array[3];
@@ -1137,7 +1137,7 @@ $(document).ready(function() {
 		        success: function(data) {
 		        	console.log("response data : ");
 		        	console.log(data);
-		        	var html2 = '';
+		        	
 		        	$('.loading').css({'display':'none'});
 					$('.carrier-modal').css({'display':'block'});
 					
