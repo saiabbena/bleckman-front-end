@@ -1021,10 +1021,11 @@ $(document).ready(function() {
 		   			//$('select#Countries').val(["2","5"]);
 		   			$("#Countries").multiselect("refresh");
 		   			console.log(data.Countries.toString());
-		   			
+		   			var html1='';
+		   			var html2 = '';
 		   			console.log(data['GlobalSetting'].length);
 		   			for(i=0;i<data['GlobalSetting'].length;i++) {
-						var html1 = '<div class="row">\
+						html1 += '<div class="row">\
 				                	<div class="col-md-12">\
 				                		<input type="hidden" name="GlobalSetting[' + i +'][PKGlobalCarrierId]" value="'+ data['GlobalSetting'][i]['PKGlobalCarrierId'] +'">\
 				                		<div class="col-md-6">\
@@ -1043,10 +1044,11 @@ $(document).ready(function() {
 				                		</div>\
 				                	</div>\
 				       		</div>';
-						$('div#global-setting').html(html1);
+						settings_global_cnt++;
 					}
+					$('div#global-setting').html(html1);
 					for(i=0;i<data['CarrierSetting'].length;i++) {
-						var html2 = '<div class="row">\
+						html2 += '<div class="row">\
 							                	<div class="col-md-12">\
 							                	<input type="hidden" name="CarrierSetting[' + i +'][PKGlobalCarrierId]" value="'+ data['CarrierSetting'][i]['PKGlobalCarrierId'] +'">\
 							                		<div class="col-md-6">\
@@ -1065,9 +1067,10 @@ $(document).ready(function() {
 							                		</div>\
 							                	</div>\
 							        </div>';
-						$('div#carrier-setting').html(html2);
+						
 						settings_local_cnt++;
 		   			}
+		   			$('div#carrier-setting').html(html2);
 		   			settings_global_cnt = data['GlobalSetting'].length;
 		   			settings_local_cnt = data['CarrierSetting'].length;
 		        	$.material.init();
