@@ -1110,7 +1110,7 @@ $(document).ready(function() {
 		        }
 		      });
 		});
-		$("#carrierCountry").on('change', '#select-country',function() {
+		$("div#carrierCountry").on('change', '#country',function() {
 			console.log($(this).val());
 			country_array = $(this).val().split("-");
 			//var countryId = country_array[0];
