@@ -21,57 +21,55 @@
 			<table id="order_search" style="border-spacing: 20px !important;border-collapse: separate !important;" >		
 			  <thead>		  
 				<tr>
-				  <th>
+				  <th class="col-md-2">
 					<div class='form-group'>
 					  <input type='text' id="ReturnsOrderCreationDate" name="ReturnsOrderCreationDate" class='datepicker form-control' placeholder="dd-mm-yyyy" 
 					  style="font-size:0.9em !important;" />				  			  
 					</div>
 				  </th>
-				  <th style="width:10% !important;">
+				  <th class="col-md-2">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label">Order-id</label>
 					  <input name='OrderID' type="text" class="form-control" id="i5">
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				  <th>
+				  <th class="col-md-2">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label">Return order-id</label>
 					  <input name='ReturnId' type="text" class="form-control" id="i5" />
 					  <span class="help-block"></span>
 					</div>
-				  </th>
-				  <th>
-
-				  </th>
-				  <th>
-
-				  </th>
-				  <th>
+				  </th>				  
+				  <th class="col-md-2">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label">Carrier</label>
 					  <input name='CarrierName' type="text" class="form-control" id="i5">
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				  <th>
+				  <th class="col-md-2">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label">Status</label>
 					  <input name='StatusName' type="text" class="form-control" id="i5">
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				  <th>
-					<button type="button" id="order_search_btn" class='btn btn-success btn-raised'>
+				  <th class="col-md-1">
+					<button type="button" id="order_search_btn" class='btn btn-success btn-raised pull-right'>
 					  SEARCH
 					</button>
-					<button class='btn btn-success btn-raised' id='btn_clear' onclick="javascript:window.location.reload()">
+				  </th>
+				  <th class="col-md-1">
+					<button class='btn btn-success btn-raised pull-left' id='btn_clear' onclick="javascript:window.location.reload()">
 					  CLEAR
 					</button>
 				  </th>
 				</tr>				
 			  </thead>			  
-			</table>
+		</table>
+	</div>
+	<div class='row'>
 		<input type="hidden" name="hdn_customer_id_ord" id="hdn_customer_id_ord" value="<?php echo $Customerid?>" />
         <?php
           if(isset($_SESSION['message']['carrier_panel'])){
@@ -84,14 +82,14 @@
 			<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">		
 			  <thead>
 				<tr>
-				  <th class="nosort">Date</th>
-				  <th>Order ID</th>
-				  <th>Return Order ID</th>
+				  <th class="nosort col-md-1">Date</th>
+				  <th class="col-md-2">Order ID</th>
+				  <th class="col-md-2">Return Order ID</th>
 				  <th class="nosort">Tracking</th>
-				  <th>Refund</th>
-				  <th>Customer</th>
-				  <th>Carrier</th>
-				  <th>Status</th>
+				  <th class="col-md-1">Refund</th>
+				  <th class="col-md-1">Customer</th>
+				  <th class="col-md-1">Carrier</th>
+				  <th class="col-md-2">Status</th>
 				  <th class="nosort">Action</th>
 				</tr>
 			  </thead>
