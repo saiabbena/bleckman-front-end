@@ -76,7 +76,9 @@
             
           </tbody>
         </table>		
-        
+        <div class="row">
+			<div id="btm_pagination" class="col-md-10 pull-right text-right"></div>
+		</div>
       </div>
     </div>
   </div>

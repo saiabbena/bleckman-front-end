@@ -10,17 +10,22 @@ $(document).ready(function(){
 	var customerSettings={};
 	var submition={};
 	
-  function retrieveReturnOrders(customerId){
+  function retrieveReturnOrders(customerId, pageno){
 	  var searchInput = {};
     $('.loading-screen').slideDown('slow');
     // apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
     //apiCall=url+'returnorder/GetBMReturnOrderbyCustomerId';
 	apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
     //console.log("apoyarToken : " + apoyarToken );	
-	console.log(customerId);
-	searchInput['pageno'] = 1;
+	console.log(customerId);	
 	searchInput['pagesize'] = 15;
 	searchInput['FKCustomerId'] = customerId;
+	
+	if(typeof(pageno)==='undefined'){				
+		searchInput['pageno'] = 1;
+	}else{
+		searchInput['pageno'] = pageno;
+	} 
     $.ajax({
       url: apiCall,
       type: 'post',
@@ -37,27 +42,35 @@ $(document).ready(function(){
       fail: function(){
         $('.loading-screen').slideDown('slow');
       }
-    });
-
-    // $.get(apiCall, {Customerid: customerId})
-    // .success(function(data){
-    //   $('.loading-screen').slideUp('slow');
-    //   console.log(data);
-    //   renderReturnOrders(data);
-    // })
-    // .fail(function(){
-    //   $('.loading-screen').slideDown('slow');
-    // })
-    // .always(function(){
-      
-    // });
+    });    
   }
-
+	$(document).on('click', '.btn_paginate', function() {
+		//alert($(this).text());
+		var pageno = $(this).text();			
+		retrieveReturnOrders(customerId, pageno);			
+	});
   function renderReturnOrders(raw_data){
     html='';
     html2='';
     html3='';
-	console.log(raw_data);
+	//console.log(raw_data);
+	var page_count = raw_data['Count'];
+	var pageno = raw_data['PageNo'];
+			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
+			var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';
+	if(page_count > 1){				
+		pagination_html = '<b>Pages : </b> ';
+		for(i=1;i<=page_count;i++){
+			pagination_html = pagination_html+'<button ';
+			if(pageno === i){
+				pagination_html = pagination_html+btn_sel
+			}
+			else{
+				pagination_html = pagination_html+btn_normal
+			}
+			pagination_html = pagination_html+' type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
+		}
+	}
     for(i=0; i<raw_data['ReturnOrders'].length; i++){
 	  var data = raw_data['ReturnOrders'];
       date=new Date(data[i].ReturnsOrderCreationDate);
@@ -117,6 +130,7 @@ $(document).ready(function(){
     $('body').append(html2);
     $('body').append(html3);
     $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody').html(html);
+	$('#btm_pagination').html(pagination_html);
 	//$('#override #orders_data tbody').html(html);
   }
 	$(document).on('click', '.btn_more_info', function() {
