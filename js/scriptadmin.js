@@ -11,21 +11,27 @@ $(document).ready(function(){
 	var submition={};
 	
   function retrieveReturnOrders(customerId){
+	  var searchInput = {};
     $('.loading-screen').slideDown('slow');
     // apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
-    apiCall=url+'returnorder/GetBMReturnOrderbyCustomerId';
-    //console.log("apoyarToken : " + apoyarToken );
+    //apiCall=url+'returnorder/GetBMReturnOrderbyCustomerId';
+	apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
+    //console.log("apoyarToken : " + apoyarToken );	
+	console.log(customerId);
+	searchInput['pageno'] = 1;
+	searchInput['pagesize'] = 15;
+	searchInput['FKCustomerId'] = customerId;
     $.ajax({
       url: apiCall,
-      type: 'get',
-      data: {Customerid: customerId, pageno:1, pagesize:20},
+      type: 'post',
+      data: searchInput,
       headers: {
           Apoyar: apoyarToken
       },
       dataType: 'json',
       success: function (response) {
         $('.loading-screen').slideUp('slow');
-        //console.log(response);
+        console.log(response);
         renderReturnOrders(response);
       },
       fail: function(){
@@ -47,11 +53,13 @@ $(document).ready(function(){
     // });
   }
 
-  function renderReturnOrders(data){
+  function renderReturnOrders(raw_data){
     html='';
     html2='';
     html3='';
-    for(i=0; i<data.length; i++){
+	console.log(raw_data);
+    for(i=0; i<raw_data['ReturnOrders'].length; i++){
+	  var data = raw_data['ReturnOrders'];
       date=new Date(data[i].ReturnsOrderCreationDate);
       resultDate=date.getDate()+'/'+(date.getMonth()+1)+'/'+(date.getYear()+1900);
       html=html+'\
@@ -65,46 +73,19 @@ $(document).ready(function(){
               \
               <td style="white-space: nowrap;"><a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'">Link</a></td>\
               \
-              <td style="white-space: nowrap;"><b>'+data[i].Returnorderline[0].ProductCurrency+' '+data[i].ReturnOrderTotalRefundAmount.toFixed(2)+'</b></td>\
+			  <td style="white-space: nowrap;"><b>'+' '+data[i].ReturnOrderTotalRefundAmount.toFixed(2)+'</b></td>\
               \
               <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
               \
               <td style="white-space: normal !important;">'+data[i].StatusName+'</td>\
               \
               <td style="white-space: nowrap;">\
-              <button data-toggle="modal" data-target="#moreInfo'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-primary btn-raised">More info</button>\
+              <button data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-primary btn-raised btn_more_info">More info</button>\
               <button data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-warning btn-raised">Comment</button>\
         </tr>\
       ';
-      html2=html2+'\
-      <div class="modal fade" id="moreInfo'+data[i].ReturnId+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
-        <div class="modal-dialog" role="document">\
-          <div class="modal-content">\
-            <div class="modal-header">\
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
-              <h4 class="modal-title" id="myModalLabel">Full info on return order: '+data[i].ReturnId+'</h4>\
-            </div>\
-            <div class="modal-body">\
-              <b>Full date/time:</b> '+data[i].ReturnsOrderCreationDate+', <b>Orderid:</b> '+data[i].OrderId+', <b>Return status:</b> '+data[i].StatusName+'<br><br>\
-              <b>Customer Email:</b> '+data[i].ConsumerEmail+'<br><br>\
-              <b>Customer Phone:</b> '+data[i].Consumerphonenumber+'<br><br>\
-              <b>Comment:</b><br>\
-              '+(data[i].Comment?data[i].Comment:'No comment has been made yet')+'<br><br>\
-              <b>Items returned ('+data[i].Returnorderline.length+'):</b><hr>';
-      for(a=0; a<data[i].Returnorderline.length; a++){
-        r=data[i].Returnorderline[a];
-        html2=html2+'\
-        <b>Item name:</b> '+r.ProductName+'<br> <b>Product SKU:</b> '+r.SKU+'<br> <b>Product info:</b> '+r.ProductInfo+'<br> <b>Return reason:</b> '+r.ReturnReason+'<br> <b>Quantity:</b> '+r.QtyReturned+'<br> <b>Price:</b> '+r.Price+' <hr>\
-        '
-      }
-            html2=html2+'</div>\
-            <div class="modal-footer">\
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
-            </div>\
-          </div>\
-        </div>\
-      </div>\
-      ';
+	  
+      
 
       html3=html3+'\
       <div class="modal fade" id="rOrderComment'+data[i].ReturnId+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
@@ -138,7 +119,45 @@ $(document).ready(function(){
     $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody').html(html);
 	//$('#override #orders_data tbody').html(html);
   }
-
+	$(document).on('click', '.btn_more_info', function() {
+		//alert($(this).attr('id')); //ReturnId
+		var ReturnId = $(this).attr('id');
+		var moreinfo_html = '';			
+		//var customerId = $('#orders_by_customer_id').val();
+		$('#moreInfo').html('');
+		var apiCall=url+'returnorder/GetBMReturnOrderlinesbyReturnOrderid?ReturnId=' + ReturnId;
+		$.ajax({
+			url: apiCall,
+			type: 'GET',
+			headers: {
+				Apoyar: apoyarToken
+			},
+			dataType: 'json',
+			success: function(data) {
+				//console.log("response data : ");
+				//console.log(data);
+				//data[i].OrderId
+				//console.log(data.OrderId);
+				//console.log(data['Returnorderline'][0].EanBarcode);
+				/**/
+				moreinfo_html = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel">Full info on return order: '+data.ReturnId+'</h4></div><div class="modal-body"><b>Full date/time:</b>'+data.ReturnsOrderCreationDate+',<b>Orderid:</b>'+data.OrderId+',	<b>Return status:</b>'+data.StatusName+'<br><br><b>Customer Email:</b> '+data.ConsumerEmail+'<br><br><b>Customer Phone:</b>'+data.Consumerphonenumber+' <br><br>	<b>Comment:</b><br>'+(data.Comment?data.Comment:'No comment has been made yet')+'<br><br><b>Items returned ('+data.Returnorderline.length+'):</b><hr>';
+				for(a=0; a<data.Returnorderline.length; a++){
+					var r=data.Returnorderline[a];
+					moreinfo_html=moreinfo_html+'\
+					<b>Item name:</b> '+r.ProductName+'<br> <b>Product SKU:</b> '+r.SKU+'<br> <b>Product info:</b> '+r.ProductInfo+'<br> <b>Return reason:</b> '+r.ReturnReason+'<br> <b>Quantity:</b> '+r.QtyReturned+'<br> <b>Price:</b> '+r.Price+' <hr>\
+					'
+				}
+				moreinfo_html=moreinfo_html+'<hr></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div>';
+				$('#moreInfo').html(moreinfo_html);
+				
+				$.material.init();
+			},
+			fail: function(data){
+			  console.log(data);
+			}
+		  });
+					
+		});
   function search(){
     //apiCall=url+'returnorder/PostReturnOrderbyKeywords';
     apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
@@ -159,6 +178,13 @@ $(document).ready(function(){
     date_array = ReturnsOrderCreationDate.split("-");    
     var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
 	var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];
+	
+	if(typeof(pageno)==='undefined'){				
+		searchInput['pageno'] = 1;
+	}else{
+		searchInput['pageno'] = pageno;
+	} 
+	searchInput['pagesize'] = 15;
     
     if(default_render){
       console.log(" in default_render");
