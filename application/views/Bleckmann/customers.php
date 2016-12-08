@@ -3,7 +3,7 @@
 	<br>
 	  	<div class='row' id="list">
 		 <div class="col-sm-12">
-			<div class="col-md-11"><h4 id="header" class="pull-right"></h4>
+			<div class="col-md-11"><h4 id="header" class="pull-left"></h4>
 			</div>
 			<div class="col-md-1"><button type="button" data-toggle="modal" data-target="#add-customer-modal" id='add-customer' class='add-customer-pop btn btn-raised btn-warning pull-right'>Add</button>
 			</div>			
