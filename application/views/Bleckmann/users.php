@@ -224,9 +224,9 @@
 							<button type="submit" class="btn btn-primary">save</button>
 						  </div>
 						</form>
-						</div>
-		          </div>
+			</div>
+		</div>
 		          
-            </div>
-          </div>
-        </div>
+    </div>
+    </div>
+</div>

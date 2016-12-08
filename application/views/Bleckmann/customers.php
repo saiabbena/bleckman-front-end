@@ -43,7 +43,7 @@
 								
 								<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'" target="_blank">View Consumer URL</a>&nbsp; | 
 								<a href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a> | 
-								<a href="carriers/searchbyCID/'.$allCustomers[$i]['PKCustomerID'].'">Carriers</a> | 
+								<a href="managecarriers?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Manage Carriers</a> | 
 								<a href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a> | 
 								<a href="users?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Users</a> | 
 								<a href="orders/Customerid/'.$allCustomers[$i]['PKCustomerID'].'">Orders</a>

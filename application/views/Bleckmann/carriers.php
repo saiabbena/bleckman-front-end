@@ -1,257 +1,170 @@
-    <div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
-        <h3>Manage Carriers, <?php echo $customer_name;//($carriers['Customer']['CustomerName']);?></h3>		
-        <div class='row'>
-			<div class="col-xs-12 col-md-12">
-				<button type="button" data-toggle="modal" data-target="#add_carrier_modal" id='add_carrier' class='add-pop btn btn-raised btn-warning pull-right'>Add</button>
-			</div>
-		</div>		
-		<div class='row'>
-        <?php
-          if(isset($_SESSION['message']['carrier_panel'])){
-            echo'
-            <div class="alert alert-dismissible alert-success">
-              '.$_SESSION['message']['carrier_panel'].'
-            </div>';
-          }
-        ?>
+<script type="text/javascript" src="<?php echo base_url();?>js/bootstrap-multiselect.js"></script>	
+<link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap-multiselect.css">	
+<style type="text/css">
+	.multiselect-container {
+		max-width: 250px;
+		overflow-x: auto;
+	}
+</style>
 
-	  		<?php				
-				$all_carriers_data = $carriers['Carriers'];
-				//echo count($all_carriers_data);
-				$existing_country_list = array();
-				if(count($all_carriers_data)>0){
-					for($i=0; $i<count($all_carriers_data); $i++) {
-						$selCountry = '';
-		  				for($j=0;$j<count($allCountries);$j++) {
-					    	if ( $all_carriers_data[$i]['ConsumerCountryName'] == $allCountries[$j]['PKCountryId']) {
-					    		$selCountry = $allCountries[$j]['CountryName'];
-					        	break;
-							}
-					    }
-						$existing_country_list[] = $all_carriers_data[$i]['ConsumerCountryName'];						
-						echo '<div class="col-xs-12 col-md-3" height="100%"">
-								<div class="well" style="border-bottom: 5px solid #22B8AA; padding-bottom: 40px;">
-									<h3>'. $all_carriers_data[$i]['CarrierName'] . '</h3>
-									<p>User Name: '. $all_carriers_data[$i]['APIUserName'] .'</p>
-									<p>Key : '. $all_carriers_data[$i]['APIKey'] .'</p>
-									<p>URL: '. $all_carriers_data[$i]['APIURL'] .'</p>
-									<p>Country: '. $selCountry .'</p>
-									<p>Label: '. $all_carriers_data[$i]['LabelAPI'] .'</p>
-									<p>Announce API: '. $all_carriers_data[$i]['AnnounceAPI'] .'</p>
-									<p>TraceURL: '. $all_carriers_data[$i]['TrackTraceURL'] .'</p>
-									<p>ApplicationID: '. $all_carriers_data[$i]['ApplicationID'] .'</p>									
-									
-									<div class="row">
-										<button type="button" data-toggle="modal" data-target="#delete_carrier_modal'. $all_carriers_data[$i]['PKCarrierID'] .'" id="delete_carrier" class="btn btn-raised btn-danger pull-right">Delete</button>
-										<button type="button" data-toggle="modal" data-target="#add_carrier_modal" id="editcarrrier_'. $all_carriers_data[$i]['PKCarrierID'] .'" class="btn btn-raised btn-success pull-right edit_carrier">Edit</button>
-									</div>
-								</div>
-							</div>';
-						echo '<div class="modal fade" id="delete_carrier_modal'.$all_carriers_data[$i]['PKCarrierID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-								  <div class="modal-dialog" role="document">
-									<div class="modal-content">
-									  <form method="POST" action="'. base_url().'index.php/Bleckmann/carriers/deleteCarrier">
-									  <div class="modal-header">
-										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title" id="myModalLabel">Delete Carrier - '. $all_carriers_data[$i]['CarrierName'].'?</h4>
-									  </div>
-									  <div class="modal-body">
-										<p>Are you sure you want to delete this Carrier?</p>';
-										echo '<input type="hidden" name="PKCarrierID" value="'. $all_carriers_data[$i]['PKCarrierID'].'">';
-										echo '<input type="hidden" name="IsActive" value="false">';
-										echo '<input type="hidden" name="FKCustomerID" value="'. $all_carriers_data[$i]['FKCustomerID'].'">';
-										
-										echo'</div>
-										  <div class="modal-footer">
-											<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-											<button type="submit" class="btn btn-danger">Delete</button>
-										  </div>
-										  </form>
-										</div>
-									  </div>
-									</div>';
-						
-					}
-				}else{
-					echo '<div class=" col-md-10" height="100%"><h4 style="text-align: center;">No Carrier has been added.</h4></div>';					
-				}
-			?>
-		</div>		
-		
-        <div class="modal fade" id="add_carrier_modal" tabindex="-1" role="dialog" aria-labelledby="carrierLabel">
+<div class='col-xs-12 col-md-9' height='100%'>
+	<div class='container-fluid'>
+		<div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
+	    	<h3>Global Carriers</h3>
+				<div class='row'>
+					<div class="col-xs-12 col-md-12">
+						<button type="button" data-toggle="modal" data-target="#add-carrier-modal" id='add-carrier' class='add-carrier-pop btn btn-raised btn-warning pull-right'>Add Carrier</button>
+					</div>
+				</div>
+				<br>
+				<div class="row">
+					<div class="col-md-12">
+						<?php
+				          if(isset($_SESSION['message']['carrier_panel'])){
+				            echo'
+				            <div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">
+				              '.$_SESSION['message']['carrier_panel'].'</div>';
+				          }
+				        ?>
+			        </div>
+			    </div>
+			    <div class="row">
+			    	<div class="col-md-offset-1 col-md-10">
+						<table class='table'>
+							<thead>
+								<tr>
+									<th>Carrier Name</th>
+									<th style="align-content: right;">Settings</th>
+								</tr>
+							</thead>
+							<tbody id="carriers-table">
+								<?php
+									//echo "carriers : " . json_encode($carriers);
+									for ($i=0; $i<count($carriers); $i++) {
+				              			echo '<input type="hidden" name="PKCarrierID" value="' . $carriers[$i]['PKCarrierID'] . '">
+					              			<tr>
+						              			<td><br>' .	$carriers[$i]['CarrierName'] . '</td>
+						              			<td>
+						              				<button type="button" class="btn btn-raised btn-success edit-carrier-pop"  data-toggle="modal" data-target="#add-carrier-modal" id="edit-carrier-' .$carriers[$i]['PKCarrierID'] .'">
+						              					Edit
+						              				</button>
+						              				<button type="button" class="btn btn-raised btn-danger"  data-toggle="modal" data-target="#delete-carrier-modal'. $carriers[$i]['PKCarrierID'] .'" id="delete-carrier" >
+						              					delete
+						              				</button>
+						              			</td>
+					              			</tr>';
+										echo '<div class="modal fade" id="delete-carrier-modal'.$carriers[$i]['PKCarrierID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									              <div class="modal-dialog" role="document">
+									                <div class="modal-content">
+									                  <form method="POST" action="submitCarrier">
+									                  <div class="modal-header">
+									                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									                    <h4 class="modal-title" id="myModalLabel">Delete Carrier - '. $carriers[$i]['CarrierName'].'?</h4>
+									                  </div>
+									                  <div class="modal-body">
+									                    <p>Are you sure you want to delete this Carrier?</p>';
+									    echo '<input type="hidden" name="PKCarrierID" value="'. $carriers[$i]['PKCarrierID'].'">';
+									    echo '<input type="hidden" name="CarrierName" value="'. $carriers[$i]['CarrierName'].'">';
+									    echo '<input type="hidden" name="IsActive" value="false">';
+							            echo'
+							                  </div>
+							                  <div class="modal-footer">
+							                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							                    <button type="submit" class="btn btn-danger">Delete</button>
+							                  </div>
+							                  </form>						  
+							                </div>
+							              </div>
+							            </div>
+							            ';
+									}
+								?>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			
+	    </div>
+	</div>
+</div>
+        <!-- Add Carrier Modal -->
+        <div class="modal fade" id="add-carrier-modal" tabindex="-1" role="dialog" aria-labelledby="myUserLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
-			
-              	<form method="POST" action="<?php echo base_url()?>index.php/Bleckmann/carriers/submitCarrierInfo" id="carrier_info_form">
-				<input type="hidden" name="FKCustomerID" value="<?php echo $Customerid;?>" />
-				<input id="PKCarrierID" type="hidden" name="PKCarrierID" value="">
-				<input id="existing_country_list" type="hidden" name="existing_country_list" value="<?php echo implode(',', $existing_country_list);?>">
-				
 	              <div class="modal-header">
 	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	                <h4 class="modal-title" id="carrierLabel" >Add a Carrier</h4>
+	                <h4 class="modal-title" id="myCarrierLabel"></h4>
 	              </div>
-	              <div class="modal-body">
-						<div class='loading' style="display:none;">
-						  <div style='height: 15vh'></div>
-						  <center><img src='<?php echo base_url();?>img/loading-pink.gif' style='height: 10vh'>
-						  <br>
-						  <p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;Loading...</p>
-						  <div style='height: 15vh'></div>				      
-						  </center>
-						</div>
-						<div class="carrier_div">
-		                <div class="row">
-		                	<div class="col-md-10">
-				              	<div class="form-group label-floating">
-				                  <label class="control-label">Carrier Name</label>
-				                  <input id="CarrierName" type="text" name="CarrierName" class="form-control" value="" required />
-				                  <span class="help-block">Enter Carrier Name</span>
+	              <form method="POST" action="submitCarrier" id="add-carrier-form">
+		              <div class="modal-body">
+							<div class='loading' style="display:none;">
+							  <div style='height: 15vh'></div>
+							  <center><img src='<?php echo base_url();?>img/loading-pink.gif' style='height: 10vh'>
+							  <br>
+							  <p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;Loading...</p>
+							  <div style='height: 15vh'></div>				      
+							  </center>
+							</div>
+							<div class="carrier_div">
+				                <div class="row">
+				                	<div class="col-md-6">
+						              	<div class="form-group label-floating">
+						                  <label class="control-label">Carrier Name</label>
+						                  <input id="CarrierName" type="text" name="CarrierName" class="form-control" value="">
+						                  <span class="help-block">Enter Carrier Name</span>
+						                </div>
+						            </div>
+						            <div class='col-md-6'>
+						            	<div class="form-group label-floating">
+						                  	<?php
+						                  	//echo json_encode($allCountries);
+						                  	echo '<label class="control-label" style="top:-30px;">Select a Country</label><select class="form-control" id="Countries" name="Countries[]" multiple>';
+							                  	//echo '<option value="-1">Select a Country</option>';
+							                  	for ($i=0; $i<count($allCountries); $i++) {
+							                  		if ( $allCountries[$i]['IsActive'] ) {
+							                  			echo '<option value="' . $allCountries[$i]['PKCountryId'].'">' . $allCountries[$i]['CountryName'] . '</option>';
+							                  		}
+							                  	}
+						                  	echo '</select>';
+						                  	?>
+					                  	</div>
+						            </div>
+				          		</div>
+				          		<br/>
+				          		<div class="row">
+				          			<div class="col-md-12">
+						                <div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">
+						                	<h4>Global Settings <a class="pull-right" id="add-carrier-global-setting" href="#">Add New</a></h4>
+						                	<div id="global-settings-error" style="color:red;font-size:13px;display: none;">Please enter Global Settings</div>
+						                	<div id="global-setting">
+
+
+						                	</div>
+						                </div>
+					                </div>
 				                </div>
-				            </div>
-						 </div>
-						 <div class="row">
-				            <div class="col-md-6">
-				              	<div class="form-group label-floating">
-				                  <label class="control-label">API User Name</label>
-				                  <input id="APIUserName" type="text" name="APIUserName" class="form-control" value="" required />
-				                  <span class="help-block">Enter API User Name</span>
+				                <br/>
+				                <div class="row">
+				                	<div class="col-md-12">
+						                <div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">
+						                	<h4>Carrier Settings <a class="pull-right" id="add-carrier-local-setting" href="#">Add New</a></h4>
+						                	<div id="local-settings-error" style="color:red;font-size:13px;display: none;">Please enter Carrier Settings</div>
+						                	<div id="carrier-setting">
+
+						                	</div>
+						                </div>
+					                </div>
 				                </div>
-				            </div>				        
-				            <div class="col-md-6">
-				              	<div class="form-group label-floating">
-				                  <label class="control-label">Password</label>
-				                  <input id="APIPassword" type="text" name="APIPassword" class="form-control" value="" required />
-				                  <span class="help-block">Enter API Password</span>
-				                </div>
-				            </div>
-				        </div>
-		                <div class="row">
-		                	<div class="col-md-6">
-								<div class="form-group label-floating">
-			                        <label for="i5" class="control-label">API Key</label>
-			                        <input id="APIKey" type="text" name="APIKey" class="form-control" value="" required />
-			                        <span class="help-block">Enter API Key</span>
-			                    </div>
-			                </div>
-						
-		                	<div class="col-md-6">
-				              	<div class="form-group label-floating">
-				                  <label for="i5" class="control-label">API URL</label>
-				                  <input id="APIURL" type="text" name="APIURL" class="form-control" value="" required />
-				                  <span class="help-block">Enter API URL</span>
-				                </div>
-				            </div>
-				        </div>
-						<div class="row">
-		                	<div class="col-md-6">
-<!-- 				              	<div class="form-group label-floating">
-				                  <label for="i5" class="control-label">Customer Country Name</label>
-				                  <input id="ConsumerCountryName" type="text" name="ConsumerCountryName" class="form-control" value="" required />				                  
-								  <span id="duplicate_country" style="display:none;color:#FF0000;">Duplicate Country Name</span>
-								  <span class="help-block">Enter Customer Country Name</span>
-				                </div> -->
-				              	<div class="form-group label-floating">
-				              		<label class="control-label">Customer Country Name</label>
-				                  <?php
-				                  	//echo json_encode($allCountries);
-				                  	echo '<select class="form-control" id="ConsumerCountryName" name="ConsumerCountryName">';
-				                  	echo '<option value="-1">Select Customer Country Name &darr;</option>';
-				                  	for ($i=0; $i<count($allCountries); $i++) { 
-				                  		if ( $allCountries[$i]['IsActive'] ) {
-				                  			echo '<option value="' . $allCountries[$i]['PKCountryId'].'">' . $allCountries[$i]['CountryName'] . '</option>';
-				                  		}
-				                  	}
-				                  	
-				                  	echo '</select>';
-				                  ?>
-									<span id="duplicate_country" style="display:none;color:#FF0000;">Duplicate Country Name</span>
-				                </div>
-				            </div>
-				        
-		                	<div class="col-md-6">
-				              	<div class="form-group label-floating">
-				                  <label for="i5" class="control-label">Label API</label>
-				                  <input id="LabelAPI" type="text" name="LabelAPI" class="form-control" value="" required />
-				                  <span class="help-block">Enter Label API</span>
-				                </div>
-				            </div>
-				        </div>
-						<div class="row">
-		                	<div class="col-md-6">
-				              	<div class="form-group label-floating">
-				                  <label for="i5" class="control-label">Announce API</label>
-				                  <input id="AnnounceAPI" type="text" name="AnnounceAPI" class="form-control" value="" required />
-				                  <span class="help-block">Enter Announce API</span>
-				                </div>
-				            </div>
-				        
-		                	<div class="col-md-6">
-				              	<div class="form-group label-floating">
-				                  <label for="i5" class="control-label">Track Trace URL</label>
-				                  <input id="TrackTraceURL" type="text" name="TrackTraceURL" class="form-control" value="" required />
-				                  <span class="help-block">Enter Track Trace URL</span>
-				                </div>
-				            </div>
-				        </div>
-												
-		               	<div class="row">
-							<div class="col-md-8">
-				              	<div class="form-group label-floating">
-				                  <label for="i5" class="control-label">Application ID</label>
-				                  <input id="ApplicationID" type="text" name="ApplicationID" class="form-control" value="" />
-				                  <span class="help-block">Enter ApplicationID</span>
-				                </div>
-				            </div>							
-						  </div>
-						  <div class="modal-footer">							
-							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							<button type="submit" class="btn btn-primary">save</button>							
-						  </div>
-						</form>
-						</div>
-		          </div>
-		          
-	              
+				    		</div>
+			          </div>
+			          <input id="PKCarrierId" type="hidden" name="PKCarrierId" value="">
+			          <input id="Isactive" type="hidden" name="Isactive" value="true">
+			          
+		              <div class="modal-footer">
+		                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		                <button type="submit" class="btn btn-success">save</button>
+		              </div>
+              	</form>
             </div>
           </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-        
-      </div>
-	  	  
-    </div>
-  </div>
-</div>

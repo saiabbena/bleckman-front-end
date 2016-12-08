@@ -92,7 +92,39 @@ class Bleckmann extends CI_Controller {
     if(isset($_SESSION['message'])){
       unset($_SESSION['message']);
     }
-  } 
+  }
+  public function carriers() {
+    $data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllActiveBMCarriers', '');
+    $data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
+
+    $this->load->view('Bleckmann/templates/header');
+    $this->load->view('Bleckmann/carriers', $data);
+    $this->load->view('Bleckmann/templates/footer');
+    if(isset($_SESSION['message'])) {
+      unset($_SESSION['message']);
+    }
+  }
+  public function managecarriers() {
+    $data['customerId'] = $this->input->get('Customerid');
+    $data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllActiveBMCarriers', '');
+    $data['allWarehouses'] = $this->httpRequests->httpGet('Location/GetAllActiveLocations', '');
+    $data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
+    $req = array(
+      'Customerid'=>$data['customerId']
+    );  
+    
+    $data['allSettings'] = $this->httpRequests->httpGet('carrier/GetCarrierSettingbyCustomerid', $req);
+    $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req);
+    $data['customerName'] = $customer_details['CustomerName'];   
+
+    $this->load->view('Bleckmann/templates/header');
+    $this->load->view('Bleckmann/ManageCarriers', $data);
+    $this->load->view('Bleckmann/templates/footer');
+    if(isset($_SESSION['message'])) {
+      unset($_SESSION['message']);
+    }
+  }
+
 	public function postComment() {
 		header('Content-Type: application/json');
 		echo "in php : ". "\r\n";
@@ -120,6 +152,66 @@ class Bleckmann extends CI_Controller {
 		 redirect(base_url() . 'index.php/Bleckmann/orders');
 
   }  
+  public function setCustomerCarrier(){
+    print_r(json_encode($_POST));
+    $server_output = $this->httpRequests->httpPost('carrier/PostCarriertoCustomer', json_encode($_POST) );
+    //echo json_encode($server_output);
+    if ( $server_output['Status'] == 1) { 
+      $_SESSION['message']['carrier_panel']='Saved';
+      $_SESSION['message']['alert_status']='success';
+    } else {
+      $_SESSION['message']['carrier_panel']='Error : ' . $server_output['Messages'];
+      $_SESSION['message']['alert_status']='warning';
+    }
+    echo var_dump($_SESSION['message']);
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
+  }
+  public function submitCustomerCarrierSettings() {
+    print_r(json_encode($_POST));
+    //exit();
+    $server_output = $this->httpRequests->httpPost('carrier/PostManageCarrierSetting', json_encode($_POST) );
+    echo json_encode($server_output);
+    if ( $server_output['Status'] == 1) { 
+      $_SESSION['message']['carrier_panel']='Saved';
+      $_SESSION['message']['alert_status']='success';
+    } else {
+      $_SESSION['message']['carrier_panel']='Error : ' . $server_output['Messages'];
+      $_SESSION['message']['alert_status']='warning';
+    }
+    echo var_dump($_SESSION['message']);
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
+  }
+  public function deleteCustomerCarrier() {
+    print_r(json_encode($_POST));
+    $server_output = $this->httpRequests->httpPost('carrier/PostDeleteCustomerCarrier', json_encode($_POST) );
+    echo json_encode($server_output);
+    if ( $server_output['Status'] == 1) { 
+      $_SESSION['message']['carrier_panel']='Saved';
+      $_SESSION['message']['alert_status']='success';
+    } else {
+      $_SESSION['message']['carrier_panel']='Error : ' . $server_output['Messages'];
+      $_SESSION['message']['alert_status']='warning';
+    }
+    echo var_dump($_SESSION['message']);
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
+  }
+  public function submitCarrier() {
+    if (isset($_POST['Countries'])) {
+      foreach ($_POST['Countries'] AS $index => $value)
+        $_POST['Countries'][$index] = (int)$value;
+    }
+    $server_output = $this->httpRequests->httpPost('Carrier/PostManageBMCarrier', json_encode($_POST) );
+    //echo json_encode($server_output);
+    if ( $server_output['Status'] == 1) { 
+      $_SESSION['message']['carrier_panel']='Saved';
+      $_SESSION['message']['alert_status']='success';
+    } else {
+      $_SESSION['message']['carrier_panel']='Error : ' . $server_output['Messages'];
+      $_SESSION['message']['alert_status']='warning';
+    }
+    echo var_dump($_SESSION['message']);
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
+  }
   public function submitWarehouses() {
   	//print_r($_POST);exit();
   	$server_output = $this->httpRequests->httpPost('Location/PostManageLocation', json_encode($_POST) );
@@ -318,52 +410,53 @@ class Bleckmann extends CI_Controller {
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
   }
-  public function carriers($param1='', $param2='') {	  
-  	//print_r($_SESSION);exit();
-	//echo $param1;exit();
-	$data = array();
-	if($param1 == 'searchbyCID'){			
-		$req = array(
-			'Customerid'=>$param2
-		);		
-		//http://returns.dev.apoyar.eu/api/Carrier/GetAllCarriersbyCustomerid?Customerid=1
-		$data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
-		$data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllCarriersbyCustomerid', $req);
-		//var apiCall=url+'Customer/GetActiveCustomerbyId?Customerid=' + selCustId
-		$customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req);		
-		$data['Customerid'] = $param2;
-		$data['customer_name'] = $customer_details['CustomerName'];		
-	}
-	if($param1 == 'submitCarrierInfo'){
-		//print_r($_POST);exit();
-		if(count($_POST)){
-			//print_r($_POST);exit();
-			header('Content-Type: application/json');			 
-			$server_output = $this->httpRequests->httpPost('Carrier/PostManageCarrier', json_encode($_POST));	  
-			//echo json_encode($server_output);exit();			 
-			//$_SESSION['message']['carrier_panel']='Carrier Information Saved';
-			redirect(base_url() . 'index.php/Bleckmann/carriers/searchbyCID/'.$_POST['FKCustomerID']);					 
-		}
-	}
-	if($param1 == 'deleteCarrier'){
-		//print_r($_POST);exit();
-		$server_output = $this->httpRequests->httpPost('Carrier/PostIsActiveCarrier', json_encode($_POST) );
 
-		//echo json_encode($server_output);exit();
-		$_SESSION['message']['carrier_panel']='Carrier Deleted Successfully';
-		redirect(base_url() . 'index.php/Bleckmann/carriers/searchbyCID/'.$_POST['FKCustomerID']);
+ //  public function carriers($param1='', $param2='') {	  
+ //  	//print_r($_SESSION);exit();
+	// //echo $param1;exit();
+	// $data = array();
+	// if($param1 == 'searchbyCID'){			
+	// 	$req = array(
+	// 		'Customerid'=>$param2
+	// 	);		
+	// 	//http://returns.dev.apoyar.eu/api/Carrier/GetAllCarriersbyCustomerid?Customerid=1
+	// 	$data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
+	// 	$data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllCarriersbyCustomerid', $req);
+	// 	//var apiCall=url+'Customer/GetActiveCustomerbyId?Customerid=' + selCustId
+	// 	$customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req);		
+	// 	$data['Customerid'] = $param2;
+	// 	$data['customer_name'] = $customer_details['CustomerName'];		
+	// }
+	// if($param1 == 'submitCarrierInfo'){
+	// 	//print_r($_POST);exit();
+	// 	if(count($_POST)){
+	// 		//print_r($_POST);exit();
+	// 		header('Content-Type: application/json');			 
+	// 		$server_output = $this->httpRequests->httpPost('Carrier/PostManageCarrier', json_encode($_POST));	  
+	// 		//echo json_encode($server_output);exit();			 
+	// 		//$_SESSION['message']['carrier_panel']='Carrier Information Saved';
+	// 		redirect(base_url() . 'index.php/Bleckmann/carriers/searchbyCID/'.$_POST['FKCustomerID']);					 
+	// 	}
+	// }
+	// if($param1 == 'deleteCarrier'){
+	// 	//print_r($_POST);exit();
+	// 	$server_output = $this->httpRequests->httpPost('Carrier/PostIsActiveCarrier', json_encode($_POST) );
+
+	// 	//echo json_encode($server_output);exit();
+	// 	$_SESSION['message']['carrier_panel']='Carrier Deleted Successfully';
+	// 	redirect(base_url() . 'index.php/Bleckmann/carriers/searchbyCID/'.$_POST['FKCustomerID']);
 		
-	}
-	//$data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllActiveCarriers', '');
-	//$data['Customerid'] = '';	   
-	$this->load->view('Bleckmann/templates/header');
-    $this->load->view('Bleckmann/carriers', $data);
-    $this->load->view('Bleckmann/templates/footer');
+	// }
+	// //$data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllActiveCarriers', '');
+	// //$data['Customerid'] = '';	   
+	// $this->load->view('Bleckmann/templates/header');
+ //    $this->load->view('Bleckmann/carriers', $data);
+ //    $this->load->view('Bleckmann/templates/footer');
 
-    if(isset($_SESSION['message'])){
-      unset($_SESSION['message']);
-    }
-  }
+ //    if(isset($_SESSION['message'])){
+ //      unset($_SESSION['message']);
+ //    }
+ //  }
   
    
 }
