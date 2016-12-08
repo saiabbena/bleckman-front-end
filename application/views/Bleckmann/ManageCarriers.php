@@ -84,6 +84,8 @@
 				    		<tbody>
 					    		<?php
 					    			//echo json_encode($allSettings);
+					    			if (isset($allSettings)) {
+					    			if (count($allSettings) > 0 ) {
 					    			for($i=0;$i<count($allSettings);$i++) {
 					    				echo '<tr>';
 					    				echo '<td><br>' . $allSettings[$i]['CarrierName'] .'</td>';
@@ -118,6 +120,14 @@
 							            </div>
 							            ';
 					    			}
+					    		} else {
+					    			echo '<div class="row"><h4>Oops! Carrier Settings not available yet.</h4></div>';
+					    		}
+					    	} else {
+					    		echo '<div class="row"><h4>Oops! Carrier Settings not available yet.</h4></div>';
+					    	}
+
+
 					    		?>
 				    		</tbody>
 				    	</table>

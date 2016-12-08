@@ -67,7 +67,7 @@
               <th>Return Order ID</th>
               <th>Tracking</th>
               <th>Refund</th>
-              <th>Carier</th>
+              <th>Carrier</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
