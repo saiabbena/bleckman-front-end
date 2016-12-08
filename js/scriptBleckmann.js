@@ -983,6 +983,7 @@ $(document).ready(function() {
 			settings_global_cnt=0;
 			settings_local_cnt=0;
 			$('div#global-setting').html('');
+			$('div#carrier-setting').html('');
 			$('select#Countries').val(-1);
 			$('#Countries').multiselect({enableFiltering: true, maxHeight: 200, buttonWidth: 250, nonSelectedText: 'Select a Country', nSelectedText: 'Countries Selected',});
 			$("#Countries").multiselect("refresh");
