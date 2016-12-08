@@ -674,6 +674,7 @@ $(document).ready(function() {
 			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
 			var btn_normal = 'style="color:#FFF !important;"';
 			console.log(raw_data);
+			$('.form-group').css({'margin':'0', 'padding':'0'});
 			//console.log(raw_data['ReturnOrders'].length);
 			//console.log(data['ReturnOrders'].[0].ReturnId);
 			//console.log(raw_data['PageNo']);

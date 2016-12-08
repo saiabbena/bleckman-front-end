@@ -30,20 +30,20 @@
 			<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">		
 			  <thead>				
 				<tr>
-				  <th >
+				  <th  class="nosort col-md-1">
 					<div class='form-group'>
 					  <input type='text' id="ReturnsOrderCreationDate" name="ReturnsOrderCreationDate" class='datepicker form-control' placeholder="dd-mm-yyyy" 
 					  style="font-size:0.9em !important;" />				  			  
 					</div>
 				  </th>
-				  <th >
+				  <th  class="col-md-2">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label">Order-id</label>
 					  <input name='OrderID' type="text" class="form-control" id="i5">
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				  <th >
+				  <th  class="col-md-2">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label">Return order-id</label>
 					  <input name='ReturnId' type="text" class="form-control" id="i5" />
@@ -51,16 +51,16 @@
 					</div>
 				  </th>	
 					<th></th>
-					<th></th>
-					<th></th>				  
-				  <th >
+					<th class="col-md-1"></th>
+					<th class="col-md-1"></th>				  
+				  <th class="col-md-1">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label">Carrier</label>
 					  <input name='CarrierName' type="text" class="form-control" id="i5">
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				  <th ><br />
+				  <th class="col-md-2"><br />
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label">Status</label>
 					  <input name='StatusName' type="text" class="form-control" id="i5">
@@ -77,14 +77,14 @@
 				  </th>
 				</tr>
 				<tr>
-				  <th class="nosort col-md-1">Date</th>
-				  <th class="col-md-2">Order ID</th>
-				  <th class="col-md-2">Return Order ID</th>
+				  <th>Date</th>
+				  <th>Order ID</th>
+				  <th>Return Order ID</th>
 				  <th class="nosort">Tracking</th>
-				  <th class="col-md-1">Refund</th>
-				  <th class="col-md-1">Customer</th>
-				  <th class="col-md-1">Carrier</th>
-				  <th class="col-md-2">Status</th>
+				  <th>Refund</th>
+				  <th>Customer</th>
+				  <th>Carrier</th>
+				  <th>Status</th>
 				  <th class="nosort">Action</th>
 				</tr>
 				<tr>
