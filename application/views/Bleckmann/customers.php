@@ -40,14 +40,24 @@
 								<br>
 								
 								</div>
-								
-								<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'" target="_blank">View Consumer URL</a>&nbsp; | 
-								<a href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a> | 
-								<a href="managecarriers?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Manage Carriers</a> | 
-								<a href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a> | 
-								<a href="users?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Users</a> | 
-								<a href="orders/Customerid/'.$allCustomers[$i]['PKCustomerID'].'">Orders</a>
-								
+								<div class="row">
+									<div class="col-md-12">
+										<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'" target="_blank">View Consumer URL</a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<a class="pull-left" href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a> &nbsp; | 
+										<a class="pull-right" href="managecarriers?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Manage Carriers</a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<a href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a> | 
+										<a href="users?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Users</a> | 
+										<a href="orders/Customerid/'.$allCustomers[$i]['PKCustomerID'].'">Orders</a>
+									</div>
+								</div>
 								<br>
 								<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
 								<br>
