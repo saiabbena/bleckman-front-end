@@ -43,7 +43,7 @@
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				  <th  class="col-md-2">
+				  <th  class="col-md-3">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label">Return order-id</label>
 					  <input name='ReturnId' type="text" class="form-control" id="i5" />
