@@ -2,11 +2,9 @@ $(document).ready(function() {
 	$.validator.addMethod("regex", function(value, element, regexpr) {          
      return regexpr.test(value);
    }, "Please enter a valid pasword.");
-		$.validator.addMethod("valueNotEquals", function(value, element, arg){
-			return arg != value;
-		}, "Please select a value");
+   
 		var url=API_BASE_URL_FE+'api/';
-
+		
 		$(".add-customer-pop").click(function(){
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
@@ -142,6 +140,10 @@ $(document).ready(function() {
 		            form.submit();
 		        }
 		});
+					
+		$.validator.addMethod("valueNotEquals", function(value, element, arg){
+			return arg != value;
+		}, "Value must not equal arg.");
 
 		$(".add-user-pop").click(function(){
 			var validator1 = $( "#user-info-form" ).validate();
@@ -239,7 +241,7 @@ $(document).ready(function() {
 		            form.submit();
 		        }
 		});
-
+		
 		$("#add-role-form").validate({
 			rules:{
 				"Roles[0][RoleName]" : "required",
@@ -636,7 +638,8 @@ $(document).ready(function() {
 			} else {
 				$('#Fkcustomerid-div').show();
 			}
-		});		
+		});
+		/**/
 		//Filter all Orders according to the Customer Id
 		$("#orders_by_customer_id").on('change', function(){
 			//alert("change" + $(this).val());
@@ -654,28 +657,41 @@ $(document).ready(function() {
 				 //"pagingType": "numbers",
 				//});
 			}
-
+		});
 		//Direct Order page link from Customer page			
 	    if ($('#hdn_customer_id_ord').length) {
 		   var hdn_customer_id_ord = $('#hdn_customer_id_ord').val();
 		   retrieveReturnOrders(hdn_customer_id_ord);		
-		}		
+		}
+		
 		function renderReturnOrders(raw_data){
 			html='';
 			html2='';
 			html3='';
 			var pagination_html = '';
 			var page_count = raw_data['Count'];
-			//console.log(raw_data['ReturnOrders']);
+			var pageno = raw_data['PageNo'];
+			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
+			var btn_normal = 'style="color:#FFF !important;"';
+			console.log(raw_data);
 			//console.log(raw_data['ReturnOrders'].length);
 			//console.log(data['ReturnOrders'].[0].ReturnId);
-			//console.log(raw_data['Pageno']);
+			//console.log(raw_data['PageNo']);
 			if(page_count > 1){
+				
 				pagination_html = '<b>Pages : </b> ';
 				for(i=1;i<=page_count;i++){
-					pagination_html = pagination_html+'<button style="color:#FFF !important;" type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
+					pagination_html = pagination_html+'<button ';
+					if(pageno === i){
+						pagination_html = pagination_html+btn_sel
+					}
+					else{
+						pagination_html = pagination_html+btn_normal
+					}
+					pagination_html = pagination_html+' type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
 				}
-			}			
+			}
+			
 			for(i=0; i<raw_data['ReturnOrders'].length; i++){
 				var data = raw_data['ReturnOrders'];
 				//console.log(data);
@@ -700,7 +716,9 @@ $(document).ready(function() {
 					  \
 					  <td style="white-space: nowrap;">\
 					  <button data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-primary btn-raised btn_more_info">More info</button>\
-					  <button data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-warning btn-raised">Comment</button></td>\	</tr>\ ';			  
+					  <button data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="margin-top: 0;" class="btn btn-warning btn-raised">Comment</button></td>\	</tr>\ ';
+					  
+			  
 
 			  html3=html3+'\
 			  <div class="modal fade" id="rOrderComment'+data[i].ReturnId+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
@@ -777,9 +795,10 @@ $(document).ready(function() {
 			} 
 			searchInput['pagesize'] = 15;
 			
-			console.log(searchInput);
+			
 			//Check the pageno defined or not
-			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},			
+			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
+			console.log(searchInput);
 			$.ajax({
 			  url: apiCall,
 			  type: 'post',
@@ -862,7 +881,6 @@ $(document).ready(function() {
 			var customerId = $('orders_by_customer_id').val();
 			retrieveReturnOrders(customerId);			
 		});
-
 	    //Added this code for submit button, so that user can enter submit for search
 	    $("#order_search .form-control").keyup(function(event){
 			if(event.keyCode == 13){
@@ -902,9 +920,10 @@ $(document).ready(function() {
     });
   }
  
-  $(function () {
-    listFilter($("#header"), $("#list"));
-  });		
+		  $(function () {
+			listFilter($("#header"), $("#list"));
+		  });		
+		
 
 		var settings_global_cnt=0;
 		var settings_local_cnt=0;
