@@ -356,5 +356,5 @@ $(document).ready(function(){
 	});	
   
   retrieveReturnOrders(customerId);
-  
+  //console.log("customerId:" + customerId);
 });
