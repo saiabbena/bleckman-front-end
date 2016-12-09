@@ -76,7 +76,7 @@
   
 		  <div class='container-fluid form3 ro_option_carriers'>
 			<div class='row'>
-			  <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
+			  <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
 				<div class='well bm-well'>
 				  <h2><center>Select a Carrier<?php //echo $translations[8]['Translation'];?></center></h2>
 				  <p class='text-center'>Please choose a Carrier<?php //echo $customerLanguages['Page3heading']?></p>
