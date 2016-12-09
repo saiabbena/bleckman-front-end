@@ -672,7 +672,7 @@ $(document).ready(function() {
 			var page_count = raw_data['Count'];
 			var pageno = raw_data['PageNo'];
 			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
-			var btn_normal = 'style="color:#FFF !important;"';
+			var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';
 			console.log(raw_data);
 			$('.form-group').css({'margin':'0', 'padding':'0'});
 			//console.log(raw_data['ReturnOrders'].length);
