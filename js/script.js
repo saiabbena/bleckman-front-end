@@ -36,7 +36,8 @@ function getOrderAndAuth(inputData){
     //console.log(data)
   })
   .success(function(data, status, xhr){
-    //console.log(data);
+    console.log("orders");
+    console.log(data);
     //function validate stuff
     if(data && data['ConsumerEmail'].toLowerCase()==inputData['Email'].toLowerCase()){
       result={type: 'screen1', status: true, message: 'You have been authenticated', result: data};
@@ -217,12 +218,14 @@ function print_total(){
 }
 
 function getCouriers(){
-  
-  apiCall=url+'Carrier/GetAllCarriersbyCustomerid';
-  
+  //apiCall=url+'Carrier/GetAllCarriersbyCustomerid';
+  apiCall=url+'Carrier/GetBMCarriersbyCustomerid';
   $.get(apiCall, {'Customerid': customerId})
   .success(function(data){
-    customerSettings.carriers=data.Carriers;
+    console.log('carriers');
+    console.log(data);
+    //customerSettings.carriers=data.Carriers;
+    customerSettings.carriers=data;
     thirdScreen();
     $('.loading-screen').slideUp('slow');
   });
