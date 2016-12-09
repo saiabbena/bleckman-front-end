@@ -226,8 +226,8 @@ function getCouriers(){
   .success(function(data){
     console.log('carriers');
     console.log(data);
-    customerSettings.carriers=data.Carriers;
-    //customerSettings.carriers=data;
+    //customerSettings.carriers=data.Carriers;
+    customerSettings.carriers=data;
     thirdScreen();
     $('.loading-screen').slideUp('slow');
   });
