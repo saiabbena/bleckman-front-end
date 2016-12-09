@@ -43,10 +43,12 @@ function getOrderAndAuth(inputData){
       //console.log("data is : ");
       //console.log(data);
       secondScreen(result);
-      $('.form2').show();
+      
+	  $('.form2').show();
       $('.loading-screen').slideUp('slow');
       //console.log('success')
       result.token=xhr.getResponseHeader("Apoyar");
+	  $('.form-inputs').hide();
     }
     else{
       result={type: 'screen1', status: false, message: 'Incorrect id/email/tel', result: false};
@@ -253,6 +255,7 @@ function thirdScreen(){
         </tr>';
   }
   $('#override > div.container-fluid.form3 > div > div > div > div > table > tbody').html(html);
+  $('.ro_option_carriers table > tbody').html(html);
   $.material.init();
   $('#table1234').bootstrapTable();
 }
@@ -305,7 +308,9 @@ $(document).ready(function(){
     }, 500);
     submition.OrderId=($('#f2').val()).toString();
     submition.ConsumerEmail=$('#f1').val();
-    
+    $('.form3').hide();
+	$('.form4').hide();	
+	 
   });
   
   //change load
@@ -343,8 +348,8 @@ $(document).ready(function(){
   			}, 500);
   			$('.loading-screen').slideUp('slow');
   			throw new Error("whoops");
-  			$( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again
-  			$( ".checkbox .checkbox-material" ).eq(1).remove();			
+  			//$( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again
+  			//$( ".checkbox .checkbox-material" ).eq(1).remove();			
 		  
 	     } else {
   			  submition.Returnorderline[counter]={
