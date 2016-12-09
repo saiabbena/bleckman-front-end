@@ -1,12 +1,12 @@
     <div class='col-xs-12 col-md-9' height='100%'>
       <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
-        <h3>Return Order Option</h3>	
+        <h3>Create Return Order</h3>	
         <br><br>
 		<div class='container-fluid form1 form_ro'>
 			<div class='row'>
 			  <div class='col-xs-12 col-sm-12'>
-				<div class='well bm-well form-inputs' style="min-height: 185px !important;border-bottom-width:3px  !important;">
-					<h3>Return Order</h3>					
+				<div class='well bm-well form-inputs' style="min-height: 240px !important;border-bottom-width:3px  !important;">
+					<h3>Search Return Order</h3>					
 					<div class="inputs ">
 					  <form method="post" >
 						<input type="hidden" name="hdn_ro_customerid" id="hdn_ro_customerid" value="<?php echo $_SESSION['Customerid'];?>" />
@@ -50,98 +50,7 @@
                     <th data-field="0" tabindex="0"></th> <th data-field="1" tabindex="0"><?php //echo $translations[2]['Translation'];?></th> <th data-field="2" tabindex="0"><?php //echo $translations[3]['Translation'];?></th> <th data-field="3" tabindex="0"><?php //echo $translations[4]['Translation'];?></th><th data-field="4" tabindex="0"><?php //echo $translations[5]['Translation'];?></th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="form-group">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" value='3444'>
-                          </label>
-                        </div>
-                      </div>
-                    </td>
-                    
-                    <td>
-                      <br style='font-size: 21px;'>
-                      <a href='#'>VIVALLO COATIGAN_EBONY</a>
-                    </td>
-                    
-                    <td>
-                      <br style='font-size: 21px;'>
-                      <b>&euro; 34.44</b>
-                    </td>
-                    
-                  </tr>
-                  
-                  <tr>
-                    <td>
-                      <div class="form-group">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" value='3444'>
-                          </label>
-                        </div>
-                      </div>
-                    </td>
-                    
-                    <td>
-                      <br style='font-size: 21px;'>
-                      <a href='#'>VIVALLO COATIGAN_EBONY</a>
-                    </td>
-                    
-                    <td>
-                      <br style='font-size: 21px;'>
-                      <b>&euro; 34.44</b>
-                    </td>
-                    
-                  </tr>
-                  
-                  <tr>
-                    <td>
-                      <div class="form-group">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" value='3444'>
-                          </label>
-                        </div>
-                      </div>
-                    </td>
-                    
-                    <td>
-                      <br style='font-size: 21px;'>
-                      <a href='#'>VIVALLO COATIGAN_EBONY</a>
-                    </td>
-                    
-                    <td>
-                      <br style='font-size: 21px;'>
-                      <b>&euro; 34.44</b>
-                    </td>
-                    
-                  </tr>
-                  
-                  <tr>
-                    <td>
-                      <div class="form-group">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox" value='3444'>
-                          </label>
-                        </div>
-                      </div>
-                    </td>
-                    
-                    <td>
-                      <br style='font-size: 21px;'>
-                      <a href='#'>VIVALLO COATIGAN_EBONY</a>
-                    </td>
-                    
-                    <td>
-                      <br style='font-size: 21px;'>
-                      <b>&euro; 34.44</b>
-                    </td>
-                    
-                  </tr>
+                <tbody>              
                 </tbody>
               </table>
               
@@ -149,6 +58,7 @@
               <h3><center>Total Refund<?php //echo $translations[6]['Translation'];?>: <b style='color: #cc1543;' id='total-price'>&euro; 0.00</b></center></h3>
               <br>
               <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button2'>Submit<?php //echo strtoupper($translations[7]['Translation']);?></button><br>
+			  <p style="text-align:right;"><a href="javascript:void(0)" class="btn_admin_career_back2">&laquo; Back</a></p>
               <div class="alert alert-dismissible alert-danger" id='screen2-error'>
                 <strong>Whoops!</strong>
                 Please select at least one item to return.
@@ -210,7 +120,7 @@
 					</div>
 					
 					<button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3'>CONFIRM AND PRINT POSTAGE LABEL<?php //echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></button><br>
-					<p style="text-align:right;"><a href="javascript:void(0)" id="btn_admin_career_back">&laquo; Back</a></p>
+					<p style="text-align:right;"><a href="javascript:void(0)" class="btn_admin_career_back">&laquo; Back</a></p>
 					<div class="alert alert-dismissible alert-success" id='screen3-success'>
 					  <strong><?php //echo $translations[21]['Translation']?></strong></strong>
 					  <?php //echo $translations[22]['Translation']?>
@@ -249,15 +159,16 @@
 </div>	
 <script>  
 $(document).ready(function () {
-	$("#thank_you_close").on('click', function(event){			
-		//$("#button1").trigger('click');
-		//$('.form4').hide();
+	$("#thank_you_close").on('click', function(event){		
 		location.reload()
 	});
 	
-	$('#btn_admin_career_back').click(function(){	  		
+	$('.btn_admin_career_back').click(function(){	  		
 		$('.form3').hide();      
 		$("#button1").trigger('click');	  
+	});
+	$('.btn_admin_career_back2').click(function(){	  		
+		location.reload()	  
 	});
 });
 </script>
