@@ -8,6 +8,7 @@ var result=false;
 var customerSettings={};
 
 var submition={};
+var countryCode = '';
 
 function getCustomerSettings(){
   apiCall=url+'ReturnReason/GetAllReturnReasonsbyCustomerid';
@@ -38,6 +39,7 @@ function getOrderAndAuth(inputData){
   .success(function(data, status, xhr){
     console.log("orders");
     console.log(data);
+    countryCode = data.ConsumerShipCountry;
     //function validate stuff
     if(data && data['ConsumerEmail'].toLowerCase()==inputData['Email'].toLowerCase()){
       result={type: 'screen1', status: true, message: 'You have been authenticated', result: data};
@@ -218,14 +220,14 @@ function print_total(){
 }
 
 function getCouriers(){
-  apiCall=url+'Carrier/GetAllCarriersbyCustomerid';
-  //apiCall=url+'Carrier/GetBMCarriersbyCustomerid';
-  $.get(apiCall, {'Customerid': customerId})
+  //apiCall=url+'Carrier/GetAllCarriersbyCustomerid';
+  apiCall=url+'Carrier/GetBMCarriersbyCustomerid';
+  $.get(apiCall, {'Customerid': customerId, 'countrycode': countryCode})
   .success(function(data){
     console.log('carriers');
     console.log(data);
-    customerSettings.carriers=data.Carriers;
-    //customerSettings.carriers=data;
+    //customerSettings.carriers=data.Carriers;
+    customerSettings.carriers=data;
     thirdScreen();
     $('.loading-screen').slideUp('slow');
   });
@@ -424,6 +426,7 @@ $(document).ready(function(){
     submition.CarrierName=carName;
     submition.StatusName='Label Printed';
     submition.ConsumerEmail2=$('#emailConfirm').val();
+    submition.ConsumerFromShipCountry = countryCode;
     
     
     apiCall=url+'returnorder/PostBMReturnorder';
