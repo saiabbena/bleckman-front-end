@@ -55,7 +55,6 @@
 	<script src="<?php echo base_url();?>js/dataTables.bootstrap.min.js"></script>-->
 	
 	<!--Datepicker for order statistics page-->
-	
 	<link rel="stylesheet" href="<?php echo base_url();?>css/jquery-ui.css">	
 	<script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.js"></script>	
 	<script type="text/javascript">

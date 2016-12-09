@@ -43,9 +43,9 @@
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				  <th  class="col-md-3">
+				  <th  class="col-md-3 th-inner">
 					<div class="form-group label-floating">
-					  <label for="i5" class="control-label">Return order-id</label>
+					  <label for="i5" class="control-label" style="font-size: 14px;">ReturnOrderID</label>
 					  <input name='ReturnId' type="text" class="form-control" id="i5" />
 					  <span class="help-block"></span>
 					</div>
@@ -79,7 +79,7 @@
 				<tr>
 				  <th>Date</th>
 				  <th>Order ID</th>
-				  <th>Return Order ID</th>
+				  <th class="col-md-3 th-inner">ReturnOrderID</th>
 				  <th class="nosort">Tracking</th>
 				  <th>Refund</th>
 				  <th>Customer</th>
