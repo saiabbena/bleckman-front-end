@@ -1027,8 +1027,7 @@ $(document).ready(function() {
 				                		</div>\
 				                		<div class="col-md-6">\
 							              	<div class="form-group label-floating">\
-							                  <label class="control-label">Settings Value</label>\
-							                  <input id="SettingsValue" disabled type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
+							                  <input id="SettingsValue" disabled type="hidden" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
 							                  <span class="help-block">Enter Settings Value</span>\
 							                </div>\
 				                		</div>\
@@ -1126,8 +1125,7 @@ $(document).ready(function() {
 							                		</div>\
 							                		<div class="col-md-6">\
 										              	<div class="form-group label-floating">\
-										                  <label class="control-label">Settings Value</label>\
-										                  <input id="SettingsValue" disabled type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
+										                  <input id="SettingsValue" disabled type="hidden" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
 										                  <span class="help-block">Enter Settings Value</span>\
 										                </div>\
 							                		</div>\
