@@ -113,14 +113,14 @@
 							<div class="carrier_div">
 				                <div class="row">
 				                	<div class="col-md-6">
-						              	<div class="form-group label-floating">
+						              	<div class="form-group label-floating required">
 						                  <label class="control-label">Carrier Name</label>
 						                  <input id="CarrierName" type="text" name="CarrierName" class="form-control" value="">
 						                  <span class="help-block">Enter Carrier Name</span>
 						                </div>
 						            </div>
 						            <div class='col-md-6'>
-						            	<div class="form-group label-floating">
+						            	<div class="form-group label-floating required">
 						                  	<?php
 						                  	//echo json_encode($allCountries);
 						                  	echo '<label class="control-label" style="top:-30px;left:42px;font-size:12px;">Select a Country</label><select class="form-control" id="Countries" name="Countries[]" multiple>';
