@@ -86,7 +86,7 @@
       content: " *";
       position: absolute;
       margin-left: 3px;
-      top:-2px;
+      /*top:-2px;*/
     }
 </style>
   </head>
