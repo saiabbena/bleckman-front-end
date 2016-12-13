@@ -88,24 +88,24 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-						<h4 class="modal-title" id="myModalLabel">Full info on return order: 2192942</h4>
+						<h4 class="modal-title" id="myModalLabel">Full info on return order: </h4>
 					</div>
 					<div class="modal-body">
-						<b>Full date/time:</b> 2016-12-06T12:44:36, 
-						<b>Orderid:</b> 410008881001,
+						<b>Full date/time:</b> , 
+						<b>Orderid:</b> ,
 						<b>Return status:</b>
 						Label Printed<br><br>
-						<b>Customer Email:</b> x@x.com<br><br>
+						<b>Customer Email:</b> <br><br>
 						<b>Customer Phone:</b> <br><br>
 						<b>Comment:</b><br>
 						No comment has been made yet<br><br>
 						<b>Items returned (1):</b><hr>
-						<b>Item name:</b> undefined<br>
-						<b>Product SKU:</b> MC748VE2-1001.L<br>
-						<b>Product info:</b> undefined<br>
+						<b>Item name:</b> <br>
+						<b>Product SKU:</b> <br>
+						<b>Product info:</b> <br>
 						<b>Return reason:</b> <br>
-						<b>Quantity:</b> 1<br> 
-						<b>Price:</b> 52.08 <hr>
+						<b>Quantity:</b> <br> 
+						<b>Price:</b> <hr>
 					</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
