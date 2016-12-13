@@ -57,7 +57,7 @@
 			            </div>';
 			          }
 			        ?>
-			        <table class="table">
+			        <table class="table" id="user_datatable">
 			        	<thead>
 			        		<tr>
 			        			<th class="customer-assign">Assigned to Customer?</th>

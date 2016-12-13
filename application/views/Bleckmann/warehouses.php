@@ -13,21 +13,19 @@
 	        	<div style="padding: 15px;">
 					<form method="POST" action="submitWarehouses">
 						<div class="row">
-							<button type="button" data-toggle="modal" data-target="#add-Warehouse-modal" id='add-Warehouse' class='btn btn-raised btn-warning pull-right'>Add New</button>							
+							<button type="button" data-toggle="modal" data-target="#add-Warehouse-modal" id='add-Warehouse' class='btn btn-raised btn-warning pull-right add_wh_pop'>Add New</button>							
 						</div>
-						<div class="row">
-							<h4>Warehouse List</h4>
+						<div class="row">							
 							<table  id="wh_data" class="table table-striped table-bordered" cellspacing="0">
 								<thead>
 									<tr>
 									  <th class="col-md-2 nosort">Name</th>
-									  <th class="col-md-1">Warehouse ID</th>
+									  <th class="col-md-1">ID</th>
 									  <th class="col-md-2">Contacts</th>
 									  <th class="col-md-2">Address</th>
-									  <th>City</th>									  
-									  <th class="col-md-1">PostalCode</th>									  
-									  <th class="col-md-2">Country</th>
-									  <th class="nosort text-center">Action</th>
+									  <th>City</th>									  									  
+									  <th>Country</th>
+									  <th class="nosort col-md-2 text-right">Action</th>
 									</tr>
 								</thead>
 							    <tbody>
@@ -50,9 +48,8 @@
 									  <td class="nosort">'.$allWarehouses[$i]['Name'].'</td>
 									  <td>'.$allWarehouses[$i]['WarehouseID'].'</td>
 									  <td>Phone : '.$allWarehouses[$i]['Phone'].'<br />Email :'.$allWarehouses[$i]['Email'].'</td>
-									  <td> Street1 :'.$allWarehouses[$i]['Street'].'<br />Street2 :'.$allWarehouses[$i]['Street2'].'<br />House Number :'.$allWarehouses[$i]['HouseNumber'].'</td>
-									  <td>'.$allWarehouses[$i]['City'].'</td>									  
-									  <td>'.$allWarehouses[$i]['PostalCode'].'</td>									  
+									  <td> Street1 :'.$allWarehouses[$i]['Street'].'<br />Street2 :'.$allWarehouses[$i]['Street2'].'<br />House Number :'.$allWarehouses[$i]['HouseNumber'].'<br />Postal Code : '.$allWarehouses[$i]['PostalCode'].'</td>
+									  <td>'.$allWarehouses[$i]['City'].'</td>									  									  
 									  <td>'.$CountryName.'</td>
 									  <td class="nosort  text-center">									  
 									  <a data-toggle="modal" style="color:#f44336;cursor:pointer;" data-target="#delete-warehouse-modal'.$allWarehouses[$i]['PKWarehouseID'].'" id="delete-wh" class=" pull-right"><i class="material-icons">delete</i></a>
@@ -107,7 +104,16 @@
 	              <form method="POST" action="submitWarehouses" id="add-warehouse-form">
 				  <input type="hidden" name="Warehouses[0][PKWarehouseID]" class="form-control" id="hdn_warehouseid" value="">
 		              <div class="modal-body">
-			                <div class="row">
+			            <div class='loading' style="display:none;">
+						  <div style='height: 15vh'></div>
+						  <center><img src='<?php echo base_url();?>img/loading-pink.gif' style='height: 10vh'>
+						  <br>
+						  <p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;Loading...</p>
+						  <div style='height: 15vh'></div>				      
+						  </center>
+						</div>    
+						<div id="warehouse_modal">	
+							<div class="row">
 			                	<div class="col-md-6">
 					              	<div class="form-group label-floating">
 					                  <label class="control-label">Name</label>
@@ -196,6 +202,7 @@
 					                </div>
 					            </div>
 							</div>
+						</div>
 			          </div>
 		              <div class="modal-footer">
 		                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

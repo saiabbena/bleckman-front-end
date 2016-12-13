@@ -155,25 +155,26 @@ $(document).ready(function(){
 				//console.log(data['Returnorderline'][0].EanBarcode);
 				/**/
 				moreinfo_html = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel"><b>Full info on return order: '+data.ReturnId+'</b></h4></div><div class="modal-body"><b>Full date/time:</b>'+data.ReturnsOrderCreationDate+',<b>Orderid:</b>'+data.OrderId+',	<b>Return status:</b>'+data.StatusName+'<hr/><h4>Customer Info:</h4>'+
-					'<b>Name:</b> '+data.ConsumerName1+', '+
-					'<b>Street1:</b> '+data.ConsumerShipStreet1+', '+
-					'<b>Street2:</b> '+data.ConsumerShipStreet2+', '+
-					'<b>Street3:</b> '+data.ConsumerShipStreet3+', '+
-					'<b>Shipping House Number:</b> '+data.ConsumerFromShipHouseNumber+', '+
-					'<b>Shipping Postal Code:</b> '+data.ConsumerFromShipPostalCode+', '+
-					'<b>City:</b> '+data.ConsumerFromShipCity+', '+
-					'<b>State:</b> '+data.Consumershipstate+', '+
-					'<b>Country:</b> '+data.ConsumerFromShipCountry+', '+					
+					'<div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Name:</b> '+data.ConsumerName1+'<br/>'+
+					'<b>Street1:</b> '+data.ConsumerShipStreet1+'<br/>'+
+					'<b>Street2:</b> '+data.ConsumerShipStreet2+'<br/>'+
+					'<b>Street3:</b> '+data.ConsumerShipStreet3+'<br/>'+
+					'<b>Shipping House Number:</b> '+data.ConsumerFromShipHouseNumber+'<br/>'+
+					'<b>Shipping Postal Code:</b> '+data.ConsumerFromShipPostalCode+'<br/>'+
+					'</div><div class="col-md-5 pull-right"><b>City:</b> '+data.ConsumerFromShipCity+'<br/>'+
+					'<b>State:</b> '+data.Consumershipstate+'<br/>'+
+					'<b>Country:</b> '+data.ConsumerFromShipCountry+'<br/>'+					
+					'<b>Email:</b> '+data.ConsumerEmail+'<br/>'+
+					'<b> Phone:</b>'+data.Consumerphonenumber+'</div></div>'+
 					
-					'<b>Email:</b> '+data.ConsumerEmail+', '+
-					'<b> Phone:</b>'+data.Consumerphonenumber+'<hr/>'+
-					'<h4>Warehouse:</h4><b>Warehouse id :</b> '+data.Shipfromwarehouseid+', <b>Warehouse :</b> '+data.Warehouse+
-					'<hr/><b>Comment:</b><br>'+(data.Comment?data.Comment:'No comment has been made yet')+'<br><br><b>Items returned ('+data.Returnorderline.length+'):</b><hr>';
+					'<hr><h4>Warehouse:</h4><div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Warehouse id :</b> '+data.Shipfromwarehouseid+'</div><div class="col-md-6 pull-right"> <b>Warehouse :</b> '+data.Warehouse+
+					'</div></div><hr><h4>Comment:</h4>'+(data.Comment?data.Comment:'No comment has been made yet')+'<br><hr><h4>Items returned ('+data.Returnorderline.length+'):</h4>';
 					for(a=0; a<data.Returnorderline.length; a++){
 						var r=data.Returnorderline[a];
-						moreinfo_html=moreinfo_html+'\
-						<b>Item name:</b> '+r.ProductName+'<br> <b>Product SKU:</b> '+r.SKU+'<br> <b>Product info:</b> '+r.ProductInfo+'<br> <b>Return reason:</b> '+r.ReturnReason+'<br> <b>Quantity:</b> '+r.QtyReturned+'<br> <b>Price:</b> '+r.Price+' <hr>\
-						'
+						
+						moreinfo_html=moreinfo_html+
+						'<div class="row" style="padding-left:0 !important;"><div class="col-md-6"><b>Item name:</b> '+r.ProductName+'<br> <b>Product SKU:</b> '+r.SKU+'<br> <b>Product info:</b> '+r.ProductInfo+'<br> </div><div class="col-md-6"><b>Quantity:</b> '+r.QtyReturned+'<br> <b>Price:</b> '+r.Price
+						+'<br><b>Return reason:</b> '+r.ReturnReason+'</div></div><hr>';
 					}
 					moreinfo_html=moreinfo_html+'</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div>';
 				

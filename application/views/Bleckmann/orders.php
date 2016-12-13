@@ -13,9 +13,7 @@
 						}
 					echo '</select></div>';
 				?>
-			</div>
-			
-			
+			</div>			
 		</div>		
 	<div class='row'>
 		<input type="hidden" name="hdn_customer_id_ord" id="hdn_customer_id_ord" value="<?php echo $Customerid?>" />
@@ -43,7 +41,7 @@
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				  <th  class="col-md-3 th-inner">
+				  <th  class="col-md-2 th-inner">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label" style="font-size: 14px;">ReturnOrderID</label>
 					  <input name='ReturnId' type="text" class="form-control" id="i5" />
@@ -79,7 +77,7 @@
 				<tr>
 				  <th>Date</th>
 				  <th>Order ID</th>
-				  <th class="col-md-3 th-inner">ReturnOrderID</th>
+				  <th class="th-inner">R.O. ID</th>
 				  <th class="nosort">Tracking</th>
 				  <th>Refund</th>
 				  <th>Customer</th>
