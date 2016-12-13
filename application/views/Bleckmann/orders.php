@@ -49,9 +49,9 @@
 					</div>
 				  </th>	
 					<th></th>
-					<th class="col-md-1"></th>
+					<th></th>
 					<th class="col-md-1"></th>				  
-				  <th class="col-md-1">
+				    <th class="col-md-1">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label">Carrier</label>
 					  <input name='CarrierName' type="text" class="form-control" id="i5">
@@ -65,7 +65,7 @@
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				  <th style="vertical-align:middle !important;">				 
+				  <th class="col-md-2" style="vertical-align:middle !important;">				 
 					<button type="button" id="order_search_btn" class='btn btn-success btn-raised'>
 					  SEARCH
 					</button>
