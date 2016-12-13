@@ -1,7 +1,7 @@
 <div class='col-xs-12 col-md-9' height='100%'>
 	<div class='container-fluid'>
-		<div class="row well" style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
-			<h4>Manage Languages</h4>
+		<div class="well" style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
+			<h3>Manage Languages</h3>
 				<?php
 		          if(isset($_SESSION['message']['languages_panel'])){
 		            echo'
@@ -108,6 +108,42 @@
 		          	</div>
 		        </form>
 		</div>
+		
+		
+		<br><br>
+		<div class="well" style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
+			<h3>Manage keywords</h3>
+			<br>
+			<table>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Select a language </th>
+					</tr>
+					<tr>
+						<th>Keyword</th>
+						<th>Translation</th>
+					</tr>	
+				</thead>
+				<tbody>
+					<?php
+					foreach ($keywords as $keyword) {
+						echo'
+						<tr>
+							<td>
+								'.$keyword['Keyword'].'
+							</td>
+						</tr>
+						';
+					}
+					
+					?>
+				</tbody>
+			</table>
+		</div>
+		
+		
+		
 	</div>
 </div>
         <!-- Add Languages Modal -->
@@ -136,5 +172,8 @@
 		              </div>
               	</form>
             </div>
+	            
           </div>
         </div>
+    
+		

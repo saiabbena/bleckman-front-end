@@ -74,6 +74,12 @@ class Bleckmann extends CI_Controller {
   	$data['allLanguages'] = $this->httpRequests->httpGet('Language/getLanguages', '');
   	//$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
   	//$data['allLanguages'] = "";
+  	
+  	//keywords
+  	$data['keywords']=$this->httpRequests->httpGet('Keywords/GetAllKeywords', '');
+  	
+  	
+  	
     $this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/languages', $data);
     $this->load->view('Bleckmann/templates/footer');
