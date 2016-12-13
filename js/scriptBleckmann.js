@@ -86,6 +86,70 @@ $(document).ready(function() {
 		        }
 		      });
 		});
+		//edit_wh_pop
+		$(".edit_wh_pop").click(function(){
+			//alert("hi");			
+			$('.loading').css({'display':'block'});			
+			//$('#view_url').css({'display':'block'});
+			//$('#lbl_url').css({'display':'block'});	
+			
+			var validator1 = $( "#add-warehouse-form" ).validate();
+			validator1.resetForm();
+			wh_array = $(this).attr("id").split("_");
+			var warehouse_id = wh_array[2];
+			//alert(warehouse_id);			
+			
+			var apiCall=url+'location/GetLocationbyid?id=' + warehouse_id;
+			//console.log("apiCall : " + apiCall);
+			$.ajax({
+		        url: apiCall,
+		        type: 'GET',
+			    headers: {
+			        Apoyar: apoyarToken
+			    },
+		        dataType: 'json',
+		        success: function(data) {
+		        	//console.log("response data : ");
+		        	console.log(data);
+		        	$('.loading').css({'display':'none'});
+					//$('.customer-modal').css({'display':'block'});
+		        	$('h4#myWarehouseLabel').text('Edit Customer Information');
+					
+					//hdn_warehouseid
+					$('input#hdn_warehouseid').removeClass("empty");
+		        	$('input#Name').removeClass("empty");
+		        	$('input#WarehouseID').removeClass("empty");
+		        	$('input#Phone').removeClass("empty");
+		        	$('input#Email').removeClass("empty");
+		        	$('input#Street').removeClass("empty");
+		        	$('input#Street2').removeClass("empty");
+		        	$('input#HouseNumber').removeClass("empty");
+		        	$('input#PostalCode').removeClass("empty");
+		        	$('input#City').removeClass("empty");
+					$('input#Country').removeClass("empty");
+		        	
+		        	$('input#hdn_warehouseid').val(data.PKWarehouseID);
+		        	$('input#Name').val(data.Name);
+		        	$('input#WarehouseID').val(data.WarehouseID);
+		        	$('input#Phone').val(data.Phone);
+		        	$('input#Email').val(data.Email);
+		        	$('input#Street').val(data.Street);
+		        	$('input#Street2').val(data.Street2);
+		        	$('input#HouseNumber').val(data.HouseNumber);
+		        	$('input#PostalCode').val(data.PostalCode);
+		        	$('input#City').val(data.City);
+					$('select#Country').val(data.Country);
+					//$('#Country option[value=data.Country]').attr('selected','selected');
+					
+					
+		        	$.material.init();
+		        },
+		        fail: function(data){
+		          console.log(data);
+		        }
+		      });
+		});
+		
 		$("#customer-info-form").validate({
 				focusCleanup: true,
 		        rules: {
@@ -845,16 +909,30 @@ $(document).ready(function() {
 		        	//console.log(data);
 					//data[i].OrderId
 					//console.log(data.OrderId);
-					//console.log(data['Returnorderline'][0].EanBarcode);
-					/**/
-					moreinfo_html = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel">Full info on return order: '+data.ReturnId+'</h4></div><div class="modal-body"><b>Full date/time:</b>'+data.ReturnsOrderCreationDate+',<b>Orderid:</b>'+data.OrderId+',	<b>Return status:</b>'+data.StatusName+'<br><br><b>Customer Email:</b> '+data.ConsumerEmail+'<br><br><b>Customer Phone:</b>'+data.Consumerphonenumber+' <br><br>	<b>Comment:</b><br>'+(data.Comment?data.Comment:'No comment has been made yet')+'<br><br><b>Items returned ('+data.Returnorderline.length+'):</b><hr>';
+					//console.log(data['Returnorderline'][0].EanBarcode);				
+					
+					moreinfo_html = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel"><b>Full info on return order: '+data.ReturnId+'</b></h4></div><div class="modal-body"><b>Full date/time:</b>'+data.ReturnsOrderCreationDate+',<b>Orderid:</b>'+data.OrderId+',	<b>Return status:</b>'+data.StatusName+'<hr/><h4>Customer Info:</h4>'+
+					'<b>Name:</b> '+data.ConsumerName1+', '+
+					'<b>Street1:</b> '+data.ConsumerShipStreet1+', '+
+					'<b>Street2:</b> '+data.ConsumerShipStreet2+', '+
+					'<b>Street3:</b> '+data.ConsumerShipStreet3+', '+
+					'<b>Shipping House Number:</b> '+data.ConsumerFromShipHouseNumber+', '+
+					'<b>Shipping Postal Code:</b> '+data.ConsumerFromShipPostalCode+', '+
+					'<b>City:</b> '+data.ConsumerFromShipCity+', '+
+					'<b>State:</b> '+data.Consumershipstate+', '+
+					'<b>Country:</b> '+data.ConsumerFromShipCountry+', '+					
+					
+					'<b>Email:</b> '+data.ConsumerEmail+', '+
+					'<b> Phone:</b>'+data.Consumerphonenumber+'<hr/>'+
+					'<h4>Warehouse:</h4><b>Warehouse id :</b> '+data.Shipfromwarehouseid+', <b>Warehouse :</b> '+data.Warehouse+
+					'<hr /><b>Comment:</b><br>'+(data.Comment?data.Comment:'No comment has been made yet')+'<br><br><b>Items returned ('+data.Returnorderline.length+'):</b><hr>';
 					for(a=0; a<data.Returnorderline.length; a++){
 						var r=data.Returnorderline[a];
 						moreinfo_html=moreinfo_html+'\
 						<b>Item name:</b> '+r.ProductName+'<br> <b>Product SKU:</b> '+r.SKU+'<br> <b>Product info:</b> '+r.ProductInfo+'<br> <b>Return reason:</b> '+r.ReturnReason+'<br> <b>Quantity:</b> '+r.QtyReturned+'<br> <b>Price:</b> '+r.Price+' <hr>\
 						'
 					}
-					moreinfo_html=moreinfo_html+'<hr></div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div>';
+					moreinfo_html=moreinfo_html+'</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div>';
 					$('#moreInfo').html(moreinfo_html);
 					
 					$.material.init();

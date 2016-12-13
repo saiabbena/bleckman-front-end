@@ -17,40 +17,97 @@
 							<button type="submit" id='save-roles' class='btn btn-raised btn-success pull-right'>Save</button>
 						</div>
 						<div class="row">
-							<h4>Warehouse List</h4>
-							<table  id="wh_data" class="table table-striped table-bordered" cellspacing="0">
-								<thead>
-									<tr>
-									  <th class="nosort">Name</th>
-									  <th>Warehouse ID</th>
-									  <th>Street1</th>
-									  <th>Street2</th>
-									  <th>HouseNumber</th>
-									  <th>PostalCode</th>
-									  <th>City</th>
-									  <th>Country</th>
-									  <th class="nosort">Action</th>
-									</tr>
-								</thead>
-							    <tbody>
+							<h4>Edit Warehouse Details</h4>
 		              		<?php
 		              			//echo json_encode($allWarehouses);
-								//echo count($allWarehouses);								
-								//print_r($allWarehouses);
-								//print_r($allCountries);
+								//echo count($allWarehouses);
 		              			for ($i=0; $i<count($allWarehouses); $i++) {
-									$CountryName = '';
-									echo '<tr>
-									  <td class="nosort">'.$allWarehouses[$i]['Name'].'</td>
-									  <td>'.$allWarehouses[$i]['WarehouseID'].'</td>
-									  <td>'.$allWarehouses[$i]['Street'].'</td>
-									  <td>'.$allWarehouses[$i]['Street2'].'</td>
-									  <td>'.$allWarehouses[$i]['HouseNumber'].'</td>
-									  <td>'.$allWarehouses[$i]['PostalCode'].'</td>
-									  <td>'.$allWarehouses[$i]['City'].'</td>
-									  <td>'.$CountryName.'</td>
-									  <td class="nosort"><button type="button" data-toggle="modal" data-target="#edit-warehouse-modal'.$allWarehouses[$i]['PKWarehouseID'].'" class="btn btn-raised btn-info btn-warning pull-right">Edit</button><button type="button" data-toggle="modal" data-target="#delete-warehouse-modal'.$allWarehouses[$i]['PKWarehouseID'].'" class="btn btn-raised btn-danger btn-warning pull-right">Delete</button></td>
-									</tr>';
+
+		              				echo '<div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">';
+		              				echo '<input type="hidden" id="PKWarehouseID" name="Warehouses[' . $i .'][PKWarehouseID]" value="'.$allWarehouses[$i]['PKWarehouseID'].'">';
+				              		echo '<div class="row">
+							                	<div class="col-md-6">
+									              	<div class="form-group label-floating">
+									                  <label class="control-label">Name</label>
+									                  <input type="text" name="Warehouses[' . $i .'][Name]" class="form-control" value="'. $allWarehouses[$i]['Name'] .'">
+
+									                  <span class="help-block">Edit Warehouse Name</span>
+									                </div>
+									            </div>
+												<div class="col-md-6">
+									              	<div class="form-group label-floating">
+									                  <label class="control-label">Warehouse ID</label>
+									                  <input type="text" name="Warehouses[' . $i .'][WarehouseID]" class="form-control" value="'. $allWarehouses[$i]['WarehouseID'] .'">
+
+									                  <span class="help-block">Edit Warehouse ID</span>
+									                </div>
+									            </div>
+							          		</div>';
+				              		echo '<div class="row">
+							                	<div class="col-md-6">
+									              	<div class="form-group label-floating">
+									                  <label class="control-label">Street1</label>
+									                  <input type="text" name="Warehouses[' . $i .'][Street]" class="form-control" value="'. $allWarehouses[$i]['Street'] .'">
+									                  <span class="help-block">Edit Street1</span>
+									                </div>
+									            </div>
+							                	<div class="col-md-6">
+									              	<div class="form-group label-floating">
+									                  <label class="control-label">Street2</label>
+									                  <input type="text" name="Warehouses[' . $i .'][Street2]" class="form-control" value="'. $allWarehouses[$i]['Street2'] .'">
+									                  <span class="help-block">Edit Street2</span>
+									                </div>
+									            </div>
+
+							          		</div>';
+							        echo '<div class="row">
+							                	<div class="col-md-6">
+									              	<div class="form-group label-floating">
+									                  <label class="control-label">House Number</label>
+									                  <input type="text" name="Warehouses[' . $i .'][HouseNumber]" class="form-control" value="'. $allWarehouses[$i]['HouseNumber'] .'">
+									                  <span class="help-block">Edit House Number</span>
+									                </div>
+									            </div>
+							                	<div class="col-md-6">
+									              	<div class="form-group label-floating">
+									                  <label class="control-label">PostalCode</label>
+									                  <input type="text" name="Warehouses[' . $i .'][PostalCode]" class="form-control" value="'. $allWarehouses[$i]['PostalCode'] .'">
+									                  <span class="help-block">Edit PostalCode</span>
+									                </div>
+									            </div>
+							        		</div>';
+				              		echo '<div class="row">
+							                	<div class="col-md-6">
+									              	<div class="form-group label-floating">
+									                  <label class="control-label">City</label>
+									                  <input type="text" name="Warehouses[' . $i .'][City]" class="form-control" value="'. $allWarehouses[$i]['City'] .'">
+									                  <span class="help-block">Edit City</span>
+									                </div>
+									            </div>
+							                	<div class="col-md-6">
+									              	<div class="form-group label-floating">
+									              		<label class="control-label">Country</label>
+									                  	<select class="form-control" name="Warehouses[' . $i .'][Country]">
+									                  	<option value="-1">Select a Country &darr;</option>';
+									                  	for ($j=0; $j<count($allCountries); $j++) { 
+									                  		if ( $allCountries[$j]['IsActive'] ) {
+									                  			if ( $allWarehouses[$i]['Country'] == $allCountries[$j]['PKCountryId']) {
+									                  				echo '<option selected="selected" value="' . $allCountries[$j]['PKCountryId'].'">' . $allCountries[$j]['CountryName'] . '</option>';
+									                  			} else {
+									                  				echo '<option value="' . $allCountries[$j]['PKCountryId'].'">' . $allCountries[$j]['CountryName'] . '</option>';
+									                  			}
+									                  		}
+									                  	}
+									                  	
+									            echo '</select>
+									                 
+									                </div>
+
+									            </div>
+
+							          		</div>';
+							        echo '<button type="button" data-toggle="modal" data-target="#delete-warehouse-modal'.$allWarehouses[$i]['PKWarehouseID'].'" class="btn btn-raised btn-danger btn-warning pull-right">Delete</button><br><br>';
+							        echo '</div>';
 									//delete warehouse modal
 									echo '<div class="modal fade" id="delete-warehouse-modal'.$allWarehouses[$i]['PKWarehouseID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 								              <div class="modal-dialog" role="document">
@@ -76,8 +133,7 @@
 						            ';
 					          	}
 			          		?>
-								</tbody>
-							</table>
+			          	
 			          	</div>
 			        </form>
 		        </div>
