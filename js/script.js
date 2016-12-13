@@ -411,9 +411,9 @@ $(document).ready(function(){
     submition.ConsumerShipStreet1=result.result.ConsumerShipStreet1;
     submition.Consumershipstreet2=result.result.ConsumerShipStreet2;
     submition.Consumershipstreet3=result.result.ConsumerShipStreet3;
-    submition.ConsumerFromShipHouseNumber=result.result.ConsumerFromShipHouseNumber;
-    submition.ConsumerFromShipPostalCode=result.result.ConsumerFromShipPostalCode;
-    submition.ConsumerFromShipCity=result.result.ConsumerFromShipCity;
+    submition.ConsumerFromShipHouseNumber=result.result.ConsumerShipHouseNumber;
+    submition.ConsumerFromShipPostalCode=result.result.ConsumerShipPostalCode;
+    submition.ConsumerFromShipCity=result.result.ConsumerShipCity;
     submition.Consumershipstate=result.result.ConsumerShipState;
     submition.ConsumerFromShipCountry='';
     submition.ReturnsOrderTrackingCode='';
