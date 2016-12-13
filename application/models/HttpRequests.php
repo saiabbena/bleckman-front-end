@@ -62,8 +62,8 @@ Class HttpRequests extends CI_Model {
 
 	    $url = API_BASE_URL_BE . "api/" . $api_url;
 
-	    echo "data in httpPost : " . $data . "\r\n";
-	    echo "token in httpPost : " . $_SESSION['Apoyar'] . "\r\n";
+	    //echo "data in httpPost : " . $data . "\r\n";
+	    //echo "token in httpPost : " . $_SESSION['Apoyar'] . "\r\n";
 
 	    curl_setopt($ch, CURLOPT_URL, $url);
 	    curl_setopt($ch, CURLOPT_HTTPHEADER, array("cache-control: no-cache", "content-type: application/json", 'Apoyar: ' . $_SESSION['Apoyar']));
@@ -76,7 +76,7 @@ Class HttpRequests extends CI_Model {
 	    $response = curl_exec($ch);
 	    curl_close($ch);
 	    $json_body = json_decode($response,true);
-	    echo " httpPost response : " . $response;
+	    //echo " httpPost response : " . $response;
 	    // echo " json_body : " . json_encode($json_body);
 	    // echo " Status in HttpRequests : " . $json_body['Status'];
 	    return $json_body;

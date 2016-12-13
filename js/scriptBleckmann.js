@@ -1322,5 +1322,4 @@ $(document).ready(function() {
 		            }
 		        }
 		});
-
 });
