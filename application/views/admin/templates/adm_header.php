@@ -7,7 +7,8 @@
 	  var apoyarToken="'.$_SESSION['Apoyar'].'";
       var language="English";
       var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
-    </script>';
+	  var baseurl="'. base_url() .'";	  
+    </script>';	
     ?>	
     <!--Meta tags-->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
