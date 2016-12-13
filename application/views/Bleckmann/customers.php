@@ -194,7 +194,7 @@
     				<div class="customer-modal">
 		                <div class="row">
 		                	<div class="col-md-12">
-				              	<div class="form-group label-floating">
+				              	<div class="form-group label-floating required">
 				                  <label class="control-label">Customer Name</label>
 				                  <input id="CustomerName" type="text" name="CustomerName" class="form-control" value="">
 				                  <span class="help-block">Enter Customer Name</span>
@@ -211,7 +211,7 @@
 				        </div>
 		                <div class="row">
 		                	<div class="col-md-6">
-								<div class="form-group label-floating">
+								<div class="form-group label-floating required">
 			                        <label for="i5" class="control-label">Email</label>
 			                        <input id="EmailAddress" type="email" name="EmailAddress" class="form-control" value="">
 			                        <span class="help-block">Enter Email</span>
@@ -227,7 +227,7 @@
 				        </div>
 		                <div class="row">
 		                	<div class="col-md-6">
-				              	<div class="form-group label-floating">
+				              	<div class="form-group label-floating required">
 				                  <label for="i5" class="control-label">Address Line 1</label>
 				                  <input id="AddressLine1" type="text" name="AddressLine1" class="form-control" value="">
 				                  <span class="help-block">Enter Address Line 1</span>
@@ -243,7 +243,7 @@
 		                </div>
 		                <div class="row">
 			                <div class="col-md-3">
-				              	<div class="form-group label-floating">
+				              	<div class="form-group label-floating required">
 				                  <label for="i5" class="control-label">Postal Code</label>
 				                  <input id="PostalCode" type="text" name="PostalCode" class="form-control" value="">
 				                  <span class="help-block">Enter Postal Code</span>
@@ -269,7 +269,7 @@
 				                  <input id="Country" type="text" name="Country" class="form-control" value="">
 				                  <span class="help-block">Enter Country</span>
 				                </div> -->
-				              	<div class="form-group label-floating">
+				              	<div class="form-group label-floating required">
 				              		<label class="control-label">Country</label>
 				                  <?php
 				                  	//echo json_encode($allCountries);

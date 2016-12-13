@@ -5,7 +5,7 @@ class Admin extends CI_Controller {
   public function __construct(){
     parent::__construct();
     $this->load->library('unit_test');
-	$this->load->library('session');
+	  $this->load->library('session');
     //$_SESSION['Customerid']=1;
   	$this->load->helper("url");
   	//$this->load->helper("get_appearance_settings.php");	
@@ -13,6 +13,12 @@ class Admin extends CI_Controller {
     if ( $this->uri->segment(2) == 'login' ) {
       redirect('/login');
     }
+    $req = array(
+      'Customerid'=>$_SESSION['Customerid']
+    );  
+    $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req );
+    $_SESSION['Customername'] = $customer_details['CustomerName'];
+    
     if ( isset($_SESSION['Apoyar']) && $_SESSION['Roleid'] == 99 && $_SESSION['BMRoleid'] == 1 ) {
       redirect('bleckmann/customers');
     }

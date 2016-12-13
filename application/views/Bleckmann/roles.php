@@ -82,7 +82,7 @@
 			                	<input type="hidden" name="Roles[0][IsActive]" value="true">
 			                	<input type="hidden" name="Roles[0][PKRoleID]" value="-1">
 			                	<div class="col-md-12">
-					              	<div class="form-group label-floating">
+					              	<div class="form-group label-floating required">
 					                  <label class="control-label">Role Name</label>
 					                  <input id="RoleName" type="text" name="Roles[0][RoleName]" class="form-control" value="">
 					                  <span class="help-block">Enter Role Name</span>

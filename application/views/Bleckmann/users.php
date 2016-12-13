@@ -1,3 +1,4 @@
+
 <div class='col-xs-12 col-md-9' height='100%'>
 				        	<?php echo'
 	    					<script>
@@ -75,7 +76,7 @@
 		</div>
 	</div>
 </div>
-        <!-- Add Customer Modal -->
+        <!-- Add User Modal -->
         <div class="modal fade" id="add-user-modal" tabindex="-1" role="dialog" aria-labelledby="myUserLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -97,7 +98,7 @@
 		                <div class="row">
 					<?php
 						//echo "allCustomers : " . json_encode($allCustomers);
-						echo '<div class="form-group col-md-12" id="Fkcustomerid-div"><label>Select a Customer</label><select id="Fkcustomerid" name="Fkcustomerid" class="form-control">';
+						echo '<div class="form-group col-md-12 required" id="Fkcustomerid-div"><label class="control-label">Select a Customer</label><select id="Fkcustomerid" name="Fkcustomerid" required class="form-control">';
 						echo '<option value="-1">Select a Customer</option>';
 						for($i=0;$i<count($allCustomers);$i++) {
 							echo '<option value="'. $allCustomers[$i]['PKCustomerID'] . '">' . $allCustomers[$i]['CustomerName'] . '</option>';
@@ -107,14 +108,14 @@
 		                </div>
 		                <div class="row">
 		                	<div class="col-md-6">
-				              	<div class="form-group label-floating">
+				              	<div class="form-group label-floating required">
 				                  <label class="control-label">First Name</label>
 				                  <input id="FirstName" type="text" name="FirstName" class="form-control" value="">
 				                  <span class="help-block">Enter First Name</span>
 				                </div>
 				            </div>
 				            <div class="col-md-6">
-				              	<div class="form-group label-floating">
+				              	<div class="form-group label-floating required">
 				                  <label class="control-label">Last Name</label>
 				                  <input id="LastName" type="text" name="LastName" class="form-control" value="">
 				                  <span class="help-block">Enter Last Name</span>
@@ -123,7 +124,7 @@
 				        </div>
 		                <div class="row">
 		                	<div class="col-md-6">
-								<div class="form-group label-floating">
+								<div class="form-group label-floating required">
 			                        <label for="i5" class="control-label">Email</label>
 			                        <input id="EmailAddress" type="email" name="EmailAddress" class="form-control" value="">
 			                        <span class="help-block">Enter Email</span>
@@ -139,7 +140,7 @@
 				        </div>
 		                <div class="row">
 		                	<div class="col-md-6">
-				              	<div class="form-group label-floating">
+				              	<div class="form-group label-floating required">
 				              		<label class="control-label">Role Name</label>
 				                  <?php
 				                  	echo '<select class="form-control" id="FKRoleID" name="FKRoleID">';
@@ -204,14 +205,14 @@
  		               	<div class="row login-info">
 		               		<h4>Login Details</h4>
 		                	<div class="col-md-6">
-				              	<div class="form-group label-floating">
+				              	<div class="form-group label-floating required">
 				                  <label for="i5" class="control-label">Username</label>
 				                  <input id="Username" type="text" name="Username" class="form-control" value="">
 				                  <span class="help-block">Enter Username</span>
 				                </div>
 				            </div>
 				            <div class="col-md-6">
-				              	<div class="form-group label-floating">
+				              	<div class="form-group label-floating required">
 				                  <label for="i5" class="control-label">Password</label>
 				                  <input id="Password" type="password" name="Password" class="form-control" value="">
 				                  <span class="help-block">Enter Password(e.g. Abcde5#)</span>

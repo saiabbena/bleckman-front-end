@@ -115,7 +115,7 @@
 						<div id="warehouse_modal">	
 							<div class="row">
 			                	<div class="col-md-6">
-					              	<div class="form-group label-floating">
+					              	<div class="form-group label-floating required">
 					                  <label class="control-label">Name</label>
 					                  <input id="Name" type="text" name="Warehouses[0][Name]" class="form-control" value="">
 					                  <span class="help-block">Enter Warehouse Name</span>
@@ -163,14 +163,14 @@
 			          		</div>
 			          		<div class="row">
 							    <div class="col-md-6">
-								   	<div class="form-group label-floating">
+								   	<div class="form-group label-floating required">
 									    <label class="control-label">House Number</label>
 									    <input type="text" name="Warehouses[0][HouseNumber]" class="form-control" id="HouseNumber" value="">
 									    <span class="help-block">Enter House Number</span>
 									</div>
 								</div>
 			                	<div class="col-md-6">
-									<div class="form-group label-floating">
+									<div class="form-group label-floating required">
 									    <label class="control-label">PostalCode</label>
 									    <input type="text" name="Warehouses[0][PostalCode]" class="form-control" id="PostalCode" value="">
 									    <span class="help-block">Enter PostalCode</span>
@@ -186,7 +186,7 @@
 						            </div>
 					            </div>
 							    <div class="col-md-6">
-					              	<div class="form-group label-floating">
+					              	<div class="form-group label-floating required">
 					              		<label class="control-label">Country</label>
 					                  <?php
 					                  	//echo json_encode($allCountries);

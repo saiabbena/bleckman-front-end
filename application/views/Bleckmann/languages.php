@@ -122,7 +122,7 @@
 		              <div class="modal-body">
 			                <div class="row">
 			                	<div class="col-md-12">
-					              	<div class="form-group label-floating">
+					              	<div class="form-group label-floating required">
 					                  <label class="control-label">Language Name</label>
 					                  <input id="LanguageName" type="text" name="LanguageName" class="form-control" value="">
 					                  <span class="help-block">Enter Language Name</span>

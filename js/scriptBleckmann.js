@@ -89,8 +89,9 @@ $(document).ready(function() {
 		//clear the form
 		$(".add_wh_pop").click(function(){
 			//add-warehouse-form
-			 $('#add-warehouse-form').find("input[type=text], input[type=hidden], textarea, select").val("");
-			
+			$('#add-warehouse-form').find("input[type=text], input[type=hidden], textarea, select").val("");
+			$('h4#myWarehouseLabel').text('Add a Warehouse');
+			$('select#Country').val(-1);
 		});
 		//edit_wh_pop
 		$(".edit_wh_pop").click(function(){
@@ -163,7 +164,9 @@ $(document).ready(function() {
 		                email: true
 		            },
 		            AddressLine1 : "required",
-		            Country: "required",
+		            Country: {
+		            	valueNotEquals: -1
+		            },
 		   //          Username : {
 		   //          	required: function(element) {
 		   //          		//alert("customerid : " + $('#PKCustomerID').val());
@@ -216,6 +219,7 @@ $(document).ready(function() {
 			var validator1 = $( "#user-info-form" ).validate();
 			validator1.resetForm();
 		    $('h4#myUserLabel').text('Add a User');
+		    $('select#Fkcustomerid').val(-1);
 		    $('input#Address').val('');
 		    $('input#City').val('');
 		    $('select#Country').val(-1);
@@ -245,6 +249,9 @@ $(document).ready(function() {
 		            //Country: "required",
 		            FKRoleID: {
 		            	valueNotEquals: -1
+		            },
+		            Fkcustomerid : {
+		            	valueNotEquals: -1	
 		            },
 		            Username : {
 		            	required: function(element) {
@@ -281,6 +288,7 @@ $(document).ready(function() {
 		            EmailAddress: "Please enter a valid email address",
 		            //Country: "Please enter Country Name",
 		            FKRoleID:"Please select a role",
+		            Fkcustomerid:"Please select a customer",
 		            Username: "Please enter Username",
 		            Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& "
 		        },
@@ -315,6 +323,18 @@ $(document).ready(function() {
 			},
 			messages:{
 				"Roles[0][RoleName]" : "Please enter a Role Name"
+			},
+		    submitHandler: function(form) {
+		      	//alert("submit");
+		        form.submit();
+		    }
+		});
+		$("#add-language-form").validate({
+			rules:{
+				LanguageName : "required",
+			},
+			messages:{
+				LanguageName : "Please enter a Language Name"
 			},
 		    submitHandler: function(form) {
 		      	//alert("submit");
@@ -527,6 +547,10 @@ $(document).ready(function() {
 			$('.loading-screen').show();
 			if ( $(this).val() > -1 ) {
 				getCustomerUsers($(this).val());
+			} else {
+				$('.loading-screen').hide();
+				location.reload();
+				$('#showcustomerSelect-Users').val(1);
 			}
 		});
 		function getCustomerUsers(custid) {
@@ -1075,6 +1099,8 @@ $(document).ready(function() {
 			$('.carrier_div').css({'display':'none'});
 			var validator1 = $( "#add-carrier-form" ).validate();
 			validator1.resetForm();
+			$('#global-settings-error').hide();
+			$('#local-settings-error').hide();
 			$('#Countries').multiselect({enableFiltering: true, maxHeight: 200, buttonWidth: 250, nonSelectedText: 'Select a Country', nSelectedText: 'Countries Selected',});
 			carrier_array = $(this).attr("id").split("-");
 			var selCarrierId = carrier_array[2];
