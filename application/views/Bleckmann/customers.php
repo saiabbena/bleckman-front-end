@@ -53,12 +53,16 @@
 								</div>
 								<div class="row">
 									<div class="col-md-12">
-										<a href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a> | 
 										<a href="users?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Users</a> | 
 										<a href="orders/Customerid/'.$allCustomers[$i]['PKCustomerID'].'">Orders</a>
 									</div>
 								</div>
-								<br>
+								<div class="row">
+									<div class="col-md-12">
+										<a href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a> | 
+										<a href="settings?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Settings</a>
+									</div>
+								</div>
 								<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
 								<br>
 								<br>

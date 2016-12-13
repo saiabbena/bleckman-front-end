@@ -1240,5 +1240,4 @@ $(document).ready(function() {
 		            }
 		        }
 		});
-
 });

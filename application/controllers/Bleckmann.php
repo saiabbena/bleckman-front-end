@@ -104,6 +104,23 @@ class Bleckmann extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
+  public function settings() {
+    $data['customerId'] = $this->input->get('Customerid');
+    $req = array(
+      'Customerid'=>$data['customerId']
+    );  
+    $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req );
+    $data['customerName'] = $customer_details['CustomerName'];
+    $data['allOpModes'] = $this->httpRequests->httpGet('operation/GetOperations', '' );
+    $data['customerOpModes'] = $this->httpRequests->httpGet('operation/GetOperationsbyCustomerid', $req );
+
+    $this->load->view('Bleckmann/templates/header');
+    $this->load->view('Bleckmann/settings', $data);
+    $this->load->view('Bleckmann/templates/footer');
+    if(isset($_SESSION['message'])) {
+      unset($_SESSION['message']);
+    }
+  }
   public function managecarriers() {
     $data['customerId'] = $this->input->get('Customerid');
     $data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllActiveBMCarriers', '');
@@ -124,7 +141,30 @@ class Bleckmann extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
+  public function saveOpModes() {
+     //echo json_encode($_POST);exit();
+    for($i=0;$i<count($_POST['Operations']);$i++) {
+      //echo $_POST['Operations'][$i]['IsAssigned']  . "\r\n";
+      if ($_POST['Operations'][$i]['IsAssigned'] == 1) {
+        $_POST['Operations'][$i]['IsAssigned'] = "true";
+      } else {
+        $_POST['Operations'][$i]['IsAssigned'] = "false";
+      }
+    }
 
+    //echo json_encode($_POST);exit();
+    $server_output = $this->httpRequests->httpPost('Operation/PostOperationCustomer', json_encode($_POST) );
+    //echo json_encode($server_output);exit();
+    if ( $server_output['Status'] == 1) { 
+      $_SESSION['message']['settings_panel']='Saved';
+      $_SESSION['message']['alert_status']='success';
+    } else {
+      $_SESSION['message']['settings_panel']='Error : ' . $server_output['Messages'];
+      $_SESSION['message']['alert_status']='warning';
+    }
+    echo var_dump($_SESSION['message']);
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#settings_panel');
+  }
 	public function postComment() {
 		header('Content-Type: application/json');
 		echo "in php : ". "\r\n";
