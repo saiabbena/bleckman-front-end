@@ -89,8 +89,9 @@ $(document).ready(function() {
 		//clear the form
 		$(".add_wh_pop").click(function(){
 			//add-warehouse-form
-			 $('#add-warehouse-form').find("input[type=text], input[type=hidden], textarea, select").val("");
-			
+			$('#add-warehouse-form').find("input[type=text], input[type=hidden], textarea, select").val("");
+			$('h4#myWarehouseLabel').text('Add a Warehouse');
+			$('select#Country').val(-1);
 		});
 		//edit_wh_pop
 		$(".edit_wh_pop").click(function(){
