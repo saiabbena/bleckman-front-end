@@ -693,7 +693,7 @@ $(document).ready(function() {
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
-		        	//console.log(data);
+		        	console.log(data);
 					$('.loading').css({'display':'none'});
 					$('.user_div').css({'display':'block'});
 		        	$('h4#myUserLabel').text('Edit User Information');

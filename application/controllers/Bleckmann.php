@@ -261,10 +261,10 @@ class Bleckmann extends CI_Controller {
     if ( $server_output['Status'] == 1) { 
     	$_SESSION['message']['warehouse_panel']='Warehouse Information Saved';
     	$_SESSION['message']['alert_status']='success';
-	} else {
-		$_SESSION['message']['warehouse_panel']='Error : ' . $server_output['Messages'];
-		$_SESSION['message']['alert_status']='warning';
-	}
+  	} else {
+  		$_SESSION['message']['warehouse_panel']='Error : ' . $server_output['Messages'];
+  		$_SESSION['message']['alert_status']='warning';
+  	}
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#warehouse_panel');
   }
