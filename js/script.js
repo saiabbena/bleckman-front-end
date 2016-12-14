@@ -494,4 +494,111 @@ $(document).ready(function(){
     }, 500);
 	  
   });
+	//Button click on create return order
+	$('#btn_create_ro').click(function(){
+		console.log('working');
+		//alert('Test');
+		var inputs_data = '';
+		//$('.loading-screen').slideDown('slow');
+		setTimeout(function(){		  
+		  var inputData={'Orderid': $('#f2').val().trim(), 'Email': $('#f1').val().trim(), 'Phone': $('#f3').val().trim(), 'Name': $('#f4').val().trim()};
+		  var inputs_data = $('#f2').val()+$('#f1').val()+$('#f3').val()+$('#f4').val().trim();
+		  console.log(inputData);
+		  //alert(inputsdata);
+		  if(inputs_data != ''){
+			  getOrderAndAuth_CS(inputData);
+		  }else{
+			  $('#screen1-error').show();			  
+		  }
+		  
+		}, 500);		
+		$('.form3').hide();
+		$('.form4').hide();	
+		 
+	  });
+	  
+	  function getOrderAndAuth_CS(inputData){
+		  submition.OrderId = inputData.OrderId;
+		  submition.Email = inputData.Email;
+		  submition.Name = inputData.Name;
+		  submition.Phone = inputData.Phone;
+		  apiCall=url+'order/PostSearchOrders';	
+		  //console.log(apoyarToken);
+		  $.ajax({
+			  url: apiCall,
+			  type: 'post',
+			  data: submition,
+			  headers: {
+				  Apoyar: apoyarToken
+			  },
+			  dataType: 'json',
+			  success: function (data) {
+				console.log("orders");
+				console.log(data);
+				//countryCode = data.ConsumerShipCountry;
+				//function validate stuff
+				if(data){
+				  //result={type: 'screen1', status: true, message: 'You have been authenticated', result: data};
+				  //console.log("data is : ");
+				  //console.log(data);
+				  $('.loading-screen').slideDown('slow');
+				  returnOrdersScreen(data);
+				  	
+				  //$('.form1').hide();
+				  $('.form1').css({'display':'none !important'});
+				  $('.form5').show();
+				  			  
+				}
+				else{
+				  result={type: 'screen1', status: false, message: 'Incorrect id/email/tel/phone', result: false};
+				  $('.form1').show();
+				  $('.loading-screen').slideUp('slow');
+				  $('#screen1-error').show();
+				  console.log('incorrect')
+				}				  
+			  },
+			}).fail(function(response){
+				$('.form1').show();
+				$('.loading-screen').slideUp('slow');
+				$('#screen1-error').show();
+				console.log('failed')
+			});
+	  }
+	function returnOrdersScreen(result){		
+		var html='';		
+		//console.log(result) ;
+		if(result.length > 0){
+			for(i=0; i<result.length; i++){
+				var data = result;
+				date=new Date(data[i].ShippedDate);
+				resultDate=date.getDate()+'/'+(date.getMonth()+1)+'/'+(date.getYear()+1900);
+				html=html+'\<tr>\
+				\<td style="white-space: nowrap;">'+resultDate+'</td>\
+					  \
+					  <td style="white-space: nowrap;">'+data[i].Consumerid+'</td>\
+					  \
+					  <td style="white-space: nowrap;">'+data[i].ConsumerEmail+'</td>\
+					  \
+					  <td style="white-space: nowrap;">'+data[i].OrderId+'</td>\
+					  \
+					  <td style="white-space: nowrap;"><b>'+' '+data[i].ConsumerName1+' '+data[i].ConsumerName2+'</b></td>\
+					  \
+					  <td style="white-space: nowrap;">'+data[i].Status+'</td>\
+					  \
+					  <td style="white-space: nowrap;">\
+					  <button type="button" style="border:0;" class="btn btn-success btn-raised">Return</button></tr>';
+			
+			}
+		}else{
+			html=html+'\<tr>\
+			<td colspan="7" style="white-space: nowrap;color:#FF0000;" align="center"><h3>Sorry! No matching Orders found.</h3></td></tr>';
+		}
+		console.log(html) ;
+		//list_to_create_RO
+		$('#list_to_create_RO > tbody').html(html);
+		 //$.material.init();
+		$('#list_to_create_RO').bootstrapTable();
+		$('.loading-screen').slideUp('slow');
+	}
+  
 });
