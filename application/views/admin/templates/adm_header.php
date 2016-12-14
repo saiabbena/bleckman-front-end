@@ -201,7 +201,7 @@
           </tbody>
         </table>
         <br>
-        <button class='btn btn-primary btn-block btn-raised'>UPDATE</button>
+        <button class='btn btn-primary btn-block btn-raised'>SUBMIT</button>
       </div>	  
 	  <?php }?>
     </div>	
