@@ -230,8 +230,8 @@
 					                </div>
 					            </div>
 					            <div class="col-md-6">
-					              	<div class="form-group" style="text-align: center;">
-					              		<a class="btn btn-default" href="#" id="changePwd">Change Password</a>
+					              	<div class="" style="margin-top: 42px;text-align: center;">
+					              		<a class="btn btn-default btn-raised btn-warning" href="#" id="changePwd">Change Password</a>
 					                </div>
 					            </div>
 				            </div>
@@ -239,7 +239,8 @@
  		               	<div class="row change-password">
  		               		<div class="col-md-12">
 			               		<h4>Change Password</h4>
-			               		<input type="hidden" name="IsPasswordChanged" value="true">
+			               		<input type="hidden" name="IsPasswordChanged" id="IsPasswordChanged" value="false">
+			               		
 			                	<div class="col-md-6">
 					              	<div class="form-group label-floating required">
 					                  <label for="i5" class="control-label">New Password</label>

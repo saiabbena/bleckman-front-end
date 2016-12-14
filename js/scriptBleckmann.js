@@ -250,7 +250,31 @@ $(document).ready(function() {
 						 //With Special Chars // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/ 
 						 //Without Special Chars /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
 						 regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/
-					}
+					},
+		            newPassword : {
+		            	required: function(element) {
+		            		//alert("customerid : " + $('#PKCustomerID').val());
+		            		if ( $('input#IsPasswordChanged').val() == "true" ) {
+		            			return true;
+		            		} else {
+		            			return false;
+		            		}
+		            	},
+		            	regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/
+		            },
+		            confirmPassword: {
+		            	required: function(element) {
+		            		//alert("customerid : " + $('#PKCustomerID').val());
+		            		if ( $('input#IsPasswordChanged').val() == "true" ) {
+		            			return true;
+		            		} else {
+		            			return false;
+		            		}
+		            	},
+		            	equalTo: "#newPassword",
+		            	regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/
+		            },
+
 		        },
 		        messages: {
 		            FirstName: "Please enter First Name",
@@ -261,11 +285,29 @@ $(document).ready(function() {
 		            FKRoleID:"Please select a role",
 		            Fkcustomerid:"Please select a customer",
 		            Username: "Please enter Username",
-		            Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& "
+		            Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& ",
+		            newPassword: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& ",
+		            confirmPassword: {
+		            	required: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& ",
+		            	equalTo: "Passwords are not identical",
+		            }
 		        },
 		        submitHandler: function(form) {
 		        	//alert("submit");
-		            form.submit();
+		        	if ( $('input#IsPasswordChanged').val() == "true") {
+		        		$('input#Password').val($('#newPassword').val());
+		        	}
+		        	form.submit();
+		        	// if ( $('input#IsPasswordChanged').val() == "true") {
+		        	// 	console.log("Password change");
+		        	// 	if ( $('input#newPassword').val() == $('input#confirmPassword').val() ) {
+		        	// 		form.submit();
+		        	// 	} else {
+		        	// 		console.log("Passwords donot match");
+		        	// 	}
+		        	// } else {
+		         //    	form.submit();
+		         //    }
 		        }
 		});
 
@@ -646,6 +688,7 @@ $(document).ready(function() {
 
 		$("#user-info-form").on('click', 'a#changePwd', function(){
 			$('div.change-password').show();
+			$('input#IsPasswordChanged').val(true);
 		});
 		$("#CustomerUsers").on('click', 'a.edit-user-pop', function(){
 			$('.loading').css({'display':'block'});
