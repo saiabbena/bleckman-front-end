@@ -219,12 +219,49 @@
 				                </div>
 				            </div>
 		            	</div>
+ 		               	<div class="row edit-login-info">
+ 		               		<div class="col-md-12">
+			               		<h4>Login Details</h4>
+			                	<div class="col-md-6">
+					              	<div class="form-group">
+					                  <label for="i5" class="control-label">Username</label>
+					                  <input id="Username" disabled type="text" name="Username" class="form-control" value="">
+					                  <span class="help-block">Enter Username</span>
+					                </div>
+					            </div>
+					            <div class="col-md-6">
+					              	<div class="form-group" style="text-align: center;">
+					              		<a class="btn btn-default" href="#" id="changePwd">Change Password</a>
+					                </div>
+					            </div>
+				            </div>
+		            	</div>
+ 		               	<div class="row change-password">
+ 		               		<div class="col-md-12">
+			               		<h4>Change Password</h4>
+			               		<input type="hidden" name="IsPasswordChanged" value="true">
+			                	<div class="col-md-6">
+					              	<div class="form-group label-floating required">
+					                  <label for="i5" class="control-label">New Password</label>
+					                  <input id="newPassword" type="password" name="newPassword" class="form-control" value="">
+					                  <span class="help-block">Enter Password(e.g. Abcde5#)</span>
+					                </div>
+					            </div>
+					            <div class="col-md-6">
+					              	<div class="form-group label-floating required">
+					                  <label for="i5" class="control-label">Confirm Password</label>
+					                  <input id="confirmPassword" type="password" name="confirmPassword" class="form-control" value="">
+					                  <span class="help-block">Enter Password(e.g. Abcde5#)</span>
+					                </div>
+					            </div>
+				            </div>
+		            	</div>
 						<input id="PKUserID" type="hidden" name="PKUserID" value="">
 						  <div class="modal-footer">
 							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							<button type="submit" class="btn btn-primary">save</button>
 						  </div>
-						</form>
+				</form>
 			</div>
 		</div>
 		          

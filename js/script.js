@@ -241,7 +241,7 @@ function thirdScreen(){
             <div class="form-group">\
               <div class="radio">\
                 <label>\
-                  <input type="radio" name="sample1" value="'+customerSettings.carriers[i]['PKCarrierID']+'" '+(i==0?'checked=""':'')+'>\
+                  <input type="radio" name="sample1" value="'+i+'" '+(i==0?'checked=""':'')+'>\
                 </label>\
               </div>\
             </div>\
@@ -393,12 +393,16 @@ $(document).ready(function(){
     
     parent=$('input[name=sample1]:checked').parent().parent().parent().parent().parent();
     var carName=$('.carrierName', parent).html();
-    
+    var carrierInfo = $('input[name=sample1]:checked').val();
+    console.log("carrier info");
+    console.log(customerSettings.carriers[carrierInfo]);
     submition.FKCustomerId=customerId;
     submition.StatusName='Label printed';
-    submition.CarrierId=parseInt($('input[name=sample1]:checked').val(), 10);
+    //submition.CarrierId=parseInt($('input[name=sample1]:checked').val(), 10);
+    submition.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
     submition.Status=result.result.Status;
-    submition.Shipfromwarehouseid=result.result.ShipFromWarehouseId;
+    //submition.Shipfromwarehouseid=result.result.ShipFromWarehouseId;
+    submition.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
     submition.Source=result.result.Source;
     submition.Ordertype=result.result.OrderType;
     submition.ShipmentId=result.result.ShipmentId;
