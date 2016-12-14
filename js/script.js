@@ -565,13 +565,17 @@ $(document).ready(function(){
 			});
 	  }
 	function returnOrdersScreen(result){		
-		var html='';		
+		var html='';
+		var inputData = '';
 		//console.log(result) ;
 		if(result.length > 0){
 			for(i=0; i<result.length; i++){
 				var data = result;
+				var inputData = '';
 				date=new Date(data[i].ShippedDate);
 				resultDate=date.getDate()+'/'+(date.getMonth()+1)+'/'+(date.getYear()+1900);
+				inputData={'Orderid': data[i].OrderId, 'Email': data[i].ConsumerEmail, Customerid: customerId};
+				
 				html=html+'\<tr>\
 				\<td style="white-space: nowrap;">'+resultDate+'</td>\
 					  \
@@ -586,7 +590,7 @@ $(document).ready(function(){
 					  <td style="white-space: nowrap;">'+data[i].Status+'</td>\
 					  \
 					  <td style="white-space: nowrap;">\
-					  <button type="button" style="border:0;" class="btn btn-success btn-raised">Return</button></tr>';
+					  <button type="button" onclick="javascript:getOrderAndAuth('+inputData+')" style="border:0;" class="btn btn-success btn-raised">Return</button></tr>';
 			
 			}
 		}else{
