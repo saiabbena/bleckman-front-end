@@ -33,42 +33,46 @@
 									<input type="hidden" name="Customerid" value="<?php echo $customerId; ?>">
 								<tbody>
 							    	<?php
-							    		for ($i=0; $i<count($allOpModes); $i++) {
-							    			$notselected = true;
-						              		echo '
-						              			<tr>
-						              				<input type="hidden" name="Operations[' . $i .'][FKOperationId]" value="'.$allOpModes[$i]['PKOperationId'].'">';
-											echo '<td style="vertical-align:middle;">
-														' . $allOpModes[$i]['OperationName']. '
-											        </td>
-											        <td style="text-align:center;vertical-align:middle;">
-											            <input type="hidden" name="Operations[' . $i .'][IsAssigned]" value="0">';
-							    			for ($j=0; $j<count($customerOpModes); $j++) {
-							    				if ( $customerOpModes[$j]['FKOperationId'] == $allOpModes[$i]['PKOperationId'] ) {
-							    					echo '<input type="hidden" id="PKMMId" name="Operations[' . $i .'][PKMMId]" value="'.$customerOpModes[$j]['PKMMId'].'">';
+							    		if ( count($allOpModes) > 0 ) {
+								    		for ($i=0; $i<count($allOpModes); $i++) {
+								    			$notselected = true;
+							              		echo '
+							              			<tr>
+							              				<input type="hidden" name="Operations[' . $i .'][FKOperationId]" value="'.$allOpModes[$i]['PKOperationId'].'">';
+												echo '<td style="vertical-align:middle;">
+															' . $allOpModes[$i]['OperationName']. '
+												        </td>
+												        <td style="text-align:center;vertical-align:middle;">
+												            <input type="hidden" name="Operations[' . $i .'][IsAssigned]" value="0">';
+												if ( count($customerOpModes) > 0 ) {
+									    			for ($j=0; $j<count($customerOpModes); $j++) {
+									    				if ( $customerOpModes[$j]['FKOperationId'] == $allOpModes[$i]['PKOperationId'] ) {
+									    					echo '<input type="hidden" id="PKMMId" name="Operations[' . $i .'][PKMMId]" value="'.$customerOpModes[$j]['PKMMId'].'">';
+															echo '<div class="form-group">
+																      	<div class="togglebutton">
+																		  <label>';
+															echo '<input type="checkbox" name="Operations[' . $i .'][IsAssigned]" checked="checked" value="1">';
+															echo '</label>
+																		</div>
+																	</div>';
+															$notselected = false;
+									    				}
+									    			}
+									    		}
+								    			if ( $notselected ) {
 													echo '<div class="form-group">
-														      	<div class="togglebutton">
-																  <label>';
-													echo '<input type="checkbox" name="Operations[' . $i .'][IsAssigned]" checked="checked" value="1">';
+															<div class="togglebutton">
+																<label>';
+													echo '<input type="checkbox" class="AssignedtoCustomer" id="assigned-"' .$i. ' name="Operations[' . $i .'][IsAssigned]" value="1">';
 													echo '</label>
-																</div>
-															</div>';
-													$notselected = false;
-							    				}
-							    			}
-							    			if ( $notselected ) {
-												echo '<div class="form-group">
-														<div class="togglebutton">
-															<label>';
-												echo '<input type="checkbox" class="AssignedtoCustomer" id="assigned-"' .$i. ' name="Operations[' . $i .'][IsAssigned]" value="1">';
-												echo '</label>
-													</div>
-													</div>';
-											}
+														</div>
+														</div>';
+												}
 
-											echo '</td>
-								          		</tr>';
-							    		}
+												echo '</td>
+									          		</tr>';
+								    		}
+								    	}
 							    	?>
 						    	</tbody>
 						    </table>

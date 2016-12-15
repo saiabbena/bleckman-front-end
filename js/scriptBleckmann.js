@@ -167,34 +167,6 @@ $(document).ready(function() {
 		            Country: {
 		            	valueNotEquals: -1
 		            },
-		   //          Username : {
-		   //          	required: function(element) {
-		   //          		//alert("customerid : " + $('#PKCustomerID').val());
-		   //          		if ( $('#PKCustomerID').val() ) {
-		   //          			return false;
-		   //          		} else {
-		   //          			return true;
-		   //          		}
-		   //          	}
-		   //          },
-					// Password : {
-		   //          	required: function(element) {
-		   //          		//alert("customerid : " + $('#PKCustomerID').val());
-		   //          		if ( $('#PKCustomerID').val() ) {
-		   //          			return false;
-		   //          		} else {
-		   //          			return true;
-		   //          		}
-		   //          	}
-		   //          },
-		   //          Password : {
-					// 	 required: true,						 
-					// 	 //New Contain at least 6 characters.contain at least 1 number.,contain at least 1 lowercase character (a-z),contain at least 1 uppercase character (A-Z),contains only 0-9a-zA-Z.
-					// 	 //With Special Chars // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/ 
-					// 	 //Without Special Chars /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
-					// 	 regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/     	
-						
-		   //          }
 		        },
 		        messages: {
 		            CustomerName: "Please enter Customer Name",
@@ -202,11 +174,8 @@ $(document).ready(function() {
 		            EmailAddress: "Please enter a valid email address",
 		            AddressLine1: "Please enter Address",
 		            Country: "Please enter Country Name",
-		            //Username: "Please enter Username",
-		            //Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& "
 		        },
 		        submitHandler: function(form) {
-		        	//alert("submit");
 		            form.submit();
 		        }
 		});
@@ -234,6 +203,8 @@ $(document).ready(function() {
 		    $('input#PKUserID').val('');
 		    $('select#FKRoleID').val('-1');
 		    $('div.login-info').show();
+		    $('div.edit-login-info').hide();
+		    $('div.change-password').hide();
 		});
 
 		$("#user-info-form").validate({
@@ -279,7 +250,31 @@ $(document).ready(function() {
 						 //With Special Chars // /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/ 
 						 //Without Special Chars /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,}$/
 						 regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/
-					}
+					},
+		            newPassword : {
+		            	required: function(element) {
+		            		//alert("customerid : " + $('#PKCustomerID').val());
+		            		if ( $('input#IsPasswordChanged').val() == "true" ) {
+		            			return true;
+		            		} else {
+		            			return false;
+		            		}
+		            	},
+		            	regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/
+		            },
+		            confirmPassword: {
+		            	required: function(element) {
+		            		//alert("customerid : " + $('#PKCustomerID').val());
+		            		if ( $('input#IsPasswordChanged').val() == "true" ) {
+		            			return true;
+		            		} else {
+		            			return false;
+		            		}
+		            	},
+		            	equalTo: "#newPassword",
+		            	regex: /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/
+		            },
+
 		        },
 		        messages: {
 		            FirstName: "Please enter First Name",
@@ -290,11 +285,29 @@ $(document).ready(function() {
 		            FKRoleID:"Please select a role",
 		            Fkcustomerid:"Please select a customer",
 		            Username: "Please enter Username",
-		            Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& "
+		            Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& ",
+		            newPassword: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& ",
+		            confirmPassword: {
+		            	required: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& ",
+		            	equalTo: "Passwords are not identical",
+		            }
 		        },
 		        submitHandler: function(form) {
 		        	//alert("submit");
-		            form.submit();
+		        	if ( $('input#IsPasswordChanged').val() == "true") {
+		        		$('input#Password').val($('#newPassword').val());
+		        	}
+		        	form.submit();
+		        	// if ( $('input#IsPasswordChanged').val() == "true") {
+		        	// 	console.log("Password change");
+		        	// 	if ( $('input#newPassword').val() == $('input#confirmPassword').val() ) {
+		        	// 		form.submit();
+		        	// 	} else {
+		        	// 		console.log("Passwords donot match");
+		        	// 	}
+		        	// } else {
+		         //    	form.submit();
+		         //    }
 		        }
 		});
 
@@ -673,6 +686,10 @@ $(document).ready(function() {
 		    });
 		}
 
+		$("#user-info-form").on('click', 'a#changePwd', function(){
+			$('div.change-password').show();
+			$('input#IsPasswordChanged').val(true);
+		});
 		$("#CustomerUsers").on('click', 'a.edit-user-pop', function(){
 			$('.loading').css({'display':'block'});
 			$('.user_div').css({'display':'none'});
@@ -693,7 +710,7 @@ $(document).ready(function() {
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
-		        	//console.log(data);
+		        	console.log(data);
 					$('.loading').css({'display':'none'});
 					$('.user_div').css({'display':'block'});
 		        	$('h4#myUserLabel').text('Edit User Information');
@@ -710,6 +727,9 @@ $(document).ready(function() {
 		        	$('select#Fkcustomerid').val(data.Fkcustomerid);
 		        	$('input#PKUserID').val(data.PKUserID);
 		        	$('div.login-info').hide();
+		        	$('div.edit-login-info').show();
+		        	$('div.change-password').hide();
+		        	$('input#Username').val(data.UserName);
 					if ( data.FKRoleID == 1 ) {
 						$('#Fkcustomerid-div').hide();
 					} else {
