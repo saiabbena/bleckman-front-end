@@ -175,7 +175,7 @@
 					<br>
 					
 					<div class="inputs">
-					  <table class='table' id='list_to_create_RO'>
+					  <table class='table table-striped table-bordered' id='list_to_create_RO'>
 						<thead>
 						  <tr>
 							  <th>Shipped Date</th>
@@ -184,7 +184,7 @@
 							  <th>Order Id</th>							  						  
 							  <th>Name</th>
 							  <th>Status</th>
-							  <th>Return</th>
+							  <th class="nosort ">Return</th>
 							</tr>
 						</thead>
 						<tbody>              

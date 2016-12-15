@@ -63,7 +63,7 @@
 	</script>	
 	<?php }
 	//warehouses
-	if($this->uri->segment(2) == 'warehouses'){
+	if($this->uri->segment(2) == 'warehouses' || $this->uri->segment(2) == 'users'){
 	?>
 	<!--<link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.min_2.css">-->
 	<link rel="stylesheet" href="<?php echo base_url();?>css/dataTables.bootstrap.min.css">
@@ -75,6 +75,10 @@
 			 "ordering": false,
 			"pagingType": "numbers",
 			});
+		$('#user_datatable').DataTable({				 
+			 "ordering": false,
+			"pagingType": "numbers",
+		});
 	});
 	</script>
 	<?php 

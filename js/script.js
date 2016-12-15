@@ -513,7 +513,7 @@ $(document).ready(function(){
 		  console.log(inputData);
 		  //alert(inputsdata);
 		  if(inputs_data != ''){
-			  getOrderAndAuth_CS(inputData);
+			  getOrderAndAuth_CS(inputData);			  
 		  }else{
 			  $('#screen1-error').show();			  
 		  }
@@ -521,11 +521,12 @@ $(document).ready(function(){
 		}, 500);		
 		$('.form3').hide();
 		$('.form4').hide();	
-		 
+		//$('.form_ro').hide();
 	  });
 	  
 	  function getOrderAndAuth_CS(inputData){
 		  submition.CustomerId = '';
+		  $('.loading-screen').slideDown('slow');
 		  submition.OrderId = inputData.OrderId;
 		  submition.Email = inputData.Email;
 		  submition.Name = inputData.Name;
@@ -547,15 +548,13 @@ $(document).ready(function(){
 				//function validate stuff
 				if(data){
 				  //result={type: 'screen1', status: true, message: 'You have been authenticated', result: data};
-				  //console.log("data is : ");
+				  console.log("sangeeetha ");
 				  //console.log(data);
-				  $('.loading-screen').slideDown('slow');				  
-				  $('.form1').css({'display':'none !important'});
-				  $('.form_ro').css({'display':'none !important'});			  
-				  
+				  //$('.form1').css({'display':'none !important'});
 				  returnOrdersScreen(data); 
 				  $('.form5').show();
-				  			  
+				  $('.form_ro').hide();
+				  //$('.form_ro').css({'display':'none !important'}); 
 				}
 				else{
 				  result={type: 'screen1', status: false, message: 'Incorrect id/email/tel/phone', result: false};
@@ -585,7 +584,7 @@ $(document).ready(function(){
 				inputData={'Orderid': data[i].OrderId, 'Email': data[i].ConsumerEmail, Customerid: customerId};
 				
 				html=html+'\<tr>\
-				\<td style="white-space: nowrap;">'+resultDate+'</td>\
+					  \<td style="white-space: nowrap;">'+resultDate+'</td>\
 					  \
 					  <td style="white-space: nowrap;">'+data[i].Consumerid+'</td>\
 					  \
@@ -622,7 +621,9 @@ $(document).ready(function(){
 		ol_array = ol_info.split(',');		
 		inputData={'Orderid': ol_array[0], 'Email': ol_array[1], Customerid: customerId};
 		console.log(inputData);
-		getOrderAndAuth(inputData);		
+		$('.loading-screen').slideDown('slow');
+		getOrderAndAuth(inputData);
+		
 	});
 	
   

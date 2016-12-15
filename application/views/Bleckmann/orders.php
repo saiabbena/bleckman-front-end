@@ -24,24 +24,26 @@
               '.$_SESSION['message']['carrier_panel'].'
             </div>';
           }
-        ?>  		
+        ?>
 			<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">		
 			  <thead>				
 				<tr>
 				  <th  class="nosort col-md-1">
 					<div class='form-group'>
-					  <input type='text' id="ReturnsOrderCreationDate" name="ReturnsOrderCreationDate" class='datepicker form-control' placeholder="dd-mm-yyyy" 
-					  style="font-size:0.9em !important;" />				  			  
+					  <input type='text' id="ReturnsOrderCreationDate" name="ReturnsOrderCreationDate" class='datepicker form-control' placeholder="From" 
+					  style="font-size:0.9em !important;" />
+					  <input type='text' id="ReturnsOrderToDate" name="ReturnsOrderToDate" class='datepicker form-control' placeholder="To " 
+					  style="font-size:0.9em !important;" />	
 					</div>
 				  </th>
-				  <th  class="col-md-2">
+				  <th class="col-md-2">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label">Order-id</label>
 					  <input name='OrderID' type="text" class="form-control" id="i5">
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				  <th  class="col-md-2 th-inner">
+				  <th class="col-md-2 th-inner">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label" style="font-size: 14px;">ReturnOrderID</label>
 					  <input name='ReturnId' type="text" class="form-control" id="i5" />
