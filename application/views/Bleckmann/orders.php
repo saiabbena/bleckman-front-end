@@ -36,7 +36,7 @@
 					  style="font-size:0.9em !important;" />	
 					</div>
 				  </th>
-				  <th  class="col-md-2">
+				  <th class="col-md-2">
 					<div class="form-group label-floating">
 					  <label for="i5" class="control-label">Order-id</label>
 					  <input name='OrderID' type="text" class="form-control" id="i5">
