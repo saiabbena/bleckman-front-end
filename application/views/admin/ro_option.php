@@ -1,32 +1,46 @@
     <div class='col-xs-12 col-md-9' height='100%'>
       <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
         <h3>Create Return Order</h3>	
-        <br><br>
+        <br>		
 		<div class='container-fluid form1 form_ro'>
 			<div class='row'>
 			  <div class='col-xs-12 col-sm-12'>
-				<div class='well bm-well form-inputs' style="min-height: 240px !important;border-bottom-width:3px  !important;">
-					<h3>Search Return Order</h3>					
-					<div class="inputs ">
-					  <form method="post" >
-						<input type="hidden" name="hdn_ro_customerid" id="hdn_ro_customerid" value="<?php echo $_SESSION['Customerid'];?>" />
-						<div class="form-group label-floating col-sm-5">
-						  <label for="f2" class="control-label">ORDER ID</label>
-						  <input name='Orderid' type="text" class="form-control" id="f2">
-						  <span class="help-block">	</span>
+				<div class='well bm-well form-inputs' style="min-height: 240px !important;border-bottom-width:3px  !important;">										
+					<div class="inputs">
+					  <form method="post" onsubmit="javascript:return false;">
+						<div class="row">
+							<input type="hidden" name="hdn_ro_customerid" id="hdn_ro_customerid" value="<?php echo $_SESSION['Customerid'];?>" />
+							<div class="form-group label-floating col-sm-6">
+							  <label for="f2" class="control-label">ORDER ID</label>
+							  <input name='Orderid' type="text" class="form-control" id="f2">
+							  <span class="help-block">	</span>
+							</div>
+							<div class="form-group label-floating col-sm-6">
+							  <label for="f1" class="control-label">EMAIL</label>
+							  <input type="text" name='email' class="form-control" id="f1">
+							  <span class="help-block"></span>
+							</div>
 						</div>
-						<div class="form-group label-floating col-sm-5">
-						  <label for="f1" class="control-label">EMAIL/PHONE</label>
-						  <input type="text" name='email' class="form-control" id="f1">
-						  <span class="help-block"></span>
+						<div class="row">							
+							<div class="form-group label-floating col-sm-6">
+							  <label for="f1" class="control-label">PHONE</label>
+							  <input type="text" name='Phone' class="form-control" id="f3">
+							  <span class="help-block"></span>
+							</div>
+							<div class="form-group label-floating col-sm-6">
+							  <label for="f2" class="control-label">NAME</label>
+							  <input name='Name' type="text" class="form-control" id="f4">
+							  <span class="help-block">	</span>
+							</div>							
 						</div>
-						<div class="form-group col-sm-2">
-							<button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id="button1">Submit</button><br>
-						</div><br>
-						<div class="col-sm-10 alert alert-dismissible alert-danger" id='screen1-error'>
-						  <strong>Whoops! You entered something incorrectly or something went wrong... please try again.</strong>
-						  <?php //echo $translations[15]['Translation']?>
-						</div><br>
+						<div class="row">
+							<div class="form-group col-sm-12 text-center">
+								<button type="submit" class='btn btn-raised btn-block btn-success btn-bm' id="btn_create_ro">Create Return Order</button><br>
+							</div>
+							<div class="col-sm-12 alert alert-dismissible alert-danger"  id='screen1-error'><strong>Whoops! No inputs or you entered something incorrectly or something went wrong... please try again.</strong>
+							<?php //echo $translations[15]['Translation']?>
+							</div>							
+						</div>
 					  </form>
 					</div>
 				</div>
@@ -151,7 +165,39 @@
 				</div>				
 			  </div>
 			</div>
-		  </div>        
+		  </div>
+		<div class='container-fluid form5'>
+			<div class='row'>
+			  <div class='col-xs-12'>
+				
+					<h2><center>Orders List</center></h2>
+					<p class='text-center'><?php //echo $customerLanguages['Page2heading']?></p>
+					<br>
+					
+					<div class="inputs">
+					  <table class='table' id='list_to_create_RO'>
+						<thead>
+						  <tr>
+							  <th>Shipped Date</th>
+							  <th>Consumer ID</th>	
+							  <th>Consumer Email</th>
+							  <th>Order Id</th>							  						  
+							  <th>Name</th>
+							  <th>Status</th>
+							  <th>Return</th>
+							</tr>
+						</thead>
+						<tbody>              
+						</tbody>
+					  </table>		  
+					 
+					</div>
+				
+			  </div>
+			</div>
+		  </div>
+
+  
       </div>
 	  	  
     </div>

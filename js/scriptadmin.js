@@ -8,8 +8,8 @@ $(document).ready(function(){
 	var apiCall=url+'';
 	var result=false;
 	var customerSettings={};
-	var submition={};
-	
+	var submition={};	
+
   function retrieveReturnOrders(customerId, pageno){
 	  var searchInput = {};
     $('.loading-screen').slideDown('slow');
@@ -360,5 +360,6 @@ $(document).ready(function(){
 	});	
   
   retrieveReturnOrders(customerId);
-  //console.log("customerId:" + customerId);
+  //console.log("customerId:" + customerId);  
+	
 });
