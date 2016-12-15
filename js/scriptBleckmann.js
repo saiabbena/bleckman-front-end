@@ -889,13 +889,22 @@ $(document).ready(function() {
 			});
 			//Change the date format to YYYY-DD-MM
 			var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
+			var ReturnsOrderToDate = $('#ReturnsOrderToDate').val();
 			console.log(ReturnsOrderCreationDate);
+			console.log(ReturnsOrderToDate);
 			if(ReturnsOrderCreationDate !== ''){			
-				var date_array = [];    
+				var date_array = [];
 				date_array = ReturnsOrderCreationDate.split("-");    
 				var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
 				var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];			
-				searchInput['ReturnsOrderCreationDate']= newDateFormat;
+				searchInput['From']= newDateFormat;
+			}
+			if(ReturnsOrderToDate !== ''){			
+				var date_array = [];    
+				date_array = ReturnsOrderToDate.split("-");    
+				var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+				var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];			
+				searchInput['To']= newDateFormat;
 			}
 			
 			if(typeof(pageno)==='undefined'){				
@@ -909,6 +918,7 @@ $(document).ready(function() {
 			//Check the pageno defined or not
 			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
 			console.log(searchInput);
+			console.log(apoyarToken);
 			$.ajax({
 			  url: apiCall,
 			  type: 'post',
