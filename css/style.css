@@ -158,3 +158,4 @@ margin:0px !important;
 .btn_save_img{border:0;margin:4px 0 !important;}
 label.error { color:red;font-size: 13px; }
 .search_input{border: 1px solid #CCC !important;border-radius: 15px !important;padding: 8px 35px !important;width:100% !important;}
+.rr_option:focus{border:2px solid #FF0000 !important;background-image:none !important;}

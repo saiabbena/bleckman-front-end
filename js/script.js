@@ -136,7 +136,7 @@ function secondScreen(result){
 \
           <td>\
             <div class="form-group" style="margin-top: 18px">\
-              <select id="s1" class="form-control"><option value="0"> Pick a return reason &darr;</option>';
+              <select id="s1" class="rr_option form-control"><option value="0"> Pick a return reason &darr;</option>';
       for(a=0; a<customerSettings.returnReason.length; a++){
         html=html+'<option value="'+customerSettings.returnReason[a]['PKReasonID']+'">'+customerSettings.returnReason[a]['Reason']+'</option>'
       }
@@ -350,11 +350,12 @@ $(document).ready(function(){
     			$('#s1', parent).focus();			
     			//$('#reason_error').show();
 				$('#screen2-error').html('<strong>Whoops!</strong>  Please select the return reason.');
-				$('#screen2-error').show();
+				$('#screen2-error').show();				
 				
   			}, 500);
   			$('.loading-screen').slideUp('slow');
   			throw new Error("whoops");
+			
   			//$( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again
   			//$( ".checkbox .checkbox-material" ).eq(1).remove();			
 		  
@@ -524,6 +525,7 @@ $(document).ready(function(){
 	  });
 	  
 	  function getOrderAndAuth_CS(inputData){
+		  submition.CustomerId = '';
 		  submition.OrderId = inputData.OrderId;
 		  submition.Email = inputData.Email;
 		  submition.Name = inputData.Name;
