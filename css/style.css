@@ -168,3 +168,4 @@ background:none !important;}
  #user_datatable_length select,
  #wh_data_length select,
  #list_to_create_RO_length select{border: 1px solid #CCC !important;height: 38px;background: none;}
+ #orders_by_customer_id{border: 1px solid #CCC !important;background: none;padding:10px;}
