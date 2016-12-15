@@ -52,6 +52,8 @@ function getOrderAndAuth(inputData){
       //console.log('success')
       result.token=xhr.getResponseHeader("Apoyar");
 	  $('.form-inputs').hide();
+	  $('.form5').hide();
+	  $('.form5').css({'display':'none !important'});
     }
     else{
       result={type: 'screen1', status: false, message: 'Incorrect id/email/tel', result: false};
@@ -541,11 +543,11 @@ $(document).ready(function(){
 				  //result={type: 'screen1', status: true, message: 'You have been authenticated', result: data};
 				  //console.log("data is : ");
 				  //console.log(data);
-				  $('.loading-screen').slideDown('slow');
-				  returnOrdersScreen(data);
-				  	
-				  //$('.form1').hide();
+				  $('.loading-screen').slideDown('slow');				  
 				  $('.form1').css({'display':'none !important'});
+				  $('.form_ro').css({'display':'none !important'});			  
+				  
+				  returnOrdersScreen(data); 
 				  $('.form5').show();
 				  			  
 				}
@@ -567,7 +569,7 @@ $(document).ready(function(){
 	function returnOrdersScreen(result){		
 		var html='';
 		var inputData = '';
-		//console.log(result) ;
+		console.log(customerId) ;
 		if(result.length > 0){
 			for(i=0; i<result.length; i++){
 				var data = result;
@@ -590,19 +592,32 @@ $(document).ready(function(){
 					  <td style="white-space: nowrap;">'+data[i].Status+'</td>\
 					  \
 					  <td style="white-space: nowrap;">\
-					  <button type="button" onclick="javascript:getOrderAndAuth('+inputData+')" style="border:0;" class="btn btn-success btn-raised">Return</button></tr>';
+					  <button style="border:0;" id="'+data[i].OrderId+','+data[i].ConsumerEmail+'" class="btn btn-success btn-raised btngetOrderLine">Return</button></tr>';
 			
 			}
 		}else{
 			html=html+'\<tr>\
 			<td colspan="7" style="white-space: nowrap;color:#FF0000;" align="center"><h3>Sorry! No matching Orders found.</h3></td></tr>';
 		}
-		console.log(html) ;
+		//console.log(html) ;
 		//list_to_create_RO
 		$('#list_to_create_RO > tbody').html(html);
 		 //$.material.init();
 		$('#list_to_create_RO').bootstrapTable();
 		$('.loading-screen').slideUp('slow');
 	}
+	
+	$(document).on('click', '.btngetOrderLine', function() {
+		var inputData = '';
+		//inputData={'Orderid': data[i].OrderId, 'Email': data[i].ConsumerEmail, Customerid: customerId};
+		
+		var ol_info = $(this).attr('id');
+		var ol_array = [];    
+		ol_array = ol_info.split(',');		
+		inputData={'Orderid': ol_array[0], 'Email': ol_array[1], Customerid: customerId};
+		console.log(inputData);
+		getOrderAndAuth(inputData);		
+	});
+	
   
 });

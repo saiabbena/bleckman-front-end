@@ -1,9 +1,8 @@
     <div class='col-xs-12 col-md-9' height='100%'>
       <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
         <h3>Create Return Order</h3>	
-        <br>
-		<!--<div class='container-fluid form1 form_ro'>-->
-		<div class='form1 form_ro'>
+        <br>		
+		<div class='container-fluid form1 form_ro'>
 			<div class='row'>
 			  <div class='col-xs-12 col-sm-12'>
 				<div class='well bm-well form-inputs' style="min-height: 240px !important;border-bottom-width:3px  !important;">										
