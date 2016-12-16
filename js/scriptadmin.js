@@ -246,7 +246,7 @@ $(document).ready(function(){
       $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.alert.alert-dismissible.alert-primary').html('Listing the latest 20 returned orders')
     } else {
       $('.loading-screen').slideDown('slow');      
-	    searchInput['ReturnsOrderCreationDate']= newDateFormat;
+	    //searchInput['ReturnsOrderCreationDate']= newDateFormat;
 	    console.log(searchInput);
       $.ajax({
         url: apiCall,
@@ -257,7 +257,7 @@ $(document).ready(function(){
         },
         dataType: 'json',
         success: function (data) {
-		      searchInput['ReturnsOrderCreationDate']= newDateFormatToShow;
+		      //searchInput['ReturnsOrderCreationDate']= newDateFormatToShow;
           $('.loading-screen').slideUp('slow');
           console.log(data);
           renderReturnOrders(data);

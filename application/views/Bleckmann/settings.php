@@ -28,6 +28,7 @@
 									<tr>
 										<th>Name</th>
 										<th style="text-align:center;">Assigned to Customer?</th>
+										<th style="display: none;" class="wms-param"></th>
 									</tr>
 								</thead>
 									<input type="hidden" name="Customerid" value="<?php echo $customerId; ?>">
@@ -70,6 +71,17 @@
 												}
 
 												echo '</td>
+													<td style="display:none;" class="wms-param">
+														<div class="form-group">
+															<label>WMS Parameter</label>
+															<select class="form-control">
+																<option value="-1">Select a WMS Parameter</option>
+																<option value="RITROVNL">RITROV NL</option>
+																<option value="RITROVBE">RITROV BE</option>
+																<option value="BTIS">BTIS</option>
+															</select>
+														</div>
+													</td>
 									          		</tr>';
 								    		}
 								    	}
