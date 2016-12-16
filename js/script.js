@@ -137,7 +137,7 @@ function secondScreen(result){
 \
           <td>\
             <div class="form-group" style="margin-top: 18px">\
-              <select id="s1" class="form-control"><option value="0"> Pick a return reason &darr;</option>';
+              <select id="s1" class="rr_option form-control"><option value="0"> Pick a return reason &darr;</option>';
       for(a=0; a<customerSettings.returnReason.length; a++){
         html=html+'<option value="'+customerSettings.returnReason[a]['PKReasonID']+'">'+customerSettings.returnReason[a]['Reason']+'</option>'
       }
@@ -397,11 +397,12 @@ $(document).ready(function(){
     			$('#s1', parent).focus();			
     			//$('#reason_error').show();
 				$('#screen2-error').html('<strong>Whoops!</strong>  Please select the return reason.');
-				$('#screen2-error').show();
+				$('#screen2-error').show();				
 				
   			}, 500);
   			$('.loading-screen').slideUp('slow');
   			throw new Error("whoops");
+			
   			//$( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again
   			//$( ".checkbox .checkbox-material" ).eq(1).remove();			
 		  
@@ -556,7 +557,7 @@ $(document).ready(function(){
 		  console.log(inputData);
 		  //alert(inputsdata);
 		  if(inputs_data != ''){
-			  getOrderAndAuth_CS(inputData);
+			  getOrderAndAuth_CS(inputData);			  
 		  }else{
 			  $('#screen1-error').show();			  
 		  }
@@ -568,7 +569,8 @@ $(document).ready(function(){
 	  });
 	  
 	  function getOrderAndAuth_CS(inputData){
-      $('.loading-screen').slideDown('slow'); 
+		  submition.CustomerId = '';
+		  $('.loading-screen').slideDown('slow');
 		  submition.OrderId = inputData.OrderId;
 		  submition.Email = inputData.Email;
 		  submition.Name = inputData.Name;
@@ -595,8 +597,8 @@ $(document).ready(function(){
 				  //$('.form1').css({'display':'none !important'});
 				  returnOrdersScreen(data); 
 				  $('.form5').show();
-          $('.form_ro').hide();
-          //$('.form_ro').css({'display':'none !important'}); 
+				  $('.form_ro').hide();
+				  //$('.form_ro').css({'display':'none !important'}); 
 				}
 				else{
 				  result={type: 'screen1', status: false, message: 'Incorrect id/email/tel/phone', result: false};
@@ -626,7 +628,7 @@ $(document).ready(function(){
 				inputData={'Orderid': data[i].OrderId, 'Email': data[i].ConsumerEmail, Customerid: customerId};
 				
 				html=html+'\<tr>\
-				\<td style="white-space: nowrap;">'+resultDate+'</td>\
+					  \<td style="white-space: nowrap;">'+resultDate+'</td>\
 					  \
 					  <td style="white-space: nowrap;">'+data[i].Consumerid+'</td>\
 					  \
@@ -663,7 +665,9 @@ $(document).ready(function(){
 		ol_array = ol_info.split(',');		
 		inputData={'Orderid': ol_array[0], 'Email': ol_array[1], Customerid: customerId};
 		console.log(inputData);
-		getOrderAndAuth(inputData);		
+		$('.loading-screen').slideDown('slow');
+		getOrderAndAuth(inputData);
+		
 	});
 	
   

@@ -1,11 +1,10 @@
-
 <div class='col-xs-12 col-md-9' height='100%'>
-				        	<?php echo'
-	    					<script>
-		        				allUsers = '. json_encode($allUsers) .'
-		        			</script>';
-	        			?>
-	        			<?php echo '<script> customerId="' . $customerId.'";</script>';?>
+<?php echo'
+<script>
+	allUsers = '. json_encode($allUsers) .'
+</script>';
+?>
+<?php echo '<script> customerId="' . $customerId.'";</script>';?>
 	<div class='container-fluid'>
 		<div class="row well" style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
 		<form method="POST" action="assignUsers">

@@ -547,6 +547,7 @@ $(document).ready(function() {
 
 		$('#showcustomerSelect-Users').click(function() {
 		    //alert(this.checked);
+			$('.alert').hide();
 		    if ( this.checked == true ) {
 		    	$('#select-customer-div-users').show();
 		    	
@@ -558,6 +559,7 @@ $(document).ready(function() {
 		$("#select-customer-user").on('change', function(){
 			//alert("change" + $(this).val());
 			$('.loading-screen').show();
+			$('.alert').hide();
 			if ( $(this).val() > -1 ) {
 				getCustomerUsers($(this).val());
 			} else {

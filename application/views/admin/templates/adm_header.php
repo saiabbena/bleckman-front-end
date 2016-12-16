@@ -77,8 +77,20 @@
 	<?php
 	if($this->uri->segment(2) == 'ro_option'){
 	?>
-	<script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin.js"></script>
-	<script type="text/javascript" src="<?php echo base_url();?>js/script.js"></script><!---->
+	<!--<script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin.js"></script>-->
+	<script type="text/javascript" src="<?php echo base_url();?>js/script.js"></script>	
+	<link rel="stylesheet" href="<?php echo base_url();?>css/dataTables.bootstrap.min.css">
+	<script src="<?php echo base_url();?>js/jquery.dataTables.min.js"></script>
+	<script src="<?php echo base_url();?>js/dataTables.bootstrap.min.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$('#list_to_create_RO_NOTWORKING').DataTable({				 
+			 "ordering": false,
+			"pagingType": "numbers",
+			});
+		
+	});
+	</script>
 	<?php }?>
 	
   </head>
