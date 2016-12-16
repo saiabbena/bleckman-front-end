@@ -72,9 +72,14 @@ $(document).ready(function(){
 		}
 	}
     for(i=0; i<raw_data['ReturnOrders'].length; i++){
-	  var data = raw_data['ReturnOrders'];
-      date=new Date(data[i].ReturnsOrderCreationDate);
+	    var data = raw_data['ReturnOrders'];
+      //date=new Date(data[i].ReturnsOrderCreationDate);
+      date1=data[i].ReturnsOrderCreationDate.split('T');
+      console.log("date1 : " + date1);
+      date=new Date(date1[0]);
+
       resultDate=date.getDate()+'/'+(date.getMonth()+1)+'/'+(date.getYear()+1900);
+      console.log("resultDate : " + resultDate);
       html=html+'\
         <tr>\
           <tr>\
@@ -203,28 +208,46 @@ $(document).ready(function(){
       }
     });
 	//Change the date format to YYYY-DD-MM
-    var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
-	var date_array = [];    
-    date_array = ReturnsOrderCreationDate.split("-");    
-    var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
-	var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];
+   //  var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
+	  // var date_array = [];    
+   //  date_array = ReturnsOrderCreationDate.split("-");    
+   //  var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+	  // var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];
 	
-	if(typeof(pageno)==='undefined'){				
-		searchInput['pageno'] = 1;
-	}else{
-		searchInput['pageno'] = pageno;
-	} 
-	searchInput['pagesize'] = 20;
-    
+      var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
+      var ReturnsOrderToDate = $('#ReturnsOrderToDate').val();
+      console.log(ReturnsOrderCreationDate);
+      console.log(ReturnsOrderToDate);
+      if(ReturnsOrderCreationDate !== ''){      
+        var date_array = [];
+        date_array = ReturnsOrderCreationDate.split("-");    
+        var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+        var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];      
+        searchInput['From']= newDateFormat;
+      }
+      if(ReturnsOrderToDate !== ''){      
+        var date_array = [];    
+        date_array = ReturnsOrderToDate.split("-");    
+        var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+        var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];      
+        searchInput['To']= newDateFormat;
+      }
+
+  	if(typeof(pageno)==='undefined') {
+  		searchInput['pageno'] = 1;
+  	} else {
+  		searchInput['pageno'] = pageno;
+  	} 
+  	searchInput['pagesize'] = 20;
+    console.log(searchInput);
     if(default_render){
       console.log(" in default_render");
       retrieveReturnOrders(customerId);
       $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.alert.alert-dismissible.alert-primary').html('Listing the latest 20 returned orders')
-    }
-    else{
+    } else {
       $('.loading-screen').slideDown('slow');      
-	  searchInput['ReturnsOrderCreationDate']= newDateFormat;
-	  console.log(searchInput);
+	    searchInput['ReturnsOrderCreationDate']= newDateFormat;
+	    console.log(searchInput);
       $.ajax({
         url: apiCall,
         type: 'post',
@@ -234,7 +257,7 @@ $(document).ready(function(){
         },
         dataType: 'json',
         success: function (data) {
-		  searchInput['ReturnsOrderCreationDate']= newDateFormatToShow;
+		      searchInput['ReturnsOrderCreationDate']= newDateFormatToShow;
           $('.loading-screen').slideUp('slow');
           console.log(data);
           renderReturnOrders(data);

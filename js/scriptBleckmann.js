@@ -806,9 +806,12 @@ $(document).ready(function() {
 			
 			for(i=0; i<raw_data['ReturnOrders'].length; i++){
 				var data = raw_data['ReturnOrders'];
-				//console.log(data);
-				date=new Date(data[i].ReturnsOrderCreationDate);
-				resultDate=date.getDate()+'/'+(date.getMonth()+1)+'/'+(date.getYear()+1900);
+				//console.log("i: " + data[i].ReturnsOrderCreationDate);
+				testdate=data[i].ReturnsOrderCreationDate.split('T');
+				testdate1=new Date(testdate[0]);
+				//console.log(testdate[0]);
+				resultDate=testdate1.getDate()+'/'+(testdate1.getMonth()+1)+'/'+(testdate1.getYear()+1900);
+				console.log("resultDate : " + resultDate);
 				html=html+'\<tr>\
 					  <td style="white-space: nowrap;">'+resultDate+'</td>\
 					  \

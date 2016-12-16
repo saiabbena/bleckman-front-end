@@ -14,11 +14,14 @@ class Consumer extends CI_Controller {
     }
     
     $this->Customerid=$_GET['Customer'];
-
+    if ( isset($_GET['Mode'])) {
+      $this->Mode=$_GET['Mode'];
+    } else {
+      $this->Mode=2;
+    }
     if(isset($_GET['Lang'])){
       $this->Languagename=$_GET['Lang'];
-    }
-    else{
+    } else {
       if ( count( $this->getCustomerLanguages() ) > 0 ) {
         foreach($this->getCustomerLanguages() as $l) {
           if($l['Isdefault']==true){
@@ -83,10 +86,26 @@ class Consumer extends CI_Controller {
     
     return $result;
   }
+  private function getCountries(){
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+    curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/country/GetAllActiveCountriesForConsumer");
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // Send the request
+    $result = json_decode(curl_exec($ch), true);
+
+    // Free up the resources $curl is using
+    curl_close($ch);
+    
+    return $result;
+  }
   public function portal(){
     
     $data['customerLanguages']=$this->getCustomerLanguages();
     $data['all_langs']=$data['customerLanguages'];
+    $data['allCountries']=$this->getCountries();
 
     $data['Links'] = [];
     //set customerLanguages to current selected language
@@ -109,13 +128,13 @@ class Consumer extends CI_Controller {
     }
 
 
-    
+    $data['Mode']=$this->Mode;
     $data['Customerid']=$this->Customerid;
     $data['LanguageName']=$this->Languagename;
     $customer_id=$this->Customerid;
 	
-	$data2 = array('Customerid'=>$customer_id);
-	$data_url='?'.http_build_query($data2);
+	  $data2 = array('Customerid'=>$customer_id);
+	  $data_url='?'.http_build_query($data2);
 	  $data_string = json_encode($data2);
 	  $ch = curl_init();
 
@@ -154,7 +173,6 @@ class Consumer extends CI_Controller {
 					$accent_1 = (isset($Colors->Accent[0]))?$Colors->Accent[0]:'';
 					$accent_2 = (isset($Colors->Accent[1]))?$Colors->Accent[1]:'';
 				}
-			
 		}
 	}	
 	//Use in Live

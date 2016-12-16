@@ -1,7 +1,8 @@
-<?php			
+<?php
 	$border_bottom = 'style="border-bottom: 10px solid '.$accent_2.' !important;"';
 	$btn_bg = 'style="background-color:'.$accent_1.' !important"';
 ?>
+<?php echo '<script> mode="' . $Mode.'";</script>';?>
   <!--I just added some commented text for testing-->
   <div class='container-fluid form1 form_con_login'>
     <div class='row'>
@@ -307,3 +308,109 @@
     </div>
   </div>
   
+  <div class='container-fluid form1_mode1' style="display: none;">
+    <div class='row'>
+      <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
+        <div class='well bm-well' <?php echo $border_bottom?>>
+            <h2><center><?php echo (isset($translations[13]['Translation'])?$translations[13]['Translation']:'');?></center></h2>
+            <p class='text-center'><?php if (isset($customerLanguages['Page1heading'])) { echo ($customerLanguages['Page1heading']); } ?></p>
+            <div class="inputs">
+              <form id="Form1-Mode1">
+                <div class="alert alert-dismissible alert-danger" id='mode1-fail' style="display: none;">
+                  <strong>Whoops!</strong></strong>
+                  Something went wrong, please refresh the page and try again.
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-6">
+                      <div class="form-group label-floating required">
+                        <label class="control-label">First Name</label>
+                        <input name="Consumername1" type="text" class="form-control">
+                        <span class="help-block">Enter First Name</span>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group label-floating">
+                        <label class="control-label">Last Name</label>
+                        <input name="Consumername2" type="text" class="form-control">
+                        <span class="help-block">Enter Last Name</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-4">
+                      <div class="form-group label-floating required">
+                        <label class="control-label">Email</label>
+                        <input name="ConsumerEmail" type="email" class="form-control">
+                        <span class="help-block">Enter email address to send label</span>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group label-floating required">
+                        <label class="control-label">Street</label>
+                        <input name="ConsumerShipStreet1" type="text" class="form-control">
+                        <span class="help-block">Enter Street</span>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group label-floating required">
+                        <label class="control-label">House Number</label>
+                        <input name="ConsumerFromShipHouseNumber" type="text" class="form-control">
+                        <span class="help-block">Enter House Number</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-3">
+                      <div class="form-group label-floating required">
+                        <label class="control-label">PostalCode</label>
+                        <input name="ConsumerFromShipPostalCode" type="text" class="form-control">
+                        <span class="help-block">Enter PostalCode</span>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group label-floating required">
+                        <label class="control-label">City</label>
+                        <input name="ConsumerFromShipCity" type="text" class="form-control">
+                        <span class="help-block">Enter City</span>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group label-floating">
+                        <label class="control-label">State</label>
+                        <input name="Consumershipstate" type="text" class="form-control">
+                        <span class="help-block">Enter State</span>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group label-floating required">
+                        <label class="control-label">Country</label>
+                        <!-- <input name="ConsumerFromShipCountry" type="text" class="form-control"> -->
+                            <?php
+                              //echo json_encode($allCountries);
+                              echo '<select class="form-control" id="ConsumerFromShipCountry" name="ConsumerFromShipCountry">';
+                              echo '<option value="-1">Select a Country &darr;</option>';
+                              for ($i=0; $i<count($allCountries); $i++) { 
+                                if ( $allCountries[$i]['IsActive'] ) {
+                                  echo '<option value="' . $allCountries[$i]['CountryCode'].'">' . $allCountries[$i]['CountryName'] . '</option>';
+                                }
+                              }
+                              echo '</select>';
+                            ?>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1' <?php echo $btn_bg?>><?php if (isset($translations[7]['Translation'])) { echo strtoupper($translations[7]['Translation']); } ?></button>
+                <br>
+              </form>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

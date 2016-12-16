@@ -9,6 +9,7 @@ var customerSettings={};
 
 var submition={};
 var countryCode = '';
+var mode = 2;
 
 function getCustomerSettings(){
   apiCall=url+'ReturnReason/GetAllReturnReasonsbyCustomerid';
@@ -267,10 +268,6 @@ function thirdScreen(){
   $('#table1234').bootstrapTable();
 }
 $(document).ready(function(){
-  
-
-
-
 
   //init material design skin
   $.material.init();
@@ -278,28 +275,78 @@ $(document).ready(function(){
   //get customer settings
   getCustomerSettings();
   
-  /*
-  $(document).keydown(function(e) {
-    
-    if(e.which == 13) {
-      $('#button1').click();
-      
-      $(document).off('keydown');
-      $(document).keydown(function(e) {
-        if(e.which == 13) {
-          $('#button2').click();
-          $(document).off('keydown');
-          $(document).keydown(function(e) {
-            if(e.which == 13) {
-              $('#button3').click();
-              $(document).off('keydown');
+  if ( mode == 1 ) {
+    $('.form1').hide();
+    $('.form1_mode1').show();
+  }
+    $.validator.addMethod("valueNotEquals", function(value, element, arg){
+      return arg != value;
+    }, "Value must not equal arg.");
+    $("#Form1-Mode1").validate({
+        focusCleanup: true,
+            rules: {
+                Consumername1: "required",
+                ConsumerShipStreet1: "required",
+                ConsumerEmail: {
+                    required: true,
+                    email: true
+                },
+                ConsumerFromShipHouseNumber : "required",
+                ConsumerFromShipCountry: {
+                  valueNotEquals: -1
+                },
+                ConsumerFromShipPostalCode: "required",
+                ConsumerFromShipCity:"required",
+            },
+            messages: {
+                Consumername1: "Please enter First Name",
+                ConsumerShipStreet1: "Please enter Street",
+                ConsumerEmail: "Please enter a valid email address",
+                ConsumerFromShipHouseNumber: "Please enter Address",
+                ConsumerFromShipCountry: "Please enter Country Name",
+                ConsumerFromShipPostalCode:"Please enter Postal Code",
+                ConsumerFromShipCity:"Please enter City"
+            },
+            submitHandler: function(form) {
+              var apiCall = url+'returnorder/PostMode1';
+              var postData = {};
+              postData.Consumername1 = $('#Consumername1').val();
+              postData.ConsumerShipStreet1 = $('#ConsumerShipStreet1').val();
+              postData.ConsumerEmail = $('#ConsumerEmail').val();
+              postData.ConsumerFromShipHouseNumber = $('#ConsumerFromShipHouseNumber').val();
+              postData.ConsumerFromShipCountry = $('#ConsumerFromShipCountry').val();
+              postData.ConsumerFromShipPostalCode = $('#ConsumerFromShipPostalCode').val();
+              postData.ConsumerFromShipCity = $('#ConsumerFromShipCity').val();
+              postData.Consumershipstate = $('#Consumershipstate').val();
+
+              $.ajax({
+                url: apiCall,
+                type: 'post',
+                data: postData,
+                dataType: 'json',
+                success: function (response) {
+                  console.log(response);
+                  console.log(response.Status);
+                  if ( response.Status == 1 ) {
+                    $('.form1_mode1').hide();
+                    $('.form4').show();
+                    $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
+                  } else {
+                    $('#mode1-fail').show();
+                    $('.form5').show();
+                  }
+                  $('.loading-screen').slideUp('slow');
+                },
+              }).fail(function(response){
+                  console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
+                  console.log(response);
+
+              });
             }
-          });
-        }
-      });
-    }
-  });
-  */
+    });
+          
+
+
   $('form').submit(function(){
     return false 
   })
@@ -436,7 +483,7 @@ $(document).ready(function(){
     
     
     apiCall=url+'returnorder/PostBMReturnorder';
-    console.log("token : " + result.token );
+    //console.log("token : " + result.token );
     $('#button3').hide('slow');
 	  console.log(submition);
     $.ajax({
@@ -458,13 +505,10 @@ $(document).ready(function(){
         
         if(response.Status='2000'){
           $('.form4').show();
-          
-          
           $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
           $('.loading-screen').slideUp('slow');
           //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
-        }
-        else{
+        } else {
           $('.form5').show();
           $('.loading-screen').slideUp('slow');
         }
