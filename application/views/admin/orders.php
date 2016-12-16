@@ -55,10 +55,10 @@
                 </div>
               </th>
               <th>
-                <button type="button" id="search-button" class='btn btn-success btn-raised'>
+                <button type="button" id="search-button" class='btn btn-success btn-raised btn-sm'>
                   SEARCH
                 </button>
-				<button class='btn btn-success btn-raised' id='btn_clear' onclick="javascript:window.location.reload()">
+				<button class='btn btn-success btn-raised btn-sm' id='btn_clear' onclick="javascript:window.location.reload()">
                   CLEAR
                 </button>
               </th>

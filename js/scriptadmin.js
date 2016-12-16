@@ -50,16 +50,17 @@ $(document).ready(function(){
 		retrieveReturnOrders(customerId, pageno);			
 	});
   function renderReturnOrders(raw_data){
-    html='';
-    html2='';
-    html3='';
-	//console.log(raw_data);
+    var html='';
+    var html2='';
+    var html3='';
+	var pagination_html = '';
+	console.log(raw_data);
 	var page_count = raw_data['Count'];
 	var pageno = raw_data['PageNo'];
 			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
 			var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';
 	if(page_count > 1){				
-		var pagination_html = '<b>Pages : </b> ';
+		pagination_html = '<b>Pages : </b> ';
 		for(i=1;i<=page_count;i++){
 			pagination_html = pagination_html+'<button ';
 			if(pageno === i){

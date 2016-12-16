@@ -68,10 +68,10 @@
 					</div>
 				  </th>
 				  <th class="col-md-2" style="vertical-align:middle !important;">				 
-					<button type="button" id="order_search_btn" class='btn btn-success btn-raised'>
+					<button type="button" id="order_search_btn" class='btn btn-success btn-raised btn-sm'>					  
 					  SEARCH
 					</button>
-					<button class='btn btn-success btn-raised' id='btn_clear' onclick="javascript:window.location.reload()">
+					<button class='btn btn-success btn-raised btn-sm' id='btn_clear' onclick="javascript:window.location.reload()">
 					  CLEAR
 					</button>					
 				  </th>
