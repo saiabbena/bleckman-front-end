@@ -84,15 +84,6 @@
 	<?php 
 	}
 	?>
-  <style type="text/css">
-    .form-group.required .control-label:after {
-      color: #d00;
-      content: " *";
-      position: absolute;
-      margin-left: 3px;
-      /*top:-2px;*/
-    }
-</style>
   </head>
   <body id='override'>
     <div class="bm-h">
