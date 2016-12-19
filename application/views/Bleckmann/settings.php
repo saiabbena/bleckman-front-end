@@ -14,7 +14,7 @@
 			        ?>
 			        </div>
 			    </div>
-			    <form method="POST" action="saveOpModes">
+			    <form method="POST" id="save-op-modes" action="saveOpModes">
 				    <div class="row">
 				    	<div class="col-md-12">
 				    		<button type="submit" id='save-opmodes' class='btn btn-raised btn-success pull-right'>Save</button>
@@ -34,13 +34,17 @@
 									<input type="hidden" name="Customerid" value="<?php echo $customerId; ?>">
 								<tbody>
 							    	<?php
+							    		// echo json_encode($allOpModes);
+							    		// echo '<br>';
+							    		// echo json_encode($customerOpModes);
 							    		if ( count($allOpModes) > 0 ) {
 								    		for ($i=0; $i<count($allOpModes); $i++) {
-								    			$notselected = true;
+								    			$selected = false;
+								    			$SystemOption='';
 							              		echo '
 							              			<tr>
 							              				<input type="hidden" name="Operations[' . $i .'][FKOperationId]" value="'.$allOpModes[$i]['PKOperationId'].'">';
-												echo '<td style="vertical-align:middle;">
+												echo '<td style="vertical-align:middle;padding-top:19px;font-size:16px;">
 															' . $allOpModes[$i]['OperationName']. '
 												        </td>
 												        <td style="text-align:center;vertical-align:middle;">
@@ -52,37 +56,66 @@
 															echo '<div class="form-group">
 																      	<div class="togglebutton">
 																		  <label>';
-															echo '<input type="checkbox" name="Operations[' . $i .'][IsAssigned]" checked="checked" value="1">';
+															echo '<input type="checkbox" name="Operations[' . $i .'][IsAssigned]" id="assigned-' . $allOpModes[$i]['PKOperationId'] . '" class="custOpMode" checked="checked" value="1">';
 															echo '</label>
 																		</div>
 																	</div>';
-															$notselected = false;
+															$selected = true;
+															$SystemOption = $customerOpModes[$j]['SystemOption'];
 									    				}
 									    			}
 									    		}
-								    			if ( $notselected ) {
+								    			if ( !$selected ) {
 													echo '<div class="form-group">
 															<div class="togglebutton">
 																<label>';
-													echo '<input type="checkbox" class="AssignedtoCustomer" id="assigned-"' .$i. ' name="Operations[' . $i .'][IsAssigned]" value="1">';
+													echo '<input type="checkbox" class="custOpMode" id="assigned-' . $allOpModes[$i]['PKOperationId'] . '" name="Operations[' . $i .'][IsAssigned]" value="1" >';
 													echo '</label>
 														</div>
 														</div>';
 												}
 
-												echo '</td>
-													<td style="display:none;" class="wms-param">
-														<div class="form-group">
-															<label>WMS Parameter</label>
-															<select class="form-control">
-																<option value="-1">Select a WMS Parameter</option>
-																<option value="RITROVNL">RITROV NL</option>
-																<option value="RITROVBE">RITROV BE</option>
-																<option value="BTIS">BTIS</option>
-															</select>
-														</div>
-													</td>
-									          		</tr>';
+												echo '</td>';
+												if ( ($allOpModes[$i]['PKOperationId'] == 1) || ($allOpModes[$i]['PKOperationId'] ==3) ) {
+													// if ( $selected ) {
+														echo '<td id="sysOptionTD-' . $allOpModes[$i]['PKOperationId'] . '">
+																<div class="form-group required" style="margin:20px 0 0 0;">
+																	<label>WMS Parameter</label>
+																	<select class="form-control" id="sysOption-' . $allOpModes[$i]['PKOperationId'] . '" name="Operations[' . $i .'][SystemOption]" >
+																		<option value="-1">Select a WMS Parameter</option>';
+																	if ( $SystemOption == "RITROV NL" ) {
+																		echo '<option value="RITROV NL" selected="selected">RITROV NL</option>';
+																	} else {
+																		echo '<option value="RITROV NL">RITROV NL</option>';
+																	}
+																	if ( $SystemOption == "RITROV BE" ) {
+																		echo '<option value="RITROV BE" selected="selected">RITROV BE</option>';
+																	} else {
+																		echo '<option value="RITROV BE">RITROV BE</option>';
+																	}
+																	if ( $SystemOption == "BTIS" ) {
+																		echo '<option value="BTIS" selected="selected">BTIS</option>';
+																	} else {
+																		echo '<option value="BTIS">BTIS</option>';
+																	}
+																	'</select>
+																</div>
+															</td>';
+													// } else {
+													// 	echo '<td id="sysOptionTD-' .$i. '" name="Operations[' . $i .'][SystemOption]" style="display:none;" class="wms-param">
+													// 			<div class="form-group required">
+													// 				<label>WMS Parameter</label>
+													// 				<select id="sysOption-' . $allOpModes[$i]['PKOperationId'] . '" class="form-control">
+													// 					<option value="-1">Select a WMS Parameter</option>
+													// 					<option value="RITROV NL">RITROV NL</option>
+													// 					<option value="RITROV BE">RITROV BE</option>
+													// 					<option value="BTIS">BTIS</option>
+													// 				</select>
+													// 			</div>
+													// 		</td>';
+													// }
+												}
+									          	echo '</tr>';
 								    		}
 								    	}
 							    	?>

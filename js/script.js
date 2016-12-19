@@ -267,6 +267,7 @@ function thirdScreen(){
   $.material.init();
   $('#table1234').bootstrapTable();
 }
+
 $(document).ready(function(){
 
   //init material design skin

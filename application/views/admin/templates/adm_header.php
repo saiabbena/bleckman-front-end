@@ -40,7 +40,7 @@
     <!--Color picker-->
     <script src='http://bgrins.github.io/spectrum/spectrum.js'></script>
     <link rel="stylesheet" type="text/css" href="http://bgrins.github.io/spectrum/spectrum.css">
-
+<script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
     <!--My assets-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" />
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin3.js"></script>
