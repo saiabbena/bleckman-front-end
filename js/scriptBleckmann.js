@@ -16,6 +16,7 @@ $(document).ready(function() {
 		    $('input#City').val('');
 		    $('select#Country').val(-1);
 		    $('input#CustomerName').val('');
+			$('input#Customerid').val('');
 		    $('input#EmailAddress').val('');
 		    $('input#PhoneNumber').val('');
 		    $('input#PostalCode').val('');
@@ -60,6 +61,7 @@ $(document).ready(function() {
 		        	$('input#City').removeClass("empty");
 		        	$('select#Country').removeClass("empty");
 		        	$('input#CustomerName').removeClass("empty");
+					$('input#Customerid').removeClass("empty");					
 		        	$('input#EmailAddress').removeClass("empty");
 		        	$('input#PhoneNumber').removeClass("empty");
 		        	$('input#PostalCode').removeClass("empty");
@@ -71,6 +73,7 @@ $(document).ready(function() {
 		        	$('input#City').val(data.City);
 		        	$('select#Country').val(data.Country);
 		        	$('input#CustomerName').val(data.CustomerName);
+					$('input#Customerid').val(data.Customerid);
 		        	$('input#EmailAddress').val(data.EmailAddress);
 		        	$('input#PhoneNumber').val(data.PhoneNumber);
 		        	$('input#PostalCode').val(data.PostalCode);
@@ -158,6 +161,7 @@ $(document).ready(function() {
 				focusCleanup: true,
 		        rules: {
 		            CustomerName: "required",
+					Customerid: "required",
 		            PostalCode: "required",
 		            EmailAddress: {
 		                required: true,
@@ -170,6 +174,7 @@ $(document).ready(function() {
 		        },
 		        messages: {
 		            CustomerName: "Please enter Customer Name",
+					Customerid: "Please enter Customer ID",
 		            PostalCode: "Please enter Postal Code",
 		            EmailAddress: "Please enter a valid email address",
 		            AddressLine1: "Please enter Address",

@@ -191,7 +191,7 @@
 					                  <?php
 					                  	//echo json_encode($allCountries);
 					                  	echo '<select class="form-control" id="Country" name="Warehouses[0][Country]">';
-					                  	echo '<option value="-1">Select a Country &darr;</option>';
+					                  	echo '<option value="-1">Select a Country </option>';
 					                  	for ($i=0; $i<count($allCountries); $i++) { 
 					                  		if ( $allCountries[$i]['IsActive'] ) {
 					                  			echo '<option value="' . $allCountries[$i]['PKCountryId'].'">' . $allCountries[$i]['CountryName'] . '</option>';

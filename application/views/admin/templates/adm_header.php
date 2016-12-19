@@ -44,7 +44,7 @@
     <!--My assets-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" />
     <script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin3.js"></script>
-    
+    <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
 	<?php if($this->uri->segment(2) == 'orders'){?>
 	<!--For Orders page only-->	
 	
@@ -117,7 +117,8 @@
       <div class='well' style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;">
         <div class='row'>
           <div class='col-md-12 text-center' >
-            <h3><b><?php echo(strtoupper($_SESSION['Customername']))?></b></h3><br>
+            <h3><b><?php echo(strtoupper($_SESSION['Customername']))?></b></h3>
+			<!--<h4><?php echo(strtoupper($_SESSION['Customerid']))?></h4>--><br>
           </div>
           <a href='orders'>
           <div  <?php if($this->uri->segment(2) == 'orders'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
