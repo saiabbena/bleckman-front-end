@@ -511,6 +511,27 @@ $(document).ready(function() {
 			}
 			
 		});
+		$('.custOpMode').on('change', function() {
+			var res = $(this).attr("id").split("-");
+			if ( (res[1] == 1) || (res[1] == 3) ) {
+				if ( this.checked == true ) {
+					$('#sysOption-'+res[1]).prop("disabled", false);
+				} else {
+					$('#sysOption-'+res[1]).prop("disabled", true);
+				}
+			}
+		});
+
+		if ( $('#assigned-1').is(':checked') ) {
+			$('#sysOption-1').prop("disabled", false);
+		} else {
+			$('#sysOption-1').prop("disabled", true);
+		}
+		if ( $('#assigned-3').is(':checked') ) {
+			$('#sysOption-3').prop("disabled", false);
+		} else {
+			$('#sysOption-3').prop("disabled", true);
+		}
 		//console.log("customerid : " + customerId);
 		var url_val = window.location.href.split('?')[0];
 		var url_val1 = url_val.split('#')[0];
@@ -1384,6 +1405,41 @@ $(document).ready(function() {
 		            } else {
 		            	$('#global-settings-error').show();
 		            }
+		        }
+		});
+		$("#save-op-modes").validate({
+		        rules: {
+		            "Operations[0][SystemOption]": {
+						valueNotEquals: function(element) {
+		            		//console.log($('#assigned-1').is(":checked"));
+		            		if ( $('#assigned-1').is(":checked") ) {
+		            			return -1;
+		            		} else {
+		            			return 0;
+		            		}
+		            	}
+		            },
+		            "Operations[2][SystemOption]": {
+						valueNotEquals: function(element) {
+		            		//console.log($('#assigned-3').is(":checked"));
+		            		if ( $('#assigned-3').is(":checked") ) {
+		            			return -1;
+		            		} else {
+		            			return 0;
+		            		}
+		            	}
+		            }
+		        },
+		        messages: {
+		            "Operations[0][SystemOption]": {
+		            	valueNotEquals : "Please select a WMS Parameter mode 1",
+		            },
+		            "Operations[2][SystemOption]": {
+		            	valueNotEquals : "Please select a WMS Parameter mode 3",
+		            },
+		        },
+		        submitHandler: function(form) {
+		        	form.submit();
 		        }
 		});
 });
