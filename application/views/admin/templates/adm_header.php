@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>	
-	<?php echo'
+	<?php		
+	echo'
     <script>
       var customerId='.$_SESSION['Customerid'].';
+	  var UserId ='.$_SESSION['Userid'].';
 	  var apoyarToken="'.$_SESSION['Apoyar'].'";
       var language="English";
       var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
@@ -81,16 +83,7 @@
 	<script type="text/javascript" src="<?php echo base_url();?>js/script.js"></script>	
 	<link rel="stylesheet" href="<?php echo base_url();?>css/dataTables.bootstrap.min.css">
 	<script src="<?php echo base_url();?>js/jquery.dataTables.min.js"></script>
-	<script src="<?php echo base_url();?>js/dataTables.bootstrap.min.js"></script>
-	<script type="text/javascript">
-	$(document).ready(function(){
-		$('#list_to_create_RO_NOTWORKING').DataTable({				 
-			 "ordering": false,
-			"pagingType": "numbers",
-			});
-		
-	});
-	</script>
+	<script src="<?php echo base_url();?>js/dataTables.bootstrap.min.js"></script>	
 	<?php }?>
 	
   </head>

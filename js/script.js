@@ -481,7 +481,7 @@ $(document).ready(function(){
     submition.StatusName='Label Printed';
     submition.ConsumerEmail2=$('#emailConfirm').val();
     submition.ConsumerFromShipCountry = countryCode;
-    
+	submition.UserId = (UserId != '')?UserId:'';//Store the Customer Support guy id on Return Order Request    
     
     apiCall=url+'returnorder/PostBMReturnorder';
     //console.log("token : " + result.token );
@@ -642,18 +642,23 @@ $(document).ready(function(){
 					  <td style="white-space: nowrap;">'+data[i].Status+'</td>\
 					  \
 					  <td style="white-space: nowrap;">\
-					  <button style="border:0;" id="'+data[i].OrderId+','+data[i].ConsumerEmail+'" class="btn btn-success btn-raised btngetOrderLine">              Return  <i class="medium material-icons">launch</i></button></tr>';
+					  <button style="border:0;" id="'+data[i].OrderId+','+data[i].ConsumerEmail+'" class="btn btn-success btn-raised btngetOrderLine btn-sm">  Return  <i class="medium material-icons">launch</i></button></tr>';
 			
 			}
 		}else{
 			html=html+'\<tr>\
 			<td colspan="7" style="white-space: nowrap;color:#FF0000;" align="center"><h3>Sorry! No matching Orders found.</h3></td></tr>';
 		}
-		//console.log(html) ;
-		//list_to_create_RO
-		$('#list_to_create_RO > tbody').html(html);
+		//console.log(html);
+		$('#list_to_create_RO > tbody').html('');
+		$('#list_to_create_RO > tbody').html(html);				
 		 //$.material.init();
 		$('#list_to_create_RO').bootstrapTable();
+		//Always add  and intializedatatable as early as after the table data load. otherwise it won't work
+		$('#list_to_create_RO').DataTable({				 
+			 "ordering": false,
+			"pagingType": "numbers",
+		});
 		$('.loading-screen').slideUp('slow');
 	}
 	

@@ -29,7 +29,7 @@ Class HttpRequests extends CI_Model {
 
 	    if ( ($json_body['Status'] == 1) && ($json_body['Userid'] > 0) ) {
 	    	$_SESSION['Apoyar']=$headers['Apoyar'];
-	    	//$_SESSION['Customerid']=$json_body['Userid'];
+	    	$_SESSION['Userid']=$json_body['Userid'];
 	    	$_SESSION['Customerid']=$json_body['Customerid'];
 	    	$_SESSION['Roleid']=$json_body['Roleid'];
 	    	$_SESSION['BMRoleid']=$json_body['BMRoleid'];
