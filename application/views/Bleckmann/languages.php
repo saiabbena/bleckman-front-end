@@ -109,8 +109,9 @@
 		        </form>
 		</div>
 		
-		
+		<!--
 		<br><br>
+		
 		<div class="well" style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
 			<h3>Manage keywords</h3>
 			<br>
@@ -127,7 +128,7 @@
 				</thead>
 				<tbody>
 					<?php
-					foreach ($keywords as $keyword) {
+					/*foreach ($keywords as $keyword) {
 						echo'
 						<tr>
 							<td>
@@ -135,13 +136,12 @@
 							</td>
 						</tr>
 						';
-					}
-					
+					}*/
 					?>
 				</tbody>
 			</table>
 		</div>
-		
+		-->
 		
 		
 	</div>
