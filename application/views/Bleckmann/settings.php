@@ -21,14 +21,14 @@
 				    	</div>
 				    </div>
 				    <div class="row">
-					    <div class="col-md-offset-2 col-md-8">
+					    <div class=" col-md-10">
 
 							<table style="width: 100%" class='table'>
 								<thead>
 									<tr>
 										<th>Name</th>
-										<th style="text-align:center;">Assigned to Customer?</th>
-										<th style="display: none;" class="wms-param"></th>
+										<th style="text-align:center;">Assigned?</th>
+										<th  class="wms-param">WMS Parameter</th>
 									</tr>
 								</thead>
 									<input type="hidden" name="Customerid" value="<?php echo $customerId; ?>">
@@ -44,7 +44,7 @@
 							              		echo '
 							              			<tr>
 							              				<input type="hidden" name="Operations[' . $i .'][FKOperationId]" value="'.$allOpModes[$i]['PKOperationId'].'">';
-												echo '<td style="vertical-align:middle;padding-top:19px;font-size:16px;">
+												echo '<td style="vertical-align:middle;padding-top:19px;font-size:15px;">
 															' . $allOpModes[$i]['OperationName']. '
 												        </td>
 												        <td style="text-align:center;vertical-align:middle;">
