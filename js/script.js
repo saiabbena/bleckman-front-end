@@ -666,6 +666,10 @@ $(document).ready(function(){
 		});
 		$('.loading-screen').slideUp('slow');
 	}
+	function preventFormSubmit()
+	{	  
+	  return false;
+	}
 	
 	$(document).on('click', '.btngetOrderLine', function() {
 		var inputData = '';
