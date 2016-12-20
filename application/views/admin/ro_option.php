@@ -35,7 +35,7 @@
 						</div>
 						<div class="row">
 							<div class="form-group col-sm-12 text-center">
-								<button type="submit" class='btn btn-raised btn-block btn-success btn-bm' id="btn_create_ro">Create Return Order</button><br>
+								<button type="submit" class='btn btn-raised btn-block btn-success btn-bm' id="btn_create_ro">Search</button><br>
 							</div>
 							<div class="col-sm-12 alert alert-dismissible alert-danger"  id='screen1-error'><strong>Whoops! No inputs or you entered something incorrectly or something went wrong... please try again.</strong>
 							<?php //echo $translations[15]['Translation']?>

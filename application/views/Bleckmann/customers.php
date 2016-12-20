@@ -241,33 +241,30 @@
 		                	</div>
 		                </div>
 		                <div class="row">
-			                <div class="col-md-3">
+			                <div class="col-md-6">
 				              	<div class="form-group label-floating required">
 				                  <label for="i5" class="control-label">Postal Code</label>
 				                  <input id="PostalCode" type="text" name="PostalCode" class="form-control" value="">
 				                  <span class="help-block">Enter Postal Code</span>
 				                </div>
 			                </div>
-		                	<div class="col-md-3">
+		                	<div class="col-md-6">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">City</label>
 				                  <input id="City" type="text" name="City" class="form-control" value="">
 				                  <span class="help-block">Enter City</span>
 				                </div>
 			                </div>
-		                	<div class="col-md-3">
+		                </div>
+		                <div class="row">
+		                	<div class="col-md-6">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">State</label>
 				                  <input id="State" type="text" name="State" class="form-control" value="">
 				                  <span class="help-block">Enter State</span>
 				                </div>
 			                </div>
-			                <div class="col-md-3">
-<!-- 				              	<div class="form-group label-floating">
-				                  <label for="i5" class="control-label">Country</label>
-				                  <input id="Country" type="text" name="Country" class="form-control" value="">
-				                  <span class="help-block">Enter Country</span>
-				                </div> -->
+			                <div class="col-md-6">
 				              	<div class="form-group label-floating required">
 				              		<label class="control-label">Country</label>
 				                  <?php
@@ -283,11 +280,7 @@
 				                  	echo '</select>';
 				                  ?>
 				                </div>
-
-
-
 			                </div>
-
 		                </div>
 
 
