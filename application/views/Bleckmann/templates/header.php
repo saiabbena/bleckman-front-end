@@ -65,10 +65,10 @@
 	//warehouses
 	if($this->uri->segment(2) == 'warehouses' || $this->uri->segment(2) == 'users'){
 	?>
-	<!--<link rel="stylesheet" href="<?php echo base_url();?>css/bootstrap.min_2.css">-->
-	<link rel="stylesheet" href="<?php echo base_url();?>css/dataTables.bootstrap.min.css">
-	<script src="<?php echo base_url();?>js/jquery.dataTables.min.js"></script>
-	<script src="<?php echo base_url();?>js/dataTables.bootstrap.min.js"></script>
+	<!--<link rel="stylesheet" href="<?php echo base_url();?>vendor/datatable/bootstrap.min_2.css">-->
+	<link rel="stylesheet" href="<?php echo base_url();?>vendor/datatable/dataTables.bootstrap.min.css">
+	<script src="<?php echo base_url();?>vendor/datatable/jquery.dataTables.min.js"></script>
+	<script src="<?php echo base_url();?>vendor/datatable/dataTables.bootstrap.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('#wh_data').DataTable({				 
