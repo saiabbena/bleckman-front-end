@@ -215,8 +215,10 @@ $(document).ready(function() {
 		$("#user-info-form").validate({
 				focusCleanup: true,
 		        rules: {
+					Fkcustomerid : "required",
 		            FirstName: "required",
 		            LastName : "required",
+					
 		            //PostalCode: "required",
 		            EmailAddress: {
 		                required: true,
@@ -228,7 +230,7 @@ $(document).ready(function() {
 		            },
 		            Fkcustomerid : {
 		            	valueNotEquals: -1	
-		            },
+		            },		            
 		            Username : {
 		            	required: function(element) {
 		            		//alert("customerid : " + $('#PKCustomerID').val());
@@ -282,13 +284,13 @@ $(document).ready(function() {
 
 		        },
 		        messages: {
+					Fkcustomerid:"Please select a customer",
 		            FirstName: "Please enter First Name",
 		            LastName: "Please enter Last Name",
 		            //PostalCode: "Please enter Postal Code",
 		            EmailAddress: "Please enter a valid email address",
 		            //Country: "Please enter Country Name",
-		            FKRoleID:"Please select a role",
-		            Fkcustomerid:"Please select a customer",
+		            FKRoleID:"Please select a role",		            
 		            Username: "Please enter Username",
 		            Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& ",
 		            newPassword: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& ",

@@ -166,7 +166,7 @@ label.error { color:red;font-size: 13px; }
       /*top:-2px;*/
     }
 
-.rr_option:focus{border:2px solid #FF0000 !important;background-image:none !important;}
+/*.rr_option:focus{border-bottom:2px solid #FF0000 !important;background-image:none !important;}*/
   #user_datatable_filter input, 
   #wh_data_filter input,
   #list_to_create_RO_filter input {border: 1px solid #CCC !important;border-radius: 15px !important;padding: 8px 35px !important;

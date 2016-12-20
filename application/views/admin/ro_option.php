@@ -213,9 +213,8 @@ $(document).ready(function () {
 		location.reload()
 	});
 	
-	$('.btn_admin_career_back').click(function(){	  		
-		$('.form3').hide();      
-		$("#button1").trigger('click');	  
+	$('.btn_admin_career_back').click(function(){		
+		location.reload() 
 	});
 	$('.btn_admin_career_back2').click(function(){	  		
 		location.reload()	  
