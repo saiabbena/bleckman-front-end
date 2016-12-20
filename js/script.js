@@ -319,7 +319,7 @@ $(document).ready(function(){
               postData.ConsumerFromShipPostalCode = $('#ConsumerFromShipPostalCode').val();
               postData.ConsumerFromShipCity = $('#ConsumerFromShipCity').val();
               postData.Consumershipstate = $('#Consumershipstate').val();
-
+              console.log(postData);
               $.ajax({
                 url: apiCall,
                 type: 'post',

@@ -325,14 +325,14 @@
                     <div class="col-md-6">
                       <div class="form-group label-floating required">
                         <label class="control-label">First Name</label>
-                        <input name="Consumername1" type="text" class="form-control">
+                        <input name="Consumername1" id="Consumername1" type="text" class="form-control">
                         <span class="help-block">Enter First Name</span>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="form-group label-floating">
                         <label class="control-label">Last Name</label>
-                        <input name="Consumername2" type="text" class="form-control">
+                        <input name="Consumername2" id="Consumername2" type="text" class="form-control">
                         <span class="help-block">Enter Last Name</span>
                       </div>
                     </div>
@@ -343,21 +343,21 @@
                     <div class="col-md-4">
                       <div class="form-group label-floating required">
                         <label class="control-label">Email</label>
-                        <input name="ConsumerEmail" type="email" class="form-control">
+                        <input name="ConsumerEmail" id="ConsumerEmail" type="email" class="form-control">
                         <span class="help-block">Enter email address to send label</span>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group label-floating required">
                         <label class="control-label">Street</label>
-                        <input name="ConsumerShipStreet1" type="text" class="form-control">
+                        <input name="ConsumerShipStreet1" id="ConsumerShipStreet1" type="text" class="form-control">
                         <span class="help-block">Enter Street</span>
                       </div>
                     </div>
                     <div class="col-md-4">
                       <div class="form-group label-floating required">
                         <label class="control-label">House Number</label>
-                        <input name="ConsumerFromShipHouseNumber" type="text" class="form-control">
+                        <input name="ConsumerFromShipHouseNumber" id="ConsumerFromShipHouseNumber" type="text" class="form-control">
                         <span class="help-block">Enter House Number</span>
                       </div>
                     </div>
@@ -368,21 +368,21 @@
                     <div class="col-md-3">
                       <div class="form-group label-floating required">
                         <label class="control-label">PostalCode</label>
-                        <input name="ConsumerFromShipPostalCode" type="text" class="form-control">
+                        <input name="ConsumerFromShipPostalCode" id="ConsumerFromShipPostalCode" type="text" class="form-control">
                         <span class="help-block">Enter PostalCode</span>
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group label-floating required">
                         <label class="control-label">City</label>
-                        <input name="ConsumerFromShipCity" type="text" class="form-control">
+                        <input name="ConsumerFromShipCity" id="ConsumerFromShipCity" type="text" class="form-control">
                         <span class="help-block">Enter City</span>
                       </div>
                     </div>
                     <div class="col-md-3">
                       <div class="form-group label-floating">
                         <label class="control-label">State</label>
-                        <input name="Consumershipstate" type="text" class="form-control">
+                        <input name="Consumershipstate" id="Consumershipstate" type="text" class="form-control">
                         <span class="help-block">Enter State</span>
                       </div>
                     </div>

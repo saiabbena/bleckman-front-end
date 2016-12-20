@@ -67,7 +67,7 @@
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				  <th class="col-md-2" style="vertical-align:middle !important;">				 
+				  <th class="col-md-3" style="vertical-align:bottom !important;">				 
 					<button type="button" id="order_search_btn" class='btn btn-success btn-raised btn-sm'>					  
 					  SEARCH
 					</button>
