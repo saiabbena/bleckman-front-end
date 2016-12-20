@@ -319,6 +319,8 @@ $(document).ready(function(){
               postData.ConsumerFromShipPostalCode = $('#ConsumerFromShipPostalCode').val();
               postData.ConsumerFromShipCity = $('#ConsumerFromShipCity').val();
               postData.Consumershipstate = $('#Consumershipstate').val();
+              postData.FKCustomerId = customerId;
+              postData.Status = 1;
               console.log(postData);
               $.ajax({
                 url: apiCall,
