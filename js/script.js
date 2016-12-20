@@ -312,6 +312,7 @@ $(document).ready(function(){
               var apiCall = url+'returnorder/PostMode1';
               var postData = {};
               postData.Consumername1 = $('#Consumername1').val();
+              postData.Consumername2 = $('#Consumername2').val();
               postData.ConsumerShipStreet1 = $('#ConsumerShipStreet1').val();
               postData.ConsumerEmail = $('#ConsumerEmail').val();
               postData.ConsumerFromShipHouseNumber = $('#ConsumerFromShipHouseNumber').val();
