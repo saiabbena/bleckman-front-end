@@ -482,7 +482,8 @@ $(document).ready(function(){
     submition.StatusName='Label Printed';
     submition.ConsumerEmail2=$('#emailConfirm').val();
     submition.ConsumerFromShipCountry = countryCode;
-	submition.UserId = (UserId != '')?UserId:'';//Store the Customer Support guy id on Return Order Request    
+	  submition.UserId = (UserId != '')?UserId:'';//Store the Customer Support guy id on Return Order Request    
+
     
     apiCall=url+'returnorder/PostBMReturnorder';
     //console.log("token : " + result.token );
