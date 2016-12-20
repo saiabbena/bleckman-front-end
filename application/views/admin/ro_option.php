@@ -52,18 +52,21 @@
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1'>
         <div class='well bm-well' >
-            <h2><center><?php echo (isset($translations[17]['Translation'])?$translations[17]['Translation']:'');?>
-			<?php //echo $translations[17]['Translation']?></center></h2>
-            <p class='text-center'><?php //echo $customerLanguages['Page2heading']?></p>
+            <h2><center>Pick the items you want to return</center></h2>
+            <p class="text-center">PLease select what you wish to return</p>
             <br>
             
             <div class="inputs">
               <table class='table' id='table123'>
                 <thead>
                   <tr>
-                    <th data-field="0" tabindex="0"></th> <th data-field="1" tabindex="0"><?php //echo $translations[2]['Translation'];?></th> <th data-field="2" tabindex="0"><?php //echo $translations[3]['Translation'];?></th> <th data-field="3" tabindex="0"><?php //echo $translations[4]['Translation'];?></th><th data-field="4" tabindex="0"><?php //echo $translations[5]['Translation'];?></th>
+                    <th data-field="0" tabindex="0"></th> 
+					<th data-field="1" tabindex="0">Item</th>
+					<th data-field="2" tabindex="0">Product Price</th>
+					<th data-field="3" tabindex="0">Reason for Return</th>
+					<th data-field="4" tabindex="0">Quantity</th>
                   </tr>
-                </thead>
+                </thead>				
                 <tbody>              
                 </tbody>
               </table>

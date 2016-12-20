@@ -608,6 +608,7 @@ $(document).ready(function() {
 		      	$('.customer-assign').show();
 		      	formatUsersData(response);
 		      	$('.loading-screen').hide();
+				
 		      },
 		      fail: function() {
 		      	$('.loading-screen').hide();
@@ -644,7 +645,7 @@ $(document).ready(function() {
 								    <div class="row-action-primary">\
 								      <img class="img-circle" style="line-height:104px;height:72px;width:72px;" src="' + baseurl + 'img/user.png">\
 								    </div>\
-								    <div class="row-content">\
+								    <div class="row-content user_info">\
 								      <div class="least-content hide-xs">\
 								      		<p>'+ response[i]['RoleName'] + '</p>\
 												<a data-toggle="modal" style="color:#f44336;cursor:pointer;" data-target="#delete-user-modal'+ response[i]['PKUserID'] +'" id="delete-user" class=" pull-right"><i class="material-icons">delete</i></a>\
@@ -737,8 +738,8 @@ $(document).ready(function() {
 			    },
 		        dataType: 'json',
 		        success: function(data) {
-		        	console.log("response data : ");
-		        	console.log(data);
+		        	//console.log("response data : ");
+		        	//console.log(data);
 					$('.loading').css({'display':'none'});
 					$('.user_div').css({'display':'block'});
 		        	$('h4#myUserLabel').text('Edit User Information');
@@ -764,6 +765,7 @@ $(document).ready(function() {
 						$('#Fkcustomerid-div').show();
 					}
 		        	$.material.init();
+					
 		        },
 		        fail: function(data){
 		          console.log(data);
@@ -1058,38 +1060,62 @@ $(document).ready(function() {
       return (a.textContent || a.innerText || "").toUpperCase().indexOf(m[3].toUpperCase())>=0;
   };
   
-  function listFilter(header, list) {
-    var form = $("<form>").attr({"class":"filterform","action":"#"}),
-        input = $("<input>").attr({"class":"search_input","type":"text","placeholder":"Search Customer "});
-    $(form).append(input).appendTo(header);
- 
-    $(input)
-      .change( function () {
-        var filter = $(this).val();
-        if(filter) {
-          //$(list).find(".customer_name:not(:Contains(" + filter + "))").parent().slideUp();
-          //$(list).find(".customer_name:Contains(" + filter + ")").parent().slideDown();  
-		  
-		  $(list).find(".customer_name:not(:Contains(" + filter + "))").parent().parent().closest('div').hide('slow');
-		  //$(list).find(".customer_name:not(:Contains(" + filter + "))").parent().parent().closest('div').css({'display':'none'});		  
-		  //$(list).find(".customer_name:Contains(" + filter + ")").parent().parent().closest('div').css({'display':'block'});
-		  $(list).find(".customer_name:Contains(" + filter + ")").parent().parent().closest('div').show('slow');
-        } else {
-          //$(list).find(".entry").slideDown();		  
-		  //$(list).find(".customer_name:Contains(" + filter + ")").parent().parent().closest('div').css({'display':'block'});
-		  $(list).find(".customer_name:Contains(" + filter + ")").parent().parent().closest('div').show('slow');
-        }
-        return false;
-      })
-    .keyup( function () {
-        $(this).change();
-    });
-  }
- 
-		  $(function () {
-			listFilter($("#header"), $("#list"));
-		  });		
-		
+	function listFilter(header, list) {
+		var form = $("<form>").attr({"class":"filterform","action":"#"}),
+		input = $("<input>").attr({"class":"search_input","type":"text","placeholder":"Search Customer "});
+		$(form).append(input).appendTo(header);
+
+		$(input)
+		  .change( function () {
+			var filter = $(this).val();
+			if(filter) {
+			  //$(list).find(".customer_name:not(:Contains(" + filter + "))").parent().slideUp();
+			  //$(list).find(".customer_name:Contains(" + filter + ")").parent().slideDown();  
+			  
+			  $(list).find(".customer_name:not(:Contains(" + filter + "))").parent().parent().closest('div').hide('slow');
+			  //$(list).find(".customer_name:not(:Contains(" + filter + "))").parent().parent().closest('div').css({'display':'none'});		  
+			  //$(list).find(".customer_name:Contains(" + filter + ")").parent().parent().closest('div').css({'display':'block'});
+			  $(list).find(".customer_name:Contains(" + filter + ")").parent().parent().closest('div').show('slow');
+			} else {
+			  //$(list).find(".entry").slideDown();		  
+			  //$(list).find(".customer_name:Contains(" + filter + ")").parent().parent().closest('div').css({'display':'block'});
+			  $(list).find(".customer_name:Contains(" + filter + ")").parent().parent().closest('div').show('slow');
+			}
+			return false;
+		  })
+		.keyup( function () {
+			$(this).change();
+		});
+	} 
+	$(function () {
+		listFilter($("#header"), $("#list"));
+	});	
+
+	//Search features for Admin Users
+	function listFilterUser(user_header, list) {
+			var form = $("<form>").attr({"class":"filterform","action":"#"}),
+			input = $("<input>").attr({"class":"search_input","type":"text","placeholder":"Search User "});
+			$(form).append(input).appendTo(user_header);
+
+			$(input)
+			  .change( function () {
+				var filter = $(this).val();
+				if(filter) {
+				  
+				  $(list).find(".user_info:not(:Contains(" + filter + "))").parent().parent().closest('tr').hide('slow');			  
+				  $(list).find(".user_info:Contains(" + filter + ")").parent().parent().closest('tr').show('slow');
+				} else {			  
+				  $(list).find(".user_info:Contains(" + filter + ")").parent().parent().closest('tr').show('slow');
+				}
+				return false;
+			  })
+			.keyup( function () {
+				$(this).change();
+			});
+		} 
+		$(function () {
+			listFilterUser($("#user_header"), $("#users_list"));
+		});		
 
 		var settings_global_cnt=0;
 		var settings_local_cnt=0;

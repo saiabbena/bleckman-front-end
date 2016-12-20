@@ -16,10 +16,10 @@
 			</div>
 			<br>
 			<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<h4>Manage Users for a specific customer ?</h4>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<div class="form-group" style="text-align: left;vertical-align: middle;padding-bottom: 12px;margin:9px 0 0 0;" >
 						<div class="togglebutton">
 							<label>
@@ -27,6 +27,9 @@
 							</label>
 						</div>
 					</div>
+				</div>
+				<div class="col-md-4">
+					<h4 id="user_header" class="pull-left"></h4>
 				</div>
 			
 				<div class="col-md-offset-1 col-md-8">
@@ -47,7 +50,7 @@
 	        			</script>';
 	        	?>
 			<div class="row col-xs-12">
-				<div>
+				<div id="users_list">
 					<div class="list-group">
 			        <?php
 			          if(isset($_SESSION['message']['user_panel'])){
@@ -57,11 +60,11 @@
 			            </div>';
 			          }
 			        ?>
-			        <table class="table" id="user_datatable">
+			        <table class="table" ><!-- id="user_datatable"-->
 			        	<thead>
 			        		<tr>
-			        			<th class="customer-assign">Assigned to Customer?</th>
-			        			<th>User Details</th>
+			        			<th class="customer-assign col-md-4">Assigned to Customer?</th>
+			        			<th class="col-md-8">User Details</th>
 			        		</tr>
 			        	</thead>
 			        	<tbody id="CustomerUsers">
@@ -162,28 +165,30 @@
 		                	</div>
 		                </div>
 		                <div class="row">
-			                <div class="col-md-3">
+			                <div class="col-md-6">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">Postal Code</label>
 				                  <input id="PostalCode" type="text" name="PostalCode" class="form-control" value="">
 				                  <span class="help-block">Enter Postal Code</span>
 				                </div>
 			                </div>
-		                	<div class="col-md-3">
+		                	<div class="col-md-6">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">City</label>
 				                  <input id="City" type="text" name="City" class="form-control" value="">
 				                  <span class="help-block">Enter City</span>
 				                </div>
-			                </div>
-		                	<div class="col-md-3">
+			                </div>		                	
+		                </div>
+						 <div class="row">			               
+		                	<div class="col-md-6">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">State</label>
 				                  <input id="State" type="text" name="State" class="form-control" value="">
 				                  <span class="help-block">Enter State</span>
 				                </div>
 			                </div>
-			                <div class="col-md-3">
+			                <div class="col-md-6">
 					            <div class="form-group label-floating">
 					              	<label class="control-label">Country</label>
 					                  <?php
