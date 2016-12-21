@@ -108,31 +108,56 @@
 		          	</div>
 		        </form>
 		</div>
-		
 		<!--
+		
 		<br><br>
 		
 		<div class="well" style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
 			<h3>Manage keywords</h3>
 			<br>
-			<table>
+			<table class='table'>
 				<thead>
 					<tr>
+						
+						<th>
+						<div class="form-group">
+				      <h4>	&nbsp;	&nbsp;Choose Language
+				
+				      <div class="col-md-10">
+				        <select id="select111" class="form-control">
+				          <?php
+				          foreach ($allLanguages as $lang) {
+				          	echo '<option>'.$lang['LanguageName'].'</option>';
+				          }
+				          ?>
+				        </select>
+				      </div>
+				      </h4>
+				    </div>
+		      	</th>
+					
 						<th></th>
-						<th>Select a language </th>
 					</tr>
 					<tr>
-						<th>Keyword</th>
-						<th>Translation</th>
+						<th><h4>Keyword</h4></th>
+						<th><h4>Translation</h4></th>
 					</tr>	
 				</thead>
 				<tbody>
 					<?php
-					/*foreach ($keywords as $keyword) {
+					/*
+					foreach ($keywords as $keyword) {
 						echo'
 						<tr>
 							<td>
-								'.$keyword['Keyword'].'
+								<b>'.$keyword['Keyword'].'</b>
+							</td>
+							<td>
+								<div class="form-group label-floating">
+                  <label class="control-label"></label>
+                  <input type="text" class="form-control" value="'.$keyword['Keyword'].'">
+                  <span class="help-block">Change keyword</span>
+                </div>
 							</td>
 						</tr>
 						';
@@ -141,9 +166,8 @@
 				</tbody>
 			</table>
 		</div>
+		
 		-->
-		
-		
 	</div>
 </div>
         <!-- Add Languages Modal -->
