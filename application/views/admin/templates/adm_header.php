@@ -4,12 +4,12 @@
 	<?php		
 	echo'
     <script>
-      var customerId='.$_SESSION['Customerid'].';
-	  var UserId ='.$_SESSION['Userid'].';
-	  var apoyarToken="'.$_SESSION['Apoyar'].'";
-      var language="English";
-      var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
-	  var baseurl="'. base_url() .'";	  
+     var customerId='.$_SESSION['Customerid'].';
+	   var UserId ='.$_SESSION['Userid'].';
+	   var apoyarToken="'.$_SESSION['Apoyar'].'";
+     var language="English";
+     var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
+	   var baseurl="'. base_url() .'";	  
     </script>';	
     ?>	
     <!--Meta tags-->

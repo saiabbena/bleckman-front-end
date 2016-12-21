@@ -309,8 +309,15 @@ $(document).ready(function(){
                 ConsumerFromShipCity:"Please enter City"
             },
             submitHandler: function(form) {
-              var apiCall = url+'returnorder/PostMode1';
+              var apiCall = '';
               var postData = {};
+              if ( UserId != '' ) {
+                apiCall = url+'returnorder/PostMode3';
+                postData.UserId = UserId;
+              } else {
+                apiCall = url+'returnorder/PostMode1';
+              }
+              
               postData.Consumername1 = $('#Consumername1').val();
               postData.Consumername2 = $('#Consumername2').val();
               postData.ConsumerShipStreet1 = $('#ConsumerShipStreet1').val();
@@ -323,29 +330,30 @@ $(document).ready(function(){
               postData.FKCustomerId = customerId;
               postData.Status = 1;
               console.log(postData);
-              $.ajax({
-                url: apiCall,
-                type: 'post',
-                data: postData,
-                dataType: 'json',
-                success: function (response) {
-                  console.log(response);
-                  console.log(response.Status);
-                  if ( response.Status == 1 ) {
-                    $('.form1_mode1').hide();
-                    $('.form4').show();
-                    $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
-                  } else {
-                    $('#mode1-fail').show();
-                    $('.form5').show();
-                  }
-                  $('.loading-screen').slideUp('slow');
-                },
-              }).fail(function(response){
-                  console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
-                  console.log(response);
+              // $.ajax({
+              //   url: apiCall,
+              //   type: 'post',
+              //   data: postData,
+              //   dataType: 'json',
+              //   success: function (response) {
+              //     console.log(response);
+              //     console.log(response.Status);
+              //     if ( response.Status == 1 ) {
+              //       $('.form1_mode1').hide();
+              //       $('.form4').show();
+              //       $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
+              //     } else {
+              //       $('#mode1-fail').show();
+              //       $('.form5').show();
+              //       $('.form1_mode1').hide();
+              //     }
+              //     $('.loading-screen').slideUp('slow');
+              //   },
+              // }).fail(function(response){
+              //     console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
+              //     console.log(response);
 
-              });
+              // });
             }
     });
           
@@ -516,9 +524,9 @@ $(document).ready(function(){
           //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
         } else {
           $('.form5').show();
+          $('.form1_mode1').hide();
           $('.loading-screen').slideUp('slow');
         }
-          
       },
     }).fail(function(response){
         console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
@@ -576,7 +584,7 @@ $(document).ready(function(){
 	  function getOrderAndAuth_CS(inputData){
 		  submition.CustomerId = '';
 		  $('.loading-screen').slideDown('slow');
-		  submition.OrderId = inputData.OrderId;
+		  submition.OrderId = inputData.Orderid;
 		  submition.Email = inputData.Email;
 		  submition.Name = inputData.Name;
 		  submition.Phone = inputData.Phone;
@@ -603,6 +611,7 @@ $(document).ready(function(){
 				  //$('.form1').css({'display':'none !important'});
 				  returnOrdersScreen(data); 
 				  $('.form5').show();
+          $('.form1_mode1').hide();
 				  $('.form_ro').hide();
 				  //$('.form_ro').css({'display':'none !important'}); 
 				}

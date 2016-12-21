@@ -82,16 +82,9 @@ class Admin extends CI_Controller {
     return $result;
   }
   public function settings(){
-    //$data['customerLanguages']=$this->getCustomerLanguages();
-    //$data['returnReasons']=$this->getCustomerReturnReasons();
-    // $data['customerLanguages']=$this->getCustomerLanguages();
-    // $data['returnReasons']=$this->getCustomerReturnReasons();
-    // echo " id :: " . $_SESSION['Customerid'];
-    // echo ",,,,,,,, Apoyar :: " . $_SESSION['Apoyar']; exit();
-    
-	$req = array(
-      'Customerid'=>$_SESSION['Customerid']
-    );
+  	$req = array(
+        'Customerid'=>$_SESSION['Customerid']
+      );
     
     $data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
     $data['returnReasons'] = $this->httpRequests->httpGet('ReturnReason/GetAllReturnReasonsbyCustomerid', $req);
@@ -196,11 +189,11 @@ class Admin extends CI_Controller {
   public function submitReturnReasons(){
     header('Content-Type: application/json');
     //print_r(array_values($_POST['ReturnReasons']));exit();
-	$sort_ReturnReasons = array_values($_POST['ReturnReasons']);//array_values : This function has been used to order the index of POST array to avoid the conflict while changing postion and save
+	 $sort_ReturnReasons = array_values($_POST['ReturnReasons']);//array_values : This function has been used to order the index of POST array to avoid the conflict while changing postion and save
 	
-	$server_output = $this->httpRequests->httpPost('ReturnReason/PostManageReturnReason',json_encode(array("ReturnReasons" => $sort_ReturnReasons)));
+	 $server_output = $this->httpRequests->httpPost('ReturnReason/PostManageReturnReason',json_encode(array("ReturnReasons" => $sort_ReturnReasons)));
 
-    $_SESSION['message']['rr']='Saved';
+   $_SESSION['message']['rr']='Saved';
 	//echo json_encode($server_output);exit();
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#rr-panel');
   }
@@ -209,21 +202,9 @@ class Admin extends CI_Controller {
 	  $post_data = ['PKSettingID'=>$_POST['CustomerSetting']['PKSettingID'],
 	  'FKCustomerid'=>$_POST['CustomerSetting']['FKCustomerid'],
 	  'Colours'=>serialize($_POST['CustomerSetting']['Colours'])];
-	  
 
     $server_output = $this->httpRequests->httpPost('CustomerSetting/PostManageCustomerSetting', json_encode($post_data) );
 
-	  // $ch = curl_init();
-	  // curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/CustomerSetting/PostManageCustomerSetting");	
-	  // //curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/Api/CustomerSetting/PostManageCustomerSetting");	
-	  
-	  // curl_setopt($ch, CURLOPT_POST, 1);
-	  // curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($post_data));
-	  // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	  // $server_output = curl_exec ($ch);
-	  // curl_close ($ch);
-	  
-	  //echo json_encode($server_output);exit();
 	  $_SESSION['message']['appearance']='Saved';
 	  header('Location: ' . $_SERVER['HTTP_REFERER'].'#ap-panel');
   }
@@ -241,25 +222,8 @@ class Admin extends CI_Controller {
     }
     echo json_encode($_POST['Languages']);
 
-
     $server_output = $this->httpRequests->httpPost('CustomerLanguage/PostManageCustomerLanguage', 
                                                     json_encode(['CustomerLanguages'=>$_POST['Languages']]) );
-
-    // $ch = curl_init();
-
-    // curl_setopt($ch, CURLOPT_URL,API_BASE_URL_BE."api/CustomerLanguage/PostManageCustomerLanguage");
-    // curl_setopt($ch, CURLOPT_POST, 1);
-    // curl_setopt($ch, CURLOPT_POSTFIELDS,
-    //             http_build_query(['CustomerLanguages'=>$_POST['Languages']]));
-
-    
-    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-    // $server_output = curl_exec ($ch);
-
-    // curl_close ($ch);
-
-    // echo json_encode($server_output);
 
     $_SESSION['message']['languages']='Saved';
 
@@ -426,8 +390,9 @@ public function deleteLinks() {
 	function ro_option($param1=''){
 		$req = array('Customerid'=>$_SESSION['Customerid'] );
     
-		$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);		
+		$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
 		$data['all_langs']=$data['customerLanguages'];
+    $data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
 
 		$data['Links'] = [];
 		//set customerLanguages to current selected language
