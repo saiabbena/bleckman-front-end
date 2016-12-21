@@ -8,7 +8,7 @@
 				<div class=' form-inputs' style="border: 1px solid #ddd; padding: 20px;">	
 					<h4>By Order Details</h4>									
 					<div class="inputs">
-					  <!-- <form method="post" onsubmit="javascript:return false;"> -->
+					  <form method="post"  onsubmit="javascript:return preventFormSubmit()">
 						<div class="row">
 							<div class="col-md-12">
 								<input type="hidden" name="hdn_ro_customerid" id="hdn_ro_customerid" value="<?php echo $_SESSION['Customerid'];?>" />
@@ -196,20 +196,20 @@
 					  <table class='table table-striped table-bordered' id='list_to_create_RO'>
 						<thead>
 						  <tr>
-							  <th>Shipped Date</th>
-							  <th>Consumer ID</th>	
-							  <th>Consumer Email</th>
-							  <th>Order Id</th>							  						  
-							  <th>Name</th>
-							  <th>Status</th>
-							  <th class="nosort ">Return</th>
+							  <th class="col-md-1">Shipped Date</th>
+							  <th class="col-md-1">Consumer ID</th>	
+							  <th class="col-md-2">Consumer Email</th>
+							  <th class="col-md-2">Order Id</th>							  						  
+							  <th class="col-md-2">Name</th>
+							  <th class="col-md-2">Status</th>
+							  <th class="nosort col-md-1">Return</th>
 							</tr>
 						</thead>
 						<tbody> 
 							
 						</tbody>
 					  </table>		  
-					 
+					  <p style="text-align:right;"><a href="javascript:void(0)" class="btn_admin_career_back2">&laquo; Back</a></p>
 					</div>
 				
 			  </div>
