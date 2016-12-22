@@ -8,7 +8,7 @@
 				<div class=' form-inputs' style="border: 1px solid #ddd; padding: 20px;">	
 					<h4>By Order Details</h4>									
 					<div class="inputs">
-					  <form method="post"  onsubmit="javascript:return preventFormSubmit()">
+					  <!-- <form method="post"  onsubmit="javascript:return preventFormSubmit()"> -->
 						<div class="row">
 							<div class="col-md-12">
 								<input type="hidden" name="hdn_ro_customerid" id="hdn_ro_customerid" value="<?php echo $_SESSION['Customerid'];?>" />
@@ -154,11 +154,11 @@
 					<button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3'>CONFIRM AND PRINT POSTAGE LABEL<?php //echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></button><br>
 					<p style="text-align:right;"><a href="javascript:void(0)" class="btn_admin_career_back">&laquo; Back</a></p>
 					<div class="alert alert-dismissible alert-success" id='screen3-success'>
-					  <strong><?php //echo $translations[21]['Translation']?></strong></strong>
+					  <strong><?php //echo $translations[21]['Translation']?></strong>
 					  <?php //echo $translations[22]['Translation']?>
 					</div>
 					<div class="alert alert-dismissible alert-danger" id='screen3-fail'>
-					  <strong>Whoops!</strong></strong>
+					  <strong>Whoops!</strong>
 					  Something went wrong, please refresh the page and try again.
 					</div>
 				  </div>
@@ -298,7 +298,7 @@
 		                        <label class="control-label">Country</label>
 		                        <!-- <input name="ConsumerFromShipCountry" type="text" class="form-control"> -->
 		                            <?php
-		                              echo json_encode($allCountries);
+		                              //echo json_encode($allCountries);
 		                              echo '<select class="form-control" id="ConsumerFromShipCountry" name="ConsumerFromShipCountry">';
 		                              echo '<option value="-1">Select a Country &darr;</option>';
 		                              for ($i=0; $i<count($allCountries); $i++) { 

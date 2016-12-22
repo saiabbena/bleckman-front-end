@@ -392,7 +392,6 @@ public function deleteLinks() {
     
 		$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
 		$data['all_langs']=$data['customerLanguages'];
-    $data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
 
 		$data['Links'] = [];
 		//set customerLanguages to current selected language
@@ -416,7 +415,11 @@ public function deleteLinks() {
 		}
 		$customer_id = $_SESSION['Customerid'];
 		//echo API_BASE_URL_FE;exit();
-		$data = array('customer_id'=>$customer_id,'api_base_url_fe'=>API_BASE_URL_FE);
+		//$data = array('customer_id'=>,'api_base_url_fe'=>API_BASE_URL_FE);
+    $data['customer_id'] = $customer_id;
+    $data['api_base_url_fe'] = API_BASE_URL_FE;
+    $data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
+    $data['customerOpModes'] = $this->httpRequests->httpGet('operation/GetOperationsbyCustomerid', $req );
 		$this->load->view('admin/templates/adm_header');
 		$this->load->view('admin/ro_option', $data);
 		$this->load->view('admin/templates/footer');

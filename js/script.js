@@ -231,6 +231,7 @@ function getCouriers(){
     console.log(data);
     //customerSettings.carriers=data.Carriers;
     customerSettings.carriers=data;
+
     thirdScreen();
     $('.loading-screen').slideUp('slow');
   });
@@ -269,7 +270,7 @@ function thirdScreen(){
 }
 
 $(document).ready(function(){
-
+  var postData = {};
   //init material design skin
   $.material.init();
   
@@ -308,16 +309,7 @@ $(document).ready(function(){
                 ConsumerFromShipPostalCode:"Please enter Postal Code",
                 ConsumerFromShipCity:"Please enter City"
             },
-            submitHandler: function(form) {
-              var apiCall = '';
-              var postData = {};
-              if ( UserId != '' ) {
-                apiCall = url+'returnorder/PostMode3';
-                postData.UserId = UserId;
-              } else {
-                apiCall = url+'returnorder/PostMode1';
-              }
-              
+            submitHandler: function(form) {             
               postData.Consumername1 = $('#Consumername1').val();
               postData.Consumername2 = $('#Consumername2').val();
               postData.ConsumerShipStreet1 = $('#ConsumerShipStreet1').val();
@@ -329,55 +321,36 @@ $(document).ready(function(){
               postData.Consumershipstate = $('#Consumershipstate').val();
               postData.FKCustomerId = customerId;
               postData.Status = 1;
+              countryCode = $('#ConsumerFromShipCountry').val();
               console.log(postData);
-              // $.ajax({
-              //   url: apiCall,
-              //   type: 'post',
-              //   data: postData,
-              //   dataType: 'json',
-              //   success: function (response) {
-              //     console.log(response);
-              //     console.log(response.Status);
-              //     if ( response.Status == 1 ) {
-              //       $('.form1_mode1').hide();
-              //       $('.form4').show();
-              //       $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
-              //     } else {
-              //       $('#mode1-fail').show();
-              //       $('.form5').show();
-              //       $('.form1_mode1').hide();
-              //     }
-              //     $('.loading-screen').slideUp('slow');
-              //   },
-              // }).fail(function(response){
-              //     console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
-              //     console.log(response);
+              getCouriers();
+              mode=3;
+              setTimeout(function(){ 
+                $('.form_ro').hide();
+                $('.form1_mode1').hide();
+                $('.form3').show();
+              }, 500);
 
-              // });
             }
     });
-          
-
-
-  $('form').submit(function(){
-    return false 
-  })
-  //change load
-  $('#button1').click(function(){
-    console.log('working');
-    $('.loading-screen').slideDown('slow');
-    setTimeout(function(){
-      $('.form_con_login').hide();
-      var inputData={'Orderid': $('#f2').val(), 'Email': $('#f1').val(), Customerid: customerId};
-	  //console.log(inputData);
-      getOrderAndAuth(inputData);
-    }, 500);
-    submition.OrderId=($('#f2').val()).toString();
-    submition.ConsumerEmail=$('#f1').val();
-    $('.form3').hide();
-	$('.form4').hide();	
-	 
-  });
+    $('form').submit(function() {
+      return false 
+    });
+    //change load
+    $('#button1').click(function(){
+      console.log('working');
+      $('.loading-screen').slideDown('slow');
+      setTimeout(function(){
+        $('.form_con_login').hide();
+        var inputData={'Orderid': $('#f2').val(), 'Email': $('#f1').val(), Customerid: customerId};
+  	  //console.log(inputData);
+        getOrderAndAuth(inputData);
+      }, 500);
+      submition.OrderId=($('#f2').val()).toString();
+      submition.ConsumerEmail=$('#f1').val();
+      $('.form3').hide();
+  	  $('.form4').hide();
+    });
   
   //change load
   $('#button2').click(function(){
@@ -451,102 +424,141 @@ $(document).ready(function(){
   
   //logic
   $('#button3').click(function(){
+    console.log(postData);
+    console.log("mode : " + mode);
+
     $('.loading-screen').slideDown('slow');
-    
     parent=$('input[name=sample1]:checked').parent().parent().parent().parent().parent();
     var carName=$('.carrierName', parent).html();
     var carrierInfo = $('input[name=sample1]:checked').val();
     console.log("carrier info");
     console.log(customerSettings.carriers[carrierInfo]);
-    submition.FKCustomerId=customerId;
-    submition.StatusName='Label printed';
-    //submition.CarrierId=parseInt($('input[name=sample1]:checked').val(), 10);
-    submition.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
-    submition.Status=result.result.Status;
-    //submition.Shipfromwarehouseid=result.result.ShipFromWarehouseId;
-    submition.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
-    submition.Source=result.result.Source;
-    submition.Ordertype=result.result.OrderType;
-    submition.ShipmentId=result.result.ShipmentId;
-    submition.OrderId=result.result.OrderId;
-    submition.ConsumerId=101;
-    submition.ConsumerEmail=result.result.ConsumerEmail;
-    submition.Consumerphonenumber=result.result.ConsumerPhoneNumber;
-    submition.ConsumerName1=result.result.ConsumerName1;
-    submition.Consumername2=result.result.ConsumerName2;
-    submition.ConsumerShipStreet1=result.result.ConsumerShipStreet1;
-    submition.Consumershipstreet2=result.result.ConsumerShipStreet2;
-    submition.Consumershipstreet3=result.result.ConsumerShipStreet3;
-    submition.ConsumerFromShipHouseNumber=result.result.ConsumerShipHouseNumber;
-    submition.ConsumerFromShipPostalCode=result.result.ConsumerShipPostalCode;
-    submition.ConsumerFromShipCity=result.result.ConsumerShipCity;
-    submition.Consumershipstate=result.result.ConsumerShipState;
-    submition.ConsumerFromShipCountry='';
-    submition.ReturnsOrderTrackingCode='';
-    submition.ReturnsOrderCarrier='';
-    submition.ReturnsOrderCarrierService='';
-    submition.ReturnsOrderParcelBarcode='';
-    //submition.ReturnOrderTotalRefundAmount=sum;
-    //submition.CarrierId=2;
-    submition.FKCustomerId=customerId;
-    submition.CarrierName=carName;
-    submition.StatusName='Label Printed';
-    submition.ConsumerEmail2=$('#emailConfirm').val();
-    submition.ConsumerFromShipCountry = countryCode;
-	  submition.UserId = (UserId != '')?UserId:'';//Store the Customer Support guy id on Return Order Request    
+    if ( mode == 3 ) {
+      postData.CarrierName=carName;
+      postData.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
+      postData.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
+      postData.ConsumerEmail2=$('#emailConfirm').val();
+      var apiCall = '';
+              
+      var headers = {};
+      if ( UserId != '' ) {
+        apiCall = url+'returnorder/PostMode3';
+        postData.UserId = UserId;
+        headers = { Apoyar: apoyarToken};
+      } else {
+        apiCall = url+'returnorder/PostMode1';
+      }
+      console.log("postData");
+      console.log(postData);
+      console.log(apiCall);
+              $.ajax({
+                url: apiCall,
+                type: 'post',
+                data: postData,
+                headers : headers,
+                dataType: 'json',
+                success: function (response) {
+                  console.log(response);
+                  console.log(response.Status);
+                  if ( response.Status == 1 || response.Status == 2000 ) {
+                    $('.form3').hide();
+                    $('.form4').show();
+                    $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
+                  } else {
+                    $('#mode1-fail').show();
+                    $('.form5').show();
+                    $('.form1_mode1').hide();
+                  }
+                  $('.loading-screen').slideUp('slow');
+                },
+              }).fail(function(response){
+                console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
+                console.log(response);
+                $('#btn_career_back').hide();
+                $('.loading-screen').slideUp('slow');
+                $('#screen3-fail').show('slow');
+              });
 
-    
-    apiCall=url+'returnorder/PostBMReturnorder';
-    //console.log("token : " + result.token );
-    $('#button3').hide('slow');
-	  console.log(submition);
-    $.ajax({
-      url: apiCall,
-      type: 'post',
-      data: submition,
-      headers: {
-          Apoyar: result.token
-      },
-      dataType: 'json',
-      success: function (response) {
-        $('#screen3-success').show('slow');
-        console.log(submition);
-        console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
-        console.log(response);
-        //$('#carrier-label-modal').modal('show');
-        
-        $('.form3').hide();
-        
-        if(response.Status='2000'){
-          $('.form4').show();
-          $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
+    } else {
+
+      submition.FKCustomerId=customerId;
+      submition.StatusName='Label printed';
+      //submition.CarrierId=parseInt($('input[name=sample1]:checked').val(), 10);
+      submition.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
+      submition.Status=result.result.Status;
+      //submition.Shipfromwarehouseid=result.result.ShipFromWarehouseId;
+      submition.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
+      submition.Source=result.result.Source;
+      submition.Ordertype=result.result.OrderType;
+      submition.ShipmentId=result.result.ShipmentId;
+      submition.OrderId=result.result.OrderId;
+      submition.ConsumerId=101;
+      submition.ConsumerEmail=result.result.ConsumerEmail;
+      submition.Consumerphonenumber=result.result.ConsumerPhoneNumber;
+      submition.ConsumerName1=result.result.ConsumerName1;
+      submition.Consumername2=result.result.ConsumerName2;
+      submition.ConsumerShipStreet1=result.result.ConsumerShipStreet1;
+      submition.Consumershipstreet2=result.result.ConsumerShipStreet2;
+      submition.Consumershipstreet3=result.result.ConsumerShipStreet3;
+      submition.ConsumerFromShipHouseNumber=result.result.ConsumerShipHouseNumber;
+      submition.ConsumerFromShipPostalCode=result.result.ConsumerShipPostalCode;
+      submition.ConsumerFromShipCity=result.result.ConsumerShipCity;
+      submition.Consumershipstate=result.result.ConsumerShipState;
+      submition.ConsumerFromShipCountry='';
+      submition.ReturnsOrderTrackingCode='';
+      submition.ReturnsOrderCarrier='';
+      submition.ReturnsOrderCarrierService='';
+      submition.ReturnsOrderParcelBarcode='';
+      //submition.ReturnOrderTotalRefundAmount=sum;
+      //submition.CarrierId=2;
+      submition.FKCustomerId=customerId;
+      submition.CarrierName=carName;
+      submition.StatusName='Label Printed';
+      submition.ConsumerEmail2=$('#emailConfirm').val();
+      submition.ConsumerFromShipCountry = countryCode;
+  	  submition.UserId = (UserId != '')?UserId:'';//Store the Customer Support guy id on Return Order Request    
+
+      
+      apiCall=url+'returnorder/PostBMReturnorder';
+      //console.log("token : " + result.token );
+      $('#button3').hide('slow');
+  	  console.log(submition);
+      $.ajax({
+        url: apiCall,
+        type: 'post',
+        data: submition,
+        headers: {
+            Apoyar: result.token
+        },
+        dataType: 'json',
+        success: function (response) {
+          $('#screen3-success').show('slow');
+          console.log(submition);
+          console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
+          console.log(response);
+          //$('#carrier-label-modal').modal('show');
+          
+          $('.form3').hide();
+          
+          if(response.Status='2000'){
+            $('.form4').show();
+            $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
+            $('.loading-screen').slideUp('slow');
+            //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
+          } else {
+            $('.form5').show();
+            $('.form1_mode1').hide();
+            $('.loading-screen').slideUp('slow');
+          }
+        },
+      }).fail(function(response){
+          console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
+          console.log(response);
+          $('#btn_career_back').hide();
           $('.loading-screen').slideUp('slow');
-          //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
-        } else {
-          $('.form5').show();
-          $('.form1_mode1').hide();
-          $('.loading-screen').slideUp('slow');
-        }
-      },
-    }).fail(function(response){
-        console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
-        console.log(response);
-        $('#btn_career_back').hide();
-        $('.loading-screen').slideUp('slow');
-        $('#screen3-fail').show('slow');
-    });
-    /*
-    $.post(apiCall, submition)
-    .always(function(data){
-      console.log(data);  
-    })
-    .success(function(){
-      $('#screen3-success').show('slow');
-      console.log(submition);
-    })
-    .fail(function(){
-      $('#screen3-fail').show('slow')
-    });*/
+          $('#screen3-fail').show('slow');
+      });
+    }
   });
   //btn_career_back
   $('#btn_career_back').click(function(){	  
