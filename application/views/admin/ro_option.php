@@ -23,12 +23,12 @@
 						</div>
 						<div class="row">							
 							<div class="form-group label-floating col-sm-6">
-							  <label for="f1" class="control-label">PHONE</label>
+							  <label for="f3" class="control-label">PHONE</label>
 							  <input type="text" name='Phone' class="form-control" id="f3">
 							  <span class="help-block"></span>
 							</div>
 							<div class="form-group label-floating col-sm-6">
-							  <label for="f2" class="control-label">NAME</label>
+							  <label for="f4" class="control-label">NAME</label>
 							  <input name='Name' type="text" class="form-control" id="f4">
 							  <span class="help-block">	</span>
 							</div>							

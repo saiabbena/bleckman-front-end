@@ -17,9 +17,10 @@
 		<div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
 	    	<h3>Global Carriers</h3>
 				<div class='row'>
-					<div class="col-xs-12 col-md-12">
+					<div class="col-xs-12 col-md-12">						
 						<button type="button" data-toggle="modal" data-target="#add-carrier-modal" id='add-carrier' class='add-carrier-pop btn btn-raised btn-warning pull-right'>Add Carrier</button>
 					</div>
+					
 				</div>
 				<br>
 				<div class="row">
@@ -112,18 +113,24 @@
 							</div>
 							<div class="carrier_div">
 				                <div class="row">
-				                	<div class="col-md-6">
+				                	<div class="col-md-12">
 						              	<div class="form-group label-floating required">
 						                  <label class="control-label">Carrier Name</label>
 						                  <input id="CarrierName" type="text" name="CarrierName" class="form-control" value="">
 						                  <span class="help-block">Enter Carrier Name</span>
 						                </div>
 						            </div>
-						            <div class='col-md-6'>
+						            
+				          		</div>
+				          		<div class="row">				                	
+						            <div class='col-md-12'>
 						            	<div class="form-group label-floating required">
-						                  	<?php
-						                  	//echo json_encode($allCountries);
-						                  	echo '<label class="control-label" style="top:-30px;left:42px;font-size:12px;">Select a Country</label><select class="form-control" id="Countries" name="Countries[]" multiple>';
+						                  	<h5>Select Countries</h5>
+											<?php
+						                  	//echo json_encode($allCountries);  id="Countries"
+						                  	//echo '<label class="control-label">Select Countries</label>';
+											echo '<select class="form-control chosen-select-width" id="Countries" name="Countries[]" placeholder="Select Countries" multiple >';
+											
 							                  	//echo '<option value="-1">Select a Country</option>';
 							                  	for ($i=0; $i<count($allCountries); $i++) {
 							                  		if ( $allCountries[$i]['IsActive'] ) {
@@ -135,8 +142,7 @@
 					                  	</div>
 						            </div>
 				          		</div>
-				          		<br/>
-				          		<div class="row">
+				          		<div class="row" style="margin-top: 10px !important;">
 				          			<div class="col-md-12">
 						                <div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">
 						                	<h4>Global Settings <a class="pull-right" id="add-carrier-global-setting" href="#">Add New</a></h4>

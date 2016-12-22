@@ -552,14 +552,14 @@ $(document).ready(function(){
   });
 	//Button click on create return order
 	$('#btn_create_ro').click(function(){
-		console.log('working');
+		console.log('working');		
 		//alert('Test');
 		var inputs_data = '';
 		//$('.loading-screen').slideDown('slow');
 		setTimeout(function(){		  
-		  var inputData={'Orderid': $('#f2').val().trim(), 'Email': $('#f1').val().trim(), 'Phone': $('#f3').val().trim(), 'Name': $('#f4').val().trim()};
+		  var inputData={'OrderId': $('#f2').val().trim(), 'Email': $('#f1').val().trim(), 'Phone': $('#f3').val().trim(), 'Name': $('#f4').val().trim()};
 		  var inputs_data = $('#f2').val()+$('#f1').val()+$('#f3').val()+$('#f4').val().trim();
-		  console.log(inputData);
+		  //console.log(inputData);
 		  //alert(inputsdata);
 		  if(inputs_data != ''){
 			  getOrderAndAuth_CS(inputData);			  
@@ -576,13 +576,14 @@ $(document).ready(function(){
 	  function getOrderAndAuth_CS(inputData){
 		  submition.CustomerId = '';
 		  $('.loading-screen').slideDown('slow');
-		  submition.OrderId = inputData.OrderId;
-		  submition.Email = inputData.Email;
-		  submition.Name = inputData.Name;
-		  submition.Phone = inputData.Phone;
+		  submition.OrderId = (inputData.OrderId != '')?inputData.OrderId:'';
+		  submition.Email = (inputData.Email != '')?inputData.Email:'';
+		  submition.Name = (inputData.Name != '')?inputData.Name:'';
+		  submition.Phone = (inputData.Phone != '')?inputData.Phone:'';
 		  //IsCustomerService
-		  apiCall=url+'order/PostSearchOrders';	
+		  apiCall=url+'order/PostSearchOrders';
 		  //console.log(apoyarToken);
+		  console.log(submition);
 		  $.ajax({
 			  url: apiCall,
 			  type: 'post',
@@ -592,13 +593,13 @@ $(document).ready(function(){
 			  },
 			  dataType: 'json',
 			  success: function (data) {
-				console.log("orders");
+				console.log(submition);
 				console.log(data);
 				//countryCode = data.ConsumerShipCountry;
 				//function validate stuff
 				if(data){
 				  //result={type: 'screen1', status: true, message: 'You have been authenticated', result: data};
-				  console.log("sangeeetha ");
+				  //console.log("sangeeetha ");
 				  //console.log(data);
 				  //$('.form1').css({'display':'none !important'});
 				  returnOrdersScreen(data); 
