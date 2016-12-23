@@ -1166,19 +1166,25 @@ $(document).ready(function() {
 			settings_local_cnt++;
 			$('#local-settings-error').hide();
 		});
-		$(".add-carrier-pop").click(function(){
+		$(".add-carrier-pop").click(function(){			
 			$('h4#myCarrierLabel').text('Add a Carrier');
 			var validator1 = $( "#add-carrier-form" ).validate();
 			validator1.resetForm();
 		   	$('input#CarrierName').val('');
 			$('input#PKCarrierId').val('');
+			//$('.chosen-select-width').val('');
+			//$('select#Countries').val('');			
+			$(".chosen-select-width").val('').trigger("chosen:updated");
+			//$('#Countries').val([1, 2, 3]);
+			
 			settings_global_cnt=0;
 			settings_local_cnt=0;
 			$('div#global-setting').html('');
 			$('div#carrier-setting').html('');
-			$('select#Countries').val(-1);
-			$('#Countries').multiselect({enableFiltering: true, maxHeight: 200, buttonWidth: 250, nonSelectedText: 'Select a Country', nSelectedText: 'Countries Selected',});
-			$("#Countries").multiselect("refresh");
+			//$('select#Countries').val(-1);			
+			
+			//$('#Countries').multiselect({enableFiltering: true, maxHeight: 200, buttonWidth: 250, nonSelectedText: 'Select a Country', nSelectedText: 'Countries Selected',});
+			//$("#Countries").multiselect("refresh");
 		   //      	$("#add-carrier-form").validate(); //sets up the validator
 					// $("GlobalSetting[]").rules("add", { required : true });
 					// console.log("set");
@@ -1189,8 +1195,9 @@ $(document).ready(function() {
 			var validator1 = $( "#add-carrier-form" ).validate();
 			validator1.resetForm();
 			$('#global-settings-error').hide();
-			$('#local-settings-error').hide();
-			$('#Countries').multiselect({enableFiltering: true, maxHeight: 200, buttonWidth: 250, nonSelectedText: 'Select a Country', nSelectedText: 'Countries Selected',});
+			$('#local-settings-error').hide();						
+			
+			//$('#Countries').multiselect({enableFiltering: true, maxHeight: 200, buttonWidth: 250, nonSelectedText: 'Select a Country', nSelectedText: 'Countries Selected',});
 			carrier_array = $(this).attr("id").split("-");
 			var selCarrierId = carrier_array[2];
 			
@@ -1213,9 +1220,15 @@ $(document).ready(function() {
 		   			$('input#CarrierName').val(data.CarrierName);
 		   			$('input#PKCarrierId').val(data.PKCarrierID);
 
-		   			$('select#Countries').val(data.Countries);
-		   			//$('select#Countries').val(["2","5"]);
-		   			$("#Countries").multiselect("refresh");
+		   			//$('select#Countries').val(data.Countries);
+					//console.log(data.Countries);
+		   			//$('#Countries').val(["1", "2", "3"]);		   			
+					/**/
+					var str_countries = data.Countries.toString();
+					$('.chosen-select-width').chosen();
+					$('.chosen-select-width').val(data.Countries);
+					$('.chosen-select-width').trigger("chosen:updated");				
+					
 		   			console.log(data.Countries.toString());
 		   			var html1='';
 		   			var html2 = '';
@@ -1268,6 +1281,8 @@ $(document).ready(function() {
 		   			$('div#carrier-setting').html(html2);
 		   			settings_global_cnt = data['GlobalSetting'].length;
 		   			settings_local_cnt = data['CarrierSetting'].length;
+								
+					
 		        	$.material.init();
 		        },
 		        fail: function(data){

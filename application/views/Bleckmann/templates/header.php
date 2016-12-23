@@ -83,7 +83,12 @@
 	</script>
 	<?php 
 	}
+	if($this->uri->segment(2) == 'carriers'){	
 	?>
+	<link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/style.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/prism.css">
+    <link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/chosen.css">	
+	<?php }?>
   </head>
   <body id='override'>
     <div class="bm-h">
