@@ -308,7 +308,7 @@
     </div>
   </div>
   
-  <div class='container-fluid form1_mode1' style="display: none;">
+  <div class='container-fluid form1_mode1' id="mode1form" style="display: none;">
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
         <div class='well bm-well' <?php echo $border_bottom?>>
@@ -414,3 +414,31 @@
       </div>
     </div>
   </div>
+  <div class="no-op-modes" style="display: none;">
+    <div class='row'>
+      <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
+        <div class='well bm-well'>
+          <h3>Operation mode not available. Please contact administrator.</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php 
+    echo "<script>$('.no-op-modes').hide();</script>";
+    echo "<script>var om1=" . $om1 . "</script>";
+    echo "<script>var om2=" . $om2 . "</script>";
+        if ( $Mode == 1 ) {
+          if ( $om1 == true ) {
+            echo "<script>$('#mode1form').show();$('.no-op-modes').hide();</script>";
+          } else {
+            echo "<script>$('#mode1form').hide();$('.no-op-modes').show();$('.form1_mode1').hide();</script>";
+          }
+        }
+        if ( $Mode == 2 ) {
+          if ( $om2 == true ) {
+            echo "<script>$('.form1').show();$('.no-op-modes').hide();</script>";
+          } else {
+            echo "<script>$('.form1').hide();$('.no-op-modes').show();</script>";
+          }
+        }
+  ?>

@@ -22,7 +22,7 @@ class Admin extends CI_Controller {
     if ( isset($_SESSION['Apoyar']) && $_SESSION['Roleid'] == 99 && $_SESSION['BMRoleid'] == 1 ) {
       redirect('bleckmann/customers');
     }
-
+    $this->customerOpModes = $this->httpRequests->httpGet('operation/GetOperationsbyCustomerid', $req );
     if ( $this->uri->segment(2) != 'login' && $this->uri->segment(2) != 'loginSubmit') {
       if( (!isset($_SESSION['Apoyar'])) || ($_SESSION['Apoyar'] == '')) {
         redirect('/login');
@@ -419,7 +419,8 @@ public function deleteLinks() {
     $data['customer_id'] = $customer_id;
     $data['api_base_url_fe'] = API_BASE_URL_FE;
     $data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
-    $data['customerOpModes'] = $this->httpRequests->httpGet('operation/GetOperationsbyCustomerid', $req );
+    #$data['customerOpModes'] = $this->httpRequests->httpGet('operation/GetOperationsbyCustomerid', $req );
+    $data['customerOpModes'] = $this->customerOpModes;
 		$this->load->view('admin/templates/adm_header');
 		$this->load->view('admin/ro_option', $data);
 		$this->load->view('admin/templates/footer');

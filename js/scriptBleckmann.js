@@ -1424,15 +1424,16 @@ $(document).ready(function() {
 		            "Countries[]": "Please select a Country",
 		        },
 		        submitHandler: function(form) {
-		        	if ( settings_global_cnt > 0) {
-		        		if (settings_local_cnt > 0) {
-		            		form.submit();
-		            	} else {
-		            		$('#local-settings-error').show();
-		            	}
-		            } else {
-		            	$('#global-settings-error').show();
-		            }
+		        	form.submit();
+		        	// if ( settings_global_cnt > 0) {
+		        	// 	if (settings_local_cnt > 0) {
+		         //    		form.submit();
+		         //    	} else {
+		         //    		$('#local-settings-error').show();
+		         //    	}
+		         //    } else {
+		         //    	$('#global-settings-error').show();
+		         //    }
 		        }
 		});
 		$("#save-op-modes").validate({

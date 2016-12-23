@@ -279,7 +279,9 @@ $(document).ready(function(){
   
   if ( mode == 1 ) {
     $('.form1').hide();
-    $('.form1_mode1').show();
+    if ( om1 == true ) {
+      $('.form1_mode1').show();
+    }
   }
     $.validator.addMethod("valueNotEquals", function(value, element, arg){
       return arg != value;

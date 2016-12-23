@@ -1,6 +1,19 @@
     <div class='col-xs-12 col-md-9' height='100%'>
       <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
         <h4>Create Return Order</h4>	
+        <?php 
+        	echo json_encode($customerOpModes);
+        	$om3=false;
+        	$om4=false;
+        	for($i=0;$i<count($customerOpModes);$i++) {
+        		if( $customerOpModes[$i]['FKOperationId'] == 3 ) {
+        			$om3=true;
+        		}
+           		if( $customerOpModes[$i]['FKOperationId'] == 4 ) {
+        			$om4=true;
+        		}
+        	}
+        ?>
         <br>		
 		<div class='container-fluid form1 form_ro'>
 			<div class='row'>
@@ -215,7 +228,7 @@
 			  </div>
 			</div>
 		</div>
-		<div class='container-fluid form1_mode1'>
+		<div class='container-fluid form1_mode1' style="display: none;">
 		    <div class='row' >
 		      <div class='col-xs-12 col-sm-10 col-md-12  col-lg-12'>
 		        <div style="border: 1px solid #ddd; padding: 20px;">
@@ -321,11 +334,34 @@
 		      </div>
 		    </div>
 		</div>
+		<div class="no-op-modes">
+			<div class="row">
+				<div class="col-md-12">
+					<h4>No Operation modes available for your account. Please contact the administrator.</h4>
+				</div>
+			</div>
+		</div>
       </div>
 	  	  
     </div>
   </div>
 </div>	
+<?php
+        	if ( $om4 == true ) {
+        		echo "<script>$('.form_ro').show();</script>";
+        	} else {
+        		echo "<script>$('.form_ro').hide();</script>";
+        	}
+        	if ( $om3 == true ) {
+        		echo "<script>$('.form1_mode1').show();</script>";
+        	} else {
+        		echo "<script>$('.form1_mode1').hide();</script>";
+        		if ( $om4 == false ) {
+        			echo "<script>$('#no-op-modes').show();</script>";
+        		}
+        	}
+
+?>
 <script>  
 $(document).ready(function () {
 	$("#thank_you_close").on('click', function(event){		
