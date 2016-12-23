@@ -6,7 +6,7 @@
 ?>
 <?php echo '<script> customerId="' . $customerId.'";</script>';?>
 	<div class='container-fluid'>
-		<div class="row well" style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
+		<div class="row well" style="border-bottom: 15px solid #7C6062; padding-bottom: 40px;">
 		<form method="POST" action="assignUsers">
 			<div class='row'>
 				<div class="col-xs-12 col-md-12">

@@ -14,7 +14,7 @@
 
 <div class='col-xs-12 col-md-9' height='100%'>
 	<div class='container-fluid'>
-		<div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
+		<div class='well body_btm_bdr' id='ap-panel'>		
 	    	<h3>Global Carriers</h3>
 				<div class='row'>
 					<div class="col-xs-12 col-md-12">						
@@ -54,7 +54,7 @@
 						              				<button type="button" class="btn btn-raised btn-success edit-carrier-pop"  data-toggle="modal" data-target="#add-carrier-modal" id="edit-carrier-' .$carriers[$i]['PKCarrierID'] .'">
 						              					Edit
 						              				</button>
-						              				<button type="button" class="btn btn-raised btn-danger"  data-toggle="modal" data-target="#delete-carrier-modal'. $carriers[$i]['PKCarrierID'] .'" id="delete-carrier" >
+						              				<button type="button" class="btn btn-raised btn-warning"  data-toggle="modal" data-target="#delete-carrier-modal'. $carriers[$i]['PKCarrierID'] .'" id="delete-carrier" >
 						              					delete
 						              				</button>
 						              			</td>
@@ -76,7 +76,7 @@
 							                  </div>
 							                  <div class="modal-footer">
 							                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							                    <button type="submit" class="btn btn-danger">Delete</button>
+							                    <button type="submit" class="btn btn-warning">Delete</button>
 							                  </div>
 							                  </form>						  
 							                </div>

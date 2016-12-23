@@ -107,38 +107,38 @@
 <div class='container-fluid form1'>
   <div class='row'>
     <div class='col-xs-12 col-md-3' height='100%'>
-      <div class='well' style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;">
+      <div class='well' style="border-bottom: 15px solid #7C6062; padding-bottom: 40px;">
         <div class='row'>
           <div class='col-md-12 text-center' >
             <h3><b><?php echo(strtoupper($_SESSION['Customername']))?></b></h3>
 			<!--<h4><?php echo(strtoupper($_SESSION['Customerid']))?></h4>--><br>
           </div>
           <a href='orders'>
-          <div  <?php if($this->uri->segment(2) == 'orders'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
+          <div  <?php if($this->uri->segment(2) == 'orders'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-1.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Returns</span>
           </div>
           </a>
           <a href='appearance'>
-          <div  <?php if($this->uri->segment(2) == 'appearance'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+          <div  <?php if($this->uri->segment(2) == 'appearance'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Appearance</span>
           </div>
           </a>
           <a href='settings'>
-            <div  <?php if($this->uri->segment(2) == 'settings'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+            <div  <?php if($this->uri->segment(2) == 'settings'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
               <div class='hidden-lg hidden-md'></div>
               <img src='<?php echo base_url();?>img/i-3.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Settings</span>
             </div>
           </a>		      
  		  <a href='ro_option'>
-          <div  <?php if($this->uri->segment(2) == 'ro_option'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+          <div  <?php if($this->uri->segment(2) == 'ro_option'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-17.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Create Return Order</span>
           </div>
           </a><!-- -->
 		  <!--<a href='operation_mode'>
-          <div  <?php if($this->uri->segment(2) == 'operation_mode'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+          <div  <?php if($this->uri->segment(2) == 'operation_mode'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-18.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Operation Mode</span>
           </div>

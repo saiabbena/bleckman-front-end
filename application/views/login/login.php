@@ -6,7 +6,7 @@
         <div style='height: 15vh'>
             
         </div>
-        <div class='well bm-well'>
+        <div class='well bm-well '>
             <h2><center>Bleckmann Login<br><br></center></h2>
             <p class='text-center'></p>
             <div class="inputs">
@@ -22,7 +22,7 @@
                   <span class="help-block"></span>
                 </div>
                 <br>
-                <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1'><span class='glyphicon glyphicon-lock'></span> LOGIN</button><br>
+                <button type='submit' class='btn btn-raised btn-block btn-warning btn-bm' id='button1'><span class='glyphicon glyphicon-lock'></span> LOGIN</button><br>
                 
                 <?php
                   if(isset($_SESSION['message']['screen1-error'])){

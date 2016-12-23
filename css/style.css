@@ -13,6 +13,7 @@
   font-family: Glober;
 }*/
 /*bg*/
+body{background-color:#B6B9BD !important;}
 #override{
   background-image: url('/img/bg.jpg');
   background-size: cover;
@@ -24,7 +25,7 @@
 }
 /*header*/
 .bm-h{
-  background-color: #625454;
+  background-color: #575C6A;
   text-align: center;
   padding: 15px;
 }
@@ -72,7 +73,7 @@
 
 /*well override*/
 #override .bm-well{
-  border-bottom-color: #e25176;
+  border-bottom-color: #7C6062;
   border-bottom-style: solid;
   border-bottom-width: 10px;
   padding: 10px 2vw;
@@ -109,7 +110,7 @@
   color: #000;
 }
 .bm-nav-center:hover{
-  background-color: #009688;
+  background-color: #7C6062;
   color: #fff;
   cursor: pointer; 
   cursor: hand;
@@ -190,3 +191,6 @@ background:none !important;}
     1px 1.5em;
   background-repeat: no-repeat;
  }
+.btn-warning{background-color: #CF3A12 !important;}
+.move-up-btn{color:#FF5722 !important;}
+.body_btm_bdr{border-bottom: 15px solid #7C6062 !important; padding-bottom: 40px !important;}

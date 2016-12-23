@@ -29,7 +29,7 @@
 				    }
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
 	  				echo '<div class="col-xs-12 col-sm-4 col-md-3 entry" height="100%">
-							<div class="well" style="border-bottom: 5px solid #22B8AA;">
+							<div class="well" style="border-bottom: 5px solid #7C6062;">
 								<div class="customer_name"><h2><center>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</center></h2><h4><center>'.
 								$allCustomers[$i]['Customerid'].'&nbsp;</center></h4></div>
 								
@@ -63,7 +63,7 @@
 										<a href="settings?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Settings</a>
 									</div>
 								</div>
-								<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-danger pull-right">Delete</button>
+								<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-warning pull-right">Delete</button>
 								<br>
 								<br>
 								</p>

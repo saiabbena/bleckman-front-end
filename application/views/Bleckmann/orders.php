@@ -1,5 +1,5 @@
 	<div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
+      <div class='well body_btm_bdr' id='ap-panel'>		
         <h3>Manage Return Orders </h3>			
         <div class="row">			
 			<div class="col-md-6">

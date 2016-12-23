@@ -34,7 +34,7 @@
   			       $hdnval = 'hdnval'.$counter;
           			echo '<div id="'.$reason_div.'" style="border: 1px solid #ddd; padding: 20px;"">';
           			if($counter!=0){
-          				echo '<span class="order-btn"><span class="rr-counter"> ('.($counter+1).') </span><button type="button" class="btn btn-warning move-up-btn">Move Up <span class="glyphicon glyphicon-arrow-up"></span></button></span>';
+          				echo '<span class="order-btn"><span class="rr-counter"> ('.($counter+1).') </span><button type="button" class="btn move-up-btn">Move Up <span class="glyphicon glyphicon-arrow-up"></span></button></span>';
           			}else{
           				echo '<span class="order-btn"><span class="rr-counter"> ('.($counter+1).') </span></span>';
           			}echo '<span class="reason_span">';

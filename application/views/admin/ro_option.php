@@ -1,5 +1,5 @@
     <div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
+      <div class='well body_btm_bdr' id='ap-panel'>		
         <h4>Create Return Order</h4>	
         <br>		
 		<div class='container-fluid form1 form_ro'>
@@ -49,7 +49,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group text-center">
-									<button class='btn btn-raised btn-block btn-success btn-bm' id="btn_create_ro">Search</button><br>
+									<button class='btn btn-raised btn-block btn-success btn-bm btn-warning' id="btn_create_ro">Search</button><br>
 								</div>
 							</div>
 							<div class="col-md-12">
