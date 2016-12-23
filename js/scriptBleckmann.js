@@ -1237,7 +1237,7 @@ $(document).ready(function() {
 						html1 += '<div class="row">\
 				                	<div class="col-md-12">\
 				                		<input type="hidden" name="GlobalSetting[' + i +'][PKGlobalCarrierId]" value="'+ data['GlobalSetting'][i]['PKGlobalCarrierId'] +'">\
-				                		<div class="col-md-6">\
+				                		<div class="col-md-5">\
 							              	<div class="form-group label-floating">\
 							                  <label class="control-label">Settings Name</label>\
 							                  <input id="SettingsName" type="text" name="GlobalSetting[' + i +'][SettingName]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingName'] +'">\
@@ -1250,6 +1250,11 @@ $(document).ready(function() {
 							                  <input id="SettingsValue" type="text" name="GlobalSetting[' + i +'][SettingValue]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingValue'] +'">\
 							                  <span class="help-block">Enter Settings Value</span>\
 							                </div>\
+				                		</div>\
+				                		<div class="col-md-1" style="vertical-align:bottom;">\
+				                			<div class="form-group">\
+				                				<a data-toggle="modal" style="color:#f44336;cursor:pointer;" data-target="#delete-settings-modal'+ data['GlobalSetting'][i]['PKGlobalCarrierId'] +'" id="delete-settings" class="pull-right"><i class="material-icons" style="color:red;">delete</i></a>\
+				                			</div>\
 				                		</div>\
 				                	</div>\
 				       		</div>';
@@ -1267,17 +1272,35 @@ $(document).ready(function() {
 										                  <span class="help-block">Enter Settings Name</span>\
 										                </div>\
 							                		</div>\
-							                		<div class="col-md-6">\
-										              	<div class="form-group label-floating">\
-										                  <input id="SettingsValue" disabled type="hidden" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
-										                  <span class="help-block">Enter Settings Value</span>\
-										                </div>\
+							                		<div class="col-md-2" style="vertical-align:bottom;">\
+							                			<div class="form-group">\
+							                				<a data-toggle="modal" style="color:#f44336;cursor:pointer;" data-target="#delete-c-settings-modal'+ data['CarrierSetting'][i]['PKGlobalCarrierId'] +'" id="delete-settings" class="pull-right"><i class="material-icons" style="color:red;">delete</i></a>\
+							                			</div>\
 							                		</div>\
 							                	</div>\
 							        </div>';
-						
-						settings_local_cnt++;
-		   			}
+		   				html2 += '<div class="modal fade" id="delete-c-settings-modal' + data['CarrierSetting'][i]['PKGlobalCarrierId'] + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
+						              <div class="modal-dialog" role="document">\
+						                <div class="modal-content">\
+						                  <form method="POST" action="deleteSettings">\
+						                  <div class="modal-header">\
+						                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+						                    <h4 class="modal-title" id="myModalLabel">Delete Setting - '+ data['CarrierSetting'][i]['SettingName'] + '?</h4>\
+						                  </div>\
+						                  <div class="modal-body">\
+						                    <p>Are you sure you want to delete this Setting?</p>\
+						    	<input type="hidden" name="PKUserID" value="'+  data['CarrierSetting'][i]['PKGlobalCarrierId'] + '">\
+				                  </div>\
+				                  <div class="modal-footer">\
+				                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+				                    <button type="submit" class="btn btn-danger">Delete</button>\
+				                  </div>\
+				                  </form>\
+				                </div>\
+				              </div>\
+				            </div>';
+				    	settings_local_cnt++;
+				    }
 		   			$('div#carrier-setting').html(html2);
 		   			settings_global_cnt = data['GlobalSetting'].length;
 		   			settings_local_cnt = data['CarrierSetting'].length;

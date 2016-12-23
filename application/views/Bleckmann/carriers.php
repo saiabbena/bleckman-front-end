@@ -20,7 +20,6 @@
 					<div class="col-xs-12 col-md-12">						
 						<button type="button" data-toggle="modal" data-target="#add-carrier-modal" id='add-carrier' class='add-carrier-pop btn btn-raised btn-warning pull-right'>Add Carrier</button>
 					</div>
-					
 				</div>
 				<br>
 				<div class="row">
