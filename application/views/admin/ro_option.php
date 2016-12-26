@@ -91,7 +91,7 @@
 		              <br>
 		              <h3><center>Total Refund<?php //echo $translations[6]['Translation'];?>: <b style='color: #cc1543;' id='total-price'>&euro; 0.00</b></center></h3>
 		              <br>
-		              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button2'>Submit<?php //echo strtoupper($translations[7]['Translation']);?></button><br>
+		              <button type='submit' class='btn btn-raised btn-block btn-warning' id='button2'>Submit<?php //echo strtoupper($translations[7]['Translation']);?></button><br>
 					  <p style="text-align:right;"><a href="javascript:void(0)" class="btn_admin_career_back2">&laquo; Back</a></p>
 		              <div class="alert alert-dismissible alert-danger" id='screen2-error'>
 		                <strong>Whoops!</strong>
@@ -313,7 +313,7 @@
 		                  </div>
 		                </div>
 		                <br>
-		                <button type='submit' class='btn btn-raised btn-block btn-success btn-bm'>Submit</button>
+		                <button type='submit' class='btn btn-raised btn-block btn-warning'>Submit</button>
 		                <br>
 		              </form>
 		            </div>
