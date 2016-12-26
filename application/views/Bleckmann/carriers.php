@@ -33,6 +33,7 @@
 				        ?>
 			        </div>
 			    </div>
+
 			    <div class="row">
 			    	<div class="col-md-offset-1 col-md-10">
 						<table class='table'>
@@ -111,6 +112,11 @@
 							  </center>
 							</div>
 							<div class="carrier_div">
+								<div class="row" id="settings-alert" style="display:none">
+									<div class="alert alert-dismissible alert-success">
+				        				Saved
+				    				</div>
+		   						</div>
 				                <div class="row">
 				                	<div class="col-md-12">
 						              	<div class="form-group label-floating required">
@@ -141,30 +147,32 @@
 					                  	</div>
 						            </div>
 				          		</div>
-				          		<div class="row" style="margin-top: 10px !important;">
-				          			<div class="col-md-12">
-						                <div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">
-						                	<h4>Global Settings <a class="pull-right" id="add-carrier-global-setting" href="#">Add New</a></h4>
-						                	<div id="global-settings-error" style="color:red;font-size:13px;display: none;">Please enter Global Settings</div>
-						                	<div id="global-setting">
+				          		<div id="all-settings">
+					          		<div class="row" style="margin-top: 10px !important;">
+					          			<div class="col-md-12">
+							                <div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">
+							                	<h4>Global Settings <a class="pull-right" id="add-carrier-global-setting" href="#">Add New</a></h4>
+							                	<div id="global-settings-error" style="color:red;font-size:13px;display: none;">Please enter Global Settings</div>
+							                	<div id="global-setting">
 
 
-						                	</div>
+							                	</div>
+							                </div>
 						                </div>
 					                </div>
-				                </div>
-				                <br/>
-				                <div class="row">
-				                	<div class="col-md-12">
-						                <div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">
-						                	<h4>Carrier Settings <a class="pull-right" id="add-carrier-local-setting" href="#">Add New</a></h4>
-						                	<div id="local-settings-error" style="color:red;font-size:13px;display: none;">Please enter Carrier Settings</div>
-						                	<div id="carrier-setting">
+					                <br/>
+					                <div class="row">
+					                	<div class="col-md-12">
+							                <div style="border: 1px solid #ddd; padding: 20px;margin-bottom:5px;">
+							                	<h4>Carrier Settings <a class="pull-right" id="add-carrier-local-setting" href="#">Add New</a></h4>
+							                	<div id="local-settings-error" style="color:red;font-size:13px;display: none;">Please enter Carrier Settings</div>
+							                	<div id="carrier-setting">
 
-						                	</div>
+							                	</div>
+							                </div>
 						                </div>
 					                </div>
-				                </div>
+				    			</div>
 				    		</div>
 			          </div>
 			          <input id="PKCarrierId" type="hidden" name="PKCarrierId" value="">

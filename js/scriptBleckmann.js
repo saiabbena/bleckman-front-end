@@ -1201,6 +1201,9 @@ $(document).ready(function() {
 			carrier_array = $(this).attr("id").split("-");
 			var selCarrierId = carrier_array[2];
 			
+			setCarrierData(selCarrierId);
+		});
+		function setCarrierData(selCarrierId) {
 			console.log(selCarrierId);
 			var apiCall=url+'Carrier/GetActiveCarrierbyid?CarrierId=' + selCarrierId;
 			console.log("apiCall : " + apiCall);
@@ -1233,6 +1236,7 @@ $(document).ready(function() {
 		   			var html1='';
 		   			var html2 = '';
 		   			console.log(data['GlobalSetting'].length);
+
 		   			for(i=0;i<data['GlobalSetting'].length;i++) {
 						html1 += '<div class="row">\
 				                	<div class="col-md-12">\
@@ -1253,11 +1257,29 @@ $(document).ready(function() {
 				                		</div>\
 				                		<div class="col-md-1" style="vertical-align:bottom;">\
 				                			<div class="form-group">\
-				                				<a data-toggle="modal" style="color:#f44336;cursor:pointer;" data-target="#delete-settings-modal'+ data['GlobalSetting'][i]['PKGlobalCarrierId'] +'" id="delete-settings" class="pull-right"><i class="material-icons" style="color:red;">delete</i></a>\
+				                				<a data-toggle="modal" style="color:#f44336;cursor:pointer;" data-target="#delete-g-settings-modal'+ data['GlobalSetting'][i]['PKGlobalCarrierId'] +'" id="delete-settings" class="pull-right"><i class="material-icons" style="color:red;">delete</i></a>\
 				                			</div>\
 				                		</div>\
 				                	</div>\
 				       		</div>';
+		   				html1 += '<div class="modal fade" id="delete-g-settings-modal' + data['GlobalSetting'][i]['PKGlobalCarrierId'] + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
+						              <div class="modal-dialog" role="document">\
+						                <div class="modal-content">\
+						                  <div class="modal-header">\
+						                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+						                    <h4 class="modal-title" id="myModalLabel">Delete Setting - '+ data['GlobalSetting'][i]['SettingName'] + '?</h4>\
+						                  </div>\
+						                  <div class="modal-body">\
+						                    <p>Are you sure you want to delete this Setting?</p>\
+						    				<input type="hidden" id="PKGlobalCarrierId" name="PKGlobalCarrierId" value="'+  data['GlobalSetting'][i]['PKGlobalCarrierId'] + '">\
+				                  		  </div>\
+						                  <div class="modal-footer">\
+						                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+						                    <button type="button" id="delete-g-' + data['GlobalSetting'][i]['PKGlobalCarrierId'] + '-'+ data.PKCarrierID +'" class="btn btn-danger delete-carrier-settings-btn">Delete</button>\
+						                  </div>\
+				                	</div>\
+				              	</div>\
+				            </div>';
 						settings_global_cnt++;
 					}
 					$('div#global-setting').html(html1);
@@ -1282,20 +1304,18 @@ $(document).ready(function() {
 		   				html2 += '<div class="modal fade" id="delete-c-settings-modal' + data['CarrierSetting'][i]['PKGlobalCarrierId'] + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
 						              <div class="modal-dialog" role="document">\
 						                <div class="modal-content">\
-						                  <form method="POST" action="deleteSettings">\
 						                  <div class="modal-header">\
 						                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
 						                    <h4 class="modal-title" id="myModalLabel">Delete Setting - '+ data['CarrierSetting'][i]['SettingName'] + '?</h4>\
 						                  </div>\
 						                  <div class="modal-body">\
 						                    <p>Are you sure you want to delete this Setting?</p>\
-						    	<input type="hidden" name="PKUserID" value="'+  data['CarrierSetting'][i]['PKGlobalCarrierId'] + '">\
+						    	<input type="hidden" id="PKGlobalCarrierId" name="PKGlobalCarrierId" value="'+  data['CarrierSetting'][i]['PKGlobalCarrierId'] + '">\
 				                  </div>\
 				                  <div class="modal-footer">\
 				                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
-				                    <button type="submit" class="btn btn-danger">Delete</button>\
+				                    <button type="button" id="delete-c-'+ data['CarrierSetting'][i]['PKGlobalCarrierId'] + '-'+ data.PKCarrierID + '" class="btn btn-danger delete-carrier-settings-btn">Delete</button>\
 				                  </div>\
-				                  </form>\
 				                </div>\
 				              </div>\
 				            </div>';
@@ -1304,14 +1324,47 @@ $(document).ready(function() {
 		   			$('div#carrier-setting').html(html2);
 		   			settings_global_cnt = data['GlobalSetting'].length;
 		   			settings_local_cnt = data['CarrierSetting'].length;
-								
-					
 		        	$.material.init();
 		        },
 		        fail: function(data){
 		          console.log(data);
 		        }
 		      });
+		}
+		$("div#all-settings").on('click', '.delete-carrier-settings-btn',function(e) {
+			$('.loading').css({'display':'block'});
+			$('.carrier_div').css({'display':'none'});
+			console.log('form submit');
+			s_array = $(this).attr("id").split("-");
+			var apiCall = url+'Carrier/PostDeleteGlobalsetting';
+			var postData = {};
+			postData['PKGlobalCarrierId']=s_array[2];
+			console.log(postData);
+			$.ajax({
+			  url: apiCall,
+			  type: 'post',
+			  data: postData,
+			  headers: {
+				  Apoyar: apoyarToken
+			  },
+			  dataType: 'json',
+			  success: function (response) {
+				//$('.loading-screen').slideUp('slow');
+				console.log(response);
+				if (response.Status == 1) {
+					$('#delete-' + s_array[1] + '-settings-modal'+postData.PKGlobalCarrierId ).hide();
+					$('#settings-alert').show();
+
+					setCarrierData(s_array[3]);
+					//$("#edit-carrier-" + s_array[3]).trigger('click');
+					//$("#add-carrier-modal").modal("show"); 
+				}
+			  },
+			  fail: function(){
+				$('.loading-screen').slideDown('slow');
+			  }
+			});		
+
 		});
 		$("#FKCarrierId").on('change', function() {
 			console.log($(this).val());
