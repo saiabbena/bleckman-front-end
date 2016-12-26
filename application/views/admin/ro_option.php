@@ -294,8 +294,7 @@
 		                      </div>
 		                    </div>
 		                    <div class="col-md-3">
-		                      <div class="form-group label-floating required">
-		                        <label class="control-label">Country</label>
+		                      <div class="form-group label-floating required">		                        
 		                        <!-- <input name="ConsumerFromShipCountry" type="text" class="form-control"> -->
 		                            <?php
 		                              //echo json_encode($allCountries);
