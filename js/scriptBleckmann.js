@@ -810,15 +810,16 @@ $(document).ready(function() {
 		function renderReturnOrders(raw_data){
 			html='';
 			html2='';
-			html3='';
-			var pagination_html = '';
+			html3='';			
+			var total_num_records = raw_data['TotRecords'];
 			var page_count = raw_data['Count'];
+			var pagination_html = '';
 			var pageno = raw_data['PageNo'];
 			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
 			var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';
 			console.log(raw_data);
 			$('.form-group').css({'margin':'0', 'padding':'0'});
-			//console.log(raw_data['ReturnOrders'].length);
+			//console.log(raw_data['ReturnOrders'].length); 
 			//console.log(data['ReturnOrders'].[0].ReturnId);
 			//console.log(raw_data['PageNo']);
 			if(page_count > 1){
@@ -891,6 +892,8 @@ $(document).ready(function() {
 			  </div>\
 			  ';
 			}
+			
+			$('#total_records span').text(total_num_records);
 			$('body').append(html2);
 			$('body').append(html3);
 			$('#orders_data > tbody').html(html);
@@ -925,6 +928,7 @@ $(document).ready(function() {
 			//Change the date format to YYYY-DD-MM
 			var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
 			var ReturnsOrderToDate = $('#ReturnsOrderToDate').val();
+			var pagesize = $('#page_size').val();
 			console.log(ReturnsOrderCreationDate);
 			console.log(ReturnsOrderToDate);
 			if(ReturnsOrderCreationDate !== ''){			
@@ -947,9 +951,12 @@ $(document).ready(function() {
 			}else{
 				searchInput['pageno'] = pageno;
 			} 
-			searchInput['pagesize'] = 15;
-			
-			
+			if(typeof(pagesize)==='undefined'){				
+				searchInput['pagesize'] = 15;
+			}else{
+				searchInput['pagesize'] = pagesize;
+			}	
+						
 			//Check the pageno defined or not
 			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
 			console.log(searchInput);
@@ -979,7 +986,12 @@ $(document).ready(function() {
 			var customerId = $('#orders_by_customer_id').val();
 			retrieveReturnOrders(customerId, pageno);			
 		});
-		
+		$(document).on('change', '#page_size', function() {
+			//alert($(this).val());			
+			var customerId = $('#orders_by_customer_id').val();
+			//alert(customerId);
+			retrieveReturnOrders(customerId);			
+		});
 		$(document).on('click', '.btn_more_info', function() {
 			//alert($(this).attr('id')); //ReturnId
 			var ReturnId = $(this).attr('id');
