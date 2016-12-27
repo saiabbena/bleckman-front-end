@@ -187,7 +187,7 @@ $(document).ready(function() {
 					
 		$.validator.addMethod("valueNotEquals", function(value, element, arg){
 			return arg != value;
-		}, "Value must not equal arg.");
+		}, "Please select a value");
 
 		$(".add-user-pop").click(function(){
 			var validator1 = $( "#user-info-form" ).validate();
