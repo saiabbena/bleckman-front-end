@@ -1,7 +1,7 @@
 	<div class='col-xs-12 col-md-9' height='100%'>
       <div class='well body_btm_bdr' id="orders-messages">
         <div class="alert alert-dismissible alert-primary">
-          Listing the latest 20 returned orders
+          Listing the latest returned orders
         </div>		
         <?php
           if(isset($_SESSION['message']['orders-messages'])){
@@ -77,7 +77,21 @@
           </tbody>
         </table>		
         <div class="row">
-			<div id="btm_pagination" class="col-md-10 pull-right text-right"></div>
+			<div class="col-md-4 pull-left">
+				<div class="col-md-12 pull-left" id="total_records" style="margin-top: 10px;"><b>Total Records#:<span><span></b></div>
+				<div class="col-md-6 pull-left "><?php					
+					echo '<select id="page_size" name="page_size" class="form-control" style="margin:0 !important;">';
+					echo '<option value="20">Select Page Size</option>';
+					for($i=20;$i<=100;$i=$i+20) {						
+						echo '<option value="'.$i. '">' .$i. '</option>';
+					}
+					echo '</select>';
+				?>
+				</div>
+			</div>
+			<div class="col-md-8 pull-right">
+				<div id="btm_pagination" class="col-md-11 pull-right text-right"></div>
+			</div>
 		</div>
       </div>
     </div>

@@ -95,7 +95,23 @@
 			</table>			
 		</div>
 		<div class="row">
-			<div id="btm_pagination" class="col-md-10 pull-right text-right"></div>
+			<div class="col-md-4">
+				<!----><div class="col-md-5 " id="total_records" style="margin-top: 10px;"><b>Total Records#:<span><span></b></div>
+				<div class="col-md-6 pull-right">
+				<?php
+					//echo "allCustomers : " . json_encode($allCustomers);
+					echo '<select id="page_size" name="page_size" class="col-md-10 form-control pull-right">';
+					echo '<option value="15">Select Page Size</option>';
+					for($i=20;$i<=100;$i=$i+20) {						
+						echo '<option value="'.$i. '">' .$i. '</option>';
+					}
+					echo '</select>';
+				?>
+				</div>
+			</div>
+			<div class="col-md-8">
+				<div id="btm_pagination" class="col-md-11 pull-right text-right"></div>
+			</div>
 		</div>
       </div>	
 		
@@ -115,11 +131,11 @@
 						<b>Full date/time:</b> , 
 						<b>Orderid:</b> ,
 						<b>Return status:</b>
-						Label Printed<br><br>
+							Label Printed<br><br>
 						<b>Customer Email:</b><br><br>
 						<b>Customer Phone:</b> <br><br>
 						<b>Comment:</b><br>
-						No comment has been made yet<br><br>
+							No comment has been made yet<br><br>
 						<b>Items returned (1):</b><hr>
 						<b>Item name:</b> <br>
 						<b>Product SKU:</b> <br>
