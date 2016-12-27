@@ -6,7 +6,7 @@
         <div style='height: 15vh'>
             
         </div>
-        <div class='well bm-well'>
+        <div class='well bm-well '>
             <h2><center>Bleckmann Login<br><br></center></h2>
             <p class='text-center'></p>
             <div class="inputs">
@@ -26,6 +26,7 @@
                 <div class="alert alert-dismissible alert-danger js-valid">
                   
                 </div>
+
                 <?php
                   if(isset($_SESSION['message']['screen1-error'])){
                     echo'

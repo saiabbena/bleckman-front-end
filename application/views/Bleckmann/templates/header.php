@@ -85,7 +85,7 @@
 	}
 	if($this->uri->segment(2) == 'carriers'){	
 	?>
-	<link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/style.css">
+	<!--<link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/style.css">-->
     <link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/prism.css">
     <link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/chosen.css">	
 	<?php }?>
@@ -110,56 +110,56 @@
 <div class='container-fluid form1'>
   <div class='row'>
     <div class='col-xs-12 col-md-3' height='100%'>
-      <div class='well' style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;">
+      <div class='well' style="border-bottom: 15px solid #7C6062; padding-bottom: 40px;">
         <div class='row'>
           <div class='col-md-12 text-center' >
             <h3><b><?php echo(strtoupper($_SESSION['Customername']))?></b></h3><br>
           </div>
           <a href='<?php echo base_url()?>index.php/Bleckmann/customers'>
 
-          <div  <?php if($this->uri->segment(2) == 'customers'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
+          <div  <?php if($this->uri->segment(2) == 'customers'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-8.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Customers</span>
           </div>
           </a>
           <a href='<?php echo base_url()?>index.php/Bleckmann/carriers'>
-            <div  <?php if($this->uri->segment(2) == 'carriers'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+            <div  <?php if($this->uri->segment(2) == 'carriers'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
               <div class='hidden-lg hidden-md'></div>
               <img src='<?php echo base_url();?>img/i-18.png' class='menu-icon' height='20px'><span class='hidden-xs hidden-sm'>  Carriers</span>
             </div>
           </a>
           <a href='<?php echo base_url()?>index.php/Bleckmann/warehouses'>
-            <div  <?php if($this->uri->segment(2) == 'warehouses'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+            <div  <?php if($this->uri->segment(2) == 'warehouses'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
               <div class='hidden-lg hidden-md'></div>
               <img src='<?php echo base_url();?>img/i-13.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Warehouses</span>
             </div>
           </a>
           <a href='<?php echo base_url()?>index.php/Bleckmann/users'>
-          <div  <?php if($this->uri->segment(2) == 'users'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+          <div  <?php if($this->uri->segment(2) == 'users'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-7.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Users</span>
           </div>
           </a><!--
 		  <a href='<?php echo base_url()?>index.php/Bleckmann/carriers'>
-          <div  <?php if($this->uri->segment(2) == 'carriers'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+          <div  <?php if($this->uri->segment(2) == 'carriers'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
             <div class='hidden-lg hidden-md'></div>
             <img src='<?php echo base_url();?>img/i-6.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Carriers</span>
           </div>           
           </a>-->          
           <a href='<?php echo base_url()?>index.php/Bleckmann/roles'>
-            <div  <?php if($this->uri->segment(2) == 'roles'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+            <div  <?php if($this->uri->segment(2) == 'roles'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
               <div class='hidden-lg hidden-md'></div>
               <img src='<?php echo base_url();?>img/i-14.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Roles</span>
             </div>
           </a>
           <a href='<?php echo base_url()?>index.php/Bleckmann/languages'>
-            <div  <?php if($this->uri->segment(2) == 'languages'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+            <div  <?php if($this->uri->segment(2) == 'languages'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
               <div class='hidden-lg hidden-md'></div>
               <img src='<?php echo base_url();?>img/i-15.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Languages</span>
             </div>
           </a>
 		      <a href='<?php echo base_url()?>index.php/Bleckmann/orders'>
-            <div  <?php if($this->uri->segment(2) == 'orders'){?>style='background-color: #009688; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+            <div  <?php if($this->uri->segment(2) == 'orders'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
               <div class='hidden-lg hidden-md'></div>
               <img src='<?php echo base_url();?>img/i-16.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Return Orders</span>
             </div>

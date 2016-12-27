@@ -1,5 +1,5 @@
     <div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
+      <div class='well body_btm_bdr' id='ap-panel'>		
         <h4>Create Return Order</h4>	
         <?php 
         	echo json_encode($customerOpModes);
@@ -62,7 +62,7 @@
 						<div class="row">
 							<div class="col-md-12">
 								<div class="form-group text-center">
-									<button class='btn btn-raised btn-block btn-success btn-bm' id="btn_create_ro">Search</button><br>
+									<button class='btn btn-raised btn-block btn-success btn-bm btn-warning' id="btn_create_ro">Search</button><br>
 								</div>
 							</div>
 							<div class="col-md-12">
@@ -104,7 +104,7 @@
 		              <br>
 		              <h3><center>Total Refund<?php //echo $translations[6]['Translation'];?>: <b style='color: #cc1543;' id='total-price'>&euro; 0.00</b></center></h3>
 		              <br>
-		              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button2'>Submit<?php //echo strtoupper($translations[7]['Translation']);?></button><br>
+		              <button type='submit' class='btn btn-raised btn-block btn-warning' id='button2'>Submit<?php //echo strtoupper($translations[7]['Translation']);?></button><br>
 					  <p style="text-align:right;"><a href="javascript:void(0)" class="btn_admin_career_back2">&laquo; Back</a></p>
 		              <div class="alert alert-dismissible alert-danger" id='screen2-error'>
 		                <strong>Whoops!</strong>
@@ -307,8 +307,7 @@
 		                      </div>
 		                    </div>
 		                    <div class="col-md-3">
-		                      <div class="form-group label-floating required">
-		                        <label class="control-label">Country</label>
+		                      <div class="form-group label-floating required">		                        
 		                        <!-- <input name="ConsumerFromShipCountry" type="text" class="form-control"> -->
 		                            <?php
 		                              //echo json_encode($allCountries);
@@ -326,7 +325,7 @@
 		                  </div>
 		                </div>
 		                <br>
-		                <button type='submit' class='btn btn-raised btn-block btn-success btn-bm'>Submit</button>
+		                <button type='submit' class='btn btn-raised btn-block btn-warning'>Submit</button>
 		                <br>
 		              </form>
 		            </div>

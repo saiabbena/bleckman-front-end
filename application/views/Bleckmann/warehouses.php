@@ -1,6 +1,6 @@
 <div class='col-xs-12 col-md-9' height='100%'>
 	<div class='container-fluid'>
-		<div class="row well" style="border-bottom: 15px solid #E25176;padding-bottom: 40px;">
+		<div class="row well body_btm_bdr">
 			<h3>Manage Warehouses</h3>
 				<?php
 		          if(isset($_SESSION['message']['warehouse_panel'])){

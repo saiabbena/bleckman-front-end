@@ -3,7 +3,7 @@
 	$FKCustomerid = (isset($appearanceSettings['CustomerSetting']['FKCustomerid']))?$appearanceSettings['CustomerSetting']['FKCustomerid']:'';
 ?>
     <div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >	   
+      <div class='well body_btm_bdr' id='ap-panel'>	   
 		<form method="POST" action="save_appearance_settings">
         <h3 >Appearance</h3>		
         <br><br>

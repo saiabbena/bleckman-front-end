@@ -1,6 +1,6 @@
 
     <div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well' id='rr-panel' style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
+      <div class='well body_btm_bdr' id='rr-panel'>
         <?php
           if(isset($_SESSION['message']['rr'])){
             echo'
@@ -34,7 +34,7 @@
   			       $hdnval = 'hdnval'.$counter;
           			echo '<div id="'.$reason_div.'" style="border: 1px solid #ddd; padding: 20px;"">';
           			if($counter!=0){
-          				echo '<span class="order-btn"><span class="rr-counter"> ('.($counter+1).') </span><button type="button" class="btn btn-warning move-up-btn">Move Up <span class="glyphicon glyphicon-arrow-up"></span></button></span>';
+          				echo '<span class="order-btn"><span class="rr-counter"> ('.($counter+1).') </span><button type="button" class="btn move-up-btn">Move Up <span class="glyphicon glyphicon-arrow-up"></span></button></span>';
           			}else{
           				echo '<span class="order-btn"><span class="rr-counter"> ('.($counter+1).') </span></span>';
           			}echo '<span class="reason_span">';
@@ -196,7 +196,7 @@
           }
         ?>        
       </div>
-      <div class='well' id='language-panel' style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
+      <div class='well body_btm_bdr' id='language-panel'>
         <?php
           if(isset($_SESSION['message']['languages'])){
             echo'
@@ -321,7 +321,7 @@
 
 
 
-      <div class='well' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;' id="links-panel">
+      <div class='well body_btm_bdr' id="links-panel">
       <form method="POST" action="submitLinks">
       <button type="button" data-toggle="modal" data-target="#myLinksModal" id='add-link' class='btn btn-raised btn-warning pull-right'>Add</button>
       <h3>Edit links 
