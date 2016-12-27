@@ -126,8 +126,6 @@
 					    	} else {
 					    		echo '<div class="row"><h4>Oops! Carrier Settings not available yet.</h4></div>';
 					    	}
-
-
 					    		?>
 				    		</tbody>
 				    	</table>
