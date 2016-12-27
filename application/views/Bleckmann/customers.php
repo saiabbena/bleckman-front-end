@@ -21,12 +21,25 @@
 	  		<?php				
 	  			for($i=0; $i<count($allCustomers); $i++) {
 	  				$selCountry = '';
+	  				$om1=false;
+	  				$om2=false;
 	  				for($j=0;$j<count($allCountries);$j++) {
 				    	if ( $allCustomers[$i]['Country'] == $allCountries[$j]['PKCountryId']) {
 				    		$selCountry = $allCountries[$j]['CountryName'];
 				        	break;
 						}
 				    }
+					if ( count($allCustomers[$i]['customerOpModes']) ) {
+						for($j=0;$j<count($allCustomers[$i]['customerOpModes']);$j++) {
+							//echo json_encode($allCustomers[$i]['customerOpModes'][$j]);
+							if ( $allCustomers[$i]['customerOpModes'][$j]['FKOperationId'] == 1 ) {
+								$om1=true;
+							}
+							if ( $allCustomers[$i]['customerOpModes'][$j]['FKOperationId'] == 2 ) {
+								$om2=true;
+							}
+						}
+					}
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
 	  				echo '<div class="col-xs-12 col-sm-4 col-md-3 entry" height="100%">
 							<div class="well" style="border-bottom: 5px solid #22B8AA;">
@@ -39,13 +52,23 @@
 								
 								<br>
 								
-								</div>
-								<div class="row">
-									<div class="col-md-12">
-										<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'" target="_blank">View Consumer URL</a>
-									</div>
-								</div>
-								<div class="row">
+								</div>';
+					echo '<div class="row"><div class="col-md-12">';
+						if ( $om1 ) {
+							echo '
+										<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'&Mode=1" target="_blank">Mode1URL</a>
+									';
+						}
+						if ( $om2 ) {
+							echo '
+										<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'" target="_blank"> | Mode2URL</a>
+									';
+						}
+						if ( $om1 == false && $om2 == false ) {
+							echo '<br/>';
+						}
+					echo '</div></div>';
+							echo '<div class="row">
 									<div class="col-md-12">
 										<a class="" href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a> &nbsp; | 
 										<a class="" href="managecarriers?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Manage Carriers</a>

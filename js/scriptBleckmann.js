@@ -1430,54 +1430,57 @@ $(document).ready(function() {
 		        	$('.loading').css({'display':'none'});
 					$('.carrier-modal').css({'display':'block'});
 					
-					if (data['Global']) {
-						console.log('gs length : ' + data['GlobalSetting'].length);
-						for(i=0;i<data['GlobalSetting'].length;i++) {
+					// if (data['Global']) {
+					// 	console.log('gs length : ' + data['GlobalSetting'].length);
+					// 	for(i=0;i<data['GlobalSetting'].length;i++) {
+					// 		html2 += '<div class="row">\
+					// 		            <div class="col-md-12">\
+					// 		                <input type="hidden" name="CarrierSetting[' + i +'][FKCCWId]" value="'+ array[2] +'">\
+					// 		                <input type="hidden" name="CarrierSetting[' + i +'][FKGlobalSettingId]" value="'+ data['GlobalSetting'][i]['PKGlobalCarrierId'] +'">\
+					// 		                		<div class="col-md-6">\
+					// 					              	<div class="form-group label-floating">\
+					// 					                  <label class="control-label">Settings Name</label>\
+					// 					                  <input id="SettingsName" type="text" name="CarrierSetting[' + i +'][SettingName]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingName'] +'">\
+					// 					                  <span class="help-block">Enter Settings Name</span>\
+					// 					                </div>\
+					// 		                		</div>\
+					// 		                		<div class="col-md-6">\
+					// 					              	<div class="form-group label-floating">\
+					// 					                  <label class="control-label">Settings Value</label>\
+					// 					                  <input id="SettingsValue" type="text" name="CarrierSetting[' + i +'][SettingValue]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingValue'] +'">\
+					// 					                  <span class="help-block">Enter Settings Value</span>\
+					// 					                </div>\
+					// 		                		</div>\
+					// 		                	</div>\
+					// 		        </div>';
+		   // 				}
+		   // 				$('div.carrier-modal').html(html2);
+		   // 			} else {
+		   				console.log('cs length : ' + data['Settings'].length);
+		   				console.log(data['Settings']);
+						for(i=0;i<data['Settings'].length;i++) {
 							html2 += '<div class="row">\
 							            <div class="col-md-12">\
-							                <input type="hidden" name="CarrierSetting[' + i +'][FKCCWId]" value="'+ array[2] +'">\
+							            	<input type="hidden" name="Settings[' + i +'][PKCarrierSettingId]" value="'+ data['Settings'][i]['PKCarrierSettingId'] +'">\
+							            	<input type="hidden" name="Settings[' + i +'][FKCCWId]" value="'+ data['Settings'][i]['FKCCWId'] +'">\
+							            	<input type="hidden" name="Settings[' + i +'][FKGlobalSettingId]" value="'+ data['Settings'][i]['FKGlobalSettingId'] +'">\
 							                		<div class="col-md-6">\
 										              	<div class="form-group label-floating">\
 										                  <label class="control-label">Settings Name</label>\
-										                  <input id="SettingsName" type="text" name="CarrierSetting[' + i +'][SettingName]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingName'] +'">\
+										                  <input id="SettingsName" type="text" name="Settings[' + i +'][SettingName]" class="form-control" value="'+ data['Settings'][i]['SettingName'] +'">\
 										                  <span class="help-block">Enter Settings Name</span>\
 										                </div>\
 							                		</div>\
 							                		<div class="col-md-6">\
 										              	<div class="form-group label-floating">\
 										                  <label class="control-label">Settings Value</label>\
-										                  <input id="SettingsValue" type="text" name="CarrierSetting[' + i +'][SettingValue]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingValue'] +'">\
+										                  <input id="SettingsValue" type="text" name="Settings[' + i +'][SettingValue]" class="form-control" value="'+ data['Settings'][i]['SettingValue'] +'">\
 										                  <span class="help-block">Enter Settings Value</span>\
 										                </div>\
 							                		</div>\
 							                	</div>\
 							        </div>';
-		   				}
-		   				$('div.carrier-modal').html(html2);
-		   			} else {
-		   				console.log('cs length : ' + data['CarrierSetting'].length);
-						for(i=0;i<data['CarrierSetting'].length;i++) {
-							html2 += '<div class="row">\
-							            <div class="col-md-12">\
-							            	<input type="hidden" name="CarrierSetting[' + i +'][PKCarrierSettingId]" value="'+ data['CarrierSetting'][i]['PKCarrierSettingId'] +'">\
-							            	<input type="hidden" name="CarrierSetting[' + i +'][FKCCWId]" value="'+ data['CarrierSetting'][i]['FKCCWId'] +'">\
-							                		<div class="col-md-6">\
-										              	<div class="form-group label-floating">\
-										                  <label class="control-label">Settings Name</label>\
-										                  <input id="SettingsName" type="text" name="CarrierSetting[' + i +'][SettingName]" class="form-control" value="'+ data['CarrierSetting'][i]['SettingName'] +'">\
-										                  <span class="help-block">Enter Settings Name</span>\
-										                </div>\
-							                		</div>\
-							                		<div class="col-md-6">\
-										              	<div class="form-group label-floating">\
-										                  <label class="control-label">Settings Value</label>\
-										                  <input id="SettingsValue" type="text" name="CarrierSetting[' + i +'][SettingValue]" class="form-control" value="'+ data['CarrierSetting'][i]['SettingValue'] +'">\
-										                  <span class="help-block">Enter Settings Value</span>\
-										                </div>\
-							                		</div>\
-							                	</div>\
-							        </div>';
-		   				}
+		   				// }
 		   				$('div.carrier-modal').html(html2);
 		   			}
 		        	$.material.init();

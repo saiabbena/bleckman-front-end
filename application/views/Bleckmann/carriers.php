@@ -39,6 +39,7 @@
 						<table class='table'>
 							<thead>
 								<tr>
+									<th>Is Active?</th>
 									<th>Carrier Name</th>
 									<th style="align-content: right;">Settings</th>
 								</tr>
@@ -49,40 +50,74 @@
 									for ($i=0; $i<count($carriers); $i++) {
 				              			echo '<input type="hidden" name="PKCarrierID" value="' . $carriers[$i]['PKCarrierID'] . '">
 					              			<tr>
+							                	<td style="text-align:center;vertical-align:middle;">
+							                		<input type="hidden" name="IsActive" value="0">
+									            		<div class="form-group" style="margin:20px 0 0 0">
+												      	<div class="checkbox">
+														  <label>
+															<input disabled type="checkbox" id="carrierActive' . $i . '" name="IsActive" value="1"' . ((int)($carriers[$i]['Isactive'] > 0 ) ? " checked='checked'" : "") . '>
+														  </label>
+														</div>
+													</div>
+										        </td>
 						              			<td><br>' .	$carriers[$i]['CarrierName'] . '</td>
 						              			<td>
 						              				<button type="button" class="btn btn-raised btn-success edit-carrier-pop"  data-toggle="modal" data-target="#add-carrier-modal" id="edit-carrier-' .$carriers[$i]['PKCarrierID'] .'">
 						              					Edit
-						              				</button>
-						              				<button type="button" class="btn btn-raised btn-danger"  data-toggle="modal" data-target="#delete-carrier-modal'. $carriers[$i]['PKCarrierID'] .'" id="delete-carrier" >
-						              					delete
-						              				</button>
-						              			</td>
+						              				</button>';
+						              			if ( $carriers[$i]['Isactive'] ) {
+						              				echo '<button type="button" class="btn btn-raised btn-danger"  data-toggle="modal" data-target="#delete-carrier-modal'. $carriers[$i]['PKCarrierID'] .'" id="delete-carrier" >
+						              					De activate
+						              				</button>';
+						              			} else {
+						              				echo '<button type="button" class="btn btn-raised btn-success"  data-toggle="modal" data-target="#delete-carrier-modal'. $carriers[$i]['PKCarrierID'] .'" id="delete-carrier" >
+						              					activate
+						              				</button>';
+						              			}
+						              	echo '</td>
 					              			</tr>';
-										echo '<div class="modal fade" id="delete-carrier-modal'.$carriers[$i]['PKCarrierID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-									              <div class="modal-dialog" role="document">
-									                <div class="modal-content">
-									                  <form method="POST" action="submitCarrier">
-									                  <div class="modal-header">
-									                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									                    <h4 class="modal-title" id="myModalLabel">Delete Carrier - '. $carriers[$i]['CarrierName'].'?</h4>
-									                  </div>
-									                  <div class="modal-body">
-									                    <p>Are you sure you want to delete this Carrier?</p>';
-									    echo '<input type="hidden" name="PKCarrierID" value="'. $carriers[$i]['PKCarrierID'].'">';
-									    echo '<input type="hidden" name="CarrierName" value="'. $carriers[$i]['CarrierName'].'">';
-									    echo '<input type="hidden" name="IsActive" value="false">';
-							            echo'
-							                  </div>
-							                  <div class="modal-footer">
-							                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-							                    <button type="submit" class="btn btn-danger">Delete</button>
-							                  </div>
-							                  </form>						  
-							                </div>
-							              </div>
-							            </div>
-							            ';
+													              			
+											echo '<div class="modal fade" id="delete-carrier-modal'.$carriers[$i]['PKCarrierID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+										              <div class="modal-dialog" role="document">
+										                <div class="modal-content">
+										                  <form method="POST" action="submitCarrier">
+										                  <div class="modal-header">
+										                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+										            if ( $carriers[$i]['Isactive'] ) {	
+										                echo '<h4 class="modal-title" id="myModalLabel">De-activate Carrier - '. $carriers[$i]['CarrierName'].'?</h4>';
+										            } else {
+										                echo '<h4 class="modal-title" id="myModalLabel">Activate Carrier - '. $carriers[$i]['CarrierName'].'?</h4>';
+										            }
+
+										    echo '</div>
+										                  <div class="modal-body">';
+										            if ( $carriers[$i]['Isactive'] ) {	
+										                echo '<p>Are you sure you want to de-activate this Carrier?</p>';
+										            } else {
+										            	echo '<p>Are you sure you want to activate this Carrier?</p>';
+										            }
+										    echo '<input type="hidden" name="PKCarrierID" value="'. $carriers[$i]['PKCarrierID'].'">';
+										    echo '<input type="hidden" name="CarrierName" value="'. $carriers[$i]['CarrierName'].'">';
+										    if ( $carriers[$i]['Isactive'] ) {	
+										    	echo '<input type="hidden" name="IsActive" value="false">';
+										    } else {
+										    	echo '<input type="hidden" name="IsActive" value="true">';
+										    }
+								            echo'
+								                  </div>
+								                  <div class="modal-footer">
+								                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>';
+								            if ( $carriers[$i]['Isactive'] ) {	
+								            	echo '<button type="submit" class="btn btn-danger">De-Activate</button>';
+								            } else {
+								            	echo '<button type="submit" class="btn btn-danger">Activate</button>';
+								            }
+								            echo '</div>
+								                  </form>						  
+								                </div>
+								              </div>
+								            </div>
+								            ';
 									}
 								?>
 							</tbody>

@@ -19,9 +19,18 @@ class Bleckmann extends CI_Controller {
   public function customers() {
   	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
   	$data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
-  	
+  
+    
+    for ( $i=0;$i<count($data['allCustomers']);$i++) {
+      $req = array(
+        'Customerid'=>$data['allCustomers'][$i]['PKCustomerID']
+      );  
+      $data['allCustomers'][$i]['customerOpModes'] = $this->httpRequests->httpGet('operation/GetOperationsbyCustomerid', $req );
+      //echo json_encode($data['allCustomers'][$i]['customerOpModes']);
+    }
+    //print_r($data['allCustomers']);exit();  
     $this->load->view('Bleckmann/templates/header');
-	//print_r($data['allCustomers']);exit();
+	
     $this->load->view('Bleckmann/customers', $data);
     $this->load->view('Bleckmann/templates/footer');
     
