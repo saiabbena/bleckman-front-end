@@ -187,7 +187,7 @@ $(document).ready(function() {
 					
 		$.validator.addMethod("valueNotEquals", function(value, element, arg){
 			return arg != value;
-		}, "Value must not equal arg.");
+		}, "Please select a value");
 
 		$(".add-user-pop").click(function(){
 			var validator1 = $( "#user-info-form" ).validate();
@@ -1213,6 +1213,9 @@ $(document).ready(function() {
 			carrier_array = $(this).attr("id").split("-");
 			var selCarrierId = carrier_array[2];
 			
+			setCarrierData(selCarrierId);
+		});
+		function setCarrierData(selCarrierId) {
 			console.log(selCarrierId);
 			var apiCall=url+'Carrier/GetActiveCarrierbyid?CarrierId=' + selCarrierId;
 			console.log("apiCall : " + apiCall);
@@ -1245,11 +1248,12 @@ $(document).ready(function() {
 		   			var html1='';
 		   			var html2 = '';
 		   			console.log(data['GlobalSetting'].length);
+
 		   			for(i=0;i<data['GlobalSetting'].length;i++) {
 						html1 += '<div class="row">\
 				                	<div class="col-md-12">\
 				                		<input type="hidden" name="GlobalSetting[' + i +'][PKGlobalCarrierId]" value="'+ data['GlobalSetting'][i]['PKGlobalCarrierId'] +'">\
-				                		<div class="col-md-6">\
+				                		<div class="col-md-5">\
 							              	<div class="form-group label-floating">\
 							                  <label class="control-label">Settings Name</label>\
 							                  <input id="SettingsName" type="text" name="GlobalSetting[' + i +'][SettingName]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingName'] +'">\
@@ -1263,8 +1267,31 @@ $(document).ready(function() {
 							                  <span class="help-block">Enter Settings Value</span>\
 							                </div>\
 				                		</div>\
+				                		<div class="col-md-1" style="vertical-align:bottom;">\
+				                			<div class="form-group">\
+				                				<a data-toggle="modal" style="color:#f44336;cursor:pointer;" data-target="#delete-g-settings-modal'+ data['GlobalSetting'][i]['PKGlobalCarrierId'] +'" id="delete-settings" class="pull-right"><i class="material-icons" style="color:red;">delete</i></a>\
+				                			</div>\
+				                		</div>\
 				                	</div>\
 				       		</div>';
+		   				html1 += '<div class="modal fade" id="delete-g-settings-modal' + data['GlobalSetting'][i]['PKGlobalCarrierId'] + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
+						              <div class="modal-dialog" role="document">\
+						                <div class="modal-content">\
+						                  <div class="modal-header">\
+						                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+						                    <h4 class="modal-title" id="myModalLabel">Delete Setting - '+ data['GlobalSetting'][i]['SettingName'] + '?</h4>\
+						                  </div>\
+						                  <div class="modal-body">\
+						                    <p>Are you sure you want to delete this Setting?</p>\
+						    				<input type="hidden" id="PKGlobalCarrierId" name="PKGlobalCarrierId" value="'+  data['GlobalSetting'][i]['PKGlobalCarrierId'] + '">\
+				                  		  </div>\
+						                  <div class="modal-footer">\
+						                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+						                    <button type="button" id="delete-g-' + data['GlobalSetting'][i]['PKGlobalCarrierId'] + '-'+ data.PKCarrierID +'" class="btn btn-danger delete-carrier-settings-btn">Delete</button>\
+						                  </div>\
+				                	</div>\
+				              	</div>\
+				            </div>';
 						settings_global_cnt++;
 					}
 					$('div#global-setting').html(html1);
@@ -1279,28 +1306,77 @@ $(document).ready(function() {
 										                  <span class="help-block">Enter Settings Name</span>\
 										                </div>\
 							                		</div>\
-							                		<div class="col-md-6">\
-										              	<div class="form-group label-floating">\
-										                  <input id="SettingsValue" disabled type="hidden" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
-										                  <span class="help-block">Enter Settings Value</span>\
-										                </div>\
+							                		<div class="col-md-2" style="vertical-align:bottom;">\
+							                			<div class="form-group">\
+							                				<a data-toggle="modal" style="color:#f44336;cursor:pointer;" data-target="#delete-c-settings-modal'+ data['CarrierSetting'][i]['PKGlobalCarrierId'] +'" id="delete-settings" class="pull-right"><i class="material-icons" style="color:red;">delete</i></a>\
+							                			</div>\
 							                		</div>\
 							                	</div>\
 							        </div>';
-						
-						settings_local_cnt++;
-		   			}
+		   				html2 += '<div class="modal fade" id="delete-c-settings-modal' + data['CarrierSetting'][i]['PKGlobalCarrierId'] + '" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
+						              <div class="modal-dialog" role="document">\
+						                <div class="modal-content">\
+						                  <div class="modal-header">\
+						                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>\
+						                    <h4 class="modal-title" id="myModalLabel">Delete Setting - '+ data['CarrierSetting'][i]['SettingName'] + '?</h4>\
+						                  </div>\
+						                  <div class="modal-body">\
+						                    <p>Are you sure you want to delete this Setting?</p>\
+						    	<input type="hidden" id="PKGlobalCarrierId" name="PKGlobalCarrierId" value="'+  data['CarrierSetting'][i]['PKGlobalCarrierId'] + '">\
+				                  </div>\
+				                  <div class="modal-footer">\
+				                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>\
+				                    <button type="button" id="delete-c-'+ data['CarrierSetting'][i]['PKGlobalCarrierId'] + '-'+ data.PKCarrierID + '" class="btn btn-danger delete-carrier-settings-btn">Delete</button>\
+				                  </div>\
+				                </div>\
+				              </div>\
+				            </div>';
+				    	settings_local_cnt++;
+				    }
 		   			$('div#carrier-setting').html(html2);
 		   			settings_global_cnt = data['GlobalSetting'].length;
 		   			settings_local_cnt = data['CarrierSetting'].length;
-								
-					
 		        	$.material.init();
 		        },
 		        fail: function(data){
 		          console.log(data);
 		        }
 		      });
+		}
+		$("div#all-settings").on('click', '.delete-carrier-settings-btn',function(e) {
+			$('.loading').css({'display':'block'});
+			$('.carrier_div').css({'display':'none'});
+			console.log('form submit');
+			s_array = $(this).attr("id").split("-");
+			var apiCall = url+'Carrier/PostDeleteGlobalsetting';
+			var postData = {};
+			postData['PKGlobalCarrierId']=s_array[2];
+			console.log(postData);
+			$.ajax({
+			  url: apiCall,
+			  type: 'post',
+			  data: postData,
+			  headers: {
+				  Apoyar: apoyarToken
+			  },
+			  dataType: 'json',
+			  success: function (response) {
+				//$('.loading-screen').slideUp('slow');
+				console.log(response);
+				if (response.Status == 1) {
+					$('#delete-' + s_array[1] + '-settings-modal'+postData.PKGlobalCarrierId ).hide();
+					$('#settings-alert').show();
+
+					setCarrierData(s_array[3]);
+					//$("#edit-carrier-" + s_array[3]).trigger('click');
+					//$("#add-carrier-modal").modal("show"); 
+				}
+			  },
+			  fail: function(){
+				$('.loading-screen').slideDown('slow');
+			  }
+			});		
+
 		});
 		$("#FKCarrierId").on('change', function() {
 			console.log($(this).val());
@@ -1366,54 +1442,57 @@ $(document).ready(function() {
 		        	$('.loading').css({'display':'none'});
 					$('.carrier-modal').css({'display':'block'});
 					
-					if (data['Global']) {
-						console.log('gs length : ' + data['GlobalSetting'].length);
-						for(i=0;i<data['GlobalSetting'].length;i++) {
+					// if (data['Global']) {
+					// 	console.log('gs length : ' + data['GlobalSetting'].length);
+					// 	for(i=0;i<data['GlobalSetting'].length;i++) {
+					// 		html2 += '<div class="row">\
+					// 		            <div class="col-md-12">\
+					// 		                <input type="hidden" name="CarrierSetting[' + i +'][FKCCWId]" value="'+ array[2] +'">\
+					// 		                <input type="hidden" name="CarrierSetting[' + i +'][FKGlobalSettingId]" value="'+ data['GlobalSetting'][i]['PKGlobalCarrierId'] +'">\
+					// 		                		<div class="col-md-6">\
+					// 					              	<div class="form-group label-floating">\
+					// 					                  <label class="control-label">Settings Name</label>\
+					// 					                  <input id="SettingsName" type="text" name="CarrierSetting[' + i +'][SettingName]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingName'] +'">\
+					// 					                  <span class="help-block">Enter Settings Name</span>\
+					// 					                </div>\
+					// 		                		</div>\
+					// 		                		<div class="col-md-6">\
+					// 					              	<div class="form-group label-floating">\
+					// 					                  <label class="control-label">Settings Value</label>\
+					// 					                  <input id="SettingsValue" type="text" name="CarrierSetting[' + i +'][SettingValue]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingValue'] +'">\
+					// 					                  <span class="help-block">Enter Settings Value</span>\
+					// 					                </div>\
+					// 		                		</div>\
+					// 		                	</div>\
+					// 		        </div>';
+		   // 				}
+		   // 				$('div.carrier-modal').html(html2);
+		   // 			} else {
+		   				console.log('cs length : ' + data['Settings'].length);
+		   				console.log(data['Settings']);
+						for(i=0;i<data['Settings'].length;i++) {
 							html2 += '<div class="row">\
 							            <div class="col-md-12">\
-							                <input type="hidden" name="CarrierSetting[' + i +'][FKCCWId]" value="'+ array[2] +'">\
+							            	<input type="hidden" name="CarrierSetting[' + i +'][PKCarrierSettingId]" value="'+ data['Settings'][i]['PKCarrierSettingId'] +'">\
+							            	<input type="hidden" name="CarrierSetting[' + i +'][FKCCWId]" value="'+ array[2] +'">\
+							            	<input type="hidden" name="CarrierSetting[' + i +'][FKGlobalSettingId]" value="'+ data['Settings'][i]['FKGlobalSettingId'] +'">\
 							                		<div class="col-md-6">\
 										              	<div class="form-group label-floating">\
 										                  <label class="control-label">Settings Name</label>\
-										                  <input id="SettingsName" type="text" name="CarrierSetting[' + i +'][SettingName]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingName'] +'">\
+										                  <input disabled id="SettingsName" type="text" name="CarrierSetting[' + i +'][SettingName]" class="form-control" value="'+ data['Settings'][i]['SettingName'] +'">\
 										                  <span class="help-block">Enter Settings Name</span>\
 										                </div>\
 							                		</div>\
 							                		<div class="col-md-6">\
 										              	<div class="form-group label-floating">\
 										                  <label class="control-label">Settings Value</label>\
-										                  <input id="SettingsValue" type="text" name="CarrierSetting[' + i +'][SettingValue]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingValue'] +'">\
+										                  <input id="SettingsValue" type="text" name="CarrierSetting[' + i +'][SettingValue]" class="form-control" value="'+ data['Settings'][i]['SettingValue'] +'">\
 										                  <span class="help-block">Enter Settings Value</span>\
 										                </div>\
 							                		</div>\
 							                	</div>\
 							        </div>';
-		   				}
-		   				$('div.carrier-modal').html(html2);
-		   			} else {
-		   				console.log('cs length : ' + data['CarrierSetting'].length);
-						for(i=0;i<data['CarrierSetting'].length;i++) {
-							html2 += '<div class="row">\
-							            <div class="col-md-12">\
-							            	<input type="hidden" name="CarrierSetting[' + i +'][PKCarrierSettingId]" value="'+ data['CarrierSetting'][i]['PKCarrierSettingId'] +'">\
-							            	<input type="hidden" name="CarrierSetting[' + i +'][FKCCWId]" value="'+ data['CarrierSetting'][i]['FKCCWId'] +'">\
-							                		<div class="col-md-6">\
-										              	<div class="form-group label-floating">\
-										                  <label class="control-label">Settings Name</label>\
-										                  <input id="SettingsName" type="text" name="CarrierSetting[' + i +'][SettingName]" class="form-control" value="'+ data['CarrierSetting'][i]['SettingName'] +'">\
-										                  <span class="help-block">Enter Settings Name</span>\
-										                </div>\
-							                		</div>\
-							                		<div class="col-md-6">\
-										              	<div class="form-group label-floating">\
-										                  <label class="control-label">Settings Value</label>\
-										                  <input id="SettingsValue" type="text" name="CarrierSetting[' + i +'][SettingValue]" class="form-control" value="'+ data['CarrierSetting'][i]['SettingValue'] +'">\
-										                  <span class="help-block">Enter Settings Value</span>\
-										                </div>\
-							                		</div>\
-							                	</div>\
-							        </div>';
-		   				}
+		   				// }
 		   				$('div.carrier-modal').html(html2);
 		   			}
 		        	$.material.init();
@@ -1451,15 +1530,16 @@ $(document).ready(function() {
 		            "Countries[]": "Please select a Country",
 		        },
 		        submitHandler: function(form) {
-		        	if ( settings_global_cnt > 0) {
-		        		if (settings_local_cnt > 0) {
-		            		form.submit();
-		            	} else {
-		            		$('#local-settings-error').show();
-		            	}
-		            } else {
-		            	$('#global-settings-error').show();
-		            }
+		        	form.submit();
+		        	// if ( settings_global_cnt > 0) {
+		        	// 	if (settings_local_cnt > 0) {
+		         //    		form.submit();
+		         //    	} else {
+		         //    		$('#local-settings-error').show();
+		         //    	}
+		         //    } else {
+		         //    	$('#global-settings-error').show();
+		         //    }
 		        }
 		});
 		$("#save-op-modes").validate({

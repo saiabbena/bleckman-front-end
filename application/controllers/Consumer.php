@@ -132,7 +132,32 @@ class Consumer extends CI_Controller {
     $data['Customerid']=$this->Customerid;
     $data['LanguageName']=$this->Languagename;
     $customer_id=$this->Customerid;
-	
+    $req = array(
+      'Customerid'=>$customer_id
+    );  
+    $data_url='?'.http_build_query($req);
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+    curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/operation/GetOperationsbyCustomerid".$data_url);   
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // Send the request
+    $result = json_decode(curl_exec($ch), true);
+    // Free up the resources $curl is using
+    curl_close($ch);
+
+    $customerOpModes = $result;
+	  $data['om1']=false;
+    $data['om2']=false;
+    for($i=0;$i<count($customerOpModes);$i++) {
+      if( $customerOpModes[$i]['FKOperationId'] == 1 ) {
+        $data['om1']=true;
+      }
+      if( $customerOpModes[$i]['FKOperationId'] == 2 ) {
+        $data['om2']=true;
+      }
+    }
 	  $data2 = array('Customerid'=>$customer_id);
 	  $data_url='?'.http_build_query($data2);
 	  $data_string = json_encode($data2);

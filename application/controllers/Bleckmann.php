@@ -19,9 +19,9 @@ class Bleckmann extends CI_Controller {
   public function customers() {
   	$data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
   	$data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
-  	
+   
     $this->load->view('Bleckmann/templates/header');
-	//print_r($data['allCustomers']);exit();
+	
     $this->load->view('Bleckmann/customers', $data);
     $this->load->view('Bleckmann/templates/footer');
     
@@ -161,7 +161,7 @@ class Bleckmann extends CI_Controller {
     //echo json_encode($_POST);exit();
     $server_output = $this->httpRequests->httpPost('Operation/PostOperationCustomer', json_encode($_POST) );
     //echo json_encode($server_output);exit();
-    if ( $server_output['Status'] == 1) { 
+    if ( $server_output['Status'] == 1) {
       $_SESSION['message']['settings_panel']='Saved';
       $_SESSION['message']['alert_status']='success';
     } else {

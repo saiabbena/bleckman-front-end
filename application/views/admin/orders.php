@@ -14,10 +14,8 @@
             <tr>
               <th>
                 <div class='form-group'>
-                  <input type='text' id="ReturnsOrderCreationDate" name="ReturnsOrderCreationDate" class='datepicker form-control' placeholder="From" 
-				  style="font-size:0.9em !important;" />
-                  <input type='text' id="ReturnsOrderToDate" name="ReturnsOrderToDate" class='datepicker form-control' placeholder="To" 
-          style="font-size:0.9em !important;" />  
+                  <input type='text' id="ReturnsOrderCreationDate" name="ReturnsOrderCreationDate" class='datepicker form-control' placeholder="From" style="font-size:0.9em !important;" />
+                  <input type='text' id="ReturnsOrderToDate" name="ReturnsOrderToDate" class='datepicker form-control' placeholder="To" style="font-size:0.9em !important;" />  
                 </div>
               </th>
               <th style="width:10% !important;">

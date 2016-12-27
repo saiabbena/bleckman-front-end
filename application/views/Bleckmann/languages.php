@@ -108,7 +108,9 @@
 		          	</div>
 		        </form>
 		</div>
-		<!--
+		
+		
+		<!--THIS IS THE MANAGE KEYWORDS SECTION
 		
 		<br><br>
 		
@@ -125,10 +127,10 @@
 				
 				      <div class="col-md-10">
 				        <select id="select111" class="form-control">
-				          <?php
+				          <?php/*
 				          foreach ($allLanguages as $lang) {
 				          	echo '<option>'.$lang['LanguageName'].'</option>';
-				          }
+				          }*/
 				          ?>
 				        </select>
 				      </div>
@@ -161,13 +163,14 @@
 							</td>
 						</tr>
 						';
+						
 					}*/
 					?>
 				</tbody>
 			</table>
 		</div>
-		
 		-->
+		
 	</div>
 </div>
         <!-- Add Languages Modal -->
