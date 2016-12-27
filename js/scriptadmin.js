@@ -78,7 +78,8 @@ $(document).ready(function(){
 	var pageno = raw_data['PageNo'];
 			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
 			var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';
-	if(page_count > 1){				
+	if(page_count > 1){
+		$('#page_size_div').css({'display':'block'})
 		pagination_html = '<b>Pages : </b> ';
 		for(i=1;i<=page_count;i++){
 			pagination_html = pagination_html+'<button ';
