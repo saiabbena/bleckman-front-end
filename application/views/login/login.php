@@ -23,7 +23,9 @@
                 </div>
                 <br>
                 <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1'><span class='glyphicon glyphicon-lock'></span> LOGIN</button><br>
-                
+                <div class="alert alert-dismissible alert-danger js-valid">
+                  
+                </div>
                 <?php
                   if(isset($_SESSION['message']['screen1-error'])){
                     echo'
