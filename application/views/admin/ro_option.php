@@ -2,7 +2,7 @@
       <div class='well body_btm_bdr' id='ap-panel'>		
         <h4>Create Return Order</h4>	
         <?php 
-        	echo json_encode($customerOpModes);
+        	//echo json_encode($customerOpModes);
         	$om3=false;
         	$om4=false;
         	for($i=0;$i<count($customerOpModes);$i++) {
