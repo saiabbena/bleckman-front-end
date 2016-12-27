@@ -27,6 +27,25 @@ $(document).ready(function(){
 	  }
 	});
 	
+	var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
+	var ReturnsOrderToDate = $('#ReturnsOrderToDate').val();
+	console.log(ReturnsOrderCreationDate);
+	console.log(ReturnsOrderToDate);
+	if(ReturnsOrderCreationDate !== ''){      
+        var date_array = [];
+        date_array = ReturnsOrderCreationDate.split("-");    
+        var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+        var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];      
+        searchInput['From']= newDateFormat;
+      }
+    if(ReturnsOrderToDate !== ''){      
+        var date_array = [];    
+        date_array = ReturnsOrderToDate.split("-");    
+        var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+        var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];      
+        searchInput['To']= newDateFormat;
+      }
+	
 	var pagesize = $('#page_size').val();
 	searchInput['FKCustomerId'] = customerId;
 	
