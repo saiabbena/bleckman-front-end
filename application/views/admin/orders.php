@@ -79,9 +79,9 @@
         <div class="row">
 			<div class="col-md-4 pull-left">
 				<div class="col-md-12 pull-left" id="total_records" style="margin-top: 10px;"><b>Total Records#:<span><span></b></div>
-				<div class="col-md-6 pull-left "><?php					
+				<div class="col-md-6 pull-left" id="page_size_div"><?php					
 					echo '<select id="page_size" name="page_size" class="form-control" style="margin:0 !important;">';
-					echo '<option value="20">Select Page Size</option>';
+					echo '<option value="20">Show Records#</option>';
 					for($i=20;$i<=100;$i=$i+20) {						
 						echo '<option value="'.$i. '">' .$i. '</option>';
 					}

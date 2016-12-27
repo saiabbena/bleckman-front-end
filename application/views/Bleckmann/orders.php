@@ -101,7 +101,7 @@
 				<?php
 					//echo "allCustomers : " . json_encode($allCustomers);
 					echo '<select id="page_size" name="page_size" class="col-md-10 form-control pull-right">';
-					echo '<option value="15">Select Page Size</option>';
+					echo '<option value="15">Show Records#</option>';
 					for($i=20;$i<=100;$i=$i+20) {						
 						echo '<option value="'.$i. '">' .$i. '</option>';
 					}

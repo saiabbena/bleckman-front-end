@@ -27,6 +27,25 @@ $(document).ready(function(){
 	  }
 	});
 	
+	var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
+	var ReturnsOrderToDate = $('#ReturnsOrderToDate').val();
+	console.log(ReturnsOrderCreationDate);
+	console.log(ReturnsOrderToDate);
+	if(ReturnsOrderCreationDate !== ''){      
+        var date_array = [];
+        date_array = ReturnsOrderCreationDate.split("-");    
+        var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+        var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];      
+        searchInput['From']= newDateFormat;
+      }
+    if(ReturnsOrderToDate !== ''){      
+        var date_array = [];    
+        date_array = ReturnsOrderToDate.split("-");    
+        var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+        var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];      
+        searchInput['To']= newDateFormat;
+      }
+	
 	var pagesize = $('#page_size').val();
 	searchInput['FKCustomerId'] = customerId;
 	
@@ -78,7 +97,8 @@ $(document).ready(function(){
 	var pageno = raw_data['PageNo'];
 			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
 			var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';
-	if(page_count > 1){				
+	if(page_count > 1){
+		$('#page_size_div').css({'display':'block'})
 		pagination_html = '<b>Pages : </b> ';
 		for(i=1;i<=page_count;i++){
 			pagination_html = pagination_html+'<button ';
