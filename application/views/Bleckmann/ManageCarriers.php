@@ -30,7 +30,9 @@
 									echo '<div class="form-group" id="select-carrier-div"><label>Select a Carrier</label><select id="FKCarrierId" name="FKCarrierId" class="form-control">';
 									echo '<option value="-1">Select a Carrier</option>';
 									for($i=0;$i<count($carriers);$i++) {
-										echo '<option value="'. $carriers[$i]['PKCarrierID'] . '">' . $carriers[$i]['CarrierName'] . '</option>';
+										if ($carriers[$i]['Isactive']) {
+											echo '<option value="'. $carriers[$i]['PKCarrierID'] . '">' . $carriers[$i]['CarrierName'] . '</option>';
+										}
 									}
 									echo '</select></div>';
 								?>

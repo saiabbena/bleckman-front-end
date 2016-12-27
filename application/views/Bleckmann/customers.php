@@ -133,13 +133,22 @@
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['EmailAddress'] . '
 				                  		</div>
-				                  	</div>
-				                  	<div class="col-md-12">
-				                  		<div class="col-md-6">URL
+				                  	</div>';
+				            if ( $om1 ) {
+				                echo '<div class="col-md-12">
+				                  		<div class="col-md-6">Mode1 URL
+				                  		</div>
+				                  		<div class="col-md-6"><a href="'.base_url().'?Customer='. $allCustomers[$i]['PKCustomerID'].'&Mode=1" target="_blank">' .base_url().'?Customer='. $allCustomers[$i]['PKCustomerID'] . '&Mode=1</a></div>
+				                  	</div>';
+				            }
+				            if ( $om2 ) {
+				                echo '<div class="col-md-12">
+				                  		<div class="col-md-6">Mode2 URL
 				                  		</div>
 				                  		<div class="col-md-6"><a href="'.base_url().'?Customer='. $allCustomers[$i]['PKCustomerID'].'" target="_blank">' .base_url().'?Customer='. $allCustomers[$i]['PKCustomerID'] . '</a></div>
-				                  	</div>
-				                  	<div class="col-md-12">
+				                  	</div>';
+				            }
+				                echo '<div class="col-md-12">
 				                  		<div class="col-md-6">Phone Number
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['PhoneNumber'] . '

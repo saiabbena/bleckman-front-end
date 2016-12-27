@@ -1461,20 +1461,20 @@ $(document).ready(function() {
 						for(i=0;i<data['Settings'].length;i++) {
 							html2 += '<div class="row">\
 							            <div class="col-md-12">\
-							            	<input type="hidden" name="Settings[' + i +'][PKCarrierSettingId]" value="'+ data['Settings'][i]['PKCarrierSettingId'] +'">\
-							            	<input type="hidden" name="Settings[' + i +'][FKCCWId]" value="'+ data['Settings'][i]['FKCCWId'] +'">\
-							            	<input type="hidden" name="Settings[' + i +'][FKGlobalSettingId]" value="'+ data['Settings'][i]['FKGlobalSettingId'] +'">\
+							            	<input type="hidden" name="CarrierSetting[' + i +'][PKCarrierSettingId]" value="'+ data['Settings'][i]['PKCarrierSettingId'] +'">\
+							            	<input type="hidden" name="CarrierSetting[' + i +'][FKCCWId]" value="'+ array[2] +'">\
+							            	<input type="hidden" name="CarrierSetting[' + i +'][FKGlobalSettingId]" value="'+ data['Settings'][i]['FKGlobalSettingId'] +'">\
 							                		<div class="col-md-6">\
 										              	<div class="form-group label-floating">\
 										                  <label class="control-label">Settings Name</label>\
-										                  <input id="SettingsName" type="text" name="Settings[' + i +'][SettingName]" class="form-control" value="'+ data['Settings'][i]['SettingName'] +'">\
+										                  <input disabled id="SettingsName" type="text" name="CarrierSetting[' + i +'][SettingName]" class="form-control" value="'+ data['Settings'][i]['SettingName'] +'">\
 										                  <span class="help-block">Enter Settings Name</span>\
 										                </div>\
 							                		</div>\
 							                		<div class="col-md-6">\
 										              	<div class="form-group label-floating">\
 										                  <label class="control-label">Settings Value</label>\
-										                  <input id="SettingsValue" type="text" name="Settings[' + i +'][SettingValue]" class="form-control" value="'+ data['Settings'][i]['SettingValue'] +'">\
+										                  <input id="SettingsValue" type="text" name="CarrierSetting[' + i +'][SettingValue]" class="form-control" value="'+ data['Settings'][i]['SettingValue'] +'">\
 										                  <span class="help-block">Enter Settings Value</span>\
 										                </div>\
 							                		</div>\
