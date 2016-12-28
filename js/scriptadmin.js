@@ -12,20 +12,53 @@ $(document).ready(function(){
 
   function retrieveReturnOrders(customerId, pageno){
 	  var searchInput = {};
-    $('.loading-screen').slideDown('slow');
-    // apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
-    //apiCall=url+'returnorder/GetBMReturnOrderbyCustomerId';
+    $('.loading-screen').slideDown('slow');    
 	apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
     //console.log("apoyarToken : " + apoyarToken );	
 	console.log(customerId);	
-	searchInput['pagesize'] = 20;
+	
+	var default_render=true;
+	searchInput['FKCustomerId'] = customerId;
+	
+	$('tr input[type]').each(function(){
+	  if($(this).val()){
+		searchInput[$(this).attr('name')]=$(this).val();
+		default_render=false;
+	  }
+	});
+	
+	var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
+	var ReturnsOrderToDate = $('#ReturnsOrderToDate').val();
+	console.log(ReturnsOrderCreationDate);
+	console.log(ReturnsOrderToDate);
+	if(ReturnsOrderCreationDate !== ''){      
+        var date_array = [];
+        date_array = ReturnsOrderCreationDate.split("-");    
+        var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+        var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];      
+        searchInput['From']= newDateFormat;
+      }
+    if(ReturnsOrderToDate !== ''){      
+        var date_array = [];    
+        date_array = ReturnsOrderToDate.split("-");    
+        var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+        var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];      
+        searchInput['To']= newDateFormat;
+      }
+	
+	var pagesize = $('#page_size').val();
 	searchInput['FKCustomerId'] = customerId;
 	
 	if(typeof(pageno)==='undefined'){				
 		searchInput['pageno'] = 1;
 	}else{
 		searchInput['pageno'] = pageno;
-	} 
+	}
+	if(typeof(pagesize)==='undefined'){				
+		searchInput['pagesize'] = 20;
+	}else{
+		searchInput['pagesize'] = pagesize;
+	}	
     $.ajax({
       url: apiCall,
       type: 'post',
@@ -49,17 +82,23 @@ $(document).ready(function(){
 		var pageno = $(this).text();			
 		retrieveReturnOrders(customerId, pageno);			
 	});
+	$(document).on('change', '#page_size', function() {
+		//alert($(this).val());			
+		retrieveReturnOrders(customerId);			
+	});
   function renderReturnOrders(raw_data){
     var html='';
     var html2='';
     var html3='';
 	var pagination_html = '';
+	var total_num_records = raw_data['TotRecords'];
 	console.log(raw_data);
 	var page_count = raw_data['Count'];
 	var pageno = raw_data['PageNo'];
 			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
 			var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';
-	if(page_count > 1){				
+	if(page_count > 1){
+		$('#page_size_div').css({'display':'block'})
 		pagination_html = '<b>Pages : </b> ';
 		for(i=1;i<=page_count;i++){
 			pagination_html = pagination_html+'<button ';
@@ -133,6 +172,7 @@ $(document).ready(function(){
       ';
 
     }
+	$('#total_records span').text(total_num_records);
     $('body').append(html2);
     $('body').append(html3);
     $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody').html(html);
@@ -194,6 +234,7 @@ $(document).ready(function(){
 		  });
 					
 		});
+  //Unused search()! There is no use of search function
   function search(){
     //apiCall=url+'returnorder/PostReturnOrderbyKeywords';
     apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
@@ -374,7 +415,8 @@ $(document).ready(function(){
   });
   
   $('#search-button').click(function(){
-    search();
+    //search();//Unused right now
+	retrieveReturnOrders(customerId);
   });
   //Added this code for submit button, so that user can enter submit for search
   $("#orders_data .form-control").keyup(function(event){

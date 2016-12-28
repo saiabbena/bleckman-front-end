@@ -110,11 +110,10 @@
 		</div>
 		
 		
-		<!--THIS IS THE MANAGE KEYWORDS SECTION
+		<!--THIS IS THE MANAGE KEYWORDS SECTION-->
 		
-		<br><br>
-		
-		<div class="well" style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
+		<!--<br><br>		
+		<div class="well body_btm_bdr">
 			<h3>Manage keywords</h3>
 			<br>
 			<table class='table'>
@@ -127,10 +126,10 @@
 				
 				      <div class="col-md-10">
 				        <select id="select111" class="form-control">
-				          <?php/*
+				          <?php/**/
 				          foreach ($allLanguages as $lang) {
 				          	echo '<option>'.$lang['LanguageName'].'</option>';
-				          }*/
+				          }
 				          ?>
 				        </select>
 				      </div>
@@ -168,8 +167,8 @@
 					?>
 				</tbody>
 			</table>
-		</div>
-		-->
+		</div>-->
+		
 		
 	</div>
 </div>

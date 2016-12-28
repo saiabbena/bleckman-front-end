@@ -2,7 +2,7 @@
       <div class='well body_btm_bdr' id='ap-panel'>		
         <h4>Create Return Order</h4>	
         <?php 
-        	echo json_encode($customerOpModes);
+        	//echo json_encode($customerOpModes);
         	$om3=false;
         	$om4=false;
         	for($i=0;$i<count($customerOpModes);$i++) {
@@ -333,7 +333,7 @@
 		      </div>
 		    </div>
 		</div>
-		<div class="no-op-modes">
+		<div class="no-op-modes" id="no-op-modes">
 			<div class="row">
 				<div class="col-md-12">
 					<h4>No Operation modes available for your account. Please contact the administrator.</h4>
@@ -346,6 +346,7 @@
   </div>
 </div>	
 <?php
+		echo "<script>$('#no-op-modes').hide();</script>";
         	if ( $om4 == true ) {
         		echo "<script>$('.form_ro').show();</script>";
         	} else {

@@ -29,17 +29,18 @@
 				        	break;
 						}
 				    }
-					if ( count($allCustomers[$i]['customerOpModes']) ) {
-						for($j=0;$j<count($allCustomers[$i]['customerOpModes']);$j++) {
-							//echo json_encode($allCustomers[$i]['customerOpModes'][$j]);
-							if ( $allCustomers[$i]['customerOpModes'][$j]['FKOperationId'] == 1 ) {
-								$om1=true;
-							}
-							if ( $allCustomers[$i]['customerOpModes'][$j]['FKOperationId'] == 2 ) {
-								$om2=true;
-							}
-						}
-					}
+
+					// if ( count($allCustomers[$i]['customerOpModes']) ) {
+					// 	for($j=0;$j<count($allCustomers[$i]['customerOpModes']);$j++) {
+					// 		//echo json_encode($allCustomers[$i]['customerOpModes'][$j]);
+					// 		if ( $allCustomers[$i]['customerOpModes'][$j]['FKOperationId'] == 1 ) {
+					// 			$om1=true;
+					// 		}
+					// 		if ( $allCustomers[$i]['customerOpModes'][$j]['FKOperationId'] == 2 ) {
+					// 			$om2=true;
+					// 		}
+					// 	}
+					// }
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
 	  				echo '<div class="col-xs-12 col-sm-4 col-md-3 entry" height="100%">
 							<div class="well" style="border-bottom: 5px solid #7C6062;">
@@ -54,16 +55,20 @@
 								
 								</div>';
 					echo '<div class="row"><div class="col-md-12">';
-						if ( $om1 ) {
-							echo '
-										<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'&Mode=1" target="_blank">Mode1URL</a>
-									';
+					
+						if (strpos($allCustomers[$i]['customerOpModes'],'1') !== false) {
+							$om1=true;
+							echo '<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'&Mode=1" target="_blank">Mode1URL</a>';
 						}
-						if ( $om2 ) {
-							echo '
-										<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'" target="_blank"> | Mode2URL</a>
-									';
+						if (strpos($allCustomers[$i]['customerOpModes'],'2') !== false) {
+							$om2=true;	
+							echo '<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'" target="_blank"> '; 
+							if ($om1) {
+								echo ' | ';
+							}
+							echo 'Mode2URL</a>';
 						}
+					
 						if ( $om1 == false && $om2 == false ) {
 							echo '<br/>';
 						}

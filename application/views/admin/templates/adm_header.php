@@ -107,7 +107,7 @@
 <div class='container-fluid form1'>
   <div class='row'>
     <div class='col-xs-12 col-md-3' height='100%'>
-      <div class='well' style="border-bottom: 15px solid #7C6062; padding-bottom: 40px;">
+      <div class='well body_btm_bdr'>
         <div class='row'>
           <div class='col-md-12 text-center' >
             <h3><b><?php echo(strtoupper($_SESSION['Customername']))?></b></h3>
@@ -162,7 +162,7 @@
 	  if($this->uri->segment(2) == 'orders'){?>
 	  <br><br>
 
-      <div class='well hidden-xs hidden-sm' style="border-bottom: 15px solid #22B8AA; padding-bottom: 40px;" >
+      <div class='well hidden-xs hidden-sm body_btm_bdr'>
         <div class='col-md-12 text-center' >
           <h3><b>STATISTICS</b></h3><br>
         </div>
@@ -209,7 +209,7 @@
           </tbody>
         </table>
         <br>
-        <button class='btn btn-primary btn-block btn-raised'>SUBMIT</button>
+        <button class='btn btn-primary btn-block btn-raised btn-warning'>SUBMIT</button>
       </div>	  
 	  <?php }?>
     </div>	

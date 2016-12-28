@@ -10,6 +10,7 @@ var customerSettings={};
 var submition={};
 var countryCode = '';
 var mode = 2;
+var om1 = false;
 
 function getCustomerSettings(){
   apiCall=url+'ReturnReason/GetAllReturnReasonsbyCustomerid';
@@ -265,6 +266,11 @@ function thirdScreen(){
   }
   $('#override > div.container-fluid.form3 > div > div > div > div > table > tbody').html(html);
   $('.ro_option_carriers table > tbody').html(html);
+  if(customerSettings.carriers.length === 0){
+	  //$('#button3').prop('disabled', true);
+	  $('#button3').attr('disabled','disabled');
+  }
+  
   $.material.init();
   $('#table1234').bootstrapTable();
 }
