@@ -1438,7 +1438,8 @@ $(document).ready(function() {
 		        success: function(data) {
 		        	console.log("response data : ");
 		        	console.log(data);
-		        	
+		        	html2 = '';
+		        	$('div.carrier-modal').html('');
 		        	$('.loading').css({'display':'none'});
 					$('.carrier-modal').css({'display':'block'});
 					

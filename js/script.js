@@ -10,6 +10,7 @@ var customerSettings={};
 var submition={};
 var countryCode = '';
 var mode = 2;
+var om1 = false;
 
 function getCustomerSettings(){
   apiCall=url+'ReturnReason/GetAllReturnReasonsbyCustomerid';

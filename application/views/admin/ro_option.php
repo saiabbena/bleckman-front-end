@@ -333,7 +333,7 @@
 		      </div>
 		    </div>
 		</div>
-		<div class="no-op-modes">
+		<div class="no-op-modes" id="no-op-modes">
 			<div class="row">
 				<div class="col-md-12">
 					<h4>No Operation modes available for your account. Please contact the administrator.</h4>
@@ -346,6 +346,7 @@
   </div>
 </div>	
 <?php
+		echo "<script>$('#no-op-modes').hide();</script>";
         	if ( $om4 == true ) {
         		echo "<script>$('.form_ro').show();</script>";
         	} else {
