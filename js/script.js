@@ -347,6 +347,24 @@ $(document).ready(function(){
     //change load
     $('#button1').click(function(){
       console.log('working');
+      var inputData={'Orderid': $('#f2').val(), 'Email': $('#f1').val(), Customerid: customerId};
+      console.log('THIS IS INPUT DATA');
+      console.log(inputData);
+      
+      //validation
+      if(inputData.Orderid==''||inputData.Email==''){
+        $('#screen1-error').show();
+        $('#screen1-error').html('<strong>Whoops!</strong> Both fields should be filled in.');
+        return false;
+      }
+      if(/\s/.test(inputData.Orderid)||/\s/.test(inputData.Email)){
+        $('#screen1-error').show();
+        $('#screen1-error').html('<strong>Whoops!</strong> Entries should not contain any spaces.');
+        return false;
+      }
+      $('#screen1-error').hide();
+      $('#screen1-error').html('<strong>Whoops!</strong> You entered something incorrectly or something went wrong... please try again.');
+      
       $('.loading-screen').slideDown('slow');
       setTimeout(function(){
         $('.form_con_login').hide();
