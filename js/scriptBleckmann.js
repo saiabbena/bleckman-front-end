@@ -1579,11 +1579,11 @@ $(document).ready(function() {
 		        }
 		});
 		//Reset the keywords form
-		$('#save_keywords_cancel').on('click', function(){
+		$('.btn_save_keywords_cancel').on('click', function(){
 			$('#keywords_by_langid').val($("#keywords_by_langid").val()).trigger('change');
 		});
 		//Save keywords data through AJAX on save button click
-		$('#save_keywords').on('click', function(){
+		$('.btn_save_keywords').on('click', function(){
 			$('#keyword_transalation > tbody').hide();
 			$('.loading').css({'display':'block'});
 			apiCall=url+'Translation/PostManageTranslation';

@@ -147,8 +147,8 @@
 								<th class="col-md-4 pull-left"><h4>Keyword</h4></th>
 								<th  class="col-md-8"><div class="col-md-8 pull-left"><h4>Translation</h4></div>
 									<div class="col-md-4 pull-right">
-										<button type="button" id='save_keywords_cancel' class='btn btn-raised btn-warning pull-right'>Cancel</button>
-										<button type="button" id='save_keywords' class='btn btn-raised btn-success pull-right'>
+										<button type="button" id='save_keywords_cancel' class='btn btn-raised btn-warning pull-right btn_save_keywords_cancel'>Cancel</button>
+										<button type="button" id='save_keywords' class='btn btn-raised btn-success pull-right btn_save_keywords'>
 										Save
 										</button>
 									</div>
@@ -172,6 +172,12 @@
 						</tbody>
 					</table>
 					</form>
+					<div class="col-md-8 pull-right">
+						<button type="button" id='save_keywords_cancel' class='btn btn-raised btn-warning pull-right btn_save_keywords_cancel'>Cancel</button>
+						<button type="button" id='save_keywords' class='btn btn-raised btn-success pull-right btn_save_keywords'>
+						Save
+						</button>
+					</div>
 				</div>
 			</div>
 					
