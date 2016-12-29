@@ -443,6 +443,7 @@ class Bleckmann extends CI_Controller {
 		header('Location: ' . $_SERVER['HTTP_REFERER'].'#languages_panel');
 	}
   }
+  
   public function deleteCustomer() {
   	//print_r($_POST);
   	$server_output = $this->httpRequests->httpPost('Customer/PostDeleteCustomer', json_encode($_POST) );

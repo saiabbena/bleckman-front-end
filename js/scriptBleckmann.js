@@ -959,8 +959,8 @@ $(document).ready(function() {
 						
 			//Check the pageno defined or not
 			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
-			console.log(searchInput);
-			console.log(apoyarToken);
+			//console.log(searchInput);
+			//console.log(apoyarToken);
 			$.ajax({
 			  url: apiCall,
 			  type: 'post',
@@ -1578,4 +1578,75 @@ $(document).ready(function() {
 		        	form.submit();
 		        }
 		});
+		//Save keywords data through AJAX on save button click
+		$('#save_keywords').on('click', function(){
+			$('#keyword_transalation > tbody').hide();
+			$('.loading').css({'display':'block'});
+			apiCall=url+'Translation/PostManageTranslation';
+			$.ajax({
+			  url: apiCall,
+			  type: 'post',
+			  data:  $('form#fromSaveKeywords').serializeArray(),
+			  headers: {
+				  Apoyar: apoyarToken
+			  },
+			  dataType: 'json',
+			  success: function (response) {				
+				$('#keywords_by_langid').val($("#keywords_by_langid").val()).trigger('change');				
+				$('#keywords_saved').css({'display':'block'});
+				$('#keywords_error').css({'display':'none'});
+				$('#keyword_transalation > tbody').show();
+				console.log(response);								
+			  },
+			  fail: function(){
+				$('#keywords_saved').css({'display':'none'});
+				$('#keywords_error').css({'display':'block'});
+				$('#keyword_transalation > tbody').show();
+				console.log(response);
+			  }
+			});	/**/
+			//$(".keywords_msg").delay(3200).fadeOut(300);
+			setTimeout(function() {
+			  $('.keywords_msg').fadeOut('slow');
+			}, 10000);
+		});
+		$('#keywords_by_langid').on('change', function(){
+			var translation_html = '';
+			var Languageid = $(this).val();
+			$('#keyword_transalation > tbody').html('');
+			if (Languageid != '') {
+				console.log($(this).val());
+				$('.loading').css({'display':'block'});				
+				var apiCall=url+'Translation/GetTranslationsbyLanguageid?Languageid=' + Languageid;
+				$.ajax({
+					url: apiCall,
+					type: 'GET',
+					headers: {
+						Apoyar: apoyarToken
+					},
+					dataType: 'json',
+					success: function(dataTrans) {
+						//console.log("response data : ");
+						//console.log(data);
+						//data[i].OrderId
+						//console.log(data.OrderId);
+						//console.log(data[0].PKTranslationID);
+						$('.loading').css({'display':'none'});
+						$('#keyword_transalation > tbody').html('');
+						for(i=0; i<dataTrans.length; i++){							
+							translation_html = translation_html+'<tr><td style="vertical-align:middle !important;"><b>'+dataTrans[i]['Keyword']+'</b><input type="hidden" name="Translations['+i+'][FKLanguageID]" value="'+Languageid+'"><input type="hidden" name="Translations['+i+'][PKTranslationID]" value="'+dataTrans[i]['PKTranslationID']+'"><input type="hidden" name="Translations['+i+'][FKKeyWordID]" value="'+dataTrans[i]['FKKeyWordID']+'"><input type="hidden" name="Translations['+i+'][Keyword]" value="'+dataTrans[i]['Keyword']+'"></td><td><div class="form-group label-floating"><label class="control-label"></label><input type="text" name="Translations['+i+'][Translation]" class="form-control" value="'+dataTrans[i]['Translation']+'"><span class="help-block">Change keyword</span></div></td></tr>';
+							//console.log(dataTrans[i]['Keyword']);
+						}
+						$('#keyword_transalation > tbody').html(translation_html);
+						$.material.init();
+					},
+					fail: function(data){
+					  console.log(data);
+					}
+				  });			
+				
+			}
+			
+		});
+		$('#keywords_by_langid').val($("#keywords_by_langid option:eq(0)").val()).trigger('change');//Trgger the first option on page load always
 });
