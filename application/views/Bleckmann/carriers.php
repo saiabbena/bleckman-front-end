@@ -17,7 +17,10 @@
 		<div class='well body_btm_bdr' id='ap-panel'>		
 	    	<h3>Global Carriers</h3>
 				<div class='row'>
-					<div class="col-xs-12 col-md-12">						
+					<div class="col-md-10">
+						<h4 id="carrier_search" class="pull-right"></h4>
+					</div>
+					<div class="col-md-2">						
 						<button type="button" data-toggle="modal" data-target="#add-carrier-modal" id='add-carrier' class='add-carrier-pop btn btn-raised btn-warning pull-right'>Add Carrier</button>
 					</div>
 				</div>
@@ -35,7 +38,7 @@
 			    </div>
 
 			    <div class="row">
-			    	<div class="col-md-offset-1 col-md-10">
+			    	<div class="col-md-offset-1 col-md-10" id="carrier_list">
 						<table class='table'>
 							<thead>
 								<tr>
@@ -60,7 +63,7 @@
 														</div>
 													</div>
 										        </td>
-						              			<td><br>' .	$carriers[$i]['CarrierName'] . '</td>
+						              			<td><div class="carrier_info"><br>' .	$carriers[$i]['CarrierName'] . '</div></td>
 						              			<td>
 						              				<button type="button" class="btn btn-raised btn-success edit-carrier-pop"  data-toggle="modal" data-target="#add-carrier-modal" id="edit-carrier-' .$carriers[$i]['PKCarrierID'] .'">
 						              					Edit

@@ -1107,29 +1107,54 @@ $(document).ready(function() {
 
 	//Search features for Admin Users
 	function listFilterUser(user_header, list) {
-			var form = $("<form>").attr({"class":"filterform","action":"#"}),
-			input = $("<input>").attr({"class":"search_input","type":"text","placeholder":"Search User "});
-			$(form).append(input).appendTo(user_header);
+		var form = $("<form>").attr({"class":"filterform","action":"#"}),
+		input = $("<input>").attr({"class":"search_input","type":"text","placeholder":"Search User "});
+		$(form).append(input).appendTo(user_header);
 
-			$(input)
-			  .change( function () {
-				var filter = $(this).val();
-				if(filter) {
-				  
-				  $(list).find(".user_info:not(:Contains(" + filter + "))").parent().parent().closest('tr').hide('slow');			  
-				  $(list).find(".user_info:Contains(" + filter + ")").parent().parent().closest('tr').show('slow');
-				} else {			  
-				  $(list).find(".user_info:Contains(" + filter + ")").parent().parent().closest('tr').show('slow');
-				}
-				return false;
-			  })
-			.keyup( function () {
-				$(this).change();
-			});
-		} 
-		$(function () {
-			listFilterUser($("#user_header"), $("#users_list"));
-		});		
+		$(input)
+		  .change( function () {
+			var filter = $(this).val();
+			if(filter) {
+			  
+			  $(list).find(".user_info:not(:Contains(" + filter + "))").parent().parent().closest('tr').hide('slow');			  
+			  $(list).find(".user_info:Contains(" + filter + ")").parent().parent().closest('tr').show('slow');
+			} else {			  
+			  $(list).find(".user_info:Contains(" + filter + ")").parent().parent().closest('tr').show('slow');
+			}
+			return false;
+		  })
+		.keyup( function () {
+			$(this).change();
+		});
+	} 
+	$(function () {
+		listFilterUser($("#user_header"), $("#users_list"));
+	});	
+	//Search features for Admin Carriers
+	function listFilterCarrier(carrier_search, list) {
+		var form = $("<form>").attr({"class":"filterform","action":"#"}),
+		input = $("<input>").attr({"class":"search_input","type":"text","placeholder":"Search Carrier "});
+		$(form).append(input).appendTo(carrier_search);
+
+		$(input)
+		  .change( function () {
+			var filter = $(this).val();
+			if(filter) {
+			  
+			  $(list).find(".carrier_info:not(:Contains(" + filter + "))").parent().parent().closest('tr').hide('slow');			  
+			  $(list).find(".carrier_info:Contains(" + filter + ")").parent().parent().closest('tr').show('slow');
+			} else {			  
+			  $(list).find(".carrier_info:Contains(" + filter + ")").parent().parent().closest('tr').show('slow');
+			}
+			return false;
+		  })
+		.keyup( function () {
+			$(this).change();
+		});
+	} 
+	$(function () {
+		listFilterCarrier($("#carrier_search"), $("#carrier_list"));
+	});		
 
 		var settings_global_cnt=0;
 		var settings_local_cnt=0;

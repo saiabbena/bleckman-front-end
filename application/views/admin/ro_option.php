@@ -104,7 +104,6 @@
 		              <br>
 		              <h3><center>Total Refund<?php //echo $translations[6]['Translation'];?>: <b style='color: #cc1543;' id='total-price'>&euro; 0.00</b></center></h3>
 		              <br>
-		              <button type='submit' class='btn btn-raised btn-block btn-warning' id='button2'>Submit<?php //echo strtoupper($translations[7]['Translation']);?></button><br>
 					  <p style="text-align:right;"><a href="javascript:void(0)" class="btn_admin_career_back2">&laquo; Back</a></p>
 		              <div class="alert alert-dismissible alert-danger" id='screen2-error'>
 		                <strong>Whoops!</strong>
@@ -114,6 +113,9 @@
 		                <strong>Whoops!</strong>
 		                Please select the return reason.
 		              </div>
+					  <br>
+		              <button type='submit' class='btn btn-raised btn-block btn-warning' id='button2'>Submit<?php //echo strtoupper($translations[7]['Translation']);?></button><br>
+					  
 		            </div>
 		        </div>
 		      </div>
@@ -369,10 +371,11 @@ $(document).ready(function () {
 	});
 	
 	$('.btn_admin_career_back').click(function(){		
-		location.reload() 
+		location.reload();		
 	});
 	$('.btn_admin_career_back2').click(function(){	  		
-		location.reload()	  
+		location.reload();  
 	});
+	
 });
 </script>
