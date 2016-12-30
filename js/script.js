@@ -267,6 +267,11 @@ function thirdScreen(){
   }
   $('#override > div.container-fluid.form3 > div > div > div > div > table > tbody').html(html);
   $('.ro_option_carriers table > tbody').html(html);
+  if(customerSettings.carriers.length === 0){
+	  //$('#button3').prop('disabled', true);
+	  $('#button3').attr('disabled','disabled');
+  }
+  
   $.material.init();
   $('#table1234').bootstrapTable();
 }
@@ -343,6 +348,24 @@ $(document).ready(function(){
     //change load
     $('#button1').click(function(){
       console.log('working');
+      var inputData={'Orderid': $('#f2').val(), 'Email': $('#f1').val(), Customerid: customerId};
+      console.log('THIS IS INPUT DATA');
+      console.log(inputData);
+      
+      //validation
+      if(inputData.Orderid==''||inputData.Email==''){
+        $('#screen1-error').show();
+        $('#screen1-error').html('<strong>Whoops!</strong> Both fields should be filled in.');
+        return false;
+      }
+      if(/\s/.test(inputData.Orderid)||/\s/.test(inputData.Email)){
+        $('#screen1-error').show();
+        $('#screen1-error').html('<strong>Whoops!</strong> Entries should not contain any spaces.');
+        return false;
+      }
+      $('#screen1-error').hide();
+      $('#screen1-error').html('<strong>Whoops!</strong> You entered something incorrectly or something went wrong... please try again.');
+      
       $('.loading-screen').slideDown('slow');
       setTimeout(function(){
         $('.form_con_login').hide();

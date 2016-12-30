@@ -4,18 +4,11 @@
 			<h3>Manage Languages</h3>
 				<?php
 		          if(isset($_SESSION['message']['languages_panel'])){
-		            echo'
-		            <div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">
-		              '.$_SESSION['message']['languages_panel'].'
-		            </div>';
+		            echo '<div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">'.$_SESSION['message']['languages_panel'].'      </div>';
 		          }
 	        	?>
-	        	    <?php echo'
-    					<script>
-	        				allLanguages = '. json_encode($allLanguages) .'
-	        			</script>';
-	        	?>
-	        	<?php echo '<script> customerId="' . $customerId.'";</script>';?>
+	        	<?php echo'<script>allLanguages = '. json_encode($allLanguages) .'</script>';?>
+	        	<?php echo '<script> customerId="' . (isset($customerId))?(int)$customerId:'0'.'";</script>';?>
 
 				<form method="POST" action="submitLanguages">
 					<div style="border: 1px solid #ddd; padding: 20px;">
@@ -110,66 +103,87 @@
 		</div>
 		
 		
-		<!--THIS IS THE MANAGE KEYWORDS SECTION
+		<!--THIS IS THE MANAGE KEYWORDS SECTION-->
 		
 		<br><br>
 		
-		<div class="well" style="border-bottom: 15px solid #E25176; padding-bottom: 40px;">
-			<h3>Manage keywords</h3>
-			<br>
-			<table class='table'>
-				<thead>
-					<tr>
-						
-						<th>
-						<div class="form-group">
-				      <h4>	&nbsp;	&nbsp;Choose Language
-				
-				      <div class="col-md-10">
-				        <select id="select111" class="form-control">
-				          <?php/*
-				          foreach ($allLanguages as $lang) {
-				          	echo '<option>'.$lang['LanguageName'].'</option>';
-				          }*/
-				          ?>
-				        </select>
-				      </div>
-				      </h4>
-				    </div>
-		      	</th>
+		<div class="well body_btm_bdr">
+			<h3>Manage Keywords Translation</h3>
+			<div class="row">			
+				<div class="form-group col-md-12">							
+					<div class="col-md-3"><h4>Choose Language</h4></div>
+					<div class="col-md-5">
+						<select id="keywords_by_langid" class="form-control">
+						  <?php
+						  //print_r($allLanguages);
+						  for ($i=0; $i<count($allLanguages); $i++) {
+							  if($allLanguages[$i]['IsActive'] > 0 )
+							  {
+								  $selected = ($this->uri->segment(3) == $allLanguages[$i]['PKLanguageID'])?'selected':'';
+								  echo '<option value="'.$allLanguages[$i]['PKLanguageID'].'" '.$selected.' >'.$allLanguages[$i]['LanguageName'].'</option>';
+							  }			          	
+						  }
+						  ?>
+						</select>
+					</div>			  
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-md-12">
+				<?php
+		          if(isset($_SESSION['message']['keywords_panel'])){
+		            echo'
+		            <div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">
+		              '.$_SESSION['message']['keywords_panel'].'
+		            </div>';
+		          }
+	        	?>
+					<div class="alert alert-dismissible alert-success keywords_msg" id="keywords_saved" style="display:none;">Saved</div>
+					<div class="alert alert-dismissible alert-warning keywords_msg" id="keywords_error" style="display:none;">Error</div>
+					<form method="post" id="fromSaveKeywords" action="<?php echo base_url() . 'index.php/Bleckmann/saveTranslationsKeywords'?>">
+					<table class='table' id="keyword_transalation">
+						<thead>					
+							<tr>
+								<th class="col-md-4 pull-left"><h4>Keyword</h4></th>
+								<th  class="col-md-8"><div class="col-md-8 pull-left"><h4>Translation</h4></div>
+									<div class="col-md-4 pull-right">
+										<button type="button" id='save_keywords_cancel' class='btn btn-raised btn-warning pull-right btn_save_keywords_cancel'>Cancel</button>
+										<button type="button" id='save_keywords' class='btn btn-raised btn-success pull-right btn_save_keywords'>
+										Save
+										</button>
+									</div>
+								</th>								
+							</tr>
+							<tr>
+								<th></th>
+								<th><div class='loading' style="display:none;">
+									<div style='height: 15vh'></div>
+									<img src='<?php echo base_url();?>img/loading-pink.gif' style='height: 10vh'>
+									<br>
+									<p style='color: #CC1543;'>&nbsp;&nbsp;&nbsp;&nbsp;Loading...</p>
+									<div style='height: 15vh'></div>				      
+									
+								</div></th>
+								
+							</tr>
+						</thead>
+						<tbody>
+							
+						</tbody>
+					</table>
+					</form>
+					<div class="col-md-8 pull-right">
+						<button type="button" id='save_keywords_cancel' class='btn btn-raised btn-warning pull-right btn_save_keywords_cancel'>Cancel</button>
+						<button type="button" id='save_keywords' class='btn btn-raised btn-success pull-right btn_save_keywords'>
+						Save
+						</button>
+					</div>
+				</div>
+			</div>
 					
-						<th></th>
-					</tr>
-					<tr>
-						<th><h4>Keyword</h4></th>
-						<th><h4>Translation</h4></th>
-					</tr>	
-				</thead>
-				<tbody>
-					<?php
-					/*
-					foreach ($keywords as $keyword) {
-						echo'
-						<tr>
-							<td>
-								<b>'.$keyword['Keyword'].'</b>
-							</td>
-							<td>
-								<div class="form-group label-floating">
-                  <label class="control-label"></label>
-                  <input type="text" class="form-control" value="'.$keyword['Keyword'].'">
-                  <span class="help-block">Change keyword</span>
-                </div>
-							</td>
-						</tr>
-						';
-						
-					}*/
-					?>
-				</tbody>
-			</table>
+			
 		</div>
-		-->
+		
 		
 	</div>
 </div>
