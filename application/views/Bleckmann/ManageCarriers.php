@@ -73,7 +73,7 @@
 			    <br>
 			    <br>
 			    <div class="row">
-			    	<div class="col-md-offset-1 col-md-10">
+			    	<div class="col-md-12">
 				    	<table class="table table-responsive">
 				    		<thead>
 					    		<tr>
@@ -94,6 +94,7 @@
 					    				echo '<td><br>' . $allSettings[$i]['CountryName'] .'</td>';
 					    				echo '<td><br>' . $allSettings[$i]['LocationName'] .'</td>';
 					    				echo '<td >
+				    							<button type="button" class=" btn btn-raised btn-success" data-toggle="modal" id="#edit-setting-modal-'. $allSettings[$i]['PKCCWId'] .'-'. $allSettings[$i]['FKCarrierId'].'-'. $allSettings[$i]['CountryCode'] .'" data-target="#edit-setting-modal-'. $allSettings[$i]['PKCCWId'] .'-'. $allSettings[$i]['FKCarrierId'] .'-'. $allSettings[$i]['CountryCode']  .'" >Edit</button>
 					    						<button type="button" class="manage-carrier-pop btn btn-raised btn-success" data-toggle="modal" data-target="#manage-carrier-modal" id="manage-carrier-' . $allSettings[$i]['PKCCWId']. '-'.$allSettings[$i]['FKCarrierId']. '" >Settings</button>
 					    						<button type="button" class="btn btn-raised btn-danger" data-toggle="modal" data-target="#remove-setting-modal'. $allSettings[$i]['PKCCWId'] .'" >Remove</button>
 					    					</td>';
@@ -115,6 +116,64 @@
 							                  <div class="modal-footer">
 							                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 							                    <button type="submit" class="btn btn-danger">Delete</button>
+							                  </div>
+							                  </form>						  
+							                </div>
+							              </div>
+							            </div>
+							            ';
+										echo '<div class="modal fade edit-setting-modal"  id="edit-setting-modal-'. $allSettings[$i]['PKCCWId'] .'-'. $allSettings[$i]['FKCarrierId'].'-'. $allSettings[$i]['CountryCode'] .'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+									              <div class="modal-dialog" role="document">
+									                <div class="modal-content">
+									                  <form method="POST" action="setCustomerCarrier">
+									                  <div class="modal-header">
+									                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+									                    <h4>Edit Settings for '. $customerName .' - '. $allSettings[$i]['CarrierName']. '</h4>
+									                  </div>
+									                  <div class="modal-body">
+														<div class="loading" style="display:none;">
+														  <div style="height: 15vh"></div>
+														  <center><img src="'. base_url() . 'img/loading-pink.gif" style="height: 10vh">
+														  <br>
+														  <p style="color: #CC1543;"">&nbsp;&nbsp;&nbsp;&nbsp;Loading...</p>
+														  <div style="height: 15vh"></div>				      
+														  </center>
+														</div>
+									                  <div class="carrier_div">';
+										// echo '<div class="form-group" id="select-carrier-div1"><label>Select a Carrier</label><select id="FKCarrierId1" name="FKCarrierId" class="form-control" disabled>';
+										// echo '<option value="-1">Select a Carrier</option>';
+										// for($j=0;$j<count($carriers);$j++) {
+										// 	if ($carriers[$j]['Isactive']) {
+										// 		if ( $allSettings[$i]['FKCarrierId'] == $carriers[$j]['PKCarrierID'] ) {
+										// 		echo '<option value="'. $carriers[$j]['PKCarrierID'] . '" selected="selected">' . $carriers[$j]['CarrierName'] . '</option>';
+										// 	 	} else {
+										// 			echo '<option value="'. $carriers[$j]['PKCarrierID'] . '">' . $carriers[$j]['CarrierName'] . '</option>';
+										// 	 	}
+										// 	}
+										// }
+										// echo '</select></div>';
+										echo '<div class="form-group" id="carrierCountry1"></div>';
+										echo '<div class="form-group" id="select-warehouse-div"><label>Select a Warehouse</label><select id="select-warehouse" name="Warehouseid" class="form-control">';
+										echo '<option value="-1">Select a Warehouse</option>';
+										for($k=0;$k<count($allWarehouses);$k++) {
+											if ( $allSettings[$i]['Warehouseid'] == $allWarehouses[$k]['WarehouseID'] ) {
+												echo '<option value="'. $allWarehouses[$k]['WarehouseID'] . '" selected="selected">' . $allWarehouses[$k]['Name'] . '</option>';
+											} else {
+												echo '<option value="'. $allWarehouses[$k]['WarehouseID'] . '">' . $allWarehouses[$k]['Name'] . '</option>';
+											}
+										}
+										echo '</select></div>';
+									    echo '<input type="hidden" name="PKCCWId" value="'. $allSettings[$i]['PKCCWId'].'">';
+			    						echo '<input type="hidden" name="FkCustomerid" id="FkCustomerid" value="'. $customerId . '">
+			    							<input type="hidden" name="FKCarrierId" id="FKCarrierId1" value="'.$allSettings[$i]['FKCarrierId'].'">
+								    		<input type="hidden" name="CountryCode" id="CountryCode1" value="'.$allSettings[$i]['CountryCode'].'">
+								    		<input type="hidden" name="FKCountryID" id="FKCountryID1" value="'.$allSettings[$i]['FKCountryID'].'">
+								    		';
+							            echo '
+							                  </div></div>
+							                  <div class="modal-footer">
+							                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+							                    <button type="submit" class="btn btn-danger">Save</button>
 							                  </div>
 							                  </form>						  
 							                </div>

@@ -119,9 +119,11 @@ class Consumer extends CI_Controller {
         //set translations to current selected language
         $data['translations']=[];
         foreach ($this->getTranslations() as $key => $value) {
-          foreach ($value as $kkey => $vvalue) {
-            if($vvalue['Languagename']==$this->Languagename){
-              array_push($data['translations'], $vvalue);
+          if (is_array($value)) {
+            foreach ($value as $kkey => $vvalue) {
+              if($vvalue['Languagename']==$this->Languagename){
+                array_push($data['translations'], $vvalue);
+              }
             }
           }
         }

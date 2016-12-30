@@ -28,11 +28,12 @@ function getCustomerSettings(){
       }
     }
     customerSettings.returnReason=tempRes;
-    console.log(customerSettings.returnReason);
+    //console.log(customerSettings.returnReason);
   });
 }
 function getOrderAndAuth(inputData){  
   apiCall=url+'order/GetBMAllOrdersbyid';
+  console.log("apiCall : " + apiCall);
   
   $.get(apiCall, inputData)
   .always(function(data){
@@ -644,7 +645,7 @@ $(document).ready(function(){
 				//function validate stuff
 				if(data){
 				  //result={type: 'screen1', status: true, message: 'You have been authenticated', result: data};
-				  console.log("sangeeetha ");
+				  //console.log("sangeeetha ");
 				  //console.log(data);
 				  //$('.form1').css({'display':'none !important'});
 				  returnOrdersScreen(data); 

@@ -39,7 +39,7 @@
 
 			    <div class="row">
 			    	<div class="col-md-offset-1 col-md-10" id="carrier_list">
-						<table class='table'>
+						<div class="col-md-12"><table class='table'>
 							<thead>
 								<tr>
 									<th>Is Active?</th>
