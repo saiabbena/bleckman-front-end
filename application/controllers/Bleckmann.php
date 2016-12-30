@@ -241,6 +241,10 @@ class Bleckmann extends CI_Controller {
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
   }
+  public function editCarrierSetting() {
+    print_r(json_encode($_POST));exit();
+
+  }
   public function submitCarrier() {
     if (isset($_POST['Countries'])) {
       foreach ($_POST['Countries'] AS $index => $value)

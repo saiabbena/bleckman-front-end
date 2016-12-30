@@ -1402,6 +1402,7 @@ $(document).ready(function() {
 					html1 += '</select></div>';
 					$('div#carrierCountry').html(html1);
 					$("div#carrierCountry *").prop('disabled',false);
+
 		        	$.material.init();
 		        	$("#setCustomerCarrierMap").validate(); //sets up the validator
 					$("select#country").rules("add", { valueNotEquals : -1 });
@@ -1411,12 +1412,60 @@ $(document).ready(function() {
 		        }
 		      });
 		});
+		//$("#FKCarrierId1").on('change', function() {
+		$(".edit-setting-modal").on('shown.bs.modal', function() {
+			$('.loading').show();
+			$('.carrier_div').hide();
+			console.log("here..........");
+			array = $(this).attr("id").split("-");
+			$("div#carrierCountry1 *").prop('disabled',true);
+			var apiCall=url+'carrier/GetCountriesbyCarrierid?CarrierId=' + array[4];
+			console.log("apiCall : " + apiCall);
+			console.log("CountryCode :" + array[5]);
+			$.ajax({
+		        url: apiCall,
+		        type: 'GET',
+			    headers: {
+			        Apoyar: apoyarToken
+			    },
+		        dataType: 'json',
+		        success: function(data) {
+		        	console.log("response data : ");
+		        	console.log(data);
+		        	var html1 = '<div class="form-group" id="select-country-div"><label>Select a Country</label>\
+		        					<select id="country1" class="form-control">\
+										<option value="-1">Select a Country</option>';
+										for(i=0;i<data.length;i++) {
+											if ( data[i]['CountryCode'] == array[5] ) {
+												html1+= '<option value="'+ data[i]['PKCountryId'] + '-' + data[i]['CountryCode'] + '" selected="selected">' + data[i]['CountryName'] + '</option>';
+											} else {
+												html1+= '<option value="'+ data[i]['PKCountryId'] + '-' + data[i]['CountryCode'] + '">' + data[i]['CountryName'] + '</option>';
+											}
+										}
+					html1 += '</select></div>';
+					$('div#carrierCountry1').html(html1);
+		        	$('.loading').hide();
+					$('.carrier_div').show();
+		        	$.material.init();
+		        	//$("#setCustomerCarrierMap").validate(); //sets up the validator
+					//$("select#country").rules("add", { valueNotEquals : -1 });
+		        },
+		        fail: function(data){
+		          console.log(data);
+		        }
+		      });
+		});
 		$("div#carrierCountry").on('change', '#country',function() {
-			console.log($(this).val());
+			//console.log($(this).val());
 			country_array = $(this).val().split("-");
 			//var countryId = country_array[0];
 			$('#CountryCode').val(country_array[1]);
 			$('#FKCountryID').val(country_array[0]);
+		});
+		$("div#carrierCountry1").on('change', '#country1',function() {
+			country_array = $(this).val().split("-");
+			$('input#CountryCode1').val(country_array[1]);
+			$('input#FKCountryID1').val(country_array[0]);
 		});
 
 		$(".manage-carrier-pop").click(function() {
