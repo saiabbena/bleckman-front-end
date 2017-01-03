@@ -588,14 +588,18 @@ $(document).ready(function(){
     }
   });
   //btn_career_back
-  $('#btn_career_back').click(function(){	  
-	  setTimeout(function(){		
+  $('#btn_career_back').click(function() {
+	  setTimeout(function(){	
+    console.log("mode : " + mode)	;
+    if ( mode == 3 ) {
+      location.reload();
+    } else {
       $('.form3').hide();	  	  
       $('.form2').show('slow');
-		//$('.checkbox span').eq(0).remove();	
-		$( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again	
+		  //$('.checkbox span').eq(0).remove();	
+		  $( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again	
+    }
     }, 500);
-	  
   });
 	//Button click on create return order
 	$('#btn_create_ro').click(function(){
