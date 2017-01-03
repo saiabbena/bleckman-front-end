@@ -8,6 +8,7 @@ var result=false;
 var customerSettings={};
 
 var submition={};
+var postData = {};
 var countryCode = '';
 var mode = 2;
 var om1 = false;
@@ -271,13 +272,19 @@ function thirdScreen(){
 	  //$('#button3').prop('disabled', true);
 	  $('#button3').attr('disabled','disabled');
   }
-  
+  //console.log("p : " + postData.ConsumerEmail );
+  //console.log("s : " + submition.ConsumerEmail );
+  if ( mode == 3 ) {
+    $('#emailConfirm').attr('value', postData.ConsumerEmail);
+  } else {
+    $('#emailConfirm').attr('value', submition.ConsumerEmail);
+  }
   $.material.init();
   $('#table1234').bootstrapTable();
 }
 
 $(document).ready(function(){
-  var postData = {};
+  
   //init material design skin
   $.material.init();
   
@@ -731,11 +738,11 @@ $(document).ready(function(){
 		var ol_array = [];    
 		ol_array = ol_info.split(',');		
 		inputData={'Orderid': ol_array[0], 'Email': ol_array[1], Customerid: customerId};
-		console.log(inputData);
+		console.log("inputData");
+    console.log(inputData);
 		$('.loading-screen').slideDown('slow');
 		getOrderAndAuth(inputData);
-		
+		submition.OrderId = inputData.Orderid;
+    submition.ConsumerEmail = inputData.Email;
 	});
-	
-  
 });
