@@ -106,27 +106,27 @@ $(document).ready(function(){
     var html='';
     var html2='';
     var html3='';
-	var pagination_html = '';
-	var total_num_records = raw_data['TotRecords'];
-	console.log(raw_data);
-	var page_count = raw_data['Count'];
-	var pageno = raw_data['PageNo'];
-			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
-			var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';
-	if(page_count > 1){
-		$('#page_size_div').css({'display':'block'})
-		pagination_html = '<b>Pages : </b> ';
-		for(i=1;i<=page_count;i++){
-			pagination_html = pagination_html+'<button ';
-			if(pageno === i){
-				pagination_html = pagination_html+btn_sel
-			}
-			else{
-				pagination_html = pagination_html+btn_normal
-			}
-			pagination_html = pagination_html+' type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
-		}
-	}
+  	var pagination_html = '';
+  	var total_num_records = raw_data['TotRecords'];
+  	console.log(raw_data);
+  	var page_count = raw_data['Count'];
+  	var pageno = raw_data['PageNo'];
+		var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
+		var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';
+  	if(page_count > 1){
+  		$('#page_size_div').css({'display':'block'})
+  		pagination_html = '<b>Pages : </b> ';
+  		for(i=1;i<=page_count;i++){
+  			pagination_html = pagination_html+'<button ';
+  			if(pageno === i){
+  				pagination_html = pagination_html+btn_sel
+  			}
+  			else{
+  				pagination_html = pagination_html+btn_normal
+  			}
+  			pagination_html = pagination_html+' type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
+  		}
+  	}
     for(i=0; i<raw_data['ReturnOrders'].length; i++){
 	    var data = raw_data['ReturnOrders'];
       //date=new Date(data[i].ReturnsOrderCreationDate);
@@ -147,7 +147,7 @@ $(document).ready(function(){
               \
               <td style="white-space: nowrap;"><a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'">Link</a></td>\
               \
-			  <td style="white-space: nowrap;"><b>'+' '+data[i].ReturnOrderTotalRefundAmount.toFixed(2)+'</b></td>\
+			       <td style="white-space: nowrap;"><b>'+' '+data[i].ReturnOrderTotalRefundAmount.toFixed(2)+'</b></td>\
               \
               <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
               \
@@ -158,11 +158,8 @@ $(document).ready(function(){
               <a data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="cursor:pointer;" alt="Comments" title="Comments" class="pull-left"><i class="large material-icons">comment</i></a>\
         </tr>\
       ';
-	  
-      
-
       html3=html3+'\
-      <div class="modal fade" id="rOrderComment'+data[i].ReturnId+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
+      <div class="modal fade rOrderCommentModal" id="rOrderComment'+data[i].ReturnId+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
         <div class="modal-dialog" role="document">\
           <div class="modal-content">\
             <form action="postComment" method="POST">\
@@ -186,11 +183,11 @@ $(document).ready(function(){
         </div>\
       </div>\
       ';
-
     }
-	$('#total_records span').text(total_num_records);
+  	$('#total_records span').text(total_num_records);
     $('body').append(html2);
     $('body').append(html3);
+    
     $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody').html(html);
 	//$('#btm_pagination').html(pagination_html);
 	//$('#override #orders_data tbody').html(html);
@@ -210,8 +207,11 @@ $(document).ready(function(){
 			var init_page = (pageno === 1)?0:pageno;
 			$('#btm_pagination').pagination('selectPage', init_page);
 			$('#btm_pagination').pagination('prevPage');
-			$('#btm_pagination').pagination('nextPage');
+			$('#btm_pagination').pagination('nextPage');	 
   }
+  $(".rOrderCommentModal").on('shown.bs.modal', function() {
+    $.material.init();
+  });
 	$(document).on('click', '.btn_more_info', function() {
 		//alert($(this).attr('id')); //ReturnId
 		var ReturnId = $(this).attr('id');

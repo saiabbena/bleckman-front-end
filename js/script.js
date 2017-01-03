@@ -8,6 +8,7 @@ var result=false;
 var customerSettings={};
 
 var submition={};
+var postData = {};
 var countryCode = '';
 var mode = 2;
 var om1 = false;
@@ -271,13 +272,19 @@ function thirdScreen(){
 	  //$('#button3').prop('disabled', true);
 	  $('#button3').attr('disabled','disabled');
   }
-  
+  //console.log("p : " + postData.ConsumerEmail );
+  //console.log("s : " + submition.ConsumerEmail );
+  if ( mode == 3 ) {
+    $('#emailConfirm').attr('value', postData.ConsumerEmail);
+  } else {
+    $('#emailConfirm').attr('value', submition.ConsumerEmail);
+  }
   $.material.init();
   $('#table1234').bootstrapTable();
 }
 
 $(document).ready(function(){
-  var postData = {};
+  
   //init material design skin
   $.material.init();
   
@@ -588,14 +595,18 @@ $(document).ready(function(){
     }
   });
   //btn_career_back
-  $('#btn_career_back').click(function(){	  
-	  setTimeout(function(){		
+  $('#btn_career_back').click(function() {
+	  setTimeout(function(){	
+    console.log("mode : " + mode)	;
+    if ( mode == 3 ) {
+      location.reload();
+    } else {
       $('.form3').hide();	  	  
       $('.form2').show('slow');
-		//$('.checkbox span').eq(0).remove();	
-		$( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again	
+		  //$('.checkbox span').eq(0).remove();	
+		  $( ".checkbox span:nth-child(2)" ).remove();//This is a bug that It shows 2 check boxes while the form2 loads again	
+    }
     }, 500);
-	  
   });
 	//Button click on create return order
 	$('#btn_create_ro').click(function(){
@@ -727,11 +738,11 @@ $(document).ready(function(){
 		var ol_array = [];    
 		ol_array = ol_info.split(',');		
 		inputData={'Orderid': ol_array[0], 'Email': ol_array[1], Customerid: customerId};
-		console.log(inputData);
+		console.log("inputData");
+    console.log(inputData);
 		$('.loading-screen').slideDown('slow');
 		getOrderAndAuth(inputData);
-		
+		submition.OrderId = inputData.Orderid;
+    submition.ConsumerEmail = inputData.Email;
 	});
-	
-  
 });
