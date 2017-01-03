@@ -64,6 +64,8 @@
 	});
 	</script>	
 	<script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin.js"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>vendor/pagination/jquery.simplePagination.js"></script>
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url();?>vendor/pagination/simplePagination.css"/>	
 	<?php }
 	if($this->uri->segment(2) == 'appearance'){
 	?>

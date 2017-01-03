@@ -822,6 +822,7 @@ $(document).ready(function() {
 			//console.log(raw_data['ReturnOrders'].length); 
 			//console.log(data['ReturnOrders'].[0].ReturnId);
 			//console.log(raw_data['PageNo']);
+			console.log(raw_data['pagesize']);
 			if(page_count > 1){
 				
 				pagination_html = '<b>Pages : </b> ';
@@ -897,7 +898,7 @@ $(document).ready(function() {
 			$('body').append(html2);
 			$('body').append(html3);
 			$('#orders_data > tbody').html(html);
-			$('#btm_pagination').html(pagination_html);
+			//$('#btm_pagination').html(pagination_html);
 				/*
 				if($("#orders_data").html() !== ""){
 					//$("#orders_data").DataTable().fnDestroy();//destroying the table
@@ -909,7 +910,23 @@ $(document).ready(function() {
 						"sSearch": "<span>QUICK SEARCH:</span> _INPUT_"
 					},
 				});*/			
-			
+			//Calling the new pagination script
+			//var page_count = response['Count'];
+			//page_count PageNo
+			var page_size = $('#page_size').val();
+			$('#btm_pagination').pagination({
+				items: total_num_records,
+				itemsOnPage: page_size,
+				cssStyle: 'light-theme',
+				prevText:'&laquo;',
+				nextText:'&raquo;'
+				
+			});
+			//Initialize page number first time
+			var init_page = (pageno === 1)?0:pageno;
+			$('#btm_pagination').pagination('selectPage', init_page);
+			$('#btm_pagination').pagination('prevPage');
+			$('#btm_pagination').pagination('nextPage');			
 		  }
 		  function retrieveReturnOrders(customerId, pageno){
 			$('.loading-screen').slideDown('slow');
@@ -979,13 +996,30 @@ $(document).ready(function() {
 			  }
 			});			
 		  }
-		
-		$(document).on('click', '.btn_paginate', function() {
+		//page-link btn_paginate
+		$(document).on('click', 'a[class="page-link"]', function() {
 			//alert($(this).text());
 			var pageno = $(this).text();
 			var customerId = $('#orders_by_customer_id').val();
 			retrieveReturnOrders(customerId, pageno);			
 		});
+		//Pagination NEXT on click
+		$(document).on('click', 'a[class="page-link next"]', function() {						
+			var href_val_array = $(this).attr("href").split("-");
+			//alert(href_val_array[1]);
+			var pageno = href_val_array[1];
+			var customerId = $('#orders_by_customer_id').val();
+			retrieveReturnOrders(customerId, pageno);			
+		});
+		//Pagination PREV on click
+		$(document).on('click', 'a[class="page-link prev"]', function() {						
+			var href_val_array = $(this).attr("href").split("-");
+			//alert(href_val_array[1]);
+			var pageno = href_val_array[1];
+			var customerId = $('#orders_by_customer_id').val();
+			retrieveReturnOrders(customerId, pageno);			
+		});
+		
 		$(document).on('change', '#page_size', function() {
 			//alert($(this).val());			
 			var customerId = $('#orders_by_customer_id').val();

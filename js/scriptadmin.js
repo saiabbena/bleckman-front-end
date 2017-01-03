@@ -77,11 +77,27 @@ $(document).ready(function(){
       }
     });    
   }
-	$(document).on('click', '.btn_paginate', function() {
+	$(document).on('click', 'a[class="page-link"]', function() {
 		//alert($(this).text());
 		var pageno = $(this).text();			
 		retrieveReturnOrders(customerId, pageno);			
 	});
+	//Pagination NEXT on click
+	$(document).on('click', 'a[class="page-link next"]', function() {						
+		var href_val_array = $(this).attr("href").split("-");
+		//alert(href_val_array[1]);
+		var pageno = href_val_array[1];		
+		retrieveReturnOrders(customerId, pageno);			
+	});
+	//Pagination PREV on click
+	$(document).on('click', 'a[class="page-link prev"]', function() {						
+		var href_val_array = $(this).attr("href").split("-");
+		//alert(href_val_array[1]);
+		var pageno = href_val_array[1];		
+		retrieveReturnOrders(customerId, pageno);			
+	});
+	
+	
 	$(document).on('change', '#page_size', function() {
 		//alert($(this).val());			
 		retrieveReturnOrders(customerId);			
@@ -176,8 +192,25 @@ $(document).ready(function(){
     $('body').append(html2);
     $('body').append(html3);
     $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody').html(html);
-	$('#btm_pagination').html(pagination_html);
+	//$('#btm_pagination').html(pagination_html);
 	//$('#override #orders_data tbody').html(html);
+	//Calling the new pagination script
+			//var page_count = response['Count'];
+			//page_count PageNo
+			var page_size = $('#page_size').val();
+			$('#btm_pagination').pagination({
+				items: total_num_records,
+				itemsOnPage: page_size,
+				cssStyle: 'light-theme',
+				prevText:'&laquo;',
+				nextText:'&raquo;'
+				
+			});
+			//Initialize page number first time
+			var init_page = (pageno === 1)?0:pageno;
+			$('#btm_pagination').pagination('selectPage', init_page);
+			$('#btm_pagination').pagination('prevPage');
+			$('#btm_pagination').pagination('nextPage');
   }
 	$(document).on('click', '.btn_more_info', function() {
 		//alert($(this).attr('id')); //ReturnId

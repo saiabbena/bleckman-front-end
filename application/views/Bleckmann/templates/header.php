@@ -60,7 +60,9 @@
 			dateFormat: "dd-mm-yy"
 		});		
 	});
-	</script>	
+	</script>
+	<script type="text/javascript" src="<?php echo base_url();?>vendor/pagination/jquery.simplePagination.js"></script>
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url();?>vendor/pagination/simplePagination.css"/>	
 	<?php }
 	//warehouses
 	if($this->uri->segment(2) == 'warehouses' || $this->uri->segment(2) == 'users'){
