@@ -95,9 +95,9 @@
 			</table>			
 		</div>
 		<div class="row">
-			<div class="col-md-6">
-				<!----><div class="col-md-4 " id="total_records" style="margin-top: 10px;"><b>Total Records#:<span><span></b></div>
-				<div class="col-md-5 pull-left">
+			<div class="col-md-4">
+				<div class="col-md-6 " id="total_records" style="margin-top: 10px;"><b>Total Records#:<span><span></b></div>
+				<div class="col-md-6 pull-left">
 				<?php
 					//echo "allCustomers : " . json_encode($allCustomers);
 					echo '<select id="page_size" name="page_size" class="col-md-10 form-control pull-left">';
@@ -109,7 +109,7 @@
 				?>
 				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-8">
 				<div id="btm_pagination" class="col-md-11 pull-right text-right"></div>				
 			</div>
 		</div>
