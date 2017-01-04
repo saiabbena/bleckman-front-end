@@ -95,7 +95,7 @@
 					    				echo '<td><br>' . $allSettings[$i]['LocationName'] .'</td>';
 					    				echo '<td >
 				    							<button type="button" class=" btn btn-raised btn-success" data-toggle="modal" id="#edit-setting-modal-'. $allSettings[$i]['PKCCWId'] .'-'. $allSettings[$i]['FKCarrierId'].'-'. $allSettings[$i]['CountryCode'] .'" data-target="#edit-setting-modal-'. $allSettings[$i]['PKCCWId'] .'-'. $allSettings[$i]['FKCarrierId'] .'-'. $allSettings[$i]['CountryCode']  .'" >Edit</button>
-					    						<button type="button" class="manage-carrier-pop btn btn-raised btn-success" data-toggle="modal" data-target="#manage-carrier-modal" id="manage-carrier-' . $allSettings[$i]['PKCCWId']. '-'.$allSettings[$i]['FKCarrierId']. '" >Settings</button>
+					    						<button type="button" class="manage-carrier-pop btn btn-raised btn-warning" data-toggle="modal" data-target="#manage-carrier-modal" id="manage-carrier-' . $allSettings[$i]['PKCCWId']. '-'.$allSettings[$i]['FKCarrierId']. '" >Settings</button>
 					    						<button type="button" class="btn btn-raised btn-danger" data-toggle="modal" data-target="#remove-setting-modal'. $allSettings[$i]['PKCCWId'] .'" >Remove</button>
 					    					</td>';
 					    				echo '</tr>';

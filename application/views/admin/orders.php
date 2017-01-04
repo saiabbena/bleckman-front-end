@@ -77,17 +77,25 @@
           </tbody>
         </table>		
         <div class="row">
+          <div class="col-md-12">
+          <div class="col-md-6 pull-left" id="total_records" style="margin-top:30px !important;"><b>Total Records#:<span><span></b>
+          </div>
+          <div class="col-md-3 pull-right" id="page_size_div"><?php          
+          echo '<select id="page_size" name="page_size" class="form-control" style="margin:0 !important;">';
+          echo '<option value="20">Show Records</option>';
+          for($i=20;$i<=100;$i=$i+20) {           
+            echo '<option value="'.$i. '">' .$i. '</option>';
+          }
+          echo '</select>';
+        ?>
+        </div>
+          </div>
+        </div>
+        <div class="row">
+
 			<div class="col-md-4 pull-left" style="margin-top:10px !important;">
-				<div class="col-md-6 pull-left" id="total_records" style="margin-top:30px !important;"><b>Total Records#:<span><span></b></div>
-				<div class="col-md-6 pull-left" id="page_size_div"><?php					
-					echo '<select id="page_size" name="page_size" class="form-control" style="margin:0 !important;">';
-					echo '<option value="20">Show #</option>';
-					for($i=20;$i<=100;$i=$i+20) {						
-						echo '<option value="'.$i. '">' .$i. '</option>';
-					}
-					echo '</select>';
-				?>
-				</div>
+				
+
 			</div>
 			<div class="col-md-8 pull-right" style="margin-top:30px !important;">
 				<div id="btm_pagination" class="col-md-11 pull-right text-right"></div>				
