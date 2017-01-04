@@ -78,7 +78,7 @@
         </table>		
         <div class="row">
           <div class="col-md-12">
-          <div class="col-md-6 pull-left" id="total_records" style="margin-top:30px !important;"><b>Total Records#:<span><span></b>
+          <div class="col-md-6 pull-left" id="total_records" style="margin-top:37px !important;"><b>Total Records#:<span><span></b>
           </div>
           <div class="col-md-3 pull-right" id="page_size_div"><?php          
           echo '<select id="page_size" name="page_size" class="form-control" style="margin:0 !important;">';
@@ -91,12 +91,7 @@
         </div>
           </div>
         </div>
-        <div class="row">
-
-			<div class="col-md-4 pull-left" style="margin-top:10px !important;">
-				
-
-			</div>
+        <div class="row">			
 			<div class="col-md-8 pull-right" style="margin-top:30px !important;">
 				<div id="btm_pagination" class="col-md-11 pull-right text-right"></div>				
 			</div>
