@@ -167,7 +167,7 @@
 					</div>
 					
 					<button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3'>CONFIRM AND PRINT POSTAGE LABEL<?php //echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></button><br>
-					<p style="text-align:right;"><a href="javascript:void(0)" class="btn_admin_career_back">&laquo; Back</a></p>
+					<p style="text-align:right;"><a href="javascript:void(0)" class="btn_admin_career_back1">&laquo; Back</a></p>
 					<div class="alert alert-dismissible alert-success" id='screen3-success'>
 					  <strong><?php //echo $translations[21]['Translation']?></strong>
 					  <?php //echo $translations[22]['Translation']?>
@@ -224,7 +224,7 @@
 							
 						</tbody>
 					  </table>		  
-					  <p style="text-align:right;"><a href="javascript:void(0)" class="btn_admin_career_back2">&laquo; Back</a></p>
+					  <p style="text-align:right;"><a href="javascript:void(0)" class="btn_admin_career_back">&laquo; Back</a></p>
 					</div>
 				
 			  </div>
@@ -287,28 +287,33 @@
 		                </div>
 		                <div class="row">
 		                  <div class="col-md-12">
-		                    <div class="col-md-3">
+		                    <div class="col-md-6">
 		                      <div class="form-group label-floating required">
 		                        <label class="control-label">PostalCode</label>
 		                        <input name="ConsumerFromShipPostalCode" id="ConsumerFromShipPostalCode" type="text" class="form-control">
 		                        <span class="help-block">Enter PostalCode</span>
 		                      </div>
 		                    </div>
-		                    <div class="col-md-3">
+		                    <div class="col-md-6">
 		                      <div class="form-group label-floating required">
 		                        <label class="control-label">City</label>
 		                        <input name="ConsumerFromShipCity" id="ConsumerFromShipCity" type="text" class="form-control">
 		                        <span class="help-block">Enter City</span>
 		                      </div>
 		                    </div>
-		                    <div class="col-md-3">
+
+		                  </div>
+		                </div>
+		                <div class="row">
+		                	<div class="col-md-12">
+		                    <div class="col-md-6">
 		                      <div class="form-group label-floating">
 		                        <label class="control-label">State</label>
 		                        <input name="Consumershipstate" id="Consumershipstate" type="text" class="form-control">
 		                        <span class="help-block">Enter State</span>
 		                      </div>
 		                    </div>
-		                    <div class="col-md-3">
+		                    <div class="col-md-6">
 		                      <div class="form-group label-floating required">		                        
 		                        <!-- <input name="ConsumerFromShipCountry" type="text" class="form-control"> -->
 		                            <?php
@@ -324,7 +329,7 @@
 		                            ?>
 		                      </div>
 		                    </div>
-		                  </div>
+		                	</div>
 		                </div>
 		                <br>
 		                <button type='submit' class='btn btn-raised btn-block btn-warning'>Submit</button>
@@ -374,8 +379,20 @@ $(document).ready(function () {
 		location.reload();		
 	});
 	$('.btn_admin_career_back2').click(function(){	  		
-		location.reload();  
+		//location.reload();  
+		$('.form5').show();
+		$('.form2').hide();
 	});
-	
+	$('.btn_admin_career_back1').click(function(){
+		console.log("mode : " + mode);
+		$('.form3').hide();
+		if ( mode == 4 ) {
+			$('.form2').show();
+			$(".checkbox span:nth-child(2)").remove();//This is a bug that It shows 2 check boxes while the form2 loads again	
+		} else {
+			$('.form1').show();
+			$('.form1_mode1').show();
+		}
+	});
 });
 </script>

@@ -614,6 +614,7 @@ $(document).ready(function(){
 		console.log('working');
 		//alert('Test');
 		var inputs_data = '';
+    mode=4;
 		//$('.loading-screen').slideDown('slow');
 		setTimeout(function(){		  
 		  var inputData={'Orderid': $('#f2').val().trim(), 'Email': $('#f1').val().trim(), 'Phone': $('#f3').val().trim(), 'Name': $('#f4').val().trim()};
