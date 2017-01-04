@@ -365,28 +365,32 @@
                 </div>
                 <div class="row">
                   <div class="col-md-12">
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                       <div class="form-group label-floating required">
                         <label class="control-label">PostalCode</label>
                         <input name="ConsumerFromShipPostalCode" id="ConsumerFromShipPostalCode" type="text" class="form-control">
                         <span class="help-block">Enter PostalCode</span>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                       <div class="form-group label-floating required">
                         <label class="control-label">City</label>
                         <input name="ConsumerFromShipCity" id="ConsumerFromShipCity" type="text" class="form-control">
                         <span class="help-block">Enter City</span>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="col-md-6">
                       <div class="form-group label-floating">
                         <label class="control-label">State</label>
                         <input name="Consumershipstate" id="Consumershipstate" type="text" class="form-control">
                         <span class="help-block">Enter State</span>
                       </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-6">
                       <div class="form-group label-floating required">
                         <label class="control-label">Country</label>
                         <!-- <input name="ConsumerFromShipCountry" type="text" class="form-control"> -->
