@@ -272,6 +272,8 @@ function thirdScreen(){
   if(customerSettings.carriers.length === 0){
 	  //$('#button3').prop('disabled', true);
 	  $('#button3').attr('disabled','disabled');
+  }else{
+	  $('#button3').prop('disabled', false);
   }
   //console.log("p : " + postData.ConsumerEmail );
   //console.log("s : " + submition.ConsumerEmail );
