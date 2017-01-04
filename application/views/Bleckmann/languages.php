@@ -174,12 +174,12 @@
 						</tbody>
 					</table>
 					</form>
-					<div class="col-md-8 pull-right">
+					<!--<div class="col-md-8 pull-right">
 						<button type="button" id='save_keywords_cancel' class='btn btn-raised btn-warning pull-right btn_save_keywords_cancel'>Cancel</button>
 						<button type="button" id='save_keywords' class='btn btn-raised btn-success pull-right btn_save_keywords'>
 						Save
 						</button>
-					</div>
+					</div>-->
 				</div>
 			</div>
 					
