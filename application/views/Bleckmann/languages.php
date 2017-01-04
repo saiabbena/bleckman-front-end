@@ -8,7 +8,9 @@
 		          }
 	        	?>
 	        	<?php echo'<script>allLanguages = '. json_encode($allLanguages) .'</script>';?>
-	        	<?php echo '<script> customerId="' . (isset($customerId))?(int)$customerId:'0'.'";</script>';?>
+	        	<?php
+				$customerId = (isset($customerId) && $customerId != '')?(int)$customerId:'0';
+				echo '<script> var customerId="' .$customerId.'";</script>';?>
 
 				<form method="POST" action="submitLanguages">
 					<div style="border: 1px solid #ddd; padding: 20px;">
@@ -145,8 +147,8 @@
 						<thead>					
 							<tr>
 								<th class="col-md-4 pull-left"><h4>Keyword</h4></th>
-								<th  class="col-md-8"><div class="col-md-8 pull-left"><h4>Translation</h4></div>
-									<div class="col-md-4 pull-right">
+								<th  class="col-md-8"><div class="col-md-6 pull-left"><h4>Translation</h4></div>
+									<div class="col-md-6 pull-right">
 										<button type="button" id='save_keywords_cancel' class='btn btn-raised btn-warning pull-right btn_save_keywords_cancel'>Cancel</button>
 										<button type="button" id='save_keywords' class='btn btn-raised btn-success pull-right btn_save_keywords'>
 										Save
