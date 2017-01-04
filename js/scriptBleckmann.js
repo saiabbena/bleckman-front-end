@@ -822,7 +822,7 @@ $(document).ready(function() {
 			//console.log(raw_data['ReturnOrders'].length); 
 			//console.log(data['ReturnOrders'].[0].ReturnId);
 			//console.log(raw_data['PageNo']);
-			console.log(raw_data['pagesize']);
+			//console.log(raw_data['pagesize']);
 			if(page_count > 1){
 				
 				pagination_html = '<b>Pages : </b> ';
@@ -845,7 +845,7 @@ $(document).ready(function() {
 				testdate1=new Date(testdate[0]);
 				//console.log(testdate[0]);
 				resultDate=testdate1.getDate()+'/'+(testdate1.getMonth()+1)+'/'+(testdate1.getYear()+1900);
-				console.log("resultDate : " + resultDate);
+				//console.log("resultDate : " + resultDate);
 				html=html+'\<tr>\
 					  <td style="white-space: nowrap;">'+resultDate+'</td>\
 					  \
@@ -951,16 +951,16 @@ $(document).ready(function() {
 			if(ReturnsOrderCreationDate !== ''){			
 				var date_array = [];
 				date_array = ReturnsOrderCreationDate.split("-");    
-				var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+				var newDateFormatFrom = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
 				var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];			
-				searchInput['From']= newDateFormat;
+				searchInput['From']= newDateFormatFrom;
 			}
 			if(ReturnsOrderToDate !== ''){			
 				var date_array = [];    
 				date_array = ReturnsOrderToDate.split("-");    
-				var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+				var newDateFormatTo = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
 				var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];			
-				searchInput['To']= newDateFormat;
+				searchInput['To']= newDateFormatTo;
 			}
 			
 			if(typeof(pageno)==='undefined'){				
@@ -976,7 +976,7 @@ $(document).ready(function() {
 						
 			//Check the pageno defined or not
 			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
-			//console.log(searchInput);
+			console.log(searchInput);
 			//console.log(apoyarToken);
 			$.ajax({
 			  url: apiCall,
@@ -995,7 +995,7 @@ $(document).ready(function() {
 				$('.loading-screen').slideDown('slow');
 			  }
 			});			
-		  }
+		}
 		//page-link btn_paginate
 		$(document).on('click', 'a[class="page-link"]', function() {
 			//alert($(this).text());
