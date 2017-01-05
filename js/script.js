@@ -130,7 +130,7 @@ function secondScreen(result){
 \
           <td>\
             <br style="font-size: 21px;">\
-            <a data-toggle="modal" href="#moreInfo'+result['result']['BMOrderLine'][i].OrderlineID+'">'+result['result']['BMOrderLine'][i]['StyleDescription']+'</a>\
+            <a  data-toggle="modal" href="#moreInfo'+result['result']['BMOrderLine'][i].OrderlineID+'">'+result['result']['BMOrderLine'][i]['StyleDescription']+'</a>\
             <p style="font-size: 8px"><b>Details:</b> '+result['result']['BMOrderLine'][i].ColourDescription+'</p>\
           </td>\
 \

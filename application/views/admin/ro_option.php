@@ -65,7 +65,7 @@
 									<button class='btn btn-raised btn-block btn-success btn-bm btn-warning' id="btn_create_ro">Search</button><br>
 								</div>
 							</div>
-							<div class="col-md-12">
+							<div  class="col-md-12">
 								<div class="alert alert-dismissible alert-danger"  id='screen1-error'><strong>Whoops! No inputs or you entered something incorrectly or something went wrong... please try again.</strong>
 								<?php //echo $translations[15]['Translation']?>
 								</div>
