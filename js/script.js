@@ -306,27 +306,63 @@ $(document).ready(function(){
     $("#Form1-Mode1").validate({
         focusCleanup: true,
             rules: {
-                Consumername1: "required",
-                ConsumerShipStreet1: "required",
+                Consumername1: {
+					required: true,
+					maxlength: 35
+				},
+                ConsumerShipStreet1: {
+					required: true,
+					maxlength: 35
+				},
                 ConsumerEmail: {
                     required: true,
-                    email: true
+                    email: true,
+					maxlength: 255
                 },
-                ConsumerFromShipHouseNumber : "required",
+                ConsumerFromShipHouseNumber : {
+					required: true,
+					maxlength: 35
+				},
                 ConsumerFromShipCountry: {
                   valueNotEquals: -1
                 },
-                ConsumerFromShipPostalCode: "required",
-                ConsumerFromShipCity:"required",
+                ConsumerFromShipPostalCode: {
+					required: true,
+					maxlength: 10
+				},
+                ConsumerFromShipCity:{
+					required: true,
+					maxlength: 35
+				},
             },
             messages: {
-                Consumername1: "Please enter First Name",
-                ConsumerShipStreet1: "Please enter Street",
-                ConsumerEmail: "Please enter a valid email address",
-                ConsumerFromShipHouseNumber: "Please enter Address",
-                ConsumerFromShipCountry: "Please enter Country Name",
-                ConsumerFromShipPostalCode:"Please enter Postal Code",
-                ConsumerFromShipCity:"Please enter City"
+                //Consumername1: "Please enter First Name",
+				Consumername1: {
+					required: "Please enter First Name",
+					maxlength: $.format("Maximum 35 characters allowed")					
+				},
+                ConsumerShipStreet1: {
+					required: "Please enter Street",
+					maxlength: $.format("Maximum 35 characters allowed")					
+				},
+                ConsumerEmail: {
+					required: "Please enter a valid email address",
+					maxlength: $.format("Maximum 255 characters allowed"),
+					email: $.format("Please enter a valid email address")
+				},
+                ConsumerFromShipHouseNumber: {
+					required: "Please enter Address",
+					maxlength: $.format("Maximum 35 characters allowed")					
+				},
+                ConsumerFromShipCity:{
+					required: "Please enter City",
+					maxlength: $.format("Maximum 35 characters allowed")					
+				},
+                ConsumerFromShipPostalCode:{
+					required: "Please enter Postal Code",
+					maxlength: $.format("Maximum 10 characters allowed")					
+				},                
+				ConsumerFromShipCountry: "Please enter Country Name"
             },
             submitHandler: function(form) {             
               postData.Consumername1 = $('#Consumername1').val();
