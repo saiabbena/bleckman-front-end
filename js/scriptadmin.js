@@ -296,16 +296,16 @@ $(document).ready(function(){
       if(ReturnsOrderCreationDate !== ''){      
         var date_array = [];
         date_array = ReturnsOrderCreationDate.split("-");    
-        var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+        var newDateFormatFrom = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
         var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];      
-        searchInput['From']= newDateFormat;
+        searchInput['From']= newDateFormatFrom;
       }
       if(ReturnsOrderToDate !== ''){      
         var date_array = [];    
         date_array = ReturnsOrderToDate.split("-");    
-        var newDateFormat = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+        var newDateFormatTo = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
         var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];      
-        searchInput['To']= newDateFormat;
+        searchInput['To']= newDateFormatTo;
       }
 
   	if(typeof(pageno)==='undefined') {
