@@ -103,6 +103,8 @@ class Bleckmann extends CI_Controller {
     $data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllActiveBMCarriers', '');
     $data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
 
+    #$data['predefinedSettings'] = $this->httpRequests->httpGet('Carrier/GetPredefinedCarrierSetting', '');
+
     $this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/carriers', $data);
     $this->load->view('Bleckmann/templates/footer');
@@ -250,7 +252,7 @@ class Bleckmann extends CI_Controller {
       foreach ($_POST['Countries'] AS $index => $value)
         $_POST['Countries'][$index] = (int)$value;
     }
-    //echo json_encode($_POST);
+    //echo json_encode($_POST);exit();
     $server_output = $this->httpRequests->httpPost('Carrier/PostManageBMCarrier', json_encode($_POST) );
     //echo json_encode($server_output);exit();
     if ( $server_output['Status'] == 1) { 
