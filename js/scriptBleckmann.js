@@ -4,6 +4,7 @@ $(document).ready(function() {
    }, "Please enter a valid pasword.");
    
 		var url=API_BASE_URL_FE+'api/';
+		var predefinedSettings = [];
 		
 		$(".add-customer-pop").click(function(){
 			var validator1 = $( "#customer-info-form" ).validate();
@@ -1216,26 +1217,54 @@ $(document).ready(function() {
 			$('#global-settings-error').hide();
 		});
 		$('#add-carrier-local-setting').click(function() {
-			var html1 = '<div class="row">\
-				                	<div class="col-md-12">\
-				                		<div class="col-md-6">\
-							              	<div class="form-group label-floating">\
-							                  <label class="control-label">Settings Name</label>\
-							                  <input id="SettingsName" type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingName]" class="form-control" value="">\
-							                  <span class="help-block">Enter Settings Name</span>\
-							                </div>\
-				                		</div>\
-				                		<div class="col-md-6">\
-							              	<div class="form-group label-floating">\
-							                  <input id="SettingsValue" disabled type="hidden" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
-							                  <span class="help-block">Enter Settings Value</span>\
-							                </div>\
-				                		</div>\
-				                	</div>\
-				        </div>';
-			$('div#carrier-setting').append(html1);
-			settings_local_cnt++;
-			$('#local-settings-error').hide();
+			var apiCall = url + 'Carrier/GetPredefinedCarrierSetting';
+			
+			console.log("length : " + predefinedSettings.length );
+			if ( predefinedSettings.length == 0 ) {
+				$.ajax({
+			        url: apiCall,
+			        type: 'GET',
+				    headers: {
+				        Apoyar: apoyarToken
+				    },
+			        dataType: 'json',
+			        success: function(data) {
+			        	predefinedSettings = data;
+			        	console.log("here");
+			        	console.log(predefinedSettings);
+			        }
+			    });
+			}
+			console.log(predefinedSettings);
+			//<input id="SettingsName" type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingName]" class="form-control" value="">\
+			setTimeout(function(){
+				var html1 = '<div class="row">\
+					                	<div class="col-md-12">\
+					                		<div class="col-md-6">\
+								              	<div class="form-group label-floating">\
+								                  <label class="control-label">Settings Name</label>\
+								                  \
+								                  <select class="form-control" name="CarrierSetting[' + settings_local_cnt +'][SettingName]">\
+												   <option value="-1" selected="selected">Select a settings name</option>';
+								            for(i=0;i<predefinedSettings.length;i++) {
+								            	html1 += '<option value="'+predefinedSettings[i]['SettingName'] +'">' + predefinedSettings[i]['SettingName'] + '</option>';
+								            }
+											html1 += '</select>\
+								                </div>\
+					                		</div>\
+					                		<div class="col-md-6">\
+								              	<div class="form-group label-floating">\
+								                  <input id="SettingsValue" disabled type="hidden" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
+								                  <span class="help-block">Enter Settings Value</span>\
+								                </div>\
+					                		</div>\
+					                	</div>\
+					        </div>';
+				$('div#carrier-setting').append(html1);
+				settings_local_cnt++;
+				$('#local-settings-error').hide();
+			}, 500);
+
 		});
 		$(".add-carrier-pop").click(function(){			
 			$('h4#myCarrierLabel').text('Add a Carrier');
@@ -1361,7 +1390,7 @@ $(document).ready(function() {
 							                		<div class="col-md-6">\
 										              	<div class="form-group label-floating">\
 										                  <label class="control-label">Settings Name</label>\
-										                  <input id="SettingsName" type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingName]" class="form-control" value="'+ data['CarrierSetting'][i]['SettingName'] +'">\
+										                  <input readonly="readonly" id="SettingsName" type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingName]" class="form-control" value="'+ data['CarrierSetting'][i]['SettingName'] +'">\
 										                  <span class="help-block">Enter Settings Name</span>\
 										                </div>\
 							                		</div>\
