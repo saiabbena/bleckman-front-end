@@ -140,7 +140,7 @@
 								<div class="col-md-6">
 					              	<div class="form-group label-floating">
 					                  <label class="control-label">Email</label>
-					                  <input id="Email" type="text" name="Warehouses[0][Email]" class="form-control" value="">
+					                  <input id="Email" type="email" name="Warehouses[0][Email]" class="form-control" value="">
 					                  <span class="help-block">Enter Email</span>
 					                </div>
 					            </div>
