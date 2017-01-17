@@ -1,4 +1,6 @@
-
+    <?php
+      //echo var_dump($customerLanguages);
+    ?>
     <div class='col-xs-12 col-md-9' height='100%'>
       <div class='well body_btm_bdr' id='rr-panel'>
         <?php
@@ -489,6 +491,94 @@
               }
             }
         ?>
+        
+        
+        
+      <!--EMAIL SECTION-->
+      <div class='well body_btm_bdr' id='email-panel'>
+        <?php
+          if(isset($_SESSION['message']['emails'])){
+            echo'
+            <div class="alert alert-dismissible alert-success">
+              '.$_SESSION['message']['emails'].'
+            </div>';
+          }
+        ?>
+        <form method='POST' action="submitEmails">
+        <button type="submit" id='change-email' class='btn btn-raised btn-success pull-right'>Save</button>
+        <h3>Email text 
+        
+        </h3><br><br>
+        <div>
+          <?php
+            echo '<ul class="nav nav-tabs" role="tablist">';
+            for($i=0; $i<sizeof($customerLanguages); $i++){
+              
+              $lang=$customerLanguages[$i];
+              //echo var_dump($lang['LanguageName']);
+              
+              if($i==0){
+                echo '
+                <li role="presentation" class="active">
+                <a href="#'.$lang['LanguageName'].'" aria-controls="'.$lang['LanguageName'].'" role="tab" data-toggle="tab">
+                '.$lang['LanguageName'].'
+                </a>
+                </li>';
+              }
+              else{
+                echo '
+                <li role="presentation">
+                <a href="#'.$lang['LanguageName'].'" aria-controls="'.$lang['LanguageName'].'" role="tab" data-toggle="tab">
+                '.$lang['LanguageName'].'
+                </a>
+                </li>';
+              }
+              
+            }
+            echo '</ul>';
+          ?>
+          
+          
+          <?php
+            echo '<div class="tab-content">';
+            for($i=0; $i<sizeof($customerLanguages); $i++){
+              $lang=$customerLanguages[$i];
+              echo '<input type="hidden" name="Languages['.$i.'][PKCustomerLanguageID]" value="'.$lang['PKCustomerLanguageID'].'">';
+              echo '<input type="hidden" name="Languages['.$i.'][FkLanguageid]" value="'.$lang['FkLanguageid'].'">';
+              echo '<input type="hidden" name="Languages['.$i.'][Customerid]" value="'.$lang['Customerid'].'">';
+              echo '<input type="hidden" name="Languages['.$i.'][Isdefault]" value="'.$lang['Isdefault'].'">';
+              echo '<input type="hidden" name="Languages['.$i.'][Page1heading]" value="'.$lang['Page1heading'].'">';
+              echo '<input type="hidden" name="Languages['.$i.'][Page2heading]" value="'.$lang['Page2heading'].'">';
+              echo '<input type="hidden" name="Languages['.$i.'][Page3heading]" value="'.$lang['Page3heading'].'">';
+              echo '<input type="hidden" name="Languages['.$i.'][Page4heading]" value="'.$lang['Page4heading'].'">';
+              //echo '<input type="hidden" name="Languages['.$i.'][LanguageName]" value="'.$lang['LanguageName'].'">';
+              //echo '<input type="hidden" name="Languages['.$i.'][Links]" value="'.$lang['Links'].'">';
+              if($i==0){
+                echo '<div role="tabpanel" class="tab-pane active" id="'.$lang['LanguageName'].'">
+                <div class="form-group label-floating">
+                  <label for="t1" class="control-label">Email content</label>
+                  <textarea rows="6" style="resize: none;" class="form-control" id="t1" name="Languages['.$i.'][EmailText]">'.$lang['EmailText'].'</textarea>
+                </div>
+                </div>';
+              }
+              else{
+                echo '<div role="tabpanel" class="tab-pane" id="'.$lang['LanguageName'].'">
+                <div class="form-group label-floating">
+                  <label for="t1" class="control-label">Email content</label>
+                  <textarea rows="6" style="resize: none;" class="form-control" id="t1" name="Languages['.$i.'][EmailText]">'.$lang['EmailText'].'</textarea>
+                </div>
+                </div>';
+              }
+              
+            }
+            echo '</div>';
+            ?>
+            <?php //echo var_dump($customerLanguages);?>
+          </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
+  
 </div>

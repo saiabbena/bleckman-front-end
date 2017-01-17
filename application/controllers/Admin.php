@@ -229,7 +229,27 @@ class Admin extends CI_Controller {
 
     echo var_dump($_SESSION['message']);
 
-    header('Location: ' . $_SERVER['HTTP_REFERER'].'#language-panel');
+    //eader('Location: ' . $_SERVER['HTTP_REFERER'].'#language-panel');
+
+  }
+  //for submiting emails
+  public function submitEmails(){
+    header('Content-Type: application/json');
+    
+    echo json_encode($_POST['Languages']);
+    
+    //exit();
+    
+    $server_output = $this->httpRequests->httpPost('CustomerLanguage/PostManageCustomerLanguage', 
+                                                    json_encode(['CustomerLanguages'=>$_POST['Languages']]));
+
+    $_SESSION['message']['emails']='Saved';
+
+    echo var_dump($_SESSION['message']);
+    
+    
+
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#email-panel');
 
   }
   //login screen for customer view
