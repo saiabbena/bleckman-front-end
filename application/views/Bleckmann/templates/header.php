@@ -85,11 +85,12 @@
 	</script>
 	<?php 
 	}
-	if($this->uri->segment(2) == 'carriers'){	
-	?>
+	if($this->uri->segment(2) == 'carriers' || $this->uri->segment(2) == 'edit_carrier'){	
+	?>	
 	<!--<link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/style.css">-->
     <link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/prism.css">
     <link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/chosen.css">	
+	
 	<?php }?>
   </head>
   <body id='override'>

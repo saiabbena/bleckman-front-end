@@ -1,4 +1,4 @@
-<?php if($this->uri->segment(2) == 'carriers'){	
+<?php if($this->uri->segment(2) == 'carriers' || $this->uri->segment(2) == 'edit_carrier'){	
 ?>
 <script src="<?php echo base_url();?>vendor/chosen/chosen.jquery.js" type="text/javascript"></script>
   <script src="<?php echo base_url();?>vendor/chosen/prism.js" type="text/javascript" charset="utf-8"></script>

@@ -65,9 +65,9 @@
 										        </td>
 						              			<td><div class="carrier_info"><br>' .	$carriers[$i]['CarrierName'] . '</div></td>
 						              			<td>
-						              				<button type="button" class="btn btn-raised btn-success edit-carrier-pop"  data-toggle="modal" data-target="#add-carrier-modal" id="edit-carrier-' .$carriers[$i]['PKCarrierID'] .'">
+						              				<a href="'.base_url().'index.php/Bleckmann/edit_carrier/'.$carriers[$i]['PKCarrierID'].'" class="btn btn-raised btn-success" id="edit-carrier-' .$carriers[$i]['PKCarrierID'] .'">
 						              					Edit
-						              				</button>';
+						              				</a>';
 						              			if ( $carriers[$i]['Isactive'] ) {
 						              				echo '<button type="button" class="btn btn-raised btn-danger"  data-toggle="modal" data-target="#delete-carrier-modal'. $carriers[$i]['PKCarrierID'] .'" id="delete-carrier" >
 						              					De activate

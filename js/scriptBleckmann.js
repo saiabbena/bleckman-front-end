@@ -539,7 +539,7 @@ $(document).ready(function() {
 		var url_val = window.location.href.split('?')[0];
 		var url_val1 = url_val.split('#')[0];
 		var loc = url_val1.substr(window.location.href.lastIndexOf('/') + 1);
-		console.log(loc);
+		//console.log(loc);
 		if ( loc == 'languages') {
 			if (customerId == '') {
 				$('#showcustomerSelect').prop("checked", false);
@@ -1194,22 +1194,24 @@ $(document).ready(function() {
 		var settings_global_cnt=0;
 		var settings_local_cnt=0;
 		$('#add-carrier-global-setting').click(function() {
+			settings_global_cnt = $('.SettingsNameCls').length;
 			var html1 = '<div class="row">\
 				                	<div class="col-md-12">\
-				                		<div class="col-md-6">\
+				                		<div class="col-md-5">\
 							              	<div class="form-group label-floating">\
 							                  <label class="control-label">Settings Name</label>\
-							                  <input id="SettingsName" type="text" name="GlobalSetting[' + settings_global_cnt +'][SettingName]" class="form-control" value="">\
+							                  <input id="SettingsName" type="text" name="GlobalSetting[' + settings_global_cnt +'][SettingName]" class="form-control SettingsNameCls" value="">\
 							                  <span class="help-block">Enter Settings Name</span>\
 							                </div>\
 				                		</div>\
 				                		<div class="col-md-6">\
 							              	<div class="form-group label-floating">\
 							                  <label class="control-label">Settings Value</label>\
-							                  <input id="SettingsValue" type="text" name="GlobalSetting[' + settings_global_cnt +'][SettingValue]" class="form-control" value="">\
+							                  <input id="SettingsValue" type="text" name="GlobalSetting[' + settings_global_cnt +'][SettingValue]" class="form-control SettingsValueCls" value="">\
 							                  <span class="help-block">Enter Settings Value</span>\
 							                </div>\
 				                		</div>\
+										<div class="col-md-1">\
 				                	</div>\
 				        </div>';
 			$('div#global-setting').append(html1);
@@ -1217,6 +1219,7 @@ $(document).ready(function() {
 			$('#global-settings-error').hide();
 		});
 		$('#add-carrier-local-setting').click(function() {
+			settings_local_cnt = $('.LocalSettingsCls').length;
 			var apiCall = url + 'Carrier/GetPredefinedCarrierSetting';
 			
 			console.log("length : " + predefinedSettings.length );
@@ -1244,7 +1247,7 @@ $(document).ready(function() {
 								              	<div class="form-group label-floating">\
 								                  <label class="control-label">Settings Name</label>\
 								                  \
-								                  <select class="form-control" name="CarrierSetting[' + settings_local_cnt +'][SettingName]">\
+								                  <select class="form-control LocalSettingsCls" name="CarrierSetting[' + settings_local_cnt +'][SettingName]">\
 												   <option value="-1" selected="selected">Select a settings name</option>';
 								            for(i=0;i<predefinedSettings.length;i++) {
 								            	html1 += '<option value="'+predefinedSettings[i]['SettingName'] +'">' + predefinedSettings[i]['SettingName'] + '</option>';
@@ -1252,12 +1255,13 @@ $(document).ready(function() {
 											html1 += '</select>\
 								                </div>\
 					                		</div>\
-					                		<div class="col-md-6">\
+					                		<div class="col-md-5">\
 								              	<div class="form-group label-floating">\
 								                  <input id="SettingsValue" disabled type="hidden" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
 								                  <span class="help-block">Enter Settings Value</span>\
 								                </div>\
 					                		</div>\
+											<div class="col-md-1"></div>\
 					                	</div>\
 					        </div>';
 				$('div#carrier-setting').append(html1);
@@ -1432,9 +1436,10 @@ $(document).ready(function() {
 		      });
 		}
 		$("div#all-settings").on('click', '.delete-carrier-settings-btn',function(e) {
-			$('.loading').css({'display':'block'});
-			$('.carrier_div').css({'display':'none'});
-			console.log('form submit');
+			//$('.loading').css({'display':'block'});
+			//$('.carrier_div').css({'display':'none'});
+			//console.log('form submit');
+			//GlobalSettingDiv,CarrierSettingDiv
 			s_array = $(this).attr("id").split("-");
 			var apiCall = url+'Carrier/PostDeleteGlobalsetting';
 			var postData = {};
@@ -1454,10 +1459,46 @@ $(document).ready(function() {
 				if (response.Status == 1) {
 					$('#delete-' + s_array[1] + '-settings-modal'+postData.PKGlobalCarrierId ).hide();
 					$('#settings-alert').show();
+					$('#CarrierSettingDiv'+postData.PKGlobalCarrierId).hide();
+					$('#CarrierSettingDiv'+postData.PKGlobalCarrierId).remove();		
 
-					setCarrierData(s_array[3]);
-					//$("#edit-carrier-" + s_array[3]).trigger('click');
-					//$("#add-carrier-modal").modal("show"); 
+					//setCarrierData(s_array[3]);//There is no need to call this function as we have created a separate Edit carrier Page
+					
+				}
+			  },
+			  fail: function(){
+				$('.loading-screen').slideDown('slow');
+			  }
+			});		
+
+		});
+		$("div#all-settings").on('click', '.delete-global-settings-btn',function(e) {			
+			//console.log('form submit');
+			//GlobalSettingDiv,CarrierSettingDiv
+			s_array = $(this).attr("id").split("-");
+			var apiCall = url+'Carrier/PostDeleteGlobalsetting';
+			var postData = {};
+			postData['PKGlobalCarrierId']=s_array[2];
+			console.log(postData);
+			$.ajax({
+			  url: apiCall,
+			  type: 'post',
+			  data: postData,
+			  headers: {
+				  Apoyar: apoyarToken
+			  },
+			  dataType: 'json',
+			  success: function (response) {
+				//$('.loading-screen').slideUp('slow');
+				console.log(response);
+				if (response.Status == 1) {
+					$('#delete-' + s_array[1] + '-settings-modal'+postData.PKGlobalCarrierId ).hide();
+					$('#settings-alert').show();
+					$('#GlobalSettingDiv'+postData.PKGlobalCarrierId).hide();
+					$('#GlobalSettingDiv'+postData.PKGlobalCarrierId).remove();		
+
+					//setCarrierData(s_array[3]);//There is no need to call this function as we have created a separate Edit carrier Page
+					
 				}
 			  },
 			  fail: function(){
@@ -1659,6 +1700,28 @@ $(document).ready(function() {
 		        }
 		});
 		$("#add-carrier-form").validate({
+		        rules: {
+		            CarrierName: "required",
+		            "Countries[]" : "required",
+		        },
+		        messages: {
+		            CarrierName: "Please enter a Carrier Name",
+		            "Countries[]": "Please select a Country",
+		        },
+		        submitHandler: function(form) {
+		        	form.submit();
+		        	// if ( settings_global_cnt > 0) {
+		        	// 	if (settings_local_cnt > 0) {
+		         //    		form.submit();
+		         //    	} else {
+		         //    		$('#local-settings-error').show();
+		         //    	}
+		         //    } else {
+		         //    	$('#global-settings-error').show();
+		         //    }
+		        }
+		});
+		$("#edit-carrier-form").validate({
 		        rules: {
 		            CarrierName: "required",
 		            "Countries[]" : "required",

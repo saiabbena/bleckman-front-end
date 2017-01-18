@@ -112,6 +112,31 @@ class Bleckmann extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
+  public function edit_carrier($param1='') {
+    $data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllActiveBMCarriers', '');
+    $data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
+	
+	$req = array(
+      'CarrierId'=>$param1
+    );
+	$carrierEditInfo = $this->httpRequests->httpGet('Carrier/GetActiveCarrierbyid', $req);
+	$data['editCarrierInfo'] = $carrierEditInfo;
+	//echo json_encode($carrierEditInfo);exit();
+	//print_r($carrierEditInfo['Countries']);exit();
+	//print_r($carrierEditInfo['CarrierSetting']);exit();	
+	
+	$data['carrier_id'] = $param1;	
+	$data['GlobalSetting'] = $carrierEditInfo['GlobalSetting'];
+	$data['CarrierSetting'] = $carrierEditInfo['CarrierSetting'];
+	
+	
+    $this->load->view('Bleckmann/templates/header');
+    $this->load->view('Bleckmann/edit_carrier', $data);
+    $this->load->view('Bleckmann/templates/footer');
+    if(isset($_SESSION['message'])) {
+      unset($_SESSION['message']);
+    }
+  }
   public function settings() {
     $data['customerId'] = $this->input->get('Customerid');
     $req = array(
@@ -264,6 +289,24 @@ class Bleckmann extends CI_Controller {
     }
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
+  }
+  public function updateCarrier() {
+    if (isset($_POST['Countries'])) {
+      foreach ($_POST['Countries'] AS $index => $value)
+        $_POST['Countries'][$index] = (int)$value;
+    }
+    //echo json_encode($_POST);exit();
+    $server_output = $this->httpRequests->httpPost('Carrier/PostManageBMCarrier', json_encode($_POST) );
+    //echo json_encode($server_output);exit();
+    if ( $server_output['Status'] == 1) { 
+      $_SESSION['message']['carrier_panel']='Saved';
+      $_SESSION['message']['alert_status']='success';
+    } else {
+      $_SESSION['message']['carrier_panel']='Error : ' . $server_output['Messages'];
+      $_SESSION['message']['alert_status']='warning';
+    }
+    echo var_dump($_SESSION['message']);
+    header('Location: ' . base_url().'index.php/Bleckmann/carriers');	
   }
   public function submitWarehouses() {
   	//print_r($_POST);exit();
