@@ -78,6 +78,7 @@ function secondScreen(result){
   var html='';
   var html2='';
   //console.log(result);
+  console.log(" secondScreen , customername : " + customername );
   for (i=0; i<result['result']['BMOrderLine'].length; i++){
     result['result']['BMOrderLine'][i]['Price'];
   }
@@ -508,6 +509,7 @@ $(document).ready(function(){
     console.log(customerSettings.carriers[carrierInfo]);
     if ( mode == 3 ) {
       postData.CarrierName=carName;
+      postData.CustomerName=customername;
       postData.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       postData.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
       postData.ConsumerEmail2=$('#emailConfirm').val();
@@ -553,9 +555,10 @@ $(document).ready(function(){
               });
 
     } else {
-
+      
       submition.FKCustomerId=customerId;
       submition.StatusName='Label printed';
+      submition.CustomerName=customername;
       //submition.CarrierId=parseInt($('input[name=sample1]:checked').val(), 10);
       submition.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       submition.Status=result.result.Status;

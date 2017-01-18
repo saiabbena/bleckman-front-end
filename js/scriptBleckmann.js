@@ -5,6 +5,7 @@ $(document).ready(function() {
    
 		var url=API_BASE_URL_FE+'api/';
 		var predefinedSettings = [];
+		var predefinedGlobalSettings = [];
 		
 		$(".add-customer-pop").click(function(){
 			var validator1 = $( "#customer-info-form" ).validate();
@@ -1195,29 +1196,55 @@ $(document).ready(function() {
 		var settings_local_cnt=0;
 		$('#add-carrier-global-setting').click(function() {
 			settings_global_cnt = $('.SettingsNameCls').length;
-			var html1 = '<div class="row">\
-				                	<div class="col-md-12">\
-				                		<div class="col-md-5">\
-							              	<div class="form-group label-floating">\
-							                  <label class="control-label">Settings Name</label>\
-							                  <input id="SettingsName" type="text" name="GlobalSetting[' + settings_global_cnt +'][SettingName]" class="form-control SettingsNameCls" value="">\
-							                  <span class="help-block">Enter Settings Name</span>\
-							                </div>\
-				                		</div>\
-				                		<div class="col-md-6">\
-							              	<div class="form-group label-floating">\
-							                  <label class="control-label">Settings Value</label>\
-							                  <input id="SettingsValue" type="text" name="GlobalSetting[' + settings_global_cnt +'][SettingValue]" class="form-control SettingsValueCls" value="">\
-							                  <span class="help-block">Enter Settings Value</span>\
-							                </div>\
-				                		</div>\
-										<div class="col-md-1">\
-				                	</div>\
-				        </div>';
-			$('div#global-setting').append(html1);
-			settings_global_cnt++;
-			$('#global-settings-error').hide();
-		});
+			var apiCall = url + 'carrier/GetPredefinedGlobalSetting';			
+			console.log("length : " + predefinedGlobalSettings.length );
+			if ( predefinedGlobalSettings.length == 0 ) {
+				$.ajax({
+			        url: apiCall,
+			        type: 'GET',
+				    headers: {
+				        Apoyar: apoyarToken
+				    },
+			        dataType: 'json',
+			        success: function(data) {
+			        	predefinedGlobalSettings = data;
+			        	console.log("here");
+			        	console.log(predefinedGlobalSettings);
+			        }
+			    });
+			}
+			console.log(predefinedGlobalSettings);
+			setTimeout(function(){
+				var html1 = '<div class="row">\
+					                	<div class="col-md-12">\
+					                		<div class="col-md-5">\
+								              	<div class="form-group label-floating">\
+								                  <label class="control-label">Select a Settings Name</label>\
+								                  <select class="form-control SettingsNameCls" name="GlobalSetting[' + settings_global_cnt +'][SettingName]">\
+												   <option value="-1" selected="selected">Select a settings name</option>';
+									            for(i=0;i<predefinedGlobalSettings.length;i++) {
+									            	html1 += '<option value="'+predefinedGlobalSettings[i]['SettingName'] +'">' + predefinedGlobalSettings[i]['SettingName'] + '</option>';
+									            }
+								             //<input id="SettingsName" type="text" name="GlobalSetting[' + settings_global_cnt +'][SettingName]" class="form-control" value="">\
+								             html1 +='</select>\
+								                </div>\
+					                		</div>\
+					                		<div class="col-md-6">\
+								              	<div class="form-group label-floating">\
+								                  <label class="control-label">Settings Value</label>\
+								                  <input id="SettingsValue" type="text" name="GlobalSetting[' + settings_global_cnt +'][SettingValue]" class="form-control SettingsValueCls" value="">\
+								                  <span class="help-block">Enter Settings Value</span>\
+								                </div>\
+					                		</div>\
+											<div class="col-md-1">\
+					                	</div>\
+					        </div>';
+				$('div#global-setting').append(html1);
+				settings_global_cnt++;
+				$('#global-settings-error').hide();
+			}, 500);
+		});		
+		
 		$('#add-carrier-local-setting').click(function() {
 			settings_local_cnt = $('.LocalSettingsCls').length;
 			var apiCall = url + 'Carrier/GetPredefinedCarrierSetting';
@@ -1348,7 +1375,7 @@ $(document).ready(function() {
 				                		<div class="col-md-5">\
 							              	<div class="form-group label-floating">\
 							                  <label class="control-label">Settings Name</label>\
-							                  <input id="SettingsName" type="text" name="GlobalSetting[' + i +'][SettingName]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingName'] +'">\
+							                  <input readonly="readonly" id="SettingsName" type="text" name="GlobalSetting[' + i +'][SettingName]" class="form-control" value="'+ data['GlobalSetting'][i]['SettingName'] +'">\
 							                  <span class="help-block">Enter Settings Name</span>\
 							                </div>\
 				                		</div>\

@@ -13,6 +13,9 @@
         			$om4=true;
         		}
         	}
+        	echo '<script> var om3="' .$om3.'";</script>';
+        	echo '<script> var om4="' .$om4.'";</script>';
+        	echo '<script> customername="' . $customername.'";</script>';
         ?>
         <br>		
 		<div class='container-fluid form1 form_ro'>
@@ -378,20 +381,26 @@ $(document).ready(function () {
 	$('.btn_admin_career_back').click(function(){		
 		location.reload();		
 	});
-	$('.btn_admin_career_back2').click(function(){	  		
+	$('.btn_admin_career_back2').click(function() {
 		//location.reload();  
 		$('.form5').show();
 		$('.form2').hide();
 	});
 	$('.btn_admin_career_back1').click(function(){
 		console.log("mode : " + mode);
+		console.log("om3 : " + om3);
+		console.log("om4 : " + om4);
 		$('.form3').hide();
 		if ( mode == 4 ) {
 			$('.form2').show();
 			$(".checkbox span:nth-child(2)").remove();//This is a bug that It shows 2 check boxes while the form2 loads again	
 		} else {
-			$('.form1').show();
-			$('.form1_mode1').show();
+			if ( om3 ) {
+				$('.form1_mode1').show();	
+			}
+			if ( om4 ) {
+				$('.form1').show();
+			}
 		}
 	});
 });

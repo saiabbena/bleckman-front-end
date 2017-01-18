@@ -3,6 +3,7 @@
 	$btn_bg = 'style="background-color:'.$accent_1.' !important"';
 ?>
 <?php echo '<script> mode="' . $Mode.'";</script>';?>
+<?php echo '<script> customername="' . $customername.'";</script>';?>
   <!--I just added some commented text for testing-->
   <div class='container-fluid form1 form_con_login'>
     <div class='row'>
