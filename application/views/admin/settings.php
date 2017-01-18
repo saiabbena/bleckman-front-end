@@ -504,6 +504,11 @@
             </div>';
           }
         ?>
+        <style>
+          #email-panel > form > div > ul > li.tab-head.active{
+            background-color: #53b2a9;
+          }
+        </style>
         <form method='POST' action="submitEmails">
         <button type="submit" id='change-email' class='btn btn-raised btn-success pull-right'>Save</button>
         <h3>Email text 
@@ -519,7 +524,7 @@
               
               if($i==0){
                 echo '
-                <li role="presentation" class="active">
+                <li role="presentation" class="tab-head active">
                 <a href="#'.$lang['LanguageName'].'" aria-controls="'.$lang['LanguageName'].'" role="tab" data-toggle="tab">
                 '.$lang['LanguageName'].'
                 </a>
@@ -527,7 +532,7 @@
               }
               else{
                 echo '
-                <li role="presentation">
+                <li role="presentation" class="tab-head">
                 <a href="#'.$lang['LanguageName'].'" aria-controls="'.$lang['LanguageName'].'" role="tab" data-toggle="tab">
                 '.$lang['LanguageName'].'
                 </a>
