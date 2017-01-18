@@ -412,6 +412,7 @@ public function deleteLinks() {
     
 		$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
 		$data['all_langs']=$data['customerLanguages'];
+    $data['customername'] = $_SESSION['Customername'];
 
 		$data['Links'] = [];
 		//set customerLanguages to current selected language

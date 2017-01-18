@@ -202,6 +202,7 @@ class Consumer extends CI_Controller {
 				}
 		}
 	}	
+  $data['customername'] = $appearanceSettings['CustomerSetting']['CustomerName'];
 	//Use in Live
 	/* In header I have put the (style scoped) for specific requirement*/
 	$hdr_bg = $header_color;		

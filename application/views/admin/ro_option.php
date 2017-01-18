@@ -15,6 +15,7 @@
         	}
         	echo '<script> var om3="' .$om3.'";</script>';
         	echo '<script> var om4="' .$om4.'";</script>';
+        	echo '<script> customername="' . $customername.'";</script>';
         ?>
         <br>		
 		<div class='container-fluid form1 form_ro'>
@@ -380,7 +381,7 @@ $(document).ready(function () {
 	$('.btn_admin_career_back').click(function(){		
 		location.reload();		
 	});
-	$('.btn_admin_career_back2').click(function(){	  		
+	$('.btn_admin_career_back2').click(function() {
 		//location.reload();  
 		$('.form5').show();
 		$('.form2').hide();
