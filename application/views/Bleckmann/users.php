@@ -248,18 +248,18 @@
 			                	<div class="col-md-6">
 					              	<div class="form-group label-floating required">
 					                  <label for="i5" class="control-label">New Password</label>
-					                  <input id="newPassword" type="password" name="newPassword" class="form-control" value="">
+					                  <input id="newPassword" type="password" name="newPassword" class="form-control showpassword" value="">
 					                  <span class="help-block">Enter Password(e.g. Abcde5#)</span>
 					                </div>
 					            </div>
 					            <div class="col-md-5">
 					              	<div class="form-group label-floating required">
 					                  <label for="i5" class="control-label">Confirm Password</label>
-					                  <input id="confirmPassword" type="password" name="confirmPassword" class="form-control" value="">
+					                  <input id="confirmPassword" type="password" name="confirmPassword" class="form-control showpassword" value="">
 					                  <span class="help-block">Enter Password(e.g. Abcde5#)</span>
 					                </div>
 					            </div>
-								<!--<div class="col-md-1"><a href="javascript:void(0)"><i class="medium material-icons">visibility</i></a></div>-->
+								<div class="col-md-1"><a href="javascript:void(0)" class="btnshowpw"><i class="medium material-icons">visibility</i></a></div>
 				            </div>
 		            	</div>
 						<input id="PKUserID" type="hidden" name="PKUserID" value="">
@@ -274,3 +274,11 @@
     </div>
     </div>
 </div>
+<script>
+//btnshowpw
+$(".btnshowpw").on('click', function(){
+			
+
+			
+});
+</script>
