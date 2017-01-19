@@ -259,7 +259,7 @@
 					                  <span class="help-block">Enter Password(e.g. Abcde5#)</span>
 					                </div>
 					            </div>
-								<div class="col-md-1"><a href="javascript:void(0)" class="btnshowpw"><i class="medium material-icons">visibility</i></a></div>
+								<div class="col-md-1"><a href="javascript:void(0)" class="btnshowpw" id="btnshowpw" alt="View Password" title="View Password" ><i style="margin-top: 30px;" class="medium material-icons">visibility</i></a></div>
 				            </div>
 		            	</div>
 						<input id="PKUserID" type="hidden" name="PKUserID" value="">
@@ -268,17 +268,9 @@
 							<button type="submit" class="btn btn-primary">save</button>
 						  </div>
 				</form>
-			</div>
+			</div>			
 		</div>
 		          
     </div>
     </div>
 </div>
-<script>
-//btnshowpw
-$(".btnshowpw").on('click', function(){
-			
-
-			
-});
-</script>
