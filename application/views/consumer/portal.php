@@ -396,12 +396,12 @@
                         <label class="control-label">Country</label>
                         <!-- <input name="ConsumerFromShipCountry" type="text" class="form-control"> -->
                             <?php
-                              //echo json_encode($allCountries);
+                              //echo json_encode($customerCountries);
                               echo '<select class="form-control" id="ConsumerFromShipCountry" name="ConsumerFromShipCountry">';
                               echo '<option value="-1">Select a Country &darr;</option>';
-                              for ($i=0; $i<count($allCountries); $i++) { 
-                                if ( $allCountries[$i]['IsActive'] ) {
-                                  echo '<option value="' . $allCountries[$i]['CountryCode'].'">' . $allCountries[$i]['CountryName'] . '</option>';
+                              for ($i=0; $i<count($customerCountries); $i++) { 
+                                if ( $customerCountries[$i]['IsActive'] ) {
+                                  echo '<option value="' . $customerCountries[$i]['CountryCode'].'">' . $customerCountries[$i]['CountryName'] . '</option>';
                                 }
                               }
                               echo '</select>';

@@ -440,6 +440,7 @@ public function deleteLinks() {
     $data['customer_id'] = $customer_id;
     $data['api_base_url_fe'] = API_BASE_URL_FE;
     $data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
+    $data['customerCountries']=$this->httpRequests->httpGet('country/GetAllActiveCountriesbyCustomerid', $req);
     #$data['customerOpModes'] = $this->httpRequests->httpGet('operation/GetOperationsbyCustomerid', $req );
     $data['customerOpModes'] = $this->customerOpModes;
 		$this->load->view('admin/templates/adm_header');

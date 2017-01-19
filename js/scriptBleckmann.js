@@ -1196,7 +1196,7 @@ $(document).ready(function() {
 		var settings_local_cnt=0;
 		$('#add-carrier-global-setting').click(function() {
 			settings_global_cnt = $('.SettingsNameCls').length;
-			var apiCall = url + 'carrier/GetPredefinedGlobalSetting';			
+			var apiCall = url + 'carrier/GetPredefinedGlobalSetting';
 			console.log("length : " + predefinedGlobalSettings.length );
 			if ( predefinedGlobalSettings.length == 0 ) {
 				$.ajax({

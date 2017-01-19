@@ -86,7 +86,7 @@ class Consumer extends CI_Controller {
     
     return $result;
   }
-  private function getCountries(){
+  private function getAllCountries(){
     $ch = curl_init();
 
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
@@ -101,11 +101,32 @@ class Consumer extends CI_Controller {
     
     return $result;
   }
+  private function getCustomerCountries() {
+    $customer_id=$this->Customerid;
+    $req = array(
+      'Customerid'=>$customer_id
+    );  
+    $data_url='?'.http_build_query($req);
+    $ch = curl_init();
+
+    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+    curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE . "api/country/GetAllActiveCountriesbyCustomerid" . $data_url);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+    // Send the request
+    $result = json_decode(curl_exec($ch), true);
+
+    // Free up the resources $curl is using
+    curl_close($ch);
+    
+    return $result;
+  }
   public function portal(){
     
     $data['customerLanguages']=$this->getCustomerLanguages();
     $data['all_langs']=$data['customerLanguages'];
-    $data['allCountries']=$this->getCountries();
+    //$data['allCountries']=$this->getAllCountries();
+    $data['customerCountries']=$this->getCustomerCountries();
 
     $data['Links'] = [];
     //set customerLanguages to current selected language

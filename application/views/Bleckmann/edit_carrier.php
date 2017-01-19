@@ -15,13 +15,13 @@
 <div class='col-xs-12 col-md-9' height='100%'>
 	<div class='container-fluid'>
 		<div class='well body_btm_bdr' id='ap-panel'>
-			<form method="POST" action="<?php echo base_url()?>index.php/Bleckmann/updateCarrier" id="edit-carrier-form">
-	    	<h3>Edit Carrier</h3>
+			<form method="POST" action="<?php echo base_url()?>index.php/Bleckmann/submitCarrier" id="edit-carrier-form">
+	    	<h3>Edit Carrier - <?php echo $editCarrierInfo['CarrierName']?> </h3>
 				<div class='row'>
 					<div class="col-md-8">						
 					</div>
 					<div class="col-md-4">						
-						<a type="button" id='cancel-carrier' class='btn btn-raised btn-warning pull-right' href="<?php echo base_url()?>index.php/Bleckmann/carriers">Cancel</a>
+<!-- 						<a type="button" id='cancel-carrier' class='btn btn-raised btn-warning pull-right' href="<?php echo base_url()?>index.php/Bleckmann/carriers">Cancel</a> -->
 						<button type="submit" id='add-carrier' class='btn btn-raised btn-success pull-right'>Save</button>
 						
 					</div>
@@ -103,7 +103,7 @@
 														<div class="col-md-5">
 															<div class="form-group label-floating">
 															  <label class="control-label">Settings Name</label>
-															  <input id="SettingsName" type="text" name="GlobalSetting[<?php echo $i?>][SettingName]" class="form-control SettingsNameCls" value="<?php echo $GlobalSettingInfo['SettingName']?>">
+															  <input readonly="readonly" id="SettingsName" type="text" name="GlobalSetting[<?php echo $i?>][SettingName]" class="form-control SettingsNameCls" value="<?php echo $GlobalSettingInfo['SettingName']?>">
 															  <span class="help-block">Enter Settings Name</span>
 															</div>
 														</div>
