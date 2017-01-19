@@ -290,24 +290,6 @@ class Bleckmann extends CI_Controller {
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#carrier_panel');
   }
-  public function updateCarrier() {
-    if (isset($_POST['Countries'])) {
-      foreach ($_POST['Countries'] AS $index => $value)
-        $_POST['Countries'][$index] = (int)$value;
-    }
-    //echo json_encode($_POST);exit();
-    $server_output = $this->httpRequests->httpPost('Carrier/PostManageBMCarrier', json_encode($_POST) );
-    //echo json_encode($server_output);exit();
-    if ( $server_output['Status'] == 1) { 
-      $_SESSION['message']['carrier_panel']='Saved';
-      $_SESSION['message']['alert_status']='success';
-    } else {
-      $_SESSION['message']['carrier_panel']='Error : ' . $server_output['Messages'];
-      $_SESSION['message']['alert_status']='warning';
-    }
-    echo var_dump($_SESSION['message']);
-    header('Location: ' . base_url().'index.php/Bleckmann/carriers');	
-  }
   public function submitWarehouses() {
   	//print_r($_POST);exit();
   	$server_output = $this->httpRequests->httpPost('Location/PostManageLocation', json_encode($_POST) );

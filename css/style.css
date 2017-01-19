@@ -191,7 +191,7 @@ background:none !important;}
     1px 1.5em;
   background-repeat: no-repeat;
  }
-.LocalSettingsCls, .SettingsNameCls{padding:9px 12px;}
+/*.LocalSettingsCls, .SettingsNameCls{padding:9px 12px;}*/
 .btn-warning{background-color: #CF3A12 !important;}
 .move-up-btn{color:#FF5722 !important;}
 .body_btm_bdr{border-bottom: 15px solid #7C6062 !important; padding-bottom: 40px !important;}
