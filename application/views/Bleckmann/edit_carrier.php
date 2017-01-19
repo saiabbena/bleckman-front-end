@@ -18,7 +18,7 @@
 			<form method="POST" action="<?php echo base_url()?>index.php/Bleckmann/submitCarrier" id="edit-carrier-form">
 	    	<h3>Edit Carrier - <?php echo $editCarrierInfo['CarrierName']?> </h3>
 				<div class='row'>
-					<div class="col-md-8 ">						
+					<div class="col-md-8">						
 					</div>
 					<div class="col-md-4">						
 <!-- 						<a type="button" id='cancel-carrier' class='btn btn-raised btn-warning pull-right' href="<?php echo base_url()?>index.php/Bleckmann/carriers">Cancel</a> -->
