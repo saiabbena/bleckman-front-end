@@ -848,6 +848,10 @@ $(document).ready(function() {
 				//console.log(testdate[0]);
 				resultDate=testdate1.getDate()+'/'+(testdate1.getMonth()+1)+'/'+(testdate1.getYear()+1900);
 				//console.log("resultDate : " + resultDate);
+				var RORefAmount = '';
+				if(data[i].ReturnOrderTotalRefundAmount.toFixed(2) > 0){
+					RORefAmount = data[i].ReturnOrderTotalRefundAmount.toFixed(2);
+				}
 				html=html+'\<tr>\
 					  <td style="white-space: nowrap;">'+resultDate+'</td>\
 					  \
@@ -857,7 +861,7 @@ $(document).ready(function() {
 					  \
 					  <td style="white-space: nowrap;"><a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'">Link</a></td>\
 					  \
-					  <td style="white-space: nowrap;"><b>'+' '+data[i].ReturnOrderTotalRefundAmount.toFixed(2)+'</b></td>\
+					  <td style="white-space: nowrap;"><b>'+' '+RORefAmount+'</b></td>\
 					  \
 					   <td style="white-space: nowrap;">'+data[i].CustomerName+'</td>\
 					  \
@@ -1880,4 +1884,11 @@ $(document).ready(function() {
 			
 		});
 		$('#keywords_by_langid').val($("#keywords_by_langid option:eq(0)").val()).trigger('change');//Trgger the first option on page load always
+		//Click to show password in Edit User Popup
+		$("#btnshowpw").mouseup(function(){
+			$(".showpassword").attr("type", "password");
+		});
+		$("#btnshowpw").mousedown(function(){
+			$(".showpassword").attr("type", "text");
+		});
 });

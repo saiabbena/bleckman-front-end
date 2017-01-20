@@ -135,7 +135,11 @@ $(document).ready(function(){
       date=new Date(date1[0]);
 
       resultDate=date.getDate()+'/'+(date.getMonth()+1)+'/'+(date.getYear()+1900);
-      console.log("resultDate : " + resultDate);
+	  var RORefAmount = '';
+		if(data[i].ReturnOrderTotalRefundAmount.toFixed(2) > 0){
+			RORefAmount = data[i].ReturnOrderTotalRefundAmount.toFixed(2);
+		}
+      //console.log("resultDate : " + resultDate);
       html=html+'\
         <tr>\
           <tr>\
@@ -147,7 +151,7 @@ $(document).ready(function(){
               \
               <td style="white-space: nowrap;"><a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'">Link</a></td>\
               \
-			       <td style="white-space: nowrap;"><b>'+' '+data[i].ReturnOrderTotalRefundAmount.toFixed(2)+'</b></td>\
+			       <td style="white-space: nowrap;"><b>'+' '+RORefAmount+'</b></td>\
               \
               <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
               \

@@ -71,6 +71,7 @@
 	<link rel="stylesheet" href="<?php echo base_url();?>vendor/datatable/dataTables.bootstrap.min.css">
 	<script src="<?php echo base_url();?>vendor/datatable/jquery.dataTables.min.js"></script>
 	<script src="<?php echo base_url();?>vendor/datatable/dataTables.bootstrap.min.js"></script>
+	
 	<script type="text/javascript">
 	$(document).ready(function(){
 		$('#wh_data').DataTable({				 
