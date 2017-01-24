@@ -185,52 +185,8 @@
                   <th data-field="0" tabindex="0"></th><th data-field="1" tabindex="0"><?php echo $translations[9]['Translation'];?></th><th data-field="2" tabindex="0"><?php echo $translations[10]['Translation'];?></th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class='form-group'>
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="sample1" value="option1" checked="">
-                        </label>
-                      </div>
-                    </div>
-                  </td>
-                  
-                  <td>
-                    <br style='font-size: 21px;'>
-                    <b>DHL</b>
-                  </td>
-                  
-                  <td>
-                    <br style='font-size: 21px;'>
-                    <a href='#'  class='pull-right'>more info</a>
-                  </td>
-                  
-                </tr>
+              <tbody>           
                 
-                <tr>
-                  <td>
-                    <div class='form-group'>
-                      <div class="radio">
-                        <label>
-                          <input type="radio" name="sample1" value="option2">
-                        </label>
-                      </div>
-                    </div>
-                  </td>
-                  
-                  <td>
-                    <br style='font-size: 21px;'>
-                    <b>NL POST</b>
-                  </td>
-                  
-                  <td>
-                    <br style='font-size: 21px;'>
-                    <a href='#' class='pull-right'>more info</a>
-                  </td>
-                  
-                </tr>
               </tbody>
             </table>
             
@@ -321,6 +277,18 @@
                   <strong>Whoops!</strong></strong>
                   Something went wrong, please refresh the page and try again.
                 </div>
+				<div class="row">
+		                  <div class="col-md-12">
+							
+							<div class="col-md-6">
+								<div class="form-group label-floating">
+		                        <label class="control-label">Order ID</label>
+		                        <input name="OrderId" id="OrderId" type="text" class="form-control" maxlength="35">
+		                        <span class="help-block">Enter Order Number</span>
+		                      </div>
+							</div>						  
+						  </div>
+						</div>
                 <div class="row">
                   <div class="col-md-12">
                     <div class="col-md-6">
@@ -358,7 +326,7 @@
                     <div class="col-md-4">
                       <div class="form-group label-floating required">
                         <label class="control-label">House Number</label>
-                        <input name="ConsumerFromShipHouseNumber" id="ConsumerFromShipHouseNumber" type="text" class="form-control" maxlength="35">
+                        <input name="ConsumerFromShipHouseNumber" id="ConsumerFromShipHouseNumber" type="text" class="form-control" maxlength="15">
                         <span class="help-block">Enter House Number</span>
                       </div>
                     </div>
