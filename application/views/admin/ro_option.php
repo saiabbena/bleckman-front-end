@@ -237,10 +237,22 @@
 		    <div class='row' >
 		      <div class='col-xs-12 col-sm-10 col-md-12  col-lg-12'>
 		        <div style="border: 1px solid #ddd; padding: 20px;">
-		            <h4>By Address</h4>
-		            <p class='text-center'></p>
-		            <div class="inputs">
-		              <form id="Form1-Mode1">
+		            <form id="Form1-Mode1">
+					<div class="inputs">
+						<div class="row">
+		                  <div class="col-md-12">
+							<div class="col-md-6"><h4>By Address</h4></div>
+							<div class="col-md-6">
+								<div class="form-group label-floating">
+		                        <label class="control-label">Order ID</label>
+		                        <input name="OrderId" id="OrderId" type="text" class="form-control" maxlength="35">
+		                        <span class="help-block">Enter Order Number</span>
+		                      </div>
+							</div>						  
+						  </div>
+						</div>					
+						<p class='text-center'></p>		            
+		              
 		                <div class="alert alert-dismissible alert-danger" id='mode1-fail' style="display: none;">
 		                  <strong>Whoops!</strong></strong>
 		                  Something went wrong, please refresh the page and try again.
@@ -266,7 +278,7 @@
 		                <div class="row">
 		                  <div class="col-md-12">
 		                    <div class="col-md-4">
-		                      <div class="form-group label-floating required">
+		                      <div class="form-group label-floating ">
 		                        <label class="control-label">Email</label>
 		                        <input name="ConsumerEmail" id="ConsumerEmail" type="email" class="form-control" maxlength="255">
 		                        <span class="help-block">Enter email address to send label</span>

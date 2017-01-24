@@ -316,7 +316,7 @@ $(document).ready(function(){
 					maxlength: 35
 				},
                 ConsumerEmail: {
-                    required: true,
+                    //required: true,
                     email: true,
 					maxlength: 255
                 },
@@ -366,7 +366,9 @@ $(document).ready(function(){
 				ConsumerFromShipCountry: "Please enter Country Name"
             },
             submitHandler: function(form) {             
-              postData.Consumername1 = $('#Consumername1').val();
+              postData.OrderId = $('#OrderId').val();
+			  postData.ShipmentId = $('#OrderId').val();
+			  postData.Consumername1 = $('#Consumername1').val();
               postData.Consumername2 = $('#Consumername2').val();
               postData.ConsumerShipStreet1 = $('#ConsumerShipStreet1').val();
               postData.ConsumerEmail = $('#ConsumerEmail').val();
