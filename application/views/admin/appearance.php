@@ -1,9 +1,19 @@
 <?php	
 	$PKSettingID = (isset($appearanceSettings['CustomerSetting']['PKSettingID']))?$appearanceSettings['CustomerSetting']['PKSettingID']:'';
 	$FKCustomerid = (isset($appearanceSettings['CustomerSetting']['FKCustomerid']))?$appearanceSettings['CustomerSetting']['FKCustomerid']:'';
+	$ShowEmail = (isset($appearanceSettings['CustomerSetting']['ShowEmail']) && $appearanceSettings['CustomerSetting']['ShowEmail'] == '1')?'checked="checked"':'';
+	//echo $appearanceSettings['CustomerSetting']['ShowEmail'];exit();
 ?>
     <div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well body_btm_bdr' id='ap-panel'>	   
+      <div class='well body_btm_bdr' id='ap-panel'>
+		<?php
+          if(isset($_SESSION['message']['appearance'])){
+            echo'
+            <div class="alert alert-dismissible alert-success">
+              '.$_SESSION['message']['appearance'].'
+            </div>';
+          }
+        ?>
 		<form method="POST" action="save_appearance_settings">
         <h3 >Appearance</h3>		
         <br><br>
@@ -63,8 +73,29 @@
                   </td>
                 </tr>
               </tbody>
-            </table>
+            </table>		
             <br>
+            <button type='submit' style='border:0;' class='btn btn-success btn-raised'>Save</button>
+			</form><br /><br />
+			
+			
+			<h4>SHOW EMAIL</h4>
+            <hr>
+			<form method="POST" id="SaveShowEmailSetting" action="save_show_email_setting">
+			<input name="PKSettingID" id="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
+			<input name="FKCustomerid" id="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
+			<table> 
+				<tr>
+                  <td width="90%">
+                    SHOW EMAIL ON CREATE RETURN ORDER
+                  </td>
+                  <td><div class='togglebutton flo'>				
+					<label><input type="checkbox" name="ShowEmail" id="ShowEmail" class="custOpMode"  value="true" <?php echo $ShowEmail;?> /></label>							
+					</div>
+				</td>
+                </tr>
+			</table><br>
+			<img src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="uploading_logo" style="display:none;" />
             <button type='submit' style='border:0;' class='btn btn-success btn-raised'>Save</button>
 			</form>
           </div>
@@ -249,6 +280,29 @@ $(document).ready(function(){
 		//return false;
 		
 		
+	}));
+	//Save the show email setting during create return order
+	$('#btn_save_email_setting').on('click',(function(e) {		
+			//console.log($(''));
+			//data: new FormData(document.querySelector('#SaveShowEmailSetting')),
+			console.log(apoyarToken);
+			var emaildata = {};
+			emaildata['PKSettingID'] = $('#PKSettingID').val();
+			emaildata['FKCustomerid'] = $('#FKCustomerid').val();
+			emaildata['ShowEmail'] = $('#ShowEmail').val();
+			//console.log(data);
+			$.ajax({
+			  url: "<?php echo base_url(); ?>index.php/admin/save_show_email_setting/",
+			  type: 'POST',
+			  data: emaildata,		  			  			
+			  success: function (emaildata) {				
+				console.log(emaildata);								
+			  },
+			  fail: function(){
+				console.log('fail');
+			  }
+			});
+	
 	}));
 	
 });

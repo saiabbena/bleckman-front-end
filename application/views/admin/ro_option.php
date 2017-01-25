@@ -1,4 +1,7 @@
-    <div class='col-xs-12 col-md-9' height='100%'>
+<?php
+//echo $appearanceSettings['CustomerSetting']['ShowEmail'];exit();
+?>   
+	<div class='col-xs-12 col-md-9' height='100%'>
       <div class='well body_btm_bdr' id='ap-panel'>		
         <h4>Create Return Order</h4>	
         <?php 
@@ -162,13 +165,15 @@
 						</div><!-- /.modal-content -->
 					  </div><!-- /.modal-dialog -->
 					</div><!-- /.modal -->
-					
+					<?php
+					if($appearanceSettings['CustomerSetting']['ShowEmail'] == 1){
+					?>
 					<div class="form-group">
 					  <label for="f1" class="control-label">Email</label>
 					  <input type="text" id='emailConfirm' value='' class="form-control" id="f1">
 					  <span class="help-block">Select at email where you would like to recieve your label
 					</div>
-					
+					<?php }?>
 					<button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3'>CONFIRM AND PRINT POSTAGE LABEL<?php //echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></button><br>
 					<p style="text-align:right;"><a href="javascript:void(0)" class="btn_admin_career_back1">&laquo; Back</a></p>
 					<div class="alert alert-dismissible alert-success" id='screen3-success'>
