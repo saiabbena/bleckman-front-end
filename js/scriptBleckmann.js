@@ -1198,7 +1198,7 @@ $(document).ready(function() {
 
 		var settings_global_cnt=0;
 		var settings_local_cnt=0;
-		$("#carriers-table").on('click', '#add-carrier-global-setting', function(){		
+		$("#add-carrier-modal").on('click', '#add-carrier-global-setting', function(){		
 			settings_global_cnt = $('.SettingsNameCls').length;
 			var apiCall = url + 'carrier/GetPredefinedGlobalSetting';
 			console.log("length : " + predefinedGlobalSettings.length );
