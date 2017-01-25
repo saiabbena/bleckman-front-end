@@ -390,9 +390,7 @@ public function deleteLinks() {
 	  //print_r($_FILES);exit();	  
 	  $cfile = new CURLFile($img_file_tmp, $img_file_type, $image_type);
 	  $data = array('test_file' => $cfile);
-
-
-    $server_output = $this->httpRequests->httpPostUpload('customersetting/PostUploadLoading?customerid=' . $customerid, $data );
+      $server_output = $this->httpRequests->httpPostUpload('customersetting/PostUploadLoading?customerid=' . $customerid, $data );
 	  
 	  // $ch = curl_init();	  	
 	  // //curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/customersetting/PostUploadLoading?customerid=$customerid");
