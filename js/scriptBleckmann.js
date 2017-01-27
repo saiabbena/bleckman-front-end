@@ -1055,16 +1055,16 @@ $(document).ready(function() {
 					
 					moreinfo_html = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel"><b>Full info on return order: '+data.ReturnId+'</b></h4></div><div class="modal-body"><b>Full date/time:</b>'+data.ReturnsOrderCreationDate+',<b>Orderid:</b>'+data.OrderId+',	<b>Return status:</b>'+data.StatusName+'<hr/><h4>Customer Info:</h4>'+
 					'<div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Name:</b> '+data.ConsumerName1+'<br/>'+
-					'<b>Street1:</b> '+data.ConsumerShipStreet1+'<br/>'+
-					'<b>Street2:</b> '+data.ConsumerShipStreet2+'<br/>'+
-					'<b>Street3:</b> '+data.ConsumerShipStreet3+'<br/>'+
-					'<b>Shipping House Number:</b> '+data.ConsumerFromShipHouseNumber+'<br/>'+
-					'<b>Shipping Postal Code:</b> '+data.ConsumerFromShipPostalCode+'<br/>'+
-					'</div><div class="col-md-5 pull-right"><b>City:</b> '+data.ConsumerFromShipCity+'<br/>'+
-					'<b>State:</b> '+data.Consumershipstate+'<br/>'+
-					'<b>Country:</b> '+data.ConsumerFromShipCountry+'<br/>'+					
-					'<b>Email:</b> '+data.ConsumerEmail+'<br/>'+
-					'<b> Phone:</b>'+data.Consumerphonenumber+'</div></div>'+
+					'<b>Street1:</b> '+((data.ConsumerShipStreet1 !== undefined)?data.ConsumerShipStreet1:'')+'<br/>'+
+					'<b>Street2:</b> '+((data.ConsumerShipStreet2 !== undefined)?data.ConsumerShipStreet2:'')+'<br/>'+
+					'<b>Street3:</b> '+((data.ConsumerShipStreet3 !== undefined)?data.ConsumerShipStreet3:'')+'<br/>'+
+					'<b>Shipping House Number:</b> '+((data.ConsumerFromShipHouseNumber !== undefined)?data.ConsumerFromShipHouseNumber:'')+'<br/>'+
+					'<b>Shipping Postal Code:</b> '+((data.ConsumerFromShipPostalCode !== undefined)?data.ConsumerFromShipPostalCode:'')+'<br/>'+
+					'</div><div class="col-md-5 pull-right"><b>City:</b> '+((data.ConsumerFromShipCity !== undefined)?data.ConsumerFromShipCity:'')+'<br/>'+
+					'<b>State:</b> '+((data.Consumershipstate !== undefined)?data.Consumershipstate:'')+'<br/>'+
+					'<b>Country:</b> '+((data.ConsumerFromShipCountry !== undefined)?data.ConsumerFromShipCountry:'')+'<br/>'+					
+					'<b>Email:</b> '+((data.ConsumerEmail !== undefined)?data.ConsumerEmail:'')+'<br/>'+
+					'<b> Phone:</b>'+((data.Consumerphonenumber !== undefined)?data.Consumerphonenumber:'')+'</div></div>'+
 					
 					'<hr><h4>Warehouse:</h4><div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Warehouse id :</b> '+data.Shipfromwarehouseid+'</div><div class="col-md-6 pull-right"> <b>Warehouse :</b> '+data.Warehouse+
 					'</div></div><hr><h4>Comment:</h4>'+(data.Comment?data.Comment:'No comment has been made yet')+'<br><hr><h4>Items returned ('+data.Returnorderline.length+'):</h4>';
@@ -1072,8 +1072,8 @@ $(document).ready(function() {
 						var r=data.Returnorderline[a];
 						
 						moreinfo_html=moreinfo_html+
-						'<div class="row" style="padding-left:0 !important;"><div class="col-md-6"><b>Item name:</b> '+r.ProductName+'<br> <b>Product SKU:</b> '+r.SKU+'<br> <b>Product info:</b> '+r.ProductInfo+'<br> </div><div class="col-md-6"><b>Quantity:</b> '+r.QtyReturned+'<br> <b>Price:</b> '+r.Price
-						+'<br><b>Return reason:</b> '+r.ReturnReason+'</div></div><hr>';
+						'<div class="row" style="padding-left:0 !important;"><div class="col-md-6"><b>Item name:</b> '+((r.ProductName !== undefined)?r.ProductName:'')+'<br> <b>Product SKU:</b> '+((r.SKU !== undefined)?r.SKU:'')+'<br> <b>Product info:</b> '+((r.ProductInfo !== undefined)?r.ProductInfo:'')+'<br> </div><div class="col-md-6"><b>Quantity:</b> '+((r.QtyReturned !== undefined)?r.QtyReturned:'')+'<br> <b>Price:</b> '+r.Price
+						+'<br><b>Return reason:</b> '+((r.ReturnReason !== undefined)?r.ReturnReason:'')+'</div></div><hr>';
 					}
 					moreinfo_html=moreinfo_html+'</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div>';
 					$('#moreInfo').html(moreinfo_html);
