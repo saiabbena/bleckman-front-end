@@ -51,7 +51,7 @@
 							  <div style='height: 15vh'></div>				      
 							  </center>
 							</div>
-							<div class="carrier_div">
+							<div class="carrier_div saveCarrierForm">
 								<div class="row" id="settings-alert" style="display:none">
 									<div class="alert alert-dismissible alert-success">
 				        				Saved

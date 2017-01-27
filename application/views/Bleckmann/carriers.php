@@ -132,7 +132,7 @@
 	</div>
 </div>
         <!-- Add Carrier Modal -->
-        <div class="modal fade" id="add-carrier-modal" tabindex="-1" role="dialog" aria-labelledby="myUserLabel">
+        <div class="modal fade saveCarrierForm" id="add-carrier-modal" tabindex="-1" role="dialog" aria-labelledby="myUserLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
 	              <div class="modal-header">
