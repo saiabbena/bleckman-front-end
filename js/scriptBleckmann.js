@@ -293,11 +293,10 @@ $(document).ready(function() {
 		            EmailAddress: "Please enter a valid email address",
 		            //Country: "Please enter Country Name",
 		            FKRoleID:"Please select a role",		            
-		            Username: "Please enter Username",
-		            Password: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& ",
-		            newPassword: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& ",
-		            confirmPassword: {
-		            	required: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& ",
+		            Username: "Please enter Username",		           
+		            newPassword:"Please enter a valid password",
+					confirmPassword: {
+		            	//required: "Enter Password must contain <br />minimum 6 chars with at least <br />one number, and <br />one UPPERCASE and lowercase letter, and     <br />one special charaters like $,@,!,%,*,#,?,& ",
 		            	equalTo: "Passwords are not identical",
 		            }
 		        },
