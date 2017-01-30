@@ -27,7 +27,7 @@
 					</div>
 				</div>
 				<br>
-				<div class="row">
+				<div  class="row">
 					<div class="col-md-12">
 						<?php
 				          if(isset($_SESSION['message']['carrier_panel'])){
