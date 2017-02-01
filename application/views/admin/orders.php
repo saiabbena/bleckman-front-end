@@ -40,16 +40,22 @@
               </th>
               <th>
                 <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Carrier</label>
-                  <input name='CarrierName' type="text" class="form-control" id="i5">
+                  <!--<label for="i5" class="control-label">Carrier</label>
+                  <input name='CarrierName' type="text" class="form-control" id="i5">-->
                   <span class="help-block"></span>
+				  <select name="CarrierName" class="form-control filter_dd" id="filter_carrier">
+						<option value="">Carrier</option>						
+				  </select>
                 </div>
               </th>
               <th>
                 <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Status</label>
-                  <input name='StatusName' type="text" class="form-control" id="i5">
+                  <!--<label for="i5" class="control-label">Status</label>
+                  <input name='StatusName' type="text" class="form-control" id="i5">-->
                   <span class="help-block"></span>
+				  <select name="StatusName" class="form-control filter_dd" id="filter_status">
+						<option value="">Status</option>						
+				  </select>
                 </div>
               </th>
               <th>

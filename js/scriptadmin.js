@@ -19,6 +19,8 @@ $(document).ready(function(){
 	
 	var default_render=true;
 	searchInput['FKCustomerId'] = customerId;
+	searchInput['CarrierName'] = $('#filter_carrier').val();
+	searchInput['StatusName'] = $('#filter_status').val();
 	
 	$('tr input[type]').each(function(){
 	  if($(this).val()){
@@ -71,6 +73,10 @@ $(document).ready(function(){
         $('.loading-screen').slideUp('slow');
         console.log(response);
         renderReturnOrders(response);
+		var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';
+		var selStatusName = (searchInput['StatusName'] !== '')?searchInput['StatusName']:'';//raw_data['StatusName'];
+		$('#filter_carrier').val(selCarrierName);
+		$('#filter_status').val(selStatusName);
       },
       fail: function(){
         $('.loading-screen').slideDown('slow');
@@ -127,8 +133,12 @@ $(document).ready(function(){
   			pagination_html = pagination_html+' type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
   		}
   	}
+	var arrCarriers = {};
+	var arrStatus = {};
     for(i=0; i<raw_data['ReturnOrders'].length; i++){
 	    var data = raw_data['ReturnOrders'];
+		arrCarriers[i] = data[i].CarrierName;
+		arrStatus[i] = data[i].StatusName;
       //date=new Date(data[i].ReturnsOrderCreationDate);
       date1=data[i].ReturnsOrderCreationDate.split('T');
       console.log("date1 : " + date1);
@@ -188,11 +198,36 @@ $(document).ready(function(){
       </div>\
       ';
     }
+	var  CarrierArray = {}; // fieldArray object instead of array
+	var carOptionHtml = '<option value="">--Carrier--</option>';
+	$.each(arrCarriers, function(i, item){
+		CarrierArray[item] = item;				
+	});
+	//console.log(CarrierArray);			
+	$.each(CarrierArray, function(i, item){								
+		carOptionHtml = carOptionHtml+'<option value="'+item+'">'+item+'</option>';
+	});			
+	//console.log(carOptionHtml);
+	
+	var  StatusArray = {};			
+	var statusOptionHtml = '<option value="">--Status--</option>';
+	$.each(arrStatus, function(i, item){
+		StatusArray[item] = item;				
+	});
+	//console.log(StatusArray);			
+	$.each(StatusArray, function(i, item){				
+		statusOptionHtml = statusOptionHtml+'<option value="'+item+'">'+item+'</option>';
+	});	
+	
   	$('#total_records span').text(total_num_records);
     $('body').append(html2);
     $('body').append(html3);
     
     $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody').html(html);
+	
+	$('#filter_carrier').html(carOptionHtml);
+	$('#filter_status').html(statusOptionHtml);
+	
 	//$('#btm_pagination').html(pagination_html);
 	//$('#override #orders_data tbody').html(html);
 	//Calling the new pagination script

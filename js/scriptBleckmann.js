@@ -818,8 +818,8 @@ $(document).ready(function() {
 			var pagination_html = '';
 			var pageno = raw_data['PageNo'];
 			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
-			var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';
-			console.log(raw_data);
+			var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';			
+			
 			$('.form-group').css({'margin':'0', 'padding':'0'});
 			//console.log(raw_data['ReturnOrders'].length); 
 			//console.log(data['ReturnOrders'].[0].ReturnId);
@@ -839,9 +839,12 @@ $(document).ready(function() {
 					pagination_html = pagination_html+' type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
 				}
 			}
-			
+			var arrCarriers = {};
+			var arrStatus = {};
 			for(i=0; i<raw_data['ReturnOrders'].length; i++){
 				var data = raw_data['ReturnOrders'];
+				arrCarriers[i] = data[i].CarrierName;
+				arrStatus[i] = data[i].StatusName;
 				//console.log("i: " + data[i].ReturnsOrderCreationDate);
 				testdate=data[i].ReturnsOrderCreationDate.split('T');
 				testdate1=new Date(testdate[0]);
@@ -899,11 +902,36 @@ $(document).ready(function() {
 			  </div>\
 			  ';
 			}
+			//console.log($.uniqueSort(arrCarriers));
+			var  CarrierArray = {}; // fieldArray object instead of array
+			var carOptionHtml = '<option value="">--Carrier--</option>';
+			$.each(arrCarriers, function(i, item){
+				CarrierArray[item] = item;				
+			});
+			//console.log(CarrierArray);			
+			$.each(CarrierArray, function(i, item){								
+				carOptionHtml = carOptionHtml+'<option value="'+item+'">'+item+'</option>';
+			});			
+			//console.log(carOptionHtml);
 			
+			var  StatusArray = {};			
+			var statusOptionHtml = '<option value="">--Status--</option>';
+			$.each(arrStatus, function(i, item){
+				StatusArray[item] = item;				
+			});
+			//console.log(StatusArray);			
+			$.each(StatusArray, function(i, item){				
+				statusOptionHtml = statusOptionHtml+'<option value="'+item+'">'+item+'</option>';
+			});	
+			//console.log(statusOptionHtml);
+			
+			//console.log(result);
 			$('#total_records span').text(total_num_records);
 			$('body').append(html2);
 			$('body').append(html3);
 			$('#orders_data > tbody').html(html);
+			$('#filter_carrier').html(carOptionHtml);
+			$('#filter_status').html(statusOptionHtml);			
 			//$('#btm_pagination').html(pagination_html);
 				/*
 				if($("#orders_data").html() !== ""){
@@ -942,6 +970,9 @@ $(document).ready(function() {
 			var searchInput={};
 			
 			searchInput['FKCustomerId'] = customerId;
+			searchInput['CarrierName'] = $('#filter_carrier').val();
+			searchInput['StatusName'] = $('#filter_status').val();
+			
 			$('tr input[type]').each(function(){
 			  if($(this).val()){
 				searchInput[$(this).attr('name')]=$(this).val();
@@ -995,7 +1026,12 @@ $(document).ready(function() {
 			  success: function (response) {
 				$('.loading-screen').slideUp('slow');
 				//console.log(response);
-				renderReturnOrders(response);				
+				renderReturnOrders(response);
+				
+				var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';
+				var selStatusName = (searchInput['StatusName'] !== '')?searchInput['StatusName']:'';//raw_data['StatusName'];
+				$('#filter_carrier').val(selCarrierName);
+				$('#filter_status').val(selStatusName);
 			  },
 			  fail: function(){
 				$('.loading-screen').slideDown('slow');
