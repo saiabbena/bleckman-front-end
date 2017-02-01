@@ -500,21 +500,27 @@ $(document).ready(function(){
   
   //logic
   $('#button3').click(function(){
-    console.log(postData);
+    //console.log(postData);
     console.log("mode : " + mode);
 
     $('.loading-screen').slideDown('slow');
     parent=$('input[name=sample1]:checked').parent().parent().parent().parent().parent();
     var carName=$('.carrierName', parent).html();
     var carrierInfo = $('input[name=sample1]:checked').val();
-    console.log("carrier info");
-    console.log(customerSettings.carriers[carrierInfo]);
+    //console.log("carrier info");
+    //console.log(customerSettings.carriers[carrierInfo]);
     if ( mode == 3 ) {
       postData.CarrierName=carName;
       postData.CustomerName=customername;
       postData.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       postData.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
-      postData.ConsumerEmail2=$('#emailConfirm').val();
+      //postData.ConsumerEmail2=$('#emailConfirm').val();
+	  //console.log('Test emailConfirm '+$('#emailConfirm').val());
+	  if($('#emailConfirm').val() === undefined){
+		  postData.ConsumerEmail2='';
+	  }else{
+		  postData.ConsumerEmail2 = $('#emailConfirm').val();
+	  }    
       var apiCall = '';
               
       var headers = {};
@@ -592,7 +598,11 @@ $(document).ready(function(){
       submition.FKCustomerId=customerId;
       submition.CarrierName=carName;
       submition.StatusName='Label Printed';
-      submition.ConsumerEmail2=$('#emailConfirm').val();
+	  if($('#emailConfirm').val() === undefined){
+		  submition.ConsumerEmail2='';
+	  }else{
+		  submition.ConsumerEmail2= $('#emailConfirm').val();
+	  }      
       submition.ConsumerFromShipCountry = countryCode;
   	  submition.UserId = (UserId != '')?UserId:'';//Store the Customer Support guy id on Return Order Request    
 

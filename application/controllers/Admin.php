@@ -110,12 +110,13 @@ class Admin extends CI_Controller {
 
   public function appearance(){
 	  
-	  //$data['appearanceSettings'] = $this->getCustomerAppearanceSettings();
+	//$data['appearanceSettings'] = $this->getCustomerAppearanceSettings();
     $req = array(
       'Customerid'=>$_SESSION['Customerid']
     );
 
     $data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $req);
+	//print_r($data['appearanceSettings']);
 	
 	  $customer_id = $_SESSION['Customerid'];
 
@@ -202,8 +203,8 @@ class Admin extends CI_Controller {
 	  $post_data = ['PKSettingID'=>$_POST['CustomerSetting']['PKSettingID'],
 	  'FKCustomerid'=>$_POST['CustomerSetting']['FKCustomerid'],
 	  'Colours'=>serialize($_POST['CustomerSetting']['Colours'])];
-
-    $server_output = $this->httpRequests->httpPost('CustomerSetting/PostManageCustomerSetting', json_encode($post_data) );
+	  
+		$server_output = $this->httpRequests->httpPost('CustomerSetting/PostManageCustomerSetting', json_encode($post_data) );
 
 	  $_SESSION['message']['appearance']='Saved';
 	  header('Location: ' . $_SERVER['HTTP_REFERER'].'#ap-panel');
@@ -389,9 +390,7 @@ public function deleteLinks() {
 	  //print_r($_FILES);exit();	  
 	  $cfile = new CURLFile($img_file_tmp, $img_file_type, $image_type);
 	  $data = array('test_file' => $cfile);
-
-
-    $server_output = $this->httpRequests->httpPostUpload('customersetting/PostUploadLoading?customerid=' . $customerid, $data );
+      $server_output = $this->httpRequests->httpPostUpload('customersetting/PostUploadLoading?customerid=' . $customerid, $data );
 	  
 	  // $ch = curl_init();	  	
 	  // //curl_setopt($ch, CURLOPT_URL,"http://128.0.210.62/bleckmannapi/api/customersetting/PostUploadLoading?customerid=$customerid");
@@ -407,12 +406,26 @@ public function deleteLinks() {
 	  //echo 'Success';
 	  
 	}
+	function save_show_email_setting($param1='') {	  	  
+	  header('Content-Type: application/json');
+	  
+	  $data['PKSettingID'] = $_POST['PKSettingID'];
+	  $data['FKCustomerid'] = $_POST['FKCustomerid'];
+	  $data['ShowEmail'] = (isset($_POST['ShowEmail']) && $_POST['ShowEmail'] == 'true')?'true':'false';
+	  //print_r($data);exit();
+	  $server_output = $this->httpRequests->httpPost('CustomerSetting/PostManageCustomerSetting', json_encode($data));
+	  //echo json_encode($server_output);
+	  $_SESSION['message']['appearance']='Saved';
+	  header('Location: ' . $_SERVER['HTTP_REFERER'].'#ap-panel');
+	}
 	function ro_option($param1=''){
 		$req = array('Customerid'=>$_SESSION['Customerid'] );
     
 		$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
+		$data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $req);
+	
 		$data['all_langs']=$data['customerLanguages'];
-    $data['customername'] = $_SESSION['Customername'];
+		$data['customername'] = $_SESSION['Customername'];
 
 		$data['Links'] = [];
 		//set customerLanguages to current selected language
