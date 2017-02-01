@@ -310,7 +310,7 @@
                 <div class="row">
                   <div class="col-md-12">
                     <div class="col-md-4">
-                      <div class="form-group label-floating required">
+                      <div class="form-group label-floating">
                         <label class="control-label">Email</label>
                         <input name="ConsumerEmail" id="ConsumerEmail" type="email" class="form-control" maxlength="255">
                         <span class="help-block">Enter email address to send label</span>
