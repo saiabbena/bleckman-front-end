@@ -1,156 +1,34 @@
-
-<div class='container-fluid form1'>
-  <div class='row'>
-    <div class='col-xs-12 col-md-3' height='100%'>
-      <div class='well' style='border-bottom: 15px solid #22b8aa; padding-bottom: 40px;'>
-        <div class='row'>
-          <div class='col-md-12 text-center' >
-            <h3><b>TRUE RELIGION</b></h3><br>
-          </div>
-          <a href='orders'>
-          <div style='background-color: #009688; color: #fff;' class='col-md-offset-0 col-md-12 col-xs-2 col-xs-offset-1 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-1.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Returns</span>
-          </div>
-          </a>
-          <a href='appearance'>
-          <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-2.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Appearance</span>
-          </div>
-          </a>
-          <a href='settings'>
-          <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-3.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Settings</span>
-          </div>
-          </a>
-          <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-4.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Integration</span>
-          </div>
-          <div class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
-            <div class='hidden-lg hidden-md'></div>
-            <img src='/img/i-5.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Other</span>
-          </div>
-        </div>
-      </div>
-      <br><br>
-      <div class='well hidden-xs hidden-sm' style='border-bottom: 15px solid #22b8aa; padding-bottom: 40px;'>
-        <div class='col-md-12 text-center' >
-          <h3><b>STATISTICS</b></h3><br>
-        </div>
-        <table data-toggle="table">
-          <thead>
-            <tr>
-              <th>
-                <b>From</b>
-                <div class="form-group">
-                  <input id='stat-from' type='text' class='form-control' placeholder="yyyy-mm-dd">
-                </div>
-              </th>
-              <th>
-                <b>To</b>
-                <div class="form-group">
-                  <input id='stat-to' type='text' class='form-control' placeholder="yyyy-mm-dd">
-                </div>
-              </th>
-              <th>                
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>
-                <b>Returns:</b>
-              </td>
-              <td>
-                N/A
-              </td>
-              <td>
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <b>Return Amount:</b>
-              </td>
-              <td>
-                N/A
-              </td>
-              <td>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <br>
-        <button class='btn btn-primary btn-block btn-raised'>UPDATE</button>
-      </div>
-    </div>
-      
-    <div class='col-xs-12 col-md-9' height='100%'>
-      <div class='well' style='border-bottom: 15px solid #E25176; padding-bottom: 40px;'>
+	<div class='col-xs-12 col-md-9' height='100%'>
+      <div class='well body_btm_bdr' id="orders-messages">
         <div class="alert alert-dismissible alert-primary">
-          Listing the latest 20 returned orders
-        </div>
-        <table data-toggle="table">
-          <thead>
+          Listing the latest returned orders
+        </div>		
+        <?php
+          if(isset($_SESSION['message']['orders-messages'])){
+            echo'<div class="alert alert-dismissible alert-success">'.$_SESSION['message']['orders-messages'].'</div>';
+          }
+        ?>
+		
+        <table data-toggle="table" id="orders_data">		
+          <thead>		  
             <tr>
               <th>
                 <div class='form-group'>
-                  <select name='Month' class='form-control'>
-                    <option value='0' selected>
-                      Month
-                    </option>
-                    <option value='1'>
-                      Jan
-                    </option>
-                    <option value='2'>
-                      Feb
-                    </option>
-                    <option value='3'>
-                      Mar
-                    </option>
-                    <option value='4'>
-                      Apr
-                    </option>
-                    <option value='5'>
-                      May
-                    </option>
-                    <option value='6'>
-                      Jun
-                    </option>
-                    <option value='7'>
-                      Jul
-                    </option>
-                    <option value='8'>
-                      Aug
-                    </option>
-                    <option value='9'>
-                      Sep
-                    </option>
-                    <option value='10'>
-                      Oct
-                    </option>
-                    <option value='11'>
-                      Nov
-                    </option>
-                    <option value='12'>
-                      Dec
-                    </option>
-                  </select>
+                  <input type='text' id="ReturnsOrderCreationDate" name="ReturnsOrderCreationDate" class='datepicker form-control' placeholder="From" style="font-size:0.9em !important;" />
+                  <input type='text' id="ReturnsOrderToDate" name="ReturnsOrderToDate" class='datepicker form-control' placeholder="To" style="font-size:0.9em !important;" />  
                 </div>
               </th>
-              <th>
+              <th style="width:10% !important;">
                 <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Search by order-id</label>
+                  <label for="i5" class="control-label">Order-id</label>
                   <input name='OrderID' type="text" class="form-control" id="i5">
                   <span class="help-block"></span>
                 </div>
               </th>
               <th>
                 <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Search by return order-id</label>
-                  <input name='PKReturnOrderid' type="text" class="form-control" id="i5">
+                  <label for="i5" class="control-label">Return order-id</label>
+                  <input name='ReturnId' type="text" class="form-control" id="i5" />
                   <span class="help-block"></span>
                 </div>
               </th>
@@ -162,21 +40,30 @@
               </th>
               <th>
                 <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Search by carrier</label>
-                  <input name='CarrierName' type="text" class="form-control" id="i5">
+                  <!--<label for="i5" class="control-label">Carrier</label>
+                  <input name='CarrierName' type="text" class="form-control" id="i5">-->
                   <span class="help-block"></span>
+				  <select name="CarrierName" class="form-control filter_dd" id="filter_carrier">
+						<option value="">Carrier</option>						
+				  </select>
                 </div>
               </th>
               <th>
                 <div class="form-group label-floating">
-                  <label for="i5" class="control-label">Search by status</label>
-                  <input name='ReturnStatus' type="text" class="form-control" id="i5">
+                  <!--<label for="i5" class="control-label">Status</label>
+                  <input name='StatusName' type="text" class="form-control" id="i5">-->
                   <span class="help-block"></span>
+				  <select name="StatusName" class="form-control filter_dd" id="filter_status">
+						<option value="">Status</option>						
+				  </select>
                 </div>
               </th>
               <th>
-                <button class='btn btn-success btn-raised' id='search-button'>
+                <button type="button" id="search-button" class='btn btn-success btn-raised btn-sm'>
                   SEARCH
+                </button>
+				<button class='btn btn-success btn-raised btn-sm' id='btn_clear' onclick="javascript:window.location.reload()">
+                  CLEAR
                 </button>
               </th>
             </tr>
@@ -186,7 +73,7 @@
               <th>Return Order ID</th>
               <th>Tracking</th>
               <th>Refund</th>
-              <th>Carier</th>
+              <th>Carrier</th>
               <th>Status</th>
               <th>Action</th>
             </tr>
@@ -194,9 +81,58 @@
           <tbody>
             
           </tbody>
-        </table>
-        
+        </table>		
+        <div class="row">
+          <div class="col-md-12">
+          <div class="col-md-6 pull-left" id="total_records" style="margin-top:37px !important;"><b>Total Records#:<span><span></b>
+          </div>
+          <div class="col-md-3 pull-right" id="page_size_div"><?php          
+          echo '<select id="page_size" name="page_size" class="form-control" style="margin:0 !important;">';
+          echo '<option value="20">Show Records</option>';
+          for($i=20;$i<=100;$i=$i+20) {           
+            echo '<option value="'.$i. '">' .$i. '</option>';
+          }
+          echo '</select>';
+        ?>
+        </div>
+          </div>
+        </div>
+        <div class="row">			
+			<div class="col-md-8 pull-right" style="margin-top:30px !important;">
+				<div id="btm_pagination" class="col-md-11 pull-right text-right"></div>				
+			</div>
+		</div>
       </div>
     </div>
   </div>
 </div>
+<div class="modal fade" id="moreInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+						<h4 class="modal-title" id="myModalLabel">Full info on return order: </h4>
+					</div>
+					<div class="modal-body">
+						<b>Full date/time:</b> , 
+						<b>Orderid:</b> ,
+						<b>Return status:</b>
+						Label Printed<br><br>
+						<b>Customer Email:</b> <br><br>
+						<b>Customer Phone:</b> <br><br>
+						<b>Comment:</b><br>
+						No comment has been made yet<br><br>
+						<b>Items returned (1):</b><hr>
+						<b>Item name:</b> <br>
+						<b>Product SKU:</b> <br>
+						<b>Product info:</b> <br>
+						<b>Return reason:</b> <br>
+						<b>Quantity:</b> <br> 
+						<b>Price:</b> <hr>
+					</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
