@@ -13,7 +13,13 @@
 						}
 					echo '</select></div>';
 				?>
-			</div>			
+			</div>
+			<div class="col-md-4">
+				
+			</div>
+			<div class="col-md-2 pull-right">
+				<button id="export" data-export="export" class='btn btn-raised btn-sm' style="margin-top: 26px;">Export as CSV</button>
+			</div>
 		</div>		
 	<div class='row'>
 		<input type="hidden" name="hdn_customer_id_ord" id="hdn_customer_id_ord" value="<?php echo $Customerid?>" />
@@ -102,8 +108,7 @@
 		</div>
 		<div class="row">
           <div class="col-md-12">
-			  <div class="col-md-6 pull-left" id="total_records" style="margin-top:3px !important;"><b>Total Records#:<span><span></b>
-			  <!--<button id="export" data-export="export">Export as CSV</button>-->
+			  <div class="col-md-6 pull-left" id="total_records" style="margin-top:3px !important;"><b>Total Records#:<span><span></b>			  
 			  </div>
 			  <div class="col-md-3 pull-right" id="page_size_div"><?php          
 			  echo '<select id="page_size" name="page_size" class="form-control" style="margin:0 !important;">';
@@ -158,10 +163,3 @@
 			</div>
 		</div>
 	</div>
-<!---->
-
-<script>	
-$("#export").click(function(){
-  $("#orders_data").tableToCSV();
-});
-</script>

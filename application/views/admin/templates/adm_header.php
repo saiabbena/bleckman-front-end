@@ -65,7 +65,8 @@
 	</script>	
 	<script type="text/javascript" src="<?php echo base_url();?>js/scriptadmin.js"></script>
 	<script type="text/javascript" src="<?php echo base_url();?>vendor/pagination/jquery.simplePagination.js"></script>
-	<link type="text/css" rel="stylesheet" href="<?php echo base_url();?>vendor/pagination/simplePagination.css"/>	
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url();?>vendor/pagination/simplePagination.css"/>
+	<script src="<?php echo base_url();?>vendor/jqueryCSV/jquery.tabletoCSV.js"></script>
 	<?php }
 	if($this->uri->segment(2) == 'appearance'){
 	?>

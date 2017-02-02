@@ -1927,4 +1927,20 @@ $(document).ready(function() {
 		$("#btnshowpw").mousedown(function(){
 			$(".showpassword").attr("type", "text");
 		});
+		
+	//Export Order table data as CSV in Orders Page
+	$("#export").click(function(){
+		var clonetable = $("#orders_data").clone();
+		clonetable.find('tr:first').remove();
+		clonetable.find("td:nth-child(9)").remove();		
+		clonetable.find("th:nth-child(9)").remove();
+		
+		
+		clonetable.find("td:nth-child(4) a").each(function(){
+			$(this).text($(this).attr('href'));
+		});	
+		clonetable.tableToCSV();
+		//$("#orders_data").tableToCSV();
+	});		
+		
 });

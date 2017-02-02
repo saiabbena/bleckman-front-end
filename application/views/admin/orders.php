@@ -8,7 +8,11 @@
             echo'<div class="alert alert-dismissible alert-success">'.$_SESSION['message']['orders-messages'].'</div>';
           }
         ?>
-		
+		<div class="row">
+			<div class="col-md-2 pull-right">
+				<button id="export" data-export="export" class='btn btn-raised btn-sm' style="margin-top: 26px;">Export as CSV</button>
+			</div>
+		</div>
         <table data-toggle="table" id="orders_data">		
           <thead>		  
             <tr>
