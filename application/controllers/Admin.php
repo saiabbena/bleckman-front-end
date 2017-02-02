@@ -230,7 +230,7 @@ class Admin extends CI_Controller {
 
     echo var_dump($_SESSION['message']);
 
-    //eader('Location: ' . $_SERVER['HTTP_REFERER'].'#language-panel');
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#language-panel');
 
   }
   //for submiting emails
