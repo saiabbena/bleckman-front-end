@@ -73,7 +73,7 @@
 					<div class="form-group label-floating">
 					  <!--<label for="i5" class="control-label">Status</label>
 					  <input name='StatusName' type="text" class="form-control" id="i5">-->
-					  <select name="StatusName" class="form-control filter_dd" id="filter_status">
+					  <select name="StatusName" class="form-control filter_dd" id="filter_ordstatus">
 						<option value="">Status</option>						
 					  </select>
 					  <span class="help-block"></span>

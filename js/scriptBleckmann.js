@@ -802,12 +802,7 @@ $(document).ready(function() {
 				 //"pagingType": "numbers",
 				//});
 			}
-		});
-		//Direct Order page link from Customer page			
-	    if ($('#hdn_customer_id_ord').length) {
-		   var hdn_customer_id_ord = $('#hdn_customer_id_ord').val();
-		   retrieveReturnOrders(hdn_customer_id_ord);		
-		}
+		});		
 		
 		function renderReturnOrders(raw_data){
 			html='';
@@ -839,12 +834,10 @@ $(document).ready(function() {
 					pagination_html = pagination_html+' type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
 				}
 			}
-			var arrCarriers = {};
-			var arrStatus = {};
+			
+			
 			for(i=0; i<raw_data['ReturnOrders'].length; i++){
-				var data = raw_data['ReturnOrders'];
-				arrCarriers[i] = data[i].CarrierName;
-				arrStatus[i] = data[i].StatusName;
+				var data = raw_data['ReturnOrders'];				
 				//console.log("i: " + data[i].ReturnsOrderCreationDate);
 				testdate=data[i].ReturnsOrderCreationDate.split('T');
 				testdate1=new Date(testdate[0]);
@@ -901,37 +894,13 @@ $(document).ready(function() {
 				</div>\
 			  </div>\
 			  ';
-			}
-			//console.log($.uniqueSort(arrCarriers));
-			var  CarrierArray = {}; // fieldArray object instead of array
-			var carOptionHtml = '<option value="">--Carrier--</option>';
-			$.each(arrCarriers, function(i, item){
-				CarrierArray[item] = item;				
-			});
-			//console.log(CarrierArray);			
-			$.each(CarrierArray, function(i, item){								
-				carOptionHtml = carOptionHtml+'<option value="'+item+'">'+item+'</option>';
-			});			
-			//console.log(carOptionHtml);
-			
-			var  StatusArray = {};			
-			var statusOptionHtml = '<option value="">--Status--</option>';
-			$.each(arrStatus, function(i, item){
-				StatusArray[item] = item;				
-			});
-			//console.log(StatusArray);			
-			$.each(StatusArray, function(i, item){				
-				statusOptionHtml = statusOptionHtml+'<option value="'+item+'">'+item+'</option>';
-			});	
-			//console.log(statusOptionHtml);
+			}		
 			
 			//console.log(result);
 			$('#total_records span').text(total_num_records);
 			$('body').append(html2);
 			$('body').append(html3);
-			$('#orders_data > tbody').html(html);
-			$('#filter_carrier').html(carOptionHtml);
-			$('#filter_status').html(statusOptionHtml);			
+			$('#orders_data > tbody').html(html);						
 			//$('#btm_pagination').html(pagination_html);
 				/*
 				if($("#orders_data").html() !== ""){
@@ -961,9 +930,92 @@ $(document).ready(function() {
 			$('#btm_pagination').pagination('selectPage', init_page);
 			$('#btm_pagination').pagination('prevPage');
 			$('#btm_pagination').pagination('nextPage');			
+			
+		  }
+		  function showAllROStatus(){
+			  apiCall=url+'returnstatus/GetAllReturnStatus';
+			  $.ajax({
+		      url: apiCall,
+		      type: 'get',
+			  headers: {
+				Apoyar: apoyarToken
+			  },		      
+		      dataType: 'json',
+		      success: function (response) {
+				  var arrStatus = {}; // fieldArray object instead of array
+				  var StatusArray = {};
+				  var statusOptionHtml = '<option value="">--Status--</option>';
+				  //console.log('showCarriersStatus '+customerId+': '+response[0].Statu);				  				  
+					for(i=0; i<response.length; i++){
+						var data = response;
+						arrStatus[i] = data[i].Status;						
+					}
+					$.each(arrStatus, function(i, item){
+						StatusArray[item] = item;				
+					});
+					//console.log(StatusArray);			
+					$.each(StatusArray, function(i, item){								
+						statusOptionHtml = statusOptionHtml+'<option value="'+item+'">'+item+'</option>';
+					});					
+					//console.log(statusOptionHtml);
+					$('#filter_ordstatus').prop('disabled', false);
+					$('#filter_ordstatus').html(statusOptionHtml);
+					
+		      },
+		      fail: function() {
+		      	console.log(statusOptionHtml);
+		      }
+		    });
+		  }
+		  function showCarriersList(customerId){
+			  if(customerId == -1){
+				  apiCall=url+'Carrier/GetAllActiveBMCarriers';
+			  }else{
+				  apiCall=url+'Carrier/GetCarrierSettingbyCustomerid';
+			  }			  
+			 
+			 $.ajax({
+		      url: apiCall,
+		      type: 'get',
+			  headers: {
+				Apoyar: apoyarToken
+			  },
+		      data: { Customerid: customerId },
+		      dataType: 'json',
+		      success: function (response) {
+				  var  CarrierArray = {}; // fieldArray object instead of array
+				  var carOptionHtml = '<option value="">--Carrier--</option>';
+				  //console.log('showCarriersStatus '+customerId+': '+response[0].CarrierName);
+				  var arrCarriers = {};				  
+					for(i=0; i<response.length; i++){
+						var data = response;
+						arrCarriers[i] = data[i].CarrierName;						
+					}
+					$.each(arrCarriers, function(i, item){
+						CarrierArray[item] = item;				
+					});
+					//console.log(CarrierArray);			
+					$.each(CarrierArray, function(i, item){								
+						carOptionHtml = carOptionHtml+'<option value="'+item+'">'+item+'</option>';
+					});					
+					//console.log(carOptionHtml);
+					$('#filter_carrier').prop('disabled', false);
+					$('#filter_carrier').html(carOptionHtml);					
+					
+		      	
+				
+		      },
+		      fail: function() {
+		      	console.log(carOptionHtml);
+		      }
+		    });
+			  
 		  }
 		  function retrieveReturnOrders(customerId, pageno){
 			$('.loading-screen').slideDown('slow');
+			$('#filter_carrier').prop('disabled', 'disabled');
+			$('#filter_ordstatus').prop('disabled', 'disabled');
+			
 			// apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
 			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
 			//console.log("apoyarToken : " + apoyarToken );
@@ -971,7 +1023,7 @@ $(document).ready(function() {
 			
 			searchInput['FKCustomerId'] = customerId;
 			searchInput['CarrierName'] = $('#filter_carrier').val();
-			searchInput['StatusName'] = $('#filter_status').val();
+			searchInput['StatusName'] = $('#filter_ordstatus').val();
 			
 			$('tr input[type]').each(function(){
 			  if($(this).val()){
@@ -1026,17 +1078,29 @@ $(document).ready(function() {
 			  success: function (response) {
 				$('.loading-screen').slideUp('slow');
 				//console.log(response);
-				renderReturnOrders(response);
+				renderReturnOrders(response);				
 				
-				var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';
-				var selStatusName = (searchInput['StatusName'] !== '')?searchInput['StatusName']:'';//raw_data['StatusName'];
+				showCarriersList(customerId);//Call the Carrier dropdown in Order page
+				$('#filter_carrier').prop('disabled', false);
+				var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';				
 				$('#filter_carrier').val(selCarrierName);
-				$('#filter_status').val(selStatusName);
+				
+				showAllROStatus();//Call the Status dropdown in Order page
+				$('#filter_ordstatus').prop('disabled', false);
+				var selStatusName = (searchInput['StatusName'] !== '')?searchInput['StatusName']:'';//raw_data['StatusName'];
+				console.log(selStatusName);
+				$('#filter_ordstatus').val(selStatusName);				
+				
 			  },
 			  fail: function(){
 				$('.loading-screen').slideDown('slow');
 			  }
 			});			
+		}
+		//Default Order page load and show records  			
+	    if ($('#hdn_customer_id_ord').length) {
+		   var hdn_customer_id_ord = $('#hdn_customer_id_ord').val();
+		   retrieveReturnOrders(hdn_customer_id_ord);		   
 		}
 		//page-link btn_paginate
 		$(document).on('click', 'a[class="page-link"]', function() {
