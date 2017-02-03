@@ -5,8 +5,6 @@ class Consumer extends CI_Controller {
   
   public function __construct(){
     parent::__construct();
-    echo 'THIS SHOULD BE BROKEN NOW';
-    exit();
     $this->load->helper("url");
 	  //$this->load->helper("get_appearance_settings.php");
     
