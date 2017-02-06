@@ -100,7 +100,7 @@
 			</form>
           </div>
           <div class='col-xs-12 col-md-8' style='border: 0 solid #ddd; border-width: 0 0 0 1px'>
-            <h4 >IMAGES</h4>
+            <h4 >IMAGES</h4>			
             <hr>
             <table data-toggle="table">
               <thead>
@@ -109,7 +109,7 @@
                     Name
                   </th>                  
                   <th>
-                    Change
+                    Change<span style="font-size:12px;font-weight:normal;color:#FF0000;"> (Only use .png with max size of 2000 x 2000px)</span>
                   </th>
                 </tr>
               </thead>
@@ -125,11 +125,12 @@
 					<input name="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
 					<input name="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
 					<input name="img_type" value="logo" type="hidden">
-                      <input type="file" class="dropify" name="img_file" id="logo_img"   data-show-remove="false" data-default-file="<?php echo $logo?>" />                 
+                      <input type="file" class="dropify" accept='image/*' name="img_file" id="logo_img"   data-show-remove="false" data-default-file="<?php echo $logo?>" />                 
 					   <div class="col-md-12">
 						<div class="col-md-2" id="btn_logo_div">
 						<img src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="uploading_logo" style="display:none;" /><button class="btn btn-success btn-raised no_padding no_margin btn_save_img" id="btn_logo_change">Save</button></div>
-						<div class="col-md-9  pull-right"><span id="invalid_logo" class="err_msg">Use Only JPG, JPEG and PNG images</span></div><!---->
+						<div class="col-md-9  pull-right"><span id="invalid_logo" class="err_msg">Only use .png with max size of 2000 x 2000px</span></div>
+						
 					  </div>
 					  </form>
                     </div>
@@ -146,7 +147,7 @@
 					  <input name="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
 					  <input name="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
 					  <input name="img_type" value="spacer" type="hidden">
-                      <input type="file" id="spacer_img" name="img_file" multiple=""  data-show-remove="false" data-default-file="<?php echo $spacer?>" class="dropify" />
+                      <input type="file" id="spacer_img" name="img_file" multiple=""  data-show-remove="false" data-default-file="<?php echo $spacer?>" class="dropify"  accept='image/*' />
                       
 					  <div class="col-md-12">
 					  <div class="col-md-2" id="btn_spacer_div">
@@ -168,7 +169,7 @@
 					  <input type="hidden" name="textBox" id="textBox" value="0" />
 					  <input name="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
 					  <input name="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
-                      <input type="file" id="loading_img" name="img_file" multiple="" data-show-remove="false" data-default-file="<?php echo $loading?>" class="dropify" />                      
+                      <input type="file" id="loading_img" name="img_file" multiple="" data-show-remove="false" data-default-file="<?php echo $loading?>" class="dropify"  accept='image/*' />                      
 					  <input name="img_type" value="loading" type="hidden">
 					  <div class="col-md-12">
 					  <div class="col-md-2" id="btn_loading_div">
@@ -203,11 +204,12 @@ $(document).ready(function(){
 	$('input:file').change(function () {
 		var upload_id = $(this).prop('id');
 		
-		if ($(this).val()) {
+		if ($(this).val()) {	
+			 			
 			var ext = this.value.match(/\.(.+)$/)[1];
 			//alert(ext);
 			if(upload_id == 'logo_img'){
-				if(ext === 'jpg' || ext === 'jpeg' || ext === 'png'){					
+				if(ext === 'png'){					
 					$('#invalid_logo').css({'display':'none'});
 					$('#btn_logo_div').css({'display':'block'});
 					return false;
@@ -218,7 +220,7 @@ $(document).ready(function(){
 				}
 			}
 			if(upload_id == 'spacer_img'){
-				if(ext === 'jpg' || ext === 'jpeg' || ext === 'png'){					
+				if(ext === 'png'){					
 					$('#invalid_spacer').css({'display':'none'});
 					$('#btn_spacer_div').css({'display':'block'});
 					//return false;
@@ -238,6 +240,28 @@ $(document).ready(function(){
 					$('#btn_loading_div').css({'display':'none'});					
 					$('#'+upload_id).val('');					
 				}
+			}
+			var file, img, imgwidth, imgheight;
+			var _URL = window.URL || window.webkitURL;
+			if ((file = this.files[0])) {
+				img = new Image();
+				img.onload = function() {
+					//alert(this.width + " " + this.height);
+					if(imgwidth > 100 || imgheight > 100){
+						$('#invalid_logo').css({'display':'block'});
+						$('#btn_logo_div').css({'display':'none'});					
+						$('#'+upload_id).val('');
+					}else{
+						$('#invalid_logo').css({'display':'none'});
+						$('#btn_logo_div').css({'display':'block'});
+						return false;
+					}
+				};
+				img.onerror = function() {
+					//alert( "not a valid file: " + file.type);
+				};
+				img.src = _URL.createObjectURL(file);
+
 			}
 			
 		}
