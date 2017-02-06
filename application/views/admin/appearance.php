@@ -204,8 +204,32 @@ $(document).ready(function(){
 	$('input:file').change(function () {
 		var upload_id = $(this).prop('id');
 		
-		if ($(this).val()) {	
-			 			
+		if ($(this).val()) {
+			var file, img, imgwidth, imgheight;
+			var _URL = window.URL || window.webkitURL;
+			
+			if ((file = this.files[0])) {
+				img = new Image();
+				img.onload = function() {
+					//alert(this.width + " " + this.height);
+					imgwidth = this.width;
+					imgheight = this.height;
+					if(imgwidth > 2000 || imgheight > 2000){
+						$('#invalid_logo').css({'display':'block'});
+						$('#btn_logo_div').css({'display':'none'});					
+						$('#'+upload_id).val('');
+					}else{
+						$('#invalid_logo').css({'display':'none'});
+						$('#btn_logo_div').css({'display':'block'});
+						return false;
+					}
+				};
+				img.onerror = function() {
+					//alert( "not a valid file: " + file.type);
+				};
+				img.src = _URL.createObjectURL(file);
+
+			}			 			
 			var ext = this.value.match(/\.(.+)$/)[1];
 			//alert(ext);
 			if(upload_id == 'logo_img'){
@@ -240,29 +264,7 @@ $(document).ready(function(){
 					$('#btn_loading_div').css({'display':'none'});					
 					$('#'+upload_id).val('');					
 				}
-			}
-			var file, img, imgwidth, imgheight;
-			var _URL = window.URL || window.webkitURL;
-			if ((file = this.files[0])) {
-				img = new Image();
-				img.onload = function() {
-					//alert(this.width + " " + this.height);
-					if(imgwidth > 100 || imgheight > 100){
-						$('#invalid_logo').css({'display':'block'});
-						$('#btn_logo_div').css({'display':'none'});					
-						$('#'+upload_id).val('');
-					}else{
-						$('#invalid_logo').css({'display':'none'});
-						$('#btn_logo_div').css({'display':'block'});
-						return false;
-					}
-				};
-				img.onerror = function() {
-					//alert( "not a valid file: " + file.type);
-				};
-				img.src = _URL.createObjectURL(file);
-
-			}
+			}			
 			
 		}
 	});	
