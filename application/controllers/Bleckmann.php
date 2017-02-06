@@ -102,9 +102,8 @@ class Bleckmann extends CI_Controller {
   public function carriers() {
     $data['carriers'] = $this->httpRequests->httpGet('Carrier/GetAllActiveBMCarriers', '');
     $data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
-
     #$data['predefinedSettings'] = $this->httpRequests->httpGet('Carrier/GetPredefinedCarrierSetting', '');
-
+	//echo json_encode($data['carriers']);exit();
     $this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/carriers', $data);
     $this->load->view('Bleckmann/templates/footer');
@@ -161,9 +160,9 @@ class Bleckmann extends CI_Controller {
     $data['allCountries'] = $this->httpRequests->httpGet('country/GetAllActiveCountries', '');
     $req = array(
       'Customerid'=>$data['customerId']
-    );  
-    
+    );    
     $data['allSettings'] = $this->httpRequests->httpGet('carrier/GetCarrierSettingbyCustomerid', $req);
+	//echo json_encode($data['allSettings']);exit();
     $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req);
     $data['customerName'] = $customer_details['CustomerName'];   
 

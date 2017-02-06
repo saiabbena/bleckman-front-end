@@ -9,10 +9,91 @@ $(document).ready(function(){
 	var result=false;
 	var customerSettings={};
 	var submition={};	
-
+	function showAllROStatus(selStatus){
+			  apiCall=url+'returnstatus/GetAllReturnStatus';
+			  $.ajax({
+		      url: apiCall,
+		      type: 'get',
+			  headers: {
+				Apoyar: apoyarToken
+			  },		      
+		      dataType: 'json',
+		      success: function (response) {
+				  var arrStatus = {}; // fieldArray object instead of array
+				  var StatusArray = {};
+				  var statusOptionHtml = '<option value="">--Status--</option>';
+				  //console.log('showCarriersStatus '+customerId+': '+response[0].Statu);				  				  
+					for(i=0; i<response.length; i++){
+						var data = response;
+						arrStatus[i] = data[i].Status;						
+					}
+					$.each(arrStatus, function(i, item){
+						StatusArray[item] = item;				
+					});
+					//console.log(StatusArray);			
+					$.each(StatusArray, function(i, item){
+						var selectedROStatus = (selStatus == item)?'selected':'';
+						statusOptionHtml = statusOptionHtml+'<option value="'+item+'" '+selectedROStatus+'>'+item+'</option>';
+					});					
+					//console.log(statusOptionHtml);
+					$('#filter_ordstatus').prop('disabled', false);
+					$('#filter_ordstatus').html(statusOptionHtml);			
+		      },
+		      fail: function() {
+		      	console.log(statusOptionHtml);
+		      }
+		    });
+		  }
+		  function showCarriersList(customerId,selCarrier){
+			  if(customerId == -1){
+				  apiCall=url+'Carrier/GetAllActiveBMCarriers';
+			  }else{
+				  apiCall=url+'Carrier/GetCarrierSettingbyCustomerid';
+			  }			  
+			 
+			 $.ajax({
+		      url: apiCall,
+		      type: 'get',
+			  headers: {
+				Apoyar: apoyarToken
+			  },
+		      data: { Customerid: customerId },
+		      dataType: 'json',
+		      success: function (response) {
+				  var  CarrierArray = {}; // fieldArray object instead of array
+				  var carOptionHtml = '<option value="">--Carrier--</option>';
+				  //console.log('showCarriersStatus '+customerId+': '+response[0].CarrierName);
+				  var arrCarriers = {};				  
+					for(i=0; i<response.length; i++){
+						var data = response;
+						arrCarriers[i] = data[i].CarrierName;						
+					}
+					$.each(arrCarriers, function(i, item){
+						CarrierArray[item] = item;				
+					});
+					//console.log(CarrierArray);			
+					$.each(CarrierArray, function(i, item){	
+						var selectedCar = (selCarrier == item)?'selected':'';
+						carOptionHtml = carOptionHtml+'<option value="'+item+'" '+selectedCar+'>'+item+'</option>';
+					});					
+					//console.log(carOptionHtml);
+					$('#filter_carrier').prop('disabled', false);
+					$('#filter_carrier').html(carOptionHtml);					
+					
+		      	
+				
+		      },
+		      fail: function() {
+		      	console.log(carOptionHtml);
+		      }
+		    });
+			  
+		  }
   function retrieveReturnOrders(customerId, pageno){
 	  var searchInput = {};
-    $('.loading-screen').slideDown('slow');    
+    $('.loading-screen').slideDown('slow');
+	$('#filter_carrier').prop('disabled', 'disabled');
+	$('#filter_ordstatus').prop('disabled', 'disabled');
 	apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
     //console.log("apoyarToken : " + apoyarToken );	
 	console.log(customerId);	
@@ -20,7 +101,7 @@ $(document).ready(function(){
 	var default_render=true;
 	searchInput['FKCustomerId'] = customerId;
 	searchInput['CarrierName'] = $('#filter_carrier').val();
-	searchInput['StatusName'] = $('#filter_status').val();
+	searchInput['StatusName'] = $('#filter_ordstatus').val();
 	
 	$('tr input[type]').each(function(){
 	  if($(this).val()){
@@ -72,11 +153,18 @@ $(document).ready(function(){
       success: function (response) {
         $('.loading-screen').slideUp('slow');
         console.log(response);
-        renderReturnOrders(response);
-		var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';
+        renderReturnOrders(response);	
+		
 		var selStatusName = (searchInput['StatusName'] !== '')?searchInput['StatusName']:'';//raw_data['StatusName'];
+		$('#filter_ordstatus').prop('disabled', false);
+		showAllROStatus(selStatusName);//Call the Status dropdown in Order page		
+		$('#filter_ordstatus').val(selStatusName);
+		
+		var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';
+		$('#filter_carrier').prop('disabled', false);
+		showCarriersList(customerId,selCarrierName);//Call the Carrier dropdown in Order page
+						
 		$('#filter_carrier').val(selCarrierName);
-		$('#filter_status').val(selStatusName);
       },
       fail: function(){
         $('.loading-screen').slideDown('slow');
@@ -132,13 +220,9 @@ $(document).ready(function(){
   			}
   			pagination_html = pagination_html+' type="button" class="btn btn-primary btn-sm btn_paginate">'+i+'</button>';
   		}
-  	}
-	var arrCarriers = {};
-	var arrStatus = {};
+  	}	
     for(i=0; i<raw_data['ReturnOrders'].length; i++){
-	    var data = raw_data['ReturnOrders'];
-		arrCarriers[i] = data[i].CarrierName;
-		arrStatus[i] = data[i].StatusName;
+	    var data = raw_data['ReturnOrders'];		
       //date=new Date(data[i].ReturnsOrderCreationDate);
       date1=data[i].ReturnsOrderCreationDate.split('T');
       console.log("date1 : " + date1);
@@ -198,36 +282,13 @@ $(document).ready(function(){
         </div>\
       </div>\
       ';
-    }
-	var  CarrierArray = {}; // fieldArray object instead of array
-	var carOptionHtml = '<option value="">--Carrier--</option>';
-	$.each(arrCarriers, function(i, item){
-		CarrierArray[item] = item;				
-	});
-	//console.log(CarrierArray);			
-	$.each(CarrierArray, function(i, item){								
-		carOptionHtml = carOptionHtml+'<option value="'+item+'">'+item+'</option>';
-	});			
-	//console.log(carOptionHtml);
-	
-	var  StatusArray = {};			
-	var statusOptionHtml = '<option value="">--Status--</option>';
-	$.each(arrStatus, function(i, item){
-		StatusArray[item] = item;				
-	});
-	//console.log(StatusArray);			
-	$.each(StatusArray, function(i, item){				
-		statusOptionHtml = statusOptionHtml+'<option value="'+item+'">'+item+'</option>';
-	});	
+    }	
 	
   	$('#total_records span').text(total_num_records);
     $('body').append(html2);
     $('body').append(html3);
     
-    $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody').html(html);
-	
-	$('#filter_carrier').html(carOptionHtml);
-	$('#filter_status').html(statusOptionHtml);
+    $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody').html(html);	
 	
 	//$('#btm_pagination').html(pagination_html);
 	//$('#override #orders_data tbody').html(html);
