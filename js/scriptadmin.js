@@ -9,7 +9,7 @@ $(document).ready(function(){
 	var result=false;
 	var customerSettings={};
 	var submition={};	
-	function showAllROStatus(){
+	function showAllROStatus(selStatus){
 			  apiCall=url+'returnstatus/GetAllReturnStatus';
 			  $.ajax({
 		      url: apiCall,
@@ -31,8 +31,9 @@ $(document).ready(function(){
 						StatusArray[item] = item;				
 					});
 					//console.log(StatusArray);			
-					$.each(StatusArray, function(i, item){								
-						statusOptionHtml = statusOptionHtml+'<option value="'+item+'">'+item+'</option>';
+					$.each(StatusArray, function(i, item){
+						var selectedROStatus = (selStatus == item)?'selected':'';
+						statusOptionHtml = statusOptionHtml+'<option value="'+item+'" '+selectedROStatus+'>'+item+'</option>';
 					});					
 					//console.log(statusOptionHtml);
 					$('#filter_ordstatus').prop('disabled', false);
@@ -43,7 +44,7 @@ $(document).ready(function(){
 		      }
 		    });
 		  }
-		  function showCarriersList(customerId){
+		  function showCarriersList(customerId,selCarrier){
 			  if(customerId == -1){
 				  apiCall=url+'Carrier/GetAllActiveBMCarriers';
 			  }else{
@@ -71,8 +72,9 @@ $(document).ready(function(){
 						CarrierArray[item] = item;				
 					});
 					//console.log(CarrierArray);			
-					$.each(CarrierArray, function(i, item){								
-						carOptionHtml = carOptionHtml+'<option value="'+item+'">'+item+'</option>';
+					$.each(CarrierArray, function(i, item){	
+						var selectedCar = (selCarrier == item)?'selected':'';
+						carOptionHtml = carOptionHtml+'<option value="'+item+'" '+selectedCar+'>'+item+'</option>';
 					});					
 					//console.log(carOptionHtml);
 					$('#filter_carrier').prop('disabled', false);
@@ -153,14 +155,15 @@ $(document).ready(function(){
         console.log(response);
         renderReturnOrders(response);	
 		
-		$('#filter_ordstatus').prop('disabled', false);
-		showAllROStatus();//Call the Status dropdown in Order page
 		var selStatusName = (searchInput['StatusName'] !== '')?searchInput['StatusName']:'';//raw_data['StatusName'];
+		$('#filter_ordstatus').prop('disabled', false);
+		showAllROStatus(selStatusName);//Call the Status dropdown in Order page		
 		$('#filter_ordstatus').val(selStatusName);
 		
+		var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';
 		$('#filter_carrier').prop('disabled', false);
-		showCarriersList(customerId);//Call the Carrier dropdown in Order page
-		var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';				
+		showCarriersList(customerId,selCarrierName);//Call the Carrier dropdown in Order page
+						
 		$('#filter_carrier').val(selCarrierName);
       },
       fail: function(){
