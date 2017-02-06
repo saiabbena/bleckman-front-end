@@ -13,7 +13,7 @@ class Consumer extends CI_Controller {
       exit();
     }
     
-    $this->Customerid=$_GET['Customer'];
+    $this->Customerid = $_GET['Customer'];
     if ( isset($_GET['Mode'])) {
       $this->Mode=$_GET['Mode'];
     } else {
