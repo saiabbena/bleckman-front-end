@@ -5,6 +5,8 @@ class Consumer extends CI_Controller {
   
   public function __construct(){
     parent::__construct();
+    echo 'this is a test';
+    exit();
     $this->load->helper("url");
 	  //$this->load->helper("get_appearance_settings.php");
     
