@@ -125,7 +125,8 @@
 					<input name="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
 					<input name="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
 					<input name="img_type" value="logo" type="hidden">
-                      <input type="file" class="dropify" accept='image/*' name="img_file" id="logo_img"   data-show-remove="false" data-default-file="<?php echo $logo?>" />                 
+                      <input type="file" class="dropify" accept='image/*' name="img_file" id="logo_img"   data-show-remove="false" 
+					  data-default-file="<?php echo $logo?>" data-max-width="2000"  data-max-height="2000" data-allowed-file-extensions="png" />                 
 					   <div class="col-md-12">
 						<div class="col-md-2" id="btn_logo_div">
 						<img src='<?php echo base_url();?>img/spin.gif' alt="Loading" title="Loading" class="uploading" id="uploading_logo" style="display:none;" /><button class="btn btn-success btn-raised no_padding no_margin btn_save_img" id="btn_logo_change">Save</button></div>
@@ -147,7 +148,7 @@
 					  <input name="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
 					  <input name="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
 					  <input name="img_type" value="spacer" type="hidden">
-                      <input type="file" id="spacer_img" name="img_file" multiple=""  data-show-remove="false" data-default-file="<?php echo $spacer?>" class="dropify"  accept='image/*' />
+                      <input type="file" id="spacer_img" name="img_file" multiple=""  data-show-remove="false" data-default-file="<?php echo $spacer?>" class="dropify"  accept='image/*'  data-max-width="2000"  data-max-height="2000" data-allowed-file-extensions="png" />
                       
 					  <div class="col-md-12">
 					  <div class="col-md-2" id="btn_spacer_div">
@@ -169,7 +170,7 @@
 					  <input type="hidden" name="textBox" id="textBox" value="0" />
 					  <input name="PKSettingID" class="CustomerSetting" value="<?php echo $PKSettingID?>" type="hidden">
 					  <input name="FKCustomerid" class="CustomerSetting" value="<?php echo $FKCustomerid?>" type="hidden">
-                      <input type="file" id="loading_img" name="img_file" multiple="" data-show-remove="false" data-default-file="<?php echo $loading?>" class="dropify"  accept='image/*' />                      
+                      <input type="file" id="loading_img" name="img_file" multiple="" data-show-remove="false" data-default-file="<?php echo $loading?>" class="dropify"  accept='image/*' data-allowed-file-extensions="gif" />                      
 					  <input name="img_type" value="loading" type="hidden">
 					  <div class="col-md-12">
 					  <div class="col-md-2" id="btn_loading_div">
