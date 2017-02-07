@@ -1166,7 +1166,7 @@ $(document).ready(function() {
 		        
 		        console.log(response);
 		        if ( response.Status == 1 ) {
-		          alert("success");
+		          //alert("success");
 		          window.location.reload();
 		        } else {
 		          alert(response.Messages);
