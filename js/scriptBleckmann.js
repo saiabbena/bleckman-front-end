@@ -874,7 +874,7 @@ $(document).ready(function() {
 				        //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
 				        html=html + '<a id="generateLabel-' +data[i].ReturnId + '-'+ data[i].Mode +'" style="cursor:pointer;margin-top:-1px;margin-left:10px;" alt="printlabel" title="Generate label" class="generateLabel pull-left"><i class="large material-icons">receipt</i></a>';
 				      }
-				      html=html + '</tr>\
+				      html=html+ '</tr>\
 				      ';
 			  
 
