@@ -2,12 +2,14 @@
       <div class='well body_btm_bdr' id="orders-messages">
         <div class="alert alert-dismissible alert-primary">
           Listing the latest returned orders
-        </div>		
+        </div>	
+        <div id="showError">	
         <?php
           if(isset($_SESSION['message']['orders-messages'])){
             echo'<div class="alert alert-dismissible alert-success">'.$_SESSION['message']['orders-messages'].'</div>';
           }
         ?>
+        </div>
 		<div class="row">
 			<div class="col-md-2 pull-right">
 				<button id="export" data-export="export" class='btn btn-raised btn-sm' style="margin-top: 26px;">Export as CSV</button>

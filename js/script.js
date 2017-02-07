@@ -379,6 +379,7 @@ $(document).ready(function(){
               postData.Consumershipstate = $('#Consumershipstate').val();
               postData.FKCustomerId = customerId;
               postData.Status = 1;
+              postData.Mode=3;
               countryCode = $('#ConsumerFromShipCountry').val();
               console.log(postData);
               getCouriers();
@@ -529,6 +530,7 @@ $(document).ready(function(){
         postData.UserId = UserId;
         headers = { Apoyar: apoyarToken};
       } else {
+        postData.Mode=1;
         apiCall = url+'returnorder/PostMode1';
       }
       console.log("postData");
@@ -598,11 +600,12 @@ $(document).ready(function(){
       submition.FKCustomerId=customerId;
       submition.CarrierName=carName;
       submition.StatusName='Label Printed';
-	  if($('#emailConfirm').val() === undefined){
-		  submition.ConsumerEmail2='';
-	  }else{
-		  submition.ConsumerEmail2= $('#emailConfirm').val();
-	  }      
+      submition.Mode=mode;
+  	  if($('#emailConfirm').val() === undefined){
+  		  submition.ConsumerEmail2='';
+  	  }else{
+  		  submition.ConsumerEmail2= $('#emailConfirm').val();
+  	  }      
       submition.ConsumerFromShipCountry = countryCode;
   	  submition.UserId = (UserId != '')?UserId:'';//Store the Customer Support guy id on Return Order Request    
 

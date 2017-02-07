@@ -112,8 +112,8 @@ $(document).ready(function(){
 	
 	var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
 	var ReturnsOrderToDate = $('#ReturnsOrderToDate').val();
-	console.log(ReturnsOrderCreationDate);
-	console.log(ReturnsOrderToDate);
+	//console.log(ReturnsOrderCreationDate);
+	//console.log(ReturnsOrderToDate);
 	if(ReturnsOrderCreationDate !== ''){      
         var date_array = [];
         date_array = ReturnsOrderCreationDate.split("-");    
@@ -152,7 +152,7 @@ $(document).ready(function(){
       dataType: 'json',
       success: function (response) {
         $('.loading-screen').slideUp('slow');
-        console.log(response);
+        //console.log(response);
         renderReturnOrders(response);	
 		
 		var selStatusName = (searchInput['StatusName'] !== '')?searchInput['StatusName']:'';//raw_data['StatusName'];
@@ -225,7 +225,7 @@ $(document).ready(function(){
 	    var data = raw_data['ReturnOrders'];		
       //date=new Date(data[i].ReturnsOrderCreationDate);
       date1=data[i].ReturnsOrderCreationDate.split('T');
-      console.log("date1 : " + date1);
+      //console.log("date1 : " + date1);
       date=new Date(date1[0]);
 
       resultDate=date.getDate()+'/'+(date.getMonth()+1)+'/'+(date.getYear()+1900);
@@ -234,6 +234,8 @@ $(document).ready(function(){
 			RORefAmount = data[i].ReturnOrderTotalRefundAmount.toFixed(2);
 		}
       //console.log("resultDate : " + resultDate);
+
+      //console.log(data[i]);
       html=html+'\
         <tr>\
           <tr>\
@@ -254,8 +256,13 @@ $(document).ready(function(){
               <td style="white-space: nowrap;">\
               <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:10px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>\
               <a data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="cursor:pointer;margin-right:10px;" alt="Comments" title="Comments" class="pull-left"><i class="large material-icons">comment</i></a>\
-              <a target="_blank" href="http://'+ data[i].ErrorLog +'"style="cursor:pointer;margin-top:-1px;" alt="Comments" title="ErrorLog" class="btn_more_info pull-left"><i class="large material-icons">info_outline</i></a>\
-        </tr>\
+              <a target="_blank" href="http://'+ data[i].ErrorLog +'"style="cursor:pointer;margin-top:-1px;" alt="Comments" title="ErrorLog" class=" pull-left"><i class="large material-icons">info_outline</i></a>';
+      if ( (data[i].ReturnsOrderTrackingCode == '') && (data[i].ReturnsOrderTrackingNumber == '') ) {
+        //console.log("ReturnsOrderTrackingCode  : " + data[i].ReturnsOrderTrackingCode );
+        //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
+        html=html + '<a id="generateLabel-' +data[i].ReturnId + '-'+ data[i].Mode +'" style="cursor:pointer;margin-top:-1px;margin-left:10px;" alt="printlabel" title="Generate label" class="generateLabel pull-left"><i class="large material-icons">receipt</i></a>';
+      }
+      html=html + '</tr>\
       ';
       html3=html3+'\
       <div class="modal fade rOrderCommentModal" id="rOrderComment'+data[i].ReturnId+'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">\
@@ -312,6 +319,50 @@ $(document).ready(function(){
   }
   $(".rOrderCommentModal").on('shown.bs.modal', function() {
     $.material.init();
+  });
+  $(document).on('click','.generateLabel', function() {
+    $('.loading-screen').slideDown('slow');   
+    var retArray = $(this).attr("id").split("-");
+    var apiCall=url+'returnorder/PostReturnLabelByReturnId';
+    var inputData = {};
+    inputData.ReturnId = retArray[1];
+    inputData.Mode = retArray[2];
+    console.log("inputData : ");
+    console.log(inputData);
+    $.ajax({
+      url: apiCall,
+      type: 'POST',
+      headers: {
+        Apoyar: apoyarToken
+      },
+      dataType: 'json',
+      data:inputData,
+      success: function(response) {
+        
+        console.log(response);
+        if ( response.Status == 1 ) {
+          alert("success");
+          window.location.reload();
+        } else {
+          alert(response.Messages);
+        }
+      },
+      error: function(data) {
+          $('.loading-screen').slideUp('slow'); 
+            console.log(data);
+            $('div#showError').html('<div class="alert alert-dismissible alert-warning">Error in generating Label. Please try again.</div>')
+            $('html, body').animate({
+              scrollTop: $('#showError').offset().top - 120
+          }, 'slow');
+            $("#showError").fadeTo(5000, 500).slideUp(500, function(){
+            $("#showError").slideUp(500);
+        });
+      },
+      fail: function(data) {
+        console.log(data);
+      }
+    });
+    //$('.loading-screen').slideUp('slow');
   });
 	$(document).on('click', '.btn_more_info', function() {
 		//alert($(this).attr('id')); //ReturnId
