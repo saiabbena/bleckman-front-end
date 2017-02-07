@@ -21,8 +21,9 @@
 				<button id="export" data-export="export" class='btn btn-raised btn-sm' style="margin-top: 26px;">Export as CSV</button>
 			</div>
 		</div>		
-	<div class='row'>
+	<div class='row' >
 		<input type="hidden" name="hdn_customer_id_ord" id="hdn_customer_id_ord" value="<?php echo $Customerid?>" />
+        <div id="showError">
         <?php
           if(isset($_SESSION['message']['carrier_panel'])){
             echo'
@@ -31,6 +32,7 @@
             </div>';
           }
         ?>
+        </div>
 			<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">		
 			  <thead>				
 				<tr>
