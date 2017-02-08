@@ -256,7 +256,7 @@ $(document).ready(function(){
               <td style="white-space: nowrap;">\
               <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:7px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>\
               <a data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="cursor:pointer;margin-right:7px;" alt="Comments" title="Comments" class="pull-left"><i class="large material-icons">comment</i></a>\
-              <a target="_blank" href="http://'+ data[i].ErrorLog +'"style="cursor:pointer;margin-top:-1px;" alt="Comments" title="ErrorLog" class=" pull-left"><i class="large material-icons">info_outline</i></a>';
+              <a target="_blank" href="'+ data[i].ErrorLog +'"style="cursor:pointer;margin-top:-1px;" alt="Comments" title="ErrorLog" class=" pull-left"><i class="large material-icons">info_outline</i></a>';
       if ( (data[i].ReturnsOrderTrackingCode == '') && (data[i].ReturnsOrderTrackingNumber == '') ) {
         //console.log("ReturnsOrderTrackingCode  : " + data[i].ReturnsOrderTrackingCode );
         //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
