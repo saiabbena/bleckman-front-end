@@ -51,6 +51,7 @@ Class HttpRequests extends CI_Model {
 	  	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Apoyar: ' . $_SESSION['Apoyar']));
 	  	// Send the request
 	  	$result = json_decode(curl_exec($ch), true);
+		
 	  	// Free up the resources $curl is using
 	  	curl_close($ch);
 	    return $result;

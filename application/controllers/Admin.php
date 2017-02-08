@@ -423,6 +423,10 @@ public function deleteLinks() {
     
 		$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
 		$data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $req);
+		$data['carrierSettings']=$this->httpRequests->httpGet('Carrier/GetCarrierSettingbyCustomerid', $req);
+		
+			
+//
 	
 		$data['all_langs']=$data['customerLanguages'];
 		$data['customername'] = $_SESSION['Customername'];
@@ -448,6 +452,7 @@ public function deleteLinks() {
 			}
 		}
 		$customer_id = $_SESSION['Customerid'];
+		
 		//echo API_BASE_URL_FE;exit();
 		//$data = array('customer_id'=>,'api_base_url_fe'=>API_BASE_URL_FE);
     $data['customer_id'] = $customer_id;
@@ -456,6 +461,7 @@ public function deleteLinks() {
     $data['customerCountries']=$this->httpRequests->httpGet('country/GetAllActiveCountriesbyCustomerid', $req);
     #$data['customerOpModes'] = $this->httpRequests->httpGet('operation/GetOperationsbyCustomerid', $req );
     $data['customerOpModes'] = $this->customerOpModes;
+	
 		$this->load->view('admin/templates/adm_header');
 		$this->load->view('admin/ro_option', $data);
 		$this->load->view('admin/templates/footer');
@@ -473,6 +479,55 @@ public function deleteLinks() {
 		if(isset($_SESSION['message'])){
 			unset($_SESSION['message']);
 		}	
+	}
+	//ajax call to  get and display protal link in popup window
+	function getportallink()
+	{
+		
+	$urlval='';
+	//$customeridval=1;
+	$carrieridval=$_POST['carrieridval'];
+	//$carrieridval=4;
+	  $req = array(
+      'Customerid'=>$_SESSION['Customerid']
+    );    
+    $allSettings = $this->httpRequests->httpGet('carrier/GetCarrierSettingbyCustomerid', $req);
+	for($i=0;$i<count($allSettings);$i++) {
+			if($allSettings[$i]['FKCarrierId']==$carrieridval)
+			{
+				
+				$req = array(
+					'CCWid'=>$allSettings[$i]['PKCCWId'],
+				  'CarrierId'=>$carrieridval
+				);
+				$carrierEditInfo = $this->httpRequests->httpGet('Carrier/GetCarrierSettingbyCCWid', $req);
+				
+			}
+		}	
+		
+		$settingval=$carrierEditInfo['Settings'];
+		for($i=0;$i<count($settingval);$i++)
+		{
+			if($settingval[$i]['SettingName']=="Gotourl")
+			{
+				$urlval=$settingval[$i]['SettingValue'];
+			}
+		}
+		echo '<div class="row">
+			  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4">
+				<div class="well bm-well">
+				  <button type="button" class="close" id="thank_you_close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				  <h2><center>Thank You!</center></h2>
+				  <p class="text-center"></p>
+				  <b>Dear Customer</b><br><br>
+				  You can print your label by following this link: <a id="label-iframe2" target="_blank" href="">Print label</a><br><br>
+				  You can read additional instructions for returning your order based on the carrier you chose by following this link: <a href="'.$urlval.'" target="_blank">Go to the carriers web-portal</a><br><br>
+				  Additionally all of this information has been forwarded to your email address.<br><br>
+				  Thank you for using our service.
+				  <br><br>
+				</div>				
+			  </div>
+			</div>';
 	}
 
 }

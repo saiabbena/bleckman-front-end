@@ -178,6 +178,14 @@
               <img src='<?php echo base_url();?>img/i-16.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Return Orders</span>
             </div>
           </a>
+          <!----Documentation link starts here--------------->
+           <a href='<?php echo base_url()?>index.php/Bleckmann/documentation'>
+            <div  <?php if($this->uri->segment(2) == 'documentation'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+              <div class='hidden-lg hidden-md'></div>
+              <img src='<?php echo base_url();?>img/1486478507_12.File.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Documentation</span>
+            </div>
+          </a>
+          <!----Documentation link ends here--------------->
         </div>
                 <br><br>
         <a class='btn btn-warning btn-raised btn-block' href='<?php echo base_url();?>index.php/Login/logout'><span class='glyphicon glyphicon-log-out'></span> LOGOUT</a>

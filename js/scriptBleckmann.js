@@ -13,7 +13,7 @@ $(document).ready(function() {
 			//$('#view_url').css({'display':'none'});
 			//$('#lbl_url').css({'display':'none'});	
 		    $('h4#myModalLabel').text('Add a Customer');
-		    $('input#AddressLine1').val('');
+		    /*$('input#AddressLine1').val('');
 		    $('input#AddressLine2').val('');
 		    $('input#City').val('');
 		    $('select#Country').val(-1);
@@ -26,7 +26,7 @@ $(document).ready(function() {
 		    $('input#State').val('');
 		    // $('input#Username').val('');
 		    // $('input#Password').val('');
-		    $('input#PKCustomerID').val('');
+		    $('input#PKCustomerID').val('');*/
 		    $('div.login-info').show();
 		});
 
@@ -869,7 +869,7 @@ $(document).ready(function() {
 					  <td style="white-space: nowrap;text-center">\
 					  <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:7px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>&nbsp;&nbsp;&nbsp;&nbsp;\
 					  <a data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId +'" style="cursor:pointer;margin-right:7px;" alt="Comments" title="Comments" class="pull-left"><i class="large material-icons">comment</i></a>\
-					  <a target="_blank" href="http://'+ data[i].ErrorLog +'"style="cursor:pointer;margin-top:-1px;" alt="Comments" title="ErrorLog" class="btn_more_info pull-left"><i class="large material-icons">info_outline</i></a>';
+					  <a target="_blank" href="'+ data[i].ErrorLog +'"style="cursor:pointer;margin-top:-1px;" alt="Comments" title="ErrorLog" class="btn_more_info pull-left"><i class="large material-icons">info_outline</i></a>';
 				      if ( (data[i].ReturnsOrderTrackingCode == '') && (data[i].ReturnsOrderTrackingNumber == '') ) {
 				        //console.log("ReturnsOrderTrackingCode  : " + data[i].ReturnsOrderTrackingCode );
 				        //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
