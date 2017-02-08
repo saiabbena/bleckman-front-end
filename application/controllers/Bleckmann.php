@@ -162,6 +162,7 @@ class Bleckmann extends CI_Controller {
       'Customerid'=>$data['customerId']
     );    
     $data['allSettings'] = $this->httpRequests->httpGet('carrier/GetCarrierSettingbyCustomerid', $req);
+
 	//echo json_encode($data['allSettings']);exit();
     $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req);
     $data['customerName'] = $customer_details['CustomerName'];   
@@ -488,7 +489,15 @@ class Bleckmann extends CI_Controller {
     echo var_dump($_SESSION['message']);
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
   }
-
+  //function to display the documentation
+  public function documentation()
+  {
+  		
+	$this->load->view('Bleckmann/templates/header');
+  	$this->load->view('admin/documentation');
+    $this->load->view('Bleckmann/templates/footer');
+	
+  }
  //  public function carriers($param1='', $param2='') {	  
  //  	//print_r($_SESSION);exit();
 	// //echo $param1;exit();

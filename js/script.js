@@ -512,8 +512,11 @@ $(document).ready(function(){
     if ( mode == 3 ) {
       postData.CarrierName=carName;
       postData.CustomerName=customername;
+	  carrieridval=customerSettings.carriers[carrierInfo]['PKCarrierID'];
+	  
       postData.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       postData.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
+	  
       //postData.ConsumerEmail2=$('#emailConfirm').val();
 	  //console.log('Test emailConfirm '+$('#emailConfirm').val());
 	  if($('#emailConfirm').val() === undefined){
@@ -522,14 +525,16 @@ $(document).ready(function(){
 		  postData.ConsumerEmail2 = $('#emailConfirm').val();
 	  }    
       var apiCall = '';
-              
+        
       var headers = {};
       if ( UserId != '' ) {
         apiCall = url+'returnorder/PostMode3';
         postData.UserId = UserId;
+		var statusval='admin';
         headers = { Apoyar: apoyarToken};
       } else {
         apiCall = url+'returnorder/PostMode1';
+		var statusval='nonadmin';
       }
       console.log("postData");
       console.log(postData);
@@ -545,7 +550,9 @@ $(document).ready(function(){
                   console.log(response.Status);
                   if ( response.Status == 1 || response.Status == 2000 ) {
                     $('.form3').hide();
-                    $('.form4').show();
+                   // $('.form4').show();
+				  
+				   getportallink(carrieridval,statusval);
                     $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
                   } else {
                     $('#mode1-fail').show();
@@ -605,7 +612,7 @@ $(document).ready(function(){
 	  }      
       submition.ConsumerFromShipCountry = countryCode;
   	  submition.UserId = (UserId != '')?UserId:'';//Store the Customer Support guy id on Return Order Request    
-
+var carrierid=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       
       apiCall=url+'returnorder/PostBMReturnorder';
       //console.log("token : " + result.token );
@@ -620,6 +627,7 @@ $(document).ready(function(){
         },
         dataType: 'json',
         success: function (response) {
+			
           $('#screen3-success').show('slow');
           console.log(submition);
           console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
@@ -629,7 +637,15 @@ $(document).ready(function(){
           $('.form3').hide();
           
           if(response.Status='2000'){
-            $('.form4').show();
+            //$('.form4').show();
+			if(window.location.href.indexOf("admin") > -1) {
+				getportallink(carrierid,'admin');
+			}
+			else
+			{
+				getportallink(carrierid,'nonadmin');
+			}
+			
             $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
             $('.loading-screen').slideUp('slow');
             //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
@@ -784,7 +800,36 @@ $(document).ready(function(){
 	{	  
 	  return false;
 	}
-	
+	function getportallink(carrierid,urlval)
+	{
+		//var phpurl='http://localhost/bleckmann/index.php/admin/getportallink';
+		
+		if(urlval=="nonadmin")
+		{
+				urlvalnew='admin/getportallink';
+		}
+		else
+		{
+			urlvalnew='getportallink';	
+		}
+		//var urlvalnew='getportallink';
+		$.ajax({
+				url:urlvalnew,
+				type:'POST',
+				data:{carrieridval:carrierid},
+				async:false,
+				beforeSend:function()
+				{
+					
+				},
+				success:function(res)
+				{
+					
+					$('.form4').show();
+					$('.form4').html(res);
+				}
+			});	
+	}
 	$(document).on('click', '.btngetOrderLine', function() {
 		var inputData = '';
 		//inputData={'Orderid': data[i].OrderId, 'Email': data[i].ConsumerEmail, Customerid: customerId};

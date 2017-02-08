@@ -1,5 +1,6 @@
 <?php
 //echo $appearanceSettings['CustomerSetting']['ShowEmail'];exit();
+
 ?>   
 	<div class='col-xs-12 col-md-9' height='100%'>
       <div class='well body_btm_bdr' id='ap-panel'>		
@@ -166,6 +167,7 @@
 					  </div><!-- /.modal-dialog -->
 					</div><!-- /.modal -->
 					<?php
+					
 					if($appearanceSettings['CustomerSetting']['ShowEmail'] == 1){
 					?>
 					<div class="form-group">
@@ -336,7 +338,8 @@
 		                    <div class="col-md-6">
 		                      <div class="form-group label-floating required">		                        
 		                        <!-- <input name="ConsumerFromShipCountry" type="text" class="form-control"> -->
-		                            <?php
+		                         
+                                    <?php
 		                              //echo json_encode($customerCountries);
 		                              echo '<select class="form-control" id="ConsumerFromShipCountry" name="ConsumerFromShipCountry">';
 		                              echo '<option value="-1">Select a Country &darr;</option>';

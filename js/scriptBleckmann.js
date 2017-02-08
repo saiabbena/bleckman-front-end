@@ -13,7 +13,7 @@ $(document).ready(function() {
 			//$('#view_url').css({'display':'none'});
 			//$('#lbl_url').css({'display':'none'});	
 		    $('h4#myModalLabel').text('Add a Customer');
-		    $('input#AddressLine1').val('');
+		    /*$('input#AddressLine1').val('');
 		    $('input#AddressLine2').val('');
 		    $('input#City').val('');
 		    $('select#Country').val(-1);
@@ -26,7 +26,7 @@ $(document).ready(function() {
 		    $('input#State').val('');
 		    // $('input#Username').val('');
 		    // $('input#Password').val('');
-		    $('input#PKCustomerID').val('');
+		    $('input#PKCustomerID').val('');*/
 		    $('div.login-info').show();
 		});
 
