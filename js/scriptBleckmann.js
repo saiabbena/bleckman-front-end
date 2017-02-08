@@ -139,6 +139,7 @@ $(document).ready(function() {
 		        	$('input#City').removeClass("empty");
 					$('input#Country').removeClass("empty");
 		        	
+					$('input#Name').focus();
 		        	$('input#hdn_warehouseid').val(data.PKWarehouseID);
 		        	$('input#Name').val(data.Name);
 		        	$('input#WarehouseID').val(data.WarehouseID);
