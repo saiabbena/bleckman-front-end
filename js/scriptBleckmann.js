@@ -72,7 +72,8 @@ $(document).ready(function() {
 		        	$('input#State').removeClass("empty");
 					$('input#URL').removeClass("empty");
 		        	
-		        	$('input#AddressLine1').val(data.AddressLine1);
+		        	$('input#CustomerName').focus();
+					$('input#AddressLine1').val(data.AddressLine1);
 		        	$('input#AddressLine2').val(data.AddressLine2);
 		        	$('input#City').val(data.City);
 					$('input#mode').val('edit');
@@ -142,6 +143,7 @@ $(document).ready(function() {
 		        	$('input#City').removeClass("empty");
 					$('input#Country').removeClass("empty");
 		        	
+					$('input#Name').focus();
 		        	$('input#hdn_warehouseid').val(data.PKWarehouseID);
 		        	$('input#Name').val(data.Name);
 		        	$('input#WarehouseID').val(data.WarehouseID);
@@ -750,6 +752,7 @@ $(document).ready(function() {
 					$('.loading').css({'display':'none'});
 					$('.user_div').css({'display':'block'});
 		        	$('h4#myUserLabel').text('Edit User Information');
+					$('input#FirstName').focus();
 		        	$('input#FirstName').val(data.FirstName);
 		        	$('input#LastName').val(data.LastName);
 		        	$('input#EmailAddress').val(data.EmailAddress);
