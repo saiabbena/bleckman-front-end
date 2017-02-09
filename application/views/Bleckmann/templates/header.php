@@ -172,6 +172,12 @@
               <img src='<?php echo base_url();?>img/i-15.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Languages</span>
             </div>
           </a>
+		  <a href='<?php echo base_url()?>index.php/Bleckmann/keywords'>
+            <div  <?php if($this->uri->segment(2) == 'keywords'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
+              <div class='hidden-lg hidden-md'></div>
+              <img src='<?php echo base_url();?>img/i-19.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Keywords</span>
+            </div>
+          </a>
 		      <a href='<?php echo base_url()?>index.php/Bleckmann/orders'>
             <div  <?php if($this->uri->segment(2) == 'orders'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
               <div class='hidden-lg hidden-md'></div>
