@@ -216,7 +216,7 @@
             <div class="modal-content">
               	<form method="POST" action="submitCustomerInfo" id="customer-info-form">
 	              <div class="modal-header">
-	                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="close1()"><span aria-hidden="true">&times;</span></button>
 	                <h4 class="modal-title" id="myModalLabel" >Add a Customer</h4>
 	              </div>
 	              <div class="modal-body">
@@ -233,6 +233,7 @@
 		                	<div class="col-md-6">
 				              	<div class="form-group label-floating required">
 				                  <label class="control-label">Customer Name</label>
+                                  <input type="hidden" name="mode" id="mode" value="" />
 				                  <input id="CustomerName" type="text" name="CustomerName" class="form-control" value="">
 				                  <span class="help-block">Enter Customer Name</span>
 				                </div>
@@ -320,7 +321,7 @@
 			                </div>
 		                </div>
 
-						<!-- <div class="row">
+					<!--	<div class="row">
 		                	<div class="col-md-6">
 								<div class="form-group label-floating">
 			                        <label for="i5" class="control-label">Bcc Email</label>
@@ -328,7 +329,7 @@
 			                        <span class="help-block">Enter Bcc Email</span>
 			                    </div>
 			                </div>
-                          </div>  -->
+                          </div> -->
 <!-- 		               	<div class="row login-info">
 		               		<h4>Login Details</h4>
 		                	<div class="col-md-6">
@@ -350,10 +351,34 @@
 		          </div>
 		          <input id="PKCustomerID" type="hidden" name="PKCustomerID" value="">
 	              <div class="modal-footer">
-	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="close1()">Close</button>
 	                <button type="submit" class="btn btn-primary">save</button>
 	              </div>
               	</form>
             </div>
           </div>
         </div>	
+        <script language="javascript" type="text/javascript">
+		function close1()
+		{
+		var mode=document.getElementById('mode').value;
+			if(mode=="edit")
+			{
+			$('input#AddressLine1').val('');
+		    $('input#AddressLine2').val('');
+		    $('input#City').val('');
+		    $('select#Country').val(-1);
+		    $('input#CustomerName').val('');
+			$('input#Customerid').val('');
+		    $('input#EmailAddress').val('');
+		    $('input#PhoneNumber').val('');
+		    $('input#PostalCode').val('');
+		    $('input#URL').val('');
+		    $('input#State').val('');
+			//$('input#mode').val('add');
+		    // $('input#Username').val('');
+		    // $('input#Password').val('');
+		    $('input#PKCustomerID').val('');
+			}
+		}
+		</script>
