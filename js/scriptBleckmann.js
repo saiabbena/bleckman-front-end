@@ -8,12 +8,13 @@ $(document).ready(function() {
 		var predefinedGlobalSettings = [];
 		
 		$(".add-customer-pop").click(function(){
+											
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
 			//$('#view_url').css({'display':'none'});
 			//$('#lbl_url').css({'display':'none'});	
-		    $('h4#myModalLabel').text('Add a Customer');
-		    /*$('input#AddressLine1').val('');
+		    /*$('h4#myModalLabel').text('Add a Customer');
+		    $('input#AddressLine1').val('');
 		    $('input#AddressLine2').val('');
 		    $('input#City').val('');
 		    $('select#Country').val(-1);
@@ -23,10 +24,11 @@ $(document).ready(function() {
 		    $('input#PhoneNumber').val('');
 		    $('input#PostalCode').val('');
 		    $('input#URL').val('');
-		    $('input#State').val('');
+		    $('input#State').val('');*/
+			$('input#mode').val('add');
 		    // $('input#Username').val('');
 		    // $('input#Password').val('');
-		    $('input#PKCustomerID').val('');*/
+		    $('input#PKCustomerID').val('');
 		    $('div.login-info').show();
 		});
 
@@ -74,6 +76,7 @@ $(document).ready(function() {
 					$('input#AddressLine1').val(data.AddressLine1);
 		        	$('input#AddressLine2').val(data.AddressLine2);
 		        	$('input#City').val(data.City);
+					$('input#mode').val('edit');
 		        	$('select#Country').val(data.Country);
 		        	$('input#CustomerName').val(data.CustomerName);
 					$('input#Customerid').val(data.Customerid);
@@ -101,7 +104,7 @@ $(document).ready(function() {
 		});
 		//edit_wh_pop
 		$(".edit_wh_pop").click(function(){
-			//alert("hi");			
+						
 			$('.loading').css({'display':'block'});			
 			$('#warehouse_modal').css({'display':'none'});				
 			
