@@ -59,7 +59,7 @@
 					</div>
 				  </th>	
 					<th></th>
-					<th></th>
+					
 					<th class="col-md-1"></th>				  
 				    <th class="col-md-1">
 					<div class="form-group label-floating">
@@ -94,7 +94,7 @@
 				  <th>Date</th>
 				  <th>Order ID</th>
 				  <th class="th-inner">R.O. ID</th>
-				  <th class="nosort">Tracking</th>
+				  <!--<th class="nosort">Tracking</th>-->
 				  <th>Refund</th>
 				  <th>Customer</th>
 				  <th>Carrier</th>

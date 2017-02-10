@@ -73,14 +73,18 @@
 			    <br>
 			    <br>
 			    <div class="row">
+                
+                <div class="col-md-10">
+						<!--<h4 id="manage_carrier_search" class="pull-right"></h4>-->
+					
 			    	<div class="col-md-12">
-				    	<table class="table table-responsive">
+				    	<table class="table table-responsive" id="example">
 				    		<thead>
 					    		<tr>
-					    			<th>Carrier</th>
-					    			<th>Country</th>
-					    			<th>Warehouse</th>
-					    			<th>Manage Carrier Settings</th>
+					    			<th style="width: 86px;">Carrier</th>
+					    			<th style="width: 100px;">Country</th>
+					    			<th style="width: 166px;">Warehouse</th>
+					    			<th style="width: 267px;">Manage Carrier Settings</th>
 					    		</tr>
 				    		</thead>
 				    		<tbody>
@@ -88,15 +92,16 @@
 					    			//echo json_encode($allSettings);
 					    			if (isset($allSettings)) {
 					    			if (count($allSettings) > 0 ) {
+									
 					    			for($i=0;$i<count($allSettings);$i++) {
 					    				echo '<tr>';
-					    				echo '<td><br>' . $allSettings[$i]['CarrierName'] .'</td>';
-					    				echo '<td><br>' . $allSettings[$i]['CountryName'] .'</td>';
-					    				echo '<td><br>' . $allSettings[$i]['LocationName'] .'</td>';
+					    				echo '<td><div class="carrier_info"><br>' . $allSettings[$i]['CarrierName'] .'</div></td>';
+					    				echo '<td><div class="country_info"><br>' . $allSettings[$i]['CountryName'] .'</div></td>';
+					    				echo '<td><div class="location_info"><br>' . $allSettings[$i]['LocationName'] .'</div></td>';
 					    				echo '<td >
-				    							<button type="button" class=" btn btn-raised btn-success" data-toggle="modal" id="#edit-setting-modal-'. $allSettings[$i]['PKCCWId'] .'-'. $allSettings[$i]['FKCarrierId'].'-'. $allSettings[$i]['CountryCode'] .'" data-target="#edit-setting-modal-'. $allSettings[$i]['PKCCWId'] .'-'. $allSettings[$i]['FKCarrierId'] .'-'. $allSettings[$i]['CountryCode']  .'" >Edit</button>
-					    						<button type="button" class="manage-carrier-pop btn btn-raised btn-warning" data-toggle="modal" data-target="#manage-carrier-modal" id="manage-carrier-' . $allSettings[$i]['PKCCWId']. '-'.$allSettings[$i]['FKCarrierId']. '" >Settings</button>
-					    						<button type="button" class="btn btn-raised btn-danger" data-toggle="modal" data-target="#remove-setting-modal'. $allSettings[$i]['PKCCWId'] .'" >Remove</button>
+				    							<button type="button" class=" btn btn-raised btn-success btn-sm" data-toggle="modal" id="#edit-setting-modal-'. $allSettings[$i]['PKCCWId'] .'-'. $allSettings[$i]['FKCarrierId'].'-'. $allSettings[$i]['CountryCode'] .'" data-target="#edit-setting-modal-'. $allSettings[$i]['PKCCWId'] .'-'. $allSettings[$i]['FKCarrierId'] .'-'. $allSettings[$i]['CountryCode']  .'" >Edit</button>
+					    						<button type="button" class="manage-carrier-pop btn btn-raised btn-warning btn-sm " data-toggle="modal" data-target="#manage-carrier-modal" id="manage-carrier-' . $allSettings[$i]['PKCCWId']. '-'.$allSettings[$i]['FKCarrierId']. '" >Settings</button>
+					    						<button type="button" class="btn btn-raised btn-danger btn-sm" data-toggle="modal" data-target="#remove-setting-modal'. $allSettings[$i]['PKCCWId'] .'" >Remove</button>
 					    					</td>';
 					    				echo '</tr>';
 										echo '<div class="modal fade" id="remove-setting-modal'. $allSettings[$i]['PKCCWId'] .'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -226,3 +231,31 @@
             </div>
           </div>
         </div>
+      
+<script language="javascript" type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script language="javascript" type="text/javascript">
+$(document).ready(function() {
+    $('#example').DataTable( {
+        "paging":   false,
+        "ordering": false,
+        "info":     false,
+		 "autoWidth": false,
+		"oLanguage": { "sSearch": "" } 
+		
+
+    
+    } );
+	 $('div.dataTables_filter input').attr('placeholder', 'Search...');
+	 $('div.dataTables_filter input').addClass( "search_input" );
+	
+	
+} );
+</script>
+<style type="text/css">
+.dataTables_filter
+{
+text-align:left;
+xwidth:955px;
+}
+
+</style>

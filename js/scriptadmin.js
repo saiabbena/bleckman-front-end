@@ -197,6 +197,7 @@ $(document).ready(function(){
 		retrieveReturnOrders(customerId);			
 	});
   function renderReturnOrders(raw_data){
+	  
     var html='';
     var html2='';
     var html3='';
@@ -245,23 +246,25 @@ $(document).ready(function(){
               \
               <td style="white-space: nowrap;">'+data[i].ReturnId+'</td>\
               \
-              <td style="white-space: nowrap;"><a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'">Link</a></td>\
-              \
-			       <td style="white-space: nowrap;"><b>'+' '+RORefAmount+'</b></td>\
+              <td style="white-space: nowrap;"><b>'+' '+RORefAmount+'</b></td>\
               \
               <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
               \
               <td style="white-space: normal !important;">'+data[i].StatusName+'</td>\
               \
               <td style="white-space: nowrap;">\
-              <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:7px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>\
-              <a data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="cursor:pointer;margin-right:7px;" alt="Comments" title="Comments" class="pull-left"><i class="large material-icons">comment</i></a>\
+              <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:3px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>\
+              <a data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="cursor:pointer;margin-right:3px;" alt="Comments" title="Comments" class="pull-left"><i class="large material-icons">comment</i></a>\
               <a target="_blank" href="'+ data[i].ErrorLog +'"style="cursor:pointer;margin-top:-1px;" alt="Comments" title="ErrorLog" class=" pull-left"><i class="large material-icons">info_outline</i></a>';
       if ( (data[i].ReturnsOrderTrackingCode == '') && (data[i].ReturnsOrderTrackingNumber == '') ) {
         //console.log("ReturnsOrderTrackingCode  : " + data[i].ReturnsOrderTrackingCode );
         //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
-        html=html + '<a id="generateLabel-' +data[i].ReturnId + '-'+ data[i].Mode +'" style="cursor:pointer;margin-top:-1px;margin-left:7px;" alt="printlabel" title="Generate label" class="generateLabel pull-left"><i class="large material-icons">receipt</i></a>';
+        html=html + '<a id="generateLabel-' +data[i].ReturnId + '-'+ data[i].Mode +'" style="cursor:pointer;margin-left:3px;" alt="printlabel" title="Generate label" class="generateLabel pull-left"><i class="large material-icons">receipt</i></a>';
       }
+	 if( data[i].ReturnsOrderTrackingCode!='')
+	 {
+		   html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'"  style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="generateLabel pull-left"><i class="large material-icons">link</i></a>';
+	 }
       html=html + '</tr>\
       ';
       html3=html3+'\

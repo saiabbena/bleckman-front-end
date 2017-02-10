@@ -861,8 +861,6 @@ $(document).ready(function() {
 					  \
 					  <td style="white-space: nowrap;">'+data[i].ReturnId+'</td>\
 					  \
-					  <td style="white-space: nowrap;"><a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'">Link</a></td>\
-					  \
 					  <td style="white-space: nowrap;"><b>'+' '+RORefAmount+'</b></td>\
 					  \
 					   <td style="white-space: nowrap;">'+data[i].CustomerName+'</td>\
@@ -871,14 +869,19 @@ $(document).ready(function() {
 					  \
 					  <td style="white-space: normal !important;">'+data[i].StatusName+'</td>\
 					  \
-					  <td style="white-space: nowrap;text-center">\
-					  <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:7px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>&nbsp;&nbsp;&nbsp;&nbsp;\
-					  <a data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId +'" style="cursor:pointer;margin-right:7px;" alt="Comments" title="Comments" class="pull-left"><i class="large material-icons">comment</i></a>\
+					  <td style="text-center">\
+					  <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:3px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>&nbsp;&nbsp;&nbsp;&nbsp;\
+					  <a data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId +'" style="cursor:pointer;margin-right:3px;" alt="Comments" title="Comments" class="pull-left"><i class="large material-icons">comment</i></a>\
 					  <a target="_blank" href="'+ data[i].ErrorLog +'"style="cursor:pointer;margin-top:-1px;" alt="Comments" title="ErrorLog" class="btn_more_info pull-left"><i class="large material-icons">info_outline</i></a>';
 				      if ( (data[i].ReturnsOrderTrackingCode == '') && (data[i].ReturnsOrderTrackingNumber == '') ) {
 				        //console.log("ReturnsOrderTrackingCode  : " + data[i].ReturnsOrderTrackingCode );
 				        //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
-				        html=html + '<a id="generateLabel-' +data[i].ReturnId + '-'+ data[i].Mode +'" style="cursor:pointer;margin-top:-1px;margin-left:7px;" alt="printlabel" title="Generate label" class="generateLabel pull-left"><i class="large material-icons">receipt</i></a>';
+				        html=html + '<a id="generateLabel-' +data[i].ReturnId + '-'+ data[i].Mode +'" style="cursor:pointer;margin-left:3px;" alt="printlabel" title="Generate label" class="generateLabel pull-left"><i class="large material-icons">receipt</i></a>';
+				      }
+					   if ( data[i].ReturnsOrderTrackingCode != '') {
+				        //console.log("ReturnsOrderTrackingCode  : " + data[i].ReturnsOrderTrackingCode );
+				        //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
+				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'"  style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="generateLabel pull-left"><i class="large material-icons">link</i></a>';
 				      }
 				      html=html+ '</tr>\
 				      ';
@@ -963,6 +966,7 @@ $(document).ready(function() {
 				  //console.log('showCarriersStatus '+customerId+': '+response[0].Statu);				  				  
 					for(i=0; i<response.length; i++){
 						var data = response;
+						
 						arrStatus[i] = data[i].Status;						
 					}
 					$.each(arrStatus, function(i, item){
@@ -1357,6 +1361,35 @@ $(document).ready(function() {
 	} 
 	$(function () {
 		listFilterCarrier($("#carrier_search"), $("#carrier_list"));
+	});	
+	
+	//search feature for admin manage carrier
+	//Search features for Admin Carriers
+	function listFilterManageCarrier(carrier_search, list) {
+		var form = $("<form>").attr({"class":"filterform","action":"#"}),
+		input = $("<input>").attr({"class":"search_input","type":"text","placeholder":"Search"});
+		$(form).append(input).appendTo(carrier_search);
+
+		$(input)
+		  .change( function () {
+			var filter = $(this).val();
+			
+			if(filter) {
+			  
+			  $(list).find(".carrier_info:not(:Contains(" + filter + "))").parent().parent().closest('tr').hide('slow');			  
+			  $(list).find(".carrier_info:Contains(" + filter + ")").parent().parent().closest('tr').show('slow');
+			} else {			  
+			  $(list).find(".carrier_info:Contains(" + filter + ")").parent().parent().closest('tr').show('slow');
+			}
+			return false;
+		  })
+		.keyup( function () {
+			$(this).change();
+		});
+	} 
+	$(function () {
+				
+		listFilterManageCarrier($("#manage_carrier_search"), $("#manage_carrier_list"));
 	});		
 
 		var settings_global_cnt=0;
@@ -1413,6 +1446,7 @@ $(document).ready(function() {
 		});		
 		
 		$('#add-carrier-local-setting').click(function() {
+													  
 			settings_local_cnt = $('.LocalSettingsCls').length;
 			var apiCall = url + 'Carrier/GetPredefinedCarrierSetting';
 			
@@ -1426,6 +1460,7 @@ $(document).ready(function() {
 				    },
 			        dataType: 'json',
 			        success: function(data) {
+						
 			        	predefinedSettings = data;
 			        	console.log("here");
 			        	console.log(predefinedSettings);
@@ -1435,6 +1470,7 @@ $(document).ready(function() {
 			console.log(predefinedSettings);
 			//<input id="SettingsName" type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingName]" class="form-control" value="">\
 			setTimeout(function(){
+								
 				var html1 = '<div class="row">\
 					                	<div class="col-md-12">\
 					                		<div class="col-md-6">\
@@ -1808,6 +1844,7 @@ $(document).ready(function() {
 			    },
 		        dataType: 'json',
 		        success: function(data) {
+					
 		        	console.log("response data : ");
 		        	console.log(data);
 		        	html2 = '';
@@ -1843,6 +1880,7 @@ $(document).ready(function() {
 		   // 			} else {
 		   				console.log('cs length : ' + data['Settings'].length);
 		   				console.log(data['Settings']);
+						
 						for(i=0;i<data['Settings'].length;i++) {
 							html2 += '<div class="row">\
 							            <div class="col-md-12">\

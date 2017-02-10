@@ -233,7 +233,7 @@
 		                	<div class="col-md-6">
 				              	<div class="form-group label-floating required">
 				                  <label class="control-label">Customer Name</label>
-                                  <input type="hidden" name="mode" id="mode" value="" />
+                                  <input type="text" name="mode" id="mode" value="" />
 				                  <input id="CustomerName" type="text" name="CustomerName" class="form-control" value="">
 				                  <span class="help-block">Enter Customer Name</span>
 				                </div>
@@ -321,7 +321,7 @@
 			                </div>
 		                </div>
 
-					<!--	<div class="row">
+						<div class="row">
 		                	<div class="col-md-6">
 								<div class="form-group label-floating">
 			                        <label for="i5" class="control-label">Bcc Email</label>
@@ -329,7 +329,7 @@
 			                        <span class="help-block">Enter Bcc Email</span>
 			                    </div>
 			                </div>
-                          </div> -->
+                          </div> 
 <!-- 		               	<div class="row login-info">
 		               		<h4>Login Details</h4>
 		                	<div class="col-md-6">
