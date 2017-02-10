@@ -486,6 +486,7 @@ $data['bccemail']=$_SESSION['Bccemail'];
 	function getportallink()
 	{
 		
+	
 	$urlval='';
 	//$customeridval=1;
 	$carrieridval=$_POST['carrieridval'];
