@@ -18,6 +18,7 @@ class Admin extends CI_Controller {
     );  
     $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req );
     $_SESSION['Customername'] = $customer_details['CustomerName'];
+	$_SESSION['Bccemail'] = $customer_details['BccEmail'];
     
     if ( isset($_SESSION['Apoyar']) && $_SESSION['Roleid'] == 99 && $_SESSION['BMRoleid'] == 1 ) {
       redirect('bleckmann/customers');
@@ -429,8 +430,9 @@ public function deleteLinks() {
 //
 	
 		$data['all_langs']=$data['customerLanguages'];
-		$data['customername'] = $_SESSION['Customername'];
-
+		//$data['customername'] = $_SESSION['Customername'];
+$data['customername'] = $_SESSION['Customername'];
+$data['bccemail']=$_SESSION['Bccemail'];
 		$data['Links'] = [];
 		//set customerLanguages to current selected language
 		$this->Languagename='English';

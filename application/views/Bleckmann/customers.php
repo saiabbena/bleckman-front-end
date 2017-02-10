@@ -138,7 +138,13 @@
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['EmailAddress'] . '
 				                  		</div>
+				                  	</div>	<div class="col-md-12">
+				                  		<div class="col-md-6">BCC Email Address
+				                  		</div>
+				                  		<div class="col-md-6">' . $allCustomers[$i]['BccEmail'] . '
+				                  		</div>
 				                  	</div>';
+									
 				            if ( $om1 ) {
 				                echo '<div class="col-md-12">
 				                  		<div class="col-md-6">Mode1 URL
@@ -254,15 +260,23 @@
 			                        <span class="help-block">Enter Email</span>
 			                    </div>
 			                </div>
-		                	<div class="col-md-6">
+                            <div class="col-md-6">
+								<div class="form-group label-floating">
+			                        <label for="i5" class="control-label">Bcc Email</label>
+			                        <input id="BccEmail" type="email" name="BccEmail" class="form-control" value="">
+			                        <span class="help-block">Enter Bcc Email</span>
+			                    </div>
+			                </div>
+		                	
+				        </div>
+		                <div class="row">
+                        <div class="col-md-6">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">Phone Number</label>
 				                  <input id="PhoneNumber" type="text" name="PhoneNumber" class="form-control" value="">
 				                  <span class="help-block">Enter Phone Number</span>
 				                </div>
 				            </div>
-				        </div>
-		                <div class="row">
 		                	<div class="col-md-6">
 				              	<div class="form-group label-floating required">
 				                  <label for="i5" class="control-label">Address Line 1</label>
@@ -270,15 +284,16 @@
 				                  <span class="help-block">Enter Address Line 1</span>
 				                </div>
 		                	</div>
-		                	<div class="col-md-6">
+		                	
+		                </div>
+		                <div class="row">
+                        <div class="col-md-6">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">Address Line 2</label>
 				                  <input id="AddressLine1" type="text" name="AddressLine2" class="form-control" value="">
 				                  <span class="help-block">Enter Address Line 2</span>
 				                </div>
 		                	</div>
-		                </div>
-		                <div class="row">
 			                <div class="col-md-6">
 				              	<div class="form-group label-floating required">
 				                  <label for="i5" class="control-label">Postal Code</label>
@@ -286,15 +301,16 @@
 				                  <span class="help-block">Enter Postal Code</span>
 				                </div>
 			                </div>
-		                	<div class="col-md-6">
+		                	
+		                </div>
+		                <div class="row">
+                        <div class="col-md-6">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">City</label>
 				                  <input id="City" type="text" name="City" class="form-control" value="">
 				                  <span class="help-block">Enter City</span>
 				                </div>
 			                </div>
-		                </div>
-		                <div class="row">
 		                	<div class="col-md-6">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">State</label>
@@ -302,7 +318,11 @@
 				                  <span class="help-block">Enter State</span>
 				                </div>
 			                </div>
-			                <div class="col-md-6">
+			                
+		                </div>
+
+						<div class="row">
+		                	<div class="col-md-6">
 				              	<div class="form-group label-floating required">
 				              		<label class="control-label">Country</label>
 				                  <?php
@@ -319,17 +339,7 @@
 				                  ?>
 				                </div>
 			                </div>
-		                </div>
-
-						<!--<div class="row">
-		                	<div class="col-md-6">
-								<div class="form-group label-floating">
-			                        <label for="i5" class="control-label">Bcc Email</label>
-			                        <input id="BccEmailAddress" type="email" name="BccEmailAddress" class="form-control" value="">
-			                        <span class="help-block">Enter Bcc Email</span>
-			                    </div>
-			                </div>
-                          </div>--> 
+                          </div>
 <!-- 		               	<div class="row login-info">
 		               		<h4>Login Details</h4>
 		                	<div class="col-md-6">

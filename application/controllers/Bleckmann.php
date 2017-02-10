@@ -429,6 +429,7 @@ class Bleckmann extends CI_Controller {
   public function submitCustomerInfo() {
   	//print_r($_POST);exit();
   	$server_output = $this->httpRequests->httpPost('Customer/PostManageCustomer', json_encode($_POST) );
+	
     if ( $server_output['Id'] ) { 
     	$_SESSION['message']['customer_panel']='Customer Information Saved';
     	$_SESSION['message']['alert_status']='success';

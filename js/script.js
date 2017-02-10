@@ -503,16 +503,20 @@ $(document).ready(function(){
   $('#button3').click(function(){
     //console.log(postData);
     console.log("mode : " + mode);
-
+	
     $('.loading-screen').slideDown('slow');
     parent=$('input[name=sample1]:checked').parent().parent().parent().parent().parent();
     var carName=$('.carrierName', parent).html();
     var carrierInfo = $('input[name=sample1]:checked').val();
     //console.log("carrier info");
     //console.log(customerSettings.carriers[carrierInfo]);
+	
     if ( mode == 3 ) {
-      postData.CarrierName=carName;
+	
+     
+	 postData.CarrierName=carName;
       postData.CustomerName=customername;
+	  postData.BccEmail=bccemail;
 	  carrieridval=customerSettings.carriers[carrierInfo]['PKCarrierID'];
 	  
       postData.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
@@ -573,9 +577,12 @@ $(document).ready(function(){
 
     } else {
       
-      submition.FKCustomerId=customerId;
+   
+	  submition.FKCustomerId=customerId;
       submition.StatusName='Label printed';
       submition.CustomerName=customername;
+	  submition.BccEmail=bccemail;
+
       //submition.CarrierId=parseInt($('input[name=sample1]:checked').val(), 10);
       submition.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       submition.Status=result.result.Status;
@@ -641,6 +648,7 @@ var carrierid=customerSettings.carriers[carrierInfo]['PKCarrierID'];
           
           if(response.Status='2000'){
             //$('.form4').show();
+			
 			if(window.location.href.indexOf("admin") > -1) {
 				getportallink(carrierid,'admin');
 			}

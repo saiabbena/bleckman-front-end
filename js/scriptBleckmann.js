@@ -65,6 +65,7 @@ $(document).ready(function() {
 		        	$('input#City').removeClass("empty");
 		        	$('select#Country').removeClass("empty");
 		        	$('input#CustomerName').removeClass("empty");
+					$('input#BccEmail').removeClass("empty");
 					$('input#Customerid').removeClass("empty");					
 		        	$('input#EmailAddress').removeClass("empty");
 		        	$('input#PhoneNumber').removeClass("empty");
@@ -81,6 +82,7 @@ $(document).ready(function() {
 		        	$('input#CustomerName').val(data.CustomerName);
 					$('input#Customerid').val(data.Customerid);
 		        	$('input#EmailAddress').val(data.EmailAddress);
+					$('input#BccEmail').val(data.BccEmail);
 		        	$('input#PhoneNumber').val(data.PhoneNumber);
 		        	$('input#PostalCode').val(data.PostalCode);
 		        	$('input#State').val(data.State);
