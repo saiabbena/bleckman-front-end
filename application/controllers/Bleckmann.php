@@ -87,6 +87,20 @@ class Bleckmann extends CI_Controller {
       unset($_SESSION['message']);
     }
   }
+  public function keywords() {  	
+  	$data['customerId'] = $this->input->get('Customerid');
+    $data['allCustomers'] = $this->httpRequests->httpGet('Customer/GetAllActiveCustomers', '');
+	$data['allLanguages'] = $this->httpRequests->httpGet('Language/getLanguages', '');
+  	//keywords
+  	$data['keywords']=$this->httpRequests->httpGet('Keywords/GetAllKeywords', '');  	
+  	
+    $this->load->view('Bleckmann/templates/header');
+    $this->load->view('Bleckmann/keywords', $data);
+    $this->load->view('Bleckmann/templates/footer');
+    if(isset($_SESSION['message'])){
+      unset($_SESSION['message']);
+    }
+  }  
   public function orders($param1='',$param2='') {
 	$param2 = ($param2 != '')?$param2:'-1';
 	$data['Customerid'] = $param2;
