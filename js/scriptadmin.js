@@ -263,7 +263,7 @@ $(document).ready(function(){
       }
 	 if( data[i].ReturnsOrderTrackingCode!='')
 	 {
-		   html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'"  style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="generateLabel pull-left"><i class="large material-icons">link</i></a>';
+		   html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'"  style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';
 	 }
       html=html + '</tr>\
       ';
