@@ -11,9 +11,12 @@ $(document).ready(function() {
 											
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
+			$('h4#myModalLabel').text('Add a Customer');
+			
+			$('input#BccEmail').val('');
 			//$('#view_url').css({'display':'none'});
 			//$('#lbl_url').css({'display':'none'});	
-		    /*$('h4#myModalLabel').text('Add a Customer');
+		    /*
 		    $('input#AddressLine1').val('');
 		    $('input#AddressLine2').val('');
 		    $('input#City').val('');
