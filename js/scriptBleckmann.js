@@ -1158,6 +1158,7 @@ $(document).ready(function() {
 		});
 		//$('div#showError').html('');
 		$(document).on('click','.generateLabel', function() {
+			//Test UAT update
 		    $('.loading-screen').slideDown('slow');   
 		    var retArray = $(this).attr("id").split("-");
 		    var apiCall=url+'returnorder/PostReturnLabelByReturnId';
