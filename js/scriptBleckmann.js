@@ -11,9 +11,12 @@ $(document).ready(function() {
 											
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
+			$('h4#myModalLabel').text('Add a Customer');
+			
+			$('input#BccEmail').val('');
 			//$('#view_url').css({'display':'none'});
 			//$('#lbl_url').css({'display':'none'});	
-		    /*$('h4#myModalLabel').text('Add a Customer');
+		    /*
 		    $('input#AddressLine1').val('');
 		    $('input#AddressLine2').val('');
 		    $('input#City').val('');
@@ -883,7 +886,7 @@ $(document).ready(function() {
 					   if ( data[i].ReturnsOrderTrackingCode != '') {
 				        //console.log("ReturnsOrderTrackingCode  : " + data[i].ReturnsOrderTrackingCode );
 				        //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
-				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'"  style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="generateLabel pull-left"><i class="large material-icons">link</i></a>';
+				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'"  style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';
 				      }
 				      html=html+ '</tr>\
 				      ';
@@ -1158,6 +1161,7 @@ $(document).ready(function() {
 		});
 		//$('div#showError').html('');
 		$(document).on('click','.generateLabel', function() {
+			//Test UAT update
 		    $('.loading-screen').slideDown('slow');   
 		    var retArray = $(this).attr("id").split("-");
 		    var apiCall=url+'returnorder/PostReturnLabelByReturnId';
