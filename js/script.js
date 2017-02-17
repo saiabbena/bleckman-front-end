@@ -654,7 +654,7 @@ $(document).ready(function(){
           
           $('.form3').hide();
           
-          if(response.Status='2000'){
+          if(response.Status == '2000'){
             //$('.form4').show();
 			
 			if(window.location.href.indexOf("admin") > -1) {
@@ -668,8 +668,8 @@ $(document).ready(function(){
             $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
             $('.loading-screen').slideUp('slow');
             //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
-          }else if(response.Status == 1000){							  
-			if(window.location.href.indexOf("admin") > -1) {
+          }else if(response.Status == '1000'){							  
+			if(window.location.href.indexOf("admin") > '-1') {
 				getportallink(carrierid,'admin');
 			}
 			else
@@ -689,11 +689,32 @@ $(document).ready(function(){
           }
         },
       }).fail(function(response){
-          console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
-          console.log(response);
-          $('#btn_career_back').hide();
-          $('.loading-screen').slideUp('slow');
-          $('#screen3-fail').show('slow');
+          console.log('!THIS IS THE RESPONSE FROM THE SERVER!');          		  
+		  //var respData = $.parseJSON(response.responseText);
+		  var respData = response.responseJSON;
+		  console.log(respData.Id);
+		  console.log(respData.Status);
+		  if(respData.Status == '1000'){
+			  //console.log(window.location.href.indexOf('admin'));
+			    if(window.location.href.indexOf('admin') == '-1') {
+					console.log(carrierid);
+					//getportallink(carrierid,'nonadmin');
+				}
+				else
+				{
+					//getportallink(carrierid,'admin');					
+				}			
+				$('#print_label').hide();
+				$('#print_label').css({'display':'none'});
+				$('#no_label').show();
+				$('#show_ro_number').text(respData.Id);
+			  
+		  }else{
+			  $('#btn_career_back').hide();
+			  $('.loading-screen').slideUp('slow');
+			  $('#screen3-fail').show('slow');
+		  }
+          
       });
     }
   });
