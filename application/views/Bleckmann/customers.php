@@ -371,6 +371,7 @@
         <script language="javascript" type="text/javascript">
 		function close1()
 		{
+		
 		var mode=document.getElementById('mode').value;
 			if(mode=="edit")
 			{
@@ -382,6 +383,7 @@
 			$('input#Customerid').val('');
 		    $('input#EmailAddress').val('');
 		    $('input#PhoneNumber').val('');
+			 $('input#BccEmail').val('');
 		    $('input#PostalCode').val('');
 		    $('input#URL').val('');
 		    $('input#State').val('');
@@ -391,4 +393,26 @@
 		    $('input#PKCustomerID').val('');
 			}
 		}
+		$('#override').click(function() {
+		var mode=document.getElementById('mode').value;
+		if(mode=="edit")
+			{
+			$('input#AddressLine1').val('');
+		    $('input#AddressLine2').val('');
+		    $('input#City').val('');
+		    $('select#Country').val(-1);
+		    $('input#CustomerName').val('');
+			$('input#Customerid').val('');
+		    $('input#EmailAddress').val('');
+		    $('input#PhoneNumber').val('');
+		    $('input#PostalCode').val('');
+			 $('input#BccEmail').val('');
+		    $('input#URL').val('');
+		    $('input#State').val('');
+			//$('input#mode').val('add');
+		    // $('input#Username').val('');
+		    // $('input#Password').val('');
+		    $('input#PKCustomerID').val('');
+			}
+		});
 		</script>
