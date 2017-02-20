@@ -34,10 +34,11 @@
       var customerId='.$Customerid.';
       var language="'.$LanguageName.'";
       var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
+	  var baseurl="'. base_url() .'";
       var UserId="";
     </script>';
     ?>
-
+	
     <!--My assets-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" />
     <script type="text/javascript" src="<?php echo base_url();?>js/script.js"></script>
