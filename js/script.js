@@ -556,11 +556,19 @@ $(document).ready(function(){
                   console.log(response.Status);
                   if ( response.Status == 1 || response.Status == 2000 ) {
                     $('.form3').hide();
-                   // $('.form4').show();
-				  
+                   // $('.form4').show();				  
 				   getportallink(carrieridval,statusval);
                     $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
-                  } else {
+					$('#show_ro_number').text(response.Id);
+                  } else if(response.Status == 1000){
+					$('.form3').hide();
+                   // $('.form4').show();				  
+				   getportallink(carrieridval,statusval);
+                    $('#print_label').hide();
+					$('#print_label').css({'display':'none'});
+					$('#no_label').show();
+					$('#show_ro_number').text(response.Id);
+				  } else {
                     $('#mode1-fail').show();
                     $('.form5').show();
                     $('.form1_mode1').hide();
@@ -622,7 +630,7 @@ $(document).ready(function(){
   	  }      
       submition.ConsumerFromShipCountry = countryCode;
   	  submition.UserId = (UserId != '')?UserId:'';//Store the Customer Support guy id on Return Order Request    
-var carrierid=customerSettings.carriers[carrierInfo]['PKCarrierID'];
+	  var carrierid=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       
       apiCall=url+'returnorder/PostBMReturnorder';
       //console.log("token : " + result.token );
@@ -660,7 +668,21 @@ var carrierid=customerSettings.carriers[carrierInfo]['PKCarrierID'];
             $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
             $('.loading-screen').slideUp('slow');
             //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
-          } else {
+          }else if(response.Status == 1000){							  
+			if(window.location.href.indexOf("admin") > -1) {
+				getportallink(carrierid,'admin');
+			}
+			else
+			{
+				getportallink(carrierid,'nonadmin');
+			}            
+            $('.loading-screen').slideUp('slow');
+			$('#print_label').hide();
+			$('#print_label').css({'display':'none'});
+			$('#no_label').show();
+			$('#show_ro_number').text(response.Id);
+		  }
+		  else {
             $('.form5').show();
             $('.form1_mode1').hide();
             $('.loading-screen').slideUp('slow');
