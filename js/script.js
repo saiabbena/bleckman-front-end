@@ -554,14 +554,23 @@ $(document).ready(function(){
                 dataType: 'json',
                 success: function (response) {
                   console.log(response);
-                  console.log(response.Status);
+                  
                   if ( response.Status == 1 || response.Status == 2000 ) {
                     $('.form3').hide();
-                   // $('.form4').show();
-				  
+                   //$('.form4').show();				  
 				   getportallink(carrieridval,statusval);
                     $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
-                  } else {
+					$('#show_ro_number').text(response.Id);
+                  } else if(response.Status == 1000){
+					console.log(response.Status);
+					$('.form3').hide();
+                    //$('.form4').show();				  
+				   getportallink(carrieridval,statusval);
+                    $('#print_label').hide();
+					$('#print_label').css({'display':'none'});
+					$('#no_label').show();
+					$('#show_ro_number').text(response.Id);
+				  } else {
                     $('#mode1-fail').show();
                     $('.form5').show();
                     $('.form1_mode1').hide();
@@ -570,10 +579,28 @@ $(document).ready(function(){
                 },
               }).fail(function(response){
                 console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
-                console.log(response);
-                $('#btn_career_back').hide();
-                $('.loading-screen').slideUp('slow');
-                $('#screen3-fail').show('slow');
+				var respData = response.responseJSON;
+				//console.log(respData.Id);
+				console.log(respData.Status);				
+                //console.log(response);
+				if(respData.Status == '1000'){
+					$('.form3').hide();
+					console.log(response);
+				    //console.log(window.location.href.indexOf('admin'));
+					getportallink(carrieridval,'admin');
+					$('.loading-screen').css({'display':'none'});			
+					$('#print_label').hide();
+					$('#print_label').css({'display':'none'});					
+					
+					$('#no_label').show();
+					$('#show_ro_number').text(respData.Id);
+			  
+				  }else{
+					  $('#btn_career_back').hide();
+					  $('.loading-screen').slideUp('slow');
+					  $('#screen3-fail').show('slow');
+				  }
+                
               });
 
     } else {
@@ -623,7 +650,7 @@ $(document).ready(function(){
   	  }      
       submition.ConsumerFromShipCountry = countryCode;
   	  submition.UserId = (UserId != '')?UserId:'';//Store the Customer Support guy id on Return Order Request    
-var carrierid=customerSettings.carriers[carrierInfo]['PKCarrierID'];
+	  var carrierid=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       
       apiCall=url+'returnorder/PostBMReturnorder';
       //console.log("token : " + result.token );
@@ -639,40 +666,61 @@ var carrierid=customerSettings.carriers[carrierInfo]['PKCarrierID'];
         dataType: 'json',
         success: function (response) {
 			
-          $('#screen3-success').show('slow');
-          console.log(submition);
+          $('#screen3-success').show('slow');          
           console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
-          console.log(response);
+		  console.log(submition);
+          //console.log(response);
           //$('#carrier-label-modal').modal('show');
           
           $('.form3').hide();
           
-          if(response.Status='2000'){
+          if(response.Status == '2000'){
             //$('.form4').show();
+			$('.loading-screen').hide();
 			
-			if(window.location.href.indexOf("admin") > -1) {
-				getportallink(carrierid,'admin');
-			}
-			else
-			{
-				getportallink(carrierid,'nonadmin');
-			}
-			
-            $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
-            $('.loading-screen').slideUp('slow');
+			getportallink(carrierid,'admin');
+            $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);            
             //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
-          } else {
+          }else if(response.Status == '1000'){
+			$('.loading-screen').hide();
+			
+			getportallink(carrierid,'admin');            
+            $('.loading-screen').slideUp('slow');
+			$('#print_label').hide();
+			$('#print_label').css({'display':'none'});
+			$('#no_label').show();
+			$('#show_ro_number').text(response.Id);
+		  }
+		  else {
             $('.form5').show();
             $('.form1_mode1').hide();
             $('.loading-screen').slideUp('slow');
           }
         },
       }).fail(function(response){
-          console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
-          console.log(response);
-          $('#btn_career_back').hide();
-          $('.loading-screen').slideUp('slow');
-          $('#screen3-fail').show('slow');
+          console.log('!THIS IS THE RESPONSE FROM THE SERVER!');          		  
+		  //var respData = $.parseJSON(response.responseText);
+		  var respData = response.responseJSON;
+		  //console.log(respData.Id);
+		  console.log(respData.Status);
+		  //console.log(carrierid);
+		  if(respData.Status == '1000'){
+			  $('.form3').hide();
+			  $('.loading-screen').hide();
+			  //console.log(window.location.href.indexOf('admin'));
+			    
+				getportallink(carrierid,'admin');			
+				$('#print_label').hide();
+				$('#print_label').css({'display':'none'});
+				$('#no_label').show();
+				$('#show_ro_number').text(respData.Id);
+			  
+		  }else{
+			  $('#btn_career_back').hide();
+			  $('.loading-screen').slideUp('slow');
+			  $('#screen3-fail').show('slow');
+		  }
+          
       });
     }
   });
@@ -814,17 +862,11 @@ var carrierid=customerSettings.carriers[carrierInfo]['PKCarrierID'];
 	}
 	function getportallink(carrierid,urlval)
 	{
-		//var phpurl='http://localhost/bleckmann/index.php/admin/getportallink';
 		
-		if(urlval=="nonadmin")
-		{
-				urlvalnew='admin/getportallink';
-		}
-		else
-		{
-			urlvalnew='getportallink';	
-		}
+		var urlvalnew = '';		
 		//var urlvalnew='getportallink';
+		urlvalnew= baseurl+'index.php/admin/getportallink';
+		console.log(urlvalnew);
 		$.ajax({
 				url:urlvalnew,
 				type:'POST',
@@ -836,7 +878,7 @@ var carrierid=customerSettings.carriers[carrierInfo]['PKCarrierID'];
 				},
 				success:function(res)
 				{
-					
+					console.log(res);
 					$('.form4').show();
 					$('.form4').html(res);
 				}
