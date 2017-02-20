@@ -483,8 +483,7 @@ $data['bccemail']=$_SESSION['Bccemail'];
 		}	
 	}
 	//ajax call to  get and display protal link in popup window
-	function getportallink()
-	{	
+	function getportallink(){	
 		$urlval='';
 		//$customeridval=1;
 		$carrieridval=$_POST['carrieridval'];
