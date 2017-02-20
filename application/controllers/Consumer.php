@@ -127,9 +127,9 @@ class Consumer extends CI_Controller {
     
     $data['customerLanguages']=$this->getCustomerLanguages();
     $data['all_langs']=$data['customerLanguages'];
+    $data['all_translations']=$this->getTranslations();
     //$data['allCountries']=$this->getAllCountries();
     $data['customerCountries']=$this->getCustomerCountries();
-
     $data['Links'] = [];
     //set customerLanguages to current selected language
     if ( count($data['customerLanguages']) > 0 ) {
@@ -141,17 +141,17 @@ class Consumer extends CI_Controller {
         }
         //set translations to current selected language
         $data['translations']=[];
-        foreach ($this->getTranslations() as $key => $value) {
+        foreach ($data['all_translations'] as $key => $value) {
           if (is_array($value)) {
             foreach ($value as $kkey => $vvalue) {
               if($vvalue['Languagename']==$this->Languagename){
                 array_push($data['translations'], $vvalue);
+                $data['languageId']=$vvalue['FKLanguageID'];
               }
             }
           }
         }
     }
-
 
     $data['Mode']=$this->Mode;
     $data['Customerid']=$this->Customerid;

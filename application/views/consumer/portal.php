@@ -11,29 +11,29 @@
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
         <div class='well bm-well' <?php echo $border_bottom?>>
-            <h2><center><?php echo (isset($translations[13]['Translation'])?$translations[13]['Translation']:'');?>
+            <h2><center><span class='tran-13'><?php echo (isset($translations[13]['Translation'])?$translations[13]['Translation']:'');?></span>
 			<?php //echo $translations[13]['Translation'];?></center></h2>
-            <p class='text-center'><?php if (isset($customerLanguages['Page1heading'])) { echo ($customerLanguages['Page1heading']); } ?></p>
+            <p class='text-center'><span class='tran-Page1heading'><?php if (isset($customerLanguages['Page1heading'])) { echo ($customerLanguages['Page1heading']); } ?></span></p>
             <div class="inputs">
               <form>
                 <div class="form-group label-floating">
-                  <label for="f2" class="control-label"><?php if (isset($translations[0]['Translation'])) { echo strtoupper($translations[0]['Translation']); } ?></label>
+                  <label for="f2" class="control-label"><span class='tran-0'><?php if (isset($translations[0]['Translation'])) { echo strtoupper($translations[0]['Translation']); } ?></span></label>
                   <input name='sc1[Orderid]' type="text" class="form-control" id="f2">
-                  <span class="help-block"><?php echo (isset($translations[14]['Translation'])?$translations[14]['Translation']:'');?>
+                  <span class="help-block"><span class='tran-14'><?php echo (isset($translations[14]['Translation'])?$translations[14]['Translation']:'');?></span>
   				<?php //echo $translations[14]['Translation'];?></span>
                 </div>
                 <div class="form-group label-floating">
-                  <label for="f1" class="control-label"><?php if (isset($translations[1]['Translation'])) { echo strtoupper($translations[1]['Translation']); } ?></label>
+                  <label for="f1" class="control-label"><span class='tran-1'><?php if (isset($translations[1]['Translation'])) { echo strtoupper($translations[1]['Translation']); } ?></span></label>
                   <input type="text" name='sc1[email]' class="form-control" id="f1">
-                  <span class="help-block"><?php echo (isset($translations[28]['Translation'])?$translations[28]['Translation']:'');?>
+                  <span class="help-block"><span class='tran-28'><?php echo (isset($translations[28]['Translation'])?$translations[28]['Translation']:'');?></span>
   				<?php //echo $translations[28]['Translation']?></span>
                 </div>              
                 
                 <br>
-                <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1' <?php echo $btn_bg?>><?php if (isset($translations[7]['Translation'])) { echo strtoupper($translations[7]['Translation']); } ?></button><br>
+                <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1' <?php echo $btn_bg?>><span class='tran-7'><?php if (isset($translations[7]['Translation'])) { echo strtoupper($translations[7]['Translation']); } ?></span></button><br>
                 <div class="alert alert-dismissible alert-danger" id='screen1-error'>
-                  <strong><?php echo $translations[16]['Translation']?></strong>
-                  <?php echo $translations[15]['Translation']?>
+                  <strong><span class='tran-16'><?php echo $translations[16]['Translation']?></span></strong>
+                  <span class='tran-15'><?php echo $translations[15]['Translation']?></span>
                 </div>
               </form>
             </div>
@@ -48,16 +48,19 @@
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-10 col-md-offset-1 col-lg-10 col-lg-offset-1'>
         <div class='well bm-well' <?php echo $border_bottom?>>
-            <h2><center><?php echo (isset($translations[17]['Translation'])?$translations[17]['Translation']:'');?>
+            <h2><center><span class='tran-17'><?php echo (isset($translations[17]['Translation'])?$translations[17]['Translation']:'');?></span>
 			<?php //echo $translations[17]['Translation']?></center></h2>
-            <p class='text-center'><?php echo $customerLanguages['Page2heading']?></p>
+            <p class='text-center'><span class='tran-Page2heading'><?php echo $customerLanguages['Page2heading']?></span></p>
             <br>
             
             <div class="inputs">
               <table class='table' id='table123'>
                 <thead>
                   <tr>
-                    <th data-field="0" tabindex="0"></th> <th data-field="1" tabindex="0"><?php echo $translations[2]['Translation'];?></th> <th data-field="2" tabindex="0"><?php echo $translations[3]['Translation'];?></th> <th data-field="3" tabindex="0"><?php echo $translations[4]['Translation'];?></th><th data-field="4" tabindex="0"><?php echo $translations[5]['Translation'];?></th>
+                    <th data-field="0" tabindex="0"></th> <th data-field="1" tabindex="0"><span class='tran-2'><?php echo $translations[2]['Translation'];?></span></th> 
+                    <th data-field="2" tabindex="0"><span class='tran-3'><?php echo $translations[3]['Translation'];?></span></th> 
+                    <th data-field="3" tabindex="0"><span class='tran-4'><?php echo $translations[4]['Translation'];?></span></th>
+                    <th data-field="4" tabindex="0"><span class='tran-5'><?php echo $translations[5]['Translation'];?></span></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -156,9 +159,9 @@
               </table>
               
               <br>
-              <h3><center><?php echo $translations[6]['Translation'];?>: <b style='color: #cc1543;' id='total-price'>&euro; 0.00</b></center></h3>
+              <h3><center><span class='tran-6'><?php echo $translations[6]['Translation'];?></span>: <b style='color: #cc1543;' id='total-price'>&euro; 0.00</b></center></h3>
               <br>
-              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button2' <?php echo $btn_bg?>><?php echo strtoupper($translations[7]['Translation']);?></button><br>
+              <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button2' <?php echo $btn_bg?>><span class='tran-7'><?php echo strtoupper($translations[7]['Translation']);?></span></button><br>
               <div class="alert alert-dismissible alert-danger" id='screen2-error'>
                 <strong>Whoops!</strong>
                 Please select at least one item to return.
@@ -178,13 +181,15 @@
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
         <div class='well bm-well' <?php echo $border_bottom?>>
-          <h2><center><?php echo $translations[8]['Translation'];?></center></h2>
-          <p class='text-center'><?php echo $customerLanguages['Page3heading']?></p>
+          <h2><center><span class='tran-8'><?php echo $translations[8]['Translation'];?></span></center></h2>
+          <p class='text-center'><span class='tran-Page3heading'><?php echo $customerLanguages['Page3heading']?></span></p>
           <div class="inputs">
             <table class='table' id='table1234'>
               <thead>
                 <tr>
-                  <th data-field="0" tabindex="0"></th><th data-field="1" tabindex="0"><?php echo $translations[9]['Translation'];?></th><th data-field="2" tabindex="0"><?php echo $translations[10]['Translation'];?></th>
+                  <th data-field="0" tabindex="0"></th>
+                  <th data-field="1" tabindex="0"><span class='tran-9'><?php echo $translations[9]['Translation'];?></span></th>
+                  <th data-field="2" tabindex="0"><span class='tran-10'><?php echo $translations[10]['Translation'];?></span></th>
                 </tr>
               </thead>
               <tbody>           
@@ -220,11 +225,13 @@
               <span class="help-block">Select at email where you would like to recieve your label
             </div>
             
-            <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3' <?php echo $btn_bg?>><?php echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></button><br>
-			<p style="text-align:right;"><a href="javascript:void(0)" id="btn_career_back">&laquo; Back</a></p>
+            <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3' <?php echo $btn_bg?>>
+            <span class='tran-20'><?php echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></span>
+            </button><br>
+			      <!--<p style="text-align:right;"><a href="javascript:void(0)" id="btn_career_back">&laquo; Back</a></p>-->
             <div class="alert alert-dismissible alert-success" id='screen3-success'>
-              <strong><?php echo $translations[21]['Translation']?></strong></strong>
-              <?php echo $translations[22]['Translation']?>
+              <strong><span class='tran-21'><?php echo $translations[21]['Translation']?></span></strong></strong>
+              <span class='tran-22'><?php echo $translations[22]['Translation']?></span>
             </div>
             <div class="alert alert-dismissible alert-danger" id='screen3-fail'>
               <strong>Whoops!</strong></strong>
@@ -241,7 +248,7 @@
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
         <div class='well bm-well' <?php echo $border_bottom?>>
           <h2><center>Thank You!</center></h2>
-          <p class='text-center'><?php echo $customerLanguages['Page4heading']?></p>
+          <p class='text-center'><span class='tran-Page4heading'><?php echo $customerLanguages['Page4heading']?></span></p>
           <b>Dear Customer</b><br><br>
           You can print your label by following this link: <a id='label-iframe2' target="_blank" href=''>Print label</a><br><br>
           You can read additional instructions for returning your order based on the carrier you chose by following this link: <a href='#'>Go to the carriers web-portal</a><br><br>
@@ -258,7 +265,7 @@
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
         <div class='well bm-well' <?php echo $border_bottom?>>
           <h2><center>Thank You!</center></h2>
-          <p class='text-center'><?php echo $customerLanguages['Page4heading']?></p>
+          <p class='text-center'><span class='tran-Page4heading'><?php echo $customerLanguages['Page4heading']?></span></p>
           <b>Dear Customer</b><br><br>
           At this moment our servers are too busy to proccess your request. As soon as we are able, we will send you and email confirmation with the label and further instructions on what to do.
           <br><br>
@@ -271,8 +278,8 @@
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-6 col-lg-offset-3'>
         <div class='well bm-well' <?php echo $border_bottom?>>
-            <h2><center><?php echo (isset($translations[13]['Translation'])?$translations[13]['Translation']:'');?></center></h2>
-            <p class='text-center'><?php if (isset($customerLanguages['Page1heading'])) { echo ($customerLanguages['Page1heading']); } ?></p>
+            <h2><center><span class='tran-13'><?php echo (isset($translations[13]['Translation'])?$translations[13]['Translation']:'');?></span></center></h2>
+            <p class='text-center'><span class='tran-Page1heading'><?php if (isset($customerLanguages['Page1heading'])) { echo ($customerLanguages['Page1heading']); } ?></span></p>
             <div class="inputs">
               <form id="Form1-Mode1">
                 <div class="alert alert-dismissible alert-danger" id='mode1-fail' style="display: none;">
@@ -381,7 +388,9 @@
                   </div>
                 </div>
                 <br>
-                <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1' <?php echo $btn_bg?>><?php if (isset($translations[7]['Translation'])) { echo strtoupper($translations[7]['Translation']); } ?></button>
+                <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1' <?php echo $btn_bg?>>
+                  <span class='tran-7'><?php if (isset($translations[7]['Translation'])) { echo strtoupper($translations[7]['Translation']); } ?></span>
+                </button>
                 <br>
               </form>
             </div>

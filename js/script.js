@@ -13,7 +13,7 @@ var countryCode = '';
 var mode = 2;
 var om1 = false;
 
-function getCustomerSettings(){
+function getCustomerSettings(callback){
   apiCall=url+'ReturnReason/GetAllReturnReasonsbyCustomerid';
   $.get(apiCall, {'Customerid': customerId})
   .success(function(data){
@@ -29,6 +29,7 @@ function getCustomerSettings(){
       }
     }
     customerSettings.returnReason=tempRes;
+    typeof callback === 'function' && callback();
     //console.log(customerSettings.returnReason);
   });
 }
@@ -142,7 +143,7 @@ function secondScreen(result){
 \
           <td>\
             <div class="form-group" style="margin-top: 18px">\
-              <select id="s1" class="rr_option form-control"><option value="0"> Pick a return reason &darr;</option>';
+              <select id="s1" class="rr_option form-control rr_selector"><option value="0"> Pick a return reason &darr;</option>';
       for(a=0; a<customerSettings.returnReason.length; a++){
         html=html+'<option value="'+customerSettings.returnReason[a]['PKReasonID']+'">'+customerSettings.returnReason[a]['Reason']+'</option>'
       }
