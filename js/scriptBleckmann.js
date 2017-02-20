@@ -1470,39 +1470,13 @@ $(document).ready(function() {
 			        	predefinedSettings = data;
 			        	console.log("here");
 			        	console.log(predefinedSettings);
-							var html1 = '<div class="row">\
-					                	<div class="col-md-12">\
-					                		<div class="col-md-6">\
-								              	<div class="form-group label-floating">\
-								                  <label class="control-label">Settings Name</label>\
-								                  \
-								                  <select class="form-control LocalSettingsCls" name="CarrierSetting[' + settings_local_cnt +'][SettingName]">\
-												   <option value="-1" selected="selected">Select a settings name</option>';
-								            for(i=0;i<predefinedSettings.length;i++) {
-								            	html1 += '<option value="'+predefinedSettings[i]['SettingName'] +'">' + predefinedSettings[i]['SettingName'] + '</option>';
-								            }
-											html1 += '</select>\
-								                </div>\
-					                		</div>\
-					                		<div class="col-md-5">\
-								              	<div class="form-group label-floating">\
-								                  <input id="SettingsValue" disabled type="hidden" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
-								                  <span class="help-block">Enter Settings Value</span>\
-								                </div>\
-					                		</div>\
-											<div class="col-md-1"></div>\
-					                	</div>\
-					        </div>';
-				$('div#carrier-setting').append(html1);
-				settings_local_cnt++;
-				$('#local-settings-error').hide();
 			        }
 			    });
 			}
 			console.log(predefinedSettings);
 			//<input id="SettingsName" type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingName]" class="form-control" value="">\
-			/*setTimeout(function(){
-					alert('hi');			
+			setTimeout(function(){
+								
 				var html1 = '<div class="row">\
 					                	<div class="col-md-12">\
 					                		<div class="col-md-6">\
@@ -1529,7 +1503,7 @@ $(document).ready(function() {
 				$('div#carrier-setting').append(html1);
 				settings_local_cnt++;
 				$('#local-settings-error').hide();
-			}, 500);*/
+			}, 500);
 
 		});
 		$(".add-carrier-pop").click(function(){			
