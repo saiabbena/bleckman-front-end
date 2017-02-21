@@ -204,8 +204,10 @@ $(document).ready(function() {
 		$(".add-user-pop").click(function(){
 			var validator1 = $( "#user-info-form" ).validate();
 			validator1.resetForm();
+			customerId  = (customerId != '')?customerId:'-1';
 		    $('h4#myUserLabel').text('Add a User');
-		    $('select#Fkcustomerid').val(-1);
+		    //$('select#Fkcustomerid').val(-1);			
+			$("select#Fkcustomerid").val(customerId);
 		    $('input#Address').val('');
 		    $('input#City').val('');
 		    $('select#Country').val(-1);

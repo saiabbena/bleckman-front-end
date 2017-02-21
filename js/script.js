@@ -701,7 +701,7 @@ $(document).ready(function(){
           console.log('!THIS IS THE RESPONSE FROM THE SERVER!');          		  
 		  //var respData = $.parseJSON(response.responseText);
 		  var respData = response.responseJSON;
-		  //console.log(respData.Id);
+		  console.log(respData);
 		  console.log(respData.Status);
 		  //console.log(carrierid);
 		  if(respData.Status == '1000'){
@@ -878,7 +878,7 @@ $(document).ready(function(){
 				},
 				success:function(res)
 				{
-					console.log(res);
+					//console.log(res);
 					$('.form4').show();
 					$('.form4').html(res);
 				}
