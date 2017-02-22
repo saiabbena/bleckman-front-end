@@ -512,7 +512,7 @@ $(document).ready(function(){
     //console.log("carrier info");
     //console.log(customerSettings.carriers[carrierInfo]);
 	
-    if ( mode == 3 ) {
+    if (mode == 3) {
 	
      
 	 postData.CarrierName=carName;
@@ -578,7 +578,7 @@ $(document).ready(function(){
                   $('.loading-screen').slideUp('slow');
                 },
               }).fail(function(response){
-                console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
+                console.log('!OM3 - FAIL - THIS IS THE RESPONSE FROM THE SERVER!');
 				var respData = response.responseJSON;
 				//console.log(respData.Id);
 				console.log(respData.Status);				
@@ -586,8 +586,13 @@ $(document).ready(function(){
 				if(respData.Status == '1000'){
 					$('.form3').hide();
 					console.log(response);
-				    //console.log(window.location.href.indexOf('admin'));
-					getportallink(carrieridval,'admin');
+				    console.log(window.location.href.indexOf('admin'));
+					if(window.location.href.indexOf('admin') == '-1'){
+						getportallink(carrieridval,'nonadmin');
+					}else{
+						getportallink(carrieridval,'admin');
+					}
+					
 					$('.loading-screen').css({'display':'none'});			
 					$('#print_label').hide();
 					$('#print_label').css({'display':'none'});					
@@ -667,7 +672,7 @@ $(document).ready(function(){
         success: function (response) {
 			
           $('#screen3-success').show('slow');          
-          console.log('!THIS IS THE RESPONSE FROM THE SERVER!');
+          console.log('!SUCCESS - THIS IS THE RESPONSE FROM THE SERVER!');
 		  console.log(submition);
           //console.log(response);
           //$('#carrier-label-modal').modal('show');
@@ -678,13 +683,21 @@ $(document).ready(function(){
             //$('.form4').show();
 			$('.loading-screen').hide();
 			
-			getportallink(carrierid,'admin');
+			if(window.location.href.indexOf('admin') == '-1'){
+				getportallink(carrieridval,'nonadmin');
+			}else{
+				getportallink(carrieridval,'admin');
+			}
             $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);            
             //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
           }else if(response.Status == '1000'){
 			$('.loading-screen').hide();
 			
-			getportallink(carrierid,'admin');            
+			if(window.location.href.indexOf('admin') == '-1'){
+				getportallink(carrieridval,'nonadmin');
+			}else{
+				getportallink(carrieridval,'admin');
+			}            
             $('.loading-screen').slideUp('slow');
 			$('#print_label').hide();
 			$('#print_label').css({'display':'none'});
@@ -698,7 +711,7 @@ $(document).ready(function(){
           }
         },
       }).fail(function(response){
-          console.log('!THIS IS THE RESPONSE FROM THE SERVER!');          		  
+          console.log('!FAIL - THIS IS THE RESPONSE FROM THE SERVER!');          		  
 		  //var respData = $.parseJSON(response.responseText);
 		  var respData = response.responseJSON;
 		  console.log(respData);
@@ -707,9 +720,13 @@ $(document).ready(function(){
 		  if(respData.Status == '1000'){
 			  $('.form3').hide();
 			  $('.loading-screen').hide();
-			  //console.log(window.location.href.indexOf('admin'));
-			    
-				getportallink(carrierid,'admin');			
+			  
+			  //console.log(window.location.href.indexOf('admin'));			    
+				if(window.location.href.indexOf('admin') == '-1'){
+					getportallink(carrieridval,'nonadmin');
+				}else{
+					getportallink(carrieridval,'admin');
+				}			
 				$('#print_label').hide();
 				$('#print_label').css({'display':'none'});
 				$('#no_label').show();
@@ -861,12 +878,16 @@ $(document).ready(function(){
 	  return false;
 	}
 	function getportallink(carrierid,urlval)
-	{
-		
-		var urlvalnew = '';		
-		//var urlvalnew='getportallink';
-		urlvalnew= baseurl+'index.php/admin/getportallink';
+	{		
+		var urlvalnew = '';
+		//urlvalnew= baseurl+'index.php/consumer/getportallink';
+		if(urlval == 'nonadmin'){
+			urlvalnew= baseurl+'index.php/consumer/getportallink?Customer='+customerId;
+		}else{
+			urlvalnew= 'getportallink';
+		}		
 		console.log(urlvalnew);
+		
 		$.ajax({
 				url:urlvalnew,
 				type:'POST',
