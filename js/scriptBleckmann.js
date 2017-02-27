@@ -856,6 +856,19 @@ $(document).ready(function() {
 				resultDate=testdate1.getDate()+'/'+(testdate1.getMonth()+1)+'/'+(testdate1.getYear()+1900);
 				//console.log("resultDate : " + resultDate);
 				var RORefAmount = '';
+				if( data[i].ReturnsOrderTrackingCode!='')
+					 {
+						 var trackingcode_get=data[i].ReturnsOrderTrackingCode;
+						var trackingcode = trackingcode_get;
+						if(trackingcode.length > 10) trackingcode = trackingcode.substring(0,10)+'...';
+					 }
+					 else
+					 {
+							var trackingcode_get='#';
+							var trackingcode='-';
+							
+							
+					 }
 				if(data[i].ReturnOrderTotalRefundAmount.toFixed(2) > 0){
 					RORefAmount = data[i].ReturnOrderTotalRefundAmount.toFixed(2);
 				}
@@ -873,6 +886,8 @@ $(document).ready(function() {
 					  <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
 					  \
 					  <td style="white-space: normal !important;">'+data[i].StatusName+'</td>\
+					  \
+			    <td style="white-space: nowrap;width:100px;"><a href='+trackingcode_get+' alt='+trackingcode_get+' title='+trackingcode_get+'>'+trackingcode+'</td>\
 					  \
 					  <td style="text-center">\
 					  <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:3px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>&nbsp;&nbsp;&nbsp;&nbsp;\
@@ -923,6 +938,7 @@ $(document).ready(function() {
 			$('#total_records span').text(total_num_records);
 			$('body').append(html2);
 			$('body').append(html3);
+			
 			$('#orders_data > tbody').html(html);						
 			//$('#btm_pagination').html(pagination_html);
 				/*
@@ -1225,8 +1241,23 @@ $(document).ready(function() {
 					//data[i].OrderId
 					//console.log(data.OrderId);
 					//console.log(data['Returnorderline'][0].EanBarcode);				
-					
-					moreinfo_html = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel"><b>Full info on return order: '+data.ReturnId+'</b></h4></div><div class="modal-body"><b>Full date/time:</b>'+data.ReturnsOrderCreationDate+',<b>Orderid:</b>'+data.OrderId+',	<b>Return status:</b>'+data.StatusName+'<hr/><h4>Customer Info:</h4>'+
+					if(data.ReturnsOrderTrackingCode!='')
+					{
+						var tcode=data.ReturnsOrderTrackingCode;
+					} else { var tcode='-';}
+					if(data.ReturnsOrderTrackingNumber!='')
+					{
+						var tnumber=data.ReturnsOrderTrackingNumber;
+					} else { var tnumber='-';}
+					moreinfo_html = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel"><b>Full info on return order: '+data.ReturnId+'</b></h4></div><div class="modal-body"><hr/><h4>Order Info:</h4>'+
+					'<div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Full date/time:</b> '+data.ReturnsOrderCreationDate+'<br/>'+
+					'<b>Return status:</b> '+data.StatusName+'<br/>'+
+					'</div><div class="col-md-5 pull-right"><b>Orderid:</b> '+data.OrderId+'<br/>'+
+					'</div></div><hr><h4>Tracking Info:</h4>'+
+					'<div class="row" style="padding-left:0 !important;"><div class="col-md-12 pull-left"><b>Tracking Code:</b> '+tcode+'<br/>'+
+					''+
+					'</div><div class="col-md-12 pull-left"><b>Tracking Number:</b> '+tnumber+'<br/>'+
+					'</div></div><hr><h4>Customer Info:</h4>'+
 					'<div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Name:</b> '+data.ConsumerName1+'<br/>'+
 					'<b>Street1:</b> '+((data.ConsumerShipStreet1 !== undefined)?data.ConsumerShipStreet1:'')+'<br/>'+
 					'<b>Street2:</b> '+((data.ConsumerShipStreet2 !== undefined)?data.ConsumerShipStreet2:'')+'<br/>'+
@@ -1470,13 +1501,39 @@ $(document).ready(function() {
 			        	predefinedSettings = data;
 			        	console.log("here");
 			        	console.log(predefinedSettings);
+							var html1 = '<div class="row">\
+					                	<div class="col-md-12">\
+					                		<div class="col-md-6">\
+								              	<div class="form-group label-floating">\
+								                  <label class="control-label">Settings Name</label>\
+								                  \
+								                  <select class="form-control LocalSettingsCls" name="CarrierSetting[' + settings_local_cnt +'][SettingName]">\
+												   <option value="-1" selected="selected">Select a settings name</option>';
+								            for(i=0;i<predefinedSettings.length;i++) {
+								            	html1 += '<option value="'+predefinedSettings[i]['SettingName'] +'">' + predefinedSettings[i]['SettingName'] + '</option>';
+								            }
+											html1 += '</select>\
+								                </div>\
+					                		</div>\
+					                		<div class="col-md-5">\
+								              	<div class="form-group label-floating">\
+								                  <input id="SettingsValue" disabled type="hidden" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
+								                  <span class="help-block">Enter Settings Value</span>\
+								                </div>\
+					                		</div>\
+											<div class="col-md-1"></div>\
+					                	</div>\
+					        </div>';
+				$('div#carrier-setting').append(html1);
+				settings_local_cnt++;
+				$('#local-settings-error').hide();
 			        }
 			    });
 			}
 			console.log(predefinedSettings);
 			//<input id="SettingsName" type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingName]" class="form-control" value="">\
-			setTimeout(function(){
-								
+			/*setTimeout(function(){
+					alert('hi');			
 				var html1 = '<div class="row">\
 					                	<div class="col-md-12">\
 					                		<div class="col-md-6">\
@@ -1503,7 +1560,7 @@ $(document).ready(function() {
 				$('div#carrier-setting').append(html1);
 				settings_local_cnt++;
 				$('#local-settings-error').hide();
-			}, 500);
+			}, 500);*/
 
 		});
 		$(".add-carrier-pop").click(function(){			
