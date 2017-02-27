@@ -81,6 +81,7 @@
 					  <span class="help-block"></span>
 					</div>
 				  </th>
+				   <th style="width:100px;"></th>
 				  <th class="col-md-3 th-inner" style="vertical-align:bottom !important;">				 
 					<button type="button" id="order_search_btn" class='btn btn-success btn-raised btn-sm'>					  
 					  SEARCH
@@ -99,6 +100,7 @@
 				  <th>Customer</th>
 				  <th>Carrier</th>
 				  <th>Status</th>
+				   <th style="width:100px;">Tracking Code</th>
 				  <th class="nosort">Action</th>
 				</tr>
 				<tr>
@@ -165,3 +167,101 @@
 			</div>
 		</div>
 	</div>
+<script type="text/javascript" language="javascript" class="init">
+function colShowHide() {
+$('#dt-button-collection > a:last').css('color', 'red');
+	$('#orders_data').DataTable( {
+		dom: 'B',
+		'columnDefs': [
+        { targets: 7, visible: false }
+    ],
+		"bPaginate": false,
+		bFilter: false, 
+		bInfo: false,
+		
+		buttons: [
+			{
+            extend: 'colvis',
+			
+           columns: ':lt(8)'
+			//columns: [ 0, 1, 2, 5 ]
+        }
+			
+		]
+	} );
+}
+
+setTimeout(colShowHide, 2000);
+</script>
+<style type="text/css">
+	.no-records-found
+	{
+		display:none;
+	}
+	.bootstrap-table
+	{
+	xmargin-top:-110px;
+	}
+	div.dt-buttons
+	{
+	top:-45px;
+	left:-10px;
+	}
+	#orders_data_wrapper
+	{
+	xtop:-20px;
+	
+	}
+	.dt-button-collection a.buttons-columnVisibility:before,
+	.dt-button-collection a.buttons-columnVisibility.active span:before {
+	display:block;
+	position:absolute;
+	top:1.2em;
+    left:0;
+	width:12px;
+	height:12px;
+	box-sizing:border-box;
+}
+
+.dt-button-collection a.buttons-columnVisibility:before {
+	content:' ';
+	margin-top:-6px;
+	margin-left:10px;
+	border:1px solid black;
+	border-radius:3px;
+}
+
+.dt-button-collection a.buttons-columnVisibility.active span:before {
+	content:'\2714';
+	margin-top:-11px;
+	margin-left:12px;
+	text-align:center;
+	text-shadow:1px 1px #DDD, -1px -1px #DDD, 1px -1px #DDD, -1px 1px #DDD;
+}
+
+.dt-button-collection a.buttons-columnVisibility span {
+    margin-left:20px;    
+}
+@media screen and (max-device-width: 980px) {
+div.dt-buttons
+	{
+	
+	top:-36px;
+	left:-48px
+	}
+}	
+@media screen and (max-device-width: 1280px) {
+div.dt-buttons
+	{
+	
+	left:75px
+	
+	
+	}
+}	
+@media screen and (max-device-width: 1920px) {
+div.dt-buttons
+	{
+	
+	}
+}	</style>

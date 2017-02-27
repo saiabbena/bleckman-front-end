@@ -506,9 +506,13 @@ $(document).ready(function(){
     console.log("mode : " + mode);
 	
     $('.loading-screen').slideDown('slow');
-    parent=$('input[name=sample1]:checked').parent().parent().parent().parent().parent();
+    var parent=$('input[name=sample1]:checked').parent().parent().parent().parent().parent();
+	
     var carName=$('.carrierName', parent).html();
+	//var carName=$('.carrierName').html();
     var carrierInfo = $('input[name=sample1]:checked').val();
+	
+	
     //console.log("carrier info");
     //console.log(customerSettings.carriers[carrierInfo]);
 	carrieridval=customerSettings.carriers[carrierInfo]['PKCarrierID'];
@@ -540,6 +544,7 @@ $(document).ready(function(){
         apiCall = url+'returnorder/PostMode1';
 		var statusval='nonadmin';
       }
+	 
       console.log("postData");
       console.log(postData);
       console.log(apiCall);
@@ -550,6 +555,7 @@ $(document).ready(function(){
                 headers : headers,
                 dataType: 'json',
                 success: function (response) {
+					
                   console.log(response);
                   
                   if ( response.Status == 1 || response.Status == 2000 ) {
