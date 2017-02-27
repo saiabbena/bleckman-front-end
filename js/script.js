@@ -511,15 +511,12 @@ $(document).ready(function(){
     var carrierInfo = $('input[name=sample1]:checked').val();
     //console.log("carrier info");
     //console.log(customerSettings.carriers[carrierInfo]);
+	carrieridval=customerSettings.carriers[carrierInfo]['PKCarrierID'];
 	
-    if (mode == 3) {
-	
-     
+    if (mode == 3) {     
 	 postData.CarrierName=carName;
       postData.CustomerName=customername;
-	  postData.BccEmail=bccemail;
-	  carrieridval=customerSettings.carriers[carrierInfo]['PKCarrierID'];
-	  
+	  postData.BccEmail=bccemail;	  
       postData.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       postData.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
 	  
