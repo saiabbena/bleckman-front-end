@@ -319,10 +319,6 @@
         </div>
         </form>
       </div>
-
-
-
-
       <div class='well body_btm_bdr' id="links-panel">
       <form method="POST" action="submitLinks">
       <button type="button" data-toggle="modal" data-target="#myLinksModal" id='add-link' class='btn btn-raised btn-warning pull-right'>Add</button>

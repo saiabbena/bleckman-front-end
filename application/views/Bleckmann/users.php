@@ -99,11 +99,12 @@
 					<div class="user_div">
 		                <div class="row">
 					<?php
-						//echo "allCustomers : " . json_encode($allCustomers);
+						//echo "allCustomers : " . json_encode($allCustomers);						
 						echo '<div class="form-group col-md-12 required" id="Fkcustomerid-div"><label class="control-label">Select a Customer</label><select id="Fkcustomerid" name="Fkcustomerid" required class="form-control">';
 						echo '<option value="-1">Select a Customer</option>';
-						for($i=0;$i<count($allCustomers);$i++) {
-							echo '<option value="'. $allCustomers[$i]['PKCustomerID'] . '">' . $allCustomers[$i]['CustomerName'] . '</option>';
+						
+						for($i=0;$i<count($allCustomers);$i++) {							
+							echo '<option  value="'. $allCustomers[$i]['PKCustomerID'] . '">' . $allCustomers[$i]['CustomerName'] . '</option>';
 						}
 						echo '</select></div>';
 					?>
