@@ -1486,11 +1486,13 @@ $(document).ready(function() {
 		
 		$('#add-carrier-local-setting').click(function() {
 													  
+			
 			settings_local_cnt = $('.LocalSettingsCls').length;
 			var apiCall = url + 'Carrier/GetPredefinedCarrierSetting';
 			
 			console.log("length : " + predefinedSettings.length );
-			if ( predefinedSettings.length == 0 ) {
+			
+			//if ( predefinedSettings.length == 0 ) {
 				$.ajax({
 			        url: apiCall,
 			        type: 'GET',
@@ -1531,7 +1533,7 @@ $(document).ready(function() {
 				$('#local-settings-error').hide();
 			        }
 			    });
-			}
+			//}
 			console.log(predefinedSettings);
 			//<input id="SettingsName" type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingName]" class="form-control" value="">\
 			/*setTimeout(function(){
