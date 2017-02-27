@@ -714,7 +714,7 @@ $(document).ready(function(){
           }
         },
       }).fail(function(response){
-          console.log('!FAIL - THIS IS THE RESPONSE FROM THE SERVER!'+carrieridval);          		  
+          console.log('!FAIL - THIS IS THE RESPONSE FROM THE SERVER! Carrier Id '+carrieridval);          		  
 		  //var respData = $.parseJSON(response.responseText);
 		  var respData = response.responseJSON;
 		  console.log(respData);
