@@ -515,15 +515,12 @@ $(document).ready(function(){
 	
     //console.log("carrier info");
     //console.log(customerSettings.carriers[carrierInfo]);
+	carrieridval=customerSettings.carriers[carrierInfo]['PKCarrierID'];
 	
-    if (mode == 3) {
-	
-     
+    if (mode == 3) {     
 	 postData.CarrierName=carName;
       postData.CustomerName=customername;
-	  postData.BccEmail=bccemail;
-	  carrieridval=customerSettings.carriers[carrierInfo]['PKCarrierID'];
-	  
+	  postData.BccEmail=bccemail;	  
       postData.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       postData.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
 	  
@@ -717,7 +714,7 @@ $(document).ready(function(){
           }
         },
       }).fail(function(response){
-          console.log('!FAIL - THIS IS THE RESPONSE FROM THE SERVER!');          		  
+          console.log('!FAIL - THIS IS THE RESPONSE FROM THE SERVER! Carrier Id '+carrieridval);          		  
 		  //var respData = $.parseJSON(response.responseText);
 		  var respData = response.responseJSON;
 		  console.log(respData);
