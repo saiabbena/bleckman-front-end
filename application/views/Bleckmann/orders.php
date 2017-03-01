@@ -15,7 +15,21 @@
 				?>
 			</div>
 			<div class="col-md-4">
-				
+				<ul class="nav nav-pills pull-right" style="margin-top:26px;">
+					<li class="dropdown active">
+					  <a href="#" data-toggle="dropdown" class="dropdown-toggle">COLUMN VISIBILITY <b class="caret"></b></a>
+					  <ul class="dropdown-menu" id="menu1">
+						<li><a href="#">Date</a></li>	
+						<li><a href="#">Order ID</a></li>	
+						<li><a href="#">R.O. ID</a></li>	
+						<li><a href="#">Refund</a></li>	
+						<li><a href="#">Customer</a></li>	
+						<li><a href="#">Carrier	Status</a></li>	
+						<li><a href="#">Tracking Code</a></li>
+						
+					  </ul>
+					</li>
+				</ul>	
 			</div>
 			<div class="col-md-2 pull-right">
 				<button id="export" data-export="export" class='btn btn-raised btn-sm' style="margin-top: 26px;">Export as CSV</button>
@@ -33,6 +47,7 @@
           }
         ?>
         </div>
+		<input id="toggle" type="button" value="Toggle 3rd Column"/>
 			<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">		
 			  <thead>				
 				<tr>
@@ -167,101 +182,71 @@
 			</div>
 		</div>
 	</div>
-<script type="text/javascript" language="javascript" class="init">
-function colShowHide() {
-$('#dt-button-collection > a:last').css('color', 'red');
-	$('#orders_data').DataTable( {
-		dom: 'B',
-		'columnDefs': [
-        { targets: 7, visible: false }
-    ],
-		"bPaginate": false,
-		bFilter: false, 
-		bInfo: false,
-		
-		buttons: [
-			{
-            extend: 'colvis',
-			
-           columns: ':lt(8)'
-			//columns: [ 0, 1, 2, 5 ]
-        }
-			
-		]
-	} );
+<style>
+Table.GridOne {
+	padding: 3px;
+	margin: 0;
+	background: lightyellow;
+	border-collapse: collapse;	
+	width:45%;
 }
 
-setTimeout(colShowHide, 2000);
-</script>
-<style type="text/css">
-	.no-records-found
-	{
-		display:none;
-	}
-	.bootstrap-table
-	{
-	xmargin-top:-110px;
-	}
-	div.dt-buttons
-	{
-	top:-45px;
-	left:-10px;
-	}
-	#orders_data_wrapper
-	{
-	xtop:-20px;
-	
-	}
-	.dt-button-collection a.buttons-columnVisibility:before,
-	.dt-button-collection a.buttons-columnVisibility.active span:before {
-	display:block;
-	position:absolute;
-	top:1.2em;
-    left:0;
-	width:12px;
-	height:12px;
-	box-sizing:border-box;
+Table.GridOne Td {	
+	padding:2px;
+	border: 1px solid #ff9900;
+	border-collapse: collapse;
+}
+.dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
 }
 
-.dt-button-collection a.buttons-columnVisibility:before {
-	content:' ';
-	margin-top:-6px;
-	margin-left:10px;
-	border:1px solid black;
-	border-radius:3px;
+.dropdown-menu li:hover .sub-menu {
+    visibility: visible;
 }
 
-.dt-button-collection a.buttons-columnVisibility.active span:before {
-	content:'\2714';
-	margin-top:-11px;
-	margin-left:12px;
-	text-align:center;
-	text-shadow:1px 1px #DDD, -1px -1px #DDD, 1px -1px #DDD, -1px 1px #DDD;
+.dropdown:hover .dropdown-menu {
+    display: block;
 }
 
-.dt-button-collection a.buttons-columnVisibility span {
-    margin-left:20px;    
+.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
+    margin-top: 0;
 }
-@media screen and (max-device-width: 980px) {
-div.dt-buttons
-	{
-	
-	top:-36px;
-	left:-48px
-	}
-}	
-@media screen and (max-device-width: 1280px) {
-div.dt-buttons
-	{
-	
-	left:75px
-	
-	
-	}
-}	
-@media screen and (max-device-width: 1920px) {
-div.dt-buttons
-	{
-	
-	}
-}	</style>
+
+.navbar .sub-menu:before {
+    border-bottom: 7px solid transparent;
+    border-left: none;
+    border-right: 7px solid rgba(0, 0, 0, 0.2);
+    border-top: 7px solid transparent;
+    left: -7px;
+    top: 10px;
+}
+.navbar .sub-menu:after {
+    border-top: 6px solid transparent;
+    border-left: none;
+    border-right: 6px solid #fff;
+    border-bottom: 6px solid transparent;
+    left: 10px;
+    top: 11px;
+    left: -6px;
+}
+</style>
+
+  <script>
+    $(function() {
+       $('#hide').click(function() {
+                $('td:nth-child(3)').hide();                
+       });
+
+	   $('#show').click(function() {
+                $('td:nth-child(3)').show();                
+       });
+	   $('#toggle').click(function() {
+            $('th:nth-child(3)').toggle('slow');
+			$('td:nth-child(3)').toggle('slow');                
+       });
+    });
+    </script>

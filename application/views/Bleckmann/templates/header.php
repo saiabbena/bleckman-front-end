@@ -73,6 +73,7 @@
 	</script>
 	<script type="text/javascript" language="javascript" src="<?php echo base_url();?>vendor/datatable/buttons.colVis.js">
 	</script>
+	
 	<?php }
 	//warehouses
 	if($this->uri->segment(2) == 'warehouses' || $this->uri->segment(2) == 'users'){
@@ -110,7 +111,7 @@
 
 		ga('create', 'UA-64703754-4', 'auto');
 		ga('send', 'pageview');
-	</script>
+	</script>	
   </head>
   <body id='override'>
     <div class="bm-h">
