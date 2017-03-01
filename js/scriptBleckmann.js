@@ -889,7 +889,6 @@ $(document).ready(function() {
 					  \
 					  <td style="white-space: normal !important;">'+data[i].StatusName+'</td>\
 					  \
-			    <td style="white-space: nowrap;width:100px;" id="tcode"><a href='+trackingcode_get+' alt='+trackingcode_get+' title='+trackingcode_get+'>'+trackingcode+'</td>\
 					  \
 					  <td style="text-center">\
 					  <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:3px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>&nbsp;&nbsp;&nbsp;&nbsp;\
@@ -903,9 +902,9 @@ $(document).ready(function() {
 					   if ( data[i].ReturnsOrderTrackingCode != '') {
 				        //console.log("ReturnsOrderTrackingCode  : " + data[i].ReturnsOrderTrackingCode );
 				        //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
-				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'"  style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';
+				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'" style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';
 				      }
-				      html=html+ '</tr>\
+				      html=html+ '</td></tr>\
 				      ';
 			  
 
@@ -943,31 +942,26 @@ $(document).ready(function() {
 			
 			$('#orders_data > tbody').html(html);
 			
-			
-			setTimeout(function(){
-								
-			$('#orders_data').DataTable( {
-				dom: 'B',
-				 
-				'columnDefs': [
-				{ targets: 7, visible: false }
-			],
-				"bPaginate": false,
-				bFilter: false, 
-				"bDestroy": true, 
-				bInfo: false,
-				
-				buttons: [
-					{
-					extend: 'colvis',
-					
-				   columns: ':lt(8)'
-					//columns: [ 0, 1, 2, 5 ]
-				}
-					
-				]
-			} );
-			},1500);
+			// setTimeout(function(){
+			// 	$('#orders_data').DataTable( {
+			// 		dom: 'B',
+			// 		// 'columnDefs': [
+			// 		// 	{ targets: 7, visible: false }
+			// 		// ],
+			// 		"bPaginate": false,
+			// 		bFilter: false, 
+
+			// 		bRetrieve:true,
+			// 		bInfo: false,
+			// 		buttons: [
+			// 			{
+			// 			extend: 'colvis',
+			// 		    columns: ':lt(7)'
+			// 			//columns: [ 0, 1, 2, 5 ]
+			// 			}
+			// 		]
+			// 	} );
+			// },1500);
 			
 			//$('#btm_pagination').html(pagination_html);
 				/*
@@ -1138,6 +1132,8 @@ $(document).ready(function() {
 			//Check the pageno defined or not
 			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
 			console.log(searchInput);
+
+
 			
 			//console.log(apoyarToken);
 			$.ajax({
@@ -1151,8 +1147,10 @@ $(document).ready(function() {
 			  success: function (response) {
 				$('.loading-screen').slideUp('slow');
 				//console.log(response);
-				renderReturnOrders(response);				
-				
+
+				renderReturnOrders(response);
+
+				//$('.tcode-display').toggle();
 				var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';
 				showCarriersList(customerId,selCarrierName);//Call the Carrier dropdown in Order page
 				$('#filter_carrier').prop('disabled', false);								
