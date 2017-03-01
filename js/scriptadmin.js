@@ -235,22 +235,35 @@ $(document).ready(function(){
 			RORefAmount = data[i].ReturnOrderTotalRefundAmount.toFixed(2);
 		}
       //console.log("resultDate : " + resultDate);
-
+if( data[i].ReturnsOrderTrackingCode!='')
+	 {
+		 var trackingcode_get=data[i].ReturnsOrderTrackingCode;
+		var trackingcode = trackingcode_get;
+		if(trackingcode.length > 10) trackingcode = trackingcode.substring(0,10)+'...';
+	 }
+	 else
+	 {
+		 	var trackingcode_get='#';
+			var trackingcode='-';
+			
+			
+	 }
       //console.log(data[i]);
       html=html+'\
-        <tr>\
-          <tr>\
-              <td style="white-space: nowrap;">'+resultDate+'</td>\
+      <tr>\
+              <td style="white-space: nowrap;" class="date">'+resultDate+'</td>\
               \
-              <td style="white-space: nowrap;">'+data[i].OrderId+'</td>\
+              <td style="white-space: nowrap;" class="orderid">'+data[i].OrderId+'</td>\
               \
-              <td style="white-space: nowrap;">'+data[i].ReturnId+'</td>\
+              <td style="white-space: nowrap;" class="returnorderid">'+data[i].ReturnId+'</td>\
               \
-              <td style="white-space: nowrap;"><b>'+' '+RORefAmount+'</b></td>\
+              <td style="white-space: nowrap;" class="refund"><b>'+' '+RORefAmount+'</b></td>\
               \
-              <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
+              <td style="white-space: nowrap;" class="carrier">'+data[i].CarrierName+'</td>\
               \
-              <td style="white-space: normal !important;">'+data[i].StatusName+'</td>\
+              <td style="white-space: normal !important;" class="status">'+data[i].StatusName+'</td>\
+              \
+			    <td style="white-space: nowrap;width:100px;"><a href='+trackingcode_get+' alt='+trackingcode_get+' title='+trackingcode_get+'>'+trackingcode+'</td>\
               \
               <td style="white-space: nowrap;">\
               <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:3px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>\
@@ -298,7 +311,9 @@ $(document).ready(function(){
     $('body').append(html2);
     $('body').append(html3);
     
-    $('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody').html(html);	
+    //$('#override > div.container-fluid.form1 > div > div.col-xs-12.col-md-9 > div > div.bootstrap-table > div.fixed-table-container > div.fixed-table-body > table > tbody').html(html);	
+	//$('#example > tbody').html(html);	
+	$('#example').html(html);	
 	
 	//$('#btm_pagination').html(pagination_html);
 	//$('#override #orders_data tbody').html(html);
@@ -389,7 +404,24 @@ $(document).ready(function(){
 				//console.log(data['Returnorderline'][0].EanBarcode);
 				//((r.SKU !== undefined)?r.SKU:'')
 				/**/
-				moreinfo_html = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel"><b>Full info on return order: '+data.ReturnId+'</b></h4></div><div class="modal-body"><b>Full date/time:</b>'+data.ReturnsOrderCreationDate+',<b>Orderid:</b>'+data.OrderId+',	<b>Return status:</b>'+data.StatusName+'<hr/><h4>Customer Info:</h4>'+
+				if(data.ReturnsOrderTrackingCode!='')
+				{
+					var tcode=data.ReturnsOrderTrackingCode;
+				} else { var tcode='-';}
+				if(data.ReturnsOrderTrackingNumber!='')
+				{
+					var tnumber=data.ReturnsOrderTrackingNumber;
+				} else { var tnumber='-';}
+				
+				moreinfo_html = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel"><b>Full info on return order: '+data.ReturnId+'</b></h4></div><div class="modal-body"><hr/><h4>Order Info:</h4>'+
+					'<div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Full date/time:</b> '+data.ReturnsOrderCreationDate+'<br/>'+
+					'<b>Return status:</b> '+data.StatusName+'<br/>'+
+					'</div><div class="col-md-5 pull-right"><b>Orderid:</b> '+data.OrderId+'<br/>'+
+					'</div></div><hr><h4>Tracking Info:</h4>'+
+					'<div class="row" style="padding-left:0 !important;"><div class="col-md-12 pull-left"><b>Tracking Code:</b> '+tcode+'<br/>'+
+					''+
+					'</div><div class="col-md-12 pull-left"><b>Tracking Number:</b> '+tnumber+'<br/>'+
+					'</div></div><hr><h4>Customer Info:</h4>'+
 					'<div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Name:</b> '+data.ConsumerName1+'<br/>'+
 					'<b>Street1:</b> '+((data.ConsumerShipStreet1 !== undefined)?data.ConsumerShipStreet1:'')+'<br/>'+
 					'<b>Street2:</b> '+((data.ConsumerShipStreet2 !== undefined)?data.ConsumerShipStreet2:'')+'<br/>'+
@@ -402,7 +434,7 @@ $(document).ready(function(){
 					'<b>Email:</b> '+((data.ConsumerEmail !== undefined)?data.ConsumerEmail:'')+'<br/>'+
 					'<b> Phone:</b>'+((data.Consumerphonenumber !== undefined)?data.Consumerphonenumber:'')+'</div></div>'+
 					
-					'<hr><h4>Warehouse:</h4><div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Warehouse id :</b> '+data.Shipfromwarehouseid+'</div><div class="col-md-6 pull-right"> <b>Warehouse :</b> '+data.Warehouse+
+					'<hr style="clear:both;"><h4>Warehouse:</h4><div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Warehouse id :</b> '+data.Shipfromwarehouseid+'</div><div class="col-md-6 pull-right"> <b>Warehouse :</b> '+data.Warehouse+
 					'</div></div><hr><h4>Comment:</h4>'+(data.Comment?data.Comment:'No comment has been made yet')+'<br><hr><h4>Items returned ('+data.Returnorderline.length+'):</h4>';
 					for(a=0; a<data.Returnorderline.length; a++){
 						var r=data.Returnorderline[a];
