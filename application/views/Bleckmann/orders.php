@@ -236,14 +236,7 @@ Table.GridOne Td {
 </style>
 
   <script>
-    $(function() {
-       $('#hide').click(function() {
-                $('td:nth-child(3)').hide();                
-       });
-
-	   $('#show').click(function() {
-                $('td:nth-child(3)').show();                
-       });
+    $(function() {       
 	   $('#toggle').click(function() {
             $('th:nth-child(3)').toggle('slow');
 			$('td:nth-child(3)').toggle('slow');                
