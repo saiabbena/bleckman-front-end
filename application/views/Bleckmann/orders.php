@@ -33,10 +33,14 @@
           }
         ?>
         </div>
+		<!--  <div id="grpChkBox">
+        <p><input type="checkbox" name="dateval" /> Order Date</p>
+       
+    </div>-->
 			<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">		
 			  <thead>				
 				<tr>
-				  <th  class="nosort col-md-1">
+				  <th  class="nosort col-md-1 dateval">
 					<div class='form-group'>
 					  <input type='text' id="ReturnsOrderCreationDate" name="ReturnsOrderCreationDate" class='datepicker form-control' placeholder="From" 
 					  style="font-size:0.9em !important;" />
@@ -92,7 +96,7 @@
 				  </th>
 				</tr>
 				<tr>
-				  <th>Date</th>
+				  <th class="dateval">Date</th>
 				  <th>Order ID</th>
 				  <th class="th-inner">R.O. ID</th>
 				  <!--<th class="nosort">Tracking</th>-->
@@ -100,7 +104,7 @@
 				  <th>Customer</th>
 				  <th>Carrier</th>
 				  <th>Status</th>
-				   <th style="width:100px;">Tracking Code</th>
+				   <th style="width:100px;" id="tcode">Tracking Code</th>
 				  <th class="nosort">Action</th>
 				</tr>
 				<tr>
@@ -167,32 +171,7 @@
 			</div>
 		</div>
 	</div>
-<script type="text/javascript" language="javascript" class="init">
-function colShowHide() {
-$('#dt-button-collection > a:last').css('color', 'red');
-	$('#orders_data').DataTable( {
-		dom: 'B',
-		'columnDefs': [
-        { targets: 7, visible: false }
-    ],
-		"bPaginate": false,
-		bFilter: false, 
-		bInfo: false,
-		
-		buttons: [
-			{
-            extend: 'colvis',
-			
-           columns: ':lt(8)'
-			//columns: [ 0, 1, 2, 5 ]
-        }
-			
-		]
-	} );
-}
 
-setTimeout(colShowHide, 2000);
-</script>
 <style type="text/css">
 	.no-records-found
 	{
@@ -265,3 +244,16 @@ div.dt-buttons
 	
 	}
 }	</style>
+ <script>
+       /* $(function () {
+            var $chk = $("#grpChkBox input:checkbox");
+            var $tbl = $("#orders_data");
+
+            $chk.prop('checked', true);
+
+            $chk.click(function () {
+                var colToHide = $tbl.find("." + $(this).attr("name"));
+                $(colToHide).toggle();
+            });
+        });*/
+    </script>
