@@ -15,18 +15,18 @@
 				?>
 			</div>
 			<div class="col-md-4">
-				<ul class="nav nav-pills pull-right" style="margin-top:26px;">
-					<li class="dropdown active">
-					  <a href="#" data-toggle="dropdown" class="dropdown-toggle">COLUMN VISIBILITY <b class="caret"></b></a>
+				<ul class="nav nav-pills pull-right" style="margin-top:16px;">
+					<li class="dropdown">
+					  <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-raised btn-sm">COLUMN VISIBILITY <b class="caret"></b></a>
 					  <ul class="dropdown-menu" id="menu1">
-						<li><a href="#">Date</a></li>	
-						<li><a href="#">Order ID</a></li>	
-						<li><a href="#">R.O. ID</a></li>	
-						<li><a href="#">Refund</a></li>	
-						<li><a href="#">Customer</a></li>	
-						<li><a href="#">Carrier	Status</a></li>	
-						<li><a href="#">Tracking Code</a></li>
-						
+						<li><a href="#" class="column_visibility" id="1">Date</a></li>	
+						<li><a href="#" class="column_visibility" id="2">Order ID</a></li>	
+						<li><a href="#" class="column_visibility" id="3">R.O. ID</a></li>	
+						<li><a href="#" class="column_visibility" id="4">Refund</a></li>	
+						<li><a href="#" class="column_visibility" id="5">Customer</a></li>	
+						<li><a href="#" class="column_visibility" id="6">Carrier</a></li>
+						<li><a href="#" class="column_visibility" id="7">Status</a></li>	
+						<li><a href="#" class="column_visibility" id="8">Tracking Code</a></li>						
 					  </ul>
 					</li>
 				</ul>	
@@ -47,8 +47,7 @@
           }
         ?>
         </div>
-		<input id="toggle" type="button" value="Toggle 3rd Column"/>
-			<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">		
+		<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">		
 			  <thead>				
 				<tr>
 				  <th  class="nosort col-md-1">
@@ -96,7 +95,7 @@
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				   <th style="width:100px;"></th>
+				   <th style="width:100px;display:none;" class="trackingcode_td"></th>
 				  <th class="col-md-3 th-inner" style="vertical-align:bottom !important;">				 
 					<button type="button" id="order_search_btn" class='btn btn-success btn-raised btn-sm'>					  
 					  SEARCH
@@ -115,7 +114,7 @@
 				  <th>Customer</th>
 				  <th>Carrier</th>
 				  <th>Status</th>
-				   <th style="width:100px;">Tracking Code</th>
+				   <th style="width:100px;display:none;" class="trackingcode_td">Tracking Code</th>
 				  <th class="nosort">Action</th>
 				</tr>
 				<tr>
@@ -235,11 +234,15 @@ Table.GridOne Td {
 }
 </style>
 
-  <script>
+<script>
     $(function() {       
-	   $('#toggle').click(function() {
-            $('th:nth-child(3)').toggle('slow');
-			$('td:nth-child(3)').toggle('slow');                
+	   $('.column_visibility').click(function() {
+		    var column_id =  $(this).attr("id");
+			//alert(column_id);
+            $('th:nth-child('+column_id+')').toggle('slow');
+			$('td:nth-child('+column_id+')').toggle('slow');                
        });
     });
-    </script>
+</script>
+
+	

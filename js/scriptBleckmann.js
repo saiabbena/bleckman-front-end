@@ -876,7 +876,7 @@ $(document).ready(function() {
 					RORefAmount = data[i].ReturnOrderTotalRefundAmount.toFixed(2);
 				}
 				html=html+'\<tr>\
-					  <td style="white-space: nowrap;">'+resultDate+'</td>\
+					  <td style="white-space: nowrap;" class="dateval">'+resultDate+'</td>\
 					  \
 					  <td style="white-space: nowrap;">'+data[i].OrderId+'</td>\
 					  \
@@ -890,7 +890,7 @@ $(document).ready(function() {
 					  \
 					  <td style="white-space: normal !important;">'+data[i].StatusName+'</td>\
 					  \
-			    <td style="white-space: nowrap;width:100px;" class="trackingcode_td"><a href='+trackingcode_get+' alt='+trackingcode_get+' title='+trackingcode_get+'>'+trackingcode+'</td>\
+					  <td style="white-space: nowrap;width:100px;display:none;" class="trackingcode_td"><a href='+trackingcode_get+' alt='+trackingcode_get+' title='+trackingcode_get+'>'+trackingcode+'</td>\
 					  \
 					  <td style="text-center;width: 309px;">\
 					  <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:3px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>&nbsp;&nbsp;&nbsp;&nbsp;\
@@ -904,9 +904,9 @@ $(document).ready(function() {
 					   if ( data[i].ReturnsOrderTrackingCode != '') {
 				        //console.log("ReturnsOrderTrackingCode  : " + data[i].ReturnsOrderTrackingCode );
 				        //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
-				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'"  style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';
+				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'" style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';
 				      }
-				      html=html+ '</tr>\
+				      html=html+ '</td></tr>\
 				      ';
 			  
 
@@ -942,7 +942,29 @@ $(document).ready(function() {
 			$('body').append(html2);
 			$('body').append(html3);
 			
-			$('#orders_data > tbody').html(html);						
+			$('#orders_data > tbody').html(html);
+			
+			// setTimeout(function(){
+			// 	$('#orders_data').DataTable( {
+			// 		dom: 'B',
+			// 		// 'columnDefs': [
+			// 		// 	{ targets: 7, visible: false }
+			// 		// ],
+			// 		"bPaginate": false,
+			// 		bFilter: false, 
+
+			// 		bRetrieve:true,
+			// 		bInfo: false,
+			// 		buttons: [
+			// 			{
+			// 			extend: 'colvis',
+			// 		    columns: ':lt(7)'
+			// 			//columns: [ 0, 1, 2, 5 ]
+			// 			}
+			// 		]
+			// 	} );
+			// },1500);
+			
 			//$('#btm_pagination').html(pagination_html);
 				/*
 				if($("#orders_data").html() !== ""){
@@ -1004,6 +1026,7 @@ $(document).ready(function() {
 					//console.log(statusOptionHtml);
 					$('#filter_ordstatus').prop('disabled', false);
 					$('#filter_ordstatus').html(statusOptionHtml);
+					
 					
 		      },
 		      fail: function() {
@@ -1107,10 +1130,13 @@ $(document).ready(function() {
 			}else{
 				searchInput['pagesize'] = pagesize;
 			}	
-						
+				
 			//Check the pageno defined or not
 			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
 			console.log(searchInput);
+
+
+			
 			//console.log(apoyarToken);
 			$.ajax({
 			  url: apiCall,
@@ -1123,8 +1149,10 @@ $(document).ready(function() {
 			  success: function (response) {
 				$('.loading-screen').slideUp('slow');
 				//console.log(response);
-				renderReturnOrders(response);				
-				
+
+				renderReturnOrders(response);//Load the entire Orders Data with HTML
+
+				//$('.tcode-display').toggle();
 				var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';
 				showCarriersList(customerId,selCarrierName);//Call the Carrier dropdown in Order page
 				$('#filter_carrier').prop('disabled', false);								
@@ -1135,7 +1163,8 @@ $(document).ready(function() {
 				$('#filter_ordstatus').prop('disabled', false);
 				
 				console.log(selStatusName);
-				$('#filter_ordstatus').val(selStatusName);				
+				$('#filter_ordstatus').val(selStatusName);
+				$('.trackingcode_td').css({'display':'none'});
 				
 			  },
 			  fail: function(){
@@ -1307,6 +1336,8 @@ $(document).ready(function() {
 		});
 		//Back-end search 
 		$('#order_search_btn').click(function(){
+				
+			
 			var customerId = $('#orders_by_customer_id').val();
 			retrieveReturnOrders(customerId);			
 		});

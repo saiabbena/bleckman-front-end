@@ -263,7 +263,6 @@ if( data[i].ReturnsOrderTrackingCode!='')
               \
               <td style="white-space: normal !important;" class="status">'+data[i].StatusName+'</td>\
               \
-			    <td style="white-space: nowrap;width:100px;"><a href='+trackingcode_get+' alt='+trackingcode_get+' title='+trackingcode_get+'>'+trackingcode+'</td>\
               \
               <td style="white-space: nowrap;">\
               <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:3px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>\

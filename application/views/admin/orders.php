@@ -73,7 +73,7 @@
 				  </select>
                 </div>
               </th>
-			  <th style="width:100px;"></th>
+			  <!-- <th style="width:100px;"></th> -->
               <th>
                 <button type="button" id="search-button" class='btn btn-success btn-raised btn-sm'>
                   SEARCH
@@ -91,7 +91,7 @@
               <th>Refund</th>
               <th>Carrier</th>
               <th>Status</th>
-			  <th style="width:100px;">Tracking Code</th>
+			  <!-- <th style="width:100px;">Tracking Code</th> -->
               <th>Action</th>
             </tr>
 			</thead>
@@ -156,33 +156,34 @@
 				</div>
 			</div>
 		</div>
-	</div><script type="text/javascript" language="javascript" class="init">
+	</div>
+	<script type="text/javascript" language="javascript" class="init">
 	
-function colShowHide() {
+// function colShowHide() {
 
-$('#dt-button-collection > a:last').css('color', 'red');
-	$('#orders_data').DataTable( {
-		dom: 'B',
-		'columnDefs': [
-        { targets: 6, visible: false }
-    ],
-		"bPaginate": false,
-		bFilter: false, 
-		bInfo: false,
+// $('#dt-button-collection > a:last').css('color', 'red');
+// 	$('#orders_data').DataTable( {
+// 		dom: 'B',
+// 		'columnDefs': [
+//         { targets: 6, visible: false }
+//     ],
+// 		"bPaginate": false,
+// 		bFilter: false, 
+// 		bInfo: false,
 		
-		buttons: [
-			{
-            extend: 'colvis',
+// 		buttons: [
+// 			{
+//             extend: 'colvis',
 			
-           columns: ':lt(7)'
-			//columns: [ 0, 1, 2, 5 ]
-        }
+//            columns: ':lt(7)'
+// 			//columns: [ 0, 1, 2, 5 ]
+//         }
 			
-		]
-	} );
-}
+// 		]
+// 	} );
+// }
 
-setTimeout(colShowHide, 2000);
+//setTimeout(colShowHide, 2000);
 	</script>
 <style type="text/css">
 	.no-records-found
