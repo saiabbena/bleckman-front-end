@@ -67,13 +67,13 @@
 	<script type="text/javascript" src="<?php echo base_url();?>vendor/pagination/jquery.simplePagination.js"></script>
 	<link type="text/css" rel="stylesheet" href="<?php echo base_url();?>vendor/pagination/simplePagination.css"/>
 	<script src="<?php echo base_url();?>vendor/jqueryCSV/jquery.tabletoCSV.js"></script>
-		<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/jquery.dataTables.css">
+		<!--<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/jquery.dataTables.css">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/buttons.dataTables.css">
 <script type="text/javascript" language="javascript" src="<?php echo base_url();?>vendor/datatable/jquery.dataTables.min.js">
 </script>
 <script type="text/javascript" language="javascript" src="<?php echo base_url();?>vendor/datatable/dataTables.buttons.js">
 </script>
-<script type="text/javascript" language="javascript" src="<?php echo base_url();?>vendor/datatable/buttons.colVis.js">
+<script type="text/javascript" language="javascript" src="<?php echo base_url();?>vendor/datatable/buttons.colVis.js"> -->
 </script>
 	<?php }
 	if($this->uri->segment(2) == 'appearance'){

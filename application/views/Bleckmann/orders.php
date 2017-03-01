@@ -85,7 +85,7 @@
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-				   <th style="width:100px;"></th>
+				   <!-- <th style="width:100px;"></th> -->
 				  <th class="col-md-3 th-inner" style="vertical-align:bottom !important;">				 
 					<button type="button" id="order_search_btn" class='btn btn-success btn-raised btn-sm'>					  
 					  SEARCH
@@ -104,11 +104,11 @@
 				  <th>Customer</th>
 				  <th>Carrier</th>
 				  <th>Status</th>
-				   <th style="width:100px;" id="tcode">Tracking Code</th>
-				  <th class="nosort">Action</th>
+				   <!-- <th style="width:100px;" class="tcode-display" id="tcode">Tracking Code</th> -->
+				  <th class="nosort" style="width: 16%">Action</th>
 				</tr>
 				<tr>
-					<td colspan="9"></td>
+					<td colspan="8"></td>
 				</tr>
 			  </thead>
 			  <tbody></tbody>
