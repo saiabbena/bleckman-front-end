@@ -15,7 +15,7 @@
 				?>
 			</div>
 			<div class="col-md-4">
-				<ul class="nav nav-pills pull-right" style="margin-top:16px;">
+				<!--<ul class="nav nav-pills pull-right" style="margin-top:16px;">
 					<li class="dropdown">
 					  <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-raised btn-sm">COLUMN VISIBILITY <b class="caret"></b></a>
 					  <ul class="dropdown-menu" id="menu1">
@@ -29,7 +29,7 @@
 						<li><a href="#" class="column_visibility" id="8">Tracking Code</a></li>						
 					  </ul>
 					</li>
-				</ul>	
+				</ul>-->	
 			</div>
 			<div class="col-md-2 pull-right">
 				<button id="export" data-export="export" class='btn btn-raised btn-sm' style="margin-top: 26px;">Export as CSV</button>
@@ -181,7 +181,7 @@
 			</div>
 		</div>
 	</div>
-<style>
+<!--<style>
 Table.GridOne {
 	padding: 3px;
 	margin: 0;
@@ -243,6 +243,6 @@ Table.GridOne Td {
 			$('td:nth-child('+column_id+')').toggle('slow');                
        });
     });
-</script>
+</script>-->
 
 	
