@@ -15,7 +15,21 @@
 				?>
 			</div>
 			<div class="col-md-4">
-				
+				<!--<ul class="nav nav-pills pull-right" style="margin-top:16px;">
+					<li class="dropdown">
+					  <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-raised btn-sm">COLUMN VISIBILITY <b class="caret"></b></a>
+					  <ul class="dropdown-menu" id="menu1">
+						<li><a href="#" class="column_visibility" id="1">Date</a></li>	
+						<li><a href="#" class="column_visibility" id="2">Order ID</a></li>	
+						<li><a href="#" class="column_visibility" id="3">R.O. ID</a></li>	
+						<li><a href="#" class="column_visibility" id="4">Refund</a></li>	
+						<li><a href="#" class="column_visibility" id="5">Customer</a></li>	
+						<li><a href="#" class="column_visibility" id="6">Carrier</a></li>
+						<li><a href="#" class="column_visibility" id="7">Status</a></li>	
+						<li><a href="#" class="column_visibility" id="8">Tracking Code</a></li>						
+					  </ul>
+					</li>
+				</ul>-->	
 			</div>
 			<div class="col-md-2 pull-right">
 				<button id="export" data-export="export" class='btn btn-raised btn-sm' style="margin-top: 26px;">Export as CSV</button>
@@ -33,7 +47,7 @@
           }
         ?>
         </div>
-			<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">		
+		<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">		
 			  <thead>				
 				<tr>
 				  <th  class="nosort col-md-1">
@@ -81,6 +95,7 @@
 					  <span class="help-block"></span>
 					</div>
 				  </th>
+				   <th style="width:100px;display:none;" class="trackingcode_td"></th>
 				  <th class="col-md-3 th-inner" style="vertical-align:bottom !important;">				 
 					<button type="button" id="order_search_btn" class='btn btn-success btn-raised btn-sm'>					  
 					  SEARCH
@@ -99,6 +114,7 @@
 				  <th>Customer</th>
 				  <th>Carrier</th>
 				  <th>Status</th>
+				   <th style="width:100px;display:none;" class="trackingcode_td">Tracking Code</th>
 				  <th class="nosort">Action</th>
 				</tr>
 				<tr>
@@ -165,3 +181,68 @@
 			</div>
 		</div>
 	</div>
+<!--<style>
+Table.GridOne {
+	padding: 3px;
+	margin: 0;
+	background: lightyellow;
+	border-collapse: collapse;	
+	width:45%;
+}
+
+Table.GridOne Td {	
+	padding:2px;
+	border: 1px solid #ff9900;
+	border-collapse: collapse;
+}
+.dropdown-menu .sub-menu {
+    left: 100%;
+    position: absolute;
+    top: 0;
+    visibility: hidden;
+    margin-top: -1px;
+}
+
+.dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
+    margin-top: 0;
+}
+
+.navbar .sub-menu:before {
+    border-bottom: 7px solid transparent;
+    border-left: none;
+    border-right: 7px solid rgba(0, 0, 0, 0.2);
+    border-top: 7px solid transparent;
+    left: -7px;
+    top: 10px;
+}
+.navbar .sub-menu:after {
+    border-top: 6px solid transparent;
+    border-left: none;
+    border-right: 6px solid #fff;
+    border-bottom: 6px solid transparent;
+    left: 10px;
+    top: 11px;
+    left: -6px;
+}
+</style>
+
+<script>
+    $(function() {       
+	   $('.column_visibility').click(function() {
+		    var column_id =  $(this).attr("id");
+			//alert(column_id);
+            $('th:nth-child('+column_id+')').toggle('slow');
+			$('td:nth-child('+column_id+')').toggle('slow');                
+       });
+    });
+</script>-->
+
+	

@@ -8,8 +8,9 @@ class Consumer extends CI_Controller {
     //echo 'this is a test';
     //exit();
     $this->load->helper("url");
-	  //$this->load->helper("get_appearance_settings.php");
-    
+	//$this->load->helper("get_appearance_settings.php");
+    $this->load->model('httpRequests');
+	
     if(!isset($_GET['Customer'])){
       echo 'please provide a customer id';
       exit();
@@ -127,9 +128,9 @@ class Consumer extends CI_Controller {
     
     $data['customerLanguages']=$this->getCustomerLanguages();
     $data['all_langs']=$data['customerLanguages'];
+    $data['all_translations']=$this->getTranslations();
     //$data['allCountries']=$this->getAllCountries();
     $data['customerCountries']=$this->getCustomerCountries();
-
     $data['Links'] = [];
     //set customerLanguages to current selected language
     if ( count($data['customerLanguages']) > 0 ) {
@@ -141,17 +142,17 @@ class Consumer extends CI_Controller {
         }
         //set translations to current selected language
         $data['translations']=[];
-        foreach ($this->getTranslations() as $key => $value) {
+        foreach ($data['all_translations'] as $key => $value) {
           if (is_array($value)) {
             foreach ($value as $kkey => $vvalue) {
               if($vvalue['Languagename']==$this->Languagename){
                 array_push($data['translations'], $vvalue);
+                $data['languageId']=$vvalue['FKLanguageID'];
               }
             }
           }
         }
     }
-
 
     $data['Mode']=$this->Mode;
     $data['Customerid']=$this->Customerid;
@@ -253,5 +254,78 @@ class Consumer extends CI_Controller {
     $this->load->view('consumer/templates/header', $data);
     $this->load->view('consumer/portal', $data);
     $this->load->view('consumer/templates/footer');
-  }	
+  }
+	//ajax call to  get and display protal link in popup window
+	function getportallink(){	
+		$urlval='';
+		//$customeridval=1;
+		$carrieridval=$_POST['carrieridval'];
+		//$carrieridval=4;
+		  $req = array(
+		  'Customerid'=>$_GET['Customer']
+		);    
+		//$allSettings = $this->httpRequests->httpGet('carrier/GetCarrierSettingbyCustomerid', $req);
+		
+		$data_url='?'.http_build_query($req);
+		$ch = curl_init();
+
+		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+		curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE . "api/Carrier/GetCarrierSettingbyCustomerid" . $data_url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		// Send the request
+		$allSettings = json_decode(curl_exec($ch), true);
+		// Free up the resources $curl is using
+		curl_close($ch);		
+		
+		
+		
+		for($i=0;$i<count($allSettings);$i++) {
+				if($allSettings[$i]['FKCarrierId']==$carrieridval)
+				{
+					
+					$req = array(
+						'CCWid'=>$allSettings[$i]['PKCCWId'],
+					  'CarrierId'=>$carrieridval
+					);
+					//$carrierEditInfo = $this->httpRequests->httpGet('Carrier/GetCarrierSettingbyCCWid', $req);
+					$data_url='?'.http_build_query($req);
+					$ch = curl_init();
+
+					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
+					curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE . "api/Carrier/GetCarrierSettingbyCCWid" . $data_url);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					// Send the request
+					$carrierEditInfo = json_decode(curl_exec($ch), true);
+					// Free up the resources $curl is using
+					curl_close($ch);
+					
+				}
+			}	
+			
+			$settingval=$carrierEditInfo['Settings'];
+			for($i=0;$i<count($settingval);$i++)
+			{
+				if($settingval[$i]['SettingName']=="Gotourl")
+				{
+					$urlval=$settingval[$i]['SettingValue'];
+				}
+			}
+			echo '<div class="row">
+				  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4">
+					<div class="well bm-well">
+					  <button type="button" class="close" id="thank_you_close" data-dismiss="modal" aria-label="Close" onclick="location.reload();"><span aria-hidden="true">&times;</span></button>
+					  <h2><center>Thank You!</center></h2>
+					  <p class="text-center"></p>
+					  <b>Dear Customer</b></p>
+					  <p>Your Return Order Number is #:<b><span id="show_ro_number"></span></b></p>
+						<p id="print_label">You can print your label by following this link: <a id="label-iframe2" target="_blank" href="">Print label</a></p>
+						<p id="no_label" style="display:none;color:#FF0000;">Your return label could not be generated at the moment. Please contact Customer Support.</p>
+					<p>You can read additional instructions for returning your order based on the carrier you chose by following this link: <a href="'.$urlval.'" target="_blank">Go to the carriers web-portal</a><br><br>
+					  Additionally all of this information has been forwarded to your email address.<br><br>
+					  Thank you for using our service.
+					  <br><br>
+					</div>				
+				  </div>
+				</div>';
+	}
 }

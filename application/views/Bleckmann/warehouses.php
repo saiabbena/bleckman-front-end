@@ -80,8 +80,7 @@
 						                  </form>
 						                </div>
 						              </div>
-						            </div>
-						            ';
+						            </div>';
 					          	}
 			          		?>
 								</tbody>

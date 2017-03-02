@@ -36,13 +36,17 @@
       var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
 	  var baseurl="'. base_url() .'";
       var UserId="";
+      var languagesVar='.json_encode($all_translations).';
+      var languageId='.$languageId.';
+      var pageHeadings='.json_encode($all_langs).';
     </script>';
     ?>
-
+	
     <!--My assets-->
     <link rel="stylesheet" href="<?php echo base_url();?>css/style.css" type="text/css" />
     <script type="text/javascript" src="<?php echo base_url();?>js/script.js"></script>
-	<script>
+    <script type="text/javascript" src="<?php echo base_url();?>js/script-language-change.js"></script>
+  	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -64,7 +68,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <p class="navbar-brand" style='margin-bottom: 0; font-weight: 400;'><?php echo (isset($translations[12]['Translation'])?strtoupper($translations[12]['Translation']):'');?></p>
+          <p class="navbar-brand" style='margin-bottom: 0; font-weight: 400;'>
+          <span class='tran-12'>
+          <?php echo (isset($translations[12]['Translation'])?strtoupper($translations[12]['Translation']):'');?>
+          </span>
+          </p>
         </div>
         <div class="navbar-collapse collapse navbar-inverse-collapse">
 		<style scoped>
@@ -80,10 +88,13 @@
 			}
 			.hover_bg{background-color: <?php echo ($accent_2 != '')?$accent_2:'#aa0321';?> !important;}
 		</style>
-          <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right tran-links">
 		    <li>&nbsp;&nbsp;&nbsp;</li>
             <li class="dropdown">
-              <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown"><img src='<?php echo base_url();?>/img/<?php echo $LanguageName;?>.png' class='bm-lang-img'> &nbsp;&nbsp;&nbsp;<?php echo (isset($translations[24]['Translation'])?$translations[24]['Translation']:'');?>
+              <a href="bootstrap-elements.html" data-target="#" class="dropdown-toggle" data-toggle="dropdown">
+              <span class='tran-24'>
+              <?php echo (isset($translations[24]['Translation'])?$translations[24]['Translation']:'');?>
+              </span>
 			  <?php //echo $translations[24]['Translation'];?>&nbsp;&nbsp;
                 <b class="caret"></b></a>
               <ul class="dropdown-menu" <?php echo $dd_bg_style?>>
@@ -94,27 +105,28 @@
                     $url_lang_string['Customer']=$Customerid;
                     $url_lang_string=http_build_query($url_lang_string);
                     if($LanguageName==$value['LanguageName']){
-                      echo '<li><a class="hover_bg" href="?'.$url_lang_string.'"><b>&nbsp;&nbsp;&nbsp;&nbsp;>&nbsp;&nbsp;&nbsp;'.strtoupper($value['LanguageName']).'</b></a></li>';
+                      echo '<li onclick="changeLang('.$value['FkLanguageid'].')" class="'.$value['FkLanguageid'].'-change"><a class="tranLangLink hover_bg" href="#">'.$value['LanguageName'].'</a></li>';
                     }
                     else{
-                      echo '<li><a href="?'.$url_lang_string.'">'.$value['LanguageName'].'</a></li>';
+                      echo '<li onclick="changeLang('.$value['FkLanguageid'].')" class="'.$value['FkLanguageid'].'-change"><a class="tranLangLink" href="#">'.$value['LanguageName'].'</a></li>';
                     }
                   }
                 ?>
                 <li><center><img src="<?php echo $spacer?>?dummy=<?php echo mt_rand()?>" class='img-responsive'></center></li>
               </ul>
             </li>
-
+            
             <?php
               
               if ( count($Links) > 0 ) {
                 $newLinks = json_decode($Links);
                 foreach ($newLinks as $k => $v) {
-                  echo '<li>&nbsp;&nbsp;&nbsp;</li>
-              <li><a href="'.$v.'">' . $k . '</a></li>';
+                  echo '<li class="tLink">&nbsp;&nbsp;&nbsp;</li>
+                  <li class="tLink"><a href="'.$v.'">' . $k . '</a></li>';
                 }
               }
             ?>
+            
 			<!--<li>&nbsp;&nbsp;&nbsp;</li>
             <li><a href="javascript:void(0)">Home</a></li>
             <li>&nbsp;&nbsp;&nbsp;</li>
@@ -130,7 +142,10 @@
       <div style='height: 40vh'></div>
       <center><img src="<?php echo ($loading != '' ? $loading : base_url().'/img/loading-pink.gif')?>" style='height: 10vh'>
       <br>
-      <p style="color: <?php echo ($accent_2 != '')?$accent_2:'#CC1543';?>;">&nbsp;&nbsp;&nbsp;&nbsp;<?php echo (isset($translations[23]['Translation'])?$translations[23]['Translation']:'');?>
+      <p style="color: <?php echo ($accent_2 != '')?$accent_2:'#CC1543';?>;">&nbsp;&nbsp;&nbsp;&nbsp;
+      <span class='tran-23'>
+      <?php echo (isset($translations[23]['Translation'])?$translations[23]['Translation']:'');?>
+      </span>
 	  <?php //echo $translations[23]['Translation']?>...</p>
       </center>
     </div>

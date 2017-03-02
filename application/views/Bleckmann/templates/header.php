@@ -62,9 +62,9 @@
 	});
 	</script>
 	<script type="text/javascript" src="<?php echo base_url();?>vendor/pagination/jquery.simplePagination.js"></script>
-	<link type="text/css" rel="stylesheet" href="<?php echo base_url();?>vendor/pagination/simplePagination.css"/>
-	
-	<script src="<?php echo base_url();?>vendor/jqueryCSV/jquery.tabletoCSV.js"></script>
+	<link type="text/css" rel="stylesheet" href="<?php echo base_url();?>vendor/pagination/simplePagination.css"/>	
+	<script src="<?php echo base_url();?>vendor/jqueryCSV/jquery.tabletoCSV.js"></script>	
+
 	<?php }
 	//warehouses
 	if($this->uri->segment(2) == 'warehouses' || $this->uri->segment(2) == 'users'){
@@ -102,7 +102,7 @@
 
 		ga('create', 'UA-64703754-4', 'auto');
 		ga('send', 'pageview');
-	</script>
+	</script>	
   </head>
   <body id='override'>
     <div class="bm-h">

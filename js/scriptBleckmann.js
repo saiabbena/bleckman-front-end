@@ -204,8 +204,10 @@ $(document).ready(function() {
 		$(".add-user-pop").click(function(){
 			var validator1 = $( "#user-info-form" ).validate();
 			validator1.resetForm();
+			customerId  = (customerId != '')?customerId:'-1';
 		    $('h4#myUserLabel').text('Add a User');
-		    $('select#Fkcustomerid').val(-1);
+		    //$('select#Fkcustomerid').val(-1);			
+			$("select#Fkcustomerid").val(customerId);
 		    $('input#Address').val('');
 		    $('input#City').val('');
 		    $('select#Country').val(-1);
@@ -802,6 +804,7 @@ $(document).ready(function() {
 			$('.loading-screen').show();
 			if ( $(this).val() != '') {				
 				retrieveReturnOrders($(this).val());
+				//$('.trackingcode_td').css({'display':'none'});
 				
 				if($("#orders_data").html() !== ""){
 					$('.paginate_button a').eq(1).trigger('click');
@@ -812,9 +815,9 @@ $(document).ready(function() {
 				// "ordering": false,
 				 //"pagingType": "numbers",
 				//});
+				
 			}
 		});		
-		
 		function renderReturnOrders(raw_data){
 			html='';
 			html2='';
@@ -856,11 +859,24 @@ $(document).ready(function() {
 				resultDate=testdate1.getDate()+'/'+(testdate1.getMonth()+1)+'/'+(testdate1.getYear()+1900);
 				//console.log("resultDate : " + resultDate);
 				var RORefAmount = '';
+				if( data[i].ReturnsOrderTrackingCode!='')
+					 {
+						 var trackingcode_get=data[i].ReturnsOrderTrackingCode;
+						var trackingcode = trackingcode_get;
+						if(trackingcode.length > 10) trackingcode = trackingcode.substring(0,10)+'...';
+					 }
+					 else
+					 {
+							var trackingcode_get='#';
+							var trackingcode='-';
+							
+							
+					 }
 				if(data[i].ReturnOrderTotalRefundAmount.toFixed(2) > 0){
 					RORefAmount = data[i].ReturnOrderTotalRefundAmount.toFixed(2);
 				}
 				html=html+'\<tr>\
-					  <td style="white-space: nowrap;">'+resultDate+'</td>\
+					  <td style="white-space: nowrap;" class="dateval">'+resultDate+'</td>\
 					  \
 					  <td style="white-space: nowrap;">'+data[i].OrderId+'</td>\
 					  \
@@ -874,7 +890,9 @@ $(document).ready(function() {
 					  \
 					  <td style="white-space: normal !important;">'+data[i].StatusName+'</td>\
 					  \
-					  <td style="text-center">\
+					  <td style="white-space: nowrap;width:100px;display:none;" class="trackingcode_td"><a href='+trackingcode_get+' alt='+trackingcode_get+' title='+trackingcode_get+'>'+trackingcode+'</td>\
+					  \
+					  <td style="text-center;width: 309px;">\
 					  <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:3px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>&nbsp;&nbsp;&nbsp;&nbsp;\
 					  <a data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId +'" style="cursor:pointer;margin-right:3px;" alt="Comments" title="Comments" class="pull-left"><i class="large material-icons">comment</i></a>\
 					  <a target="_blank" href="'+ data[i].ErrorLog +'"style="cursor:pointer;margin-top:-1px;" alt="Comments" title="ErrorLog" class="btn_more_info pull-left"><i class="large material-icons">info_outline</i></a>';
@@ -886,9 +904,9 @@ $(document).ready(function() {
 					   if ( data[i].ReturnsOrderTrackingCode != '') {
 				        //console.log("ReturnsOrderTrackingCode  : " + data[i].ReturnsOrderTrackingCode );
 				        //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
-				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'"  style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';
+				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'" style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';
 				      }
-				      html=html+ '</tr>\
+				      html=html+ '</td></tr>\
 				      ';
 			  
 
@@ -923,7 +941,30 @@ $(document).ready(function() {
 			$('#total_records span').text(total_num_records);
 			$('body').append(html2);
 			$('body').append(html3);
-			$('#orders_data > tbody').html(html);						
+			
+			$('#orders_data > tbody').html(html);
+			
+			// setTimeout(function(){
+			// 	$('#orders_data').DataTable( {
+			// 		dom: 'B',
+			// 		// 'columnDefs': [
+			// 		// 	{ targets: 7, visible: false }
+			// 		// ],
+			// 		"bPaginate": false,
+			// 		bFilter: false, 
+
+			// 		bRetrieve:true,
+			// 		bInfo: false,
+			// 		buttons: [
+			// 			{
+			// 			extend: 'colvis',
+			// 		    columns: ':lt(7)'
+			// 			//columns: [ 0, 1, 2, 5 ]
+			// 			}
+			// 		]
+			// 	} );
+			// },1500);
+			
 			//$('#btm_pagination').html(pagination_html);
 				/*
 				if($("#orders_data").html() !== ""){
@@ -985,6 +1026,7 @@ $(document).ready(function() {
 					//console.log(statusOptionHtml);
 					$('#filter_ordstatus').prop('disabled', false);
 					$('#filter_ordstatus').html(statusOptionHtml);
+					
 					
 		      },
 		      fail: function() {
@@ -1088,10 +1130,13 @@ $(document).ready(function() {
 			}else{
 				searchInput['pagesize'] = pagesize;
 			}	
-						
+				
 			//Check the pageno defined or not
 			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
 			console.log(searchInput);
+
+
+			
 			//console.log(apoyarToken);
 			$.ajax({
 			  url: apiCall,
@@ -1104,8 +1149,10 @@ $(document).ready(function() {
 			  success: function (response) {
 				$('.loading-screen').slideUp('slow');
 				//console.log(response);
-				renderReturnOrders(response);				
-				
+
+				renderReturnOrders(response);//Load the entire Orders Data with HTML
+
+				//$('.tcode-display').toggle();
 				var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';
 				showCarriersList(customerId,selCarrierName);//Call the Carrier dropdown in Order page
 				$('#filter_carrier').prop('disabled', false);								
@@ -1116,7 +1163,8 @@ $(document).ready(function() {
 				$('#filter_ordstatus').prop('disabled', false);
 				
 				console.log(selStatusName);
-				$('#filter_ordstatus').val(selStatusName);				
+				$('#filter_ordstatus').val(selStatusName);
+				$('.trackingcode_td').css({'display':'none'});
 				
 			  },
 			  fail: function(){
@@ -1225,8 +1273,23 @@ $(document).ready(function() {
 					//data[i].OrderId
 					//console.log(data.OrderId);
 					//console.log(data['Returnorderline'][0].EanBarcode);				
-					
-					moreinfo_html = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel"><b>Full info on return order: '+data.ReturnId+'</b></h4></div><div class="modal-body"><b>Full date/time:</b>'+data.ReturnsOrderCreationDate+',<b>Orderid:</b>'+data.OrderId+',	<b>Return status:</b>'+data.StatusName+'<hr/><h4>Customer Info:</h4>'+
+					if(data.ReturnsOrderTrackingCode!='')
+					{
+						var tcode=data.ReturnsOrderTrackingCode;
+					} else { var tcode='-';}
+					if(data.ReturnsOrderTrackingNumber!='')
+					{
+						var tnumber=data.ReturnsOrderTrackingNumber;
+					} else { var tnumber='-';}
+					moreinfo_html = '<div class="modal-dialog" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button><h4 class="modal-title" id="myModalLabel"><b>Full info on return order: '+data.ReturnId+'</b></h4></div><div class="modal-body"><hr/><h4>Order Info:</h4>'+
+					'<div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Full date/time:</b> '+data.ReturnsOrderCreationDate+'<br/>'+
+					'<b>Return status:</b> '+data.StatusName+'<br/>'+
+					'</div><div class="col-md-5 pull-right"><b>Orderid:</b> '+data.OrderId+'<br/>'+
+					'</div></div><hr><h4>Tracking Info:</h4>'+
+					'<div class="row" style="padding-left:0 !important;"><div class="col-md-12 pull-left"><b>Tracking Code:</b> '+tcode+'<br/>'+
+					''+
+					'</div><div class="col-md-12 pull-left"><b>Tracking Number:</b> '+tnumber+'<br/>'+
+					'</div></div><hr><h4>Customer Info:</h4>'+
 					'<div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Name:</b> '+data.ConsumerName1+'<br/>'+
 					'<b>Street1:</b> '+((data.ConsumerShipStreet1 !== undefined)?data.ConsumerShipStreet1:'')+'<br/>'+
 					'<b>Street2:</b> '+((data.ConsumerShipStreet2 !== undefined)?data.ConsumerShipStreet2:'')+'<br/>'+
@@ -1273,6 +1336,8 @@ $(document).ready(function() {
 		});
 		//Back-end search 
 		$('#order_search_btn').click(function(){
+				
+			
 			var customerId = $('#orders_by_customer_id').val();
 			retrieveReturnOrders(customerId);			
 		});
@@ -1453,11 +1518,13 @@ $(document).ready(function() {
 		
 		$('#add-carrier-local-setting').click(function() {
 													  
+			
 			settings_local_cnt = $('.LocalSettingsCls').length;
 			var apiCall = url + 'Carrier/GetPredefinedCarrierSetting';
 			
 			console.log("length : " + predefinedSettings.length );
-			if ( predefinedSettings.length == 0 ) {
+			
+			//if ( predefinedSettings.length == 0 ) {
 				$.ajax({
 			        url: apiCall,
 			        type: 'GET',
@@ -1470,13 +1537,39 @@ $(document).ready(function() {
 			        	predefinedSettings = data;
 			        	console.log("here");
 			        	console.log(predefinedSettings);
+							var html1 = '<div class="row">\
+					                	<div class="col-md-12">\
+					                		<div class="col-md-6">\
+								              	<div class="form-group label-floating">\
+								                  <label class="control-label">Settings Name</label>\
+								                  \
+								                  <select class="form-control LocalSettingsCls" name="CarrierSetting[' + settings_local_cnt +'][SettingName]">\
+												   <option value="-1" selected="selected">Select a settings name</option>';
+								            for(i=0;i<predefinedSettings.length;i++) {
+								            	html1 += '<option value="'+predefinedSettings[i]['SettingName'] +'">' + predefinedSettings[i]['SettingName'] + '</option>';
+								            }
+											html1 += '</select>\
+								                </div>\
+					                		</div>\
+					                		<div class="col-md-5">\
+								              	<div class="form-group label-floating">\
+								                  <input id="SettingsValue" disabled type="hidden" name="CarrierSetting[' + settings_local_cnt +'][SettingValue]" class="form-control" value="">\
+								                  <span class="help-block">Enter Settings Value</span>\
+								                </div>\
+					                		</div>\
+											<div class="col-md-1"></div>\
+					                	</div>\
+					        </div>';
+				$('div#carrier-setting').append(html1);
+				settings_local_cnt++;
+				$('#local-settings-error').hide();
 			        }
 			    });
-			}
+			//}
 			console.log(predefinedSettings);
 			//<input id="SettingsName" type="text" name="CarrierSetting[' + settings_local_cnt +'][SettingName]" class="form-control" value="">\
-			setTimeout(function(){
-								
+			/*setTimeout(function(){
+					alert('hi');			
 				var html1 = '<div class="row">\
 					                	<div class="col-md-12">\
 					                		<div class="col-md-6">\
@@ -1503,7 +1596,7 @@ $(document).ready(function() {
 				$('div#carrier-setting').append(html1);
 				settings_local_cnt++;
 				$('#local-settings-error').hide();
-			}, 500);
+			}, 500);*/
 
 		});
 		$(".add-carrier-pop").click(function(){			
