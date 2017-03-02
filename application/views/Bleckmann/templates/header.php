@@ -69,8 +69,8 @@
 	   $('.column_visibility').click(function() {
 		    var column_id =  $(this).attr("id");
 			//alert(column_id);
-            $('th:nth-child('+column_id+')').toggle('slow');
-			$('td:nth-child('+column_id+')').toggle('slow');
+            $('#orders_data th:nth-child('+column_id+')').toggle('slow');
+			$('#orders_data td:nth-child('+column_id+')').toggle('slow');
 			$(this).toggleClass("dd_selected");
        });
     });
