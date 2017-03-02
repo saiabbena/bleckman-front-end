@@ -1164,7 +1164,8 @@ $(document).ready(function() {
 				
 				console.log(selStatusName);
 				$('#filter_ordstatus').val(selStatusName);
-				$('.trackingcode_td').css({'display':'none'});
+				$('.trackingcode_td').css({'display':'none'});				
+				$( "#menu1 li #8" ).addClass('dd_selected');
 				
 			  },
 			  fail: function(){
@@ -1175,7 +1176,8 @@ $(document).ready(function() {
 		//Default Order page load and show records  			
 	    if ($('#hdn_customer_id_ord').length) {
 		   var hdn_customer_id_ord = $('#hdn_customer_id_ord').val();
-		   retrieveReturnOrders(hdn_customer_id_ord);		   
+		   retrieveReturnOrders(hdn_customer_id_ord);
+		   
 		}
 		//page-link btn_paginate
 		$(document).on('click', 'a[class="page-link"]', function() {

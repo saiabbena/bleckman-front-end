@@ -166,6 +166,7 @@ $(document).ready(function(){
 						
 		$('#filter_carrier').val(selCarrierName);
 		$('.trackingcode_td').css({'display':'none'});
+		$( "#menu1 li #7" ).addClass('dd_selected');
       },
       fail: function(){
         $('.loading-screen').slideDown('slow');
