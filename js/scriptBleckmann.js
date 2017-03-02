@@ -893,6 +893,8 @@ $(document).ready(function() {
 					  <td style="white-space: nowrap;width:100px;display:none;" class="trackingcode_td"><a href='+trackingcode_get+' alt='+trackingcode_get+' title='+trackingcode_get+'>'+trackingcode+'</td>\
 					  \
 					  <td style="text-center;width: 309px;">\
+					  \
+					  <td style="text-center">\
 					  <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:3px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>&nbsp;&nbsp;&nbsp;&nbsp;\
 					  <a data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId +'" style="cursor:pointer;margin-right:3px;" alt="Comments" title="Comments" class="pull-left"><i class="large material-icons">comment</i></a>\
 					  <a target="_blank" href="'+ data[i].ErrorLog +'"style="cursor:pointer;margin-top:-1px;" alt="Comments" title="ErrorLog" class="btn_more_info pull-left"><i class="large material-icons">info_outline</i></a>';
@@ -1149,7 +1151,6 @@ $(document).ready(function() {
 			  success: function (response) {
 				$('.loading-screen').slideUp('slow');
 				//console.log(response);
-
 				renderReturnOrders(response);//Load the entire Orders Data with HTML
 
 				//$('.tcode-display').toggle();
