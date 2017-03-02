@@ -47,11 +47,10 @@
           }
         ?>
         </div>
-
-			<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">
+		<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">		
 			  <thead>				
 				<tr>
-				  <th  class="nosort col-md-1 dateval">
+				  <th  class="nosort col-md-1">
 					<div class='form-group'>
 					  <input type='text' id="ReturnsOrderCreationDate" name="ReturnsOrderCreationDate" class='datepicker form-control' placeholder="From" 
 					  style="font-size:0.9em !important;" />
@@ -96,7 +95,6 @@
 					  <span class="help-block"></span>
 					</div>
 				  </th>
-
 				   <th style="width:100px;display:none;" class="trackingcode_td"></th>
 				  <th class="col-md-3 th-inner" style="vertical-align:bottom !important;">				 
 					<button type="button" id="order_search_btn" class='btn btn-success btn-raised btn-sm'>					  
@@ -108,7 +106,7 @@
 				  </th>
 				</tr>
 				<tr>
-				  <th class="dateval">Date</th>
+				  <th>Date</th>
 				  <th>Order ID</th>
 				  <th class="th-inner">R.O. ID</th>
 				  <!--<th class="nosort">Tracking</th>-->
@@ -117,11 +115,10 @@
 				  <th>Carrier</th>
 				  <th>Status</th>
 				   <th style="width:100px;display:none;" class="trackingcode_td">Tracking Code</th>
-				   <th class="nosort">Action</th>
-				  <th class="nosort" style="width: 16%">Action</th>
+				  <th class="nosort">Action</th>
 				</tr>
 				<tr>
-					<td colspan="8"></td>
+					<td colspan="9"></td>
 				</tr>
 			  </thead>
 			  <tbody></tbody>
@@ -249,5 +246,3 @@ Table.GridOne Td {
 </script>-->
 
 	
-
-
