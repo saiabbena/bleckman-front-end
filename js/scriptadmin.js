@@ -165,6 +165,7 @@ $(document).ready(function(){
 		showCarriersList(customerId,selCarrierName);//Call the Carrier dropdown in Order page
 						
 		$('#filter_carrier').val(selCarrierName);
+		$('.trackingcode_td').css({'display':'none'});
       },
       fail: function(){
         $('.loading-screen').slideDown('slow');
@@ -262,9 +263,8 @@ if( data[i].ReturnsOrderTrackingCode!='')
               <td style="white-space: nowrap;" class="carrier">'+data[i].CarrierName+'</td>\
               \
               <td style="white-space: normal !important;" class="status">'+data[i].StatusName+'</td>\
-              \
-              \
-              <td style="white-space: nowrap;">\
+              <td style="white-space: nowrap;width:100px;display:none;" class="trackingcode_td"><a href='+trackingcode_get+' alt='+trackingcode_get+' title='+trackingcode_get+'>'+trackingcode+'</td>\
+              <td style="white-space: nowrap;text-center;width: 309px;">\
               <a alt="More Info" title="More Info" data-toggle="modal" data-target="#moreInfo" id="'+data[i].ReturnId+'" class="btn_more_info pull-left" style="color:#FF5722;margin-right:3px;cursor:pointer;"><i class="large material-icons">zoom_in</i></a>\
               <a data-toggle="modal" data-target="#rOrderComment'+data[i].ReturnId+'" style="cursor:pointer;margin-right:3px;" alt="Comments" title="Comments" class="pull-left"><i class="large material-icons">comment</i></a>\
               <a target="_blank" href="'+ data[i].ErrorLog +'"style="cursor:pointer;margin-top:-1px;" alt="Comments" title="ErrorLog" class=" pull-left"><i class="large material-icons">info_outline</i></a>';
