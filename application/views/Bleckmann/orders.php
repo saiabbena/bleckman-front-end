@@ -34,7 +34,8 @@
 			<div class="col-md-2 pull-right">
 				<button id="export" data-export="export" class='btn btn-raised btn-sm' style="margin-top: 26px;">Export as CSV</button>
 			</div>
-		</div>		
+		</div>
+	
 	<div class='row' >
 		<input type="hidden" name="hdn_customer_id_ord" id="hdn_customer_id_ord" value="<?php echo $Customerid?>" />
         <div id="showError">
@@ -46,7 +47,7 @@
             </div>';
           }
         ?>
-        </div>
+        </div>		
 		<table  id="orders_data" class="table table-striped table-bordered" cellspacing="0">		
 			  <thead>				
 				<tr>
@@ -181,6 +182,24 @@
 			</div>
 		</div>
 	</div>
+
+	<div id="export_orders_div" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">		
+		<table  id="export_orders_data" cellspacing="0">
+			<thead>
+				<tr>
+				  <th>Date</th>
+				  <th>Order ID</th>
+				  <th>R.O. ID</th>							  
+				  <th>Refund</th>
+				  <th>Customer</th>
+				  <th>Carrier</th>
+				  <th>Status</th>
+				  <th>Tracking Code</th>				  
+				</tr>				
+			 </thead>
+			<tbody></tbody>
+		</table>				
+	</div>					
 
 
 

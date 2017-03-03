@@ -39,6 +39,7 @@
       //console.log("loaded");
       <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
       <?php echo 'var apoyarToken="'.$_SESSION['Apoyar'].'";';?>
+	  <?php echo 'var ApoyarUrlVal="dev.bleckmann.apoyar.eu";';?>
       <?php echo 'var baseurl="'. base_url() .'";';?>
       <?php echo 'var customerId="";';?>
       <?php echo 'var allLanguages=[];';?>

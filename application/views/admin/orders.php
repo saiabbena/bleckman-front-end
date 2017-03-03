@@ -170,6 +170,22 @@
 			</div>
 		</div>
 	</div>
+	<div id="export_orders_div" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">		
+		<table  id="export_orders_data" cellspacing="0">
+			<thead>
+				<tr>
+				  <th>Date</th>
+				  <th>Order ID</th>
+				  <th>R.O. ID</th>							  
+				  <th>Refund</th>				  
+				  <th>Carrier</th>
+				  <th>Status</th>
+				  <th>Tracking Code</th>				  
+				</tr>				
+			 </thead>
+			<tbody></tbody>
+		</table>				
+	</div>		
 	<script type="text/javascript" language="javascript" class="init">
 	
 // function colShowHide() {
