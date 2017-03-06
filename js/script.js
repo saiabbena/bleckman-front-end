@@ -573,6 +573,10 @@ $(document).ready(function(){
 					$('#print_label').css({'display':'none'});
 					$('#no_label').show();
 					$('#show_ro_number').text(response.Id);
+					
+					var retry_label_id = 'generateLabel-'+respData.Id+'-'+mode;
+					$('#retry_label').show();
+					$('#retry_label a').attr('id', retry_label_id);
 				  } else {
                     $('#mode1-fail').show();
                     $('.form5').show();
@@ -585,7 +589,7 @@ $(document).ready(function(){
 				var respData = response.responseJSON;
 				//console.log(respData.Id);
 				console.log(respData.Status);				
-                //console.log(response);
+                console.log(response);
 				if(respData.Status == '1000'){
 					$('.form3').hide();
 					console.log(response);
@@ -602,6 +606,10 @@ $(document).ready(function(){
 					
 					$('#no_label').show();
 					$('#show_ro_number').text(respData.Id);
+					
+					var retry_label_id = 'generateLabel-'+respData.Id+'-'+mode;
+					$('#retry_label').show();
+					$('#retry_label a').attr('id', retry_label_id);
 			  
 				  }else{
 					  $('#btn_career_back').hide();
@@ -706,6 +714,10 @@ $(document).ready(function(){
 			$('#print_label').css({'display':'none'});
 			$('#no_label').show();
 			$('#show_ro_number').text(response.Id);
+			
+			var retry_label_id = 'generateLabel-'+respData.Id+'-'+mode;
+			$('#retry_label').show();
+			$('#retry_label a').attr('id', retry_label_id);
 		  }
 		  else {
             $('.form5').show();
@@ -734,6 +746,10 @@ $(document).ready(function(){
 				$('#print_label').css({'display':'none'});
 				$('#no_label').show();
 				$('#show_ro_number').text(respData.Id);
+				
+				var retry_label_id = 'generateLabel-'+respData.Id+'-'+mode;
+				$('#retry_label').show();
+				$('#retry_label a').attr('id', retry_label_id);			
 			  
 		  }else{
 			  $('#btn_career_back').hide();
