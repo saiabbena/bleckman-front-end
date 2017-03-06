@@ -67,14 +67,8 @@
 	<script type="text/javascript" src="<?php echo base_url();?>vendor/pagination/jquery.simplePagination.js"></script>
 	<link type="text/css" rel="stylesheet" href="<?php echo base_url();?>vendor/pagination/simplePagination.css"/>
 	<script src="<?php echo base_url();?>vendor/jqueryCSV/jquery.tabletoCSV.js"></script>
-		<!--<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/jquery.dataTables.css">
-<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>css/buttons.dataTables.css">
-<script type="text/javascript" language="javascript" src="<?php echo base_url();?>vendor/datatable/jquery.dataTables.min.js">
-</script>
-<script type="text/javascript" language="javascript" src="<?php echo base_url();?>vendor/datatable/dataTables.buttons.js">
-</script>
-<script type="text/javascript" language="javascript" src="<?php echo base_url();?>vendor/datatable/buttons.colVis.js"> -->
-</script>
+		
+
 	<?php }
 	if($this->uri->segment(2) == 'appearance'){
 	?>
@@ -106,6 +100,86 @@
 		ga('send', 'pageview');
 
 		</script>
+<script>
+    $(function() {       
+	   $('.column_visibility').click(function() {
+		    var column_id =  $(this).attr("id");
+			//alert(column_id);
+            $('#orders_data th:nth-child('+column_id+')').toggle('slow');
+			$('#orders_data td:nth-child('+column_id+')').toggle('slow');
+			$(this).toggleClass("dd_selected");
+       });
+    });
+</script>
+	<style>
+		Table.GridOne {
+			padding: 3px;
+			margin: 0;
+			background: lightyellow;
+			border-collapse: collapse;	
+			width:45%;
+		}
+
+		Table.GridOne Td {	
+			padding:2px;
+			border: 1px solid #ff9900;
+			border-collapse: collapse;
+		}
+		.dropdown-menu .sub-menu {
+			left: 100%;
+			position: absolute;
+			top: 0;
+			visibility: hidden;
+			margin-top: -1px;
+			
+		}
+
+		.dropdown-menu li:hover .sub-menu {
+			visibility: visible;
+		}
+
+		.dropdown:hover .dropdown-menu {
+			display: block;
+		}
+
+		.nav-tabs .dropdown-menu, .nav-pills .dropdown-menu, .navbar .dropdown-menu {
+			margin-top: 0;
+		}
+
+		.navbar .sub-menu:before {
+			border-bottom: 7px solid transparent;
+			border-left: none;
+			border-right: 7px solid rgba(0, 0, 0, 0.2);
+			border-top: 7px solid transparent;
+			left: -7px;
+			top: 10px;
+		}
+		.navbar .sub-menu:after {
+			border-top: 6px solid transparent;
+			border-left: none;
+			border-right: 6px solid #fff;
+			border-bottom: 6px solid transparent;
+			left: 10px;
+			top: 11px;
+			left: -6px;
+		}
+		
+		.dropdown-menu>li>a{padding-left:30px;
+		  background-image: url("<?php echo base_url().'img/tick.png'?>");		  
+		  background-repeat: no-repeat;
+		  background-position: center left;}	
+		
+		.dropdown-menu>li>a:hover{background-color:#CCC !important;			
+			background-repeat: no-repeat;
+			background-position: center left;
+		}		
+		.dd_selected{background-color:#CCC !important;
+		  background-image: url("<?php echo base_url().'img/untick.png'?>") !important;		  
+		  background-repeat: no-repeat;
+		  background-position: center left;}
+		  
+		  .dd_unselected{background:transparent !important;}
+		</style>		
   </head>
   <body id='override'>
     <div class="bm-h">

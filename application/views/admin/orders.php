@@ -11,14 +11,28 @@
         ?>
         </div>
 		<div class="row">			
-			<div class="col-md-6">
-				
+			<div class="col-md-6">				
 			</div>
 			<div class="col-md-4">
-				<div class="col-md-2 pull-right">
+				<ul class="nav nav-pills pull-right" style="margin-top:16px;">
+					<li class="dropdown">
+					  <a href="#" data-toggle="dropdown" class="dropdown-toggle btn btn-raised btn-sm">COLUMN VISIBILITY <b class="caret"></b></a>
+					  <ul class="dropdown-menu" id="menu1" style="padding:5px;">
+						<li><a href="#" class="column_visibility" id="1">Date</a></li>	
+						<li><a href="#" class="column_visibility" id="2">Order ID</a></li>	
+						<li><a href="#" class="column_visibility" id="3">R.O. ID</a></li>	
+						<li><a href="#" class="column_visibility" id="4">Refund</a></li>							
+						<li><a href="#" class="column_visibility" id="5">Carrier</a></li>
+						<li><a href="#" class="column_visibility" id="6">Status</a></li>	
+						<li><a href="#" class="column_visibility dd_selected" id="7">Tracking Code</a></li>						
+					  </ul>
+					</li>
+				</ul>	
+			</div>
+			<div class="col-md-2 pull-right">
 				<button id="export" data-export="export" class='btn btn-raised btn-sm' style="margin-top: 26px;z-index:10;">Export as CSV</button>
 			</div>
-			</div>
+			
 		
 		</div>
 		<div class="row">
@@ -73,7 +87,7 @@
 				  </select>
                 </div>
               </th>
-			  <!-- <th style="width:100px;"></th> -->
+			  <th class="trackingcode_td" style="width:100px;display:none;"></th>
               <th>
                 <button type="button" id="search-button" class='btn btn-success btn-raised btn-sm'>
                   SEARCH
@@ -86,12 +100,11 @@
 			  <tr>
               <th>Date</th>
               <th>Order ID</th>
-              <th>Return Order ID</th>
-             
+              <th>Return Order ID</th>             
               <th>Refund</th>
               <th>Carrier</th>
               <th>Status</th>
-			  <!-- <th style="width:100px;">Tracking Code</th> -->
+			  <th class="trackingcode_td" style="width:100px;display:none;">Tracking Code</th>
               <th>Action</th>
             </tr>
 			</thead>
@@ -157,6 +170,22 @@
 			</div>
 		</div>
 	</div>
+	<div id="export_orders_div" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">		
+		<table  id="export_orders_data" cellspacing="0">
+			<thead>
+				<tr>
+				  <th>Date</th>
+				  <th>Order ID</th>
+				  <th>R.O. ID</th>							  
+				  <th>Refund</th>				  
+				  <th>Carrier</th>
+				  <th>Status</th>
+				  <th>Tracking Code</th>				  
+				</tr>				
+			 </thead>
+			<tbody></tbody>
+		</table>				
+	</div>		
 	<script type="text/javascript" language="javascript" class="init">
 	
 // function colShowHide() {

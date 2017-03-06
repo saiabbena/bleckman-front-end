@@ -125,7 +125,7 @@ $(document).ready(function() {
 		        url: apiCall,
 		        type: 'GET',
 			    headers: {
-			        Apoyar: apoyarToken
+			        Apoyar: apoyarToken 
 			    },
 		        dataType: 'json',
 		        success: function(data) {
@@ -814,8 +814,7 @@ $(document).ready(function() {
 				//$('#orders_data').DataTable({				 
 				// "ordering": false,
 				 //"pagingType": "numbers",
-				//});
-				
+				//});				
 			}
 		});		
 		function renderReturnOrders(raw_data){
@@ -996,6 +995,73 @@ $(document).ready(function() {
 			$('#btm_pagination').pagination('nextPage');			
 			
 		  }
+		  //Print Export as CSV
+		  function ExportRenderReturnOrders(raw_data){
+			html='';
+			html2='';
+			html3='';			
+			var total_num_records = raw_data['TotRecords'];
+			var page_count = raw_data['Count'];
+			var pagination_html = '';
+			var pageno = raw_data['PageNo'];
+			var btn_sel = 'style="color:#FFF !important; background-color:#0D508B !important;"';
+			var btn_normal = 'style="color:#FFF !important;background-color:#337AB7 !important;"';			
+			
+			$('.form-group').css({'margin':'0', 'padding':'0'});
+			//console.log(raw_data['ReturnOrders'].length); 
+			//console.log(data['ReturnOrders'].[0].ReturnId);
+			//console.log(raw_data['PageNo']);
+			//console.log(raw_data['pagesize']);
+					
+			for(i=0; i<raw_data['ReturnOrders'].length; i++){
+				var data = raw_data['ReturnOrders'];				
+				//console.log("i: " + data[i].ReturnsOrderCreationDate);
+				testdate=data[i].ReturnsOrderCreationDate.split('T');
+				testdate1=new Date(testdate[0]);
+				//console.log(testdate[0]);
+				resultDate=testdate1.getDate()+'/'+(testdate1.getMonth()+1)+'/'+(testdate1.getYear()+1900);
+				//console.log("resultDate : " + resultDate);
+				var RORefAmount = '';
+				if( data[i].ReturnsOrderTrackingCode!='')
+				{
+					var trackingcode_get=data[i].ReturnsOrderTrackingCode;
+					var trackingcode = trackingcode_get;
+					//if(trackingcode.length > 10) trackingcode = trackingcode.substring(0,10)+'...';
+				}
+				 else
+				 {
+					var trackingcode_get='#';
+					var trackingcode='';						
+				 }
+				if(data[i].ReturnOrderTotalRefundAmount.toFixed(2) > 0){
+					RORefAmount = data[i].ReturnOrderTotalRefundAmount.toFixed(2);
+				}
+				html=html+'\<tr>\
+					  <td style="white-space: nowrap;" class="dateval">'+resultDate+'</td>\
+					  \
+					  <td style="white-space: nowrap;">'+data[i].OrderId+'</td>\
+					  \
+					  <td style="white-space: nowrap;">'+data[i].ReturnId+'</td>\
+					  \
+					  <td style="white-space: nowrap;"><b>'+' '+RORefAmount+'</b></td>\
+					  \
+					   <td style="white-space: nowrap;">'+data[i].CustomerName+'</td>\
+					  \
+					  <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
+					  \
+					  <td style="white-space: normal !important;">'+data[i].StatusName+'</td>\
+					  \
+					  <td style="white-space: nowrap;width:100px;display:none;" class="trackingcode_td"><a href='+trackingcode_get+' alt='+trackingcode_get+' title='+trackingcode_get+'>'+trackingcode+'</td>\
+					  ';					  					  
+				      html=html+ '</tr>\
+					';
+				}
+			
+			//console.log(result);			
+			//$('body').append(html2);
+			//$('body').append(html3);			
+			$('#export_orders_data > tbody').html(html);			
+		  }
 		  function showAllROStatus(selStatus){
 			  apiCall=url+'returnstatus/GetAllReturnStatus';
 			  $.ajax({
@@ -1102,7 +1168,7 @@ $(document).ready(function() {
 			//Change the date format to YYYY-DD-MM
 			var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
 			var ReturnsOrderToDate = $('#ReturnsOrderToDate').val();
-			var pagesize = $('#page_size').val();
+			
 			console.log(ReturnsOrderCreationDate);
 			console.log(ReturnsOrderToDate);
 			if(ReturnsOrderCreationDate !== ''){			
@@ -1120,6 +1186,7 @@ $(document).ready(function() {
 				searchInput['To']= newDateFormatTo;
 			}
 			
+			var pagesize = $('#page_size').val();
 			if(typeof(pageno)==='undefined'){				
 				searchInput['pageno'] = 1;
 			}else{
@@ -1133,10 +1200,7 @@ $(document).ready(function() {
 				
 			//Check the pageno defined or not
 			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
-			console.log(searchInput);
-
-
-			
+			console.log(searchInput);			
 			//console.log(apoyarToken);
 			$.ajax({
 			  url: apiCall,
@@ -1164,18 +1228,93 @@ $(document).ready(function() {
 				
 				console.log(selStatusName);
 				$('#filter_ordstatus').val(selStatusName);
-				$('.trackingcode_td').css({'display':'none'});
+				$('.trackingcode_td').css({'display':'none'});				
+				$( "#menu1 li #8" ).addClass('dd_selected');
 				
 			  },
 			  fail: function(){
 				$('.loading-screen').slideDown('slow');
+			  }
+			});
+			var customerId = $('#orders_by_customer_id').val();
+			var pagesize = $('#total_records span').text();			
+			exportRetrieveReturnOrders(customerId, 1, pagesize);
+		}
+		//Call function to export Orders as csv
+		function exportRetrieveReturnOrders(customerId, pageno, pagesize){
+			
+			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
+			//console.log("apoyarToken : " + apoyarToken );
+			var searchInput={};
+			
+			searchInput['FKCustomerId'] = customerId;
+			searchInput['CarrierName'] = $('#filter_carrier').val();
+			searchInput['StatusName'] = $('#filter_ordstatus').val();
+			
+			$('tr input[type]').each(function(){
+			  if($(this).val()){
+				searchInput[$(this).attr('name')]=$(this).val();
+				default_render=false;
+			  }
+			});
+			//Change the date format to YYYY-DD-MM
+			var ReturnsOrderCreationDate = $('#ReturnsOrderCreationDate').val();
+			var ReturnsOrderToDate = $('#ReturnsOrderToDate').val();
+			
+			console.log(ReturnsOrderCreationDate);
+			console.log(ReturnsOrderToDate);
+			if(ReturnsOrderCreationDate !== ''){			
+				var date_array = [];
+				date_array = ReturnsOrderCreationDate.split("-");    
+				var newDateFormatFrom = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+				var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];			
+				searchInput['From']= newDateFormatFrom;
+			}
+			if(ReturnsOrderToDate !== ''){			
+				var date_array = [];    
+				date_array = ReturnsOrderToDate.split("-");    
+				var newDateFormatTo = date_array[2] + "-" + date_array[1] + "-" + date_array[0];
+				var newDateFormatToShow = date_array[0] + "-" + date_array[1] + "-" + date_array[2];			
+				searchInput['To']= newDateFormatTo;
+			}			
+			
+			if(typeof(pagesize)==='undefined'){				
+				searchInput['pagesize'] = 15;
+			}else{
+				searchInput['pagesize'] = pagesize;
+			}	
+				
+			//Check the pageno defined or not
+			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
+			console.log(searchInput);
+
+
+			
+			//console.log(apoyarToken);
+			$.ajax({
+			  url: apiCall,
+			  type: 'post',
+			  data: searchInput,
+			  headers: {
+				  Apoyar: apoyarToken
+			  },
+			  dataType: 'json',
+			  success: function (response) {
+				//$('.loading-screen').slideUp('slow');
+				//console.log(response);
+				ExportRenderReturnOrders(response);//Load the entire Orders Data with HTML				
+				
+			  },
+			  fail: function(){
+				//$('.loading-screen').slideDown('slow');
 			  }
 			});			
 		}
 		//Default Order page load and show records  			
 	    if ($('#hdn_customer_id_ord').length) {
 		   var hdn_customer_id_ord = $('#hdn_customer_id_ord').val();
-		   retrieveReturnOrders(hdn_customer_id_ord);		   
+		   retrieveReturnOrders(hdn_customer_id_ord);
+		   
 		}
 		//page-link btn_paginate
 		$(document).on('click', 'a[class="page-link"]', function() {
@@ -1202,10 +1341,10 @@ $(document).ready(function() {
 		});
 		
 		$(document).on('change', '#page_size', function() {
-			//alert($(this).val());			
+			var page_size = $(this).val();			
 			var customerId = $('#orders_by_customer_id').val();
 			//alert(customerId);
-			retrieveReturnOrders(customerId);			
+			retrieveReturnOrders(customerId, 1, page_size);			
 		});
 		//$('div#showError').html('');
 		$(document).on('click','.generateLabel', function() {
@@ -1335,10 +1474,8 @@ $(document).ready(function() {
 			$(this).attr('src', '../../img/settings-btn.png');
 		});
 		//Back-end search 
-		$('#order_search_btn').click(function(){
-				
-			
-			var customerId = $('#orders_by_customer_id').val();
+		$('#order_search_btn').click(function(){			
+			var customerId = $('#orders_by_customer_id').val();			
 			retrieveReturnOrders(customerId);			
 		});
 	    //Added this code for submit button, so that user can enter submit for search
@@ -2194,17 +2331,18 @@ $(document).ready(function() {
 		
 	//Export Order table data as CSV in Orders Page
 	$("#export").click(function(){
-		var clonetable = $("#orders_data").clone();
-		clonetable.find('tr:first').remove();
-		clonetable.find("td:nth-child(9)").remove();		
-		clonetable.find("th:nth-child(9)").remove();
+		//$('#export_orders_data > tbody').html('');
+		//var pagesize = $('#total_records span').text();
+		//var customerId = $('#orders_by_customer_id').val();
+		//exportRetrieveReturnOrders(customerId, 1, pagesize);		
 		
+		setTimeout(function(){
+			var clonetable = $('#export_orders_div table').clone();			
+			console.log(customerId);
+			console.log(clonetable);
+			clonetable.tableToCSV();
+		}, 2000);		
 		
-		clonetable.find("td:nth-child(4) a").each(function(){
-			$(this).text($(this).attr('href'));
-		});	
-		clonetable.tableToCSV();
-		//$("#orders_data").tableToCSV();
-	});		
+	});	
 		
 });
