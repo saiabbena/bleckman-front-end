@@ -505,14 +505,12 @@ class Bleckmann extends CI_Controller {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
   }
   //function to display the documentation
-  public function documentation()
-  {
-  		
-	$this->load->view('Bleckmann/templates/header');
-  	$this->load->view('admin/documentation');
-    $this->load->view('Bleckmann/templates/footer');
-	
-  }
+public function documentation() {		
+  $this->load->view('Bleckmann/templates/header');
+  $this->load->view('Bleckmann/introduction');
+  //$this->load->view('Bleckmann/templates/footer');
+}
+  
  //  public function carriers($param1='', $param2='') {	  
  //  	//print_r($_SESSION);exit();
 	// //echo $param1;exit();
