@@ -18,7 +18,8 @@
 			<style>
 				
 			</style>
-	  		<?php				
+	  		<?php
+	  		echo $_SERVER['HTTP_HOST'];
 	  			for($i=0; $i<count($allCustomers); $i++) {
 	  				$selCountry = '';
 	  				$om1=false;
