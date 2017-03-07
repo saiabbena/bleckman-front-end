@@ -1,4 +1,13 @@
 $(document).ready(function() {
+	
+	//Add a request header for each AJAX request
+	$.ajaxSetup({
+		headers: {
+			Apoyar: apoyarToken
+			,ApoyarUrl:ApoyarUrlHdr
+		}	
+	});
+	
 	$.validator.addMethod("regex", function(value, element, regexpr) {          
      return regexpr.test(value);
    }, "Please enter a valid pasword.");
@@ -906,7 +915,7 @@ $(document).ready(function() {
 				        //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
 				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'" style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';			
 				      }
-					  if(data[i].StatusName == 'Label Printed'){
+					  if(data[i].StatusName.toLowerCase() == 'label printed'){
 						  console.log(window.location.host);
 						  
 						  if(data[i].CarrierName.toLowerCase() == 'ups'){
@@ -1240,9 +1249,9 @@ $(document).ready(function() {
 			  dataType: 'json',
 			  success: function (response) {
 				$('.loading-screen').slideUp('slow');
-				console.log(response);
-
-				renderReturnOrders(response);//Load the entire Orders Data with HTML
+				console.log(response);				
+				//Load the entire Orders Data with HTML
+				renderReturnOrders(response);
 
 				//$('.tcode-display').toggle();
 				var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';
@@ -1264,6 +1273,8 @@ $(document).ready(function() {
 				$('.loading-screen').slideDown('slow');
 			  }
 			});
+					
+					
 			var customerId = $('#orders_by_customer_id').val();
 			var pagesize = $('#total_records span').text();			
 			exportRetrieveReturnOrders(customerId, 1, pagesize);

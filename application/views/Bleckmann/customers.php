@@ -15,9 +15,7 @@
             </div>';
           }
         ?>
-			<style>
-				
-			</style>
+			
 	  		<?php				
 	  			for($i=0; $i<count($allCustomers); $i++) {
 	  				$selCountry = '';

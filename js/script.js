@@ -13,6 +13,13 @@ var countryCode = '';
 var mode = 2;
 var om1 = false;
 
+//Add a request header for each AJAX request
+	$.ajaxSetup({
+		headers: {
+			Apoyar: apoyarToken
+			,ApoyarUrl:ApoyarUrlHdr
+		}	
+	});
 function getCustomerSettings(callback){
   apiCall=url+'ReturnReason/GetAllReturnReasonsbyCustomerid';
   $.get(apiCall, {'Customerid': customerId})

@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>	
-	<?php		
+  <head>
+	<?php
+		$url_list  = array('dev.bleckmann.apoyar.eu','uat.bleckmann.apoyar.eu','returns.bleckmann.com');		
+		if(in_array(strtolower($_SERVER['HTTP_HOST']), $url_list)){
+			$apoyarurl = strtolower($_SERVER['HTTP_HOST']);
+		}else{
+			$apoyarurl = 'dev.bleckmann.apoyar.eu';			
+		}
+		
 	echo'
     <script>
      var customerId='.$_SESSION['Customerid'].';
 	   var UserId ='.$_SESSION['Userid'].';
 	   var apoyarToken="'.$_SESSION['Apoyar'].'";
-     var language="English";
-     var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
-	   var baseurl="'. base_url() .'";	  
+       var language="English";
+       var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
+	   var baseurl="'. base_url() .'";
+	   var ApoyarUrl="'.$apoyarurl.'";
     </script>';	
     ?>	
     <!--Meta tags-->
