@@ -576,6 +576,7 @@ $(document).ready(function(){
 					
 					var retry_label_id = 'generateLabel-'+respData.Id+'-'+mode;
 					$('#retry_label').show();
+					$('#retry_label').css({'display':'block'});
 					$('#retry_label a').attr('id', retry_label_id);
 				  } else {
                     $('#mode1-fail').show();
@@ -609,6 +610,7 @@ $(document).ready(function(){
 					
 					var retry_label_id = 'generateLabel-'+respData.Id+'-'+mode;
 					$('#retry_label').show();
+					$('#retry_label').css({'display':'block'});
 					$('#retry_label a').attr('id', retry_label_id);
 			  
 				  }else{
@@ -717,6 +719,7 @@ $(document).ready(function(){
 			
 			var retry_label_id = 'generateLabel-'+respData.Id+'-'+mode;
 			$('#retry_label').show();
+			$('#retry_label').css({'display':'block'});
 			$('#retry_label a').attr('id', retry_label_id);
 		  }
 		  else {
@@ -749,6 +752,7 @@ $(document).ready(function(){
 				
 				var retry_label_id = 'generateLabel-'+respData.Id+'-'+mode;
 				$('#retry_label').show();
+				$('#retry_label').css({'display':'block'});
 				$('#retry_label a').attr('id', retry_label_id);			
 			  
 		  }else{
