@@ -322,7 +322,7 @@ class Consumer extends CI_Controller {
 						<p id="print_label">You can print your label by following this link: <a id="label-iframe2" target="_blank" href="">Print label</a></p>
 						<p id="no_label" style="display:none;color:#FF0000;">Your return label could not be generated at the moment. Please contact Customer Support.</p>
 						
-						<p id="retry_label">Please <a href="" id="" class="generateLabel pull-left">retry once</a>.</p>
+						<p id="retry_label" style="display:none;">Please <a href="#" id="" class="generateLabel pull-left">retry once</a>.</p>
 						
 					<p>You can read additional instructions for returning your order based on the carrier you chose by following this link: <a href="'.$urlval.'" target="_blank">Go to the carriers web-portal</a><br><br>
 					  Additionally all of this information has been forwarded to your email address.<br><br>
