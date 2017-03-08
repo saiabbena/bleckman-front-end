@@ -1,4 +1,13 @@
 $(document).ready(function() {
+	
+	//Add a request header for each AJAX request
+	$.ajaxSetup({
+		headers: {
+			Apoyar: apoyarToken
+			,ApoyarUrl:ApoyarUrlHdr
+		}	
+	});
+	
 	$.validator.addMethod("regex", function(value, element, regexpr) {          
      return regexpr.test(value);
    }, "Please enter a valid pasword.");
@@ -833,6 +842,7 @@ $(document).ready(function() {
 			//console.log(data['ReturnOrders'].[0].ReturnId);
 			//console.log(raw_data['PageNo']);
 			//console.log(raw_data['pagesize']);
+			
 			if(page_count > 1){
 				
 				pagination_html = '<b>Pages : </b> ';
@@ -903,8 +913,35 @@ $(document).ready(function() {
 					   if ( data[i].ReturnsOrderTrackingCode != '') {
 				        //console.log("ReturnsOrderTrackingCode  : " + data[i].ReturnsOrderTrackingCode );
 				        //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
-				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'" style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';
+				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'" style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';			
 				      }
+					  if(data[i].StatusName.toLowerCase() == 'label printed'){
+						  console.log(window.location.host);
+						  
+						  if(data[i].CarrierName.toLowerCase() == 'ups'){
+							  var label_format = '.gif';
+						  }else if(data[i].CarrierName.toLowerCase() == 'fastway'){
+							  var label_format = '.png';
+						  }else{
+							  var label_format = '.pdf';
+						  }					   
+						  if(data[i].CarrierName.toLowerCase() == 'dhl paket (germany)'){
+							  var carrier_name = 'DHL';
+						  }else{
+							  var carrier_name = data[i].CarrierName;
+						  }
+						  
+						  if(window.location.host == 'http://uat.bleckmann.apoyar.eu'){
+							  var lebel_url = 'api.bleckmann.apoyar.eu/labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;  
+							  
+						  }else if(window.location.host == 'http://returns.bleckmann.com'){
+							  var lebel_url = 'returns.bleckmann.com:81/BMAPI/BleckmannApi/Labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;
+						  }else{
+							 var lebel_url = 'dev.bleckmann.apoyar.eu/labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;						  						  
+						  }
+						  html=html + '<a target="_blank" href="'+lebel_url+'" style="cursor:pointer;margin-left:3px;" alt="Print" title="Print" class="pull-left"><i class="large material-icons">print</i></a>';
+					  }
+					  
 				      html=html+ '</td></tr>\
 				      ';
 			  
@@ -1212,9 +1249,9 @@ $(document).ready(function() {
 			  dataType: 'json',
 			  success: function (response) {
 				$('.loading-screen').slideUp('slow');
-				//console.log(response);
-
-				renderReturnOrders(response);//Load the entire Orders Data with HTML
+				console.log(response);				
+				//Load the entire Orders Data with HTML
+				renderReturnOrders(response);
 
 				//$('.tcode-display').toggle();
 				var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';
@@ -1236,6 +1273,8 @@ $(document).ready(function() {
 				$('.loading-screen').slideDown('slow');
 			  }
 			});
+					
+					
 			var customerId = $('#orders_by_customer_id').val();
 			var pagesize = $('#total_records span').text();			
 			exportRetrieveReturnOrders(customerId, 1, pagesize);

@@ -15,10 +15,9 @@
             </div>';
           }
         ?>
-			<style>
-				
-			</style>
-	  		<?php				
+
+	  		<?php		
+
 	  			for($i=0; $i<count($allCustomers); $i++) {
 	  				$selCountry = '';
 	  				$om1=false;

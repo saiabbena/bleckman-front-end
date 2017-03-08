@@ -1,4 +1,11 @@
 $(document).ready(function(){
+	//Add a request header for each AJAX request
+	$.ajaxSetup({
+		headers: {
+			Apoyar: apoyarToken
+			,ApoyarUrl:ApoyarUrlHdr
+		}	
+	});
 	//init material design skin  
 	$.material.init();
 	//TODO: MAKE THIS PASSED FROM PHP
@@ -413,6 +420,32 @@ if( data[i].ReturnsOrderTrackingCode!='')
 	 {
 		   html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'"  style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';
 	 }
+	 if(data[i].StatusName.toLowerCase() == 'label printed'){
+		  console.log(window.location.host);
+		  
+		  if(data[i].CarrierName.toLowerCase() == 'ups'){
+			  var label_format = '.gif';
+		  }else if(data[i].CarrierName.toLowerCase() == 'fastway'){
+			  var label_format = '.png';
+		  }else{
+			  var label_format = '.pdf';
+		  }					   
+		  if(data[i].CarrierName.toLowerCase() == 'dhl paket (germany)'){
+			  var carrier_name = 'DHL';
+		  }else{
+			  var carrier_name = data[i].CarrierName;
+		  }
+		  
+		  if(window.location.host == 'http://uat.bleckmann.apoyar.eu'){
+			  var lebel_url = 'api.bleckmann.apoyar.eu/labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;  
+			  
+		  }else if(window.location.host == 'http://returns.bleckmann.com'){
+			  var lebel_url = 'returns.bleckmann.com:81/BMAPI/BleckmannApi/Labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;
+		  }else{
+			 var lebel_url = 'dev.bleckmann.apoyar.eu/labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;						  						  
+		  }
+		  html=html + '<a target="_blank" href="'+lebel_url+'" style="cursor:pointer;margin-left:3px;" alt="Print" title="Print" class="pull-left"><i class="large material-icons">print</i></a>';
+	  }
       html=html + '</tr>\
       ';
       html3=html3+'\
