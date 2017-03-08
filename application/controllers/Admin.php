@@ -18,7 +18,7 @@ class Admin extends CI_Controller {
     );  
     $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req );
     $_SESSION['Customername'] = $customer_details['CustomerName'];
-	$_SESSION['Bccemail'] = $customer_details['BccEmail'];
+	  $_SESSION['Bccemail'] = $customer_details['BccEmail'];
     
     if ( isset($_SESSION['Apoyar']) && $_SESSION['Roleid'] == 99 && $_SESSION['BMRoleid'] == 1 ) {
       redirect('bleckmann/customers');

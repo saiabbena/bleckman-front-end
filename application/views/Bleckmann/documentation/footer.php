@@ -1,84 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Untitled Document</title>
-</head>
-<body>
-<main class="main" role="main" id="main-content">
-  <div class="container">
-    <header class="page-title grid-16 desktop-16">
-      <div class="content">
-        <h1 class="title">Overview</h1>
-        <p class="subtitle">BleckMann webservice</p>
-      </div>
-    </header>
-    <div>
-      <ol class="api-menu">
-        <li class="first"><a href="introduction.php" class="active">Overview</a></li>
-        <li><a href="apicalls.php">Api Calls</a></li>
-        <li><a href="/apis/barcode-webservice/use-cases">Use Case</a></li>
-        <li><a href="/apis/barcode-webservice/documentation">Documentation</a></li>
-        <li class="last"><a href="/content/request-api-key">Request API Key</a></li>
-      </ol>
-    </div>
-    <nav class="sub-menu menu-toggle grid-3 portrait-hidden">
-      <h1 class="title">Contents</h1>
-      <a name="table-of-contents"></a>
-      <ol class="toc-node-numbers">
-        <li class="toc-node-level-1 first"><a href="#mode1"><span class="toc-text">Operation Mode1</span></a></li>
-        <li class="toc-node-level-1"><a href="#mode2"><span class="toc-text">Operation Mode2</span></a></li>
-		 <li class="toc-node-level-1"><a href="#mode3"><span class="toc-text">Operation Mode3</span></a></li>
-		 <li class="toc-node-level-1"><a href="#mode4"><span class="toc-text">Operation Mode4</span></a></li>
-		 <li class="toc-node-level-5"><a href="#mode5"><span class="toc-text">Operation Mode5</span></a></li>
-      </ol>
-    </nav>
-    <article class="portrait-8 grid-6 desktop-10">
-      <div class="portrait-8 grid-6 desktop-10">
-        <div class="content">
-          <div>
-            <div class="toc-item-anchor"><a name="mode1"></a></div>
-            <h2 class="h2 title toc-headings">Operation Mode1</h2>
-        <p> Operation Mode 1 is used to place a return order only with consumer information and without any order and order lines information, and this operation mode is performed by consumer.
-Note - In the this document you will encounter with word "baseurl" in the API CALLs, baseurl means 
-Base URL UAT - "api.bleckmann.apoyar.eu"</p>
-
-            <div class="toc-item-anchor"><a name="mode2"></a></div>
-            <h2 class="h2 title toc-headings toc-headings">Operation Mode2</h2>
-            <p>Operation Mode 2 is used to place a return order order and order lines information getting by using ConsumerEmail and Orderid, and this operation mode is performed by consumer.
-Note - In the this document you will encounter with word "baseurl" in the API CALLs, baseurl means 
-Base URL UAT - "api.bleckmann.apoyar.eu"
-</p>
-          
-            <div class="toc-item-anchor"><a name="mode3"></a></div>
-            <h2 class="h2 title toc-headings">Operation Mode3</h2>
-            <p>Operation Mode 3 is used to place a return order without order and orderlines information only with consumer information and which is placed by Customer Service Representative.
-Note - In the this document you will encounter with word "baseurl" in the API CALLs 
-Base URL UAT – "api.bleckmann.apoyar.eu"
-</p>
-            <div class="toc-item-anchor"><a name="mode4"></a></div>
-            <h2 class="h2 title toc-headings toc-headings">Operation Mode4</h2>
-            <p>Operation Mode 4 is used to place a return order with order and order lines information getting by using ConsumerEmail or Orderid or ConsumerName or Phone by that get response one or more Orders from that user will select a order by using selected order Consumeremail and Orderid getting the Order and orderliness and placing the returnorder with that information, and this operation mode is performed by Customer Service Representative.
-Note - In the this document you will encounter with word "baseurl" in the API CALLs, baseurl means 
-Base URL UAT - "api.bleckmann.apoyar.eu"
-</p>
-
-  <div class="toc-item-anchor"><a name="mode5"></a></div>
-            <h2 class="h2 title toc-headings toc-headings">Operation Mode5</h2>
-            <p>Operation Mode 5 means consuming the api calls by customer at their end and generating the return order label. Process used to place a return order with order and order lines information.
-Note - In this document you will encounter with word "baseurl" in the API CALLs, baseurl means 
-Base URL UAT - "api.bleckmann.apoyar.eu"
-Base URL LIVE- "returns.bleckmann.com:81/bmapi/bleckmannapi"
-
-</p>
-          </div>
-        </div>
-      </div>
-    </article>
-  </div>
-</main>
 <style type="text/css">
-  
+.details {
+    padding-left: 0px;
+}
+.details li {
+    list-style-type: none!important;
+}
 a {
     outline: medium none;
 }
@@ -3544,7 +3470,7 @@ body {
     font: 14px/1.5 Arial,Helvetica,sans-serif;
 }
 .call-me-now-container p.pcac_title, #TOL_koptekst1, #TOL_koptekst2 {
-    color: #001a73;
+    color: #575C6A;
     font-family: "PostNL-Medium",sans-serif;
     font-size: 1.71429em;
     font-weight: normal;
@@ -3553,7 +3479,7 @@ body {
     text-rendering: optimizelegibility;
 }
 .main .search-form label, .page-footer .title, .media-block .price-display, .form legend, .call-me-now-container .chat p.header, .call-me-now-container .whatsapp p.header {
-    color: #001a73;
+    color: #575C6A;
     font-family: "PostNL-Regular",sans-serif;
     font-size: 1.28571em;
     font-weight: normal;
@@ -3562,16 +3488,20 @@ body {
     text-rendering: optimizelegibility;
 }
 h1, .h1, h2, .h2 {
-    color: #001a73;
+    color: #575C6A;
     line-height: 1.1;
 }
+/*h2, .h2 {
+    color: #cc1543;
+    line-height: 1.1;
+}*/
 h3, .h3 {
     font-size: 1.28571em;
     line-height: 1.2;
     margin: 1.2em 0 0.18em;
 }
 h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-    color: #001a73;
+    color: #575C6A;
 }
 h1, .h1 {
     font-size: 1.85714em;
@@ -3615,7 +3545,7 @@ a {
     text-decoration: underline;
 }
 a:focus, a:hover {
-    color: #001a73;
+    color: #575C6A;
     outline: medium none;
 }
 a.link-nostyle {
@@ -3683,7 +3613,7 @@ table {
     width: 100%;
 }
 table strong {
-    color: #ed8c00;
+    color: #cc1543;
 }
 table ins {
     padding-left: 5px;
@@ -3693,7 +3623,7 @@ table.underlined tr {
     border-bottom: 1px solid #d2d2cc;
 }
 table.rates .title {
-    color: #001a73;
+    color: #575C6A;
     display: block;
     font-size: 1.07692em;
 }
@@ -4574,14 +4504,14 @@ blockquote.testimonial {
 }
 }
 .breadcrumbs {
-    color: #001a73;
+    color: #575C6A;
     font-size: 0.92857em;
 }
 .breadcrumbs p {
     margin-top: 20px;
 }
 .breadcrumbs a {
-    color: #001a73;
+    color: #575C6A;
     text-decoration: none;
 }
 .breadcrumbs a::after {
@@ -4680,7 +4610,7 @@ blockquote.testimonial {
     padding: 0;
 }
 .sub-menu a {
-    color: #001a73;
+    color: #575C6A;
     display: block;
     padding-left: 15px;
     text-decoration: none;
@@ -4690,12 +4620,15 @@ blockquote.testimonial {
     font-weight: bold;
 }
 .sub-menu a:hover {
-    color: #ed8c00;
+    color: #cc1543;
 }
 .sub-menu .menu-toggle::before {
     left: 0;
     position: absolute;
     text-indent: 0;
+}
+tr {
+    border-bottom: 1px solid #d2d2cc!important;
 }
 .sub-menu .menu-toggle {
     display: block;
@@ -4808,7 +4741,7 @@ blockquote.testimonial {
     right: auto;
 }
 .language-switch .language, .language-popup .language {
-    color: #001a73;
+    color: #575C6A;
     text-decoration: none;
 }
 .language-switch .language::before, .language-popup .language::before {
@@ -4846,7 +4779,7 @@ blockquote.testimonial {
     clear: both;
 }
 .language-popup h2.title {
-    color: #001a73;
+    color: #575C6A;
     margin: 15px 0 10px;
 }
 .language-popup div.description {
@@ -4891,7 +4824,7 @@ blockquote.testimonial {
     right: 25px;
 }
 .language-switch-dep a {
-    color: #001a73;
+    color: #575C6A;
     text-decoration: none;
 }
 .language-switch-dep a::before {
@@ -4914,7 +4847,7 @@ blockquote.testimonial {
     position: relative;
 }
 .page-header a {
-    color: #001a73;
+    color: #575C6A;
     text-decoration: none;
 }
 .page-header .icon-toggle {
@@ -5030,10 +4963,10 @@ blockquote.testimonial {
     margin-left: -6px;
 }
 .drop-down a {
-    color: #001a73;
+    color: #575C6A;
 }
 .drop-down a:hover {
-    color: #001a73;
+    color: #575C6A;
 }
 .drop-down a.button::before {
     display: none;
@@ -5042,7 +4975,7 @@ blockquote.testimonial {
     color: #989898;
 }
 .drop-down .items a:hover {
-    color: #001a73;
+    color: #575C6A;
 }
 .drop-down .items a::before {
     content: "";
@@ -5084,7 +5017,7 @@ blockquote.testimonial {
     margin: 0;
 }
 .global-search label {
-    color: #001a73;
+    color: #575C6A;
     font-size: 1.35714em;
 }
 .global-search .form-row .input {
@@ -5133,13 +5066,13 @@ blockquote.testimonial {
     transition: border-color 0.4s ease 0s;
 }
 .main-menu li.active a {
-    color: #001a73;
+    color: #575C6A;
 }
 .main-menu li.open {
     border-top-color: #b1b1b1;
 }
 .main-menu li.open > .menu-toggle {
-    background-color: #001a73;
+    background-color: #575C6A;
     color: #ffffff;
 }
 .main-menu li:first-child {
@@ -5486,7 +5419,7 @@ body.menu-overlay-faded .menu-overlay {
     color: #ed8c00;
 }
 .drop-down a.more:hover {
-    color: #001a73;
+    color: #575C6A;
 }
 .drop-down .children a {
     display: none;
@@ -5512,7 +5445,7 @@ body.menu-overlay-faded .menu-overlay {
     top: -1px;
 }
 .drop-down .column > a, .drop-down .footer a {
-    color: #001a73;
+    color: #575C6A;
 }
 .drop-down .column > a:hover, .drop-down .column > a:focus, .drop-down .footer a:hover, .drop-down .footer a:focus {
     color: #ed8c00;
@@ -5600,7 +5533,7 @@ body.menu-overlay-faded .menu-overlay {
 .main-menu li.login-options.hover .has-children, .main-menu li.login-options:hover .has-children, .main-menu li.login-options:focus .has-children {
     background-color: #f0f0ec !important;
     border-bottom-left-radius: 0;
-    color: #001a73 !important;
+    color: #575C6A !important;
     margin: 0;
     padding: 2px 40px 2px 10px;
 }
@@ -5743,7 +5676,7 @@ body.menu-overlay-faded .menu-overlay {
     font-size: 1.42857em;
 }
 .overview .item .title a {
-    color: #001a73;
+    color: #575C6A;
     text-decoration: none;
 }
 .overview .item .title, .overview .item .date-display {
@@ -5938,7 +5871,7 @@ body.menu-overlay-faded .menu-overlay {
     padding: 0;
 }
 .category-links .link {
-    color: #001a73;
+    color: #575C6A;
     text-decoration: none;
 }
 .category-links .link.small {
@@ -5985,7 +5918,7 @@ body.menu-overlay-faded .menu-overlay {
     text-decoration: underline;
 }
 .category-links .category:hover .link.heading {
-    color: #001a73;
+    color: #575C6A;
     text-decoration: none;
 }
 .share-price .price {
@@ -5998,7 +5931,7 @@ body.menu-overlay-faded .menu-overlay {
     color: #d52b1e;
 }
 .strong {
-    color: #001a73;
+    color: #575C6A;
     font-size: 1.14286em;
 }
 .quadia-video iframe {
@@ -6134,7 +6067,7 @@ body.menu-overlay-faded .menu-overlay {
     margin-left: 0;
 }
 .main .search-form label {
-    color: #001a73;
+    color: #575C6A;
     display: block;
     font-size: 1.07143em;
     margin-bottom: 1em;
@@ -6424,7 +6357,7 @@ form.search-form {
     margin-top: 0;
 }
 .search-results .result a {
-    color: #001a73;
+    color: #575C6A;
     text-decoration: none;
 }
 .search-results .result a:visited {
@@ -6487,7 +6420,7 @@ form.search-form {
 }
 .page-footer .killer-app-links {
     border-top: 1px solid #c8c8c2;
-    color: #001a73;
+    color: #575C6A;
     font-size: 1.41667em;
     line-height: 1.2;
     margin: 0 10px;
@@ -6511,7 +6444,7 @@ form.search-form {
     position: absolute;
 }
 .page-footer .killer-app-links a:focus, .page-footer .killer-app-links a:hover {
-    color: #001a73;
+    color: #575C6A;
     text-decoration: none;
 }
 .page-footer .killer-app-links img {
@@ -6529,7 +6462,7 @@ form.search-form {
     text-decoration: none;
 }
 .page-footer a:focus, .page-footer a:hover {
-    color: #001a73;
+    color: #575C6A;
     text-decoration: underline;
 }
 .page-footer .children a {
@@ -6591,7 +6524,7 @@ form.search-form {
     display: none;
 }
 .page-footer .social-media .icon:hover::before {
-    color: #001a73;
+    color: #575C6A;
 }
 .global-links {
     background-color: #ed8c00;
@@ -6696,7 +6629,7 @@ form.search-form {
 .locationpicker-killerapp .geo-finder-geo {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: medium none;
-    color: #001a73;
+    color: #575C6A;
     display: block;
     float: right;
     font-size: 1.4em;
@@ -6777,7 +6710,7 @@ html.geolocation .location-picker .location-picker-controls .form .geo-finder-qu
 html.geolocation .location-picker .location-picker-controls .form .geo-finder-geo, html.geolocation .location-picker .post-delay-controls .form .geo-finder-geo, html.geolocation .location-picker .post-controls .form .geo-finder-geo, html.geolocation .post-delay .location-picker-controls .form .geo-finder-geo, html.geolocation .post-delay .post-delay-controls .form .geo-finder-geo, html.geolocation .post-delay .post-controls .form .geo-finder-geo, html.geolocation .map-big .location-picker-controls .form .geo-finder-geo, html.geolocation .map-big .post-delay-controls .form .geo-finder-geo, html.geolocation .map-big .post-controls .form .geo-finder-geo {
     background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
     border: medium none;
-    color: #001a73;
+    color: #575C6A;
     display: block;
     float: right;
     font-size: 1.4em;
@@ -6927,7 +6860,7 @@ html.geolocation .location-picker .location-picker-controls .form .geo-finder-ge
     position: relative;
 }
 .more-details .details-title::before {
-    background-color: #001a73;
+    background-color: #575C6A;
     border-radius: 3px;
     color: #ffffff;
     content: "+";
@@ -9148,7 +9081,7 @@ oo-2col oo-padding {
     margin-bottom: 20px;
 }
 .page-title .subtitle {
-    color: #ed8c00;
+    color: #cc1543;
     font-size: 2.14286em;
     line-height: 1.2;
     margin: 0 0 20px;
@@ -15847,17 +15780,17 @@ body {
     margin: 1.2em 0 0.18em;
     text-rendering: optimizelegibility;
 }
-h1, .h1, h2, .h2 {
-    color: #001a73;
+/*h1, .h1, h2, .h2 {
+    color: #575C6A;
     line-height: 1.1;
-}
+}*/
 h3, .h3 {
     font-size: 1.28571em;
     line-height: 1.2;
     margin: 1.2em 0 0.18em;
 }
 h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-    color: #001a73;
+    color: #575C6A;
 }
 h1, .h1 {
     font-size: 1.85714em;
@@ -15968,9 +15901,9 @@ table {
     font-size: 0.92857em;
     width: 100%;
 }
-table strong {
+/*table strong {
     color: #ed8c00;
-}
+}*/
 table ins {
     padding-left: 5px;
     white-space: nowrap;
@@ -18543,17 +18476,17 @@ body {
     margin: 1.2em 0 0.18em;
     text-rendering: optimizelegibility;
 }
-h1, .h1, h2, .h2 {
-    color: #001a73;
+/*h1, .h1, h2, .h2 {
+    color: #575C6A;
     line-height: 1.1;
-}
+}*/
 h3, .h3 {
     font-size: 1.28571em;
     line-height: 1.2;
     margin: 1.2em 0 0.18em;
 }
 h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
-    color: #001a73;
+    color: #575C6A;
 }
 h1, .h1 {
     font-size: 1.85714em;
@@ -18664,9 +18597,9 @@ table {
     font-size: 0.92857em;
     width: 100%;
 }
-table strong {
+/*table strong {
     color: #ed8c00;
-}
+}*/
 table ins {
     padding-left: 5px;
     white-space: nowrap;
@@ -22604,7 +22537,7 @@ article.block.calamity.error a, article.block.calamity.error .title, article.blo
     padding-right: 2em;
 }
 .api-menu > li > a {
-    color: #001a73;
+    color: #575C6A;
     font-family: "PostNL-Regular",sans-serif;
     font-size: 1.3em;
     font-weight: normal;
@@ -22614,7 +22547,7 @@ article.block.calamity.error a, article.block.calamity.error .title, article.blo
     transition: border-right 0s ease 0s, transform 0s ease 0s;
 }
 .api-menu > li > a.active {
-    color: #ed8c00;
+    color: #cc1543;
 }
 #login form, #login .form {
     padding: 0;
@@ -22725,5 +22658,5 @@ article.taxonomy-term img.picto {
 }
 
   </style>
-</body>
+  </body>
 </html>
