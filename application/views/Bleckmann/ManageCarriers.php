@@ -25,10 +25,10 @@
 			    		
 			    		<input type="hidden" name="FKCountryID" id="FKCountryID" value="">
 				    	<div class="col-md-12">
-				    		<div class="col-md-3">
+				    		<div class="col-md-2">
 								<?php
 									echo '<div class="form-group" id="select-carrier-div"><label>Select a Carrier</label><select id="FKCarrierId" name="FKCarrierId" class="form-control">';
-									echo '<option value="-1">Select a Carrier</option>';
+									echo '<option value="-1"></option>';
 									for($i=0;$i<count($carriers);$i++) {
 										if ($carriers[$i]['Isactive']) {
 											echo '<option value="'. $carriers[$i]['PKCarrierID'] . '">' . $carriers[$i]['CarrierName'] . '</option>';
@@ -43,7 +43,7 @@
 										echo '<div class="form-group" id="select-carrier-div">
 										
 										<label>Select a Country</label><select   class="form-control">';
-										echo '<option value="-1">Select a Country</option>';
+										echo '<option value="-1"></option>';
 										for($i=0;$i<count($allCountries);$i++) {
 											echo '<option value="'. $allCountries[$i]['PKCountryId'] . '">' . $allCountries[$i]['CountryName'] . '</option>';
 										}
@@ -54,17 +54,32 @@
 							<div class="col-md-3" >
 								<?php
 									echo '<div class="form-group" id="select-warehouse-div"><label>Select a Warehouse</label><select id="select-warehouse" name="Warehouseid" class="form-control">';
-									echo '<option value="-1">Select a Warehouse</option>';
+									echo '<option value="-1"></option>';
 									for($i=0;$i<count($allWarehouses);$i++) {
 										echo '<option value="'. $allWarehouses[$i]['WarehouseID'] . '">' . $allWarehouses[$i]['Name'] . '</option>';
 									}
 									echo '</select></div>';
 								?>
 							</div>
-							<div class="col-md-3" style="text-align: center;margin-top: 38px;">
+							<div class="col-md-3">
+								<div class="form-group" style="text-align: center;">
+										<label>Preffered Carrier?
+										</label>
+									<div class="checkbox" >
+										<label>
+											<input type="checkbox" name="PreferredCarrier">
+										</label>
+										
+									</div>
+								</div>
+							</div>
+							<div class="col-md-1" style="margin-left:-30px;margin-top: 38px;">
 								<button type="submit" id='setSettings' class='btn btn-raised btn-warning'>Add</button>
 								<br>
 							</div>
+						</div>
+						<div class="col-md-12">
+
 						</div>
 					</form>
 			    </div>
@@ -74,17 +89,18 @@
 			    <br>
 			    <div class="row">
                 
-                <div class="col-md-10">
+                <div class="col-md-12">
 						<!--<h4 id="manage_carrier_search" class="pull-right"></h4>-->
 					
 			    	<div class="col-md-12">
 				    	<table class="table table-responsive" id="example">
 				    		<thead>
 					    		<tr>
-					    			<th style="width: 86px;">Carrier</th>
-					    			<th style="width: 100px;">Country</th>
-					    			<th style="width: 166px;">Warehouse</th>
-					    			<th style="width: 267px;">Manage Carrier Settings</th>
+					    			<th style="width: 10%;">PreferredCarrier</th>
+					    			<th style="width: 10%;">Carrier</th>
+					    			<th style="width: 20%;">Country</th>
+					    			<th style="width: 20%;">Warehouse</th>
+					    			<th style="width: 40%;">Manage Carrier Settings</th>
 					    		</tr>
 				    		</thead>
 				    		<tbody>
@@ -95,6 +111,16 @@
 									
 					    			for($i=0;$i<count($allSettings);$i++) {
 					    				echo '<tr>';
+					    				echo '<td style="text-align:center;">
+		              								<div class="checkbox">
+		                								<label style="padding-top:7px;">
+		                								<input type="hidden" name="prefCarrier" value="0">
+		                								<input type="checkbox" disabled="disabled" name="prefCarrier" value="1" '.
+										                ((int)($allSettings[$i]['PreferredCarrier'] > 0 ) ? " checked='checked'" : "")
+										                .' >
+										                </label>
+										              </div>
+					    						</td>';
 					    				echo '<td><div class="carrier_info"><br>' . $allSettings[$i]['CarrierName'] .'</div></td>';
 					    				echo '<td><div class="country_info"><br>' . $allSettings[$i]['CountryName'] .'</div></td>';
 					    				echo '<td><div class="location_info"><br>' . $allSettings[$i]['LocationName'] .'</div></td>';
@@ -168,6 +194,15 @@
 											}
 										}
 										echo '</select></div>';
+										echo '<div class="col-md-12">
+												<div class="form-group" >
+													<div class="checkbox" >
+														<label>Set as preffered carrier? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+															<input type="checkbox" name="PreferredCarrier">
+														</label>
+													</div>
+												</div>
+											</div>';
 									    echo '<input type="hidden" name="PKCCWId" value="'. $allSettings[$i]['PKCCWId'].'">';
 			    						echo '<input type="hidden" name="FkCustomerid" id="FkCustomerid" value="'. $customerId . '">
 			    							<input type="hidden" name="FKCarrierId" id="FKCarrierId1" value="'.$allSettings[$i]['FKCarrierId'].'">
