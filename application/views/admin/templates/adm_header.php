@@ -17,7 +17,7 @@
        var language="English";
        var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
 	   var baseurl="'. base_url() .'";
-	   var ApoyarUrl="'.$apoyarurl.'";
+	   var ApoyarUrlHdr="'.$apoyarurl.'";
     </script>';	
     ?>	
     <!--Meta tags-->

@@ -1,13 +1,23 @@
 $(document).ready(function() {
 	
 	//Add a request header for each AJAX request
+	/*
 	$.ajaxSetup({
 		headers: {
-			Apoyar: apoyarToken
-			,ApoyarUrl:ApoyarUrlHdr
+			'Apoyar': apoyarToken,
+			'Referer': ApoyarUrlHdr
 		}	
-	});
+	});*/
 	
+	
+	$.ajaxSetup({
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader('Apoyar', apoyarToken);
+			xhr.setRequestHeader('ApoyarUrl', ApoyarUrlHdr);
+		}
+	});	
+	
+	//console.log(apoyarToken+'-------'+ApoyarUrlHdr);	
 	$.validator.addMethod("regex", function(value, element, regexpr) {          
      return regexpr.test(value);
    }, "Please enter a valid pasword.");
@@ -60,10 +70,7 @@ $(document).ready(function() {
 			//console.log("apiCall : " + apiCall);
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
@@ -132,10 +139,7 @@ $(document).ready(function() {
 			//console.log("apiCall : " + apiCall);
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken 
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	//console.log("response data : ");
@@ -623,10 +627,7 @@ $(document).ready(function() {
 			apiCall=url+'user/GetUsersbyCustomeridandUnassigned';
 		    $.ajax({
 		      url: apiCall,
-		      type: 'get',
-			  headers: {
-				Apoyar: apoyarToken
-			  },
+		      type: 'get',			  
 		      data: { customerid: custid },
 		      dataType: 'json',
 		      success: function (response) {
@@ -758,9 +759,7 @@ $(document).ready(function() {
 			$.ajax({
 		        url: apiCall,
 		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	//console.log("response data : ");
@@ -1104,9 +1103,7 @@ $(document).ready(function() {
 			  $.ajax({
 		      url: apiCall,
 		      type: 'get',
-			  headers: {
-				Apoyar: apoyarToken
-			  },		      
+			  
 		      dataType: 'json',
 		      success: function (response) {
 				  var arrStatus = {}; // fieldArray object instead of array
@@ -1146,10 +1143,7 @@ $(document).ready(function() {
 			 
 			 $.ajax({
 		      url: apiCall,
-		      type: 'get',
-			  headers: {
-				Apoyar: apoyarToken
-			  },
+		      type: 'get',			  
 		      data: { Customerid: customerId },
 		      dataType: 'json',
 		      success: function (response) {
@@ -1187,8 +1181,7 @@ $(document).ready(function() {
 			$('#filter_carrier').prop('disabled', 'disabled');
 			$('#filter_ordstatus').prop('disabled', 'disabled');
 			
-			// apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
-			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
+			
 			//console.log("apoyarToken : " + apoyarToken );
 			var searchInput={};
 			
@@ -1239,17 +1232,16 @@ $(document).ready(function() {
 			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
 			console.log(searchInput);			
 			//console.log(apoyarToken);
+			// apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
+			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
 			$.ajax({
 			  url: apiCall,
 			  type: 'post',
-			  data: searchInput,
-			  headers: {
-				  Apoyar: apoyarToken
-			  },
+			  data: searchInput,			  
 			  dataType: 'json',
 			  success: function (response) {
 				$('.loading-screen').slideUp('slow');
-				console.log(response);				
+				//console.log(headers);				
 				//Load the entire Orders Data with HTML
 				renderReturnOrders(response);
 
@@ -1280,9 +1272,8 @@ $(document).ready(function() {
 			exportRetrieveReturnOrders(customerId, 1, pagesize);
 		}
 		//Call function to export Orders as csv
-		function exportRetrieveReturnOrders(customerId, pageno, pagesize){
+		function exportRetrieveReturnOrders(customerId, pageno, pagesize){	
 			
-			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
 			//console.log("apoyarToken : " + apoyarToken );
 			var searchInput={};
 			
@@ -1328,15 +1319,12 @@ $(document).ready(function() {
 			console.log(searchInput);
 
 
-			
+			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
 			//console.log(apoyarToken);
 			$.ajax({
 			  url: apiCall,
 			  type: 'post',
-			  data: searchInput,
-			  headers: {
-				  Apoyar: apoyarToken
-			  },
+			  data: searchInput,					  
 			  dataType: 'json',
 			  success: function (response) {
 				//$('.loading-screen').slideUp('slow');
@@ -1398,10 +1386,7 @@ $(document).ready(function() {
 		    console.log(inputData);
 		    $.ajax({
 		      url: apiCall,
-		      type: 'POST',
-		      headers: {
-		        Apoyar: apoyarToken
-		      },
+		      type: 'POST',		      
 		      dataType: 'json',
 		      data:inputData,
 		      success: function(response) {
@@ -1440,10 +1425,7 @@ $(document).ready(function() {
 			var apiCall=url+'returnorder/GetBMReturnOrderlinesbyReturnOrderid?ReturnId=' + ReturnId;
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	//console.log("response data : ");
@@ -1648,10 +1630,7 @@ $(document).ready(function() {
 			if ( predefinedGlobalSettings.length == 0 ) {
 				$.ajax({
 			        url: apiCall,
-			        type: 'GET',
-				    headers: {
-				        Apoyar: apoyarToken
-				    },
+			        type: 'GET',				    
 			        dataType: 'json',
 			        success: function(data) {
 			        	predefinedGlobalSettings = data;
@@ -1703,10 +1682,7 @@ $(document).ready(function() {
 			//if ( predefinedSettings.length == 0 ) {
 				$.ajax({
 			        url: apiCall,
-			        type: 'GET',
-				    headers: {
-				        Apoyar: apoyarToken
-				    },
+			        type: 'GET',				    
 			        dataType: 'json',
 			        success: function(data) {
 						
@@ -1818,10 +1794,7 @@ $(document).ready(function() {
 			console.log("apiCall : " + apiCall);
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
@@ -1953,10 +1926,7 @@ $(document).ready(function() {
 			$.ajax({
 			  url: apiCall,
 			  type: 'post',
-			  data: postData,
-			  headers: {
-				  Apoyar: apoyarToken
-			  },
+			  data: postData,			  
 			  dataType: 'json',
 			  success: function (response) {
 				//$('.loading-screen').slideUp('slow');
@@ -1988,10 +1958,7 @@ $(document).ready(function() {
 			$.ajax({
 			  url: apiCall,
 			  type: 'post',
-			  data: postData,
-			  headers: {
-				  Apoyar: apoyarToken
-			  },
+			  data: postData,			  
 			  dataType: 'json',
 			  success: function (response) {
 				//$('.loading-screen').slideUp('slow');
@@ -2019,10 +1986,7 @@ $(document).ready(function() {
 			console.log("apiCall : " + apiCall);
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
@@ -2058,10 +2022,7 @@ $(document).ready(function() {
 			console.log("CountryCode :" + array[5]);
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
@@ -2113,10 +2074,7 @@ $(document).ready(function() {
 			console.log(apoyarToken);
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 					
@@ -2298,9 +2256,7 @@ $(document).ready(function() {
 			  url: apiCall,
 			  type: 'post',
 			  data:  $('form#fromSaveKeywords').serializeArray(),
-			  headers: {
-				  Apoyar: apoyarToken
-			  },
+			  
 			  dataType: 'json',
 			  success: function (response) {				
 				$('#keywords_by_langid').val($("#keywords_by_langid").val()).trigger('change');				
@@ -2331,10 +2287,7 @@ $(document).ready(function() {
 				var apiCall=url+'Translation/GetTranslationsbyLanguageid?Languageid=' + Languageid;
 				$.ajax({
 					url: apiCall,
-					type: 'GET',
-					headers: {
-						Apoyar: apoyarToken
-					},
+					type: 'GET',					
 					dataType: 'json',
 					success: function(dataTrans) {
 						//console.log("response data : ");
@@ -2382,6 +2335,9 @@ $(document).ready(function() {
 			clonetable.tableToCSV();
 		}, 2000);		
 		
-	});	
+	});
+	$('#btn_save_final_warehouse').click(function(){
+		
+	});
 		
 });
