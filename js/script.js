@@ -14,12 +14,12 @@ var mode = 2;
 var om1 = false;
 
 //Add a request header for each AJAX request
-	$.ajaxSetup({
-		headers: {
-			Apoyar: apoyarToken
-			,ApoyarUrl:ApoyarUrlHdr
-		}	
-	});
+	// $.ajaxSetup({
+	// 	headers: {
+	// 		Apoyar: apoyarToken
+	// 		,ApoyarUrl:ApoyarUrlHdr
+	// 	}	
+	// });
 function getCustomerSettings(callback){
   apiCall=url+'ReturnReason/GetAllReturnReasonsbyCustomerid';
   $.get(apiCall, {'Customerid': customerId})
@@ -404,7 +404,7 @@ $(document).ready(function(){
       return false 
     });
     //change load
-    $('#button1').click(function(){
+    $('#button1').click(function(){ 
       console.log('working');
       var inputData={'Orderid': $('#f2').val(), 'Email': $('#f1').val(), Customerid: customerId};
       console.log('THIS IS INPUT DATA');
