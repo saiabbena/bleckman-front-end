@@ -262,8 +262,13 @@ class Bleckmann extends CI_Controller {
   }  
   public function setCustomerCarrier(){
     print_r(json_encode($_POST));
+    if ( isset($_POST['PreferredCarrier'])) {
+      $_POST['PreferredCarrier'] = 'true';
+    }
+    print_r(json_encode($_POST));
+    //exit();
     $server_output = $this->httpRequests->httpPost('carrier/PostCarriertoCustomer', json_encode($_POST) );
-    //echo json_encode($server_output);
+    //echo json_encode($server_output);exit();
     if ( $server_output['Status'] == 1) { 
       $_SESSION['message']['carrier_panel']='Saved';
       $_SESSION['message']['alert_status']='success';
