@@ -182,6 +182,7 @@ class Bleckmann extends CI_Controller {
       'Customerid'=>$data['customerId']
     );    
     $data['allSettings'] = $this->httpRequests->httpGet('carrier/GetCarrierSettingbyCustomerid', $req);
+	//echo json_encode($data['allSettings']);exit();
 
 	//echo json_encode($data['allSettings']);exit();
     $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req);

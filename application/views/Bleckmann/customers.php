@@ -43,7 +43,7 @@
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
 	  				echo '<div class="col-xs-12 col-sm-4 col-md-3 entry" height="100%">
 							<div class="well" style="border-bottom: 5px solid #7C6062;">
-								<div class="customer_name"><h2><center>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</center></h2><h4><center>'.
+								<div class="customer_name"><h2 class="hdr_customer_name"><center>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</center></h2><h4 class="hdr_customer_id"><center>'.
 								$allCustomers[$i]['Customerid'].'&nbsp;</center></h4></div>
 								
 								<center><a data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" href="#" class="edit-customer-pop"><img src="'.base_url().'/img/settings-btn.png" class="settings-btn-link img-responsive"></a></center>
@@ -73,9 +73,9 @@
 						}
 					echo '</div></div>';
 							echo '<div class="row">
-									<div class="col-md-12">
-										<a class="" href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a> &nbsp; | 
+									<div class="col-md-12">										 
 										<a class="" href="managecarriers?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Manage Carriers</a>
+										| <a data-toggle="modal" data-target="#export_carrier_div" class="export_carrier" id="'.$allCustomers[$i]['PKCustomerID'].'" href="javascript:void(0)">Export Carriers</a>
 									</div>
 								</div>
 								<div class="row">
@@ -88,6 +88,11 @@
 									<div class="col-md-12">
 										<a href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a> | 
 										<a href="settings?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Settings</a>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12">
+										<a class="" href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a> &nbsp;										
 									</div>
 								</div>
 								<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-warning pull-right">Delete</button>
@@ -214,6 +219,24 @@
 		</div>
 	</div>
 </div>
+	<!-- Export Carrier List according to the Customer -->
+	<div id="export_carrier_div" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="padding:20px;">				
+				<table  id="export_carrier_data" cellspacing="10" cellpadding="10">
+					<thead>						
+						<tr>						  
+						  <th class="col-md-3">CarrierName</th>
+						  <th class="col-md-3">Country</th>
+						  <th class="col-md-3">Warehouse ID</th>							  
+						  <th class="col-md-2">Warehouse Name</th>				  			  
+						</tr>				
+					 </thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>				
+	</div>	
 
         <!-- Add Customer Modal -->
         <div class="modal fade" id="add-customer-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

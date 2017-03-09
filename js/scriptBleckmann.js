@@ -2336,8 +2336,70 @@ $(document).ready(function() {
 		}, 2000);		
 		
 	});
-	$('#btn_save_final_warehouse').click(function(){
+	$('.export_carrier').click(function(){
+		var customer_id = $(this).attr('id');
+		console.log(customer_id);
+		var customer_name = $(this).parent().parent().parent().find('h2').text();
+		var customer_code   = $(this).parent().parent().parent().find('h4').text();
+		$("#export_carrier_div thead tr:eq(1) th:nth-child(1)").text('Customer Name : '+customer_name);		
+		exportCarriers(customer_id, customer_name, customer_code);
 		
 	});
+	//Call function to export Orders as csv
+	function exportCarriers(customerId, customer_name, customer_code){
+		//customerdata['Customerid'] = customerId;		
+		apiCall=url+'carrier/GetCarrierSettingbyCustomerid?Customerid='+customerId;
+			//console.log(apoyarToken);
+			$.ajax({
+			  url: apiCall,
+			  type: 'get',			  					  
+			  dataType: 'json',
+			  success: function (data) {				
+				//console.log(data);
+				var html = '';
+				
+				//var customer_name = $(this).parent().parent().closest("div h2").text();
+				//console.log(customer_name);
+				
+				for(i=0; i<data.length; i++){					
+					
+					html=html+'\<tr>\
+						  <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].CountryName+'</td>\
+						  \
+						   <td style="white-space: nowrap;">'+data[i].Warehouseid+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].LocationName+'</td>\
+						  \
+						  ';					  					  
+						  html=html+ '</tr>\
+						';
+				}
+				html=html+'\<tr>\
+						  <td style="white-space: nowrap;">Customer Name:'+customer_name+'</td>\
+						  \
+						  <td style="white-space: nowrap;">Customer Code:'+customer_code+'</td>\
+						  \
+						   <td style="white-space: nowrap;">'+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+'</td>\
+						  \
+						  ';					  					  
+						  html=html+ '</tr>\
+						';
+				//console.log(html);						
+				$('#export_carrier_data > tbody').html(html);
+				setTimeout(function(){
+					var clonetable = $('#export_carrier_div table').clone();					
+					clonetable.tableToCSV();
+				}, 2000);
+			  },
+			  fail: function(){
+				console.log(data);
+			  }
+			});
+					
+	}
 		
 });
