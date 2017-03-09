@@ -14,15 +14,32 @@
 			        ?>
 			        </div>
 			    </div>
+				<div class="row align-text-bottom">						
+					<div class=" col-md-4">
+					<form method="POST" id="save-op-modes" action="saveFinalWarehouse">
+						<input type="hidden" name="PKCustomerID" value="<?php echo $customerId; ?>">						
+						<?php					
+							//print_r($allWarehouses);
+							echo '<div class="form-group" id="final_warehouse_div"><label><h4>Final Warehouse Location</h4></label><select id="final_warehouse" name="Finalwarehouseid" class="form-control">';
+							echo '<option value="-1">Select Warehouse</option>';
+							for ($i=0; $i<count($allWarehouses); $i++) {
+								$selected = ($Finalwarehouseid == $allWarehouses[$i]['PKWarehouseID'])?'selected':'';
+								echo '<option '.$selected.' value="'. $allWarehouses[$i]['PKWarehouseID'] . '">' . $allWarehouses[$i]['Name']. '</option>';
+								}
+							echo '</select></div>';
+					?></div>
+					<div class=" col-md-4 align-text-bottom"><button type="submit" id='btn_save_final_warehouse' class='btn btn-raised btn-success' style="margin-top:72px;">Save</button></div></form>
+				</div>
 			    <form method="POST" id="save-op-modes" action="saveOpModes">
 				    <div class="row">
 				    	<div class="col-md-12">
 				    		<button type="submit" id='save-opmodes' class='btn btn-raised btn-success pull-right'>Save</button>
 				    	</div>
 				    </div>
+					
 				    <div class="row">
 					    <div class=" col-md-10">
-
+							
 							<table style="width: 100%" class='table'>
 								<thead>
 									<tr>
