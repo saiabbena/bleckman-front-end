@@ -10,12 +10,12 @@ $(document).ready(function() {
 	});*/
 	var customer_add='true';
 	
-	// $.ajaxSetup({
-	// 	beforeSend: function(xhr) {
-	// 		xhr.setRequestHeader('Apoyar', apoyarToken);
-	// 		xhr.setRequestHeader('ApoyarUrl', ApoyarUrlHdr);
-	// 	}
-	// });	
+	$.ajaxSetup({
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader('Apoyar', apoyarToken);
+	//		xhr.setRequestHeader('ApoyarUrl', ApoyarUrlHdr);
+		}
+	});	
 	
 	//console.log(apoyarToken+'-------'+ApoyarUrlHdr);	
 	$.validator.addMethod("regex", function(value, element, regexpr) {          
