@@ -1033,9 +1033,7 @@ $(document).ready(function() {
 		  }
 		  //Print Export as CSV
 		  function ExportRenderReturnOrders(raw_data){
-			html='';
-			html2='';
-			html3='';			
+						
 			var total_num_records = raw_data['TotRecords'];
 			var page_count = raw_data['Count'];
 			var pagination_html = '';
@@ -1048,7 +1046,7 @@ $(document).ready(function() {
 			//console.log(data['ReturnOrders'].[0].ReturnId);
 			//console.log(raw_data['PageNo']);
 			//console.log(raw_data['pagesize']);
-					
+			var html = '<caption>'+'Export-Orders-'+'</caption>';		
 			for(i=0; i<raw_data['ReturnOrders'].length; i++){
 				var data = raw_data['ReturnOrders'];				
 				//console.log("i: " + data[i].ReturnsOrderCreationDate);
@@ -1071,7 +1069,7 @@ $(document).ready(function() {
 				 }
 				if(data[i].ReturnOrderTotalRefundAmount.toFixed(2) > 0){
 					RORefAmount = data[i].ReturnOrderTotalRefundAmount.toFixed(2);
-				}
+				}				
 				html=html+'\<tr>\
 					  <td style="white-space: nowrap;" class="dateval">'+resultDate+'</td>\
 					  \
@@ -2356,17 +2354,22 @@ $(document).ready(function() {
 			  dataType: 'json',
 			  success: function (data) {				
 				//console.log(data);
-				var html = '';
-				
-				//var customer_name = $(this).parent().parent().closest("div h2").text();
-				//console.log(customer_name);
+				var html = '<caption>'+customer_name+'-Carriers'+'</caption>';								
 				
 				for(i=0; i<data.length; i++){					
 					
 					html=html+'\<tr>\
+						  <td style="white-space: nowrap;">'+customer_name+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+customer_code+'</td>\
+						  \
 						  <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
 						  \
+						  <td style="white-space: nowrap;">'+data[i].FKCarrierId+'</td>\
+						  \
 						  <td style="white-space: nowrap;">'+data[i].CountryName+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].CountryCode+'</td>\
 						  \
 						   <td style="white-space: nowrap;">'+data[i].Warehouseid+'</td>\
 						  \
@@ -2376,18 +2379,7 @@ $(document).ready(function() {
 						  html=html+ '</tr>\
 						';
 				}
-				html=html+'\<tr>\
-						  <td style="white-space: nowrap;">Customer Name:'+customer_name+'</td>\
-						  \
-						  <td style="white-space: nowrap;">Customer Code:'+customer_code+'</td>\
-						  \
-						   <td style="white-space: nowrap;">'+'</td>\
-						  \
-						  <td style="white-space: nowrap;">'+'</td>\
-						  \
-						  ';					  					  
-						  html=html+ '</tr>\
-						';
+				
 				//console.log(html);						
 				$('#export_carrier_data > tbody').html(html);
 				setTimeout(function(){

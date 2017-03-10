@@ -1,15 +1,15 @@
 <div class='col-xs-12 col-md-9' height='100%'>
 	<div class='container-fluid'>
 		<div class='well' id='ap-panel'  style="border-bottom: 15px solid #E25176; padding-bottom: 40px;" >		
-	    	<h3>Operation Modes - <?php echo $customerName; ?></h3>
+	    	<h3>Final Warehouse Settings</h3>
 
 				<div class="row">
 					<div class="col-md-12">
 					<?php
-			          if(isset($_SESSION['message']['settings_panel'])){
+			          if(isset($_SESSION['message']['final_warehouse_settings_panel'])){
 			            echo'
 			            <div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">
-			              '.$_SESSION['message']['settings_panel'].'</div>';
+			              '.$_SESSION['message']['final_warehouse_settings_panel'].'</div>';
 			          }
 			        ?>
 			        </div>
@@ -30,6 +30,19 @@
 					?></div>
 					<div class=" col-md-4 align-text-bottom"><button type="submit" id='btn_save_final_warehouse' class='btn btn-raised btn-success' style="margin-top:72px;">Save</button></div></form>
 				</div>
+				<hr />				
+				<h3>Operation Modes - <?php echo $customerName; ?></h3>
+				<div class="row">
+					<div class="col-md-12">
+					<?php
+			          if(isset($_SESSION['message']['OM_settings_panel'])){
+			            echo'
+			            <div class="alert alert-dismissible alert-' . $_SESSION['message']['alert_status'] . '">
+			              '.$_SESSION['message']['OM_settings_panel'].'</div>';
+			          }
+			        ?>
+			        </div>
+			    </div>
 			    <form method="POST" id="save-op-modes" action="saveOpModes">
 				    <div class="row">
 				    	<div class="col-md-12">

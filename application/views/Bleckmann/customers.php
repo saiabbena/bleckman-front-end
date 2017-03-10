@@ -74,8 +74,7 @@
 					echo '</div></div>';
 							echo '<div class="row">
 									<div class="col-md-12">										 
-										<a class="" href="managecarriers?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Manage Carriers</a>
-										| <a data-toggle="modal" data-target="#export_carrier_div" class="export_carrier" id="'.$allCustomers[$i]['PKCustomerID'].'" href="javascript:void(0)">Export Carriers</a>
+										<a class="" href="managecarriers?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Manage Carriers</a>										
 									</div>
 								</div>
 								<div class="row">
@@ -95,7 +94,8 @@
 										<a class="" href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a> &nbsp;										
 									</div>
 								</div>
-								<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-warning pull-right">Delete</button>
+								<a alt="Export Carriers" title="Export Carriers" class="export_carrier btn btn-raised btn-success btn-sm pull-left" id="'.$allCustomers[$i]['PKCustomerID'].'" href="javascript:void(0)"><span class="glyphicon glyphicon-export"></span> Carriers</a>
+								<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-warning pull-right btn-sm">Delete</button>
 								<br>
 								<br>
 								</p>
@@ -225,9 +225,13 @@
 			<div class="modal-content" style="padding:20px;">				
 				<table  id="export_carrier_data" cellspacing="10" cellpadding="10">
 					<thead>						
-						<tr>						  
-						  <th class="col-md-3">CarrierName</th>
+						<tr>
+						  <th class="col-md-3">Customer Name</th>
+						  <th class="col-md-3">Customer ID</th>
+						  <th class="col-md-3">Carrier Name</th>
+						  <th class="col-md-3">Carrier ID</th>
 						  <th class="col-md-3">Country</th>
+						  <th class="col-md-3">Country Code</th>
 						  <th class="col-md-3">Warehouse ID</th>							  
 						  <th class="col-md-2">Warehouse Name</th>				  			  
 						</tr>				
