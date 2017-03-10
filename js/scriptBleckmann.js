@@ -8,12 +8,12 @@ $(document).ready(function() {
 			'Referer': ApoyarUrlHdr
 		}	
 	});*/
-	
+	var customer_add='true';
 	
 	$.ajaxSetup({
 		beforeSend: function(xhr) {
 			xhr.setRequestHeader('Apoyar', apoyarToken);
-			xhr.setRequestHeader('ApoyarUrl', ApoyarUrlHdr);
+	//		xhr.setRequestHeader('ApoyarUrl', ApoyarUrlHdr);
 		}
 	});	
 	
@@ -27,37 +27,43 @@ $(document).ready(function() {
 		var predefinedGlobalSettings = [];
 		
 		$(".add-customer-pop").click(function(){
-											
+						
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
 			$('h4#myModalLabel').text('Add a Customer');
+			$("input#Customerid").prop('readonly', false);
 			
-			$('input#BccEmail').val('');
 			//$('#view_url').css({'display':'none'});
 			//$('#lbl_url').css({'display':'none'});	
-		    /*
-		    $('input#AddressLine1').val('');
-		    $('input#AddressLine2').val('');
-		    $('input#City').val('');
-		    $('select#Country').val(-1);
-		    $('input#CustomerName').val('');
-			$('input#Customerid').val('');
-		    $('input#EmailAddress').val('');
-		    $('input#PhoneNumber').val('');
-		    $('input#PostalCode').val('');
-		    $('input#URL').val('');
-		    $('input#State').val('');*/
-			$('input#mode').val('add');
+		    if ( customer_add == 'false' ) {
+		    	$('input#Customerid').val('');
+			    $('input#AddressLine1').val('');
+			    $('input#AddressLine2').val('');
+			    $('input#City').val('');
+			    $('select#Country').val(-1);
+			    $('input#CustomerName').val('');
+				$('input#Customerid').val('');
+			    $('input#EmailAddress').val('');
+			    $('input#PhoneNumber').val('');
+			    $('input#PostalCode').val('');
+			    $('input#URL').val('');
+			    $('input#State').val('');
+				$('input#mode').val('add');
+				$('input#BccEmail').val('');
+			}
 		    // $('input#Username').val('');
 		    // $('input#Password').val('');
 		    $('input#PKCustomerID').val('');
 		    $('div.login-info').show();
+		    customer_add='true';
 		});
 
 		$(".edit-customer-pop").click(function(){
 			//alert("hi");			
+			customer_add='false';
 			$('.loading').css({'display':'block'});
 			$('.customer-modal').css({'display':'none'});
+			//$('h4#myModalLabel').text('Edit Customer Information');
 			//$('#view_url').css({'display':'block'});
 			//$('#lbl_url').css({'display':'block'});	
 			
@@ -100,6 +106,7 @@ $(document).ready(function() {
 		        	$('select#Country').val(data.Country);
 		        	$('input#CustomerName').val(data.CustomerName);
 					$('input#Customerid').val(data.Customerid);
+					$("input#Customerid").prop('readonly', true);
 		        	$('input#EmailAddress').val(data.EmailAddress);
 					$('input#BccEmail').val(data.BccEmail);
 		        	$('input#PhoneNumber').val(data.PhoneNumber);
@@ -110,6 +117,7 @@ $(document).ready(function() {
 		        	$('input#PKCustomerID').val(data.PKCustomerID);
 		        	$('div.login-info').hide();
 		        	$.material.init();
+		        	//console.log('sangeetha : ' + $('input#CustomerName').val());
 		        },
 		        fail: function(data){
 		          console.log(data);
@@ -348,12 +356,14 @@ $(document).ready(function() {
 		$("#add-warehouse-form").validate({
 		        rules: {
 		            "Warehouses[0][Name]": "required",
+		            "Warehouses[0][WarehouseID]": "required",
 		            "Warehouses[0][PostalCode]": "required",
 		            "Warehouses[0][HouseNumber]" : "required",
 		            "Warehouses[0][Country]": "required",
 		        },
 		        messages: {
 		            "Warehouses[0][Name]": "Please enter Warehouse Name",
+		            "Warehouses[0][WarehouseID]": "Please enter Warehouse ID",
 		            "Warehouses[0][PostalCode]": "Please enter Postal Code",
 		            "Warehouses[0][HouseNumber]": "Please enter House Number",
 		            "Warehouses[0][Country]": "Please enter Country Name"
@@ -532,9 +542,9 @@ $(document).ready(function() {
 		});
 
 		$("#select-customer").on('change', function(){
-			//alert("change" + $(this).val());
+			console.log("change" + $(this).val());
 			$('.loading-screen').show();
-			if ( $(this).val() > -1 ) {
+			if ( $(this).val() != -1 ) {
 				$('.customer-assign').show();
 				getCustomerLanguages($(this).val());
 			}
@@ -615,7 +625,7 @@ $(document).ready(function() {
 			//alert("change" + $(this).val());
 			$('.loading-screen').show();
 			$('.alert').hide();
-			if ( $(this).val() > -1 ) {
+			if ( $(this).val() != -1 ) {
 				getCustomerUsers($(this).val());
 			} else {
 				$('.loading-screen').hide();
@@ -659,7 +669,7 @@ $(document).ready(function() {
 												<div class="checkbox">\
 													<label>\
 														<input type="checkbox" id="userAssigned' + i + '" name="Users[' + i +'][Isactive]" value="1"'
-															+ ((response[i]['Fkcustomerid'] > 0 ) ? " checked='checked'" : "") + '>\
+															+ ((response[i]['Fkcustomerid'] != '' ) ? " checked='checked'" : "") + '>\
 													</label>\
 												</div>\
 											</div>\
@@ -712,8 +722,8 @@ $(document).ready(function() {
 			    
 		}
 		function getCustomerLanguages(custid) {
-			// console.log('allLanguages');
-			// console.log(allLanguages);
+			 console.log('allLanguages');
+			console.log(allLanguages);
 			apiCall=url+'CustomerLanguage/GetCustomerLanguagebyId';
 		    $.ajax({
 		      url: apiCall,
@@ -2338,8 +2348,8 @@ $(document).ready(function() {
 	$('.export_carrier').click(function(){
 		var customer_id = $(this).attr('id');
 		console.log(customer_id);
-		var customer_name = $(this).parent().parent().find('h2').text();
-		var customer_code   = $(this).parent().parent().find('h4').text();				
+		var customer_name = $(this).parent().parent().parent().parent().find('h2').text();
+		var customer_code   = $(this).parent().parent().parent().parent().find('h4').text();				
 		//console.log(customer_name+' | '+customer_code);
 		//Plz check the DOM postion of CustomerName and Customerid in Customer view page in case of CSV Export Issue
 		exportCarriers(customer_id, customer_name, customer_code);

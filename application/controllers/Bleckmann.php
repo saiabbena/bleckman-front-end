@@ -453,18 +453,18 @@ class Bleckmann extends CI_Controller {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#user_panel');
   }
   public function submitCustomerInfo() {
-  	//print_r($_POST);exit();
+  	//echo json_encode($_POST);exit();
   	$server_output = $this->httpRequests->httpPost('Customer/PostManageCustomer', json_encode($_POST) );
 	
     if ( $server_output['Id'] ) { 
     	$_SESSION['message']['customer_panel']='Customer Information Saved';
     	$_SESSION['message']['alert_status']='success';
-	} else {
-		$_SESSION['message']['customer_panel']='Error : ' . $server_output['Status'];
-		$_SESSION['message']['alert_status']='warning';
-	}
+  	} else {
+  		$_SESSION['message']['customer_panel']='Error : ' . $server_output['Status'];
+  		$_SESSION['message']['alert_status']='warning';
+  	}
     echo var_dump($_SESSION['message']);
-	header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
+	  header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
   }
   public function addLanguage() {
   	print_r($_POST);

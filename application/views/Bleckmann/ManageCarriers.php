@@ -198,7 +198,7 @@
 												<div class="form-group" >
 													<div class="checkbox" >
 														<label>Set as preffered carrier? &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-															<input type="checkbox" name="PreferredCarrier">
+															<input type="checkbox" name="PreferredCarrier"' . ((int)($allSettings[$i]['PreferredCarrier'] > 0 ) ? " checked='checked'" : "") .'>
 														</label>
 													</div>
 												</div>

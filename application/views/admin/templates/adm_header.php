@@ -11,7 +11,7 @@
 		
 	echo'
     <script>
-     var customerId='.$_SESSION['Customerid'].';
+     var customerId="'.$_SESSION['Customerid'].'";
 	   var UserId ='.$_SESSION['Userid'].';
 	   var apoyarToken="'.$_SESSION['Apoyar'].'";
        var language="English";

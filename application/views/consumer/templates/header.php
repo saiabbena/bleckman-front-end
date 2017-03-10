@@ -39,7 +39,7 @@
 		
 		echo'
     <script>
-      var customerId='.$Customerid.';
+      var customerId="'.$Customerid.'";
       var language="'.$LanguageName.'";
       var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
 	  var baseurl="'. base_url() .'";
