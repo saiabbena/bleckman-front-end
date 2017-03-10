@@ -41,6 +41,8 @@
 					// 	}
 					// }
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
+					
+					//Don't move the postion of CustomerName and Customerid, It will affect the carrier CSV Export
 	  				echo '<div class="col-xs-12 col-sm-4 col-md-3 entry" height="100%">
 							<div class="well" style="border-bottom: 5px solid #7C6062;">
 								<div class="customer_name"><h2 class="hdr_customer_name"><center>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</center></h2><h4 class="hdr_customer_id"><center>'.

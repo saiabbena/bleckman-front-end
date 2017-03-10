@@ -1046,7 +1046,8 @@ $(document).ready(function() {
 			//console.log(data['ReturnOrders'].[0].ReturnId);
 			//console.log(raw_data['PageNo']);
 			//console.log(raw_data['pagesize']);
-			var html = '<caption>'+'Export-Orders-'+'</caption>';		
+			var html = '';
+			html = '<caption>'+'Export-Orders-'+'</caption>';		
 			for(i=0; i<raw_data['ReturnOrders'].length; i++){
 				var data = raw_data['ReturnOrders'];				
 				//console.log("i: " + data[i].ReturnsOrderCreationDate);
@@ -2337,15 +2338,16 @@ $(document).ready(function() {
 	$('.export_carrier').click(function(){
 		var customer_id = $(this).attr('id');
 		console.log(customer_id);
-		var customer_name = $(this).parent().parent().parent().find('h2').text();
-		var customer_code   = $(this).parent().parent().parent().find('h4').text();
-		$("#export_carrier_div thead tr:eq(1) th:nth-child(1)").text('Customer Name : '+customer_name);		
+		var customer_name = $(this).parent().parent().find('h2').text();
+		var customer_code   = $(this).parent().parent().find('h4').text();				
+		//console.log(customer_name+' | '+customer_code);
+		//Plz check the DOM postion of CustomerName and Customerid in Customer view page in case of CSV Export Issue
 		exportCarriers(customer_id, customer_name, customer_code);
 		
 	});
 	//Call function to export Orders as csv
 	function exportCarriers(customerId, customer_name, customer_code){
-		//customerdata['Customerid'] = customerId;		
+		var html = '';		
 		apiCall=url+'carrier/GetCarrierSettingbyCustomerid?Customerid='+customerId;
 			//console.log(apoyarToken);
 			$.ajax({
@@ -2354,7 +2356,7 @@ $(document).ready(function() {
 			  dataType: 'json',
 			  success: function (data) {				
 				//console.log(data);
-				var html = '<caption>'+customer_name+'-Carriers'+'</caption>';								
+				html = '<caption>'+customer_name+'-Carriers'+'</caption>';								
 				
 				for(i=0; i<data.length; i++){					
 					
