@@ -2348,8 +2348,8 @@ $(document).ready(function() {
 	$('.export_carrier').click(function(){
 		var customer_id = $(this).attr('id');
 		console.log(customer_id);
-		var customer_name = $(this).parent().parent().find('h2').text();
-		var customer_code   = $(this).parent().parent().find('h4').text();				
+		var customer_name = $(this).parent().parent().parent().parent().find('h2').text();
+		var customer_code   = $(this).parent().parent().parent().parent().find('h4').text();				
 		//console.log(customer_name+' | '+customer_code);
 		//Plz check the DOM postion of CustomerName and Customerid in Customer view page in case of CSV Export Issue
 		exportCarriers(customer_id, customer_name, customer_code);
