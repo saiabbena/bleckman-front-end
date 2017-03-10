@@ -76,7 +76,7 @@
 					echo '</div></div>';
 							echo '<div class="row">
 									<div class="col-md-12">										 
-										<a class="" href="managecarriers?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Manage Carriers</a>										
+										<a class="" href="managecarriers?Customerid='.$allCustomers[$i]['Customerid'].'">Manage Carriers</a>										
 
 									</div>
 								</div>
