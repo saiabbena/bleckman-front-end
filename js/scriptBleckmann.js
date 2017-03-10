@@ -941,7 +941,7 @@ $(document).ready(function() {
 						  }
 						  
 						  
-						var lebel_url = API_BASE_URL_FE.'labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;
+						var lebel_url = API_BASE_URL_FE+'labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;
 						html=html + '<a target="_blank" href="'+lebel_url+'" style="cursor:pointer;margin-left:3px;" alt="Print" title="Print" class="pull-left"><i class="large material-icons">print</i></a>';
 					  }
 					  
