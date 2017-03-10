@@ -931,12 +931,12 @@ $(document).ready(function() {
 						  }
 						  
 						  if(window.location.host == 'http://uat.bleckmann.apoyar.eu'){
-							  var lebel_url = 'api.bleckmann.apoyar.eu/labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;  
+							  var lebel_url = 'http://api.bleckmann.apoyar.eu/labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;  
 							  
 						  }else if(window.location.host == 'http://returns.bleckmann.com'){
-							  var lebel_url = 'returns.bleckmann.com:81/BMAPI/BleckmannApi/Labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;
+							  var lebel_url = 'http://returns.bleckmann.com:81/BMAPI/BleckmannApi/Labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;
 						  }else{
-							 var lebel_url = 'dev.bleckmann.apoyar.eu/labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;						  						  
+							 var lebel_url = 'http://returns.dev.apoyar.eu/labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;						  						  
 						  }
 						  html=html + '<a target="_blank" href="'+lebel_url+'" style="cursor:pointer;margin-left:3px;" alt="Print" title="Print" class="pull-left"><i class="large material-icons">print</i></a>';
 					  }
