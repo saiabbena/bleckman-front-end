@@ -17,7 +17,7 @@
 				<div class="row align-text-bottom">						
 					<div class=" col-md-4">
 					<form method="POST" id="save-op-modes" action="saveFinalWarehouse">
-						<input type="hidden" name="PKCustomerID" value="<?php echo $customerId; ?>">						
+						<input type="hidden" name="Customerid" value="<?php echo $customerId; ?>">						
 						<?php					
 							//print_r($allWarehouses);
 							echo '<div class="form-group" id="final_warehouse_div"><label><h4>Final Warehouse Location</h4></label><select id="final_warehouse" name="Finalwarehouseid" class="form-control">';
