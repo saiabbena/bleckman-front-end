@@ -72,7 +72,7 @@
 	</script>
 	<script type="text/javascript" src="<?php echo base_url();?>vendor/pagination/jquery.simplePagination.js"></script>
 	<link type="text/css" rel="stylesheet" href="<?php echo base_url();?>vendor/pagination/simplePagination.css"/>	
-	<script src="<?php echo base_url();?>vendor/jqueryCSV/jquery.tabletoCSV.js"></script>
+	
 	<script>
     $(function() {       
 	   $('.column_visibility').click(function() {
@@ -83,7 +83,7 @@
 			$(this).toggleClass("dd_selected");
        });
     });
-</script>
+	</script>
 	<style>
 		Table.GridOne {
 			padding: 3px;
@@ -182,6 +182,7 @@
     <link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/prism.css">
     <link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/chosen.css">	
 	<?php }?>
+	<script src="<?php echo base_url();?>vendor/jqueryCSV/jquery.tabletoCSV.js"></script>
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

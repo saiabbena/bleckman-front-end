@@ -1043,9 +1043,7 @@ $(document).ready(function() {
 		  }
 		  //Print Export as CSV
 		  function ExportRenderReturnOrders(raw_data){
-			html='';
-			html2='';
-			html3='';			
+						
 			var total_num_records = raw_data['TotRecords'];
 			var page_count = raw_data['Count'];
 			var pagination_html = '';
@@ -1058,7 +1056,8 @@ $(document).ready(function() {
 			//console.log(data['ReturnOrders'].[0].ReturnId);
 			//console.log(raw_data['PageNo']);
 			//console.log(raw_data['pagesize']);
-					
+			var html = '';
+			html = '<caption>'+'Export-Orders-'+'</caption>';		
 			for(i=0; i<raw_data['ReturnOrders'].length; i++){
 				var data = raw_data['ReturnOrders'];				
 				//console.log("i: " + data[i].ReturnsOrderCreationDate);
@@ -1081,7 +1080,7 @@ $(document).ready(function() {
 				 }
 				if(data[i].ReturnOrderTotalRefundAmount.toFixed(2) > 0){
 					RORefAmount = data[i].ReturnOrderTotalRefundAmount.toFixed(2);
-				}
+				}				
 				html=html+'\<tr>\
 					  <td style="white-space: nowrap;" class="dateval">'+resultDate+'</td>\
 					  \
@@ -2346,8 +2345,65 @@ $(document).ready(function() {
 		}, 2000);		
 		
 	});
-	$('#btn_save_final_warehouse').click(function(){
+	$('.export_carrier').click(function(){
+		var customer_id = $(this).attr('id');
+		console.log(customer_id);
+		var customer_name = $(this).parent().parent().find('h2').text();
+		var customer_code   = $(this).parent().parent().find('h4').text();				
+		//console.log(customer_name+' | '+customer_code);
+		//Plz check the DOM postion of CustomerName and Customerid in Customer view page in case of CSV Export Issue
+		exportCarriers(customer_id, customer_name, customer_code);
 		
 	});
+	//Call function to export Orders as csv
+	function exportCarriers(customerId, customer_name, customer_code){
+		var html = '';		
+		apiCall=url+'carrier/GetCarrierSettingbyCustomerid?Customerid='+customerId;
+			//console.log(apoyarToken);
+			$.ajax({
+			  url: apiCall,
+			  type: 'get',			  					  
+			  dataType: 'json',
+			  success: function (data) {				
+				//console.log(data);
+				html = '<caption>'+customer_name+'-Carriers'+'</caption>';								
+				
+				for(i=0; i<data.length; i++){					
+					
+					html=html+'\<tr>\
+						  <td style="white-space: nowrap;">'+customer_name+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+customer_code+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].FKCarrierId+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].CountryName+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].CountryCode+'</td>\
+						  \
+						   <td style="white-space: nowrap;">'+data[i].Warehouseid+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].LocationName+'</td>\
+						  \
+						  ';					  					  
+						  html=html+ '</tr>\
+						';
+				}
+				
+				//console.log(html);						
+				$('#export_carrier_data > tbody').html(html);
+				setTimeout(function(){
+					var clonetable = $('#export_carrier_div table').clone();					
+					clonetable.tableToCSV();
+				}, 2000);
+			  },
+			  fail: function(){
+				console.log(data);
+			  }
+			});
+					
+	}
 		
 });

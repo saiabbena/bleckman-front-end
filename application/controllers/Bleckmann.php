@@ -182,6 +182,7 @@ class Bleckmann extends CI_Controller {
       'Customerid'=>$data['customerId']
     );    
     $data['allSettings'] = $this->httpRequests->httpGet('carrier/GetCarrierSettingbyCustomerid', $req);
+	//echo json_encode($data['allSettings']);exit();
 
 	//echo json_encode($data['allSettings']);exit();
     $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req);
@@ -209,28 +210,28 @@ class Bleckmann extends CI_Controller {
     $server_output = $this->httpRequests->httpPost('Operation/PostOperationCustomer', json_encode($_POST) );
     //echo json_encode($server_output);exit();
     if ( $server_output['Status'] == 1) {
-      $_SESSION['message']['settings_panel']='Saved';
+      $_SESSION['message']['OM_settings_panel']='Saved';
       $_SESSION['message']['alert_status']='success';
     } else {
-      $_SESSION['message']['settings_panel']='Error : ' . $server_output['Messages'];
+      $_SESSION['message']['OM_settings_panel']='Error : ' . $server_output['Messages'];
       $_SESSION['message']['alert_status']='warning';
     }
     echo var_dump($_SESSION['message']);
-    header('Location: ' . $_SERVER['HTTP_REFERER'].'#settings_panel');
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#OM_settings_panel');
   }
   public function saveFinalWarehouse() {
      //print_r($_POST);exit();    
 	$server_output = $this->httpRequests->httpPost('customer/PostCustomerFinalWarehouse', json_encode($_POST) );
     //echo json_encode($server_output);exit();
     if ( $server_output['Status'] == 1) {
-      $_SESSION['message']['settings_panel']='Saved';
+      $_SESSION['message']['final_warehouse_settings_panel']='Saved';
       $_SESSION['message']['alert_status']='success';
     } else {
-      $_SESSION['message']['settings_panel']='Error : ' . $server_output['Messages'];
+      $_SESSION['message']['final_warehouse_settings_panel']='Error : ' . $server_output['Messages'];
       $_SESSION['message']['alert_status']='warning';
     }
     //echo var_dump($_SESSION['message']);exit();
-    header('Location: ' . $_SERVER['HTTP_REFERER'].'#settings_panel');
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#final_warehouse_settings_panel');
   }
 	public function postComment() {
 		header('Content-Type: application/json');
