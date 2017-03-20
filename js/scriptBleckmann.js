@@ -811,8 +811,10 @@ $(document).ready(function() {
 			console.log("FKRoleID : " + $(this).val());
 			if ( $(this).val() == 1 ) {
 				$('#Fkcustomerid-div').hide();
+				$('select#Fkcustomerid').val('');
 			} else {
 				$('#Fkcustomerid-div').show();
+				$('select#Fkcustomerid').val('');
 			}
 		});
 		/**/

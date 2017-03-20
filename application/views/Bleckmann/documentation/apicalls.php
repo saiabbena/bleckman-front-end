@@ -807,7 +807,7 @@
                             <p>Orderid</p>
                         </td>
                         <td nowrap="">
-                            <p>41P24005050000126</p>
+                            <p>411400061002</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -870,55 +870,101 @@
             <h2 class="h2 title toc-headings">Response example</h2>
             <div class="geshifilter">
                 <pre style="border-left:0px;">
-                    {
-                      "Status": -1,
-                      "ShipmentId": "41P24005050000126",
-                      "FKCustomerID": "",
-                      "Consumerid": "TRGDE0",
-                      "ConsumerEmail": "x@x.com",
-                      "ShipFromWarehouseId": "KHTRUEFC",
-                      "Source": "RP",
-                      "OrderType": "X-DOCK",
-                      "OrderId": "41P24005050000126",
-                      "ConsumerPhoneNumber": "",
-                      "ShippedDate": "2013-04-30T09:17:41",
-                      "DeliveyDate": "1800-01-01T00:00:00",
-                      "MaxReturnDays": -1,
-                      "ConsumerName1": "TRUE RELIGION BRANDJEANS GERMA",
-                      "ConsumerName2": "",
-                      "ConsumerShipStreet1": "INDUSTRIEZONE 6C",
-                      "ConsumerShipStreet2": "/",
-                      "ConsumerShipStreet3": "",
-                      "ConsumerShipHouseNumber": "",
-                      "ConsumerShipPostalCode": "9770",
-                      "ConsumerShipCity": "KRUISHOUTEM",
-                      "ConsumerShipState": "BE",
-                      "ConsumerShipCountry": "BEL",
-                      "ConsumerLanguage": "",
-                      "TotalValue": 0,
-                      "BMOrderLine": [{
-                          "Status": 10,
-                          "WarehouseId": "KHTRUEFC",
-                          "ShipmentLineId": 1011,
-                          "ShipmentId": null,
-                          "OrderId": "41P24005050000126",
-                          "OrderlineID": 1011,
-                          "SKU": "M13JX43BW2-1001.38",
-                          "StyleDescription": "MENS STUDDED BIKER BELT",
-                          "ColourDescription": "BLACK",
-                          "SizeDescription": "38",
-                          "EANBARCODE": "887150445222",
-                          "HTS": "",
-                          "Origine": "",
-                          "Price": 53.94,
-                          "ProductCurrency": "USD",
-                          "UnitWeight": 0.001,
-                          "UnitOfMeasure": "STUKS",
-                          "HazmatCode": "",
-                          "QtyShipped": 0,
-                          "TotalLineAmount": -1618.200000000001
-                        }]
-                    }
+                {
+                    Status: -1,
+                    ShipmentId: "411400061002",
+                    FKCustomerID: "",
+                    Consumerid: "HA0006",
+                    ConsumerEmail: "x@x.com",
+                    ShipFromWarehouseId: "KHTRUEFC",
+                    Source: "RP",
+                    OrderType: "NIET-MP",
+                    OrderId: "411400061002",
+                    ConsumerPhoneNumber: "",
+                    ShippedDate: "2013-04-19T15:00:50",
+                    DeliveyDate: "1800-01-01T00:00:00",
+                    MaxReturnDays: -1,
+                    ConsumerName1: "HARRODS DATA ENTRY DEPT. DISTR",
+                    ConsumerName2: "",
+                    ConsumerShipStreet1: "MILL LANE",
+                    ConsumerShipStreet2: "/",
+                    ConsumerShipStreet3: "",
+                    ConsumerShipHouseNumber: "",
+                    ConsumerShipPostalCode: "RG19 4AL",
+                    ConsumerShipCity: "THATCHAM - BERKSHIRE",
+                    ConsumerShipState: "GB",
+                    ConsumerShipCountry: "GBR",
+                    ConsumerLanguage: "",
+                    TotalValue: 0,
+                    BMOrderLine: [
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25005,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25005,
+                            SKU: "SU13M1513-4643.XL",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "XL",
+                            EANBARCODE: "887150756991",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 5,
+                            TotalLineAmount: 0
+                        },
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25002,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25002,
+                            SKU: "SU13M1513-4643.S",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "S",
+                            EANBARCODE: "887150756960",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 4,
+                            TotalLineAmount: 0
+                        },
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25003,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25003,
+                            SKU: "SU13M1513-4643.M",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "M",
+                            EANBARCODE: "887150756977",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 6,
+                            TotalLineAmount: 0
+                        }
+                    ]
+                }
 
                 </pre>
             </div>
@@ -3081,7 +3127,7 @@
                             <p>Orderid</p>
                         </td>
                         <td nowrap="">
-                            <p>41P24005050000126</p>
+                            <p>411400061002</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -3144,55 +3190,101 @@
             <h2 class="h2 title toc-headings">Response example</h2>
             <div class="geshifilter">
                 <pre style="border-left:0px;">
-                    {
-                      "Status": -1,
-                      "ShipmentId": "41P24005050000126",
-                      "FKCustomerID": "",
-                      "Consumerid": "TRGDE0",
-                      "ConsumerEmail": "x@x.com",
-                      "ShipFromWarehouseId": "KHTRUEFC",
-                      "Source": "RP",
-                      "OrderType": "X-DOCK",
-                      "OrderId": "41P24005050000126",
-                      "ConsumerPhoneNumber": "",
-                      "ShippedDate": "2013-04-30T09:17:41",
-                      "DeliveyDate": "1800-01-01T00:00:00",
-                      "MaxReturnDays": -1,
-                      "ConsumerName1": "TRUE RELIGION BRANDJEANS GERMA",
-                      "ConsumerName2": "",
-                      "ConsumerShipStreet1": "INDUSTRIEZONE 6C",
-                      "ConsumerShipStreet2": "/",
-                      "ConsumerShipStreet3": "",
-                      "ConsumerShipHouseNumber": "",
-                      "ConsumerShipPostalCode": "9770",
-                      "ConsumerShipCity": "KRUISHOUTEM",
-                      "ConsumerShipState": "BE",
-                      "ConsumerShipCountry": "BEL",
-                      "ConsumerLanguage": "",
-                      "TotalValue": 0,
-                      "BMOrderLine": [{
-                          "Status": 10,
-                          "WarehouseId": "KHTRUEFC",
-                          "ShipmentLineId": 1011,
-                          "ShipmentId": null,
-                          "OrderId": "41P24005050000126",
-                          "OrderlineID": 1011,
-                          "SKU": "M13JX43BW2-1001.38",
-                          "StyleDescription": "MENS STUDDED BIKER BELT",
-                          "ColourDescription": "BLACK",
-                          "SizeDescription": "38",
-                          "EANBARCODE": "887150445222",
-                          "HTS": "",
-                          "Origine": "",
-                          "Price": 53.94,
-                          "ProductCurrency": "USD",
-                          "UnitWeight": 0.001,
-                          "UnitOfMeasure": "STUKS",
-                          "HazmatCode": "",
-                          "QtyShipped": 0,
-                          "TotalLineAmount": -1618.200000000001
-                        }]
-                    }
+                {
+                    Status: -1,
+                    ShipmentId: "411400061002",
+                    FKCustomerID: "",
+                    Consumerid: "HA0006",
+                    ConsumerEmail: "x@x.com",
+                    ShipFromWarehouseId: "KHTRUEFC",
+                    Source: "RP",
+                    OrderType: "NIET-MP",
+                    OrderId: "411400061002",
+                    ConsumerPhoneNumber: "",
+                    ShippedDate: "2013-04-19T15:00:50",
+                    DeliveyDate: "1800-01-01T00:00:00",
+                    MaxReturnDays: -1,
+                    ConsumerName1: "HARRODS DATA ENTRY DEPT. DISTR",
+                    ConsumerName2: "",
+                    ConsumerShipStreet1: "MILL LANE",
+                    ConsumerShipStreet2: "/",
+                    ConsumerShipStreet3: "",
+                    ConsumerShipHouseNumber: "",
+                    ConsumerShipPostalCode: "RG19 4AL",
+                    ConsumerShipCity: "THATCHAM - BERKSHIRE",
+                    ConsumerShipState: "GB",
+                    ConsumerShipCountry: "GBR",
+                    ConsumerLanguage: "",
+                    TotalValue: 0,
+                    BMOrderLine: [
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25005,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25005,
+                            SKU: "SU13M1513-4643.XL",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "XL",
+                            EANBARCODE: "887150756991",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 5,
+                            TotalLineAmount: 0
+                        },
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25002,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25002,
+                            SKU: "SU13M1513-4643.S",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "S",
+                            EANBARCODE: "887150756960",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 4,
+                            TotalLineAmount: 0
+                        },
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25003,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25003,
+                            SKU: "SU13M1513-4643.M",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "M",
+                            EANBARCODE: "887150756977",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 6,
+                            TotalLineAmount: 0
+                        }
+                    ]
+                }
 
                 </pre>
             </div>
