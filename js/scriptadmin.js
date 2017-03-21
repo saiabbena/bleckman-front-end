@@ -425,8 +425,6 @@ if( data[i].ReturnsOrderTrackingCode!='')
 		  
 		  if(data[i].CarrierName.toLowerCase() == 'ups'){
 			  var label_format = '.gif';
-		  }else if(data[i].CarrierName.toLowerCase() == 'fastway'){
-			  var label_format = '.png';
 		  }else{
 			  var label_format = '.pdf';
 		  }					   

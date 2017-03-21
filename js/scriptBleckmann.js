@@ -929,8 +929,6 @@ $(document).ready(function() {
 						  
 						  if(data[i].CarrierName.toLowerCase() == 'ups'){
 							  var label_format = '.gif';
-						  }else if(data[i].CarrierName.toLowerCase() == 'fastway'){
-							  var label_format = '.png';
 						  }else{
 							  var label_format = '.pdf';
 						  }					   
@@ -1094,8 +1092,7 @@ $(document).ready(function() {
 					  ';					  					  
 				      html=html+ '</tr>\
 					';
-				}
-			
+			}			
 			//console.log(result);			
 			//$('body').append(html2);
 			//$('body').append(html3);			
@@ -2336,7 +2333,17 @@ $(document).ready(function() {
 			console.log(customerId);
 			console.log(clonetable);
 			clonetable.tableToCSV();
-		}, 2000);		
+		}, 2000);
+		/*setTimeout(function(){
+			var clonetable = $('#export_orders_div table').clone();			
+			console.log(customerId);
+			console.log(clonetable);			
+			var exportTable1=new ExportHTMLTable('export_orders_div');
+			exportTable1.exportToCSV();
+			
+		}, 2000);*/
+		
+		
 		
 	});
 	$('.export_carrier').click(function(){

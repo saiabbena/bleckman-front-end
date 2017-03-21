@@ -311,11 +311,12 @@ class Consumer extends CI_Controller {
 				}
 			}
 						
-			echo '<div class="row">
+			echo '<div class="row">				  
 				  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4">
 					<div class="well bm-well">
 					  <button type="button" class="close" id="thank_you_close" data-dismiss="modal" aria-label="Close" onclick="location.reload();"><span aria-hidden="true">&times;</span></button>
 					  <h2><center>Thank You!</center></h2>
+					  <div class="text-center" id="showError"></div>
 					  <p class="text-center"></p>
 					  <b>Dear Customer</b></p>
 					  <p>Your Return Order Number is #:<b><span id="show_ro_number"></span></b></p>

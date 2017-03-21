@@ -23,7 +23,8 @@
         	echo '<script> customername="' . $customername.'";</script>';
 			echo '<script> bccemail="' . $bccemail.'";</script>';
         ?>
-        <br>		
+        <br>
+		<div id="showError"></div>
 		<div class='container-fluid form1 form_ro'>
 			<div class='row'>
 			  <div class='col-xs-12 col-sm-12' style="padding-bottom: 22px;">
