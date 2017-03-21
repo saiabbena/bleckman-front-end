@@ -31,8 +31,8 @@
             </ol>
         <li class="toc-node-level-5"><a href="#mode5"><span class="toc-text">Operation Mode5</span></a></li>
             <ol class="children" style="display: block;">
-                <li class="toc-node-level-2"><a href="#GetAllReturnReasonsbyCustomerid5"><span class="toc-text">GetAllActiveCountriesbyCustomerid</span></a></li>
-                <li class="toc-node-level-2"><a href="#GetBMCarriersbyCustomerid5"><span class="toc-text">GetBMCarriersbyCustomerid</span></a></li>
+<!--                 <li class="toc-node-level-2"><a href="#GetAllReturnReasonsbyCustomerid5"><span class="toc-text">GetAllActiveCountriesbyCustomerid</span></a></li>
+                <li class="toc-node-level-2"><a href="#GetBMCarriersbyCustomerid5"><span class="toc-text">GetBMCarriersbyCustomerid</span></a></li> -->
                 <li class="toc-node-level-2"><a href="#PostMode5"><span class="toc-text">PostMode5</span></a></li>
             </ol>
       </ol>
@@ -91,13 +91,13 @@
                             <p>Customerid</p>
                         </td>
                         <td nowrap="">
-                            <p>123</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
                         </td>
                         <td nowrap="">
-                            <p>Alpha NUmeric</p>
+                            <p>Alpha Numeric</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -105,70 +105,63 @@
                     </tr>
                 </tbody>
             </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/Country/GetAllActiveCountriesbyCustomerid?Customerid=test</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Country/GetAllActiveCountriesbyCustomerid?Customerid=apoyartest</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
             <h2 class="h2 title toc-headings">Response example</h2>
             <div class="geshifilter">
                 <pre style="border-left:0px;">
                     [{
-                        "PKCountryId": 2,
-                        "CountryName": "ALBANIA",
-                        "CountryCode": "ALB",
-                        "IsActive": true
-                      },
-                      {
-                        "PKCountryId": 14,
-                        "CountryName": "AUSTRIA",
-                        "CountryCode": "AUT",
-                        "IsActive": true
-                      },
-                      {
-                        "PKCountryId": 21,
-                        "CountryName": "BELGIUM",
-                        "CountryCode": "BEL",
-                        "IsActive": true
-                      },
-                      {
-                        "PKCountryId": 73,
-                        "CountryName": "FRANCE",
-                        "CountryCode": "FRA",
-                        "IsActive": true
-                      },
-                      {
-                        "PKCountryId": 80,
-                        "CountryName": "GERMANY",
-                        "CountryCode": "DEU",
-                        "IsActive": true
-                      },
-                      {
-                        "PKCountryId": 103,
-                        "CountryName": "IRELAND",
-                        "CountryCode": "IRL",
-                        "IsActive": true
-                      },
-                      {
-                        "PKCountryId": 105,
-                        "CountryName": "ITALY",
-                        "CountryCode": "ITA",
-                        "IsActive": true
-                      },
-                      {
-                        "PKCountryId": 124,
-                        "CountryName": "LUXEMBOURG",
-                        "CountryCode": "LUX",
-                        "IsActive": true
-                      },
-                      {
-                        "PKCountryId": 150,
-                        "CountryName": "NETHERLANDS",
-                        "CountryCode": "NLD",
-                        "IsActive": true
-                      },
-                      {
-                        "PKCountryId": 225,
-                        "CountryName": "UNITED KINGDOM",
-                        "CountryCode": "GBR",
-                        "IsActive": true
-                      }
-                    ]
+                        PKCountryId: 73,
+                        CountryName: "FRANCE",
+                        CountryCode: "FR",
+                        IsActive: true
+                    },
+                    {
+                        PKCountryId: 103,
+                        CountryName: "IRELAND",
+                        CountryCode: "IE",
+                        IsActive: true
+                    },
+                    {
+                        PKCountryId: 150,
+                        CountryName: "NETHERLANDS",
+                        CountryCode: "NL",
+                        IsActive: true
+                    },
+                    {
+                        PKCountryId: 225,
+                        CountryName: "UNITED KINGDOM",
+                        CountryCode: "GB",
+                        IsActive: true
+                    }]
                 </pre>
             </div>
             <div class="toc-item-anchor">
@@ -236,7 +229,7 @@
                             <p>Customerid</p>
                         </td>
                         <td nowrap="">
-                            <p>123</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -250,43 +243,56 @@
                     </tr>
                 </tbody>
             </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/Carrier/GetBMCarriersbyCustomerid?Customerid=test&CountryCode=GB</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <h2 class="h2 title toc-headings">Response example</h2>
             <div class="geshifilter">
                 <pre style="border-left:0px;">
-                [
-                  {
-                    "PKCarrierID": 1,
-                    "CarrierName": "DHL",
-                    "Isactive": true,
-                    "WarehouseId": "KHTRUEFC",
-                    "GlobalSetting": null,
-                    "CarrierSetting": null
-                  },
-                  {
-                    "PKCarrierID": 3,
-                    "CarrierName": "Royal Mail",
-                    "Isactive": true,
-                    "WarehouseId": "KHTRUEFC",
-                    "GlobalSetting": null,
-                    "CarrierSetting": null
-                  },
-                  {
-                    "PKCarrierID": 3,
-                    "CarrierName": "Royal Mail",
-                    "Isactive": true,
-                    "WarehouseId": "KRUISHOUTEM1",
-                    "GlobalSetting": null,
-                    "CarrierSetting": null
-                  },
-                  {
-                    "PKCarrierID": 5,
-                    "CarrierName": "UPS",
-                    "Isactive": true,
-                    "WarehouseId": "KHTRUEFC",
-                    "GlobalSetting": null,
-                    "CarrierSetting": null
-                  }
-                ]
+                    [{
+                        PKCarrierID: 2,
+                        CarrierName: "RoyalMail",
+                        Isactive: true,
+                        WarehouseId: "KH",
+                        Preferredcarrier: true,
+                        GlobalSetting: null,
+                        CarrierSetting: null
+                    },
+                    {
+                        PKCarrierID: 19,
+                        CarrierName: "Fastway",
+                        Isactive: true,
+                        WarehouseId: "KHTRUEFC",
+                        Preferredcarrier: false,
+                        GlobalSetting: null,
+                        CarrierSetting: null
+                    }]
                 </pre>
             </div>
             <div class="toc-item-anchor"><a name="PostMode1"></a></div>
@@ -510,10 +516,10 @@
                             <p>1</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td>
-                            <p>User will select a Country from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId</p>
+                            <p>User will select a Carrier from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -561,10 +567,10 @@
                             <p>ATPOST123</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td>
-                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field WarehouseId</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field WarehouseId. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -578,10 +584,10 @@
                             <p>XYZ</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td >
-                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field CarrierName</p>
+                            <p>User will select a Carrier from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field CarrierName. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -636,6 +642,35 @@
                         </td>
                         <td nowrap="">
                             <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/returnorder/PostMode1</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostMode1</p>
                         </td>
                     </tr>
                 </tbody>
@@ -752,7 +787,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>ConsumerEmail</p>
+                            <p>Email</p>
                         </td>
                         <td nowrap="">
                             <p>x@x.com</p>
@@ -772,7 +807,24 @@
                             <p>Orderid</p>
                         </td>
                         <td nowrap="">
-                            <p>41P24005050000126</p>
+                            <p>411400061002</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td nowrap="">
+                            <p>AlphaNumeric</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Customerid</p>
+                        </td>
+                        <td nowrap="">
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -786,58 +838,133 @@
                     </tr>
                 </tbody>
             </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td >
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td >
+                            <p>http://api.bleckmann.apoyar.eu/api/Order/GetBMAllOrdersbyid?Email=x@x.com&Orderid=411400061002&Customerid=test</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td >
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Order/GetBMAllOrdersbyid?Email=x@x.com&Orderid=411400061002&Customerid=apoyartest</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <h2 class="h2 title toc-headings">Response example</h2>
             <div class="geshifilter">
                 <pre style="border-left:0px;">
-                    {
-                      "Status": -1,
-                      "ShipmentId": "41P24005050000126",
-                      "FKCustomerID": "",
-                      "Consumerid": "TRGDE0",
-                      "ConsumerEmail": "x@x.com",
-                      "ShipFromWarehouseId": "KHTRUEFC",
-                      "Source": "RP",
-                      "OrderType": "X-DOCK",
-                      "OrderId": "41P24005050000126",
-                      "ConsumerPhoneNumber": "",
-                      "ShippedDate": "2013-04-30T09:17:41",
-                      "DeliveyDate": "1800-01-01T00:00:00",
-                      "MaxReturnDays": -1,
-                      "ConsumerName1": "TRUE RELIGION BRANDJEANS GERMA",
-                      "ConsumerName2": "",
-                      "ConsumerShipStreet1": "INDUSTRIEZONE 6C",
-                      "ConsumerShipStreet2": "/",
-                      "ConsumerShipStreet3": "",
-                      "ConsumerShipHouseNumber": "",
-                      "ConsumerShipPostalCode": "9770",
-                      "ConsumerShipCity": "KRUISHOUTEM",
-                      "ConsumerShipState": "BE",
-                      "ConsumerShipCountry": "BEL",
-                      "ConsumerLanguage": "",
-                      "TotalValue": 0,
-                      "BMOrderLine": [{
-                          "Status": 10,
-                          "WarehouseId": "KHTRUEFC",
-                          "ShipmentLineId": 1011,
-                          "ShipmentId": null,
-                          "OrderId": "41P24005050000126",
-                          "OrderlineID": 1011,
-                          "SKU": "M13JX43BW2-1001.38",
-                          "StyleDescription": "MENS STUDDED BIKER BELT",
-                          "ColourDescription": "BLACK",
-                          "SizeDescription": "38",
-                          "EANBARCODE": "887150445222",
-                          "HTS": "",
-                          "Origine": "",
-                          "Price": 53.94,
-                          "ProductCurrency": "USD",
-                          "UnitWeight": 0.001,
-                          "UnitOfMeasure": "STUKS",
-                          "HazmatCode": "",
-                          "QtyShipped": 0,
-                          "TotalLineAmount": -1618.200000000001
-                        }]
-                    }
+                {
+                    Status: -1,
+                    ShipmentId: "411400061002",
+                    FKCustomerID: "",
+                    Consumerid: "HA0006",
+                    ConsumerEmail: "x@x.com",
+                    ShipFromWarehouseId: "KHTRUEFC",
+                    Source: "RP",
+                    OrderType: "NIET-MP",
+                    OrderId: "411400061002",
+                    ConsumerPhoneNumber: "",
+                    ShippedDate: "2013-04-19T15:00:50",
+                    DeliveyDate: "1800-01-01T00:00:00",
+                    MaxReturnDays: -1,
+                    ConsumerName1: "HARRODS DATA ENTRY DEPT. DISTR",
+                    ConsumerName2: "",
+                    ConsumerShipStreet1: "MILL LANE",
+                    ConsumerShipStreet2: "/",
+                    ConsumerShipStreet3: "",
+                    ConsumerShipHouseNumber: "",
+                    ConsumerShipPostalCode: "RG19 4AL",
+                    ConsumerShipCity: "THATCHAM - BERKSHIRE",
+                    ConsumerShipState: "GB",
+                    ConsumerShipCountry: "GBR",
+                    ConsumerLanguage: "",
+                    TotalValue: 0,
+                    BMOrderLine: [
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25005,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25005,
+                            SKU: "SU13M1513-4643.XL",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "XL",
+                            EANBARCODE: "887150756991",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 5,
+                            TotalLineAmount: 0
+                        },
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25002,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25002,
+                            SKU: "SU13M1513-4643.S",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "S",
+                            EANBARCODE: "887150756960",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 4,
+                            TotalLineAmount: 0
+                        },
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25003,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25003,
+                            SKU: "SU13M1513-4643.M",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "M",
+                            EANBARCODE: "887150756977",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 6,
+                            TotalLineAmount: 0
+                        }
+                    ]
+                }
 
                 </pre>
             </div>
@@ -887,7 +1014,7 @@
                             <p>Customerid</p>
                         </td>
                         <td nowrap="">
-                            <p>123</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -901,6 +1028,36 @@
                     </tr>
                 </tbody>
             </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=test</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=apoyartest</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
             <h2 class="h2 title toc-headings">Response example</h2>
             <div class="geshifilter">
                 <pre style="border-left:0px;">
@@ -1036,7 +1193,7 @@
                             <p>Customerid</p>
                         </td>
                         <td nowrap="">
-                            <p>123</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -1046,6 +1203,35 @@
                         </td>
                         <td nowrap="">
                             <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/Carrier/GetBMCarriersbyCustomerid?Customerid=test&CountryCode=GB</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
                         </td>
                     </tr>
                 </tbody>
@@ -1449,10 +1635,10 @@
                             <p>1</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td>
-                            <p>User will select a Country from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -1500,10 +1686,10 @@
                             <p>ATPOST123</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td>
-                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field WarehouseId</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field WarehouseId. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -1517,10 +1703,10 @@
                             <p>XYZ</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td >
-                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field CarrierName</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field CarrierName. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -1767,7 +1953,36 @@
                     </tr>
                 </tbody>
             </table>
-            
+
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/returnorder/PostBMReturnOrder</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostBMReturnOrder</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <h2 class="h2 title toc-headings">Request Parameters as JSON</h2>
             <div class="geshifilter">
                 <pre style="border-left:0px;">
@@ -1905,7 +2120,7 @@
                             <p>Customerid</p>
                         </td>
                         <td nowrap="">
-                            <p>123</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -1915,6 +2130,35 @@
                         </td>
                         <td nowrap="">
                             <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/Country/GetAllActiveCountriesbyCustomerid?Customerid=test</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Country/GetAllActiveCountriesbyCustomerid?Customerid=apoyartest</p>
                         </td>
                     </tr>
                 </tbody>
@@ -2050,7 +2294,7 @@
                             <p>Customerid</p>
                         </td>
                         <td nowrap="">
-                            <p>123</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -2060,6 +2304,35 @@
                         </td>
                         <td nowrap="">
                             <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/Carrier/GetBMCarriersbyCustomerid?Customerid=test&CountryCode=GB</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
                         </td>
                     </tr>
                 </tbody>
@@ -2324,10 +2597,10 @@
                             <p>1</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td>
-                            <p>User will select a Country from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -2375,10 +2648,10 @@
                             <p>ATPOST123</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td>
-                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field WarehouseId</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field WarehouseId. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -2392,10 +2665,10 @@
                             <p>XYZ</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td >
-                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field CarrierName</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field CarrierName. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -2488,6 +2761,35 @@
                     </tr>
                 </tbody>
             </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/returnorder/PostMode3</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostMode3</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <h2 class="h2 title toc-headings">Request Parameters as JSON</h2>
             <div class="geshifilter">
                 <pre style="border-left:0px;">
@@ -2557,7 +2859,6 @@
                 <div class="toc-item-anchor"><a name="mode4"></a></div>
                 <h2 class="h2 title toc-headings" style="color:#cc1543;">Operation Mode 4</h2>
             </div>
-
 
             <div class="toc-item-anchor"><a name="PostSearchOrders"></a></div>
             <h2 class="h2 title toc-headings">PostSearchOrders</h2>
@@ -2673,7 +2974,7 @@
                             <p>Customerid</p>
                         </td>
                         <td nowrap="">
-                            <p>123a</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -2687,6 +2988,46 @@
                     </tr>
                 </tbody>
             </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td>
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td>
+                            <p>http://api.bleckmann.apoyar.eu/api/Order/PostSearchOrders</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td>
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Order/PostSearchOrders</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request JSON example</h2>
+            <div class="geshifilter">
+                <pre style="border-left:0px;">
+                [{
+                "Email":"x@x.com",
+                "Name":"",
+                "Orderid":"",
+                "Phone":""
+                }]
+                </pre>
+            </div>
             <h2 class="h2 title toc-headings">Response example</h2>
             <div class="geshifilter">
                 <pre style="border-left:0px;">
@@ -2766,7 +3107,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>ConsumerEmail</p>
+                            <p>Email</p>
                         </td>
                         <td nowrap="">
                             <p>x@x.com</p>
@@ -2786,7 +3127,24 @@
                             <p>Orderid</p>
                         </td>
                         <td nowrap="">
-                            <p>41P24005050000126</p>
+                            <p>411400061002</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td nowrap="">
+                            <p>AlphaNumeric</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Customerid</p>
+                        </td>
+                        <td nowrap="">
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -2800,58 +3158,133 @@
                     </tr>
                 </tbody>
             </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td>
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td>
+                            <p>http://api.bleckmann.apoyar.eu/api/Order/GetBMAllOrdersbyid?Email=x@x.com&Orderid=411400061002&Customerid=test</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td>
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Order/GetBMAllOrdersbyid?Email=x@x.com&Orderid=411400061002&Customerid=apoyartest</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <h2 class="h2 title toc-headings">Response example</h2>
             <div class="geshifilter">
                 <pre style="border-left:0px;">
-                    {
-                      "Status": -1,
-                      "ShipmentId": "41P24005050000126",
-                      "FKCustomerID": "",
-                      "Consumerid": "TRGDE0",
-                      "ConsumerEmail": "x@x.com",
-                      "ShipFromWarehouseId": "KHTRUEFC",
-                      "Source": "RP",
-                      "OrderType": "X-DOCK",
-                      "OrderId": "41P24005050000126",
-                      "ConsumerPhoneNumber": "",
-                      "ShippedDate": "2013-04-30T09:17:41",
-                      "DeliveyDate": "1800-01-01T00:00:00",
-                      "MaxReturnDays": -1,
-                      "ConsumerName1": "TRUE RELIGION BRANDJEANS GERMA",
-                      "ConsumerName2": "",
-                      "ConsumerShipStreet1": "INDUSTRIEZONE 6C",
-                      "ConsumerShipStreet2": "/",
-                      "ConsumerShipStreet3": "",
-                      "ConsumerShipHouseNumber": "",
-                      "ConsumerShipPostalCode": "9770",
-                      "ConsumerShipCity": "KRUISHOUTEM",
-                      "ConsumerShipState": "BE",
-                      "ConsumerShipCountry": "BEL",
-                      "ConsumerLanguage": "",
-                      "TotalValue": 0,
-                      "BMOrderLine": [{
-                          "Status": 10,
-                          "WarehouseId": "KHTRUEFC",
-                          "ShipmentLineId": 1011,
-                          "ShipmentId": null,
-                          "OrderId": "41P24005050000126",
-                          "OrderlineID": 1011,
-                          "SKU": "M13JX43BW2-1001.38",
-                          "StyleDescription": "MENS STUDDED BIKER BELT",
-                          "ColourDescription": "BLACK",
-                          "SizeDescription": "38",
-                          "EANBARCODE": "887150445222",
-                          "HTS": "",
-                          "Origine": "",
-                          "Price": 53.94,
-                          "ProductCurrency": "USD",
-                          "UnitWeight": 0.001,
-                          "UnitOfMeasure": "STUKS",
-                          "HazmatCode": "",
-                          "QtyShipped": 0,
-                          "TotalLineAmount": -1618.200000000001
-                        }]
-                    }
+                {
+                    Status: -1,
+                    ShipmentId: "411400061002",
+                    FKCustomerID: "",
+                    Consumerid: "HA0006",
+                    ConsumerEmail: "x@x.com",
+                    ShipFromWarehouseId: "KHTRUEFC",
+                    Source: "RP",
+                    OrderType: "NIET-MP",
+                    OrderId: "411400061002",
+                    ConsumerPhoneNumber: "",
+                    ShippedDate: "2013-04-19T15:00:50",
+                    DeliveyDate: "1800-01-01T00:00:00",
+                    MaxReturnDays: -1,
+                    ConsumerName1: "HARRODS DATA ENTRY DEPT. DISTR",
+                    ConsumerName2: "",
+                    ConsumerShipStreet1: "MILL LANE",
+                    ConsumerShipStreet2: "/",
+                    ConsumerShipStreet3: "",
+                    ConsumerShipHouseNumber: "",
+                    ConsumerShipPostalCode: "RG19 4AL",
+                    ConsumerShipCity: "THATCHAM - BERKSHIRE",
+                    ConsumerShipState: "GB",
+                    ConsumerShipCountry: "GBR",
+                    ConsumerLanguage: "",
+                    TotalValue: 0,
+                    BMOrderLine: [
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25005,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25005,
+                            SKU: "SU13M1513-4643.XL",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "XL",
+                            EANBARCODE: "887150756991",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 5,
+                            TotalLineAmount: 0
+                        },
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25002,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25002,
+                            SKU: "SU13M1513-4643.S",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "S",
+                            EANBARCODE: "887150756960",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 4,
+                            TotalLineAmount: 0
+                        },
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25003,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25003,
+                            SKU: "SU13M1513-4643.M",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "M",
+                            EANBARCODE: "887150756977",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 6,
+                            TotalLineAmount: 0
+                        }
+                    ]
+                }
 
                 </pre>
             </div>
@@ -2901,7 +3334,7 @@
                             <p>Customerid</p>
                         </td>
                         <td nowrap="">
-                            <p>123</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -2911,6 +3344,35 @@
                         </td>
                         <td nowrap="">
                             <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=test</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=apoyartest</p>
                         </td>
                     </tr>
                 </tbody>
@@ -3050,7 +3512,7 @@
                             <p>Customerid</p>
                         </td>
                         <td nowrap="">
-                            <p>123</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -3060,6 +3522,35 @@
                         </td>
                         <td nowrap="">
                             <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/Carrier/GetBMCarriersbyCustomerid?Customerid=test&CountryCode=GB</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
                         </td>
                     </tr>
                 </tbody>
@@ -3463,10 +3954,10 @@
                             <p>1</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td>
-                            <p>User will select a Country from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -3514,10 +4005,10 @@
                             <p>ATPOST123</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td>
-                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field WarehouseId</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field WarehouseId. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -3531,10 +4022,10 @@
                             <p>XYZ</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td >
-                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field CarrierName</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field CarrierName. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -3798,7 +4289,36 @@
                     </tr>
                 </tbody>
             </table>
-            
+
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/returnorder/PostBMReturnOrder</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostBMReturnOrder</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <h2 class="h2 title toc-headings">Request Parameters as JSON</h2>
             <div class="geshifilter">
                 <pre style="border-left:0px;">
@@ -3890,7 +4410,7 @@
                 <h2 class="h2 title toc-headings" style="color:#cc1543;">Operation Mode 5</h2>
             </div>
 
-            <div class="toc-item-anchor"><a name="GetAllReturnReasonsbyCustomerid5"></a></div>
+<!--             <div class="toc-item-anchor"><a name="GetAllReturnReasonsbyCustomerid5"></a></div>
             <h2 class="h2 title toc-headings">GetAllReturnReasonsbyCustomerid</h2>
             <ul class="details">
                 <li><i>URL: </i>http://<<baseurl>>/api/returnreason/GetAllReturnReasonsbyCustomerid</li>
@@ -3936,7 +4456,7 @@
                             <p>Customerid</p>
                         </td>
                         <td nowrap="">
-                            <p>123</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -3946,6 +4466,35 @@
                         </td>
                         <td nowrap="">
                             <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=test</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=apoyartest</p>
                         </td>
                     </tr>
                 </tbody>
@@ -4086,7 +4635,7 @@
                             <p>Customerid</p>
                         </td>
                         <td nowrap="">
-                            <p>123</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -4096,6 +4645,35 @@
                         </td>
                         <td nowrap="">
                             <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/Carrier/GetBMCarriersbyCustomerid?Customerid=test&CountryCode=GB</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
                         </td>
                     </tr>
                 </tbody>
@@ -4138,12 +4716,13 @@
                       }
                     ]
                 </pre>
-            </div>
+            </div> -->
             <div class="toc-item-anchor"><a name="PostMode5"></a></div>
             <h2 class="h2 title toc-headings">PostMode5</h2>
             <ul class="details">
                 <li><i>URL: </i>http://<<baseurl>>/api/returnorder/PostMode5</li>
                 <li><i>Description: </i>This Call for placing return order with order information.</li>
+                <li><i>Note: </i>Preferred Carrier Settings of Customer and Country will be used to place the order.</li>
             </ul>
 
             <h2 class="h2 title toc-headings">Call Details</h2>
@@ -4491,7 +5070,7 @@
                         </td>
                     </tr>
 
-                    <tr>
+<!--                     <tr>
                         <td nowrap="">
                             <p>CarrierId</p>
                         </td>
@@ -4499,15 +5078,15 @@
                             <p>1</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td>
-                            <p>User will select a Country from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td nowrap="">
                             <p>FKCustomerId</p>
@@ -4541,7 +5120,7 @@
                         <td nowrap="">
                             <p>String</p>
                         </td>
-                    </tr>
+<!--                     </tr>
                     <tr>
                         <td nowrap="">
                             <p>Shipfromwarehouseid</p>
@@ -4550,10 +5129,10 @@
                             <p>ATPOST123</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td>
-                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field WarehouseId</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field WarehouseId. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -4567,21 +5146,21 @@
                             <p>XYZ</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td >
-                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field CarrierName</p>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field CarrierName. If not specified, details from preferred Carrier settings will be used.</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td nowrap="">
                             <p>Mode</p>
                         </td>
                         <td nowrap="">
-                            <p>2</p>
+                            <p>5</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -4817,13 +5396,40 @@
                     </tr>
                 </tbody>
             </table>
-            
+
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/returnorder/PostMode5</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostMode5</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
             <h2 class="h2 title toc-headings">Request Parameters as JSON</h2>
             <div class="geshifilter">
                 <pre style="border-left:0px;">
                     {
-                        "CarrierId":11,
-                        "CarrierName":"Fastway",
                         "ConsumerEmail":"x@x.com",
                         "ConsumerEmail2":"sriramk@apoyar.eu",
                         "ConsumerFromShipCity":"MIDDLESBOROUGH",
@@ -4842,7 +5448,6 @@
                         "OrderId":"410009352004",
                         "Ordertype":"MUPS STD",
                         "ReturnOrderTotalRefundAmount":"74.00",
-                        "Shipfromwarehouseid":"OLDENZAL1",
                         "ShipmentId":"410009352004",
                         "Source":"RP",
                         "Status":1,
