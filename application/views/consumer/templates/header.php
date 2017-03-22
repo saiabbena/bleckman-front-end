@@ -48,6 +48,7 @@
       var languageId='.$languageId.';
       var pageHeadings='.json_encode($all_langs).';
 	  var ApoyarUrlHdr="'.$apoyarurl.'";
+	  var apoyarToken = "";
     </script>';
     ?>
 	

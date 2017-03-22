@@ -952,13 +952,20 @@ $(document).ready(function(){
 	});
 	
 	$(document).on('click','.generateLabel', function() {
-		$('.loading-screen').slideDown('slow');
-		var apoyarToken = (apoyarToken !== undefined)?apoyarToken:'';
+		$('.loading-screen').slideDown('slow');		
 		var retArray = $(this).attr("id").split("-");
 		var apiCall=url+'returnorder/PostReturnLabelByReturnId';
 		var inputData = {};
 		inputData.ReturnId = retArray[1];
-		inputData.Mode = retArray[2];
+		if(UserId == '')
+		{
+			inputData.Mode=1;
+		}
+		else
+		{
+			inputData.Mode = retArray[2];	
+		}
+		console.log("Token : "+apoyarToken);
 		console.log("inputData : ");
 		console.log(inputData);
 		$.ajax({
