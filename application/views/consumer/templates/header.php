@@ -31,13 +31,12 @@
     <!--PHP to JS vars-->
     <?php echo'
     <script>
-      var customerId='.$Customerid.';
+      var customerId="'.$Customerid.'";
       var language="'.$LanguageName.'";
       var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
 	  var baseurl="'. base_url() .'";
       var UserId="";
       var languagesVar='.json_encode($all_translations).';
-      var languageId='.$languageId.';
       var pageHeadings='.json_encode($all_langs).';
     </script>';
     ?>
