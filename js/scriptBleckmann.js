@@ -2344,9 +2344,6 @@ $(document).ready(function() {
 			exportTable1.exportToCSV();
 			
 		}, 2000);*/
-		
-		
-		
 	});
 	$('.export_carrier').click(function(){
 		var customer_id = $(this).attr('id');
@@ -2409,4 +2406,4 @@ $(document).ready(function() {
 					
 	}
 		
-});
+});	
