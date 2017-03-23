@@ -530,7 +530,7 @@
                             <p>FKCustomerId</p>
                         </td>
                         <td nowrap="">
-                            <p>1246252</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -689,7 +689,7 @@
                     "Consumershipstate":"GB",
                     "ConsumerFromShipCountry":"GB",   [Send only Country Code]
                     "CarrierId":"1",
-                    "FKCustomerId":"1",
+                    "FKCustomerId":"apoyartest",
                     “Shipfromwarehouseid”: “KHTRUEFC”,
                     "CarrierName":"DHL",
                     "Mode":1,
@@ -1066,7 +1066,7 @@
                         {
                           "PKReasonID": 84,
                           "Reason": "The product did not match its description1",
-                          "FKCustomerID": "1",
+                          "FKCustomerID": "apoyartest",
                           "IsActive": true,
                           "FkLanguageid": 1,
                           "Uid": "104",
@@ -1076,7 +1076,7 @@
                         {
                           "PKReasonID": 85,
                           "Reason": "Le produit ne correspond &#224; sa description",
-                          "FKCustomerID": "1",
+                          "FKCustomerID": "apoyartest",
                           "IsActive": true,
                           "FkLanguageid": 2,
                           "Uid": "104",
@@ -1086,7 +1086,7 @@
                         {
                           "PKReasonID": 86,
                           "Reason": "Het product komt niet overeen de beschrijving",
-                          "FKCustomerID": "1",
+                          "FKCustomerID": "apoyartest",
                           "IsActive": true,
                           "FkLanguageid": 3,
                           "Uid": "104",
@@ -1098,7 +1098,7 @@
                         {
                           "PKReasonID": 87,
                           "Reason": "Incorrect Product or Size Ordered",
-                          "FKCustomerID": "1",
+                          "FKCustomerID": "apoyartest",
                           "IsActive": true,
                           "FkLanguageid": 1,
                           "Uid": "105",
@@ -1108,7 +1108,7 @@
                         {
                           "PKReasonID": 88,
                           "Reason": " Produit ou Taille incorrecte Ordonn&#233;",
-                          "FKCustomerID": "1",
+                          "FKCustomerID": "apoyartest",
                           "IsActive": true,
                           "FkLanguageid": 2,
                           "Uid": "105",
@@ -1118,7 +1118,7 @@
                         {
                           "PKReasonID": 89,
                           "Reason": " Onjuiste product of maat besteld",
-                          "FKCustomerID": "1",
+                          "FKCustomerID": "apoyartest",
                           "IsActive": true,
                           "FkLanguageid": 3,
                           "Uid": "105",
@@ -1597,7 +1597,7 @@
                             <p>Source</p>
                         </td>
                         <td nowrap="">
-                            <p>GB</p>
+                            <p></p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -1614,7 +1614,7 @@
                             <p>ShipmentId</p>
                         </td>
                         <td nowrap="">
-                            <p>GB</p>
+                            <p>410009352004</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -1649,7 +1649,7 @@
                             <p>FKCustomerId</p>
                         </td>
                         <td nowrap="">
-                            <p>1246252</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -2003,7 +2003,7 @@
                     "Consumershipstate":"IR",
                     "Consumershipstreet2":"/",
                     "Consumershipstreet3":"",
-                    "FKCustomerId":1,
+                    "FKCustomerId":"apoyartest",
                     "OrderId":"410009352004",
                     "Ordertype":"MUPS STD",
                     "ReturnOrderTotalRefundAmount":"74.00",
@@ -2611,7 +2611,7 @@
                             <p>FKCustomerId</p>
                         </td>
                         <td nowrap="">
-                            <p>1246252</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -2804,7 +2804,7 @@
                         "Consumershipstate":"GB",
                         "ConsumerFromShipCountry":"GB",   [Send only Country Code]
                         "CarrierId":"1",
-                        "FKCustomerId":"1",
+                        "FKCustomerId":"apoyartest",
                         “Shipfromwarehouseid”: “KHTRUEFC”,
                         "CarrierName":"DHL",
                         “Userid”:1,
@@ -3035,7 +3035,7 @@
                       {
                         "Status": 10,
                         "ShipmentId": "430000010001",
-                        "FKCustomerID": "",
+                        "FKCustomerID": "apoyartest",
                         "Consumerid": "TRGIT1",
                         "ConsumerEmail": "sriramsukesh@gmail.com",
                         "ShipFromWarehouseId": "KHTRUEFC",
@@ -3385,7 +3385,7 @@
                         {
                           "PKReasonID": 84,
                           "Reason": "The product did not match its description1",
-                          "FKCustomerID": "1",
+                          "FKCustomerID": "apoyartest",
                           "IsActive": true,
                           "FkLanguageid": 1,
                           "Uid": "104",
@@ -3395,7 +3395,7 @@
                         {
                           "PKReasonID": 85,
                           "Reason": "Le produit ne correspond &#224; sa description",
-                          "FKCustomerID": "1",
+                          "FKCustomerID": "apoyartest",
                           "IsActive": true,
                           "FkLanguageid": 2,
                           "Uid": "104",
@@ -3405,7 +3405,7 @@
                         {
                           "PKReasonID": 86,
                           "Reason": "Het product komt niet overeen de beschrijving",
-                          "FKCustomerID": "1",
+                          "FKCustomerID": "apoyartest",
                           "IsActive": true,
                           "FkLanguageid": 3,
                           "Uid": "104",
@@ -3417,7 +3417,7 @@
                         {
                           "PKReasonID": 87,
                           "Reason": "Incorrect Product or Size Ordered",
-                          "FKCustomerID": "1",
+                          "FKCustomerID": "apoyartest",
                           "IsActive": true,
                           "FkLanguageid": 1,
                           "Uid": "105",
@@ -3427,7 +3427,7 @@
                         {
                           "PKReasonID": 88,
                           "Reason": " Produit ou Taille incorrecte Ordonn&#233;",
-                          "FKCustomerID": "1",
+                          "FKCustomerID": "apoyartest",
                           "IsActive": true,
                           "FkLanguageid": 2,
                           "Uid": "105",
@@ -3437,7 +3437,7 @@
                         {
                           "PKReasonID": 89,
                           "Reason": " Onjuiste product of maat besteld",
-                          "FKCustomerID": "1",
+                          "FKCustomerID": "apoyartest",
                           "IsActive": true,
                           "FkLanguageid": 3,
                           "Uid": "105",
@@ -3916,7 +3916,7 @@
                             <p>Source</p>
                         </td>
                         <td nowrap="">
-                            <p>GB</p>
+                            <p></p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -3933,7 +3933,7 @@
                             <p>ShipmentId</p>
                         </td>
                         <td nowrap="">
-                            <p>GB</p>
+                            <p>410009352004</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -3968,7 +3968,7 @@
                             <p>FKCustomerId</p>
                         </td>
                         <td nowrap="">
-                            <p>1246252</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -4339,7 +4339,7 @@
                         "Consumershipstate":"IR",
                         "Consumershipstreet2":"/",
                         "Consumershipstreet3":"",
-                        "FKCustomerId":1,
+                        "FKCustomerId":"apoyartest",
                         "OrderId":"410009352004",
                         "Ordertype":"MUPS STD",
                         "ReturnOrderTotalRefundAmount":"74.00",
@@ -5040,7 +5040,7 @@
                             <p>Source</p>
                         </td>
                         <td nowrap="">
-                            <p>GB</p>
+                            <p></p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -5057,7 +5057,7 @@
                             <p>ShipmentId</p>
                         </td>
                         <td nowrap="">
-                            <p>GB</p>
+                            <p>410009352004</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -5092,7 +5092,7 @@
                             <p>FKCustomerId</p>
                         </td>
                         <td nowrap="">
-                            <p>1246252</p>
+                            <p>apoyartest</p>
                         </td>
                         <td nowrap="">
                             <p>No</p>
@@ -5444,7 +5444,7 @@
                         "Consumershipstate":"IR",
                         "Consumershipstreet2":"/",
                         "Consumershipstreet3":"",
-                        "FKCustomerId":1,
+                        "FKCustomerId":"apoyartest",
                         "OrderId":"410009352004",
                         "Ordertype":"MUPS STD",
                         "ReturnOrderTotalRefundAmount":"74.00",
