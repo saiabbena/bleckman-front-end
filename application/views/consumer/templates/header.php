@@ -45,7 +45,6 @@
 	  var baseurl="'. base_url() .'";
       var UserId="";
       var languagesVar='.json_encode($all_translations).';
-      var languageId='.$languageId.';
       var pageHeadings='.json_encode($all_langs).';
 	  var ApoyarUrlHdr="'.$apoyarurl.'";
 	  var apoyarToken = "";
