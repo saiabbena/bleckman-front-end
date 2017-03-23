@@ -37,9 +37,8 @@
 		</div>
 		<div class="row">
 			<input type="hidden" name="hdn_customer_id_ord" id="hdn_customer_id_ord" value="sdsdsd" />
-        <div id="showError">
-        
-        </div>
+			<div id="showError">			
+			</div>
 			<table data-toggle="table" id="orders_data">		
           <thead>		  
             <tr>

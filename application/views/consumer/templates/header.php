@@ -29,7 +29,15 @@
     
     <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
     <!--PHP to JS vars-->
-    <?php echo'
+    <?php
+		$url_list  = array('dev.bleckmann.apoyar.eu','uat.bleckmann.apoyar.eu','returns.bleckmann.com');		
+		if(in_array(strtolower($_SERVER['HTTP_HOST']), $url_list)){
+			$apoyarurl = strtolower($_SERVER['HTTP_HOST']);
+		}else{
+			$apoyarurl = 'dev.bleckmann.apoyar.eu';			
+		}
+		
+		echo'
     <script>
       var customerId="'.$Customerid.'";
       var language="'.$LanguageName.'";
@@ -39,6 +47,8 @@
       var languagesVar='.json_encode($all_translations).';
       var languageId='.$languageId.';
       var pageHeadings='.json_encode($all_langs).';
+	  var ApoyarUrlHdr="'.$apoyarurl.'";
+	  var apoyarToken = "";
     </script>';
     ?>
 	

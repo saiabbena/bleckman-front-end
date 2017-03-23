@@ -33,13 +33,21 @@
   	<link rel="stylesheet" href="<?php echo base_url();?>css/jquery-ui.css">	
 	  <script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.js"></script>	
     <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
-    <script type="text/javascript">
+    <?php
+		$url_list  = array('dev.bleckmann.apoyar.eu','uat.bleckmann.apoyar.eu','returns.bleckmann.com');		
+		if(in_array(strtolower($_SERVER['HTTP_HOST']), $url_list)){
+			$apoyarurl = strtolower($_SERVER['HTTP_HOST']);
+		}else{
+			$apoyarurl = 'dev.bleckmann.apoyar.eu';			
+		}
+	?>
+	<script type="text/javascript">
       // $.material.init();
       // $.material.checkbox();
       //console.log("loaded");
       <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
       <?php echo 'var apoyarToken="'.$_SESSION['Apoyar'].'";';?>
-	  <?php echo 'var ApoyarUrlVal="dev.bleckmann.apoyar.eu";';?>
+	  <?php echo 'var ApoyarUrlHdr="'.$apoyarurl.'";';?>
       <?php echo 'var baseurl="'. base_url() .'";';?>
       <?php echo 'var customerId="";';?>
       <?php echo 'var allLanguages=[];';?>
@@ -64,7 +72,7 @@
 	</script>
 	<script type="text/javascript" src="<?php echo base_url();?>vendor/pagination/jquery.simplePagination.js"></script>
 	<link type="text/css" rel="stylesheet" href="<?php echo base_url();?>vendor/pagination/simplePagination.css"/>	
-	<script src="<?php echo base_url();?>vendor/jqueryCSV/jquery.tabletoCSV.js"></script>
+	
 	<script>
     $(function() {       
 	   $('.column_visibility').click(function() {
@@ -75,7 +83,7 @@
 			$(this).toggleClass("dd_selected");
        });
     });
-</script>
+	</script>
 	<style>
 		Table.GridOne {
 			padding: 3px;
@@ -174,6 +182,9 @@
     <link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/prism.css">
     <link rel="stylesheet" href="<?php echo base_url();?>vendor/chosen/chosen.css">	
 	<?php }?>
+	<script src="<?php echo base_url();?>vendor/jqueryCSV/jquery.tabletoCSV.js"></script>
+	<!--<script src="<?php echo base_url();?>vendor/jqueryCSV/ExportHTMLTable.js"></script>
+	<script src="<?php echo base_url();?>vendor/jqueryCSV/jquery.callback.js"></script>-->
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -204,6 +215,7 @@
 <div class='container-fluid form1'>
   <div class='row'>
     <div class='col-xs-12 col-md-3' height='100%'>
+    <?php if($this->uri->segment(2) != 'documentation'){ ?>
       <div class='well' style="border-bottom: 15px solid #7C6062; padding-bottom: 40px;">
         <div class='row'>
           <div class='col-md-12 text-center' >
@@ -264,17 +276,15 @@
               <img src='<?php echo base_url();?>img/i-16.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Return Orders</span>
             </div>
           </a>
-          <!----Documentation link starts here--------------->
-           <a href='<?php echo base_url()?>index.php/Bleckmann/documentation'>
+          <a target="_blank" href='<?php echo base_url()?>index.php/Bleckmann/documentation'>
             <div  <?php if($this->uri->segment(2) == 'documentation'){?>style='background-color: #7C6062; color: #fff;'<?php }?> class='col-md-offset-0 col-md-12 col-xs-2 text-left bm-nav-center'>
               <div class='hidden-lg hidden-md'></div>
               <img src='<?php echo base_url();?>img/1486478507_12.File.png' class='menu-icon' height='20px'> <span class='hidden-xs hidden-sm'>Documentation</span>
             </div>
           </a>
-          <!----Documentation link ends here--------------->
         </div>
-                <br><br>
+        <br><br>
         <a class='btn btn-warning btn-raised btn-block' href='<?php echo base_url();?>index.php/Login/logout'><span class='glyphicon glyphicon-log-out'></span> LOGOUT</a>
       </div>
-
+      <?php } ?>
     </div>	

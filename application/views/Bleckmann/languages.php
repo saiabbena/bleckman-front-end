@@ -39,7 +39,7 @@
 									echo '<div class="form-group" id="select-customer-div" style="display:none;"><label>Select a Customer</label><select id="select-customer" name="Customerid" class="form-control">';
 									echo '<option value="-1">Select a Customer</option>';
 									for($i=0;$i<count($allCustomers);$i++) {
-										echo '<option value="'. $allCustomers[$i]['PKCustomerID'] . '">' . $allCustomers[$i]['CustomerName'] . '</option>';
+										echo '<option value="'. $allCustomers[$i]['Customerid'] . '">' . $allCustomers[$i]['CustomerName'] . '</option>';
 										}
 									echo '</select></div>';
 								?>

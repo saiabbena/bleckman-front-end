@@ -311,18 +311,19 @@ class Consumer extends CI_Controller {
 				}
 			}
 						
-			echo '<div class="row">
+			echo '<div class="row">				  
 				  <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4">
 					<div class="well bm-well">
 					  <button type="button" class="close" id="thank_you_close" data-dismiss="modal" aria-label="Close" onclick="location.reload();"><span aria-hidden="true">&times;</span></button>
 					  <h2><center>Thank You!</center></h2>
+					  <div class="text-center" id="showError"></div>
 					  <p class="text-center"></p>
 					  <b>Dear Customer</b></p>
 					  <p>Your Return Order Number is #:<b><span id="show_ro_number"></span></b></p>
 						<p id="print_label">You can print your label by following this link: <a id="label-iframe2" target="_blank" href="">Print label</a></p>
 						<p id="no_label" style="display:none;color:#FF0000;">Your return label could not be generated at the moment. Please contact Customer Support.</p>
 						
-						<p id="retry_label" style="display:none;">Please <a href="#" id="" class="generateLabel">retry to Generate Label.</a>.</p>
+						<p id="retry_label" style="display:none;">Please <a href="javascript:void(0)" id="" class="generateLabel">retry to Generate Label.</a>.</p>
 						
 					<p>You can read additional instructions for returning your order based on the carrier you chose by following this link: <a href="'.$urlval.'" target="_blank">Go to the carriers web-portal</a><br><br>
 					  Additionally all of this information has been forwarded to your email address.<br><br>

@@ -13,6 +13,13 @@ var countryCode = '';
 var mode = 2;
 var om1 = false;
 
+//Add a request header for each AJAX request
+	// $.ajaxSetup({
+	// 	headers: {
+	// 		Apoyar: apoyarToken
+	// 		,ApoyarUrl:ApoyarUrlHdr
+	// 	}	
+	// });
 function getCustomerSettings(callback){
   apiCall=url+'ReturnReason/GetAllReturnReasonsbyCustomerid';
   $.get(apiCall, {'Customerid': customerId})
@@ -397,7 +404,7 @@ $(document).ready(function(){
       return false 
     });
     //change load
-    $('#button1').click(function(){
+    $('#button1').click(function(){ 
       console.log('working');
       var inputData={'Orderid': $('#f2').val(), 'Email': $('#f1').val(), Customerid: customerId};
       console.log('THIS IS INPUT DATA');
@@ -943,4 +950,59 @@ $(document).ready(function(){
 		submition.OrderId = inputData.Orderid;
     submition.ConsumerEmail = inputData.Email;
 	});
+	
+	$(document).on('click','.generateLabel', function() {
+		$('.loading-screen').slideDown('slow');		
+		var retArray = $(this).attr("id").split("-");
+		var apiCall=url+'returnorder/PostReturnLabelByReturnId';
+		var inputData = {};
+		inputData.ReturnId = retArray[1];
+		if(UserId == '')
+		{
+			inputData.Mode=1;
+		}
+		else
+		{
+			inputData.Mode = retArray[2];	
+		}
+		console.log("Token : "+apoyarToken);
+		console.log("inputData : ");
+		console.log(inputData);
+		$.ajax({
+		  url: apiCall,
+		  type: 'POST',
+		  headers: {
+			Apoyar: apoyarToken
+		  },
+		  dataType: 'json',
+		  data:inputData,
+		  success: function(response) {
+			
+			console.log(response);
+			if ( response.Status == 1 ) {
+			  alert("success");
+			  window.location.reload();
+			} else {
+			  alert(response.Messages);
+			}
+		},
+		error: function(data) {
+          $('.loading-screen').slideUp('slow'); 
+            console.log(data);
+            $('div#showError').html('<div class="alert alert-dismissible alert-warning">Error in generating Label. Please try again.</div>')
+            $('html, body').animate({
+              scrollTop: $('#showError').offset().top - 120
+          }, 'slow');
+            $("#showError").fadeTo(5000, 500).slideUp(500, function(){
+            $("#showError").slideUp(500);
+        });
+      },
+      fail: function(data) {
+        console.log(data);
+      }
+    });
+    //$('.loading-screen').slideUp('slow');
+  });	
+	
+	
 });

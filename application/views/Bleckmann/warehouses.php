@@ -121,7 +121,7 @@
 					                </div>
 					            </div>
 								<div class="col-md-6">
-					              	<div class="form-group label-floating">
+					              	<div class="form-group label-floating required">
 					                  <label class="control-label">Warehouse ID</label>
 					                  <input id="WarehouseID" type="text" name="Warehouses[0][WarehouseID]" class="form-control" value="">
 					                  <span class="help-block">Enter Warehouse ID</span>

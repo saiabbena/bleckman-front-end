@@ -15,10 +15,9 @@
             </div>';
           }
         ?>
-			<style>
-				
-			</style>
-	  		<?php				
+
+	  		<?php		
+	  			//echo json_encode($allCustomers);
 	  			for($i=0; $i<count($allCustomers); $i++) {
 	  				$selCountry = '';
 	  				$om1=false;
@@ -42,12 +41,14 @@
 					// 	}
 					// }
 	  				//echo "details : " . $allCustomers[$i]['CustomerName'];
+					
+					//Don't move the postion of CustomerName and Customerid, It will affect the carrier CSV Export
 	  				echo '<div class="col-xs-12 col-sm-4 col-md-3 entry" height="100%">
 							<div class="well" style="border-bottom: 5px solid #7C6062;">
-								<div class="customer_name"><h2><center>'. $allCustomers[$i]['CustomerName'] .'&nbsp;</center></h2><h4><center>'.
-								$allCustomers[$i]['Customerid'].'&nbsp;</center></h4></div>
+								<div class="customer_name"><h2 class="hdr_customer_name"><center>'. $allCustomers[$i]['CustomerName'] .'</center></h2><h4 class="hdr_customer_id"><center>'.
+								$allCustomers[$i]['Customerid'].'</center></h4></div>
 								
-								<center><a data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['PKCustomerID'] .'" href="#" class="edit-customer-pop"><img src="'.base_url().'/img/settings-btn.png" class="settings-btn-link img-responsive"></a></center>
+								<center><a data-toggle="modal" data-target="#add-customer-modal" id="edit-customer-'. $allCustomers[$i]['Customerid'] .'" href="#" class="edit-customer-pop"><img src="'.base_url().'/img/settings-btn.png" class="settings-btn-link img-responsive"></a></center>
 								
 								<div class="row">
 								
@@ -58,11 +59,11 @@
 					
 						if (strpos($allCustomers[$i]['customerOpModes'],'1') !== false) {
 							$om1=true;
-							echo '<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'&Mode=1" target="_blank">Mode1URL</a>';
+							echo '<a href="'.base_url().'?Customer='.$allCustomers[$i]['Customerid'].'&Mode=1" target="_blank">Mode1URL</a>';
 						}
 						if (strpos($allCustomers[$i]['customerOpModes'],'2') !== false) {
 							$om2=true;	
-							echo '<a href="'.base_url().'?Customer='.$allCustomers[$i]['PKCustomerID'].'" target="_blank"> '; 
+							echo '<a href="'.base_url().'?Customer='.$allCustomers[$i]['Customerid'].'" target="_blank"> '; 
 							if ($om1) {
 								echo ' | ';
 							}
@@ -74,30 +75,38 @@
 						}
 					echo '</div></div>';
 							echo '<div class="row">
-									<div class="col-md-12">
-										<a class="" href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['PKCustomerID'] .'">More Info</a> &nbsp; | 
-										<a class="" href="managecarriers?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Manage Carriers</a>
+									<div class="col-md-12">										 
+										<a class="" href="managecarriers?Customerid='.$allCustomers[$i]['Customerid'].'">Manage Carriers</a>										
+
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
-										<a href="users?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Users</a> | 
-										<a href="orders/Customerid/'.$allCustomers[$i]['PKCustomerID'].'">Orders</a>
+										<a href="users?Customerid='.$allCustomers[$i]['Customerid'].'">Users</a> | 
+										<a href="orders/Customerid/'.$allCustomers[$i]['Customerid'].'">Orders</a>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-md-12">
-										<a href="languages?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Languages</a> | 
-										<a href="settings?Customerid='.$allCustomers[$i]['PKCustomerID'].'">Settings</a>
+										<a href="languages?Customerid='.$allCustomers[$i]['Customerid'].'">Languages</a> | 
+										<a href="settings?Customerid='.$allCustomers[$i]['Customerid'].'">Settings</a>
 									</div>
 								</div>
-								<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['PKCustomerID'] .'" id="delete-customer" class="btn btn-raised btn-warning pull-right">Delete</button>
+
+								<div class="row">
+									<div class="col-md-12">
+										<a class="" href="#" data-toggle="modal" data-target="#moreInfo-' . $allCustomers[$i]['Customerid'] .'">More Info</a> |&nbsp;		
+										<a alt="Export Carriers" title="Export Carriers" class="export_carrier " id="'.$allCustomers[$i]['Customerid'].'" href="javascript:void(0)">Export Info</a>
+									</div>
+								</div>
+	
+								<button type="button" data-toggle="modal" data-target="#delete-customer-modal'. $allCustomers[$i]['Customerid'] .'" id="delete-customer" class="btn btn-raised btn-warning pull-right btn-sm">Delete</button>
 								<br>
 								<br>
 								</p>
 							</div>
 						</div>';
-					echo '<div class="modal fade" id="delete-customer-modal'.$allCustomers[$i]['PKCustomerID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+					echo '<div class="modal fade" id="delete-customer-modal'.$allCustomers[$i]['Customerid'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				              <div class="modal-dialog" role="document">
 				                <div class="modal-content">
 				                  <form method="POST" action="deleteCustomer">
@@ -107,7 +116,7 @@
 				                  </div>
 				                  <div class="modal-body">
 				                    <p>Are you sure you want to delete this Customer?</p>';
-				    echo '<input type="hidden" name="PKCustomerID" value="'. $allCustomers[$i]['PKCustomerID'].'">';
+				    echo '<input type="hidden" name="Customerid" value="'. $allCustomers[$i]['Customerid'].'">';
 		            echo'
 		                  </div>
 		                  <div class="modal-footer">
@@ -120,7 +129,7 @@
 		            </div>
 		            ';
 		            //modal for More Info
-		            echo '<div class="modal fade" id="moreInfo-'.$allCustomers[$i]['PKCustomerID'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		            echo '<div class="modal fade" id="moreInfo-'.$allCustomers[$i]['Customerid'].'" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 				              <div class="modal-dialog" role="document">
 				                <div class="modal-content">
 				                  <div class="modal-header" >
@@ -131,6 +140,12 @@
 				                  		<div class="col-md-6">Customer Name
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['CustomerName'] . '
+				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
+				                  		<div class="col-md-6">Customer ID
+				                  		</div>
+				                  		<div class="col-md-6">' . $allCustomers[$i]['Customerid'] . '
 				                  		</div>
 				                  	</div>
 				                  	<div class="col-md-12">
@@ -149,14 +164,14 @@
 				                echo '<div class="col-md-12">
 				                  		<div class="col-md-6">Mode1 URL
 				                  		</div>
-				                  		<div class="col-md-6"><a href="'.base_url().'?Customer='. $allCustomers[$i]['PKCustomerID'].'&Mode=1" target="_blank">' .base_url().'?Customer='. $allCustomers[$i]['PKCustomerID'] . '&Mode=1</a></div>
+				                  		<div class="col-md-6"><a href="'.base_url().'?Customer='. $allCustomers[$i]['Customerid'].'&Mode=1" target="_blank">' .base_url().'?Customer='. $allCustomers[$i]['Customerid'] . '&Mode=1</a></div>
 				                  	</div>';
 				            }
 				            if ( $om2 ) {
 				                echo '<div class="col-md-12">
 				                  		<div class="col-md-6">Mode2 URL
 				                  		</div>
-				                  		<div class="col-md-6"><a href="'.base_url().'?Customer='. $allCustomers[$i]['PKCustomerID'].'" target="_blank">' .base_url().'?Customer='. $allCustomers[$i]['PKCustomerID'] . '</a></div>
+				                  		<div class="col-md-6"><a href="'.base_url().'?Customer='. $allCustomers[$i]['Customerid'].'" target="_blank">' .base_url().'?Customer='. $allCustomers[$i]['Customerid'] . '</a></div>
 				                  	</div>';
 				            }
 				                echo '<div class="col-md-12">
@@ -215,6 +230,28 @@
 		</div>
 	</div>
 </div>
+	<!-- Export Carrier List according to the Customer -->
+	<div id="export_carrier_div" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content" style="padding:20px;">				
+				<table  id="export_carrier_data" cellspacing="10" cellpadding="10">
+					<thead>						
+						<tr>
+						  <th class="col-md-3">Customer Name</th>
+						  <th class="col-md-3">Customer ID</th>
+						  <th class="col-md-3">Carrier Name</th>
+						  <th class="col-md-3">Carrier ID</th>
+						  <th class="col-md-3">Country</th>
+						  <th class="col-md-3">Country Code</th>
+						  <th class="col-md-3">Warehouse ID</th>							  
+						  <th class="col-md-2">Warehouse Name</th>				  			  
+						</tr>				
+					 </thead>
+					<tbody></tbody>
+				</table>
+			</div>
+		</div>				
+	</div>	
 
         <!-- Add Customer Modal -->
         <div class="modal fade" id="add-customer-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -222,7 +259,7 @@
             <div class="modal-content">
               	<form method="POST" action="submitCustomerInfo" id="customer-info-form">
 	              <div class="modal-header">
-	                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="close1()"><span aria-hidden="true">&times;</span></button>
+	                <button type="button" class="close" data-dismiss="modal" aria-label="Close" ><span aria-hidden="true">&times;</span></button>
 	                <h4 class="modal-title" id="myModalLabel" >Add a Customer</h4>
 	              </div>
 	              <div class="modal-body">
@@ -361,7 +398,7 @@
 		          </div>
 		          <input id="PKCustomerID" type="hidden" name="PKCustomerID" value="">
 	              <div class="modal-footer">
-	                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="close1()">Close</button>
+	                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 	                <button type="submit" class="btn btn-primary">save</button>
 	              </div>
               	</form>
@@ -369,50 +406,50 @@
           </div>
         </div>	
         <script language="javascript" type="text/javascript">
-		function close1()
-		{
+		// function close1()
+		// {
 		
-		var mode=document.getElementById('mode').value;
-			if(mode=="edit")
-			{
-			$('input#AddressLine1').val('');
-		    $('input#AddressLine2').val('');
-		    $('input#City').val('');
-		    $('select#Country').val(-1);
-		    $('input#CustomerName').val('');
-			$('input#Customerid').val('');
-		    $('input#EmailAddress').val('');
-		    $('input#PhoneNumber').val('');
-			 $('input#BccEmail').val('');
-		    $('input#PostalCode').val('');
-		    $('input#URL').val('');
-		    $('input#State').val('');
-			//$('input#mode').val('add');
-		    // $('input#Username').val('');
-		    // $('input#Password').val('');
-		    $('input#PKCustomerID').val('');
-			}
-		}
-		$('#override').click(function() {
-		var mode=document.getElementById('mode').value;
-		if(mode=="edit")
-			{
-			$('input#AddressLine1').val('');
-		    $('input#AddressLine2').val('');
-		    $('input#City').val('');
-		    $('select#Country').val(-1);
-		    $('input#CustomerName').val('');
-			$('input#Customerid').val('');
-		    $('input#EmailAddress').val('');
-		    $('input#PhoneNumber').val('');
-		    $('input#PostalCode').val('');
-			 $('input#BccEmail').val('');
-		    $('input#URL').val('');
-		    $('input#State').val('');
-			//$('input#mode').val('add');
-		    // $('input#Username').val('');
-		    // $('input#Password').val('');
-		    $('input#PKCustomerID').val('');
-			}
-		});
+		// var mode=document.getElementById('mode').value;
+		// 	if(mode=="edit")
+		// 	{
+		// 	$('input#AddressLine1').val('');
+		//     $('input#AddressLine2').val('');
+		//     $('input#City').val('');
+		//     $('select#Country').val(-1);
+		//     $('input#CustomerName').val('');
+		// 	$('input#Customerid').val('');
+		//     $('input#EmailAddress').val('');
+		//     $('input#PhoneNumber').val('');
+		// 	 $('input#BccEmail').val('');
+		//     $('input#PostalCode').val('');
+		//     $('input#URL').val('');
+		//     $('input#State').val('');
+		// 	//$('input#mode').val('add');
+		//     // $('input#Username').val('');
+		//     // $('input#Password').val('');
+		//     $('input#Customerid').val('');
+		// 	}
+		// }
+		// $('#override').click(function() {
+		// var mode=document.getElementById('mode').value;
+		// if(mode=="add")
+		// 	{
+		// 	$('input#AddressLine1').val('');
+		//     $('input#AddressLine2').val('');
+		//     $('input#City').val('');
+		//     $('select#Country').val(-1);
+		//     $('input#CustomerName').val('');
+		// 	$('input#Customerid').val('');
+		//     $('input#EmailAddress').val('');
+		//     $('input#PhoneNumber').val('');
+		//     $('input#PostalCode').val('');
+		// 	 $('input#BccEmail').val('');
+		//     $('input#URL').val('');
+		//     $('input#State').val('');
+		// 	//$('input#mode').val('add');
+		//     // $('input#Username').val('');
+		//     // $('input#Password').val('');
+		//     $('input#Customerid').val('');
+		// 	}
+		// });
 		</script>
