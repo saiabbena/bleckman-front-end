@@ -156,9 +156,15 @@ class Bleckmann extends CI_Controller {
       'Customerid'=>$data['customerId']
     );  
     $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req );
+	//print_r($customer_details);exit();
     $data['customerName'] = $customer_details['CustomerName'];
+	$data['Finalwarehouseid'] = $customer_details['Finalwarehouseid'];
+	$data['PostalCode'] = $customer_details['PostalCode'];
+	
     $data['allOpModes'] = $this->httpRequests->httpGet('operation/GetOperations', '' );
     $data['customerOpModes'] = $this->httpRequests->httpGet('operation/GetOperationsbyCustomerid', $req );
+	$data['allWarehouses'] = $this->httpRequests->httpGet('Location/GetAllActiveLocations', '');
+	//print_r($data['allWarehouses']);exit();
 
     $this->load->view('Bleckmann/templates/header');
     $this->load->view('Bleckmann/settings', $data);
@@ -176,6 +182,7 @@ class Bleckmann extends CI_Controller {
       'Customerid'=>$data['customerId']
     );    
     $data['allSettings'] = $this->httpRequests->httpGet('carrier/GetCarrierSettingbyCustomerid', $req);
+	//echo json_encode($data['allSettings']);exit();
 
 	//echo json_encode($data['allSettings']);exit();
     $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req);
@@ -203,14 +210,28 @@ class Bleckmann extends CI_Controller {
     $server_output = $this->httpRequests->httpPost('Operation/PostOperationCustomer', json_encode($_POST) );
     //echo json_encode($server_output);exit();
     if ( $server_output['Status'] == 1) {
-      $_SESSION['message']['settings_panel']='Saved';
+      $_SESSION['message']['OM_settings_panel']='Saved';
       $_SESSION['message']['alert_status']='success';
     } else {
-      $_SESSION['message']['settings_panel']='Error : ' . $server_output['Messages'];
+      $_SESSION['message']['OM_settings_panel']='Error : ' . $server_output['Messages'];
       $_SESSION['message']['alert_status']='warning';
     }
     echo var_dump($_SESSION['message']);
-    header('Location: ' . $_SERVER['HTTP_REFERER'].'#settings_panel');
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#OM_settings_panel');
+  }
+  public function saveFinalWarehouse() {
+     //print_r($_POST);exit();    
+	$server_output = $this->httpRequests->httpPost('customer/PostCustomerFinalWarehouse', json_encode($_POST) );
+    //echo json_encode($server_output);exit();
+    if ( $server_output['Status'] == 1) {
+      $_SESSION['message']['final_warehouse_settings_panel']='Saved';
+      $_SESSION['message']['alert_status']='success';
+    } else {
+      $_SESSION['message']['final_warehouse_settings_panel']='Error : ' . $server_output['Messages'];
+      $_SESSION['message']['alert_status']='warning';
+    }
+    //echo var_dump($_SESSION['message']);exit();
+    header('Location: ' . $_SERVER['HTTP_REFERER'].'#final_warehouse_settings_panel');
   }
 	public function postComment() {
 		header('Content-Type: application/json');
@@ -241,8 +262,13 @@ class Bleckmann extends CI_Controller {
   }  
   public function setCustomerCarrier(){
     print_r(json_encode($_POST));
+    if ( isset($_POST['PreferredCarrier'])) {
+      $_POST['PreferredCarrier'] = 'true';
+    }
+    print_r(json_encode($_POST));
+    //exit();
     $server_output = $this->httpRequests->httpPost('carrier/PostCarriertoCustomer', json_encode($_POST) );
-    //echo json_encode($server_output);
+    //echo json_encode($server_output);exit();
     if ( $server_output['Status'] == 1) { 
       $_SESSION['message']['carrier_panel']='Saved';
       $_SESSION['message']['alert_status']='success';
@@ -427,18 +453,18 @@ class Bleckmann extends CI_Controller {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#user_panel');
   }
   public function submitCustomerInfo() {
-  	//print_r($_POST);exit();
+  	//echo json_encode($_POST);exit();
   	$server_output = $this->httpRequests->httpPost('Customer/PostManageCustomer', json_encode($_POST) );
 	
     if ( $server_output['Id'] ) { 
     	$_SESSION['message']['customer_panel']='Customer Information Saved';
     	$_SESSION['message']['alert_status']='success';
-	} else {
-		$_SESSION['message']['customer_panel']='Error : ' . $server_output['Status'];
-		$_SESSION['message']['alert_status']='warning';
-	}
+  	} else {
+  		$_SESSION['message']['customer_panel']='Error : ' . $server_output['Status'];
+  		$_SESSION['message']['alert_status']='warning';
+  	}
     echo var_dump($_SESSION['message']);
-	header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
+	  header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
   }
   public function addLanguage() {
   	print_r($_POST);
@@ -505,14 +531,23 @@ class Bleckmann extends CI_Controller {
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#customer_panel');
   }
   //function to display the documentation
-  public function documentation()
-  {
-  		
-	$this->load->view('Bleckmann/templates/header');
-  	$this->load->view('admin/documentation');
-    $this->load->view('Bleckmann/templates/footer');
-	
+  public function documentation($param1='') {
+    if ( $param1 == '') {
+      $param1 = 'intro';
+    }
+
+    $this->load->view('Bleckmann/templates/header');
+    $this->load->view('Bleckmann/documentation/header');
+    if ( $param1 == 'intro') {
+      $this->load->view('Bleckmann/documentation/introduction');
+    } elseif ( $param1 == 'apicalls') {
+      $this->load->view('Bleckmann/documentation/apicalls');
+    } else {
+      $this->load->view('Bleckmann/documentation/basic');
+    }
+    $this->load->view('Bleckmann/documentation/footer');
   }
+  
  //  public function carriers($param1='', $param2='') {	  
  //  	//print_r($_SESSION);exit();
 	// //echo $param1;exit();

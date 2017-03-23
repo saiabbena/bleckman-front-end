@@ -8,8 +8,8 @@
 					echo '<div class="form-group" id="orders_by_customer_div"><label>Select a Customer</label><select id="orders_by_customer_id" name="Customerid" class="form-control">';
 					echo '<option value="-1">All Customer Orders</option>';
 					for($i=0;$i<count($allCustomers);$i++) {
-						$selected = ($Customerid == $allCustomers[$i]['PKCustomerID'])?'selected':'';
-						echo '<option '.$selected.' value="'. $allCustomers[$i]['PKCustomerID'] . '">' . $allCustomers[$i]['CustomerName'] . '</option>';
+						$selected = ($Customerid == $allCustomers[$i]['Customerid'])?'selected':'';
+						echo '<option '.$selected.' value="'. $allCustomers[$i]['Customerid'] . '">' . $allCustomers[$i]['CustomerName'] . '</option>';
 						}
 					echo '</select></div>';
 				?>

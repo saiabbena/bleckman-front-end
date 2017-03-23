@@ -18,7 +18,7 @@ class Admin extends CI_Controller {
     );  
     $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req );
     $_SESSION['Customername'] = $customer_details['CustomerName'];
-	$_SESSION['Bccemail'] = $customer_details['BccEmail'];
+	  $_SESSION['Bccemail'] = $customer_details['BccEmail'];
     
     if ( isset($_SESSION['Apoyar']) && $_SESSION['Roleid'] == 99 && $_SESSION['BMRoleid'] == 1 ) {
       redirect('bleckmann/customers');
@@ -523,7 +523,7 @@ $data['bccemail']=$_SESSION['Bccemail'];
 					  <p>Your Return Order Number is #:<b><span id="show_ro_number"></span></b></p>
 						<p id="print_label">You can print your label by following this link: <a id="label-iframe2" target="_blank" href="">Print label</a></p>
 						<p id="no_label" style="display:none;color:#FF0000;">Your return label could not be generated at the moment. Please contact Customer Support.</p>
-						<p id="retry_label" style="display:none;">Please <a href="#" id="" class="generateLabel">retry to Generate Label</a>.</p>
+						<p id="retry_label" style="display:none;">Please <a id="" class="generateLabel" style="cursor:pointer;">retry to Generate Label</a>.</p>
 					<p>You can read additional instructions for returning your order based on the carrier you chose by following this link: <a href="'.$urlval.'" target="_blank">Go to the carriers web-portal</a><br><br>
 					  Additionally all of this information has been forwarded to your email address.<br><br>
 					  Thank you for using our service.

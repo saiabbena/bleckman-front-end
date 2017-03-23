@@ -1,3 +1,4 @@
+//http://www.jqueryscript.net/demo/jQuery-Plugin-To-Convert-HTML-Table-To-CSV-tabletoCSV/
 jQuery.fn.tableToCSV = function() {
     
     var clean_text = function(text){
@@ -39,7 +40,8 @@ jQuery.fn.tableToCSV = function() {
 			}
 			document.body.appendChild(download_link);
 			download_link.click();
-			document.body.removeChild(download_link);
+			document.body.removeChild(download_link);			
+
 	});
     
 };

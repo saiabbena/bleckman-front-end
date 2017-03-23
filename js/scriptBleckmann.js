@@ -1,4 +1,23 @@
 $(document).ready(function() {
+	
+	//Add a request header for each AJAX request
+	/*
+	$.ajaxSetup({
+		headers: {
+			'Apoyar': apoyarToken,
+			'Referer': ApoyarUrlHdr
+		}	
+	});*/
+	var customer_add='true';
+	
+	$.ajaxSetup({
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader('Apoyar', apoyarToken);
+	//		xhr.setRequestHeader('ApoyarUrl', ApoyarUrlHdr);
+		}
+	});	
+	
+	//console.log(apoyarToken+'-------'+ApoyarUrlHdr);	
 	$.validator.addMethod("regex", function(value, element, regexpr) {          
      return regexpr.test(value);
    }, "Please enter a valid pasword.");
@@ -8,37 +27,43 @@ $(document).ready(function() {
 		var predefinedGlobalSettings = [];
 		
 		$(".add-customer-pop").click(function(){
-											
+						
 			var validator1 = $( "#customer-info-form" ).validate();
 			validator1.resetForm();
 			$('h4#myModalLabel').text('Add a Customer');
+			$("input#Customerid").prop('readonly', false);
 			
-			$('input#BccEmail').val('');
 			//$('#view_url').css({'display':'none'});
 			//$('#lbl_url').css({'display':'none'});	
-		    /*
-		    $('input#AddressLine1').val('');
-		    $('input#AddressLine2').val('');
-		    $('input#City').val('');
-		    $('select#Country').val(-1);
-		    $('input#CustomerName').val('');
-			$('input#Customerid').val('');
-		    $('input#EmailAddress').val('');
-		    $('input#PhoneNumber').val('');
-		    $('input#PostalCode').val('');
-		    $('input#URL').val('');
-		    $('input#State').val('');*/
-			$('input#mode').val('add');
+		    if ( customer_add == 'false' ) {
+		    	$('input#Customerid').val('');
+			    $('input#AddressLine1').val('');
+			    $('input#AddressLine2').val('');
+			    $('input#City').val('');
+			    $('select#Country').val(-1);
+			    $('input#CustomerName').val('');
+				$('input#Customerid').val('');
+			    $('input#EmailAddress').val('');
+			    $('input#PhoneNumber').val('');
+			    $('input#PostalCode').val('');
+			    $('input#URL').val('');
+			    $('input#State').val('');
+				$('input#mode').val('add');
+				$('input#BccEmail').val('');
+			}
 		    // $('input#Username').val('');
 		    // $('input#Password').val('');
 		    $('input#PKCustomerID').val('');
 		    $('div.login-info').show();
+		    customer_add='true';
 		});
 
 		$(".edit-customer-pop").click(function(){
 			//alert("hi");			
+			customer_add='false';
 			$('.loading').css({'display':'block'});
 			$('.customer-modal').css({'display':'none'});
+			//$('h4#myModalLabel').text('Edit Customer Information');
 			//$('#view_url').css({'display':'block'});
 			//$('#lbl_url').css({'display':'block'});	
 			
@@ -51,10 +76,7 @@ $(document).ready(function() {
 			//console.log("apiCall : " + apiCall);
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
@@ -84,6 +106,7 @@ $(document).ready(function() {
 		        	$('select#Country').val(data.Country);
 		        	$('input#CustomerName').val(data.CustomerName);
 					$('input#Customerid').val(data.Customerid);
+					$("input#Customerid").prop('readonly', true);
 		        	$('input#EmailAddress').val(data.EmailAddress);
 					$('input#BccEmail').val(data.BccEmail);
 		        	$('input#PhoneNumber').val(data.PhoneNumber);
@@ -94,6 +117,7 @@ $(document).ready(function() {
 		        	$('input#PKCustomerID').val(data.PKCustomerID);
 		        	$('div.login-info').hide();
 		        	$.material.init();
+		        	//console.log('sangeetha : ' + $('input#CustomerName').val());
 		        },
 		        fail: function(data){
 		          console.log(data);
@@ -123,10 +147,7 @@ $(document).ready(function() {
 			//console.log("apiCall : " + apiCall);
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken 
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	//console.log("response data : ");
@@ -335,12 +356,14 @@ $(document).ready(function() {
 		$("#add-warehouse-form").validate({
 		        rules: {
 		            "Warehouses[0][Name]": "required",
+		            "Warehouses[0][WarehouseID]": "required",
 		            "Warehouses[0][PostalCode]": "required",
 		            "Warehouses[0][HouseNumber]" : "required",
 		            "Warehouses[0][Country]": "required",
 		        },
 		        messages: {
 		            "Warehouses[0][Name]": "Please enter Warehouse Name",
+		            "Warehouses[0][WarehouseID]": "Please enter Warehouse ID",
 		            "Warehouses[0][PostalCode]": "Please enter Postal Code",
 		            "Warehouses[0][HouseNumber]": "Please enter House Number",
 		            "Warehouses[0][Country]": "Please enter Country Name"
@@ -519,9 +542,9 @@ $(document).ready(function() {
 		});
 
 		$("#select-customer").on('change', function(){
-			//alert("change" + $(this).val());
+			console.log("change" + $(this).val());
 			$('.loading-screen').show();
-			if ( $(this).val() > -1 ) {
+			if ( $(this).val() != -1 ) {
 				$('.customer-assign').show();
 				getCustomerLanguages($(this).val());
 			}
@@ -602,7 +625,7 @@ $(document).ready(function() {
 			//alert("change" + $(this).val());
 			$('.loading-screen').show();
 			$('.alert').hide();
-			if ( $(this).val() > -1 ) {
+			if ( $(this).val() != -1 ) {
 				getCustomerUsers($(this).val());
 			} else {
 				$('.loading-screen').hide();
@@ -614,10 +637,7 @@ $(document).ready(function() {
 			apiCall=url+'user/GetUsersbyCustomeridandUnassigned';
 		    $.ajax({
 		      url: apiCall,
-		      type: 'get',
-			  headers: {
-				Apoyar: apoyarToken
-			  },
+		      type: 'get',			  
 		      data: { customerid: custid },
 		      dataType: 'json',
 		      success: function (response) {
@@ -649,7 +669,7 @@ $(document).ready(function() {
 												<div class="checkbox">\
 													<label>\
 														<input type="checkbox" id="userAssigned' + i + '" name="Users[' + i +'][Isactive]" value="1"'
-															+ ((response[i]['Fkcustomerid'] > 0 ) ? " checked='checked'" : "") + '>\
+															+ ((response[i]['Fkcustomerid'] != '' ) ? " checked='checked'" : "") + '>\
 													</label>\
 												</div>\
 											</div>\
@@ -702,8 +722,8 @@ $(document).ready(function() {
 			    
 		}
 		function getCustomerLanguages(custid) {
-			// console.log('allLanguages');
-			// console.log(allLanguages);
+			 console.log('allLanguages');
+			console.log(allLanguages);
 			apiCall=url+'CustomerLanguage/GetCustomerLanguagebyId';
 		    $.ajax({
 		      url: apiCall,
@@ -749,9 +769,7 @@ $(document).ready(function() {
 			$.ajax({
 		        url: apiCall,
 		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	//console.log("response data : ");
@@ -793,8 +811,10 @@ $(document).ready(function() {
 			console.log("FKRoleID : " + $(this).val());
 			if ( $(this).val() == 1 ) {
 				$('#Fkcustomerid-div').hide();
+				$('select#Fkcustomerid').val('');
 			} else {
 				$('#Fkcustomerid-div').show();
+				$('select#Fkcustomerid').val('');
 			}
 		});
 		/**/
@@ -906,13 +926,11 @@ $(document).ready(function() {
 				        //console.log("ReturnsOrderTrackingNumber   : " + data[i].ReturnsOrderTrackingNumber );
 				        html=html + '<a target="_blank" href="'+data[i].ReturnsOrderTrackingCode+'" style="cursor:pointer;margin-left:3px;" alt="Returnorder link" title="Returnorder Link" class="pull-left"><i class="large material-icons">link</i></a>';			
 				      }
-					  if(data[i].StatusName == 'Label Printed'){
+					  if(data[i].StatusName.toLowerCase() == 'label printed'){
 						  console.log(window.location.host);
 						  
 						  if(data[i].CarrierName.toLowerCase() == 'ups'){
 							  var label_format = '.gif';
-						  }else if(data[i].CarrierName.toLowerCase() == 'fastway'){
-							  var label_format = '.png';
 						  }else{
 							  var label_format = '.pdf';
 						  }					   
@@ -922,15 +940,9 @@ $(document).ready(function() {
 							  var carrier_name = data[i].CarrierName;
 						  }
 						  
-						  if(window.location.host == 'http://uat.bleckmann.apoyar.eu'){
-							  var lebel_url = 'api.bleckmann.apoyar.eu/labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;  
-							  
-						  }else if(window.location.host == 'http://returns.bleckmann.com'){
-							  var lebel_url = 'returns.bleckmann.com:81/BMAPI/BleckmannApi/Labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;
-						  }else{
-							 var lebel_url = 'dev.bleckmann.apoyar.eu/labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;						  						  
-						  }
-						  html=html + '<a target="_blank" href="'+lebel_url+'" style="cursor:pointer;margin-left:3px;" alt="Print" title="Print" class="pull-left"><i class="large material-icons">print</i></a>';
+						  
+						var lebel_url = API_BASE_URL_FE+'labels/'+data[i].FKCustomerId+'/'+carrier_name+'/'+data[i].ReturnId+label_format;
+						html=html + '<a target="_blank" href="'+lebel_url+'" style="cursor:pointer;margin-left:3px;" alt="Print" title="Print" class="pull-left"><i class="large material-icons">print</i></a>';
 					  }
 					  
 				      html=html+ '</td></tr>\
@@ -1025,9 +1037,7 @@ $(document).ready(function() {
 		  }
 		  //Print Export as CSV
 		  function ExportRenderReturnOrders(raw_data){
-			html='';
-			html2='';
-			html3='';			
+						
 			var total_num_records = raw_data['TotRecords'];
 			var page_count = raw_data['Count'];
 			var pagination_html = '';
@@ -1040,7 +1050,8 @@ $(document).ready(function() {
 			//console.log(data['ReturnOrders'].[0].ReturnId);
 			//console.log(raw_data['PageNo']);
 			//console.log(raw_data['pagesize']);
-					
+			var html = '';
+			html = '<caption>'+'Export-Orders-'+'</caption>';		
 			for(i=0; i<raw_data['ReturnOrders'].length; i++){
 				var data = raw_data['ReturnOrders'];				
 				//console.log("i: " + data[i].ReturnsOrderCreationDate);
@@ -1063,7 +1074,7 @@ $(document).ready(function() {
 				 }
 				if(data[i].ReturnOrderTotalRefundAmount.toFixed(2) > 0){
 					RORefAmount = data[i].ReturnOrderTotalRefundAmount.toFixed(2);
-				}
+				}				
 				html=html+'\<tr>\
 					  <td style="white-space: nowrap;" class="dateval">'+resultDate+'</td>\
 					  \
@@ -1083,8 +1094,7 @@ $(document).ready(function() {
 					  ';					  					  
 				      html=html+ '</tr>\
 					';
-				}
-			
+			}			
 			//console.log(result);			
 			//$('body').append(html2);
 			//$('body').append(html3);			
@@ -1095,9 +1105,7 @@ $(document).ready(function() {
 			  $.ajax({
 		      url: apiCall,
 		      type: 'get',
-			  headers: {
-				Apoyar: apoyarToken
-			  },		      
+			  
 		      dataType: 'json',
 		      success: function (response) {
 				  var arrStatus = {}; // fieldArray object instead of array
@@ -1137,10 +1145,7 @@ $(document).ready(function() {
 			 
 			 $.ajax({
 		      url: apiCall,
-		      type: 'get',
-			  headers: {
-				Apoyar: apoyarToken
-			  },
+		      type: 'get',			  
 		      data: { Customerid: customerId },
 		      dataType: 'json',
 		      success: function (response) {
@@ -1178,8 +1183,7 @@ $(document).ready(function() {
 			$('#filter_carrier').prop('disabled', 'disabled');
 			$('#filter_ordstatus').prop('disabled', 'disabled');
 			
-			// apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
-			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
+			
 			//console.log("apoyarToken : " + apoyarToken );
 			var searchInput={};
 			
@@ -1230,19 +1234,18 @@ $(document).ready(function() {
 			//data: {Customerid: customerId, pageno:pageno, pagesize:'15'},
 			console.log(searchInput);			
 			//console.log(apoyarToken);
+			// apiCall=url+'returnorder/GetReturnOrderbyCustomerid';
+			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
 			$.ajax({
 			  url: apiCall,
 			  type: 'post',
-			  data: searchInput,
-			  headers: {
-				  Apoyar: apoyarToken
-			  },
+			  data: searchInput,			  
 			  dataType: 'json',
 			  success: function (response) {
 				$('.loading-screen').slideUp('slow');
-				console.log(response);
-
-				renderReturnOrders(response);//Load the entire Orders Data with HTML
+				//console.log(headers);				
+				//Load the entire Orders Data with HTML
+				renderReturnOrders(response);
 
 				//$('.tcode-display').toggle();
 				var selCarrierName = (searchInput['CarrierName'] !== '')?searchInput['CarrierName']:'';
@@ -1264,14 +1267,15 @@ $(document).ready(function() {
 				$('.loading-screen').slideDown('slow');
 			  }
 			});
+					
+					
 			var customerId = $('#orders_by_customer_id').val();
 			var pagesize = $('#total_records span').text();			
 			exportRetrieveReturnOrders(customerId, 1, pagesize);
 		}
 		//Call function to export Orders as csv
-		function exportRetrieveReturnOrders(customerId, pageno, pagesize){
+		function exportRetrieveReturnOrders(customerId, pageno, pagesize){	
 			
-			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
 			//console.log("apoyarToken : " + apoyarToken );
 			var searchInput={};
 			
@@ -1317,15 +1321,12 @@ $(document).ready(function() {
 			console.log(searchInput);
 
 
-			
+			apiCall=url+'returnorder/PostBMReturnOrderbyKeywords';
 			//console.log(apoyarToken);
 			$.ajax({
 			  url: apiCall,
 			  type: 'post',
-			  data: searchInput,
-			  headers: {
-				  Apoyar: apoyarToken
-			  },
+			  data: searchInput,					  
 			  dataType: 'json',
 			  success: function (response) {
 				//$('.loading-screen').slideUp('slow');
@@ -1387,10 +1388,7 @@ $(document).ready(function() {
 		    console.log(inputData);
 		    $.ajax({
 		      url: apiCall,
-		      type: 'POST',
-		      headers: {
-		        Apoyar: apoyarToken
-		      },
+		      type: 'POST',		      
 		      dataType: 'json',
 		      data:inputData,
 		      success: function(response) {
@@ -1429,10 +1427,7 @@ $(document).ready(function() {
 			var apiCall=url+'returnorder/GetBMReturnOrderlinesbyReturnOrderid?ReturnId=' + ReturnId;
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	//console.log("response data : ");
@@ -1637,10 +1632,7 @@ $(document).ready(function() {
 			if ( predefinedGlobalSettings.length == 0 ) {
 				$.ajax({
 			        url: apiCall,
-			        type: 'GET',
-				    headers: {
-				        Apoyar: apoyarToken
-				    },
+			        type: 'GET',				    
 			        dataType: 'json',
 			        success: function(data) {
 			        	predefinedGlobalSettings = data;
@@ -1692,10 +1684,7 @@ $(document).ready(function() {
 			//if ( predefinedSettings.length == 0 ) {
 				$.ajax({
 			        url: apiCall,
-			        type: 'GET',
-				    headers: {
-				        Apoyar: apoyarToken
-				    },
+			        type: 'GET',				    
 			        dataType: 'json',
 			        success: function(data) {
 						
@@ -1807,10 +1796,7 @@ $(document).ready(function() {
 			console.log("apiCall : " + apiCall);
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
@@ -1942,10 +1928,7 @@ $(document).ready(function() {
 			$.ajax({
 			  url: apiCall,
 			  type: 'post',
-			  data: postData,
-			  headers: {
-				  Apoyar: apoyarToken
-			  },
+			  data: postData,			  
 			  dataType: 'json',
 			  success: function (response) {
 				//$('.loading-screen').slideUp('slow');
@@ -1977,10 +1960,7 @@ $(document).ready(function() {
 			$.ajax({
 			  url: apiCall,
 			  type: 'post',
-			  data: postData,
-			  headers: {
-				  Apoyar: apoyarToken
-			  },
+			  data: postData,			  
 			  dataType: 'json',
 			  success: function (response) {
 				//$('.loading-screen').slideUp('slow');
@@ -2008,10 +1988,7 @@ $(document).ready(function() {
 			console.log("apiCall : " + apiCall);
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
@@ -2047,10 +2024,7 @@ $(document).ready(function() {
 			console.log("CountryCode :" + array[5]);
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 		        	console.log("response data : ");
@@ -2102,10 +2076,7 @@ $(document).ready(function() {
 			console.log(apoyarToken);
 			$.ajax({
 		        url: apiCall,
-		        type: 'GET',
-			    headers: {
-			        Apoyar: apoyarToken
-			    },
+		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
 					
@@ -2287,9 +2258,7 @@ $(document).ready(function() {
 			  url: apiCall,
 			  type: 'post',
 			  data:  $('form#fromSaveKeywords').serializeArray(),
-			  headers: {
-				  Apoyar: apoyarToken
-			  },
+			  
 			  dataType: 'json',
 			  success: function (response) {				
 				$('#keywords_by_langid').val($("#keywords_by_langid").val()).trigger('change');				
@@ -2320,10 +2289,7 @@ $(document).ready(function() {
 				var apiCall=url+'Translation/GetTranslationsbyLanguageid?Languageid=' + Languageid;
 				$.ajax({
 					url: apiCall,
-					type: 'GET',
-					headers: {
-						Apoyar: apoyarToken
-					},
+					type: 'GET',					
 					dataType: 'json',
 					success: function(dataTrans) {
 						//console.log("response data : ");
@@ -2369,8 +2335,78 @@ $(document).ready(function() {
 			console.log(customerId);
 			console.log(clonetable);
 			clonetable.tableToCSV();
-		}, 2000);		
+		}, 2000);
+		/*setTimeout(function(){
+			var clonetable = $('#export_orders_div table').clone();			
+			console.log(customerId);
+			console.log(clonetable);			
+			var exportTable1=new ExportHTMLTable('export_orders_div');
+			exportTable1.exportToCSV();
+			
+		}, 2000);*/
 		
-	});	
+		
+		
+	});
+	$('.export_carrier').click(function(){
+		var customer_id = $(this).attr('id');
+		console.log(customer_id);
+		var customer_name = $(this).parent().parent().parent().parent().find('h2').text();
+		var customer_code   = $(this).parent().parent().parent().parent().find('h4').text();				
+		//console.log(customer_name+' | '+customer_code);
+		//Plz check the DOM postion of CustomerName and Customerid in Customer view page in case of CSV Export Issue
+		exportCarriers(customer_id, customer_name, customer_code);
+		
+	});
+	//Call function to export Orders as csv
+	function exportCarriers(customerId, customer_name, customer_code){
+		var html = '';		
+		apiCall=url+'carrier/GetCarrierSettingbyCustomerid?Customerid='+customerId;
+			//console.log(apoyarToken);
+			$.ajax({
+			  url: apiCall,
+			  type: 'get',			  					  
+			  dataType: 'json',
+			  success: function (data) {				
+				//console.log(data);
+				html = '<caption>'+customer_name+'-Carriers'+'</caption>';								
+				
+				for(i=0; i<data.length; i++){					
+					
+					html=html+'\<tr>\
+						  <td style="white-space: nowrap;">'+customer_name+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+customer_code+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].CarrierName+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].FKCarrierId+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].CountryName+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].CountryCode+'</td>\
+						  \
+						   <td style="white-space: nowrap;">'+data[i].Warehouseid+'</td>\
+						  \
+						  <td style="white-space: nowrap;">'+data[i].LocationName+'</td>\
+						  \
+						  ';					  					  
+						  html=html+ '</tr>\
+						';
+				}
+				
+				//console.log(html);						
+				$('#export_carrier_data > tbody').html(html);
+				setTimeout(function(){
+					var clonetable = $('#export_carrier_div table').clone();					
+					clonetable.tableToCSV();
+				}, 2000);
+			  },
+			  fail: function(){
+				console.log(data);
+			  }
+			});
+					
+	}
 		
 });
