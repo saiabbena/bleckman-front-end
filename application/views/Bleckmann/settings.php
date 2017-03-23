@@ -16,7 +16,7 @@
 			    </div>
 				<div class="row align-text-bottom">						
 					<div class=" col-md-4">
-					<form method="POST" id="save-op-modes" action="saveFinalWarehouse">
+					<form method="POST" id="" action="saveFinalWarehouse">
 						<input type="hidden" name="Customerid" value="<?php echo $customerId; ?>">						
 						<?php					
 							//print_r($allWarehouses);
@@ -30,7 +30,24 @@
 					?></div>
 					<div class=" col-md-4 align-text-bottom"><button type="submit" id='btn_save_final_warehouse' class='btn btn-raised btn-success' style="margin-top:72px;">Save</button></div></form>
 				</div>
-				<hr />				
+				<hr />
+				<h3>Special Label</h3>
+				<div class="row align-text-bottom">						
+					<div class=" col-md-5">
+					<form method="POST" id="" action="">
+						<input type="hidden" name="Customerid" value="<?php echo $customerId; ?>">						
+						<div class="form-group">
+							<div class="checkbox">
+							  <label>
+								<input type="checkbox" id="special_label" name="special_label" value="1">
+								<span>&nbsp;&nbsp;&nbsp; Show Special Label while generating return order label</span>
+							  </label>
+							</div>
+						</div>
+					</div>
+					<div class=" col-md-4 align-text-bottom"><button type="submit" id='btn_save_special_label' class='btn btn-raised btn-success' style="margin-top:25px;">Save</button></div></form>
+				</div>
+				<hr />
 				<h3>Operation Modes - <?php echo $customerName; ?></h3>
 				<div class="row">
 					<div class="col-md-12">
