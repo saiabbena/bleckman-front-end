@@ -5,6 +5,7 @@
 <?php echo '<script> mode="' . $Mode.'";</script>';?>
 <?php echo '<script> customername="' . $customername.'";</script>';?>
 <?php echo '<script> bccemail="' . $bccemail.'";</script>';?>
+<?php echo '<script> isspeciallabel="' . $isspeciallabel.'";</script>';?>
 
   <!--I just added some commented text for testing-->
   <div class='container-fluid form1 form_con_login'>
@@ -12,7 +13,7 @@
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
         <div class='well bm-well' <?php echo $border_bottom?>>
             <h2><center><span class='tran-13'><?php echo (isset($translations[13]['Translation'])?$translations[13]['Translation']:'');?></span>
-			<?php //echo $translations[13]['Translation'];?></center></h2>
+			    <?php //echo $translations[13]['Translation'];?></center></h2>
             <p class='text-center'><span class='tran-Page1heading'><?php if (isset($customerLanguages['Page1heading'])) { echo ($customerLanguages['Page1heading']); } ?></span></p>
             <div class="inputs">
               <form>
