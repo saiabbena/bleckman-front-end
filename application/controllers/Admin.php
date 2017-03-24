@@ -425,14 +425,12 @@ public function deleteLinks() {
 		$data['customerLanguages'] = $this->httpRequests->httpGet('CustomerLanguage/GetCustomerLanguagebyId', $req);
 		$data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $req);
 		$data['carrierSettings']=$this->httpRequests->httpGet('Carrier/GetCarrierSettingbyCustomerid', $req);
-		
-			
-//
-	
 		$data['all_langs']=$data['customerLanguages'];
 		//$data['customername'] = $_SESSION['Customername'];
-$data['customername'] = $_SESSION['Customername'];
-$data['bccemail']=$_SESSION['Bccemail'];
+    $data['customername'] = $_SESSION['Customername'];
+    $data['bccemail']=$_SESSION['Bccemail'];
+    $data['isspeciallabel'] = boolval($data['appearanceSettings']['CustomerSetting']['isspeciallabel'])?'true':'false';
+
 		$data['Links'] = [];
 		//set customerLanguages to current selected language
 		$this->Languagename='English';

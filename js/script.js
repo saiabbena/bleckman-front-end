@@ -522,12 +522,13 @@ $(document).ready(function(){
 	
     //console.log("carrier info");
     //console.log(customerSettings.carriers[carrierInfo]);
-	carrieridval=customerSettings.carriers[carrierInfo]['PKCarrierID'];
+	  carrieridval=customerSettings.carriers[carrierInfo]['PKCarrierID'];
 	
     if (mode == 3) {     
-	 postData.CarrierName=carName;
+	    postData.CarrierName=carName;
       postData.CustomerName=customername;
-	  postData.BccEmail=bccemail;	  
+      postData.isspeciallabel=(isspeciallabel == 'true');
+	    postData.BccEmail=bccemail;	  
       postData.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       postData.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
 	  
@@ -544,12 +545,12 @@ $(document).ready(function(){
       if ( UserId != '' ) {
         apiCall = url+'returnorder/PostMode3';
         postData.UserId = UserId;
-		var statusval='admin';
+		    var statusval='admin';
         headers = { Apoyar: apoyarToken};
       } else {
         postData.Mode=1;
         apiCall = url+'returnorder/PostMode1';
-		var statusval='nonadmin';
+		    var statusval='nonadmin';
       }
 	 
       console.log("postData");
@@ -631,10 +632,11 @@ $(document).ready(function(){
     } else {
       
    
-	  submition.FKCustomerId=customerId;
+	    submition.FKCustomerId=customerId;
       submition.StatusName='Label printed';
       submition.CustomerName=customername;
-	  submition.BccEmail=bccemail;
+      submition.isspeciallabel=(isspeciallabel == 'true');
+	    submition.BccEmail=bccemail;
 
       //submition.CarrierId=parseInt($('input[name=sample1]:checked').val(), 10);
       submition.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];

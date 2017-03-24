@@ -22,6 +22,7 @@
         	echo '<script> var om4="' .$om4.'";</script>';
         	echo '<script> customername="' . $customername.'";</script>';
 			echo '<script> bccemail="' . $bccemail.'";</script>';
+			echo '<script> isspeciallabel="' . $isspeciallabel.'";</script>';
         ?>
         <br>
 		<div id="showError"></div>

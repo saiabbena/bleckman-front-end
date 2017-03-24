@@ -679,24 +679,22 @@
             <div class="geshifilter">
                 <pre style="border-left:0px;">
                     {
-                    "ConsumerId":"101",
-                    "ConsumerName1":"HARVEY NICHOLS DIST.CENTRE -C/",
-                    "ConsumerEmail":"",
-                    "ConsumerShipStreet1":"DIMENSION LILIPUT",
-                    "ConsumerFromShipHouseNumber":"",
-                    "ConsumerFromShipPostalCode":"NN4 7AS",
-                    "ConsumerFromShipCity":"NORTHAMPTON",
-                    "Consumershipstate":"GB",
-                    "ConsumerFromShipCountry":"GB",   [Send only Country Code]
-                    "CarrierId":"1",
-                    "FKCustomerId":"apoyartest",
-                    “Shipfromwarehouseid”: “KHTRUEFC”,
-                    "CarrierName":"DHL",
-                    "Mode":1,
-                    “BccEmail”:x@x.com,
-                    “Orderid”:”89898989”
+                        "ConsumerName1":"Sriram",
+                        "ConsumerEmail":"sriramk@apoyar.eu",
+                        "ConsumerShipStreet1":"Wacholderweg",
+                        "ConsumerFromShipHouseNumber":"52a",
+                        "ConsumerFromShipPostalCode":"26133",
+                        "ConsumerFromShipCity":"OLDENBURG",
+                        "Consumershipstate":"DE",
+                        "ConsumerFromShipCountry":"DE",
+                        "CarrierId":"4",
+                        "FKCustomerId":"LAUNATHL",
+                        "Shipfromwarehouseid": "AE",
+                        "CarrierName":"DHL",
+                        "Mode":1,
+                        "Orderid":"89898989",
+                        "CustomerName":"Supergroup"
                     }
-
                 </pre>
             </div>
             <h2 class="h2 title toc-headings">Json Response</h2>
@@ -1985,12 +1983,13 @@
             </table>
             <h2 class="h2 title toc-headings">Request Parameters as JSON</h2>
             <div class="geshifilter">
+                Sample token in Request header - Apoyar: 92600f29-10d0-4c5f-b13a-1dbdee2572d4
                 <pre style="border-left:0px;">
-                {
-                    "CarrierId":11,
+                    {
+                    "CarrierId":19,
                     "CarrierName":"Fastway",
                     "ConsumerEmail":"x@x.com",
-                    "ConsumerEmail2":"sriramk@apoyar.eu",
+                    "ConsumerEmail2":"",
                     "ConsumerFromShipCity":"MIDDLESBOROUGH",
                     "ConsumerFromShipCountry":"IRL",
                     "ConsumerFromShipHouseNumber":"",
@@ -2003,16 +2002,17 @@
                     "Consumershipstate":"IR",
                     "Consumershipstreet2":"/",
                     "Consumershipstreet3":"",
-                    "FKCustomerId":"apoyartest",
+                    "FKCustomerId":"TRUEFC",
                     "OrderId":"410009352004",
                     "Ordertype":"MUPS STD",
                     "ReturnOrderTotalRefundAmount":"74.00",
-                    "Shipfromwarehouseid":"OLDENZAL1",
+                    "Shipfromwarehouseid":"KHTRUEFC",
                     "ShipmentId":"410009352004",
                     "Source":"RP",
                     "Status":1,
                     "Mode":2,
-                    “BccEmail”:”x@x.com”,
+                    "CustomerName":"TrueReligion",
+                    "BccEmail":"x@x.com",
                     "Returnorderline":[{
                         "EanBarcode":"889347388510",
                         "LineId":1,
@@ -2022,11 +2022,11 @@
                         "QtyReturned":1,
                         "ReturnReasonId":108,
                         "SKU":"MC907XQ0-COKM.32",
-                        "ShipmentId":"",
-                        "Status":1
+                        "ShipmentId":"410009352004",
+                        "Status":1,
                         "TotalLineAmount":74
-                    }]
-                }
+                        }]
+                    }
 
                 </pre>
             </div>
@@ -2791,26 +2791,27 @@
                 </tbody>
             </table>
             <h2 class="h2 title toc-headings">Request Parameters as JSON</h2>
+            Sample token in Request header - Apoyar: 92600f29-10d0-4c5f-b13a-1dbdee2572d4
             <div class="geshifilter">
                 <pre style="border-left:0px;">
                     {
-                        "ConsumerId":"101",
-                        "ConsumerName1":"HARVEY NICHOLS DIST.CENTRE -C/",
+                        "ConsumerName1":"HARVEY",
                         "ConsumerEmail":"",
-                        "ConsumerShipStreet1":"DIMENSION LILIPUT",
-                        "ConsumerFromShipHouseNumber":"",
-                        "ConsumerFromShipPostalCode":"NN4 7AS",
-                        "ConsumerFromShipCity":"NORTHAMPTON",
-                        "Consumershipstate":"GB",
-                        "ConsumerFromShipCountry":"GB",   [Send only Country Code]
-                        "CarrierId":"1",
-                        "FKCustomerId":"apoyartest",
-                        “Shipfromwarehouseid”: “KHTRUEFC”,
+                        "ConsumerShipStreet1":"Wacholderweg",
+                        "ConsumerFromShipHouseNumber":"52a",
+                        "ConsumerFromShipPostalCode":"26133",
+                        "ConsumerFromShipCity":"OLDENBURG",
+                        "Consumershipstate":"DE",
+                        "ConsumerFromShipCountry":"DE",
+                        "CarrierId":"4",
+                        "FKCustomerId":"LAUNATHL",
+                        "Shipfromwarehouseid": "AE",
                         "CarrierName":"DHL",
-                        “Userid”:1,
-                        “Mode”:3,
-                        “BccEmail”:”x@x.com”,
-                        “Orderid”:”89898989”
+                        "Userid":2,
+                        "Mode":3,
+                        "BccEmail":"x@x.com",
+                        "Orderid":"89898989",
+                        "CustomerName":"Supergroup"
                     }
                 </pre>
             </div>
@@ -4320,50 +4321,53 @@
                 </tbody>
             </table>
             <h2 class="h2 title toc-headings">Request Parameters as JSON</h2>
+            Sample token in request header - Apoyar:92600f29-10d0-4c5f-b13a-1dbdee2572d4
             <div class="geshifilter">
                 <pre style="border-left:0px;">
-                    {
-                        "CarrierId":11,
-                        "CarrierName":"Fastway",
-                        "ConsumerEmail":"x@x.com",
-                        "ConsumerEmail2":"sriramk@apoyar.eu",
-                        "ConsumerFromShipCity":"MIDDLESBOROUGH",
-                        "ConsumerFromShipCountry":"IRL",
-                        "ConsumerFromShipHouseNumber":"",
-                        "ConsumerFromShipPostalCode":"A65 F4E2",
-                        "ConsumerId":101,
-                        "ConsumerName1":"PSYCHE LIMITED",
-                        "ConsumerShipStreet1":"175-187 LINTHORPE ROAD",
-                        "Consumername2":"",
-                        "Consumerphonenumber":"",
-                        "Consumershipstate":"IR",
-                        "Consumershipstreet2":"/",
-                        "Consumershipstreet3":"",
-                        "FKCustomerId":"apoyartest",
+                   {
+                    "CarrierId":19,
+                    "CarrierName":"Fastway",
+                    "ConsumerEmail":"x@x.com",
+                    "ConsumerEmail2":"",
+                    "ConsumerFromShipCity":"MIDDLESBOROUGH",
+                    "ConsumerFromShipCountry":"IRL",
+                    "ConsumerFromShipHouseNumber":"",
+                    "ConsumerFromShipPostalCode":"A65 F4E2",
+                    "ConsumerId":101,
+                    "ConsumerName1":"PSYCHE LIMITED",
+                    "ConsumerShipStreet1":"175-187 LINTHORPE ROAD",
+                    "Consumername2":"",
+                    "Consumerphonenumber":"",
+                    "Consumershipstate":"IR",
+                    "Consumershipstreet2":"/",
+                    "Consumershipstreet3":"",
+                    "FKCustomerId":"TRUEFC",
+                    "OrderId":"410009352004",
+                    "Ordertype":"MUPS STD",
+                    "ReturnOrderTotalRefundAmount":"74.00",
+                    "Shipfromwarehouseid":"KHTRUEFC",
+                    "ShipmentId":"410009352004",
+                    "Source":"RP",
+                    "Status":1,
+                    "Mode":4,
+                    "Userid":"2",
+                    "CustomerName":"TrueReligion",
+                    "BccEmail":"x@x.com",
+                    "Returnorderline":[{
+                        "EanBarcode":"889347388510",
+                        "LineId":1,
                         "OrderId":"410009352004",
-                        "Ordertype":"MUPS STD",
-                        "ReturnOrderTotalRefundAmount":"74.00",
-                        "Shipfromwarehouseid":"OLDENZAL1",
+                        "Price":"74.00",
+                        "ProductCurrency":"GBP",
+                        "QtyReturned":1,
+                        "ReturnReasonId":108,
+                        "SKU":"MC907XQ0-COKM.32",
                         "ShipmentId":"410009352004",
-                        "Source":"RP",
                         "Status":1,
-                        "Userid":123,
-                        "Mode":4,
-                        "BccEmail":x@x.com”,
-                        "Returnorderline":[{
-                            "EanBarcode":"889347388510",
-                            "LineId":1,
-                            "OrderId":"410009352004",
-                            "Price":"74.00",
-                            "ProductCurrency":"GBP",
-                            "QtyReturned":1,
-                            "ReturnReasonId":108,
-                            "SKU":"MC907XQ0-COKM.32",
-                            "ShipmentId":"",
-                            "Status":1
-                            "TotalLineAmount":74
-                        }]
-                    }
+                        "TotalLineAmount":74
+                    }]
+                }
+
                 </pre>
             </div>
             <h2 class="h2 title toc-headings">Json Response</h2>
@@ -5070,23 +5074,7 @@
                         </td>
                     </tr>
 
-<!--                     <tr>
-                        <td nowrap="">
-                            <p>CarrierId</p>
-                        </td>
-                        <td nowrap="">
-                            <p>1</p>
-                        </td>
-                        <td nowrap="">
-                            <p>Yes</p>
-                        </td>
-                        <td>
-                            <p>User will select a Country from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId. If not specified, details from preferred Carrier settings will be used.</p>
-                        </td>
-                        <td nowrap="">
-                            <p>String</p>
-                        </td>
-                    </tr> -->
+
                     <tr>
                         <td nowrap="">
                             <p>FKCustomerId</p>
@@ -5430,44 +5418,50 @@
             <div class="geshifilter">
                 <pre style="border-left:0px;">
                     {
-                        "ConsumerEmail":"x@x.com",
-                        "ConsumerEmail2":"sriramk@apoyar.eu",
-                        "ConsumerFromShipCity":"MIDDLESBOROUGH",
-                        "ConsumerFromShipCountry":"IRL",
-                        "ConsumerFromShipHouseNumber":"",
-                        "ConsumerFromShipPostalCode":"A65 F4E2",
-                        "ConsumerId":101,
-                        "ConsumerName1":"PSYCHE LIMITED",
-                        "ConsumerShipStreet1":"175-187 LINTHORPE ROAD",
-                        "Consumername2":"",
-                        "Consumerphonenumber":"",
-                        "Consumershipstate":"IR",
-                        "Consumershipstreet2":"/",
-                        "Consumershipstreet3":"",
-                        "FKCustomerId":"apoyartest",
-                        "OrderId":"410009352004",
-                        "Ordertype":"MUPS STD",
-                        "ReturnOrderTotalRefundAmount":"74.00",
-                        "ShipmentId":"410009352004",
-                        "Source":"RP",
-                        "Status":1,
-                        "Userid":123,
-                        "Mode":4,
-                        "BccEmail":x@x.com”,
-                        "Returnorderline":[{
-                            "EanBarcode":"889347388510",
-                            "LineId":1,
+                    "ConsumerEmail":"x@x.com",
+                    "ConsumerEmail2":"sriramk@apoyar.eu",
+                    "ConsumerFromShipCity":"MIDDLESBOROUGH",
+                    "ConsumerFromShipCountry":"IRL",
+                    "ConsumerFromShipHouseNumber":"",
+                    "ConsumerFromShipPostalCode":"A65 F4E2",
+                    "ConsumerId":101,
+                    "ConsumerName1":"PSYCHE LIMITED",
+                    "ConsumerShipStreet1":"175-187 LINTHORPE ROAD",
+                    "Consumername2":"",
+                    "Consumerphonenumber":"",
+                    "Consumershipstate":"IR",
+                    "Consumershipstreet2":"/",
+                    "Consumershipstreet3":"",
+                    "FKCustomerId":"TRUEFC",
+                    "CarrierId":19,
+                    "CarrierName":"Fastway",
+                    "ShipfromWarehouseId":"KHTRUEFC",
+                    "CustomerName":"TrueReligion",
+                    "OrderId":"410009352004",
+                    "Ordertype":"MUPS STD",
+                    "ReturnOrderTotalRefundAmount":"74.00",
+                    "Shipfromwarehouseid":"OLDENZAL1",
+                    "ShipmentId":"410009352004",
+                    "Source":"RP",
+                    "Status":1,
+                    "Mode":5,
+                    "BccEmail":"x@x.com",
+                    "Returnorderline":
+                        [{
+                            "EanBarcode":"889347388534",
+                            "LineId":2,
                             "OrderId":"410009352004",
                             "Price":"74.00",
                             "ProductCurrency":"GBP",
                             "QtyReturned":1,
                             "ReturnReasonId":108,
-                            "SKU":"MC907XQ0-COKM.32",
-                            "ShipmentId":"",
-                            "Status":1
+                            "SKU":"MC907XQ0-COKM.34",
+                            "ShipmentId":"410009352004",
+                            "Status":1,
                             "TotalLineAmount":74
                         }]
                     }
+
                 </pre>
             </div>
             <h2 class="h2 title toc-headings">Json Response</h2>
