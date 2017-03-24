@@ -156,10 +156,15 @@ class Bleckmann extends CI_Controller {
       'Customerid'=>$data['customerId']
     );  
     $customer_details = $this->httpRequests->httpGet('Customer/GetActiveCustomerbyId', $req );
-	//print_r($customer_details);exit();
+	
+	$customer_settings = $this->httpRequests->httpGet('Customersetting/GetCustomerSettingbyId', $req );
+	//print_r($customer_settings);//exit();
+	
     $data['customerName'] = $customer_details['CustomerName'];
 	$data['Finalwarehouseid'] = $customer_details['Finalwarehouseid'];
 	$data['PostalCode'] = $customer_details['PostalCode'];
+	$data['isspeciallabel'] = $customer_settings['isspeciallabel'];
+	//echo $customer_settings['isspeciallabel'];exit();
 	
     $data['allOpModes'] = $this->httpRequests->httpGet('operation/GetOperations', '' );
     $data['customerOpModes'] = $this->httpRequests->httpGet('operation/GetOperationsbyCustomerid', $req );
@@ -232,6 +237,22 @@ class Bleckmann extends CI_Controller {
     }
     //echo var_dump($_SESSION['message']);exit();
     header('Location: ' . $_SERVER['HTTP_REFERER'].'#final_warehouse_settings_panel');
+  }
+  public function saveSpecialLabel(){
+	  $_POST['isspeciallabel'] = (isset($_POST['isspeciallabel']) && $_POST['isspeciallabel'] == 'true')?'true':'false';
+	  $server_output = $this->httpRequests->httpPost('CustomerSetting/PostUpdateCustomerSpecialLabel', json_encode($_POST) );
+	  //echo json_encode($server_output);
+	  //print_r($_POST);exit();
+	  //api/Customersetting/GetCustomerSettingbyId
+	  if ( $server_output['Status'] == 1) {
+		  $_SESSION['message']['final_warehouse_settings_panel']='Saved';
+		  $_SESSION['message']['alert_status']='success';
+		} else {
+		  $_SESSION['message']['final_warehouse_settings_panel']='Error : ' . $server_output['Messages'];
+		  $_SESSION['message']['alert_status']='warning';
+		}
+		//echo var_dump($_SESSION['message']);exit();
+		header('Location: ' . $_SERVER['HTTP_REFERER'].'#special_label_settings_panel');
   }
 	public function postComment() {
 		header('Content-Type: application/json');

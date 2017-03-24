@@ -15,7 +15,7 @@
 			        </div>
 			    </div>
 				<div class="row align-text-bottom">						
-					<div class=" col-md-4">
+					<div class=" col-md-6">
 					<form method="POST" id="" action="saveFinalWarehouse">
 						<input type="hidden" name="Customerid" value="<?php echo $customerId; ?>">						
 						<?php					
@@ -33,13 +33,13 @@
 				<hr />
 				<h3>Special Label</h3>
 				<div class="row align-text-bottom">						
-					<div class=" col-md-5">
-					<form method="POST" id="" action="">
-						<input type="hidden" name="Customerid" value="<?php echo $customerId; ?>">						
+					<div class=" col-md-8">
+					<form method="POST" id="" action="saveSpecialLabel">
+						<input type="hidden" name="FKCustomerid" value="<?php echo $customerId; ?>">						
 						<div class="form-group">
 							<div class="checkbox">
 							  <label>
-								<input type="checkbox" id="special_label" name="special_label" value="1">
+								<input type="checkbox" <?php echo ($isspeciallabel == 1)?'checked':''?> id="isspeciallabel" name="isspeciallabel" value="true">
 								<span>&nbsp;&nbsp;&nbsp; Show Special Label while generating return order label</span>
 							  </label>
 							</div>

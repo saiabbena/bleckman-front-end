@@ -823,7 +823,30 @@ if( data[i].ReturnsOrderTrackingCode!='')
 			console.log(clonetable);
 			clonetable.tableToCSV();
 		}, 2000);		
-		
-	});			
+		fnExcelReport();//Call the Export csv function for IE and SAFARI
+	});
+	function fnExcelReport(){
+		var tab_text= $('#export_orders_div').html();
+
+		var ua = window.navigator.userAgent;
+		var msie = ua.indexOf("MSIE "); 
+
+		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+		{
+			var ifd = document.getElementById('txtArea1').contentDocument;
+			txtArea1.document.open("txt/html","replace");
+			txtArea1.document.write(tab_text);
+			txtArea1.document.close();
+			txtArea1.focus(); 
+			sa = txtArea1.document.execCommand("SaveAs",true,"export.xls");
+			ifd.close();
+			return (sa);			
+		}  
+		else if(navigator.userAgent.toLowerCase().indexOf('safari') > -1){
+			//other browser not tested on IE 11			
+			sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+			return (sa);
+		}		
+	}		
 	
 });
