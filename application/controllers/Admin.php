@@ -430,6 +430,7 @@ public function deleteLinks() {
     $data['customername'] = $_SESSION['Customername'];
     $data['bccemail']=$_SESSION['Bccemail'];
     $data['isspeciallabel'] = boolval($data['appearanceSettings']['CustomerSetting']['isspeciallabel'])?'true':'false';
+    $data['Reference1'] = $data['appearanceSettings']['CustomerSetting']['Reference1'];
 
 		$data['Links'] = [];
 		//set customerLanguages to current selected language

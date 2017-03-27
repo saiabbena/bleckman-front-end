@@ -23,6 +23,7 @@
         	echo '<script> customername="' . $customername.'";</script>';
 			echo '<script> bccemail="' . $bccemail.'";</script>';
 			echo '<script> isspeciallabel="' . $isspeciallabel.'";</script>';
+			echo '<script> Reference1="' . $Reference1.'";</script>';
         ?>
         <br>
 		<div id="showError"></div>

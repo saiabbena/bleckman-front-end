@@ -529,6 +529,7 @@ $(document).ready(function(){
       postData.CustomerName=customername;
       postData.isspeciallabel=(isspeciallabel == 'true');
 	    postData.BccEmail=bccemail;	  
+      postData.Reference1=Reference1;
       postData.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       postData.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
 	  
@@ -637,6 +638,7 @@ $(document).ready(function(){
       submition.CustomerName=customername;
       submition.isspeciallabel=(isspeciallabel == 'true');
 	    submition.BccEmail=bccemail;
+      submition.Reference1=Reference1;
 
       //submition.CarrierId=parseInt($('input[name=sample1]:checked').val(), 10);
       submition.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];

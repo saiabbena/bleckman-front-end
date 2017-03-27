@@ -341,7 +341,7 @@
 		                	
 		                </div>
 		                <div class="row">
-                        <div class="col-md-6">
+                        	<div class="col-md-6">
 				              	<div class="form-group label-floating">
 				                  <label for="i5" class="control-label">City</label>
 				                  <input id="City" type="text" name="City" class="form-control" value="">
@@ -355,7 +355,6 @@
 				                  <span class="help-block">Enter State</span>
 				                </div>
 			                </div>
-			                
 		                </div>
 
 						<div class="row">
@@ -376,7 +375,16 @@
 				                  ?>
 				                </div>
 			                </div>
+                        	<div class="col-md-6">
+				              	<div class="form-group label-floating">
+				                  <label for="i5" class="control-label">Reference1</label>
+				                  <input id="Reference1" type="text" name="Reference1" class="form-control" value="">
+				                  <span class="help-block">Enter Reference1</span>
+				                </div>
+			                </div>
                           </div>
+
+
 <!-- 		               	<div class="row login-info">
 		               		<h4>Login Details</h4>
 		                	<div class="col-md-6">

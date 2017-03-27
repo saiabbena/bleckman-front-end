@@ -6,6 +6,7 @@
 <?php echo '<script> customername="' . $customername.'";</script>';?>
 <?php echo '<script> bccemail="' . $bccemail.'";</script>';?>
 <?php echo '<script> isspeciallabel="' . $isspeciallabel.'";</script>';?>
+<?php echo '<script> Reference1="' . $Reference1.'";</script>';?>
 
   <!--I just added some commented text for testing-->
   <div class='container-fluid form1 form_con_login'>

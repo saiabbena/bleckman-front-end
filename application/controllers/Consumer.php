@@ -229,7 +229,7 @@ class Consumer extends CI_Controller {
   $data['customername'] = $appearanceSettings['CustomerSetting']['CustomerName'];
   $data['bccemail'] = $appearanceSettings['CustomerSetting']['BccEmail'];
   $data['isspeciallabel'] = boolval($appearanceSettings['CustomerSetting']['isspeciallabel'])?'true':'false';
-
+  $data['Reference1'] = $appearanceSettings['CustomerSetting']['Reference1'];
 	//Use in Live
 	/* In header I have put the (style scoped) for specific requirement*/
 	$hdr_bg = $header_color;		
