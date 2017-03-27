@@ -36,6 +36,7 @@
 		
 		</div>
 		<div class="row">
+			<iframe id="txtArea1" style="display:none; visibility:hidden"></iframe>
 			<input type="hidden" name="hdn_customer_id_ord" id="hdn_customer_id_ord" value="sdsdsd" />
 			<div id="showError">			
 			</div>

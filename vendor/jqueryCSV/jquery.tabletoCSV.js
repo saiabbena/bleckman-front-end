@@ -34,6 +34,7 @@ jQuery.fn.tableToCSV = function() {
 			download_link.href = uri;
 			var ts = new Date().getTime();
 			var csvfilename = '';
+			download_link.target = '_blank';
 			if(caption==""){
 				download_link.download = ts+".csv";
 				csvfilename = ts+".csv";
@@ -41,9 +42,7 @@ jQuery.fn.tableToCSV = function() {
 			} else {
 				download_link.download = caption+"-"+ts+".csv";
 				csvfilename = caption+"-"+ts+".csv";
-			}
-			//response.setHeader( "Content-Disposition", "attachment;filename=" + csvfilename);
-			
+			}			
 			document.body.appendChild(download_link);
 			download_link.click();
 			document.body.removeChild(download_link);						
