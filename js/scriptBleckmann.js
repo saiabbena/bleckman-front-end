@@ -13,7 +13,7 @@ $(document).ready(function() {
 	$.ajaxSetup({
 		beforeSend: function(xhr) {
 			xhr.setRequestHeader('Apoyar', apoyarToken);
-	//		xhr.setRequestHeader('ApoyarUrl', ApoyarUrlHdr);
+			xhr.setRequestHeader('ApoyarUrl', ApoyarUrlHdr);
 		}
 	});	
 	
@@ -2336,7 +2336,7 @@ $(document).ready(function() {
 			clonetable.tableToCSV();
 		}, 2000);		
 		
-		fnExcelReport();
+		fnExcelReport();//Call the Export csv function for IE and SAFARI
 
 	});
 	function fnExcelReport(){

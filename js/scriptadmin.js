@@ -1,11 +1,12 @@
 $(document).ready(function(){
-	//Add a request header for each AJAX request
+	
+	//Add a request header for each AJAX request	
 	$.ajaxSetup({
-		headers: {
-			Apoyar: apoyarToken
-			,ApoyarUrl:ApoyarUrlHdr
-		}	
-	});
+		beforeSend: function(xhr) {
+			xhr.setRequestHeader('Apoyar', apoyarToken);
+			xhr.setRequestHeader('ApoyarUrl', ApoyarUrlHdr);
+		}
+	});	
 	//init material design skin  
 	$.material.init();
 	//TODO: MAKE THIS PASSED FROM PHP
