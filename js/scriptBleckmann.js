@@ -50,6 +50,7 @@ $(document).ready(function() {
 			    $('input#State').val('');
 				$('input#mode').val('add');
 				$('input#BccEmail').val('');
+				$('input#Reference1').val('');
 			}
 		    // $('input#Username').val('');
 		    // $('input#Password').val('');
@@ -115,6 +116,7 @@ $(document).ready(function() {
 					$('#view_url #customer_id').text(data.PKCustomerID);
 					$('input#URL').val($('#view_url').text());
 		        	$('input#PKCustomerID').val(data.PKCustomerID);
+		        	$('input#Reference1').val(data.Reference1);
 		        	$('div.login-info').hide();
 		        	$.material.init();
 		        	//console.log('sangeetha : ' + $('input#CustomerName').val());
