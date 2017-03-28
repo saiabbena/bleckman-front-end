@@ -478,7 +478,7 @@ $(document).ready(function(){
 		  
 	     } else {
   			  submition.Returnorderline[counter]={
-      			"Status": 10,
+      			//"Status": 10,
       			"ShipmentId": JSON.parse($(this).val())['ShipmentId'],
       			"LineId": JSON.parse($(this).val())['ShipmentLineId'],
       			"OrderId": JSON.parse($(this).val())['OrderId'],
@@ -491,7 +491,7 @@ $(document).ready(function(){
       			"ProductCurrency": JSON.parse($(this).val())['ProductCurrency'],
       			"TotalLineAmount": (JSON.parse($(this).val())['Price']).toFixed(2)*parseInt(quantity, 10),
       			"ReturnReasonId": parseInt(reason, 10),
-      			"StatusName": "In Transit",
+      			//"StatusName": "In Transit",
             "Reference1": Reference1,
   		    }
 	     }
