@@ -179,6 +179,7 @@
   
   
   <div class='container-fluid form3'>
+  
     <div class='row'>
       <div class='col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 col-lg-4 col-lg-offset-4'>
         <div class='well bm-well' <?php echo $border_bottom?>>
@@ -223,13 +224,14 @@
             <div class="form-group">
               <label for="f1" class="control-label">Email</label>
               <input type="text" id='emailConfirm' value='' class="form-control" id="f1">
-              <span class="help-block">Select at email where you would like to recieve your label
+			  <span id="email_validation" style="display:none;color:#FF0000;">Please enter the valid email id</span>
+              <span class="help-block">Select at email where you would like to recieve your label</span>
             </div>
             
             <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button3' <?php echo $btn_bg?>>
             <span class='tran-20'><?php echo (isset($translations[20]['Translation'])?$translations[20]['Translation']:'');?></span>
             </button><br>
-			      <!--<p style="text-align:right;"><a href="javascript:void(0)" id="btn_career_back">&laquo; Back</a></p>-->
+			<!--<p style="text-align:right;"><a href="javascript:void(0)" id="btn_career_back">&laquo; Back</a></p>-->
             <div class="alert alert-dismissible alert-success" id='screen3-success'>
               <strong><span class='tran-21'><?php echo $translations[21]['Translation']?></span></strong></strong>
               <span class='tran-22'><?php echo $translations[22]['Translation']?></span>
@@ -242,6 +244,7 @@
         </div>
       </div>
     </div>
+	
   </div>
   
   <div class='container-fluid form4'>

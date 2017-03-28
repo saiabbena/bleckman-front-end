@@ -506,10 +506,25 @@ $(document).ready(function(){
     }
     
   });
-  
+  function ValidateEmail(tmpStr){
+		var email_pat = /^[a-z][a-z0-9_\.\-]*[a-z0-9]@[a-z0-9]+[a-z0-9\.\-_]*\.[a-z]+$/i;
+		return(email_pat.test(tmpStr));
+  }
   //logic
-  $('#button3').click(function(){
-    //console.log(postData);
+  $('#button3').click(function(){  
+	    
+		if($('#emailConfirm').val().length < 1){
+			$('#emailConfirm').focus();
+			$('#email_validation').css({'display':'block'});
+			return true;
+		}
+		if (!ValidateEmail($("#emailConfirm").val())){
+            $('#emailConfirm').focus();
+			$('#email_validation').css({'display':'block'});
+			return true;
+        }	  
+    
+	//console.log(postData);
     console.log("mode : " + mode);
 	
     $('.loading-screen').slideDown('slow');
@@ -630,25 +645,23 @@ $(document).ready(function(){
               });
 
     } else {
-      
-   
-	    submition.FKCustomerId=customerId;
-      submition.StatusName='Label printed';
-      submition.CustomerName=customername;
-      submition.isspeciallabel=(isspeciallabel == 'true');
+		submition.FKCustomerId=customerId;
+		submition.StatusName='Label printed';
+		submition.CustomerName=customername;
+		submition.isspeciallabel=(isspeciallabel == 'true');
 	    submition.BccEmail=bccemail;
 
-      //submition.CarrierId=parseInt($('input[name=sample1]:checked').val(), 10);
-      submition.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
-      submition.Status=result.result.Status;
-      //submition.Shipfromwarehouseid=result.result.ShipFromWarehouseId;
-      submition.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
-      submition.Source=result.result.Source;
-      submition.Ordertype=result.result.OrderType;
-      submition.ShipmentId=result.result.ShipmentId;
-      submition.OrderId=result.result.OrderId;
-      submition.ConsumerId=101;
-      submition.ConsumerEmail=result.result.ConsumerEmail;
+		//submition.CarrierId=parseInt($('input[name=sample1]:checked').val(), 10);
+		submition.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
+		submition.Status=result.result.Status;
+		//submition.Shipfromwarehouseid=result.result.ShipFromWarehouseId;
+	  submition.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
+	  submition.Source=result.result.Source;
+	  submition.Ordertype=result.result.OrderType;
+	  submition.ShipmentId=result.result.ShipmentId;
+	  submition.OrderId=result.result.OrderId;
+	  submition.ConsumerId=101;
+	  submition.ConsumerEmail=result.result.ConsumerEmail;
       submition.Consumerphonenumber=result.result.ConsumerPhoneNumber;
       submition.ConsumerName1=result.result.ConsumerName1;
       submition.Consumername2=result.result.ConsumerName2;
@@ -929,9 +942,8 @@ $(document).ready(function(){
 				{
 					
 				},
-				success:function(res)
-				{
-					//console.log(res);
+				success:function(res){
+					console.log(res);
 					$('.form4').show();
 					$('.form4').html(res);
 				}

@@ -1098,7 +1098,9 @@ $(document).ready(function() {
 			//console.log(result);			
 			//$('body').append(html2);
 			//$('body').append(html3);			
-			$('#export_orders_data > tbody').html(html);			
+			$('#export_orders_data > tbody').html(html);
+			//Optimized code to download the export csv file for mac safari
+			
 		  }
 		  function showAllROStatus(selStatus){
 			  apiCall=url+'returnstatus/GetAllReturnStatus';
@@ -1266,12 +1268,11 @@ $(document).ready(function() {
 			  fail: function(){
 				$('.loading-screen').slideDown('slow');
 			  }
-			});
-					
-					
+			});					
 			var customerId = $('#orders_by_customer_id').val();
 			var pagesize = $('#total_records span').text();			
 			exportRetrieveReturnOrders(customerId, 1, pagesize);
+			$('#downloadcsv').attr('href', 'data:application/csv;charset=utf-8,' + encodeURIComponent($('#export_orders_data').html())).attr('download', 'export.csv');
 		}
 		//Call function to export Orders as csv
 		function exportRetrieveReturnOrders(customerId, pageno, pagesize){	
@@ -2327,16 +2328,19 @@ $(document).ready(function() {
 	$("#export").click(function(){
 		//$('#export_orders_data > tbody').html('');
 		//var pagesize = $('#total_records span').text();
-		//var customerId = $('#orders_by_customer_id').val();				
+		//var customerId = $('#orders_by_customer_id').val();
+		console.log(navigator.userAgent.toLowerCase().indexOf('safari'));
+		if(navigator.userAgent.toLowerCase().indexOf('safari') !== 91){
+			setTimeout(function(){
+				var clonetable = $('#export_orders_div table').clone();			
+				//console.log(customerId);
+				//console.log(clonetable);
+				clonetable.tableToCSV();
+			}, 2000);			
+		}
+				
 		
-		setTimeout(function(){
-			var clonetable = $('#export_orders_div table').clone();			
-			//console.log(customerId);
-			//console.log(clonetable);
-			clonetable.tableToCSV();
-		}, 2000);		
-		
-		fnExcelReport();//Call the Export csv function for IE and SAFARI
+		fnExcelReport();//Call the Export csv function for IE and SAFARI		
 
 	});
 	function fnExcelReport(){
@@ -2358,8 +2362,10 @@ $(document).ready(function() {
 		}  
 		else if(navigator.userAgent.toLowerCase().indexOf('safari') > -1){
 			//other browser not tested on IE 11			
-			sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
+			sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));			
+			e.preventDefault();			
 			return (sa);
+			//$("#downloadcsv").trigger('click');//Call the Export csv function for SAFARI only
 		}  
 
 		

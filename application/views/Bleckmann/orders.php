@@ -38,6 +38,7 @@
 	
 	<div class='row' >
 		<iframe id="txtArea1" style="display:none; visibility:hidden"></iframe>
+		<a id="downloadcsv" href="#" style="visibility:hidden">Click</a>
 		
 		<input type="hidden" name="hdn_customer_id_ord" id="hdn_customer_id_ord" value="<?php echo $Customerid?>" />
         <div id="showError">
