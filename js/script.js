@@ -375,8 +375,8 @@ $(document).ready(function(){
             },
             submitHandler: function(form) {             
               postData.OrderId = $('#OrderId').val();
-			  postData.ShipmentId = $('#OrderId').val();
-			  postData.Consumername1 = $('#Consumername1').val();
+			        postData.ShipmentId = $('#OrderId').val();
+			        postData.Consumername1 = $('#Consumername1').val();
               postData.Consumername2 = $('#Consumername2').val();
               postData.ConsumerShipStreet1 = $('#ConsumerShipStreet1').val();
               postData.ConsumerEmail = $('#ConsumerEmail').val();
@@ -386,7 +386,7 @@ $(document).ready(function(){
               postData.ConsumerFromShipCity = $('#ConsumerFromShipCity').val();
               postData.Consumershipstate = $('#Consumershipstate').val();
               postData.FKCustomerId = customerId;
-              postData.Status = 1;
+              postData.Status = 10;
               postData.Mode=3;
               countryCode = $('#ConsumerFromShipCountry').val();
               console.log(postData);
@@ -478,10 +478,11 @@ $(document).ready(function(){
 		  
 	     } else {
   			  submition.Returnorderline[counter]={
-      			"Status": 1,
-      			"ShipmentId": '',
-      			"LineId": 1,
+      			"Status": 10,
+      			"ShipmentId": JSON.parse($(this).val())['ShipmentId'],
+      			"LineId": JSON.parse($(this).val())['ShipmentLineId'],
       			"OrderId": JSON.parse($(this).val())['OrderId'],
+            "OrderlineId": JSON.parse($(this).val())['OrderlineID'],
       			"SKU": JSON.parse($(this).val())['SKU'],
       			"EanBarcode": JSON.parse($(this).val())['EANBARCODE'],
       			"Price": (JSON.parse($(this).val())['Price']).toFixed(2),
@@ -490,7 +491,8 @@ $(document).ready(function(){
       			"ProductCurrency": JSON.parse($(this).val())['ProductCurrency'],
       			"TotalLineAmount": (JSON.parse($(this).val())['Price']).toFixed(2)*parseInt(quantity, 10),
       			"ReturnReasonId": parseInt(reason, 10),
-      			"StatusName": "In Transit"
+      			"StatusName": "In Transit",
+            "Reference1": Reference1,
   		    }
 	     }
       
