@@ -531,16 +531,13 @@ $(document).ready(function(){
   $('#button3').click(function(){  
 
     if ( mode == 1 ) {
-  		if($('#emailConfirm').val().length < 1){
-  			$('#emailConfirm').focus();
-  			$('#email_validation').css({'display':'block'});
-  			return true;
-  		}
-  		if (!ValidateEmail($("#emailConfirm").val())){
-        $('#emailConfirm').focus();
-  			$('#email_validation').css({'display':'block'});
-  			return true;
-      }	  
+  		if($('#emailConfirm').val().length > 0){
+  			if (!ValidateEmail($("#emailConfirm").val())){
+				$('#emailConfirm').focus();
+				$('#email_validation').css({'display':'block'});
+				return true;
+			}	  
+  		}  		
     }
 	//console.log(postData);
     console.log("mode : " + mode);

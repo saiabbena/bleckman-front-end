@@ -58,7 +58,7 @@
 		ga('send', 'pageview');
 	</script>    
   </head>
-  <body id='override'>
+  <body id='override'>  
     <div class="bm-h" <?php echo $hdr_bg_style?>>
       <img style='height: 70px;' src="<?php echo $logo?>?dummy=<?php echo strtotime("now")?>">
     </div>
@@ -100,7 +100,7 @@
 			  <?php //echo $translations[24]['Translation'];?>&nbsp;&nbsp;
                 <b class="caret"></b></a>
               <ul class="dropdown-menu" <?php echo $dd_bg_style?>>
-                <?php
+                <?php				  
                   foreach ($all_langs as $key => $value) {
                     $url_lang_string=['Lang'=>'', 'Customer'=>''];
                     $url_lang_string['Lang']=$value['LanguageName'];
