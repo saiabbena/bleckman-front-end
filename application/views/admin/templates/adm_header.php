@@ -1,14 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<?php
-		/* $url_list  = array('dev.bleckmann.apoyar.eu','uat.bleckmann.apoyar.eu','returns.bleckmann.com');		
-		if(in_array(strtolower($_SERVER['HTTP_HOST']), $url_list)){
-			$apoyarurl = strtolower($_SERVER['HTTP_HOST']);
-		}else{
-			$apoyarurl = 'dev.bleckmann.apoyar.eu';			
-		} */
-		
+	<?php		
 	echo'
     <script>
      var customerId="'.$_SESSION['Customerid'].'";

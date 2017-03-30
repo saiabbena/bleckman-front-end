@@ -3,14 +3,7 @@
 Class HttpRequests extends CI_Model {
 	public function __construct(){
 	    parent::__construct();
-	    $this->load->library('session');
-		
-		/* $url_list  = array('dev.bleckmann.apoyar.eu','uat.bleckmann.apoyar.eu','returns.bleckmann.com');		
-		if(in_array(strtolower($_SERVER['HTTP_HOST']), $url_list)){
-			$this->apoyarurl = 'ApoyarUrl: ' .API_BASE_URL_BE;//strtolower($_SERVER['HTTP_HOST'])
-		}else{
-			$this->apoyarurl = 'ApoyarUrl: ' . 'dev.bleckmann.apoyar.eu';			
-		}*/ 
+	    $this->load->library('session');		
 		$this->apoyarurl = 'ApoyarUrl: ' . SECURE_APOYAR_URL;
 	}
 

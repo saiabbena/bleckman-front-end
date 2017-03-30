@@ -29,26 +29,19 @@
     
     <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
     <!--PHP to JS vars-->
-    <?php
-		/* $url_list  = array('dev.bleckmann.apoyar.eu','uat.bleckmann.apoyar.eu','returns.bleckmann.com');		
-		if(in_array(strtolower($_SERVER['HTTP_HOST']), $url_list)){
-			$apoyarurl = strtolower($_SERVER['HTTP_HOST']);
-		}else{
-			$apoyarurl = 'dev.bleckmann.apoyar.eu';			
-		} */
-		
+    <?php		
 		echo'
-    <script>
-      var customerId="'.$Customerid.'";
-      var language="'.$LanguageName.'";
-      var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
-	  var baseurl="'. base_url() .'";
-      var UserId="";
-      var languagesVar='.json_encode($all_translations).';
-      var pageHeadings='.json_encode($all_langs).';
-	  var ApoyarUrlHdr="'.SECURE_APOYAR_URL.'";
-	  var apoyarToken = "";
-    </script>';
+		<script>
+		  var customerId="'.$Customerid.'";
+		  var language="'.$LanguageName.'";
+		  var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
+		  var baseurl="'. base_url() .'";
+		  var UserId="";
+		  var languagesVar='.json_encode($all_translations).';
+		  var pageHeadings='.json_encode($all_langs).';
+		  var ApoyarUrlHdr="'.SECURE_APOYAR_URL.'";
+		  var apoyarToken = "";
+		</script>';
     ?>
 	
     <!--My assets-->
