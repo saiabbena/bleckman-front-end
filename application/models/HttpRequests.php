@@ -17,7 +17,7 @@ Class HttpRequests extends CI_Model {
 	    curl_setopt($ch, CURLOPT_POST, 1);
 	    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
 	    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	    curl_setopt($ch, CURLOPT_HEADER, 1);
+	    //curl_setopt($ch, CURLOPT_HEADER, 1);
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array($this->apoyarurl));
 	    // echo "sending request........" . "\r\n";
 	    $response = curl_exec($ch);
