@@ -1,6 +1,7 @@
 <?php
 	$border_bottom = 'style="border-bottom: 10px solid '.$accent_2.' !important;"';
 	$btn_bg = 'style="background-color:'.$accent_1.' !important"';
+
 ?>
 <?php echo '<script> mode="' . $Mode.'";</script>';?>
 <?php echo '<script> customername="' . $customername.'";</script>';?>
@@ -392,6 +393,23 @@
                     </div>
                   </div>
                 </div>
+                    <?php 
+                      if ( isset($Reference1)) {
+                        if ( $Reference1 != '' ) {
+                        echo '<div class="row">
+                            <div class="col-md-12">
+                              <div class="col-md-6">
+                                <div class="form-group label-floating required">
+                                  <label class="control-label">' . $Reference1 .'</label>
+                                  <input name="Reference1" id="Reference1" type="text" class="form-control" maxlength="35">
+                                  <span class="help-block">Enter ' . $Reference1 .'</span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>';
+                      }
+                      }
+                    ?>
                 <br>
                 <button type='submit' class='btn btn-raised btn-block btn-success btn-bm' id='button1' <?php echo $btn_bg?>>
                   <span class='tran-7'><?php if (isset($translations[7]['Translation'])) { echo strtoupper($translations[7]['Translation']); } ?></span>
