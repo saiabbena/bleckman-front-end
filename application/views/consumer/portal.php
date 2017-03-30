@@ -399,7 +399,7 @@
                         echo '<div class="row">
                             <div class="col-md-12">
                               <div class="col-md-6">
-                                <div class="form-group label-floating">
+                                <div class="form-group label-floating required">
                                   <label class="control-label">' . $Reference1 .'</label>
                                   <input name="Reference1" id="Reference1" type="text" class="form-control" maxlength="35">
                                   <span class="help-block">Enter ' . $Reference1 .'</span>

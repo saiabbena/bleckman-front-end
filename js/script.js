@@ -388,6 +388,7 @@ $(document).ready(function(){
               postData.ConsumerFromShipCity = $('#ConsumerFromShipCity').val();
               postData.Consumershipstate = $('#Consumershipstate').val();
               postData.FKCustomerId = customerId;
+              postData.Reference1 = $('#Reference1').val();
               postData.Status = 10;
               postData.Mode=3;
               countryCode = $('#ConsumerFromShipCountry').val();
@@ -516,18 +517,19 @@ $(document).ready(function(){
   }
   //logic
   $('#button3').click(function(){  
-	    
-		if($('#emailConfirm').val().length < 1){
-			$('#emailConfirm').focus();
-			$('#email_validation').css({'display':'block'});
-			return true;
-		}
-		if (!ValidateEmail($("#emailConfirm").val())){
-            $('#emailConfirm').focus();
-			$('#email_validation').css({'display':'block'});
-			return true;
-        }	  
-    
+
+    if ( mode == 1 ) {
+  		if($('#emailConfirm').val().length < 1){
+  			$('#emailConfirm').focus();
+  			$('#email_validation').css({'display':'block'});
+  			return true;
+  		}
+  		if (!ValidateEmail($("#emailConfirm").val())){
+        $('#emailConfirm').focus();
+  			$('#email_validation').css({'display':'block'});
+  			return true;
+      }	  
+    }
 	//console.log(postData);
     console.log("mode : " + mode);
 	
@@ -548,7 +550,7 @@ $(document).ready(function(){
       postData.CustomerName=customername;
       postData.isspeciallabel=(isspeciallabel == 'true');
 	    postData.BccEmail=bccemail;	  
-      postData.Reference1=Reference1;
+      //postData.Reference1=Reference1;
       postData.CarrierId=customerSettings.carriers[carrierInfo]['PKCarrierID'];
       postData.Shipfromwarehouseid=customerSettings.carriers[carrierInfo]['WarehouseId'];
 	  

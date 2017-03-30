@@ -176,7 +176,7 @@ class Consumer extends CI_Controller {
     $customerOpModes = $result;
 	  $data['om1']=false;
     $data['om2']=false;
-    echo json_encode($customerOpModes);
+    
     for($i=0;$i<count($customerOpModes);$i++) {
       if( $customerOpModes[$i]['FKOperationId'] == 1 ) {
         $data['om1']=true;
