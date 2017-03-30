@@ -10,7 +10,7 @@ class Consumer extends CI_Controller {
     $this->load->helper("url");
 	//$this->load->helper("get_appearance_settings.php");
     $this->load->model('httpRequests');
-	
+	$this->apoyarurl = 'ApoyarUrl: ' . SECURE_APOYAR_URL;
     if(!isset($_GET['Customer'])){
       echo 'please provide a customer id';
       exit();
@@ -56,13 +56,15 @@ class Consumer extends CI_Controller {
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/CustomerLanguage/GetCustomerLanguagebyId".$data_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
+	//curl_setopt($ch, CURLOPT_HEADER, TRUE);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array('Apoyar: ""', $this->apoyarurl));
     // Send the request
     $result = json_decode(curl_exec($ch), true);
-
+	
     // Free up the resources $curl is using
     curl_close($ch);
-
+	//print_r($result);exit();
+	
     return $result;
   }
   private function getTranslations(){
@@ -80,7 +82,8 @@ class Consumer extends CI_Controller {
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/Translation/GetAllTranslationsbyCustomerid".$data_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
+	//curl_setopt($ch, CURLOPT_HEADER, 1);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array($this->apoyarurl));
     // Send the request
     $result = json_decode(curl_exec($ch), true);
 
@@ -95,7 +98,8 @@ class Consumer extends CI_Controller {
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/country/GetAllActiveCountriesForConsumer");
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
+	//curl_setopt($ch, CURLOPT_HEADER, 1);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array($this->apoyarurl));
     // Send the request
     $result = json_decode(curl_exec($ch), true);
 
@@ -115,6 +119,8 @@ class Consumer extends CI_Controller {
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE . "api/country/GetAllActiveCountriesbyCustomerid" . $data_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	//curl_setopt($ch, CURLOPT_HEADER, 1);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array($this->apoyarurl));
 
     // Send the request
     $result = json_decode(curl_exec($ch), true);
@@ -125,7 +131,7 @@ class Consumer extends CI_Controller {
     return $result;
   }
   public function portal(){
-    
+	//print_r($this->getCustomerLanguages()[0]);exit();
     $data['customerLanguages']=$this->getCustomerLanguages();
     $data['all_langs']=$data['customerLanguages'];
     $data['all_translations']=$this->getTranslations();
@@ -167,6 +173,8 @@ class Consumer extends CI_Controller {
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/operation/GetOperationsbyCustomerid".$data_url);   
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	//curl_setopt($ch, CURLOPT_HEADER, 1);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array($this->apoyarurl));
 
     // Send the request
     $result = json_decode(curl_exec($ch), true);
@@ -192,6 +200,8 @@ class Consumer extends CI_Controller {
 	  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 	  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);	  
 	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	  //curl_setopt($ch, CURLOPT_HEADER, 1);
+	  curl_setopt($ch, CURLOPT_HTTPHEADER, array($this->apoyarurl));
 
 	  // Send the request
 	  $result = json_decode(curl_exec($ch), true);
@@ -274,6 +284,8 @@ class Consumer extends CI_Controller {
 		curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 		curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE . "api/Carrier/GetCarrierSettingbyCustomerid" . $data_url);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		//curl_setopt($ch, CURLOPT_HEADER, 1);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array($this->apoyarurl));
 		// Send the request
 		$allSettings = json_decode(curl_exec($ch), true);
 		// Free up the resources $curl is using
@@ -296,6 +308,8 @@ class Consumer extends CI_Controller {
 					curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
 					curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE . "api/Carrier/GetCarrierSettingbyCCWid" . $data_url);
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					//curl_setopt($ch, CURLOPT_HEADER, 1);
+					curl_setopt($ch, CURLOPT_HTTPHEADER, array($this->apoyarurl));
 					// Send the request
 					$carrierEditInfo = json_decode(curl_exec($ch), true);
 					// Free up the resources $curl is using
