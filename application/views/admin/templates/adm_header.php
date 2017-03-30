@@ -2,12 +2,12 @@
 <html lang="en">
   <head>
 	<?php
-		$url_list  = array('dev.bleckmann.apoyar.eu','uat.bleckmann.apoyar.eu','returns.bleckmann.com');		
+		/* $url_list  = array('dev.bleckmann.apoyar.eu','uat.bleckmann.apoyar.eu','returns.bleckmann.com');		
 		if(in_array(strtolower($_SERVER['HTTP_HOST']), $url_list)){
 			$apoyarurl = strtolower($_SERVER['HTTP_HOST']);
 		}else{
 			$apoyarurl = 'dev.bleckmann.apoyar.eu';			
-		}
+		} */
 		
 	echo'
     <script>
@@ -17,7 +17,7 @@
        var language="English";
        var API_BASE_URL_FE="'.API_BASE_URL_FE.'";
 	   var baseurl="'. base_url() .'";
-	   var ApoyarUrlHdr="'.$apoyarurl.'";
+	   var ApoyarUrlHdr="'.SECURE_APOYAR_URL.'";
     </script>';	
     ?>	
     <!--Meta tags-->

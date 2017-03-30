@@ -33,21 +33,14 @@
   	<link rel="stylesheet" href="<?php echo base_url();?>css/jquery-ui.css">	
 	  <script type="text/javascript" src="<?php echo base_url();?>js/jquery-ui.js"></script>	
     <script type="text/javascript" src="//ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.min.js"></script>
-    <?php
-		$url_list  = array('dev.bleckmann.apoyar.eu','uat.bleckmann.apoyar.eu','returns.bleckmann.com');		
-		if(in_array(strtolower($_SERVER['HTTP_HOST']), $url_list)){
-			$apoyarurl = strtolower($_SERVER['HTTP_HOST']);
-		}else{
-			$apoyarurl = 'dev.bleckmann.apoyar.eu';			
-		}
-	?>
+    
 	<script type="text/javascript">
       // $.material.init();
       // $.material.checkbox();
       //console.log("loaded");
       <?php echo 'var API_BASE_URL_FE="'.API_BASE_URL_FE.'";';?>
       <?php echo 'var apoyarToken="'.$_SESSION['Apoyar'].'";';?>
-	  <?php echo 'var ApoyarUrlHdr="'.$apoyarurl.'";';?>
+	  <?php echo 'var ApoyarUrlHdr="'.SECURE_APOYAR_URL.'";';?>
       <?php echo 'var baseurl="'. base_url() .'";';?>
       <?php echo 'var customerId="";';?>
       <?php echo 'var allLanguages=[];';?>
