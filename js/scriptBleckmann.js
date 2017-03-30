@@ -1,13 +1,6 @@
 $(document).ready(function() {
 	
-	//Add a request header for each AJAX request
-	/*
-	$.ajaxSetup({
-		headers: {
-			'Apoyar': apoyarToken,
-			'Referer': ApoyarUrlHdr
-		}	
-	});*/
+	//Add a request header for each AJAX request	
 	var customer_add='true';
 	
 	$.ajaxSetup({

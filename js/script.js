@@ -13,13 +13,15 @@ var countryCode = '';
 var mode = 2;
 var om1 = false;
 
-//Add a request header for each AJAX request
-	// $.ajaxSetup({
-	// 	headers: {
-	// 		Apoyar: apoyarToken
-	// 		,ApoyarUrl:ApoyarUrlHdr
-	// 	}	
-	// });
+
+//Add a request header for each AJAX request	
+$.ajaxSetup({
+	beforeSend: function(xhr) {
+		xhr.setRequestHeader('Apoyar', apoyarToken);
+		xhr.setRequestHeader('ApoyarUrl', ApoyarUrlHdr);
+	}
+});
+	
 function getCustomerSettings(callback){
   apiCall=url+'ReturnReason/GetAllReturnReasonsbyCustomerid';
   $.get(apiCall, {'Customerid': customerId})
