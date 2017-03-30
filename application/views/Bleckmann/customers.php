@@ -149,6 +149,12 @@
 				                  		</div>
 				                  	</div>
 				                  	<div class="col-md-12">
+				                  		<div class="col-md-6">API Key
+				                  		</div>
+				                  		<div class="col-md-6">' . $allCustomers[$i]['Password'] . '
+				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
 				                  		<div class="col-md-6">Email Address
 				                  		</div>
 				                  		<div class="col-md-6">' . $allCustomers[$i]['EmailAddress'] . '
@@ -214,6 +220,12 @@
 				                  		<div class="col-md-6">Country
 				                  		</div>
 				                  		<div class="col-md-6">' . $selCountry . '
+				                  		</div>
+				                  	</div>
+				                  	<div class="col-md-12">
+				                  		<div class="col-md-6">Reference1
+				                  		</div>
+				                  		<div class="col-md-6">' . $allCustomers[$i]['Reference1'] . '
 				                  		</div>
 				                  	</div>
 
@@ -383,7 +395,27 @@
 				                </div>
 			                </div>
                           </div>
-
+                          <div class="row">
+                        	<div class="col-md-12">
+                        		<div class="col-md-4">
+									<div class="form-group">
+										<div class="checkbox">
+										  <label>Auto Generate
+											<input type="checkbox" id="genAPIKey" name="genAPIKey">
+											
+										  </label>
+										</div>
+									</div>
+                        		</div>
+                        		<div class="col-md-8">
+					              	<div class="form-group label-floating">
+					                  <label for="i5" class="control-label">API Key</label>
+					                  <input id="APIKey" type="text" name="Password" class="form-control" value="">
+					                  <span class="help-block">Enter API Key</span>
+					                </div>
+				                </div>
+			                </div>
+                          </div>
 
 <!-- 		               	<div class="row login-info">
 		               		<h4>Login Details</h4>

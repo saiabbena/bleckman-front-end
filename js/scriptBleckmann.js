@@ -44,6 +44,7 @@ $(document).ready(function() {
 				$('input#mode').val('add');
 				$('input#BccEmail').val('');
 				$('input#Reference1').val('');
+				$('input#APIKey').val('');
 			}
 		    // $('input#Username').val('');
 		    // $('input#Password').val('');
@@ -73,8 +74,8 @@ $(document).ready(function() {
 		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
-		        	console.log("response data : ");
-		        	//console.log(data);
+		        	console.log("GetActiveCustomerbyId data : ");
+		        	console.log(data);
 		        	$('.loading').css({'display':'none'});
 					$('.customer-modal').css({'display':'block'});
 		        	$('h4#myModalLabel').text('Edit Customer Information');
@@ -110,6 +111,7 @@ $(document).ready(function() {
 					$('input#URL').val($('#view_url').text());
 		        	$('input#PKCustomerID').val(data.PKCustomerID);
 		        	$('input#Reference1').val(data.Reference1);
+		        	$('input#APIKey').val(data.Password);
 		        	$('div.login-info').hide();
 		        	$.material.init();
 		        	//console.log('sangeetha : ' + $('input#CustomerName').val());
@@ -2425,5 +2427,20 @@ $(document).ready(function() {
 			});
 					
 	}
-		
+	$('#genAPIKey').click(function() {
+        if($(this).is(":checked")) {
+        	var possibleText = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+        	var apikey = generateRandomKey(possibleText, 10);
+        	console.log("apikey : " + apikey);
+        	$('input#APIKey').val(apikey);
+        }
+    });
+	function generateRandomKey(possibleText, length) {
+	    var text = "";
+
+	    for( var i=0; i < length; i++ )
+	        text += possibleText.charAt(Math.floor(Math.random() * possibleText.length));
+
+	    return text;
+	}
 });	
