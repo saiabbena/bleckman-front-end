@@ -50,7 +50,7 @@ class Admin extends CI_Controller {
     curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "GET");
     curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."api/CustomerLanguage/GetCustomerLanguagebyId".$data_url);
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
+	curl_setopt($ch, CURLOPT_HTTPHEADER, array($this->apoyarurl));
     // Send the request
     $result = json_decode(curl_exec($ch), true);
 
@@ -131,6 +131,7 @@ class Admin extends CI_Controller {
 	  curl_setopt($ch, CURLOPT_URL, API_BASE_URL_BE."Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
 	  //curl_setopt($ch, CURLOPT_URL, "http://128.0.210.62/bleckmannapi/Api/CustomerSetting/GetCustomerFeaturesbyId".$data_url);
 	  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	  curl_setopt($ch, CURLOPT_HTTPHEADER, array($this->apoyarurl));
 
 	  // Send the request
 	  $result = json_decode(curl_exec($ch), true);
