@@ -345,6 +345,15 @@ $(document).ready(function(){
 					required: true,
 					maxlength: 35
 				},
+        Reference1:{
+          required: function(element) {
+            if ( $Reference1 ) {
+              return true;
+            } else {
+              return false;
+            }
+          }
+        }
             },
             messages: {
                 //Consumername1: "Please enter First Name",
@@ -373,7 +382,10 @@ $(document).ready(function(){
 					required: "Please enter Postal Code",
 					maxlength: $.format("Maximum 10 characters allowed")					
 				},                
-				ConsumerFromShipCountry: "Please enter Country Name"
+				ConsumerFromShipCountry: "Please enter Country Name",
+        Reference1:{
+          required:"Please enter Reference1",
+        }
             },
             submitHandler: function(form) {             
               postData.OrderId = $('#OrderId').val();
