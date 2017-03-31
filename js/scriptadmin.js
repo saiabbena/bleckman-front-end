@@ -524,7 +524,7 @@ if( data[i].ReturnsOrderTrackingCode!='')
           alert("success");
           window.location.reload();
         } else {
-          alert(response.Messages);
+          alert(response.LabelUrl);//response.Messages
         }
       },
       error: function(data) {
