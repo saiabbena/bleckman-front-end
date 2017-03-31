@@ -589,7 +589,7 @@ $(document).ready(function(){
                     $('.form3').hide();
                    //$('.form4').show();				  
 				   getportallink(carrieridval,statusval);
-                    $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
+                    $('#label-iframe2').attr('href', response.Messages);//$('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);
 					$('#show_ro_number').text(response.Id);
                   } else if(response.Status == 1000){
 					console.log(response.Status);
@@ -728,7 +728,7 @@ $(document).ready(function(){
 			}else{
 				getportallink(carrieridval,'admin');
 			}
-            $('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);            
+            $('#label-iframe2').attr('href', response.Messages); //$('#label-iframe2').attr('href', API_BASE_URL_FE+response.Messages);           
             //'http://ws.developer.bleckmann.apoyaretail.com/RoyalMail/'+response.Id+'.pdf', '_blank'
           }else if(response.Status == '1000'){
 			$('.loading-screen').hide();
