@@ -516,17 +516,17 @@ $(document).ready(function(){
 		return(email_pat.test(tmpStr));
   }
   //logic
-  $('#button3').click(function(){  
-
-    if ( mode == 1 ) {
-  		if($('#emailConfirm').val().length > 0){
-  			if (!ValidateEmail($("#emailConfirm").val())){
-				$('#emailConfirm').focus();
-				$('#email_validation').css({'display':'block'});
-				return true;
-			}	  
-  		}  		
-    }
+  $('#button3').click(function(){
+		//alert($('#emailConfirm').val());
+		if($('#emailConfirm').val() !== undefined){
+			if($('#emailConfirm').val().length > 0){
+				if (!ValidateEmail($("#emailConfirm").val())){
+					$('#emailConfirm').focus();
+					$('#email_validation').css({'display':'block'});
+					return true;
+				}	  
+			}  		
+		}
 	//console.log(postData);
     console.log("mode : " + mode);
 	
