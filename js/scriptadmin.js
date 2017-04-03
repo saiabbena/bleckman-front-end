@@ -831,8 +831,8 @@ if( data[i].ReturnsOrderTrackingCode!='')
 
 		var ua = window.navigator.userAgent;
 		var msie = ua.indexOf("MSIE "); 
-
-		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+        // If Internet Explorer
+		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))
 		{
 			var ifd = document.getElementById('txtArea1').contentDocument;
 			txtArea1.document.open("txt/html","replace");
@@ -843,11 +843,11 @@ if( data[i].ReturnsOrderTrackingCode!='')
 			ifd.close();
 			return (sa);			
 		}  
-		else if(navigator.userAgent.toLowerCase().indexOf('safari') > -1){
+		/* else if(navigator.userAgent.toLowerCase().indexOf('safari') > -1){
 			//other browser not tested on IE 11			
 			sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));
 			return (sa);
-		}		
+		}	 */	
 	}		
 	
 });
