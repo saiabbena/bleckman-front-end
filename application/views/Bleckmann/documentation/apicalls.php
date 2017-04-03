@@ -35,6 +35,23 @@
                 <li class="toc-node-level-2"><a href="#GetBMCarriersbyCustomerid5"><span class="toc-text">GetBMCarriersbyCustomerid</span></a></li> -->
                 <li class="toc-node-level-2"><a href="#PostMode5"><span class="toc-text">PostMode5</span></a></li>
             </ol>
+		 <li class="toc-node-level-1"><a href="#mode6"><span class="toc-text">Operation Mode6</span></a></li>				
+            <ol class="children" style="display: block;">
+			<li class="toc-node-level-1"><a href="#mode6"><span class="toc-text">Linked</span></a></li>
+				<ol class="children" style="display: block;">
+					<li class="toc-node-level-2"><a href="#PostSearchOrders6"><span class="toc-text">PostSearchOrders</span></a></li>
+					<li class="toc-node-level-2"><a href="#GetBMAllOrdersbyid6"><span class="toc-text">GetBMAllOrdersbyid</span></a></li>
+					<li class="toc-node-level-2"><a href="#GetAllReturnReasonsbyCustomerid6"><span class="toc-text">GetAllReturnReasonsbyCustomerid</span></a></li>
+					<li class="toc-node-level-2"><a href="#GetBMCarriersbyCustomerid6"><span class="toc-text">GetBMCarriersbyCustomerid</span></a></li>
+					<li class="toc-node-level-2"><a href="#PostBMReturnOrder6"><span class="toc-text">PostBMReturnOrder</span></a></li>
+				</ol>
+			<li class="toc-node-level-1"><a href="#non-linked6"><span class="toc-text">Non Linked</span></a></li>
+				<ol class="children" style="display: block;">
+					<li class="toc-node-level-2"><a href="#GetAllActiveCountriesbyCustomerid6"><span class="toc-text">GetAllActiveCountriesbyCustomerid</span></a></li>
+					<li class="toc-node-level-2"><a href="#GetBMCarriersbyCustomerid6n"><span class="toc-text">GetBMCarriersbyCustomerid</span></a></li>
+					<li class="toc-node-level-2"><a href="#PostMode6"><span class="toc-text">PostMode6</span></a></li>
+				</ol>
+            </ol>
       </ol>
     </nav>
     <article class="portrait-8 grid-6 desktop-10">
@@ -129,7 +146,7 @@
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Country/GetAllActiveCountriesbyCustomerid?Customerid=apoyartest</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Country/GetAllActiveCountriesbyCustomerid?Customerid=apoyartest</p>
                         </td>
                     </tr>
                 </tbody>
@@ -267,7 +284,7 @@
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
                         </td>
                     </tr>
                 </tbody>
@@ -755,7 +772,7 @@
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostMode1</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostMode1</p>
                         </td>
                     </tr>
                 </tbody>
@@ -952,7 +969,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td >
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Order/GetBMAllOrdersbyid?Email=x@x.com&Orderid=411400061002&Customerid=apoyartest</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Order/GetBMAllOrdersbyid?Email=x@x.com&Orderid=411400061002&Customerid=apoyartest</p>
                         </td>
                     </tr>
                 </tbody>
@@ -1140,7 +1157,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=apoyartest</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=apoyartest</p>
                         </td>
                     </tr>
                 </tbody>
@@ -1319,7 +1336,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
                         </td>
                     </tr>
                 </tbody>
@@ -2066,7 +2083,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostBMReturnOrder</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostBMReturnOrder</p>
                         </td>
                     </tr>
                 </tbody>
@@ -2249,7 +2266,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Country/GetAllActiveCountriesbyCustomerid?Customerid=apoyartest</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Country/GetAllActiveCountriesbyCustomerid?Customerid=apoyartest</p>
                         </td>
                     </tr>
                 </tbody>
@@ -2423,7 +2440,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
                         </td>
                     </tr>
                 </tbody>
@@ -2962,7 +2979,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostMode3</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostMode3</p>
                         </td>
                     </tr>
                 </tbody>
@@ -3198,7 +3215,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td>
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Order/PostSearchOrders</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Order/PostSearchOrders</p>
                         </td>
                     </tr>
                 </tbody>
@@ -3366,7 +3383,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td>
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Order/GetBMAllOrdersbyid?Email=x@x.com&Orderid=411400061002&Customerid=apoyartest</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Order/GetBMAllOrdersbyid?Email=x@x.com&Orderid=411400061002&Customerid=apoyartest</p>
                         </td>
                     </tr>
                 </tbody>
@@ -3554,7 +3571,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=apoyartest</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=apoyartest</p>
                         </td>
                     </tr>
                 </tbody>
@@ -3732,7 +3749,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
                         </td>
                     </tr>
                 </tbody>
@@ -4496,7 +4513,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostBMReturnOrder</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostBMReturnOrder</p>
                         </td>
                     </tr>
                 </tbody>
@@ -4680,7 +4697,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=apoyartest</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=apoyartest</p>
                         </td>
                     </tr>
                 </tbody>
@@ -4859,7 +4876,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
                         </td>
                     </tr>
                 </tbody>
@@ -4990,7 +5007,7 @@ HttpStatusCode OK 200.
                             <p>abc@apoyar.net</p>
                         </td>
                         <td nowrap="">
-                            <p>No</p>
+                            <p>Yes</p>
                         </td>
                         <td>
                             <p>ConsumerEmail Email address of the consumer Length 256</p>
@@ -5574,7 +5591,7 @@ HttpStatusCode OK 200.
                             <p>Live URL</p>
                         </td>
                         <td nowrap="">
-                            <p>http://returns.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostMode5</p>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostMode5</p>
                         </td>
                     </tr>
                 </tbody>
@@ -5654,6 +5671,2368 @@ HttpStatusCode OK 200.
 		}
 		
 		HttpStatusCode OK 200.
+                </pre>
+            </div>
+            <div class="geshifilter">
+                <h3>Status=0: Return order NOT created and Return Label NOT Generated</h3>
+                <pre style="border-left:0px;">
+                    {
+                    "Status":"0",
+                    "Messages":"Error Message"
+                    }
+
+                    HttpStatusCode BadRequest 400.
+                </pre>
+            </div>
+        </div>
+		<div class="content">
+            <div>
+                <div class="toc-item-anchor"><a name="mode6"></a></div>
+                <h2 class="h2 title toc-headings" style="color:#cc1543;">Operation Mode 6</h2>
+				This mode is specifically used by the customers of bleckmann and they will integrate the API functions into the portal designed by themselves.</h4>
+				<br/>
+				
+				<b>Note - </b>In the this document you will encounter with word <b><“baseurl”></b> in the API CALLs,baseurl means
+				<br/><b>Sandbox</b>- “api.bleckmann.apoyar.eu” <br/>
+				<b>Live</b> – “returnsapi.bleckmann.com:81/BMAPI/BleckmannAPI/”
+				
+            </div>
+
+            <div class="toc-item-anchor"><a name="PostSearchOrders6"></a></div>
+            <h2 class="h2 title toc-headings">PostSearchOrders</h2>
+			<b>Description:</b>
+			This call is used to get Orders by ConsumerEmail or OrderId or ConsumerPhone or ConsumerName, CustomerID is a mandatory field. From the response we fetch one or more Orders.
+			Selected orderid and consumeremail of that order should be used in the subsequesnt API call “GetBMAllordersbyid” – which is mentioned below.
+
+			<br/>
+            <ul class="details">
+                <li><i><b>URL: </b></i>http://<"baseurl">/api/Order/PostSearchOrders</li>
+            
+            </ul>
+            <h2 class="h2 title toc-headings">Method</h2>
+            <table cellspacing="1" cellpadding="1" border="1">
+                <thead>
+                    <tr>
+                        <th scope="col"><strong>Method</strong></th>
+                        <th scope="col"><strong>Description</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>PostSearchOrders</td>
+                        <td>Get Order and Orderlines by ConumserEmail and Orderid.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Call Details</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Field Name</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Sample Value</strong></p>
+                        </td>
+                        <td nowrap="">
+                          <p><strong>Optional</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Description</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Data Type</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Email</p>
+                        </td>
+                        <td nowrap="">
+                            <p>x@x.com</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Provide Valid Email</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>OrderId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>41P24005050000126</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td nowrap="">
+                            <p>AlphaNumeric</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Phone</p>
+                        </td>
+                        <td nowrap="">
+                            <p>9999999999</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Provide Valid Phone Number</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Name</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Xxx</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CustomerId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>apoyartest</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Alpha Numeric</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td>
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td>
+                            <p>http://api.bleckmann.apoyar.eu/api/Order/PostSearchOrders</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Order/PostSearchOrders</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request JSON example</h2>
+            <div class="geshifilter">
+                <pre style="border-left:0px;">
+                [{
+                "Email":"x@x.com",
+                "Name":"",
+                "Orderid":"",
+                "Phone":""
+                }]
+                </pre>
+            </div>
+            <h2 class="h2 title toc-headings">Response example</h2>
+            <div class="geshifilter">
+                <pre style="border-left:0px;">
+                    [
+                      {
+                        "Status": 10,
+                        "ShipmentId": "430000010001",
+                        "FKCustomerID": "apoyartest",
+                        "Consumerid": "TRGIT1",
+                        "ConsumerEmail": "sriramsukesh@gmail.com",
+                        "ShipFromWarehouseId": "KHTRUEFC",
+                        "Source": "RP",
+                        "OrderType": "NIET-MP",
+                        "OrderId": "430000010001",
+                        "ConsumerPhoneNumber": "1231231231",
+                        "ShippedDate": "2013-04-26T09:18:25.511388",
+                        "DeliveyDate": "1800-01-01T00:00:00",
+                        "MaxReturnDays": -1,
+                        "ConsumerName1": "TRUE RELIGION BRAND JEANS ITAL",
+                        "ConsumerShipStreet1": "VIA MORIMONDO 5",
+                        "ConsumerShipStreet2": "/",
+                        "ConsumerShipHouseNumber": "",
+                        "ConsumerShipPostalCode": "20143",
+                        "ConsumerShipCity": "MILAN",
+                        "ConsumerShipState": "IT",
+                        "ConsumerShipCountry": "ITA",
+                        "ConsumerLanguage": "",
+                        "TotalValue": 0,
+                        "BMOrderLine": null
+                      }
+                    ] 
+
+                </pre>
+            </div>
+            <div class="toc-item-anchor"><a name="GetBMAllOrdersbyid6"></a></div>
+            <h2 class="h2 title toc-headings">GetBMAllOrdersbyid</h2>
+            <ul class="details">
+			<li><b>Description: </b>This call will be used to fetch Order and Orderline information and we need to pass the Order ID and ConsumerEmail.
+
+<br/><b>Note 1:</b> Pick up the data “ConsumerShipCountry” and “FKCustomerID” fields as these values will be used in “GetBMCarriersbyCustomerid”
+
+<br/><b>Note 2:</b> Pick up the complete data from the response we get as this will be used in the subsequesnt API “PostBMReturnOrder” 
+</li>
+                <li><b><i>URL: </i></b>http://<"baseurl">/api/Order/GetBMAllOrdersbyid</li>
+                
+            </ul>
+            <h2 class="h2 title toc-headings">Method</h2>
+            <table cellspacing="1" cellpadding="1" border="1">
+                <thead>
+                    <tr>
+                        <th scope="col"><strong>Method</strong></th>
+                        <th scope="col"><strong>Description</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GetBMAllOrdersbyId</td>
+                        <td>Gets all Order and Orderlines by ConsumerEmail and Orderid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Call Details</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Field Name</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Sample Value</strong></p>
+                        </td>
+                        <td nowrap="">
+                          <p><strong>Optional</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Description</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Data Type</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Email</p>
+                        </td>
+                        <td nowrap="">
+                            <p>x@x.com</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Provide Valid Email</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>OrderId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>411400061002</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td nowrap="">
+                            <p>AlphaNumeric</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CustomerId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>apoyartest</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td nowrap="">
+                            <p>AlphaNumeric</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td>
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td>
+                            <p>http://api.bleckmann.apoyar.eu/api/Order/GetBMAllOrdersbyid?Email=x@x.com&Orderid=411400061002&Customerid=test</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td>
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Order/GetBMAllOrdersbyid?Email=x@x.com&Orderid=411400061002&Customerid=apoyartest</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Response example</h2>
+            <div class="geshifilter">
+                <pre style="border-left:0px;">
+                {
+                    Status: -1,
+                    ShipmentId: "411400061002",
+                    FKCustomerID: "",
+                    Consumerid: "HA0006",
+                    ConsumerEmail: "x@x.com",
+                    ShipFromWarehouseId: "KHTRUEFC",
+                    Source: "RP",
+                    OrderType: "NIET-MP",
+                    OrderId: "411400061002",
+                    ConsumerPhoneNumber: "1231231231",
+                    ShippedDate: "2013-04-19T15:00:50",
+                    DeliveyDate: "1800-01-01T00:00:00",
+                    MaxReturnDays: -1,
+                    ConsumerName1: "HARRODS DATA ENTRY DEPT. DISTR",
+                    ConsumerShipStreet1: "MILL LANE",
+                    ConsumerShipStreet2: "/",
+                    ConsumerShipHouseNumber: "",
+                    ConsumerShipPostalCode: "RG19 4AL",
+                    ConsumerShipCity: "THATCHAM - BERKSHIRE",
+                    ConsumerShipState: "GB",
+                    ConsumerShipCountry: "GBR",
+                    ConsumerLanguage: "",
+                    TotalValue: 0,
+                    BMOrderLine: [
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25005,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25005,
+                            SKU: "SU13M1513-4643.XL",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "XL",
+                            EANBARCODE: "887150756991",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 5,
+                            TotalLineAmount: 0
+                        },
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25002,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25002,
+                            SKU: "SU13M1513-4643.S",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "S",
+                            EANBARCODE: "887150756960",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 4,
+                            TotalLineAmount: 0
+                        },
+                        {
+                            Status: 10,
+                            WarehouseId: "KHTRUEFC",
+                            ShipmentLineId: 25003,
+                            ShipmentId: null,
+                            OrderId: "411400061002",
+                            OrderlineID: 25003,
+                            SKU: "SU13M1513-4643.M",
+                            StyleDescription: "AMERICAN HORSESHOE TEE",
+                            ColourDescription: "RUGBY BLUE",
+                            SizeDescription: "M",
+                            EANBARCODE: "887150756977",
+                            HTS: "",
+                            Origine: "",
+                            Price: 20.9,
+                            ProductCurrency: "GBP",
+                            UnitWeight: 0.001,
+                            UnitOfMeasure: "STUKS",
+                            HazmatCode: "",
+                            QtyShipped: 6,
+                            TotalLineAmount: 0
+                        }
+                    ]
+                }
+
+                </pre>
+            </div>
+            <div class="toc-item-anchor"><a name="GetAllReturnReasonsbyCustomerid6"></a></div>
+            <h2 class="h2 title toc-headings">GetAllReturnReasonsbyCustomerid</h2>
+            <ul class="details">
+			  <li><b>Description: </b>This call is used to get Returnreasons by Customer ID and from this response pick up the values for  PKReasonID as these values will be used in “PostBMReturnOrder.</li>
+                <li><b><i>URL: </i></b>http://<"baseurl">/api/returnreason/GetAllReturnReasonsbyCustomerid</li>
+              
+            </ul>
+            <h2 class="h2 title toc-headings">Method</h2>
+            <table cellspacing="1" cellpadding="1" border="1">
+                <thead>
+                    <tr>
+                        <th scope="col"><strong>Method</strong></th>
+                        <th scope="col"><strong>Description</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GetAllReturnReasonsbyCustomerId</td>
+                        <td>Get Returnreaons for customer language wise and with sequence no by Customer Id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Call Details</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Field Name</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Sample Value</strong></p>
+                        </td>
+                        <td nowrap="">
+                          <p><strong>Optional</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Description</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Data Type</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CustomerId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>apoyartest</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Take value from API Call “GetBMAllOrdersbyid” field FKCustomerID</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=test</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/returnreason/GetAllReturnReasonsbyCustomerid?Customerid=apoyartest</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Response example</h2>
+            <div class="geshifilter">
+                <pre style="border-left:0px;">
+                    [
+                      [
+                        {
+                          "PKReasonID": 84,
+                          "Reason": "The product did not match its description1",
+                          "FKCustomerID": "apoyartest",
+                          "IsActive": true,
+                          "FkLanguageid": 1,
+                          "Uid": "104",
+                          "LanguageName": "English",
+                          "Sequenceno": 4
+                        },
+                        {
+                          "PKReasonID": 85,
+                          "Reason": "Le produit ne correspond &#224; sa description",
+                          "FKCustomerID": "apoyartest",
+                          "IsActive": true,
+                          "FkLanguageid": 2,
+                          "Uid": "104",
+                          "LanguageName": "French",
+                          "Sequenceno": 4
+                        },
+                        {
+                          "PKReasonID": 86,
+                          "Reason": "Het product komt niet overeen de beschrijving",
+                          "FKCustomerID": "apoyartest",
+                          "IsActive": true,
+                          "FkLanguageid": 3,
+                          "Uid": "104",
+                          "LanguageName": "Dutch",
+                          "Sequenceno": 4
+                        }
+                      ],
+                      [
+                        {
+                          "PKReasonID": 87,
+                          "Reason": "Incorrect Product or Size Ordered",
+                          "FKCustomerID": "apoyartest",
+                          "IsActive": true,
+                          "FkLanguageid": 1,
+                          "Uid": "105",
+                          "LanguageName": "English",
+                          "Sequenceno": 7
+                        },
+                        {
+                          "PKReasonID": 88,
+                          "Reason": " Produit ou Taille incorrecte Ordonn&#233;",
+                          "FKCustomerID": "apoyartest",
+                          "IsActive": true,
+                          "FkLanguageid": 2,
+                          "Uid": "105",
+                          "LanguageName": "French",
+                          "Sequenceno": 7
+                        },
+                        {
+                          "PKReasonID": 89,
+                          "Reason": " Onjuiste product of maat besteld",
+                          "FKCustomerID": "apoyartest",
+                          "IsActive": true,
+                          "FkLanguageid": 3,
+                          "Uid": "105",
+                          "LanguageName": "Dutch",
+                          "Sequenceno": 7
+                        }
+                      ]
+                    ]
+                </pre>
+            </div>
+
+            <div class="toc-item-anchor"><a name="GetBMCarriersbyCustomerid6"></a></div>
+            <h2 class="h2 title toc-headings">GetBMCarriersbyCustomerid</h2>
+            <ul class="details">
+                <li><b>Description: </b>This call is used to get Carriers by Customer ID and selected country (which you get from above API call GetBMAllordersbyid) and from this response pick up the values for “PKCarrierid, Carriername, Warehouseid” as these values will be used in “PostBMReturnOrder".</li>
+				<li><b><i>URL: </i></b>http://<"baseurl">/api/Carrier/GetBMCarriersbyCustomerid</li>
+            </ul>
+            <h2 class="h2 title toc-headings">Method</h2>
+            <table cellspacing="1" cellpadding="1" border="1">
+                <thead>
+                    <tr>
+                        <th scope="col"><strong>Method</strong></th>
+                        <th scope="col"><strong>Description</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GetBMCarriersbyCustomerId</td>
+                        <td>Get Carriers by Customer Id and Country Code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Call Details</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Field Name</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Sample Value</strong></p>
+                        </td>
+                        <td nowrap="">
+                          <p><strong>Optional</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Description</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Data Type</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CountryCode</p>
+                        </td>
+                        <td nowrap="">
+                            <p>GB</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Take value from API Call “GetBMAllOrdersbyid” field ConsumerShipCountry</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CustomerId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>apoyartest</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Take value from API Call “GetBMAllOrdersbyid” field FKCustomerID</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/Carrier/GetBMCarriersbyCustomerid?Customerid=test&CountryCode=GB</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Response example</h2>
+            <div class="geshifilter">
+                <pre style="border-left:0px;">
+                    [
+                      {
+                        "PKCarrierID": 1,
+                        "CarrierName": "DHL",
+                        "Isactive": true,
+                        "WarehouseId": "KHTRUEFC",
+                        "GlobalSetting": null,
+                        "CarrierSetting": null
+                      },
+                      {
+                        "PKCarrierID": 3,
+                        "CarrierName": "Royal Mail",
+                        "Isactive": true,
+                        "WarehouseId": "KHTRUEFC",
+                        "GlobalSetting": null,
+                        "CarrierSetting": null
+                      },
+                      {
+                        "PKCarrierID": 3,
+                        "CarrierName": "Royal Mail",
+                        "Isactive": true,
+                        "WarehouseId": "KRUISHOUTEM1",
+                        "GlobalSetting": null,
+                        "CarrierSetting": null
+                      },
+                      {
+                        "PKCarrierID": 5,
+                        "CarrierName": "UPS",
+                        "Isactive": true,
+                        "WarehouseId": "KHTRUEFC",
+                        "GlobalSetting": null,
+                        "CarrierSetting": null
+                      }
+                    ]
+                </pre>
+            </div>
+            <div class="toc-item-anchor"><a name="PostBMReturnOrder6"></a></div>
+            <h2 class="h2 title toc-headings">PostBMReturnOrder</h2>
+            <ul class="details">
+                <li><b>Description: </b>This Call for placing return order with order information.</li>
+				<li><b><i>URL: </i></b>http://<"baseurl">/api/returnorder/PostBMReturnOrder</li>
+            </ul>
+
+            <h2 class="h2 title toc-headings">Call Details</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Field Name</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Sample Value</strong></p>
+                        </td>
+                        <td nowrap="">
+                          <p><strong>Optional</strong></p>
+                        </td>
+                        <td>
+                            <p><strong>Description</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Data Type</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>101</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field Consumerid ID of the consumer Alpha numeric Length 25</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  nowrap="">
+                            <p>ConsumerName1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>HARVEY NICHOLS DIST.CENTRE -C</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field ConsumerName1 Name of the Consumer Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  nowrap="">
+                            <p>ConsumerName2</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field ConsumerName2 Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  nowrap="">
+                            <p>ConsumerEmail</p>
+                        </td>
+                        <td nowrap="">
+                            <p>abc@apoyar.net</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field ConsumerEmail Email address of the consumer Length 256</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  nowrap="">
+                            <p>ConsumerEmail2</p>
+                        </td>
+                        <td nowrap="">
+                            <p>abc@apoyar.net</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>This is user Defined Email address of the consumer Length 256</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerShipStreet1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>DIMENSION LILIPUT</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field ConsumerShipStreet1 Consumer Street 1 Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerShipStreet2</p>
+                        </td>
+                        <td nowrap="">
+                            <p>DIMENSION</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field ConsumerShipStreet2 Consumer Street 2 Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerShipStreet3</p>
+                        </td>
+                        <td nowrap="">
+                            <p>DIMENSION</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field ConsumerShipStreet3 Consumer Street 3 Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerPhoneNumber</p>
+                        </td>
+                        <td nowrap="">
+                            <p>1234567891</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field ConsumerPhoneNumber Consumer Phone Length 15</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerFromShipHouseNumber</p>
+                        </td>
+                        <td nowrap="">
+                            <p>1-2-3</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field ConsumerFromShipHouseNumber Consumer House No Length 15</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerFromShipPostalCode</p>
+                        </td>
+                        <td nowrap="">
+                            <p>1030</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field ConsumerShipPostalCode Consumer Postal Code Length 10</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerFromShipCity</p>
+                        </td>
+                        <td nowrap="">
+                            <p>NORTHAMPTON</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field ConsumerFromShipCity Consumer City Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerShipState</p>
+                        </td>
+                        <td nowrap="">
+                            <p>GB</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field ConsumerShipState Consumer State Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerFromShipCountry</p>
+                        </td>
+                        <td nowrap="">
+                            <p>GB</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetAllActiveCountriesbyCustomerid” field CountryCode</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>OrderId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>410009352004</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field OrderId Orderid Length 50</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Ordertype</p>
+                        </td>
+                        <td nowrap="">
+                            <p>MUPS STD</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field OrderType Ordertype Length 20</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ReturnOrderTotalRefundAmount</p>
+                        </td>
+                        <td nowrap="">
+                            <p>74.00</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Make it total of Returnorder items selected Amount in Decimal</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Source</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field Source Length 20</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ShipmentId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>410009352004</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field ShipmentId Length 20</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td nowrap="">
+                            <p>CarrierId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId. If not specified, details from preferred Carrier settings will be used.</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>FKCustomerId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>apoyartest</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” field FKCustomerID Customerid Length 255 numeric</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CustomerName</p>
+                        </td>
+                        <td nowrap="">
+                            <p>True Religion</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>CustomerName Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ShipFromWarehouseId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>ATPOST123</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field WarehouseId. If not specified, details from preferred Carrier settings will be used.</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CarrierName</p>
+                        </td>
+                        <td nowrap="">
+                            <p>XYZ</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td >
+                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field CarrierName. If not specified, details from preferred Carrier settings will be used.</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Mode</p>
+                        </td>
+                        <td nowrap="">
+                            <p>2</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Send mode as 2</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Integer</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>BccEmail</p>
+                        </td>
+                        <td nowrap="">
+                            <p>x@x.com</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Customer Email</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Apoyar</p>
+                        </td>
+                        <td nowrap="">
+                            <p>ahgsdhfagf</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>‘GetBMAllOrdersbyId’ you will get the token in header with field ‘apoyar’ in this function send in header to respective api ‘PostBMReturnOrder’</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>LineId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” Array BMOrderLine selected orderline field OrderlineID</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Integer</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>OrderId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>410009352004</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” Array BMOrderLine selected orderline field OrderId Alphanumeric Length 50</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ShipmentId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>410009352004</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” Array BMOrderLine selected orderline field ShipmentId Alphanumeric Length 20</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>SKU</p>
+                        </td>
+                        <td nowrap="">
+                            <p>MC907XQ0-COKM.32</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” Array BMOrderLine selected orderline field SKU Alphanumeric Length 50</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td nowrap="">
+                            <p>EanBarcode</p>
+                        </td>
+                        <td nowrap="">
+                            <p>889347388510</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” Array BMOrderLine selected orderline field EANBARCODE Alphanumeric Length 14</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Price</p>
+                        </td>
+                        <td nowrap="">
+                            <p>22.0</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” Array BMOrderLine selected orderline field Price Decimal</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ProductCurrency</p>
+                        </td>
+                        <td nowrap="">
+                            <p>GBP</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Pick from “GetBMAllOrdersbyid” Array BMOrderLine selected orderline field ProductCurrency Length 3</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>QtyReturned</p>
+                        </td>
+                        <td nowrap="">
+                            <p>3</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Selected Quantity</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Integer</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ReturnReasonId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Selected Return Reason ID</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Integer</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>TotalLineAmount</p>
+                        </td>
+                        <td nowrap="">
+                            <p>74.0</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Price multiply with Selected Quantity Count</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Decimal</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Status</p>
+                        </td>
+                        <td nowrap="">
+                            <p>1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Send Default as 1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Integer</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>UserId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>123</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Customer Representative Id</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Integer</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/returnorder/PostBMReturnOrder</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostBMReturnOrder</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request Parameters as JSON</h2>
+            Sample token in request header - Apoyar:92600f29-10d0-4c5f-b13a-1dbdee2572d4
+            <div class="geshifilter">
+                <pre style="border-left:0px;">
+                   {
+                    "CarrierId":19,
+                    "CarrierName":"Fastway",
+                    "ConsumerEmail":"x@x.com",
+                    "ConsumerEmail2":"",
+                    "ConsumerFromShipCity":"MIDDLESBOROUGH",
+                    "ConsumerFromShipCountry":"IRL",
+                    "ConsumerFromShipHouseNumber":"",
+                    "ConsumerFromShipPostalCode":"A65 F4E2",
+                    "ConsumerId":101,
+                    "ConsumerName1":"PSYCHE LIMITED",
+                    "ConsumerShipStreet1":"175-187 LINTHORPE ROAD",
+                    "ConsumerPhoneNumber":"1231231231",
+                    "ConsumerShipState":"IR",
+                    "ConsumerShipStreet2":"/",
+                    "FKCustomerId":"TRUEFC",
+                    "OrderId":"410009352004",
+                    "Ordertype":"MUPS STD",
+                    "ReturnOrderTotalRefundAmount":"74.00",
+                    "ShipFromWarehouseId":"KHTRUEFC",
+                    "ShipmentId":"410009352004",
+                    "Source":"RP",
+                    "Status":1,
+                    "Mode":4,
+                    "UserId":"2",
+                    "CustomerName":"TrueReligion",
+                    "BccEmail":"x@x.com",
+                    "ReturnOrderLine":[{
+                        "EanBarcode":"889347388510",
+                        "LineId":1,
+                        "OrderId":"410009352004",
+                        "Price":"74.00",
+                        "ProductCurrency":"GBP",
+                        "QtyReturned":1,
+                        "ReturnReasonId":108,
+                        "SKU":"MC907XQ0-COKM.32",
+                        "ShipmentId":"410009352004",
+                        "Status":1,
+                        "TotalLineAmount":74
+                    }]
+                }
+
+                </pre>
+            </div>
+            <h2 class="h2 title toc-headings">Json Response</h2>
+
+            <div class="geshifilter">
+                <h3>Status=1000: Return order created but Return Label not Generated</h3>
+                <pre style="border-left:0px;">
+                    {
+                    "Status":"1000",
+                    "Messages":"Error Message",
+                    "Id":"ReturnorderId"
+                    }
+
+                    HttpStatusCode BadRequest 400.
+                </pre>
+            </div>
+            <div class="geshifilter">
+                <h3>Status=2000: Return order created and Return Label generated</h3>
+                <pre style="border-left:0px;">
+		{
+		"Status": "2000",
+		"Messages": "Successfully Return Order Created",
+		"Id": "902483300",
+		"TrackingNumber": "20000000033",
+		"TrackingUrl": "http://fastway.ie/courier-services/track-your-parcel?l=20000000033",
+		"LabelUrl": "http://api.bleckmann.apoyar.eu/Labels/TRUEFC/Fastway/902483300.pdf"
+		}
+
+		HttpStatusCode OK 200.
+                </pre>
+            </div>
+            <div class="geshifilter">
+                <h3>Status=0: Return order NOT created and Return Label NOT Generated</h3>
+                <pre style="border-left:0px;">
+                    {
+                    "Status":"0",
+                    "Messages":"Error Message"
+                    }
+
+                    HttpStatusCode BadRequest 400.
+                </pre>
+            </div>
+			<div>
+                <div class="toc-item-anchor"><a name="non-linked6"></a></div>
+                <h2 class="h2 title toc-headings" style="color:#cc1543;">Non-linked</h2>
+				Non linked orders - Place a return order only with consumer information and without any order and order lines information..</h4>
+				<br/>
+				
+				<b>Note - </b>In the this document you will encounter with word <b><“baseurl”></b> in the API CALLs,baseurl means
+				<br/><b>Sandbox</b>- “api.bleckmann.apoyar.eu” <br/>
+				<b>Live</b> – “returnsapi.bleckmann.com:81/BMAPI/BleckmannAPI/”
+				
+            </div>
+			 <div class="toc-item-anchor"><a name="GetAllActiveCountriesbyCustomerid6"></a></div>
+            <h2 class="h2 title toc-headings">GetAllActiveCountriesbyCustomerid</h2>
+            <ul class="details">               
+                <li><b>Description: </b>This call is used to get Countries by Customer ID and from this response pick up the CountryCode as this will be used in the subsequesnt API calls  “GetBMCarriersbyCustomerid” and “PostMode1”.</li>
+				<li><b><i>URL: </b></i>http://<"baseurl">/api/Country/GetAllActiveCountriesbyCustomerid</li>
+            </ul>
+
+            <h2 class="h2 title toc-headings">Method</h2>
+            <table cellspacing="1" cellpadding="1" border="1">
+                <thead>
+                    <tr>
+                        <th scope="col"><strong>Method</strong></th>
+                        <th scope="col"><strong>Description</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GetAllActiveCountriesbyCustomerId</td>
+                        <td>Gets all active countries based on customerid provided&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Call Details</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Field Name</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Sample Value</strong></p>
+                        </td>
+                        <td nowrap="">
+                          <p><strong>Optional</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Description</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Data Type</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CustomerId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>apoyartest</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Alpha Numeric</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/Country/GetAllActiveCountriesbyCustomerid?Customerid=test</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Country/GetAllActiveCountriesbyCustomerid?Customerid=apoyartest</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h2 class="h2 title toc-headings">Response example</h2>
+            <div class="geshifilter">
+                <pre style="border-left:0px;">
+                    [{
+                        PKCountryId: 73,
+                        CountryName: "FRANCE",
+                        CountryCode: "FR",
+                        IsActive: true
+                    },
+                    {
+                        PKCountryId: 103,
+                        CountryName: "IRELAND",
+                        CountryCode: "IE",
+                        IsActive: true
+                    },
+                    {
+                        PKCountryId: 150,
+                        CountryName: "NETHERLANDS",
+                        CountryCode: "NL",
+                        IsActive: true
+                    },
+                    {
+                        PKCountryId: 225,
+                        CountryName: "UNITED KINGDOM",
+                        CountryCode: "GB",
+                        IsActive: true
+                    }]
+                </pre>
+            </div>
+            <div class="toc-item-anchor">
+                <a name="GetBMCarriersbyCustomerid6n"></a>
+            </div>
+            <h2 class="h2 title toc-headings toc-headings">GetBMCarriersbyCustomerId</h2>
+            <ul class="details">                
+                <li><b>Description: </b>This call is used to get Carriers by Customer ID and selected country (which you get from above API call) and from this response pick up the values for  PKCarrierid, Carriername, Warehouseid as these values will be used in “PostMode1”.</li>
+				<li><b><i>URL: </i></b>http://<"baseurl">/api/Carrier/GetBMCarriersbyCustomerid</li>
+            </ul>     
+            <h2 class="h2 title toc-headings">Method</h2>
+            <table cellspacing="1" cellpadding="1" border="1">
+                <thead>
+                    <tr>
+                        <th scope="col"><strong>Method</strong></th>
+                        <th scope="col"><strong>Description</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GetBMCarriersbyCustomerId</td>
+                        <td>Get Carriers by Customer Id and Country Code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Call Details</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Field Name</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Sample Value</strong></p>
+                        </td>
+                        <td nowrap="">
+                          <p><strong>Optional</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Description</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Data Type</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CountryCode</p>
+                        </td>
+                        <td nowrap="">
+                            <p>GB</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td nowrap="">
+                            <p>2 Character Code</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CustomerId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>apoyartest</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td nowrap="">
+                            <p>AlphaNumeric</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/Carrier/GetBMCarriersbyCustomerid?Customerid=test&CountryCode=GB</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/Carrier/GetBMCarriersbyCustomerid?Customerid=apoyartest&CountryCode=GB</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Response example</h2>
+            <div class="geshifilter">
+                <pre style="border-left:0px;">
+                    [{
+                        PKCarrierID: 2,
+                        CarrierName: "RoyalMail",
+                        Isactive: true,
+                        WarehouseId: "KH",
+                        Preferredcarrier: true,
+                        GlobalSetting: null,
+                        CarrierSetting: null
+                    },
+                    {
+                        PKCarrierID: 19,
+                        CarrierName: "Fastway",
+                        Isactive: true,
+                        WarehouseId: "KHTRUEFC",
+                        Preferredcarrier: false,
+                        GlobalSetting: null,
+                        CarrierSetting: null
+                    }]
+                </pre>
+            </div>
+            <div class="toc-item-anchor"><a name="PostMode6"></a></div>
+            <h2 class="h2 title toc-headings">PostMode6</h2>
+            <ul class="details">                
+                <li><b>Description: </b>: This Call for placing return order without order information only with consumer information.</li>
+				<li><b><i>URL: </i></b>http://<"baseurl">/api/returnorder/PostMode1</li>
+            </ul>
+            <h2 class="h2 title toc-headings">Call Details</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Field Name</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Sample Value</strong></p>
+                        </td>
+                        <td nowrap="">
+                          <p><strong>Optional</strong></p>
+                        </td>
+                        <td>
+                            <p><strong>Description</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>Data Type</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>101</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>ID of the consumer Alpha numeric Length 25</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  nowrap="">
+                            <p>ConsumerName1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>HARVEY NICHOLS DIST.CENTRE -C</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Name of the Consumer Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  nowrap="">
+                            <p>ConsumerName2</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  nowrap="">
+                            <p>ConsumerEmail</p>
+                        </td>
+                        <td nowrap="">
+                            <p>abc@apoyar.net</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Email address of the consumer Length 256</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  nowrap="">
+                            <p>ConsumerEmail2</p>
+                        </td>
+                        <td nowrap="">
+                            <p>abc@apoyar.net</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Email address of the consumer Length 256</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerShipStreet1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>DIMENSION LILIPUT</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Consumer Street 1 Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerFromShipHouseNumber</p>
+                        </td>
+                        <td nowrap="">
+                            <p>1-2-3</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Consumer House No Length 5</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerFromShipPostalCode</p>
+                        </td>
+                        <td nowrap="">
+                            <p>1030</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Consumer Postal Code Length 10</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerFromShipCity</p>
+                        </td>
+                        <td nowrap="">
+                            <p>NORTHAMPTON</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Consumer City Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerShipState</p>
+                        </td>
+                        <td nowrap="">
+                            <p>GB</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Consumer State Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ConsumerFromShipCountry</p>
+                        </td>
+                        <td nowrap="">
+                            <p>GB</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetAllActiveCountriesbyCustomerid” field CountryCode.</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CarrierId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>User will select a Carrier from the options given. To get the options see API Call “GetAllCarriers” field PKCarrierId. If not specified, details from preferred Carrier settings will be used.</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>FKCustomerId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>apoyartest</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Customerid Length 255 numeric</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CustomerName</p>
+                        </td>
+                        <td nowrap="">
+                            <p>True Religion</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>CustomerName Length 35</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>ShipFromWarehouseId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>ATPOST123</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>User will select a Country from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field WarehouseId. If not specified, details from preferred Carrier settings will be used.</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>CarrierName</p>
+                        </td>
+                        <td nowrap="">
+                            <p>XYZ</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td >
+                            <p>User will select a Carrier from the options given. To get the options see API Call “GetBMCarriersbyCustomerid” field CarrierName. If not specified, details from preferred Carrier settings will be used.</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Mode</p>
+                        </td>
+                        <td nowrap="">
+                            <p>1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>No</p>
+                        </td>
+                        <td>
+                            <p>Send mode as 1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Integer</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>BccEmail</p>
+                        </td>
+                        <td nowrap="">
+                            <p>x@x.com</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Customer Email</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>OrderId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>89898989</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Orderid</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>SystemOption</p>
+                        </td>
+                        <td nowrap="">
+                            <p>RITROV BE</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Length 50</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>Reference1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>RMAID</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Customer RMAID length 100</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>Reference2</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Reference2 length 100</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>Reference3</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Reference3 length 100</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>Reference4</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Reference4 length 100</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request example</h2>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tbody>
+                    <tr>
+                        <td nowrap="">
+                            <p><strong>Location</strong></p>
+                        </td>
+                        <td nowrap="">
+                            <p><strong>URL</strong></p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Sandbox URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://api.bleckmann.apoyar.eu/api/returnorder/PostMode1</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td nowrap="">
+                            <p>Live URL</p>
+                        </td>
+                        <td nowrap="">
+                            <p>http://returnsapi.bleckmann.com:81/BMAPI/BleckmannApi/api/returnorder/PostMode1</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2 class="h2 title toc-headings">Request Parameters as JSON</h2>
+            <div class="geshifilter">
+                <pre style="border-left:0px;">
+                    {
+                        "ConsumerName1":"Sriram",
+                        "ConsumerEmail":"sriramk@apoyar.eu",
+                        "ConsumerShipStreet1":"Wacholderweg",
+                        "ConsumerFromShipHouseNumber":"52a",
+                        "ConsumerFromShipPostalCode":"26133",
+                        "ConsumerFromShipCity":"OLDENBURG",
+                        "ConsumerShipState":"DE",
+                        "ConsumerFromShipCountry":"DE",
+                        "CarrierId":"4",
+                        "FKCustomerId":"LAUNATHL",
+                        "ShipFromWarehouseId": "AE",
+                        "CarrierName":"DHL",
+                        "Mode":1,
+                        "OrderId":"89898989",
+                        "CustomerName":"Supergroup",
+			"SystemOption":"RITROV BE",
+			"Reference1":"RMAID",
+			"Reference2":"",
+			"Reference3":"",
+			"Reference4":""
+                    }
+                </pre>
+            </div>
+            <h2 class="h2 title toc-headings">Json Response</h2>
+
+            <div class="geshifilter">
+                <h3>Status=1000: Return order created but Return Label not Generated</h3>
+                <pre style="border-left:0px;">
+                    {
+                    "Status":"1000",
+                    "Messages":"Error Message",
+                    "Id":"ReturnorderId"
+                    }
+
+                    HttpStatusCode BadRequest 400.
+                </pre>
+            </div>
+            <div class="geshifilter">
+                <h3>Status=2000: Return order created and Return Label generated</h3>
+                <pre style="border-left:0px;">
+{
+"Status": "2000",
+"Messages": "Successfully Return Order Created",
+"Id": "355333294",
+"TrackingNumber": "545334014026",
+"TrackingUrl": "https://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=en&idc=545334014026&rfn=&extendedSearch=true",
+"LabelUrl": "http://api.bleckmann.apoyar.eu/Labels/LAUNATHL/DHL/355333294.pdf"
+}
+HttpStatusCode OK 200.
                 </pre>
             </div>
             <div class="geshifilter">
