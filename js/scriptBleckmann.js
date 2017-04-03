@@ -2327,15 +2327,11 @@ $(document).ready(function() {
 		//var pagesize = $('#total_records span').text();
 		//var customerId = $('#orders_by_customer_id').val();
 		console.log(navigator.userAgent.toLowerCase().indexOf('safari'));
-		if(navigator.userAgent.toLowerCase().indexOf('safari') !== 91){
-			setTimeout(function(){
-				var clonetable = $('#export_orders_div table').clone();			
-				//console.log(customerId);
-				//console.log(clonetable);
-				clonetable.tableToCSV();
-			}, 2000);			
-		}
-				
+		//if(navigator.userAgent.toLowerCase().indexOf('safari') !== 91){//}
+		setTimeout(function(){
+			var clonetable = $('#export_orders_div table').clone();			
+			clonetable.tableToCSV();
+		}, 2000);
 		
 		fnExcelReport();//Call the Export csv function for IE and SAFARI		
 
@@ -2345,8 +2341,9 @@ $(document).ready(function() {
 
 		var ua = window.navigator.userAgent;
 		var msie = ua.indexOf("MSIE "); 
-
-		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))      // If Internet Explorer
+		// If Internet Explorer 
+		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./))
+		//if (navigator.userAgent.toLowerCase().indexOf('MSIE') > -1)      
 		{
 			var ifd = document.getElementById('txtArea1').contentDocument;
 			txtArea1.document.open("txt/html","replace");
@@ -2357,13 +2354,13 @@ $(document).ready(function() {
 			ifd.close();
 			return (sa);			
 		}  
-		else if(navigator.userAgent.toLowerCase().indexOf('safari') > -1){
+		/* else if(navigator.userAgent.toLowerCase().indexOf('safari') > -1){
 			//other browser not tested on IE 11			
 			sa = window.open('data:application/vnd.ms-excel,' + encodeURIComponent(tab_text));			
 			e.preventDefault();			
 			return (sa);
 			//$("#downloadcsv").trigger('click');//Call the Export csv function for SAFARI only
-		}  
+		}   */
 
 		
 	}
