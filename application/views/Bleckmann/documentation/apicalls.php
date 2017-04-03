@@ -61,7 +61,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>GetAllActiveCountriesbyCustomerid</td>
+                        <td>GetAllActiveCountriesbyCustomerId</td>
                         <td>Gets all active countries based on customerid provided&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     </tr>
                 </tbody>
@@ -88,7 +88,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Customerid</p>
+                            <p>CustomerId</p>
                         </td>
                         <td nowrap="">
                             <p>apoyartest</p>
@@ -167,7 +167,7 @@
             <div class="toc-item-anchor">
                 <a name="GetBMCarriersbyCustomerid"></a>
             </div>
-            <h2 class="h2 title toc-headings toc-headings">GetBMCarriersbyCustomerid</h2>
+            <h2 class="h2 title toc-headings toc-headings">GetBMCarriersbyCustomerId</h2>
             <ul class="details">
                 <li><i>URL: </i>http://<<baseurl>>/api/Carrier/GetBMCarriersbyCustomerid</li>
                 <li><i>Description: </i>This call is used to get Carriers by Customer ID and selected country (which you get from above API call) and from this response pick up the values for  PKCarrierid, Carriername, Warehouseid as these values will be used in “PostMode1”.</li>
@@ -182,7 +182,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>GetBMCarriersbyCustomerid</td>
+                        <td>GetBMCarriersbyCustomerId</td>
                         <td>Get Carriers by Customer Id and Country Code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     </tr>
                 </tbody>
@@ -226,7 +226,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Customerid</p>
+                            <p>CustomerId</p>
                         </td>
                         <td nowrap="">
                             <p>apoyartest</p>
@@ -476,7 +476,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Consumershipstate</p>
+                            <p>ConsumerShipState</p>
                         </td>
                         <td nowrap="">
                             <p>GB</p>
@@ -561,7 +561,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Shipfromwarehouseid</p>
+                            <p>ShipFromWarehouseId</p>
                         </td>
                         <td nowrap="">
                             <p>ATPOST123</p>
@@ -629,7 +629,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Orderid</p>
+                            <p>OrderId</p>
                         </td>
                         <td nowrap="">
                             <p>89898989</p>
@@ -639,6 +639,23 @@
                         </td>
                         <td>
                             <p>Orderid</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>Reference1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>RMAID</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Customer RMAID</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -685,22 +702,23 @@
                         "ConsumerFromShipHouseNumber":"52a",
                         "ConsumerFromShipPostalCode":"26133",
                         "ConsumerFromShipCity":"OLDENBURG",
-                        "Consumershipstate":"DE",
+                        "ConsumerShipState":"DE",
                         "ConsumerFromShipCountry":"DE",
                         "CarrierId":"4",
                         "FKCustomerId":"LAUNATHL",
-                        "Shipfromwarehouseid": "AE",
+                        "ShipFromWarehouseId": "AE",
                         "CarrierName":"DHL",
                         "Mode":1,
-                        "Orderid":"89898989",
-                        "CustomerName":"Supergroup"
+                        "OrderId":"89898989",
+                        "CustomerName":"Supergroup",
+			"Reference1":"RMAID"
                     }
                 </pre>
             </div>
             <h2 class="h2 title toc-headings">Json Response</h2>
 
             <div class="geshifilter">
-                <h3>Status=2000: Return order created but Return Label not Generated</h3>
+                <h3>Status=1000: Return order created but Return Label not Generated</h3>
                 <pre style="border-left:0px;">
                     {
                     "Status":"1000",
@@ -712,15 +730,17 @@
                 </pre>
             </div>
             <div class="geshifilter">
-                <h3>Status=1000: Return order created and Return Label generated</h3>
+                <h3>Status=2000: Return order created and Return Label generated</h3>
                 <pre style="border-left:0px;">
-                    {
-                    "Status":"2000",
-                    "Messages":"returnlabelurl",  [URL of the return label]
-                    "Id":"ReturnorderId"
-                    }
-
-                    HttpStatusCode OK 200.
+{
+"Status": "2000",
+"Messages": "Successfully Return Order Created",
+"Id": "355333294",
+"TrackingNumber": "545334014026",
+"TrackingUrl": "https://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=en&idc=545334014026&rfn=&extendedSearch=true",
+"LabelUrl": "http://api.bleckmann.apoyar.eu/Labels/LAUNATHL/DHL/355333294.pdf"
+}
+HttpStatusCode OK 200.
                 </pre>
             </div>
             <div class="geshifilter">
@@ -758,7 +778,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>GetBMAllOrdersbyid</td>
+                        <td>GetBMAllOrdersbyId</td>
                         <td>Gets all Order and Orderlines by ConsumerEmail and Orderid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     </tr>
                 </tbody>
@@ -802,7 +822,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Orderid</p>
+                            <p>OrderId</p>
                         </td>
                         <td nowrap="">
                             <p>411400061002</p>
@@ -819,7 +839,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Customerid</p>
+                            <p>CustomerId</p>
                         </td>
                         <td nowrap="">
                             <p>apoyartest</p>
@@ -878,15 +898,13 @@
                     Source: "RP",
                     OrderType: "NIET-MP",
                     OrderId: "411400061002",
-                    ConsumerPhoneNumber: "",
+                    ConsumerPhoneNumber: "1231231231",
                     ShippedDate: "2013-04-19T15:00:50",
                     DeliveyDate: "1800-01-01T00:00:00",
                     MaxReturnDays: -1,
                     ConsumerName1: "HARRODS DATA ENTRY DEPT. DISTR",
-                    ConsumerName2: "",
                     ConsumerShipStreet1: "MILL LANE",
                     ConsumerShipStreet2: "/",
-                    ConsumerShipStreet3: "",
                     ConsumerShipHouseNumber: "",
                     ConsumerShipPostalCode: "RG19 4AL",
                     ConsumerShipCity: "THATCHAM - BERKSHIRE",
@@ -982,7 +1000,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>GetAllReturnreasonsbyCustomerid</td>
+                        <td>GetAllReturnReasonsbyCustomerId</td>
                         <td>Get Returnreaons for customer language wise and with sequence no by Customer Id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     </tr>
                 </tbody>
@@ -1009,7 +1027,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Customerid</p>
+                            <p>CustomerId</p>
                         </td>
                         <td nowrap="">
                             <p>apoyartest</p>
@@ -1144,7 +1162,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>GetBMCarriersbyCustomerid</td>
+                        <td>GetBMCarriersbyCustomerId</td>
                         <td>Get Carriers by Customer Id and Country Code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     </tr>
                 </tbody>
@@ -1188,7 +1206,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Customerid</p>
+                            <p>CustomerId</p>
                         </td>
                         <td nowrap="">
                             <p>apoyartest</p>
@@ -1404,7 +1422,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Consumershipstreet2</p>
+                            <p>ConsumerShipStreet2</p>
                         </td>
                         <td nowrap="">
                             <p>DIMENSION</p>
@@ -1421,7 +1439,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Consumershipstreet3</p>
+                            <p>ConsumerShipStreet3</p>
                         </td>
                         <td nowrap="">
                             <p>DIMENSION</p>
@@ -1439,7 +1457,7 @@
 
                     <tr>
                         <td nowrap="">
-                            <p>Consumerphonenumber</p>
+                            <p>ConsumerPhoneNumber</p>
                         </td>
                         <td nowrap="">
                             <p>1234567891</p>
@@ -1507,7 +1525,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Consumershipstate</p>
+                            <p>ConsumerShipState</p>
                         </td>
                         <td nowrap="">
                             <p>GB</p>
@@ -1678,7 +1696,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Shipfromwarehouseid</p>
+                            <p>ShipFromWarehouseId</p>
                         </td>
                         <td nowrap="">
                             <p>ATPOST123</p>
@@ -1780,7 +1798,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Orderid</p>
+                            <p>OrderId</p>
                         </td>
                         <td nowrap="">
                             <p>410009352004</p>
@@ -1997,23 +2015,21 @@
                     "ConsumerId":101,
                     "ConsumerName1":"PSYCHE LIMITED",
                     "ConsumerShipStreet1":"175-187 LINTHORPE ROAD",
-                    "Consumername2":"",
-                    "Consumerphonenumber":"",
-                    "Consumershipstate":"IR",
-                    "Consumershipstreet2":"/",
-                    "Consumershipstreet3":"",
+                    "ConsumerPhoneNumber":"1231231231",
+                    "ConsumerShipState":"IR",
+                    "ConsumerShipStreet2":"/",
                     "FKCustomerId":"TRUEFC",
                     "OrderId":"410009352004",
                     "Ordertype":"MUPS STD",
                     "ReturnOrderTotalRefundAmount":"74.00",
-                    "Shipfromwarehouseid":"KHTRUEFC",
+                    "ShipFromWarehouseId":"KHTRUEFC",
                     "ShipmentId":"410009352004",
                     "Source":"RP",
                     "Status":1,
                     "Mode":2,
                     "CustomerName":"TrueReligion",
                     "BccEmail":"x@x.com",
-                    "Returnorderline":[{
+                    "ReturnOrderLine":[{
                         "EanBarcode":"889347388510",
                         "LineId":1,
                         "OrderId":"410009352004",
@@ -2033,7 +2049,7 @@
             <h2 class="h2 title toc-headings">Json Response</h2>
 
             <div class="geshifilter">
-                <h3>Status=2000: Return order created but Return Label not Generated</h3>
+                <h3>Status=1000: Return order created but Return Label not Generated</h3>
                 <pre style="border-left:0px;">
                     {
                     "Status":"1000",
@@ -2045,15 +2061,18 @@
                 </pre>
             </div>
             <div class="geshifilter">
-                <h3>Status=1000: Return order created and Return Label generated</h3>
+                <h3>Status=2000: Return order created and Return Label generated</h3>
                 <pre style="border-left:0px;">
-                    {
-                    "Status":"2000",
-                    "Messages":"returnlabelurl",  [URL of the return label]
-                    "Id":"ReturnorderId"
-                    }
-
-                    HttpStatusCode OK 200.
+		{
+		 "Status": "2000",
+		 "Messages": "Successfully Return Order Created",
+		 "Id": "452653297",
+		 "TrackingNumber": "20000000032",
+		 "TrackingUrl": "http://fastway.ie/courier-services/track-your-parcel?l=20000000032",
+		 "LabelUrl": "http://api.bleckmann.apoyar.eu/Labels/TRUEFC/Fastway/452653297.pdf"
+		}
+		
+		HttpStatusCode OK 200.
                 </pre>
             </div>
             <div class="geshifilter">
@@ -2090,7 +2109,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>GetAllActiveCountriesbyCustomerid</td>
+                        <td>GetAllActiveCountriesbyCustomerId</td>
                         <td>Gets all active countries based on customerid provided&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     </tr>
                 </tbody>
@@ -2117,7 +2136,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Customerid</p>
+                            <p>CustomerId</p>
                         </td>
                         <td nowrap="">
                             <p>apoyartest</p>
@@ -2247,7 +2266,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>GetBMCarriersbyCustomerid</td>
+                        <td>GetBMCarriersbyCustomerId</td>
                         <td>Get Carriers by Customer Id and Country Code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     </tr>
                 </tbody>
@@ -2291,7 +2310,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Customerid</p>
+                            <p>CustomerId</p>
                         </td>
                         <td nowrap="">
                             <p>apoyartest</p>
@@ -2557,7 +2576,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Consumershipstate</p>
+                            <p>ConsumerShipState</p>
                         </td>
                         <td nowrap="">
                             <p>GB</p>
@@ -2642,7 +2661,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Shipfromwarehouseid</p>
+                            <p>ShipFromWarehouseId</p>
                         </td>
                         <td nowrap="">
                             <p>ATPOST123</p>
@@ -2710,7 +2729,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Userid</p>
+                            <p>UserId</p>
                         </td>
                         <td nowrap="">
                             <p>123</p>
@@ -2727,7 +2746,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Orderid</p>
+                            <p>OrderId</p>
                         </td>
                         <td nowrap="">
                             <p>89898989</p>
@@ -2736,7 +2755,24 @@
                             <p>Yes</p>
                         </td>
                         <td>
-                            <p>Orderid</p>
+                            <p>OrderId</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>Reference1</p>
+                        </td>
+                        <td nowrap="">
+                            <p>RMAID</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Customer RMAID</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -2801,24 +2837,25 @@
                         "ConsumerFromShipHouseNumber":"52a",
                         "ConsumerFromShipPostalCode":"26133",
                         "ConsumerFromShipCity":"OLDENBURG",
-                        "Consumershipstate":"DE",
+                        "ConsumerShipState":"DE",
                         "ConsumerFromShipCountry":"DE",
                         "CarrierId":"4",
                         "FKCustomerId":"LAUNATHL",
-                        "Shipfromwarehouseid": "AE",
+                        "ShipFromWarehouseId": "AE",
                         "CarrierName":"DHL",
-                        "Userid":2,
+                        "UserId":2,
                         "Mode":3,
                         "BccEmail":"x@x.com",
-                        "Orderid":"89898989",
-                        "CustomerName":"Supergroup"
+                        "OrderId":"89898989",
+                        "CustomerName":"Supergroup",
+			"Reference1":"RMAID"
                     }
                 </pre>
             </div>
             <h2 class="h2 title toc-headings">Json Response</h2>
 
             <div class="geshifilter">
-                <h3>Status=2000: Return order created but Return Label not Generated</h3>
+                <h3>Status=1000: Return order created but Return Label not Generated</h3>
                 <pre style="border-left:0px;">
                     {
                     "Status":"1000",
@@ -2830,15 +2867,18 @@
                 </pre>
             </div>
             <div class="geshifilter">
-                <h3>Status=1000: Return order created and Return Label generated</h3>
+                <h3>Status=2000: Return order created and Return Label generated</h3>
                 <pre style="border-left:0px;">
-                    {
-                    "Status":"2000",
-                    "Messages":"returnlabelurl",  [URL of the return label]
-                    "Id":"ReturnorderId"
-                    }
+{
+"Status": "2000",
+"Messages": "Successfully Return Order Created",
+"Id": "784513299",
+"TrackingNumber": "545334014060",
+"TrackingUrl": "https://nolp.dhl.de/nextt-online-public/set_identcodes.do?lang=en&idc=545334014060&rfn=&extendedSearch=true",
+"LabelUrl": "http://api.bleckmann.apoyar.eu/Labels/LAUNATHL/DHL/784513299.pdf"
+}
 
-                    HttpStatusCode OK 200.
+HttpStatusCode OK 200.
                 </pre>
             </div>
             <div class="geshifilter">
@@ -2921,7 +2961,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Orderid</p>
+                            <p>OrderId</p>
                         </td>
                         <td nowrap="">
                             <p>41P24005050000126</p>
@@ -2972,7 +3012,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Customerid</p>
+                            <p>CustomerId</p>
                         </td>
                         <td nowrap="">
                             <p>apoyartest</p>
@@ -3043,15 +3083,13 @@
                         "Source": "RP",
                         "OrderType": "NIET-MP",
                         "OrderId": "430000010001",
-                        "ConsumerPhoneNumber": "",
+                        "ConsumerPhoneNumber": "1231231231",
                         "ShippedDate": "2013-04-26T09:18:25.511388",
                         "DeliveyDate": "1800-01-01T00:00:00",
                         "MaxReturnDays": -1,
                         "ConsumerName1": "TRUE RELIGION BRAND JEANS ITAL",
-                        "ConsumerName2": "",
                         "ConsumerShipStreet1": "VIA MORIMONDO 5",
                         "ConsumerShipStreet2": "/",
-                        "ConsumerShipStreet3": "",
                         "ConsumerShipHouseNumber": "",
                         "ConsumerShipPostalCode": "20143",
                         "ConsumerShipCity": "MILAN",
@@ -3081,7 +3119,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>GetBMAllOrdersbyid</td>
+                        <td>GetBMAllOrdersbyId</td>
                         <td>Gets all Order and Orderlines by ConsumerEmail and Orderid&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     </tr>
                 </tbody>
@@ -3125,7 +3163,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Orderid</p>
+                            <p>OrderId</p>
                         </td>
                         <td nowrap="">
                             <p>411400061002</p>
@@ -3142,7 +3180,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Customerid</p>
+                            <p>CustomerId</p>
                         </td>
                         <td nowrap="">
                             <p>apoyartest</p>
@@ -3201,15 +3239,13 @@
                     Source: "RP",
                     OrderType: "NIET-MP",
                     OrderId: "411400061002",
-                    ConsumerPhoneNumber: "",
+                    ConsumerPhoneNumber: "1231231231",
                     ShippedDate: "2013-04-19T15:00:50",
                     DeliveyDate: "1800-01-01T00:00:00",
                     MaxReturnDays: -1,
                     ConsumerName1: "HARRODS DATA ENTRY DEPT. DISTR",
-                    ConsumerName2: "",
                     ConsumerShipStreet1: "MILL LANE",
                     ConsumerShipStreet2: "/",
-                    ConsumerShipStreet3: "",
                     ConsumerShipHouseNumber: "",
                     ConsumerShipPostalCode: "RG19 4AL",
                     ConsumerShipCity: "THATCHAM - BERKSHIRE",
@@ -3305,7 +3341,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>GetAllReturnreasonsbyCustomerid</td>
+                        <td>GetAllReturnReasonsbyCustomerId</td>
                         <td>Get Returnreaons for customer language wise and with sequence no by Customer Id&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     </tr>
                 </tbody>
@@ -3332,7 +3368,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Customerid</p>
+                            <p>CustomerId</p>
                         </td>
                         <td nowrap="">
                             <p>apoyartest</p>
@@ -3466,7 +3502,7 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td>GetBMCarriersbyCustomerid</td>
+                        <td>GetBMCarriersbyCustomerId</td>
                         <td>Get Carriers by Customer Id and Country Code&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
                     </tr>
                 </tbody>
@@ -3510,7 +3546,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Customerid</p>
+                            <p>CustomerId</p>
                         </td>
                         <td nowrap="">
                             <p>apoyartest</p>
@@ -3726,7 +3762,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Consumershipstreet2</p>
+                            <p>ConsumerShipStreet2</p>
                         </td>
                         <td nowrap="">
                             <p>DIMENSION</p>
@@ -3743,7 +3779,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Consumershipstreet3</p>
+                            <p>ConsumerShipStreet3</p>
                         </td>
                         <td nowrap="">
                             <p>DIMENSION</p>
@@ -3761,7 +3797,7 @@
 
                     <tr>
                         <td nowrap="">
-                            <p>Consumerphonenumber</p>
+                            <p>ConsumerPhoneNumber</p>
                         </td>
                         <td nowrap="">
                             <p>1234567891</p>
@@ -3829,7 +3865,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Consumershipstate</p>
+                            <p>ConsumerShipState</p>
                         </td>
                         <td nowrap="">
                             <p>GB</p>
@@ -4000,7 +4036,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Shipfromwarehouseid</p>
+                            <p>ShipFromWarehouseId</p>
                         </td>
                         <td nowrap="">
                             <p>ATPOST123</p>
@@ -4102,7 +4138,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Orderid</p>
+                            <p>OrderId</p>
                         </td>
                         <td nowrap="">
                             <p>410009352004</p>
@@ -4273,7 +4309,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Userid</p>
+                            <p>UserId</p>
                         </td>
                         <td nowrap="">
                             <p>123</p>
@@ -4336,24 +4372,22 @@
                     "ConsumerId":101,
                     "ConsumerName1":"PSYCHE LIMITED",
                     "ConsumerShipStreet1":"175-187 LINTHORPE ROAD",
-                    "Consumername2":"",
-                    "Consumerphonenumber":"",
-                    "Consumershipstate":"IR",
-                    "Consumershipstreet2":"/",
-                    "Consumershipstreet3":"",
+                    "ConsumerPhoneNumber":"1231231231",
+                    "ConsumerShipState":"IR",
+                    "ConsumerShipStreet2":"/",
                     "FKCustomerId":"TRUEFC",
                     "OrderId":"410009352004",
                     "Ordertype":"MUPS STD",
                     "ReturnOrderTotalRefundAmount":"74.00",
-                    "Shipfromwarehouseid":"KHTRUEFC",
+                    "ShipFromWarehouseId":"KHTRUEFC",
                     "ShipmentId":"410009352004",
                     "Source":"RP",
                     "Status":1,
                     "Mode":4,
-                    "Userid":"2",
+                    "UserId":"2",
                     "CustomerName":"TrueReligion",
                     "BccEmail":"x@x.com",
-                    "Returnorderline":[{
+                    "ReturnOrderLine":[{
                         "EanBarcode":"889347388510",
                         "LineId":1,
                         "OrderId":"410009352004",
@@ -4373,7 +4407,7 @@
             <h2 class="h2 title toc-headings">Json Response</h2>
 
             <div class="geshifilter">
-                <h3>Status=2000: Return order created but Return Label not Generated</h3>
+                <h3>Status=1000: Return order created but Return Label not Generated</h3>
                 <pre style="border-left:0px;">
                     {
                     "Status":"1000",
@@ -4385,15 +4419,18 @@
                 </pre>
             </div>
             <div class="geshifilter">
-                <h3>Status=1000: Return order created and Return Label generated</h3>
+                <h3>Status=2000: Return order created and Return Label generated</h3>
                 <pre style="border-left:0px;">
-                    {
-                    "Status":"2000",
-                    "Messages":"returnlabelurl",  [URL of the return label]
-                    "Id":"ReturnorderId"
-                    }
+		{
+		"Status": "2000",
+		"Messages": "Successfully Return Order Created",
+		"Id": "902483300",
+		"TrackingNumber": "20000000033",
+		"TrackingUrl": "http://fastway.ie/courier-services/track-your-parcel?l=20000000033",
+		"LabelUrl": "http://api.bleckmann.apoyar.eu/Labels/TRUEFC/Fastway/902483300.pdf"
+		}
 
-                    HttpStatusCode OK 200.
+		HttpStatusCode OK 200.
                 </pre>
             </div>
             <div class="geshifilter">
@@ -4853,7 +4890,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Consumershipstreet2</p>
+                            <p>ConsumerShipStreet2</p>
                         </td>
                         <td nowrap="">
                             <p>DIMENSION</p>
@@ -4870,7 +4907,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Consumershipstreet3</p>
+                            <p>ConsumerShipStreet3</p>
                         </td>
                         <td nowrap="">
                             <p>DIMENSION</p>
@@ -4888,7 +4925,7 @@
 
                     <tr>
                         <td nowrap="">
-                            <p>Consumerphonenumber</p>
+                            <p>ConsumerPhoneNumber</p>
                         </td>
                         <td nowrap="">
                             <p>1234567891</p>
@@ -4956,7 +4993,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Consumershipstate</p>
+                            <p>ConsumerShipState</p>
                         </td>
                         <td nowrap="">
                             <p>GB</p>
@@ -5179,23 +5216,6 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Apoyar</p>
-                        </td>
-                        <td nowrap="">
-                            <p>ahgsdhfagf</p>
-                        </td>
-                        <td nowrap="">
-                            <p>No</p>
-                        </td>
-                        <td>
-                            <p>‘GetBMAllOrdersbyId’ you will get the token in header with field ‘apoyar’ in this function send in header to respective api ‘PostBMReturnOrder’</p>
-                        </td>
-                        <td nowrap="">
-                            <p>String</p>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td nowrap="">
                             <p>LineId</p>
                         </td>
                         <td nowrap="">
@@ -5213,7 +5233,7 @@
                     </tr>
                     <tr>
                         <td nowrap="">
-                            <p>Orderid</p>
+                            <p>OrderId</p>
                         </td>
                         <td nowrap="">
                             <p>410009352004</p>
@@ -5427,26 +5447,24 @@
                     "ConsumerId":101,
                     "ConsumerName1":"PSYCHE LIMITED",
                     "ConsumerShipStreet1":"175-187 LINTHORPE ROAD",
-                    "Consumername2":"",
-                    "Consumerphonenumber":"",
-                    "Consumershipstate":"IR",
-                    "Consumershipstreet2":"/",
-                    "Consumershipstreet3":"",
+                    "ConsumerPhoneNumber":"1231231231",
+                    "ConsumerShipState":"IR",
+                    "ConsumerShipStreet2":"/",
                     "FKCustomerId":"TRUEFC",
                     "CarrierId":19,
                     "CarrierName":"Fastway",
-                    "ShipfromWarehouseId":"KHTRUEFC",
+                    "ShipFromWareHouseId":"KHTRUEFC",
                     "CustomerName":"TrueReligion",
                     "OrderId":"410009352004",
                     "Ordertype":"MUPS STD",
                     "ReturnOrderTotalRefundAmount":"74.00",
-                    "Shipfromwarehouseid":"OLDENZAL1",
+                    "ShipFromWarehouseId":"OLDENZAL1",
                     "ShipmentId":"410009352004",
                     "Source":"RP",
                     "Status":1,
                     "Mode":5,
                     "BccEmail":"x@x.com",
-                    "Returnorderline":
+                    "ReturnOrderLine":
                         [{
                             "EanBarcode":"889347388534",
                             "LineId":2,
@@ -5467,7 +5485,7 @@
             <h2 class="h2 title toc-headings">Json Response</h2>
 
             <div class="geshifilter">
-                <h3>Status=2000: Return order created but Return Label not Generated</h3>
+                <h3>Status=1000: Return order created but Return Label not Generated</h3>
                 <pre style="border-left:0px;">
                     {
                     "Status":"1000",
@@ -5479,15 +5497,18 @@
                 </pre>
             </div>
             <div class="geshifilter">
-                <h3>Status=1000: Return order created and Return Label generated</h3>
+                <h3>Status=2000: Return order created and Return Label generated</h3>
                 <pre style="border-left:0px;">
-                    {
-                    "Status":"2000",
-                    "Messages":"returnlabelurl",  [URL of the return label]
-                    "Id":"ReturnorderId"
-                    }
-
-                    HttpStatusCode OK 200.
+		{
+		"Status": "2000",
+		"Messages": "Successfully Return Order Created",
+		"Id": "891013301",
+		"TrackingNumber": "20000000034",
+		"TrackingUrl": "http://fastway.ie/courier-services/track-your-parcel?l=20000000034",
+		"LabelUrl": "http://api.bleckmann.apoyar.eu/Labels/TRUEFC/Fastway/891013301.pdf"
+		}
+		
+		HttpStatusCode OK 200.
                 </pre>
             </div>
             <div class="geshifilter">
