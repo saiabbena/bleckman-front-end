@@ -7,6 +7,7 @@
             <li class="toc-node-level-1"><a href="#mode3"><span class="toc-text">Operation Mode3</span></a></li>
             <li class="toc-node-level-1"><a href="#mode4"><span class="toc-text">Operation Mode4</span></a></li>
             <li class="toc-node-level-5"><a href="#mode5"><span class="toc-text">Operation Mode5</span></a></li>
+			<li class="toc-node-level-5"><a href="#mode6"><span class="toc-text">Operation Mode6</span></a></li>
       </ol>
     </nav>
     <article class="portrait-8 grid-6 desktop-10">
@@ -69,6 +70,16 @@
             </ul>
             <h3><i>Overview</i></h3>
             <p>Operation Mode 5 means consuming the api calls by customer at their end and generating the return order label. Process used to place a return order with order and order lines information.</p>
+			<div class="toc-item-anchor"><a name="mode6"></a></div>
+			<h2 class="h2 title toc-headings toc-headings">Operation Mode6</h2>
+			<ul class="details">
+                <li><i>Reason to Call: </i>To place a return order</li>
+                <li><i>User: </i>Customer through API</li>
+                <li><i>Input: </i>Order Id or Email</li>
+                <li><i>Output: </i>Return order created and label is generated</li>
+            </ul>
+			<h3><i>Overview</i></h3>
+            <p>Operation Mode 6 is specifically used by the customers of bleckmann and they will integrate the API functions into the portal designed by themselves.</p>
           </div>
         </div>
       </div>
@@ -82,3 +93,4 @@
         $('#intro').addClass('active');
     });
 </script>
+<!-->
