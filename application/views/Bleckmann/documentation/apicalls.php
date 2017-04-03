@@ -646,6 +646,23 @@
                     </tr>
 					<tr>
                         <td nowrap="">
+                            <p>SystemOption</p>
+                        </td>
+                        <td nowrap="">
+                            <p>RITROV BE</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Length 50</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
                             <p>Reference1</p>
                         </td>
                         <td nowrap="">
@@ -655,7 +672,58 @@
                             <p>Yes</p>
                         </td>
                         <td>
-                            <p>Customer RMAID</p>
+                            <p>Customer RMAID length 100</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>Reference2</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Reference2 length 100</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>Reference3</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Reference3 length 100</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>Reference4</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Reference4 length 100</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
@@ -711,7 +779,11 @@
                         "Mode":1,
                         "OrderId":"89898989",
                         "CustomerName":"Supergroup",
-			"Reference1":"RMAID"
+			"SystemOption":"RITROV BE",
+			"Reference1":"RMAID",
+			"Reference2":"",
+			"Reference3":"",
+			"Reference4":""
                     }
                 </pre>
             </div>
@@ -2763,6 +2835,23 @@ HttpStatusCode OK 200.
                     </tr>
 					<tr>
                         <td nowrap="">
+                            <p>SystemOption</p>
+                        </td>
+                        <td nowrap="">
+                            <p>RITROV BE</p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Length 50</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
                             <p>Reference1</p>
                         </td>
                         <td nowrap="">
@@ -2772,12 +2861,64 @@ HttpStatusCode OK 200.
                             <p>Yes</p>
                         </td>
                         <td>
-                            <p>Customer RMAID</p>
+                            <p>Customer RMAID Length 100</p>
                         </td>
                         <td nowrap="">
                             <p>String</p>
                         </td>
                     </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>Reference2</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Reference2 length 100</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>Reference3</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Reference3 length 100</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					<tr>
+                        <td nowrap="">
+                            <p>Reference4</p>
+                        </td>
+                        <td nowrap="">
+                            <p></p>
+                        </td>
+                        <td nowrap="">
+                            <p>Yes</p>
+                        </td>
+                        <td>
+                            <p>Reference4 length 100</p>
+                        </td>
+                        <td nowrap="">
+                            <p>String</p>
+                        </td>
+                    </tr>
+					
                     <tr>
                         <td nowrap="">
                             <p>Apoyar</p>
@@ -2827,7 +2968,7 @@ HttpStatusCode OK 200.
                 </tbody>
             </table>
             <h2 class="h2 title toc-headings">Request Parameters as JSON</h2>
-            Sample token in Request header - Apoyar: 92600f29-10d0-4c5f-b13a-1dbdee2572d4
+            Sample token in Request header - Apoyar: d34e0171-93c2-4cb5-9756-6fe6a4bed04a
             <div class="geshifilter">
                 <pre style="border-left:0px;">
                     {
@@ -2848,7 +2989,11 @@ HttpStatusCode OK 200.
                         "BccEmail":"x@x.com",
                         "OrderId":"89898989",
                         "CustomerName":"Supergroup",
-			"Reference1":"RMAID"
+			"SystemOption":"RITROV BE",
+			"Reference1":"RMAID",
+			"Reference2":"",
+			"Reference3":"",
+			"Reference4":""
                     }
                 </pre>
             </div>
@@ -5536,4 +5681,4 @@ HttpStatusCode OK 200.
         $('#intro').removeClass('active');
     });
 </script>
-<!--->
+<!-->
