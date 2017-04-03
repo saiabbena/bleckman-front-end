@@ -347,7 +347,8 @@ $(document).ready(function(){
 				},
         Reference1:{
           required: function(element) {
-            if ( $Reference1 ) {
+            console.log("Reference1 : " + Reference1 );
+            if ( Reference1 ) {
               return true;
             } else {
               return false;
@@ -357,35 +358,35 @@ $(document).ready(function(){
             },
             messages: {
                 //Consumername1: "Please enter First Name",
-				Consumername1: {
-					required: "Please enter First Name",
-					maxlength: $.format("Maximum 35 characters allowed")					
-				},
-                ConsumerShipStreet1: {
-					required: "Please enter Street",
-					maxlength: $.format("Maximum 35 characters allowed")					
-				},
-                ConsumerEmail: {
-					required: "Please enter a valid email address",
-					maxlength: $.format("Maximum 255 characters allowed"),
-					email: $.format("Please enter a valid email address")
-				},
-                ConsumerFromShipHouseNumber: {
-					required: "Please enter Address",
-					maxlength: $.format("Maximum 35 characters allowed")					
-				},
-                ConsumerFromShipCity:{
-					required: "Please enter City",
-					maxlength: $.format("Maximum 35 characters allowed")					
-				},
-                ConsumerFromShipPostalCode:{
-					required: "Please enter Postal Code",
-					maxlength: $.format("Maximum 10 characters allowed")					
-				},                
-				ConsumerFromShipCountry: "Please enter Country Name",
-        Reference1:{
-          required:"Please enter Reference1",
-        }
+      				Consumername1: {
+      					required: "Please enter First Name",
+      					maxlength: $.format("Maximum 35 characters allowed")					
+      				},
+                      ConsumerShipStreet1: {
+      					required: "Please enter Street",
+      					maxlength: $.format("Maximum 35 characters allowed")					
+      				},
+                      ConsumerEmail: {
+      					required: "Please enter a valid email address",
+      					maxlength: $.format("Maximum 255 characters allowed"),
+      					email: $.format("Please enter a valid email address")
+      				},
+                      ConsumerFromShipHouseNumber: {
+      					required: "Please enter Address",
+      					maxlength: $.format("Maximum 35 characters allowed")					
+      				},
+                      ConsumerFromShipCity:{
+      					required: "Please enter City",
+      					maxlength: $.format("Maximum 35 characters allowed")					
+      				},
+                      ConsumerFromShipPostalCode:{
+      					required: "Please enter Postal Code",
+      					maxlength: $.format("Maximum 10 characters allowed")					
+      				},                
+      				ConsumerFromShipCountry: "Please enter Country Name",
+              Reference1:{
+                required:"Please enter " + Reference1,
+              }
             },
             submitHandler: function(form) {             
               postData.OrderId = $('#OrderId').val();
