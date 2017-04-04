@@ -594,7 +594,9 @@ if( data[i].ReturnsOrderTrackingCode!='')
 					'<b>State:</b> '+((data.Consumershipstate !== undefined)?data.Consumershipstate:'')+'<br/>'+
 					'<b>Country:</b> '+((data.ConsumerFromShipCountry !== undefined)?data.ConsumerFromShipCountry:'')+'<br/>'+					
 					'<b>Email:</b> '+((data.ConsumerEmail !== undefined)?data.ConsumerEmail:'')+'<br/>'+
-					'<b> Phone:</b>'+((data.Consumerphonenumber !== undefined)?data.Consumerphonenumber:'')+'</div></div>'+
+					'<b> Phone:</b>'+((data.Consumerphonenumber !== undefined)?data.Consumerphonenumber:'')+'<br/>'+
+					'<b>' + Reference1+':</b> '+((data.Reference1 !== undefined)?data.Reference1:'')+
+					'</div></div>'+
 					
 					'<hr style="clear:both;"><h4>Warehouse:</h4><div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Warehouse id :</b> '+data.Shipfromwarehouseid+'</div><div class="col-md-6 pull-right"> <b>Warehouse :</b> '+data.Warehouse+
 					'</div></div><hr><h4>Comment:</h4>'+(data.Comment?data.Comment:'No comment has been made yet')+'<br><hr><h4>Items returned ('+data.Returnorderline.length+'):</h4>';

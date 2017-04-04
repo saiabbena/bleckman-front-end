@@ -1,3 +1,4 @@
+	<?php echo '<script> Reference1="' . $Reference1.'";</script>'; ?>
 	<div class='col-xs-12 col-md-9' height='100%'>
       <div class='well body_btm_bdr' id="orders-messages">
         <div class="alert alert-dismissible alert-primary">

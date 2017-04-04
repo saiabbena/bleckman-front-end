@@ -1418,7 +1418,8 @@ $(document).ready(function() {
 		    //$('.loading-screen').slideUp('slow');
 		});
 		$(document).on('click', '.btn_more_info', function() {
-			//alert($(this).attr('id')); //ReturnId
+			$('.loading-screen').slideDown('slow');
+			//alert($(this).attr('id')); //ReturnId	    
 			var ReturnId = $(this).attr('id');
 			var moreinfo_html = '';			
 			//var customerId = $('#orders_by_customer_id').val();
@@ -1429,8 +1430,8 @@ $(document).ready(function() {
 		        type: 'GET',			    
 		        dataType: 'json',
 		        success: function(data) {
-		        	//console.log("response data : ");
-		        	//console.log(data);
+		        	console.log("response data : ");
+		        	console.log(data);
 					//data[i].OrderId
 					//console.log(data.OrderId);
 					//console.log(data['Returnorderline'][0].EanBarcode);				
@@ -1461,8 +1462,10 @@ $(document).ready(function() {
 					'<b>State:</b> '+((data.Consumershipstate !== undefined)?data.Consumershipstate:'')+'<br/>'+
 					'<b>Country:</b> '+((data.ConsumerFromShipCountry !== undefined)?data.ConsumerFromShipCountry:'')+'<br/>'+					
 					'<b>Email:</b> '+((data.ConsumerEmail !== undefined)?data.ConsumerEmail:'')+'<br/>'+
-					'<b> Phone:</b>'+((data.Consumerphonenumber !== undefined)?data.Consumerphonenumber:'')+'</div></div>'+
-					
+					'<b> Phone:</b>'+((data.Consumerphonenumber !== undefined)?data.Consumerphonenumber:'')+'<br/>'+
+					'<b>' + data.CustomerReference1+':</b> '+((data.Reference1 !== undefined)?data.Reference1:'')+
+					'</div></div>'+
+
 					'<hr><h4>Warehouse:</h4><div class="row" style="padding-left:0 !important;"><div class="col-md-6 pull-left"><b>Warehouse id :</b> '+data.Shipfromwarehouseid+'</div><div class="col-md-6 pull-right"> <b>Warehouse :</b> '+data.Warehouse+
 					'</div></div><hr><h4>Comment:</h4>'+(data.Comment?data.Comment:'No comment has been made yet')+'<br><hr><h4>Items returned ('+data.Returnorderline.length+'):</h4>';
 					for(a=0; a<data.Returnorderline.length; a++){
@@ -1474,7 +1477,7 @@ $(document).ready(function() {
 					}
 					moreinfo_html=moreinfo_html+'</div><div class="modal-footer"><button type="button" class="btn btn-default" data-dismiss="modal">Close</button></div></div></div>';
 					$('#moreInfo').html(moreinfo_html);
-					
+					$('.loading-screen').slideUp('slow');
 					$.material.init();
 		        },
 		        fail: function(data){

@@ -101,9 +101,14 @@ class Admin extends CI_Controller {
   }
   public function orders(){
 	  $customer_id = $_SESSION['Customerid'];	  
-	  $data = array('customer_id'=>$customer_id);
+	  //$data = array('customer_id'=>$customer_id);
+    $req = array(
+      'Customerid'=>$_SESSION['Customerid']
+    );
+    $data['appearanceSettings'] = $this->httpRequests->httpGet('CustomerSetting/GetCustomerFeaturesbyId', $req);
+    $data['Reference1'] = $data['appearanceSettings']['CustomerSetting']['Reference1'];
     $this->load->view('admin/templates/adm_header');	
-    $this->load->view('admin/orders');
+    $this->load->view('admin/orders', $data);
     $this->load->view('admin/templates/footer');
     if(isset($_SESSION['message'])){
       unset($_SESSION['message']);
