@@ -7,6 +7,7 @@ $(document).ready(function() {
 		beforeSend: function(xhr) {
 			xhr.setRequestHeader('Apoyar', apoyarToken);
 			xhr.setRequestHeader('ApoyarUrl', ApoyarUrlHdr);
+			//xhr.setRequestHeader('apikey', 'R33bok');
 		}
 	});	
 	

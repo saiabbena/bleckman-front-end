@@ -345,35 +345,48 @@ $(document).ready(function(){
 					required: true,
 					maxlength: 35
 				},
+        Reference1:{
+          required: function(element) {
+            console.log("Reference1 : " + Reference1 );
+            if ( Reference1 ) {
+              return true;
+            } else {
+              return false;
+            }
+          }
+        }
             },
             messages: {
                 //Consumername1: "Please enter First Name",
-				Consumername1: {
-					required: "Please enter First Name",
-					maxlength: $.format("Maximum 35 characters allowed")					
-				},
-                ConsumerShipStreet1: {
-					required: "Please enter Street",
-					maxlength: $.format("Maximum 35 characters allowed")					
-				},
-                ConsumerEmail: {
-					required: "Please enter a valid email address",
-					maxlength: $.format("Maximum 255 characters allowed"),
-					email: $.format("Please enter a valid email address")
-				},
-                ConsumerFromShipHouseNumber: {
-					required: "Please enter Address",
-					maxlength: $.format("Maximum 35 characters allowed")					
-				},
-                ConsumerFromShipCity:{
-					required: "Please enter City",
-					maxlength: $.format("Maximum 35 characters allowed")					
-				},
-                ConsumerFromShipPostalCode:{
-					required: "Please enter Postal Code",
-					maxlength: $.format("Maximum 10 characters allowed")					
-				},                
-				ConsumerFromShipCountry: "Please enter Country Name"
+      				Consumername1: {
+      					required: "Please enter First Name",
+      					maxlength: $.format("Maximum 35 characters allowed")					
+      				},
+                      ConsumerShipStreet1: {
+      					required: "Please enter Street",
+      					maxlength: $.format("Maximum 35 characters allowed")					
+      				},
+                      ConsumerEmail: {
+      					required: "Please enter a valid email address",
+      					maxlength: $.format("Maximum 255 characters allowed"),
+      					email: $.format("Please enter a valid email address")
+      				},
+                      ConsumerFromShipHouseNumber: {
+      					required: "Please enter Address",
+      					maxlength: $.format("Maximum 35 characters allowed")					
+      				},
+                      ConsumerFromShipCity:{
+      					required: "Please enter City",
+      					maxlength: $.format("Maximum 35 characters allowed")					
+      				},
+                      ConsumerFromShipPostalCode:{
+      					required: "Please enter Postal Code",
+      					maxlength: $.format("Maximum 10 characters allowed")					
+      				},                
+      				ConsumerFromShipCountry: "Please enter Country Name",
+              Reference1:{
+                required:"Please enter " + Reference1,
+              }
             },
             submitHandler: function(form) {             
               postData.OrderId = $('#OrderId').val();
@@ -516,17 +529,17 @@ $(document).ready(function(){
 		return(email_pat.test(tmpStr));
   }
   //logic
-  $('#button3').click(function(){  
-
-    if ( mode == 1 ) {
-  		if($('#emailConfirm').val().length > 0){
-  			if (!ValidateEmail($("#emailConfirm").val())){
-				$('#emailConfirm').focus();
-				$('#email_validation').css({'display':'block'});
-				return true;
-			}	  
-  		}  		
-    }
+  $('#button3').click(function(){
+		//alert($('#emailConfirm').val());
+		if($('#emailConfirm').val() !== undefined){
+			if($('#emailConfirm').val().length > 0){
+				if (!ValidateEmail($("#emailConfirm").val())){
+					$('#emailConfirm').focus();
+					$('#email_validation').css({'display':'block'});
+					return true;
+				}	  
+			}  		
+		}
 	//console.log(postData);
     console.log("mode : " + mode);
 	
