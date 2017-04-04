@@ -521,10 +521,10 @@ if( data[i].ReturnsOrderTrackingCode!='')
         
         console.log(response);
         if ( response.Status == 1 ) {
-          alert("success");
+          //alert("success");
           window.location.reload();
         } else {
-          alert(response.LabelUrl);//response.Messages
+          //alert(response.LabelUrl);//response.Messages
         }
       },
       error: function(data) {

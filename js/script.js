@@ -1012,10 +1012,10 @@ $(document).ready(function(){
 			
 			console.log(response);
 			if ( response.Status == 1 ) {
-			  console.log("success");
+			  //alert("success");
 			  window.location.reload();
 			} else {
-			  console.log(response.LabelUrl);
+			  //alert(response.LabelUrl);
 			}
 		},
 		error: function(data) {

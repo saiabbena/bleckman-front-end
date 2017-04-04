@@ -72,14 +72,26 @@
             <p>Operation Mode 5 means consuming the api calls by customer at their end and generating the return order label. Process used to place a return order with order and order lines information.</p>
 			<div class="toc-item-anchor"><a name="mode6"></a></div>
 			<h2 class="h2 title toc-headings toc-headings">Operation Mode6</h2>
+			This mode is for the customers of Bleckmann so that they can integrate the API calls into their customized portal.
+			The integration will be broadly classified into 2 types:<br/>
+			<i>Linked </i>– with order and orderline information<br/>
+			<i>Non-Linked </i>– without any order or orderline information.
+			<h3><b>Linked:</b></h3>
+            Basically there will be 5 Calls:
 			<ul class="details">
-                <li><i>Reason to Call: </i>To place a return order</li>
-                <li><i>User: </i>Customer through API</li>
-                <li><i>Input: </i>Order Id or Email</li>
-                <li><i>Output: </i>Return order created and label is generated</li>
+                <li>a. Consumer can search for orders</li>
+                <li>b. Consumer can give order id and fetch the order line information</li>
+                <li>c. Consumer should be able to fetch the reasons</li>
+                <li>d. Consumers should be able to view the carriers</li>
+				<li>e. Consumers should be able to place return order</li>
             </ul>
-			<h3><i>Overview</i></h3>
-            <p>Operation Mode 6 is specifically used by the customers of bleckmann and they will integrate the API functions into the portal designed by themselves.</p>
+			<h3><b>Non-Linked:</b></h3>
+            Basically there will be 3 Calls:
+			<ul class="details">
+                <li>a. Need to fetch all active countries</li>
+                <li>b. Need to fetch all carriers</li>
+                <li>c. Place the return order</li>                
+            </ul>
           </div>
         </div>
       </div>
@@ -93,4 +105,3 @@
         $('#intro').addClass('active');
     });
 </script>
-<!-->
